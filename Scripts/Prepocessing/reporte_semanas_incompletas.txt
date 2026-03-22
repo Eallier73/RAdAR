@@ -1,0 +1,36 @@
+Reporte de semanas incompletas de Datos_RAdAR
+Generado: 2026-03-14 04:42:28
+
+Renombres aplicados/propuestos: 291
+Carpetas faltantes creadas/propuestas: 2
+- 2026-03-03_semana_03marzo_09marzo_26
+- 2026-03-10_semana_10marzo_16marzo_26
+
+Semanas incompletas
+2025-03-04_semana_4marzo_25_10marzo_25
+  presentes: medios, twitter, youtube
+  faltan: 2025-03-04_semana_4marzo_25_10marzo_25_facebook.csv
+
+2025-03-11_semana_11marzo_25_17marzo_25
+  presentes: medios, twitter, youtube
+  faltan: 2025-03-11_semana_11marzo_25_17marzo_25_facebook.csv
+
+2025-03-18_semana_18marzo_25_24marzo_25
+  presentes: medios, twitter, youtube
+  faltan: 2025-03-18_semana_18marzo_25_24marzo_25_facebook.csv
+
+2025-09-02_semana_2septiembre_25_8septiembre_25
+  presentes: medios, twitter, youtube
+  faltan: 2025-09-02_semana_2septiembre_25_8septiembre_25_facebook.csv
+
+2026-01-06_semana_06enero_12enero_26
+  presentes: facebook, twitter, youtube
+  faltan: 2026-01-06_semana_06enero_12enero_26_medios.txt
+
+2026-03-03_semana_03marzo_09marzo_26
+  presentes: ninguno
+  faltan: 2026-03-03_semana_03marzo_09marzo_26_medios.txt, 2026-03-03_semana_03marzo_09marzo_26_facebook.csv, 2026-03-03_semana_03marzo_09marzo_26_twitter.csv, 2026-03-03_semana_03marzo_09marzo_26_youtube.csv
+
+2026-03-10_semana_10marzo_16marzo_26
+  presentes: ninguno
+  faltan: 2026-03-10_semana_10marzo_16marzo_26_medios.txt, 2026-03-10_semana_10marzo_16marzo_26_facebook.csv, 2026-03-10_semana_10marzo_16marzo_26_twitter.csv, 2026-03-10_semana_10marzo_16marzo_26_youtube.csv

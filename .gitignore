@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# IDE / editor
+.idea/
+.vscode/
+
+# OS / metadata
+.DS_Store
+Thumbs.db
+*Zone.Identifier*
+
+# Environments
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# Generated experiment outputs
+Experimentos/runs/
+Experimentos/*.backup_*.xlsx
+Experimentos/*.lock
+
+# Large raw / derived datasets
+Datos_Modelo_ML/
+Datos_RAdAR/
+Datos_RadaR_Texto/
+Encuestas/
+
+# Temporary files
+*.tmp
+*.bak
