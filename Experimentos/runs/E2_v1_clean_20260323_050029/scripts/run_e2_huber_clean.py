@@ -57,16 +57,6 @@ def parse_args() -> argparse.Namespace:
         help="Run_ID de referencia principal para artefactos comparativos.",
     )
     parser.add_argument(
-        "--extra-reference-run-ids",
-        default="",
-        help="Run_IDs extra para comparaciones JSON, separados por coma.",
-    )
-    parser.add_argument(
-        "--hypothesis-note",
-        default="",
-        help="Nota corta de la hipotesis del run para comentarios y grid.",
-    )
-    parser.add_argument(
         "--transform-mode",
         choices=TRANSFORM_MODE_CHOICES,
         default=TRANSFORM_MODE_STANDARD,
@@ -100,9 +90,6 @@ def parse_args() -> argparse.Namespace:
     args.epsilon_grid = parse_float_sequence(args.epsilon_grid, label="epsilon_grid")
     args.max_iter_grid = parse_int_sequence(args.max_iter_grid, label="max_iter_grid")
     args.tol_grid = parse_float_sequence(args.tol_grid, label="tol_grid")
-    args.extra_reference_run_ids = tuple(
-        token.strip() for token in args.extra_reference_run_ids.split(",") if token.strip()
-    )
     return args
 
 
@@ -154,7 +141,6 @@ def build_model_params(
         "param_grid": param_grid,
         "inner_splits": args.inner_splits,
         "tuning_metric": args.tuning_metric,
-        "hypothesis_note": args.hypothesis_note,
         "transform_mode": args.transform_mode,
         "winsor_lower_quantile": args.winsor_lower_quantile,
         "winsor_upper_quantile": args.winsor_upper_quantile,
@@ -180,15 +166,6 @@ def summarize_huber_trace(huber_trace: list[dict[str, object]]) -> dict[str, obj
         **_summarize_numeric(best_alphas, "best_alpha"),
         **_summarize_numeric(best_max_iter, "best_max_iter"),
         **_summarize_numeric(best_tol, "best_tol"),
-        "convergence_warning_events_total": int(
-            sum(int(item.get("outer_fold_convergence_warning_events", 0)) for item in huber_trace)
-        ),
-        "outer_folds_with_convergence_warning": int(
-            sum(1 for item in huber_trace if int(item.get("outer_fold_convergence_warning_events", 0)) > 0)
-        ),
-        "max_convergence_warning_events_per_outer_fold": int(
-            max((int(item.get("outer_fold_convergence_warning_events", 0)) for item in huber_trace), default=0)
-        ),
         "best_params_by_fold": huber_trace,
     }
 
@@ -293,11 +270,6 @@ def main() -> None:
             "best_alpha_median": tuning_summary["best_alpha_median"],
             "best_alpha_min": tuning_summary["best_alpha_min"],
             "best_alpha_max": tuning_summary["best_alpha_max"],
-            "convergence_warning_events_total": tuning_summary["convergence_warning_events_total"],
-            "outer_folds_with_convergence_warning": tuning_summary["outer_folds_with_convergence_warning"],
-            "max_convergence_warning_events_per_outer_fold": tuning_summary[
-                "max_convergence_warning_events_per_outer_fold"
-            ],
         }
         rows_summary.append(summary_row)
 
@@ -323,7 +295,6 @@ def main() -> None:
                 "estado": "corrido",
                 "comentarios": (
                     "Huber limpio con tuning temporal interno | "
-                    f"hipotesis={args.hypothesis_note or 'baseline_huber'} | "
                     f"metric={args.tuning_metric} | inner_splits={args.inner_splits}"
                 ),
                 "loss_h": loss_h,
@@ -344,22 +315,20 @@ def main() -> None:
         reference_values=reference_values,
         l_coh=None,
     )
-    comparison_run_ids = (args.reference_run_id, *args.extra_reference_run_ids)
-    for reference_run_id in comparison_run_ids:
-        comparison_payload = build_comparison_payload(
-            workbook_path=args.workbook,
-            reference_run_id=reference_run_id,
-            clean_run_id=args.run_id,
-            horizon_results=horizon_results,
-            l_total_radar=float(total_radar["l_total_radar"]),
-        )
-        comparison_filename = f"comparacion_vs_{reference_run_id}.json"
-        run.save_json(
-            comparison_payload,
-            comparison_filename,
-            artifact_type="comparacion",
-            notes=f"Comparacion de la corrida clean contra {reference_run_id}.",
-        )
+    comparison_payload = build_comparison_payload(
+        workbook_path=args.workbook,
+        reference_run_id=args.reference_run_id,
+        clean_run_id=args.run_id,
+        horizon_results=horizon_results,
+        l_total_radar=float(total_radar["l_total_radar"]),
+    )
+    comparison_filename = f"comparacion_vs_{args.reference_run_id}.json"
+    run.save_json(
+        comparison_payload,
+        comparison_filename,
+        artifact_type="comparacion",
+        notes=f"Comparacion de la corrida clean contra {args.reference_run_id}.",
+    )
 
     run.finalize(
         horizon_results=horizon_results,
@@ -374,7 +343,6 @@ def main() -> None:
         estado="corrido",
         comentarios=(
             "Huber limpio con tuning interno TimeSeriesSplit | "
-            f"hipotesis={args.hypothesis_note or 'baseline_huber'} | "
             f"metric={args.tuning_metric} | "
             f"L_total_Radar={total_radar['l_total_radar']:.6f}"
         ),

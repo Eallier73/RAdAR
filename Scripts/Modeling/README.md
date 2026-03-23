@@ -44,3 +44,9 @@ Reglas de organizacion:
 - La validacion se mantiene temporal y expansiva.
 - El grid se actualiza via `experiment_logger.py`.
 - Si un run historico quedo incompleto en el Excel, usar `backfill_runs.py`.
+
+Estado metodologico:
+
+- `E1` Ridge queda cerrado como baseline lineal principal: `E1_v5_clean` mejor global y `E1_v4_clean` referencia parsimoniosa.
+- `E2` Huber queda cerrado como familia no competitiva: `E2_v3_clean` gana internamente, pero no supera a Ridge y `E2_v4_clean` se cancela por decision metodologica.
+- `E3`, `E4` y `E5` usan la misma base reusable para comparaciones contra runs de referencia y guardado de features seleccionadas cuando aplica.

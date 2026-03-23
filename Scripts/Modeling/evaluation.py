@@ -1,12 +1,14 @@
 from __future__ import annotations
 
 import math
+import warnings
 from itertools import product
 from typing import Any
 
 import numpy as np
 import pandas as pd
 from sklearn.base import clone
+from sklearn.exceptions import ConvergenceWarning
 from sklearn.linear_model import LassoCV
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 from sklearn.model_selection import TimeSeriesSplit
@@ -291,11 +293,13 @@ def select_best_params_time_series(
     splitter = TimeSeriesSplit(n_splits=split_count)
     param_candidates = expand_parameter_grid(param_grid)
     param_results: list[dict[str, Any]] = []
+    convergence_warning_events = 0
+    inner_folds_with_warning: set[int] = set()
 
     for params in param_candidates:
         fold_scores: list[float] = []
 
-        for inner_train_idx, inner_valid_idx in splitter.split(train_data):
+        for inner_fold_idx, (inner_train_idx, inner_valid_idx) in enumerate(splitter.split(train_data), start=1):
             inner_train = train_data.iloc[inner_train_idx]
             inner_valid = train_data.iloc[inner_valid_idx]
 
@@ -307,7 +311,15 @@ def select_best_params_time_series(
             )
             input_columns = [*include_columns, *selected_features]
             estimator = clone(estimator_builder(params))
-            estimator.fit(inner_train[input_columns], inner_train[target_column])
+            with warnings.catch_warnings(record=True) as caught_warnings:
+                warnings.simplefilter("always", ConvergenceWarning)
+                estimator.fit(inner_train[input_columns], inner_train[target_column])
+            warning_count = sum(
+                1 for warning in caught_warnings if issubclass(warning.category, ConvergenceWarning)
+            )
+            convergence_warning_events += warning_count
+            if warning_count:
+                inner_folds_with_warning.add(inner_fold_idx)
 
             predicted_model = np.asarray(estimator.predict(inner_valid[input_columns]), dtype=float)
             if target_mode == TARGET_MODE_DELTA:
@@ -341,6 +353,8 @@ def select_best_params_time_series(
         "tuning_metric": tuning_metric,
         "inner_split_count": split_count,
         "param_results": param_results,
+        "convergence_warning_events": int(convergence_warning_events),
+        "inner_folds_with_warning": len(inner_folds_with_warning),
     }
 
 
@@ -492,10 +506,16 @@ def walk_forward_predict_with_tscv_param_tuning(
         )
         input_columns = [*include_columns, *selected_features]
         fitted = clone(estimator_builder(tuning["best_params"]))
-        fitted.fit(train[input_columns], train[target_column])
+        with warnings.catch_warnings(record=True) as caught_warnings:
+            warnings.simplefilter("always", ConvergenceWarning)
+            fitted.fit(train[input_columns], train[target_column])
+        final_fit_warning_events = sum(
+            1 for warning in caught_warnings if issubclass(warning.category, ConvergenceWarning)
+        )
         model_prediction = float(fitted.predict(test[input_columns])[0])
         y_current = float(test[CURRENT_TARGET_COLUMN].iloc[0])
         best_params = dict(tuning["best_params"])
+        total_warning_events = int(tuning["convergence_warning_events"]) + int(final_fit_warning_events)
 
         if target_mode == TARGET_MODE_DELTA:
             if actual_target_column is None:
@@ -521,6 +541,9 @@ def walk_forward_predict_with_tscv_param_tuning(
             "inner_tuning_metric": tuning["tuning_metric"],
             "inner_best_score": float(tuning["best_score"]),
             "inner_split_count": int(tuning["inner_split_count"]),
+            "convergence_warning_events": total_warning_events,
+            "inner_folds_with_convergence_warning": int(tuning["inner_folds_with_warning"]),
+            "final_fit_convergence_warning_events": int(final_fit_warning_events),
         }
         for key, value in best_params.items():
             prediction_row[f"best_{key}"] = value
@@ -529,6 +552,8 @@ def walk_forward_predict_with_tscv_param_tuning(
             {
                 "fecha_test": str(test[DATE_COLUMN].iloc[0]),
                 **tuning,
+                "final_fit_convergence_warning_events": int(final_fit_warning_events),
+                "outer_fold_convergence_warning_events": total_warning_events,
             }
         )
 

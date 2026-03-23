@@ -29,3 +29,4 @@ Mapa actual:
 - `03_familia_ridge/04_continuacion_ridge_e1_v5_clean_memoria_larga.md`
 - `03_familia_ridge/05_cierre_ridge_y_transicion_a_familia_no_lineal.md`
 - `04_familia_huber/01_transicion_ridge_a_huber_clean.md`
+- `04_familia_huber/02_micro_rama_diagnostica_huber_e2_v2_a_e2_v4.md`

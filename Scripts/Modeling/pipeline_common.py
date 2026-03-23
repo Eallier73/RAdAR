@@ -51,6 +51,16 @@ def parse_float_sequence(raw_value: str, label: str) -> tuple[float, ...]:
     return tuple(values)
 
 
+def parse_string_sequence(raw_value: str) -> tuple[str, ...]:
+    values = []
+    for token in raw_value.split(","):
+        token = token.strip()
+        if not token:
+            continue
+        values.append(token)
+    return tuple(values)
+
+
 def parse_lags(raw_value: str) -> tuple[int, ...]:
     return parse_int_sequence(raw_value, label="lags")
 
@@ -123,6 +133,30 @@ def add_common_experiment_args(parser: argparse.ArgumentParser, *, default_run_i
         default=DEFAULT_RUNS_DIR,
         help=f"Directorio donde se guardan runs y artefactos. Default: {DEFAULT_RUNS_DIR}",
     )
+
+
+def add_reference_comparison_args(
+    parser: argparse.ArgumentParser,
+    *,
+    default_reference_run_id: str,
+    include_hypothesis_note: bool = True,
+) -> None:
+    parser.add_argument(
+        "--reference-run-id",
+        default=default_reference_run_id,
+        help="Run_ID de referencia principal para artefactos comparativos.",
+    )
+    parser.add_argument(
+        "--extra-reference-run-ids",
+        default="",
+        help="Run_IDs extra para comparaciones JSON, separados por coma.",
+    )
+    if include_hypothesis_note:
+        parser.add_argument(
+            "--hypothesis-note",
+            default="",
+            help="Nota corta de la hipotesis del run para comentarios y grid.",
+        )
 
 
 def finalize_common_args(args: argparse.Namespace) -> argparse.Namespace:
@@ -233,6 +267,19 @@ def build_selected_features_summary(predictions: pd.DataFrame) -> pd.DataFrame:
     return summary
 
 
+def normalize_reference_run_ids(
+    reference_run_id: str | None,
+    extra_reference_run_ids: tuple[str, ...] | list[str] | None = None,
+) -> tuple[str, ...]:
+    ordered = []
+    if reference_run_id:
+        ordered.append(reference_run_id)
+    for run_id in extra_reference_run_ids or ():
+        if run_id and run_id not in ordered:
+            ordered.append(run_id)
+    return tuple(ordered)
+
+
 def load_run_horizon_metrics(workbook_path: Path, run_id: str) -> dict[int, dict[str, float]]:
     workbook = load_workbook(workbook_path, data_only=True)
     worksheet = workbook["RESULTADOS_GRID"]
@@ -298,6 +345,31 @@ def build_comparison_payload(
     }
 
 
+def save_reference_comparisons(
+    *,
+    run,
+    workbook_path: Path,
+    clean_run_id: str,
+    reference_run_ids: tuple[str, ...],
+    horizon_results: list[dict[str, Any]],
+    l_total_radar: float,
+) -> None:
+    for reference_run_id in reference_run_ids:
+        comparison_payload = build_comparison_payload(
+            workbook_path=workbook_path,
+            reference_run_id=reference_run_id,
+            clean_run_id=clean_run_id,
+            horizon_results=horizon_results,
+            l_total_radar=l_total_radar,
+        )
+        run.save_json(
+            comparison_payload,
+            f"comparacion_vs_{reference_run_id}.json",
+            artifact_type="comparacion",
+            notes=f"Comparacion de la corrida clean contra {reference_run_id}.",
+        )
+
+
 def run_tabular_experiment(
     *,
     args: argparse.Namespace,
@@ -310,6 +382,7 @@ def run_tabular_experiment(
     transformacion: str = "",
     comentarios: str = "",
     always_include_columns: list[str] | None = None,
+    reference_run_ids: tuple[str, ...] = (),
     l_coh: float | None = None,
 ) -> dict[str, Any]:
     tracker = RadarExperimentTracker(workbook_path=args.workbook, runs_dir=args.runs_dir)
@@ -362,6 +435,17 @@ def run_tabular_experiment(
         predictions["run_id"] = args.run_id
         predictions["model_name"] = model_name
         predictions_by_horizon[horizon] = predictions
+        if args.feature_mode != FEATURE_MODE_ALL:
+            selected_features_summary = build_selected_features_summary(predictions)
+            run.save_dataframe(
+                selected_features_summary,
+                f"features_seleccionadas_h{horizon}.csv",
+                artifact_type="seleccion_features",
+                notes=(
+                    "Resumen de combinaciones de features seleccionadas por fold externo. "
+                    "El filtro se calcula solo con el train de cada fold externo."
+                ),
+            )
 
         summary_row = {
             "horizonte_sem": horizon,
@@ -409,6 +493,15 @@ def run_tabular_experiment(
         reference_values=reference_values,
         l_coh=l_coh,
     )
+    if reference_run_ids:
+        save_reference_comparisons(
+            run=run,
+            workbook_path=tracker.workbook_path,
+            clean_run_id=args.run_id,
+            reference_run_ids=reference_run_ids,
+            horizon_results=horizon_results,
+            l_total_radar=float(total_radar["l_total_radar"]),
+        )
 
     run.finalize(
         horizon_results=horizon_results,
