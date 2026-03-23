@@ -23,16 +23,8 @@ env/
 ENV/
 .python-version
 
-# Generated experiment outputs
-Experimentos/runs/
-Experimentos/*.backup_*.xlsx
+# Generated lock files
 Experimentos/*.lock
-
-# Large raw / derived datasets
-Datos_Modelo_ML/
-Datos_RAdAR/
-Datos_RadaR_Texto/
-Encuestas/
 
 # Temporary files
 *.tmp

@@ -1,0 +1,13 @@
+{
+  "mae": 1.0004702394162894,
+  "rmse": 1.274423631716821,
+  "r2": -0.05329680807854631,
+  "best_alpha": 5.0,
+  "best_l1_ratio": 0.05,
+  "n_train": 63,
+  "n_test": 8,
+  "n_features": 70,
+  "horizon": 2,
+  "dataset": "forecast_2w",
+  "target_col": "target_serie_4e_lead2"
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "feature_count": 59,
+    "horizonte_sem": 1,
+    "rows_eval": 28,
+    "rows_modeling": 68
+  },
+  {
+    "feature_count": 59,
+    "horizonte_sem": 2,
+    "rows_eval": 27,
+    "rows_modeling": 67
+  },
+  {
+    "feature_count": 59,
+    "horizonte_sem": 3,
+    "rows_eval": 26,
+    "rows_modeling": 66
+  },
+  {
+    "feature_count": 59,
+    "horizonte_sem": 4,
+    "rows_eval": 25,
+    "rows_modeling": 65
+  }
+]

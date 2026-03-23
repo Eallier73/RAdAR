@@ -1,0 +1,11 @@
+{
+  "created_at": "2026-03-21 06:37:15",
+  "experiment_id": "E1",
+  "family": "lineal",
+  "model": "RidgeCV",
+  "parametros_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_v1_20260321_063715/parametros_run.json",
+  "run_dir": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_v1_20260321_063715",
+  "run_id": "E1_v1",
+  "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e1_ridge.py",
+  "snapshot_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_v1_20260321_063715/scripts/run_e1_ridge.py"
+}
