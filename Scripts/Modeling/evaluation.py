@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import math
+from itertools import product
 from typing import Any
 
 import numpy as np
@@ -250,6 +251,99 @@ def select_best_alpha_time_series(
     }
 
 
+def expand_parameter_grid(param_grid: dict[str, list[Any] | tuple[Any, ...]]) -> list[dict[str, Any]]:
+    if not param_grid:
+        raise ValueError("param_grid no puede estar vacio.")
+
+    keys = list(param_grid)
+    values_product = product(*(param_grid[key] for key in keys))
+    candidates = []
+    for values in values_product:
+        candidates.append({key: value for key, value in zip(keys, values, strict=True)})
+    return candidates
+
+
+def select_best_params_time_series(
+    *,
+    train_data: pd.DataFrame,
+    feature_columns: list[str],
+    target_column: str,
+    estimator_builder,
+    param_grid: dict[str, list[Any] | tuple[Any, ...]],
+    feature_mode: str = FEATURE_MODE_ALL,
+    target_mode: str = TARGET_MODE_LEVEL,
+    actual_target_column: str | None = None,
+    always_include_columns: list[str] | None = None,
+    inner_splits: int = 3,
+    tuning_metric: str = "mae",
+) -> dict[str, Any]:
+    include_columns = always_include_columns or []
+    split_count = min(inner_splits, len(train_data) - 1)
+    if split_count < 2:
+        raise ValueError(
+            f"No hay suficientes observaciones para TimeSeriesSplit interno. "
+            f"Filas_train={len(train_data)}, inner_splits={inner_splits}."
+        )
+
+    if tuning_metric not in {"mae", "rmse"}:
+        raise ValueError(f"Metrica de tuning no soportada: {tuning_metric}")
+
+    splitter = TimeSeriesSplit(n_splits=split_count)
+    param_candidates = expand_parameter_grid(param_grid)
+    param_results: list[dict[str, Any]] = []
+
+    for params in param_candidates:
+        fold_scores: list[float] = []
+
+        for inner_train_idx, inner_valid_idx in splitter.split(train_data):
+            inner_train = train_data.iloc[inner_train_idx]
+            inner_valid = train_data.iloc[inner_valid_idx]
+
+            selected_features = resolve_feature_mode(
+                train_data=inner_train,
+                feature_columns=feature_columns,
+                target_column=target_column,
+                feature_mode=feature_mode,
+            )
+            input_columns = [*include_columns, *selected_features]
+            estimator = clone(estimator_builder(params))
+            estimator.fit(inner_train[input_columns], inner_train[target_column])
+
+            predicted_model = np.asarray(estimator.predict(inner_valid[input_columns]), dtype=float)
+            if target_mode == TARGET_MODE_DELTA:
+                if actual_target_column is None:
+                    raise ValueError("actual_target_column es requerido cuando target_mode='delta'.")
+                y_true = inner_valid[actual_target_column].to_numpy(dtype=float)
+                y_pred = inner_valid[CURRENT_TARGET_COLUMN].to_numpy(dtype=float) + predicted_model
+            else:
+                y_true = inner_valid[target_column].to_numpy(dtype=float)
+                y_pred = predicted_model
+
+            if tuning_metric == "mae":
+                score = float(mean_absolute_error(y_true, y_pred))
+            else:
+                score = float(math.sqrt(mean_squared_error(y_true, y_pred)))
+            fold_scores.append(score)
+
+        param_results.append(
+            {
+                "params": dict(params),
+                "mean_score": float(np.mean(fold_scores)),
+                "std_score": float(np.std(fold_scores)),
+                "fold_scores": fold_scores,
+            }
+        )
+
+    best_result = min(param_results, key=lambda item: (item["mean_score"], repr(sorted(item["params"].items()))))
+    return {
+        "best_params": dict(best_result["params"]),
+        "best_score": float(best_result["mean_score"]),
+        "tuning_metric": tuning_metric,
+        "inner_split_count": split_count,
+        "param_results": param_results,
+    }
+
+
 def walk_forward_predict_with_tscv_alpha_tuning(
     *,
     estimator_builder,
@@ -345,6 +439,100 @@ def walk_forward_predict_with_tscv_alpha_tuning(
         )
 
     return pd.DataFrame(predictions), alpha_trace
+
+
+def walk_forward_predict_with_tscv_param_tuning(
+    *,
+    estimator_builder,
+    param_grid: dict[str, list[Any] | tuple[Any, ...]],
+    data: pd.DataFrame,
+    feature_columns: list[str],
+    target_column: str,
+    initial_train_size: int,
+    feature_mode: str = FEATURE_MODE_ALL,
+    target_mode: str = TARGET_MODE_LEVEL,
+    actual_target_column: str | None = None,
+    always_include_columns: list[str] | None = None,
+    inner_splits: int = 3,
+    tuning_metric: str = "mae",
+) -> tuple[pd.DataFrame, list[dict[str, Any]]]:
+    if len(data) <= initial_train_size:
+        raise ValueError(
+            f"No hay suficientes filas para walk-forward. Filas={len(data)}, "
+            f"initial_train_size={initial_train_size}."
+        )
+
+    include_columns = always_include_columns or []
+    predictions: list[dict[str, float | int | str]] = []
+    param_trace: list[dict[str, Any]] = []
+
+    for test_idx in range(initial_train_size, len(data)):
+        train = data.iloc[:test_idx]
+        test = data.iloc[[test_idx]]
+
+        tuning = select_best_params_time_series(
+            train_data=train,
+            feature_columns=feature_columns,
+            target_column=target_column,
+            estimator_builder=estimator_builder,
+            param_grid=param_grid,
+            feature_mode=feature_mode,
+            target_mode=target_mode,
+            actual_target_column=actual_target_column,
+            always_include_columns=include_columns,
+            inner_splits=inner_splits,
+            tuning_metric=tuning_metric,
+        )
+
+        selected_features = resolve_feature_mode(
+            train_data=train,
+            feature_columns=feature_columns,
+            target_column=target_column,
+            feature_mode=feature_mode,
+        )
+        input_columns = [*include_columns, *selected_features]
+        fitted = clone(estimator_builder(tuning["best_params"]))
+        fitted.fit(train[input_columns], train[target_column])
+        model_prediction = float(fitted.predict(test[input_columns])[0])
+        y_current = float(test[CURRENT_TARGET_COLUMN].iloc[0])
+        best_params = dict(tuning["best_params"])
+
+        if target_mode == TARGET_MODE_DELTA:
+            if actual_target_column is None:
+                raise ValueError("actual_target_column es requerido cuando target_mode='delta'.")
+            y_true = float(test[actual_target_column].iloc[0])
+            y_true_model = float(test[target_column].iloc[0])
+            y_pred = y_current + model_prediction
+        else:
+            y_true = float(test[target_column].iloc[0])
+            y_true_model = y_true
+            y_pred = model_prediction
+
+        prediction_row = {
+            DATE_COLUMN: test[DATE_COLUMN].iloc[0],
+            "y_current": y_current,
+            "y_true": y_true,
+            "y_pred": y_pred,
+            "y_true_model": y_true_model,
+            "y_pred_model": model_prediction,
+            "error": y_pred - y_true,
+            "selected_feature_count": len(selected_features),
+            "selected_features": ",".join(selected_features),
+            "inner_tuning_metric": tuning["tuning_metric"],
+            "inner_best_score": float(tuning["best_score"]),
+            "inner_split_count": int(tuning["inner_split_count"]),
+        }
+        for key, value in best_params.items():
+            prediction_row[f"best_{key}"] = value
+        predictions.append(prediction_row)
+        param_trace.append(
+            {
+                "fecha_test": str(test[DATE_COLUMN].iloc[0]),
+                **tuning,
+            }
+        )
+
+    return pd.DataFrame(predictions), param_trace
 
 
 def compute_radar_metrics(

@@ -10,6 +10,8 @@ Estructura:
   Prompts para pedir explicaciones tecnicas o auditoria de scripts.
 - `03_familia_ridge/`
   Prompts especificos de la familia E1 Ridge: plan experimental, limpieza metodologica y continuacion.
+- `04_familia_huber/`
+  Prompts especificos de la familia E2 Huber: transicion desde Ridge limpio y experimentos robustos.
 
 Convencion de nombres:
 
@@ -26,3 +28,4 @@ Mapa actual:
 - `03_familia_ridge/03_continuacion_ridge_e1_v3_clean_e1_v4_clean.md`
 - `03_familia_ridge/04_continuacion_ridge_e1_v5_clean_memoria_larga.md`
 - `03_familia_ridge/05_cierre_ridge_y_transicion_a_familia_no_lineal.md`
+- `04_familia_huber/01_transicion_ridge_a_huber_clean.md`

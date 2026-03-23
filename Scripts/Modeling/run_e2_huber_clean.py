@@ -5,13 +5,14 @@ import argparse
 import json
 
 import numpy as np
-from sklearn.linear_model import Ridge
+from sklearn.linear_model import HuberRegressor
 from sklearn.pipeline import Pipeline
 
 from config import (
     DATE_COLUMN,
     FEATURE_MODE_ALL,
     TARGET_COLUMNS,
+    TARGET_MODE_LEVEL,
     TRANSFORM_MODE_CHOICES,
     TRANSFORM_MODE_STANDARD,
 )
@@ -20,7 +21,7 @@ from evaluation import (
     compute_loss_h,
     compute_radar_metrics,
     compute_total_radar_loss,
-    walk_forward_predict_with_tscv_alpha_tuning,
+    walk_forward_predict_with_tscv_param_tuning,
 )
 from experiment_logger import RadarExperimentTracker
 from feature_engineering import build_model_frame
@@ -31,6 +32,8 @@ from pipeline_common import (
     build_run_parameters,
     build_selected_features_summary,
     finalize_common_args,
+    parse_float_sequence,
+    parse_int_sequence,
     save_run_outputs,
 )
 from preprocessing import build_feature_transformer, describe_transform_mode
@@ -38,34 +41,75 @@ from preprocessing import build_feature_transformer, describe_transform_mode
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="E1_v2_clean | Ridge con tuning temporal interno por TimeSeriesSplit.",
+        description="E2_v1_clean | Huber limpio con tuning temporal interno por TimeSeriesSplit.",
     )
-    add_common_experiment_args(parser, default_run_id="E1_v2_clean")
+    add_common_experiment_args(parser, default_run_id="E2_v1_clean")
+    parser.set_defaults(
+        target_mode=TARGET_MODE_LEVEL,
+        feature_mode="corr",
+        lags="1,2,3,4,5,6",
+        initial_train_size=40,
+        horizons="1,2,3,4",
+    )
     parser.add_argument(
         "--reference-run-id",
-        default="E1_v2_clean",
-        help="Run_ID de referencia para artefactos comparativos.",
+        default="E1_v5_clean",
+        help="Run_ID de referencia principal para artefactos comparativos.",
     )
     parser.add_argument(
         "--transform-mode",
         choices=TRANSFORM_MODE_CHOICES,
         default=TRANSFORM_MODE_STANDARD,
-        help="Transformacion aplicada dentro del pipeline de Ridge.",
+        help="Transformacion aplicada dentro del pipeline de Huber.",
     )
     parser.add_argument("--winsor-lower-quantile", type=float, default=0.05)
     parser.add_argument("--winsor-upper-quantile", type=float, default=0.95)
-    parser.add_argument("--alpha-grid-min-exp", type=float, default=-4.0)
-    parser.add_argument("--alpha-grid-max-exp", type=float, default=4.0)
-    parser.add_argument("--alpha-grid-points", type=int, default=40)
+    parser.add_argument(
+        "--epsilon-grid",
+        default="1.1,1.2,1.35,1.5,1.75,2.0",
+        help="Grid de epsilon para Huber, separado por comas.",
+    )
+    parser.add_argument("--alpha-grid-min-exp", type=float, default=-6.0)
+    parser.add_argument("--alpha-grid-max-exp", type=float, default=-1.0)
+    parser.add_argument("--alpha-grid-points", type=int, default=6)
+    parser.add_argument(
+        "--max-iter-grid",
+        default="1000",
+        help="Grid de max_iter para Huber, separado por comas.",
+    )
+    parser.add_argument(
+        "--tol-grid",
+        default="0.0001",
+        help="Grid de tolerancias para Huber, separado por comas.",
+    )
     parser.add_argument("--inner-splits", type=int, default=3)
-    parser.add_argument("--alpha-selection-metric", choices=("mae", "rmse"), default="mae")
+    parser.add_argument("--tuning-metric", choices=("mae", "rmse"), default="mae")
     args = finalize_common_args(parser.parse_args())
     if not 0.0 <= args.winsor_lower_quantile < args.winsor_upper_quantile <= 1.0:
         raise ValueError("Los cuantiles de winsor deben cumplir 0 <= lower < upper <= 1.")
+    args.epsilon_grid = parse_float_sequence(args.epsilon_grid, label="epsilon_grid")
+    args.max_iter_grid = parse_int_sequence(args.max_iter_grid, label="max_iter_grid")
+    args.tol_grid = parse_float_sequence(args.tol_grid, label="tol_grid")
     return args
 
 
-def build_estimator(alpha: float, args: argparse.Namespace) -> Pipeline:
+def build_param_grid(args: argparse.Namespace) -> dict[str, list[float | int]]:
+    return {
+        "epsilon": list(args.epsilon_grid),
+        "alpha": [
+            float(value)
+            for value in np.logspace(
+                args.alpha_grid_min_exp,
+                args.alpha_grid_max_exp,
+                args.alpha_grid_points,
+            )
+        ],
+        "max_iter": list(args.max_iter_grid),
+        "tol": list(args.tol_grid),
+    }
+
+
+def build_estimator(params: dict[str, float | int], args: argparse.Namespace) -> Pipeline:
     return Pipeline(
         steps=[
             (
@@ -76,42 +120,59 @@ def build_estimator(alpha: float, args: argparse.Namespace) -> Pipeline:
                     winsor_upper_quantile=args.winsor_upper_quantile,
                 ),
             ),
-            ("model", Ridge(alpha=float(alpha))),
+            (
+                "model",
+                HuberRegressor(
+                    epsilon=float(params["epsilon"]),
+                    alpha=float(params["alpha"]),
+                    max_iter=int(params["max_iter"]),
+                    tol=float(params["tol"]),
+                ),
+            ),
         ]
     )
 
 
-def build_model_params(args: argparse.Namespace, alpha_grid: list[float]) -> dict[str, object]:
+def build_model_params(
+    args: argparse.Namespace,
+    param_grid: dict[str, list[float | int]],
+) -> dict[str, object]:
     return {
-        "alpha_grid": alpha_grid,
+        "param_grid": param_grid,
         "inner_splits": args.inner_splits,
-        "alpha_selection_metric": args.alpha_selection_metric,
+        "tuning_metric": args.tuning_metric,
         "transform_mode": args.transform_mode,
         "winsor_lower_quantile": args.winsor_lower_quantile,
         "winsor_upper_quantile": args.winsor_upper_quantile,
     }
 
 
-def summarize_alpha_trace(alpha_trace: list[dict[str, object]]) -> dict[str, object]:
-    best_alphas = [float(item["best_alpha"]) for item in alpha_trace]
+def _summarize_numeric(values: list[float], prefix: str) -> dict[str, float]:
     return {
-        "best_alpha_mean": float(np.mean(best_alphas)),
-        "best_alpha_median": float(np.median(best_alphas)),
-        "best_alpha_min": float(np.min(best_alphas)),
-        "best_alpha_max": float(np.max(best_alphas)),
-        "best_alphas_by_fold": alpha_trace,
+        f"{prefix}_mean": float(np.mean(values)),
+        f"{prefix}_median": float(np.median(values)),
+        f"{prefix}_min": float(np.min(values)),
+        f"{prefix}_max": float(np.max(values)),
+    }
+
+
+def summarize_huber_trace(huber_trace: list[dict[str, object]]) -> dict[str, object]:
+    best_epsilons = [float(item["best_params"]["epsilon"]) for item in huber_trace]
+    best_alphas = [float(item["best_params"]["alpha"]) for item in huber_trace]
+    best_max_iter = [float(item["best_params"]["max_iter"]) for item in huber_trace]
+    best_tol = [float(item["best_params"]["tol"]) for item in huber_trace]
+    return {
+        **_summarize_numeric(best_epsilons, "best_epsilon"),
+        **_summarize_numeric(best_alphas, "best_alpha"),
+        **_summarize_numeric(best_max_iter, "best_max_iter"),
+        **_summarize_numeric(best_tol, "best_tol"),
+        "best_params_by_fold": huber_trace,
     }
 
 
 def main() -> None:
     args = parse_args()
-    alpha_grid = list(
-        np.logspace(
-            args.alpha_grid_min_exp,
-            args.alpha_grid_max_exp,
-            args.alpha_grid_points,
-        )
-    )
+    param_grid = build_param_grid(args)
 
     tracker = RadarExperimentTracker(workbook_path=args.workbook, runs_dir=args.runs_dir)
     reference_values = tracker.get_reference_values()
@@ -120,22 +181,22 @@ def main() -> None:
 
     run = tracker.start_run(
         run_id=args.run_id,
-        experiment_id="E1",
-        family="lineal_regularizado",
-        model="ridge_tscv",
+        experiment_id="E2",
+        family="robusto",
+        model="huber_tscv",
         script_path=__file__,
         parametros=build_run_parameters(
             args=args,
-            model_name="ridge_tscv",
+            model_name="huber_tscv",
             feature_columns=base_feature_columns,
-            model_params=build_model_params(args, alpha_grid),
+            model_params=build_model_params(args, param_grid),
         ),
     )
 
     predictions_by_horizon = {}
     horizon_results = []
     rows_summary = []
-    alpha_summary_payload = []
+    tuning_summary_payload = []
     dataset_periodo = f"{df[DATE_COLUMN].min().date()} a {df[DATE_COLUMN].max().date()}"
 
     for horizon in args.horizons:
@@ -146,9 +207,9 @@ def main() -> None:
             lags=args.lags,
             target_mode=args.target_mode,
         )
-        predictions, alpha_trace = walk_forward_predict_with_tscv_alpha_tuning(
-            estimator_builder=lambda alpha: build_estimator(alpha, args),
-            alpha_grid=alpha_grid,
+        predictions, huber_trace = walk_forward_predict_with_tscv_param_tuning(
+            estimator_builder=lambda params: build_estimator(params, args),
+            param_grid=param_grid,
             data=modeling_df,
             feature_columns=modeling_features,
             target_column=target_column,
@@ -156,8 +217,8 @@ def main() -> None:
             initial_train_size=args.initial_train_size,
             feature_mode=args.feature_mode,
             target_mode=args.target_mode,
-            tuning_metric=args.alpha_selection_metric,
             inner_splits=args.inner_splits,
+            tuning_metric=args.tuning_metric,
         )
 
         predictions["horizonte_sem"] = horizon
@@ -165,8 +226,9 @@ def main() -> None:
         predictions["feature_mode"] = args.feature_mode
         predictions["transform_mode"] = args.transform_mode
         predictions["run_id"] = args.run_id
-        predictions["model_name"] = "ridge_tscv"
+        predictions["model_name"] = "huber_tscv"
         predictions_by_horizon[horizon] = predictions
+
         if args.feature_mode != FEATURE_MODE_ALL:
             selected_features_summary = build_selected_features_summary(predictions)
             run.save_dataframe(
@@ -179,13 +241,13 @@ def main() -> None:
                 ),
             )
 
-        alpha_summary = summarize_alpha_trace(alpha_trace)
-        alpha_summary_payload.append(
+        tuning_summary = summarize_huber_trace(huber_trace)
+        tuning_summary_payload.append(
             {
                 "horizonte_sem": horizon,
-                "tuning_metric": args.alpha_selection_metric,
+                "tuning_metric": args.tuning_metric,
                 "inner_splits": args.inner_splits,
-                **alpha_summary,
+                **tuning_summary,
             }
         )
 
@@ -200,10 +262,14 @@ def main() -> None:
             "feature_mode": args.feature_mode,
             "target_mode": args.target_mode,
             "transform_mode": args.transform_mode,
-            "best_alpha_mean": alpha_summary["best_alpha_mean"],
-            "best_alpha_median": alpha_summary["best_alpha_median"],
-            "best_alpha_min": alpha_summary["best_alpha_min"],
-            "best_alpha_max": alpha_summary["best_alpha_max"],
+            "best_epsilon_mean": tuning_summary["best_epsilon_mean"],
+            "best_epsilon_median": tuning_summary["best_epsilon_median"],
+            "best_epsilon_min": tuning_summary["best_epsilon_min"],
+            "best_epsilon_max": tuning_summary["best_epsilon_max"],
+            "best_alpha_mean": tuning_summary["best_alpha_mean"],
+            "best_alpha_median": tuning_summary["best_alpha_median"],
+            "best_alpha_min": tuning_summary["best_alpha_min"],
+            "best_alpha_max": tuning_summary["best_alpha_max"],
         }
         rows_summary.append(summary_row)
 
@@ -221,15 +287,15 @@ def main() -> None:
                 "dataset_periodo": dataset_periodo,
                 "notas_config": build_notas_config(
                     args=args,
-                    model_name="ridge_tscv",
-                    model_params=build_model_params(args, alpha_grid),
+                    model_name="huber_tscv",
+                    model_params=build_model_params(args, param_grid),
                     horizon=horizon,
                     summary_row=summary_row,
                 ),
                 "estado": "corrido",
                 "comentarios": (
-                    f"Ridge limpio con tuning temporal interno | "
-                    f"metric={args.alpha_selection_metric} | inner_splits={args.inner_splits}"
+                    "Huber limpio con tuning temporal interno | "
+                    f"metric={args.tuning_metric} | inner_splits={args.inner_splits}"
                 ),
                 "loss_h": loss_h,
                 **metrics,
@@ -238,10 +304,10 @@ def main() -> None:
 
     save_run_outputs(run=run, predictions_by_horizon=predictions_by_horizon, rows_summary=rows_summary)
     run.save_json(
-        alpha_summary_payload,
-        "alpha_tuning_horizontes.json",
+        tuning_summary_payload,
+        "huber_tuning_horizontes.json",
         artifact_type="tuning",
-        notes="Best alpha por fold externo y resumen por horizonte.",
+        notes="Mejores hiperparametros Huber por fold externo y resumen por horizonte.",
     )
 
     total_radar = compute_total_radar_loss(
@@ -276,8 +342,8 @@ def main() -> None:
         notas_config=json.dumps(rows_summary, ensure_ascii=False),
         estado="corrido",
         comentarios=(
-            f"Ridge clean con tuning interno TimeSeriesSplit | "
-            f"metric={args.alpha_selection_metric} | "
+            "Huber limpio con tuning interno TimeSeriesSplit | "
+            f"metric={args.tuning_metric} | "
             f"L_total_Radar={total_radar['l_total_radar']:.6f}"
         ),
         l_coh=None,

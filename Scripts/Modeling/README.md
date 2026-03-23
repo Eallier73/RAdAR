@@ -26,7 +26,9 @@ Capas comunes:
 Runners por familia:
 
 - `run_e1_ridge.py`
+- `run_e1_ridge_clean.py`
 - `run_e2_huber.py`
+- `run_e2_huber_clean.py`
 - `run_e3_random_forest.py`
 - `run_e4_xgboost.py`
 - `run_e5_catboost.py`

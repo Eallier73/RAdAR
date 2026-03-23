@@ -5,6 +5,9 @@ import json
 from pathlib import Path
 from typing import Any
 
+import pandas as pd
+from openpyxl import load_workbook
+
 from config import (
     DATASET_PATH,
     DATE_COLUMN,
@@ -31,6 +34,18 @@ def parse_int_sequence(raw_value: str, label: str) -> tuple[int, ...]:
         if not token:
             continue
         values.append(int(token))
+    if not values:
+        raise ValueError(f"{label} no puede quedar vacio.")
+    return tuple(values)
+
+
+def parse_float_sequence(raw_value: str, label: str) -> tuple[float, ...]:
+    values = []
+    for token in raw_value.split(","):
+        token = token.strip()
+        if not token:
+            continue
+        values.append(float(token))
     if not values:
         raise ValueError(f"{label} no puede quedar vacio.")
     return tuple(values)
@@ -197,6 +212,90 @@ def save_run_outputs(
         artifact_type="resumen",
         notes="Resumen de tamanos y seleccion de features por horizonte.",
     )
+
+
+def build_selected_features_summary(predictions: pd.DataFrame) -> pd.DataFrame:
+    feature_sets = (
+        predictions["selected_features"]
+        .fillna("")
+        .astype(str)
+        .map(lambda value: value.strip())
+    )
+    summary = (
+        feature_sets.value_counts(dropna=False)
+        .rename_axis("selected_features")
+        .reset_index(name="fold_count")
+    )
+    summary["feature_count"] = summary["selected_features"].map(
+        lambda value: 0 if not value else len([token for token in value.split(",") if token])
+    )
+    summary["share_folds"] = summary["fold_count"] / max(len(predictions), 1)
+    return summary
+
+
+def load_run_horizon_metrics(workbook_path: Path, run_id: str) -> dict[int, dict[str, float]]:
+    workbook = load_workbook(workbook_path, data_only=True)
+    worksheet = workbook["RESULTADOS_GRID"]
+    headers = {worksheet.cell(1, c).value: c for c in range(1, worksheet.max_column + 1)}
+    metrics_by_horizon: dict[int, dict[str, float]] = {}
+    for row_idx in range(2, worksheet.max_row + 1):
+        if worksheet.cell(row_idx, headers["Run_ID"]).value != run_id:
+            continue
+        horizon = int(worksheet.cell(row_idx, headers["Horizonte_sem"]).value)
+        metrics_by_horizon[horizon] = {
+            "loss_h": float(worksheet.cell(row_idx, headers["Loss_h"]).value),
+            "mae": float(worksheet.cell(row_idx, headers["MAE"]).value),
+            "rmse": float(worksheet.cell(row_idx, headers["RMSE"]).value),
+            "direccion_accuracy": float(worksheet.cell(row_idx, headers["Direccion_accuracy"]).value),
+            "deteccion_caidas": float(worksheet.cell(row_idx, headers["Deteccion_caidas"]).value),
+        }
+    if not metrics_by_horizon:
+        raise ValueError(f"No se encontraron metricas para {run_id} en {workbook_path}.")
+    return metrics_by_horizon
+
+
+def build_comparison_payload(
+    *,
+    workbook_path: Path,
+    reference_run_id: str,
+    clean_run_id: str,
+    horizon_results: list[dict[str, Any]],
+    l_total_radar: float,
+) -> dict[str, Any]:
+    reference = load_run_horizon_metrics(workbook_path=workbook_path, run_id=reference_run_id)
+    clean = {int(item["horizonte_sem"]): item for item in horizon_results}
+
+    comparison_rows = []
+    for horizon in sorted(clean):
+        reference_row = reference[horizon]
+        clean_row = clean[horizon]
+        comparison_rows.append(
+            {
+                "horizonte_sem": horizon,
+                "loss_h_original": reference_row["loss_h"],
+                "loss_h_clean": float(clean_row["loss_h"]),
+                "delta_loss_h": float(clean_row["loss_h"]) - reference_row["loss_h"],
+                "mae_original": reference_row["mae"],
+                "mae_clean": float(clean_row["mae"]),
+                "delta_mae": float(clean_row["mae"]) - reference_row["mae"],
+                "rmse_original": reference_row["rmse"],
+                "rmse_clean": float(clean_row["rmse"]),
+                "delta_rmse": float(clean_row["rmse"]) - reference_row["rmse"],
+                "direction_accuracy_original": reference_row["direccion_accuracy"],
+                "direction_accuracy_clean": float(clean_row["direccion_accuracy"]),
+                "delta_direction_accuracy": float(clean_row["direccion_accuracy"]) - reference_row["direccion_accuracy"],
+                "risk_detection_original": reference_row["deteccion_caidas"],
+                "risk_detection_clean": float(clean_row["deteccion_caidas"]),
+                "delta_risk_detection": float(clean_row["deteccion_caidas"]) - reference_row["deteccion_caidas"],
+            }
+        )
+
+    return {
+        "reference_run_id": reference_run_id,
+        "clean_run_id": clean_run_id,
+        "l_total_radar_clean": float(l_total_radar),
+        "comparacion_por_horizonte": comparison_rows,
+    }
 
 
 def run_tabular_experiment(
