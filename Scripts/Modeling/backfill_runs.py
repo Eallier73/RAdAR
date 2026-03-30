@@ -354,6 +354,16 @@ def main() -> None:
         print(f"{action} {run_id}: {reason}")
         repaired += 1
 
+    if repaired > 0 and not args.dry_run:
+        try:
+            audit_result = tracker.refresh_master_audit()
+            print(
+                "[master_audit] REFRESHED "
+                f"{audit_result['xlsx_path']} | runs={audit_result['master_runs_total']}"
+            )
+        except Exception as exc:
+            print(f"[master_audit] WARNING backfill: no se pudo regenerar la auditoria maestra: {exc}")
+
     print(f"Total runs procesados: {repaired + skipped}")
     print(f"Runs escritos: {repaired}")
     print(f"Runs omitidos: {skipped}")

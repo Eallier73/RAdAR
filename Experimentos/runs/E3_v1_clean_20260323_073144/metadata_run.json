@@ -1,0 +1,11 @@
+{
+  "created_at": "2026-03-23 07:31:44",
+  "experiment_id": "E3",
+  "family": "arboles_boosting",
+  "model": "random_forest_regressor",
+  "parametros_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E3_v1_clean_20260323_073144/parametros_run.json",
+  "run_dir": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E3_v1_clean_20260323_073144",
+  "run_id": "E3_v1_clean",
+  "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e3_random_forest.py",
+  "snapshot_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E3_v1_clean_20260323_073144/scripts/run_e3_random_forest.py"
+}

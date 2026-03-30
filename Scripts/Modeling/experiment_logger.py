@@ -75,10 +75,13 @@ from openpyxl.utils import get_column_letter
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DEFAULT_WORKBOOK = ROOT_DIR / "Experimentos" / "grid_experimentos_radar.xlsx"
 DEFAULT_RUNS_DIR = ROOT_DIR / "Experimentos" / "runs"
+DEFAULT_PROMPTS_DIR = ROOT_DIR / "Experimentos" / "Prompts_Agente"
 RESULTADOS_SHEET = "RESULTADOS_GRID"
 SUMMARY_SHEET = "RUN_SUMMARY"
 ARTEFACTOS_SHEET = "RUN_ARTEFACTOS"
 CONFIG_SHEET = "CONFIG_REFERENCIA"
+MASTER_AUDIT_STATUS_FILENAME = "master_audit_refresh_status.json"
+AUTO_REFRESH_MASTER_TABLE_STATES = frozenset({"corrido"})
 
 RESULTADOS_EXTRA_HEADERS = [
     "Script_nombre",
@@ -357,6 +360,62 @@ class RunContext:
             l_coh=l_coh,
             timestamp_run=self.created_at,
         )
+
+        audit_status_payload: dict[str, Any] = {
+            "run_id": self.run_id,
+            "trigger": "finalize",
+            "estado_run": estado,
+            "auto_refresh_enabled": self.tracker.auto_refresh_master_table,
+            "status": "skipped",
+            "created_at": now_text(),
+        }
+
+        if self.tracker.should_auto_refresh_master_table(estado=estado):
+            try:
+                audit_result = self.tracker.refresh_master_audit()
+                audit_status_payload.update(
+                    {
+                        "status": "ok",
+                        "csv_path": str(audit_result["csv_path"]),
+                        "xlsx_path": str(audit_result["xlsx_path"]),
+                        "json_path": str(audit_result["json_path"]),
+                        "markdown_path": str(audit_result["markdown_path"]),
+                        "master_runs_total": audit_result["master_runs_total"],
+                        "inventory_directories_total": audit_result["inventory_directories_total"],
+                    }
+                )
+                print(
+                    "[master_audit] "
+                    f"Regenerada auditoria maestra tras {self.run_id}: {audit_result['xlsx_path']}"
+                )
+            except Exception as exc:
+                audit_status_payload.update(
+                    {
+                        "status": "error",
+                        "error_type": exc.__class__.__name__,
+                        "error": str(exc),
+                    }
+                )
+                print(
+                    "[master_audit] WARNING "
+                    f"{self.run_id}: fallo al regenerar auditoria maestra: {exc}"
+                )
+        else:
+            reason = (
+                "auto_refresh_desactivado"
+                if not self.tracker.auto_refresh_master_table
+                else f"estado_no_dispara_refresh:{estado}"
+            )
+            audit_status_payload["reason"] = reason
+            print(f"[master_audit] Skip para {self.run_id}: {reason}")
+
+        try:
+            self.tracker.write_master_audit_status(run_dir=self.run_dir, payload=audit_status_payload)
+        except Exception as exc:
+            print(
+                "[master_audit] WARNING "
+                f"{self.run_id}: no se pudo escribir {MASTER_AUDIT_STATUS_FILENAME}: {exc}"
+            )
         return results_path
 
 
@@ -365,9 +424,12 @@ class RadarExperimentTracker:
         self,
         workbook_path: Path = DEFAULT_WORKBOOK,
         runs_dir: Path = DEFAULT_RUNS_DIR,
+        *,
+        auto_refresh_master_table: bool = True,
     ) -> None:
         self.workbook_path = Path(workbook_path).expanduser().resolve()
         self.runs_dir = Path(runs_dir).expanduser().resolve()
+        self.auto_refresh_master_table = auto_refresh_master_table
 
     def get_reference_values(self) -> dict[str, Any]:
         workbook = load_workbook(self.workbook_path, data_only=True)
@@ -379,6 +441,40 @@ class RadarExperimentTracker:
             self._prepare_workbook_in_memory(workbook)
             workbook.save(self.workbook_path)
         return self.workbook_path
+
+    def should_auto_refresh_master_table(self, *, estado: str) -> bool:
+        normalized_estado = str(estado or "").strip().lower()
+        return self.auto_refresh_master_table and normalized_estado in AUTO_REFRESH_MASTER_TABLE_STATES
+
+    def refresh_master_audit(self) -> dict[str, Any]:
+        """
+        Regenera la tabla maestra de auditoria experimental.
+
+        Se llama despues de cierres exitosos de runs completos. Si falla, el caller
+        debe tratarlo como error secundario y no como fallo del registro principal.
+        """
+        from build_experiments_master_table import build_experiments_master_table
+
+        result = build_experiments_master_table(
+            runs_dir=self.runs_dir,
+            workbook=self.workbook_path,
+            prompts_dir=DEFAULT_PROMPTS_DIR,
+            output_dir=self.workbook_path.parent,
+        )
+        return {
+            "csv_path": result.csv_path,
+            "xlsx_path": result.xlsx_path,
+            "json_path": result.json_path,
+            "markdown_path": result.markdown_path,
+            "master_runs_total": result.master_runs_total,
+            "inventory_directories_total": result.inventory_directories_total,
+        }
+
+    def write_master_audit_status(self, *, run_dir: str | Path, payload: dict[str, Any]) -> Path:
+        status_path = Path(run_dir).expanduser().resolve() / MASTER_AUDIT_STATUS_FILENAME
+        ensure_parent(status_path)
+        status_path.write_text(json_dumps_pretty(payload), encoding="utf-8")
+        return status_path
 
     def start_run(
         self,
