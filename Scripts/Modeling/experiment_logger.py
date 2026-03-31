@@ -83,7 +83,24 @@ CONFIG_SHEET = "CONFIG_REFERENCIA"
 MASTER_AUDIT_STATUS_FILENAME = "master_audit_refresh_status.json"
 AUTO_REFRESH_MASTER_TABLE_STATES = frozenset({"corrido"})
 
+TASK_TYPE_REGRESION = "regresion"
+TASK_TYPE_CLASIFICACION = "clasificacion"
+
 RESULTADOS_EXTRA_HEADERS = [
+    "Task_type",
+    "Accuracy_5clases",
+    "Balanced_accuracy_5clases",
+    "Macro_f1_5clases",
+    "Weighted_f1_5clases",
+    "Recall_baja_fuerte",
+    "Recall_baja_total",
+    "Precision_baja_fuerte",
+    "Recall_sube_fuerte",
+    "Recall_sube_total",
+    "Accuracy_3clases",
+    "Macro_f1_3clases",
+    "Balanced_accuracy_3clases",
+    "Loss_clasificacion_h",
     "Script_nombre",
     "Script_ruta",
     "Run_dir",
@@ -94,6 +111,20 @@ RESULTADOS_EXTRA_HEADERS = [
 ]
 
 SUMMARY_EXTRA_HEADERS = [
+    "Task_type",
+    "L_total_Clasificacion",
+    "Avg_Accuracy_5clases",
+    "Avg_Balanced_accuracy_5clases",
+    "Avg_Macro_f1_5clases",
+    "Avg_Weighted_f1_5clases",
+    "Avg_Recall_baja_fuerte",
+    "Avg_Recall_baja_total",
+    "Avg_Precision_baja_fuerte",
+    "Avg_Recall_sube_fuerte",
+    "Avg_Recall_sube_total",
+    "Avg_Accuracy_3clases",
+    "Avg_Macro_f1_3clases",
+    "Avg_Balanced_accuracy_3clases",
     "Script_nombre",
     "Script_ruta",
     "Run_dir",
@@ -299,12 +330,15 @@ class RunContext:
         estado: str = "corrido",
         comentarios: str = "",
         l_coh: float | None = None,
+        summary_metrics: dict[str, Any] | None = None,
+        task_type: str = TASK_TYPE_REGRESION,
     ) -> Path:
         results_payload = {
             "run_id": self.run_id,
             "experiment_id": self.experiment_id,
             "family": self.family,
             "model": self.model,
+            "task_type": task_type,
             "created_at": self.created_at,
             "script_path": str(self.script_path),
             "snapshot_path": str(self.snapshot_path),
@@ -322,6 +356,7 @@ class RunContext:
             "experiment_id": self.experiment_id,
             "family": self.family,
             "model": self.model,
+            "task_type": task_type,
             "script_path": str(self.script_path),
             "snapshot_path": str(self.snapshot_path),
             "run_dir": str(self.run_dir),
@@ -358,6 +393,8 @@ class RunContext:
             estado=estado,
             comentarios=comentarios,
             l_coh=l_coh,
+            summary_metrics=summary_metrics,
+            task_type=task_type,
             timestamp_run=self.created_at,
         )
 
@@ -553,6 +590,8 @@ class RadarExperimentTracker:
         estado: str = "corrido",
         comentarios: str = "",
         l_coh: float | None = None,
+        summary_metrics: dict[str, Any] | None = None,
+        task_type: str = TASK_TYPE_REGRESION,
         timestamp_run: str | None = None,
     ) -> Path:
         if not horizon_results:
@@ -600,6 +639,7 @@ class RadarExperimentTracker:
                     comentarios=comentarios,
                     timestamp_run=run_timestamp,
                     reference_values=reference_values,
+                    task_type=task_type,
                 )
 
             summary_row = self._ensure_summary_row(summary_ws, run_id)
@@ -622,6 +662,8 @@ class RadarExperimentTracker:
                 resultados_path=resultados_path,
                 timestamp_run=run_timestamp,
                 comentarios=comentarios,
+                summary_metrics=summary_metrics,
+                task_type=task_type,
             )
 
             self._refresh_artifacts_sheet(
@@ -792,6 +834,7 @@ class RadarExperimentTracker:
         comentarios: str,
         timestamp_run: str,
         reference_values: dict[str, Any],
+        task_type: str,
     ) -> None:
         horizon = int(horizon_result["horizonte_sem"])
         overrides = {
@@ -816,9 +859,11 @@ class RadarExperimentTracker:
         l_trend = horizon_result.get("l_trend")
         l_risk = horizon_result.get("l_risk")
         l_tol = horizon_result.get("l_tol")
-        loss_h = None
-        if all(value is not None for value in (l_num, l_trend, l_risk, l_tol)):
+        loss_h = horizon_result.get("loss_h_override")
+        if loss_h is None and all(value is not None for value in (l_num, l_trend, l_risk, l_tol)):
             loss_h = w_h * (alpha * l_num + beta * l_trend + gamma * l_risk + delta * l_tol)
+        if loss_h is None and horizon_result.get("loss_h") is not None:
+            loss_h = horizon_result.get("loss_h")
 
         values = {
             "Fecha": timestamp_run,
@@ -827,6 +872,7 @@ class RadarExperimentTracker:
             "Familia_modelo": family,
             "Modelo": model,
             "Horizonte_sem": horizon,
+            "Task_type": task_type,
             "Target": overrides["Target"],
             "Variables_temporales": overrides["Variables_temporales"],
             "Variables_tematicas": overrides["Variables_tematicas"],
@@ -849,6 +895,19 @@ class RadarExperimentTracker:
             "RMSE": horizon_result.get("rmse"),
             "Direccion_accuracy": horizon_result.get("direccion_accuracy"),
             "Deteccion_caidas": horizon_result.get("deteccion_caidas"),
+            "Accuracy_5clases": horizon_result.get("accuracy_5clases"),
+            "Balanced_accuracy_5clases": horizon_result.get("balanced_accuracy_5clases"),
+            "Macro_f1_5clases": horizon_result.get("macro_f1_5clases"),
+            "Weighted_f1_5clases": horizon_result.get("weighted_f1_5clases"),
+            "Recall_baja_fuerte": horizon_result.get("recall_baja_fuerte"),
+            "Recall_baja_total": horizon_result.get("recall_baja_total"),
+            "Precision_baja_fuerte": horizon_result.get("precision_baja_fuerte"),
+            "Recall_sube_fuerte": horizon_result.get("recall_sube_fuerte"),
+            "Recall_sube_total": horizon_result.get("recall_sube_total"),
+            "Accuracy_3clases": horizon_result.get("accuracy_3clases"),
+            "Macro_f1_3clases": horizon_result.get("macro_f1_3clases"),
+            "Balanced_accuracy_3clases": horizon_result.get("balanced_accuracy_3clases"),
+            "Loss_clasificacion_h": horizon_result.get("loss_clasificacion_h", loss_h),
             "Estado": overrides["Estado"],
             "Comentarios": overrides["Comentarios"],
             "Script_nombre": Path(script_path).name,
@@ -884,6 +943,8 @@ class RadarExperimentTracker:
         resultados_path: str | Path | None,
         timestamp_run: str,
         comentarios: str,
+        summary_metrics: dict[str, Any] | None,
+        task_type: str,
     ) -> None:
         def average_of(metric_name: str) -> float | None:
             values = [float(item[metric_name]) for item in horizon_results if item.get(metric_name) is not None]
@@ -904,6 +965,8 @@ class RadarExperimentTracker:
             l_risk = item.get("l_risk")
             l_tol = item.get("l_tol")
             if any(value is None for value in (l_num, l_trend, l_risk, l_tol)):
+                if item.get("loss_h") is not None:
+                    sum_weighted_loss_h += float(item["loss_h"])
                 continue
             horizon = int(item["horizonte_sem"])
             w_h = float(reference_values["horizon_weights"][horizon])
@@ -912,21 +975,41 @@ class RadarExperimentTracker:
 
         l_coh_value = float(l_coh) if l_coh is not None else None
         l_total_radar = sum_weighted_loss_h + ((l_coh_value or 0.0) * float(eta))
+        if summary_metrics and summary_metrics.get("sum_weighted_loss_h") is not None:
+            sum_weighted_loss_h = float(summary_metrics["sum_weighted_loss_h"])
+        if summary_metrics and summary_metrics.get("l_total_radar") is not None:
+            l_total_radar = float(summary_metrics["l_total_radar"])
 
         values = {
             "Run_ID": run_id,
             "Experiment_ID": experiment_id,
             "Modelo": model,
             "Familia": family,
+            "Task_type": task_type,
             "Horizons_loaded": horizons_loaded,
             "Sum_weighted_Loss_h": sum_weighted_loss_h,
             "L_coh": l_coh_value,
             "eta": float(eta),
-            "L_total_Radar": l_total_radar,
+            "L_total_Radar": (
+                l_total_radar if task_type == TASK_TYPE_REGRESION else summary_metrics.get("l_total_radar") if summary_metrics else None
+            ),
+            "L_total_Clasificacion": summary_metrics.get("l_total_clasificacion") if summary_metrics else None,
             "Avg_MAE": average_of("mae"),
             "Avg_RMSE": average_of("rmse"),
             "Dir_acc_prom": average_of("direccion_accuracy"),
             "Det_caidas_prom": average_of("deteccion_caidas"),
+            "Avg_Accuracy_5clases": summary_metrics.get("avg_accuracy_5clases") if summary_metrics else None,
+            "Avg_Balanced_accuracy_5clases": summary_metrics.get("avg_balanced_accuracy_5clases") if summary_metrics else None,
+            "Avg_Macro_f1_5clases": summary_metrics.get("avg_macro_f1_5clases") if summary_metrics else None,
+            "Avg_Weighted_f1_5clases": summary_metrics.get("avg_weighted_f1_5clases") if summary_metrics else None,
+            "Avg_Recall_baja_fuerte": summary_metrics.get("avg_recall_baja_fuerte") if summary_metrics else None,
+            "Avg_Recall_baja_total": summary_metrics.get("avg_recall_baja_total") if summary_metrics else None,
+            "Avg_Precision_baja_fuerte": summary_metrics.get("avg_precision_baja_fuerte") if summary_metrics else None,
+            "Avg_Recall_sube_fuerte": summary_metrics.get("avg_recall_sube_fuerte") if summary_metrics else None,
+            "Avg_Recall_sube_total": summary_metrics.get("avg_recall_sube_total") if summary_metrics else None,
+            "Avg_Accuracy_3clases": summary_metrics.get("avg_accuracy_3clases") if summary_metrics else None,
+            "Avg_Macro_f1_3clases": summary_metrics.get("avg_macro_f1_3clases") if summary_metrics else None,
+            "Avg_Balanced_accuracy_3clases": summary_metrics.get("avg_balanced_accuracy_3clases") if summary_metrics else None,
             "Decision": None,
             "Ranking": None,
             "Comentarios": comentarios,

@@ -1,0 +1,12 @@
+{
+  "created_at": "2026-03-30 09:59:44",
+  "experiment_id": "E6",
+  "family": "series_tiempo_exogenas",
+  "model": "sarimax_regressor",
+  "parametros_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E6_v2_clean_20260330_095944/parametros_run.json",
+  "run_dir": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E6_v2_clean_20260330_095944",
+  "run_id": "E6_v2_clean",
+  "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e6_arimax.py",
+  "snapshot_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E6_v2_clean_20260330_095944/scripts/run_e6_arimax.py",
+  "task_type": "regresion"
+}

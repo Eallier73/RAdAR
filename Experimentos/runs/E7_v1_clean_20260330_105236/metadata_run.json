@@ -1,0 +1,12 @@
+{
+  "created_at": "2026-03-30 10:52:36",
+  "experiment_id": "E7",
+  "family": "series_tiempo_exogenas",
+  "model": "prophet_exogenous_regressor",
+  "parametros_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E7_v1_clean_20260330_105236/parametros_run.json",
+  "run_dir": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E7_v1_clean_20260330_105236",
+  "run_id": "E7_v1_clean",
+  "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e7_prophet.py",
+  "snapshot_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E7_v1_clean_20260330_105236/scripts/run_e7_prophet.py",
+  "task_type": "regresion"
+}

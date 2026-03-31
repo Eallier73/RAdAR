@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 from dataclasses import dataclass
@@ -17,7 +18,7 @@ from config import DATE_COLUMN
 RUN_DIR_PATTERN = re.compile(
     r"^(?P<run_id>.+?)_(?P<timestamp>\d{8}_\d{6})(?P<aborted>_aborted)?$"
 )
-RUN_ID_PATTERN = re.compile(r"\bE\d+_v\d+(?:_clean)?\b")
+RUN_ID_PATTERN = re.compile(r"\b(?:E|C)\d+_v\d+(?:_clean)?\b")
 
 CORE_FILES = (
     "metadata_run.json",
@@ -25,6 +26,153 @@ CORE_FILES = (
     "metricas_horizonte.json",
     "resumen_modeling_horizontes.json",
 )
+
+COMMON_PARAM_EXCLUDE_KEYS = {
+    "dataset_path",
+    "feature_columns",
+    "feature_mode",
+    "horizons",
+    "initial_train_size",
+    "lags",
+    "model",
+    "model_params",
+    "sheet_name",
+    "target_mode",
+    "task_type",
+    "transform_mode",
+}
+
+MODEL_HYPERPARAM_KEYS: tuple[tuple[tuple[str, ...], tuple[str, ...]], ...] = (
+    (
+        ("ridge",),
+        (
+            "alpha",
+            "alpha_grid",
+            "alphas",
+            "inner_splits",
+            "tuning_metric",
+            "tuning_strategy",
+            "uses_scaling",
+        ),
+    ),
+    (
+        ("huber",),
+        (
+            "alpha",
+            "epsilon",
+            "max_iter",
+            "tol",
+            "inner_splits",
+            "tuning_metric",
+            "tuning_strategy",
+            "param_grid",
+            "winsor_lower_quantile",
+            "winsor_upper_quantile",
+            "uses_scaling",
+        ),
+    ),
+    (
+        ("random_forest", "extra_trees"),
+        (
+            "tree_model",
+            "bootstrap",
+            "n_estimators",
+            "max_depth",
+            "max_features",
+            "min_samples_leaf",
+            "min_samples_split",
+            "class_weight",
+            "random_state",
+            "uses_scaling",
+        ),
+    ),
+    (
+        ("xgboost",),
+        (
+            "n_estimators",
+            "learning_rate",
+            "max_depth",
+            "subsample",
+            "colsample_bytree",
+            "min_child_weight",
+            "reg_alpha",
+            "reg_lambda",
+            "objective",
+            "eval_metric",
+            "random_state",
+            "tuning_metric",
+            "tuning_strategy",
+            "param_grid",
+            "uses_scaling",
+        ),
+    ),
+    (
+        ("catboost",),
+        (
+            "iterations",
+            "depth",
+            "learning_rate",
+            "l2_leaf_reg",
+            "subsample",
+            "loss_function",
+            "eval_metric",
+            "random_seed",
+            "random_state",
+            "inner_splits",
+            "tuning_metric",
+            "tuning_strategy",
+            "param_grid",
+            "uses_categorical_features",
+            "uses_scaling",
+        ),
+    ),
+    (
+        ("sarimax", "arimax"),
+        (
+            "order",
+            "seasonal_order",
+            "trend",
+            "maxiter",
+            "measurement_error",
+            "enforce_stationarity",
+            "enforce_invertibility",
+            "tuning_strategy",
+            "uses_scaling",
+            "uses_categorical_features",
+        ),
+    ),
+    (
+        ("prophet",),
+        (
+            "changepoint_prior_scale",
+            "seasonality_prior_scale",
+            "seasonality_mode",
+            "weekly_seasonality",
+            "yearly_seasonality",
+            "daily_seasonality",
+        ),
+    ),
+    (
+        ("lightgbm",),
+        (
+            "n_estimators",
+            "num_leaves",
+            "max_depth",
+            "learning_rate",
+            "min_child_samples",
+            "subsample",
+            "colsample_bytree",
+            "reg_alpha",
+            "reg_lambda",
+            "objective",
+            "random_state",
+        ),
+    ),
+)
+
+EXPLAINABILITY_COEF_PATTERNS = ("coef", "coefficient", "coeficient")
+EXPLAINABILITY_IMPORTANCE_PATTERNS = ("importance", "importancia", "feature_import")
+EXPLAINABILITY_SHAP_PATTERNS = ("shap",)
 
 HORIZON_METRIC_SPECS = (
     {"metric": "mae", "column_suffix": "mae", "sense": "menor_es_mejor", "ascending": True},
@@ -53,6 +201,26 @@ PREDICTION_Y_PRED_CANDIDATES = ("y_pred", "y_pred_model", "pred", "prediction")
 class PredictionAuditResult:
     coverage_row: dict[str, Any]
     standardized_df: pd.DataFrame | None
+
+
+@dataclass
+class HyperparamsNormalizationResult:
+    hyperparams_json: str
+    hyperparams_hash: str
+    hyperparams_firma: str
+    hyperparams_resumen: str
+    reconstruction_status: str
+    reconstruction_note: str
+
+
+@dataclass
+class ExplainabilityAuditResult:
+    tiene_coeficientes: bool
+    tiene_importancias: bool
+    tiene_shap_o_equivalente: bool
+    explicabilidad_transversal_homogenea: bool
+    artifact_explicabilidad_path: str
+    observacion_explicabilidad: str
 
 
 @dataclass
@@ -269,11 +437,25 @@ def normalize_family(run_id: str, family: Any, model: Any) -> str | None:
         return "robusto"
     if run_id.startswith("E3_"):
         return "arboles_boosting"
+    if run_id.startswith("C1_"):
+        return "clasificacion_random_forest"
+    if run_id.startswith("C2_"):
+        return "clasificacion_xgboost"
+    if run_id.startswith("C3_"):
+        return "clasificacion_catboost"
+    if run_id.startswith("C4_"):
+        return "clasificacion_lightgbm"
     if raw_family:
         if "lineal" in raw_family and "ridge" in model_name:
             return "lineal_regularizado"
         return raw_family
     return raw_family
+
+
+def maybe_cell_value(ws, headers: dict[str, int], row: int, header: str) -> Any:
+    if header not in headers:
+        return None
+    return ws.cell(row, headers[header]).value
 
 
 def parse_feature_count_prom(
@@ -311,11 +493,25 @@ def build_workbook_lookup(workbook_path: Path) -> tuple[dict[str, dict[str, Any]
         if not run_id:
             continue
         summary_lookup[str(run_id)] = {
+            "Task_type": maybe_cell_value(ws, headers, row, "Task_type"),
             "L_total_Radar": ws.cell(row, headers["L_total_Radar"]).value,
+            "L_total_Clasificacion": maybe_cell_value(ws, headers, row, "L_total_Clasificacion"),
             "Avg_MAE": ws.cell(row, headers["Avg_MAE"]).value,
             "Avg_RMSE": ws.cell(row, headers["Avg_RMSE"]).value,
             "Dir_acc_prom": ws.cell(row, headers["Dir_acc_prom"]).value,
             "Det_caidas_prom": ws.cell(row, headers["Det_caidas_prom"]).value,
+            "Avg_Accuracy_5clases": maybe_cell_value(ws, headers, row, "Avg_Accuracy_5clases"),
+            "Avg_Balanced_accuracy_5clases": maybe_cell_value(ws, headers, row, "Avg_Balanced_accuracy_5clases"),
+            "Avg_Macro_f1_5clases": maybe_cell_value(ws, headers, row, "Avg_Macro_f1_5clases"),
+            "Avg_Weighted_f1_5clases": maybe_cell_value(ws, headers, row, "Avg_Weighted_f1_5clases"),
+            "Avg_Recall_baja_fuerte": maybe_cell_value(ws, headers, row, "Avg_Recall_baja_fuerte"),
+            "Avg_Recall_baja_total": maybe_cell_value(ws, headers, row, "Avg_Recall_baja_total"),
+            "Avg_Precision_baja_fuerte": maybe_cell_value(ws, headers, row, "Avg_Precision_baja_fuerte"),
+            "Avg_Recall_sube_fuerte": maybe_cell_value(ws, headers, row, "Avg_Recall_sube_fuerte"),
+            "Avg_Recall_sube_total": maybe_cell_value(ws, headers, row, "Avg_Recall_sube_total"),
+            "Avg_Accuracy_3clases": maybe_cell_value(ws, headers, row, "Avg_Accuracy_3clases"),
+            "Avg_Macro_f1_3clases": maybe_cell_value(ws, headers, row, "Avg_Macro_f1_3clases"),
+            "Avg_Balanced_accuracy_3clases": maybe_cell_value(ws, headers, row, "Avg_Balanced_accuracy_3clases"),
             "Comentarios": ws.cell(row, headers["Comentarios"]).value,
         }
 
@@ -330,11 +526,25 @@ def build_workbook_lookup(workbook_path: Path) -> tuple[dict[str, dict[str, Any]
         if horizon is None:
             continue
         results_lookup.setdefault(str(run_id), {})[int(horizon)] = {
+            "Task_type": maybe_cell_value(ws, headers, row, "Task_type"),
             "Loss_h": ws.cell(row, headers["Loss_h"]).value,
             "MAE": ws.cell(row, headers["MAE"]).value,
             "RMSE": ws.cell(row, headers["RMSE"]).value,
             "Direccion_accuracy": ws.cell(row, headers["Direccion_accuracy"]).value,
             "Deteccion_caidas": ws.cell(row, headers["Deteccion_caidas"]).value,
+            "Accuracy_5clases": maybe_cell_value(ws, headers, row, "Accuracy_5clases"),
+            "Balanced_accuracy_5clases": maybe_cell_value(ws, headers, row, "Balanced_accuracy_5clases"),
+            "Macro_f1_5clases": maybe_cell_value(ws, headers, row, "Macro_f1_5clases"),
+            "Weighted_f1_5clases": maybe_cell_value(ws, headers, row, "Weighted_f1_5clases"),
+            "Recall_baja_fuerte": maybe_cell_value(ws, headers, row, "Recall_baja_fuerte"),
+            "Recall_baja_total": maybe_cell_value(ws, headers, row, "Recall_baja_total"),
+            "Precision_baja_fuerte": maybe_cell_value(ws, headers, row, "Precision_baja_fuerte"),
+            "Recall_sube_fuerte": maybe_cell_value(ws, headers, row, "Recall_sube_fuerte"),
+            "Recall_sube_total": maybe_cell_value(ws, headers, row, "Recall_sube_total"),
+            "Accuracy_3clases": maybe_cell_value(ws, headers, row, "Accuracy_3clases"),
+            "Macro_f1_3clases": maybe_cell_value(ws, headers, row, "Macro_f1_3clases"),
+            "Balanced_accuracy_3clases": maybe_cell_value(ws, headers, row, "Balanced_accuracy_3clases"),
+            "Loss_clasificacion_h": maybe_cell_value(ws, headers, row, "Loss_clasificacion_h"),
         }
     return summary_lookup, results_lookup
 
@@ -356,6 +566,19 @@ def extract_target_mode(record: RunDirectoryRecord, horizon_map: dict[int, dict[
         if item.get("target"):
             return str(item["target"])
     return None
+
+
+def extract_task_type(record: RunDirectoryRecord, summary: dict[str, Any]) -> str:
+    if record.parametros and record.parametros.get("task_type"):
+        return str(record.parametros["task_type"])
+    if record.metadata and record.metadata.get("task_type"):
+        return str(record.metadata["task_type"])
+    if summary.get("Task_type"):
+        return str(summary["Task_type"])
+    run_id = record.effective_run_id
+    if run_id.startswith("C"):
+        return "clasificacion"
+    return "regresion"
 
 
 def extract_feature_mode(record: RunDirectoryRecord, horizon_map: dict[int, dict[str, Any]]) -> str | None:
@@ -508,6 +731,422 @@ def get_prediction_file(record: RunDirectoryRecord, horizon: int) -> Path:
     return record.path / f"predicciones_h{horizon}.csv"
 
 
+def extract_script_name(record: RunDirectoryRecord) -> str | None:
+    script_path = (record.metadata or {}).get("script_path")
+    if not script_path:
+        return None
+    return Path(str(script_path)).name
+
+
+def extract_script_path(record: RunDirectoryRecord) -> str | None:
+    script_path = (record.metadata or {}).get("script_path")
+    return str(script_path) if script_path else None
+
+
+def extract_timestamp_run(record: RunDirectoryRecord) -> str | None:
+    if record.timestamp:
+        return record.timestamp
+    created_at = normalize_created_at(record)
+    if created_at:
+        return created_at.replace("-", "").replace(":", "").replace(" ", "_")
+    return None
+
+
+def extract_version_canonica(run_id: str) -> str:
+    if "_" not in run_id:
+        return run_id
+    return run_id.split("_", 1)[1]
+
+
+def build_status_canonico(record: RunDirectoryRecord) -> str:
+    if record.artifact_status == "completo":
+        return "canonico_completo"
+    if record.artifact_status == "parcial":
+        return "canonico_parcial"
+    return "canonico_inconsistente"
+
+
+def build_canonical_exclusion_reason(record: RunDirectoryRecord) -> str:
+    if not record.issues:
+        return ""
+    return ";".join(record.issues)
+
+
+def resumen_by_horizon(record: RunDirectoryRecord) -> dict[int, dict[str, Any]]:
+    if not record.resumen:
+        return {}
+    result: dict[int, dict[str, Any]] = {}
+    for item in record.resumen:
+        horizonte = item.get("horizonte_sem")
+        if horizonte is None:
+            continue
+        result[int(horizonte)] = item
+    return result
+
+
+def extract_validation_scheme(record: RunDirectoryRecord, horizon_map: dict[int, dict[str, Any]]) -> str | None:
+    for horizon in sorted(horizon_map):
+        value = horizon_map[horizon].get("validacion")
+        if value not in (None, ""):
+            return str(value)
+    notes_payload = extract_first_notes_config(record, horizon_map)
+    if notes_payload.get("validation_scheme") not in (None, ""):
+        return str(notes_payload["validation_scheme"])
+    model_name = (record.model or "").strip().lower()
+    if "sarimax" in model_name or "arimax" in model_name:
+        return "walk-forward_expanding"
+    return None
+
+
+def extract_tuning_metric(record: RunDirectoryRecord, horizon_map: dict[int, dict[str, Any]]) -> str | None:
+    params = record.parametros or {}
+    model_params = params.get("model_params", {})
+    if isinstance(model_params, dict) and model_params.get("tuning_metric") not in (None, ""):
+        return str(model_params["tuning_metric"])
+    notes_payload = extract_first_notes_config(record, horizon_map)
+    model_params_notes = notes_payload.get("model_params", {})
+    if isinstance(model_params_notes, dict) and model_params_notes.get("tuning_metric") not in (None, ""):
+        return str(model_params_notes["tuning_metric"])
+    return None
+
+
+def extract_feature_counts_by_horizon(
+    record: RunDirectoryRecord,
+    horizon_map: dict[int, dict[str, Any]],
+) -> dict[int, float | None]:
+    resumen_map = resumen_by_horizon(record)
+    counts: dict[int, float | None] = {1: None, 2: None, 3: None, 4: None}
+    for horizon in (1, 2, 3, 4):
+        resumen_item = resumen_map.get(horizon, {})
+        if resumen_item.get("selected_feature_count_avg") is not None:
+            counts[horizon] = float(resumen_item["selected_feature_count_avg"])
+            continue
+        notes_payload = parse_notes_config_payload(horizon_map.get(horizon, {}).get("notas_config"))
+        if notes_payload.get("selected_feature_count_avg") is not None:
+            counts[horizon] = float(notes_payload["selected_feature_count_avg"])
+    return counts
+
+
+def extract_source_dataset_period(horizon_map: dict[int, dict[str, Any]]) -> str | None:
+    for horizon in sorted(horizon_map):
+        dataset_period = horizon_map[horizon].get("dataset_periodo")
+        if dataset_period not in (None, ""):
+            return str(dataset_period)
+    return None
+
+
+def extract_dataset_path(record: RunDirectoryRecord) -> str | None:
+    params = record.parametros or {}
+    dataset_path = params.get("dataset_path")
+    return str(dataset_path) if dataset_path else None
+
+
+def extract_feature_columns(record: RunDirectoryRecord) -> list[str]:
+    params = record.parametros or {}
+    feature_columns = params.get("feature_columns")
+    if isinstance(feature_columns, list):
+        return [str(value) for value in feature_columns]
+    return []
+
+
+def extract_raw_model_params(record: RunDirectoryRecord) -> dict[str, Any]:
+    params = record.parametros or {}
+    raw: dict[str, Any] = {}
+    model_params = params.get("model_params")
+    if isinstance(model_params, dict):
+        raw.update(model_params)
+    for key, value in params.items():
+        if key in COMMON_PARAM_EXCLUDE_KEYS:
+            continue
+        if key == "model_params":
+            continue
+        raw[key] = value
+    return raw
+
+
+def summarize_numeric_list(values: list[Any]) -> dict[str, Any]:
+    numeric_values = [float(value) for value in values]
+    return {
+        "size": len(numeric_values),
+        "min": min(numeric_values),
+        "max": max(numeric_values),
+    }
+
+
+def normalize_param_value(key: str, value: Any) -> Any:
+    if isinstance(value, (str, int, float, bool)) or value is None:
+        return value
+    if isinstance(value, Path):
+        return str(value)
+    if isinstance(value, tuple):
+        return [normalize_param_value(key, item) for item in value]
+    if isinstance(value, list):
+        if not value:
+            return []
+        if key in {"alpha_grid", "alphas"} and all(isinstance(item, (int, float)) for item in value):
+            return summarize_numeric_list(value)
+        if all(isinstance(item, (int, float)) for item in value):
+            if len(value) <= 8:
+                return [float(item) if isinstance(item, float) else item for item in value]
+            return summarize_numeric_list(value)
+        if len(value) <= 6:
+            return [normalize_param_value(key, item) for item in value]
+        return {"size": len(value)}
+    if isinstance(value, dict):
+        if key == "param_grid":
+            return {
+                inner_key: normalize_param_value(inner_key, inner_value)
+                for inner_key, inner_value in sorted(value.items())
+            }
+        return {
+            str(inner_key): normalize_param_value(str(inner_key), inner_value)
+            for inner_key, inner_value in sorted(value.items())
+            if inner_value not in (None, "", [], {})
+        }
+    return str(value)
+
+
+def select_model_hyperparam_keys(model_name: str, raw_params: dict[str, Any]) -> list[str]:
+    model_lower = model_name.strip().lower()
+    for tokens, keys in MODEL_HYPERPARAM_KEYS:
+        if any(token in model_lower for token in tokens):
+            selected = [key for key in keys if key in raw_params]
+            unknown = [key for key in sorted(raw_params) if key not in selected]
+            return selected + unknown
+    return sorted(raw_params)
+
+
+def compact_value_for_signature(value: Any) -> str:
+    if isinstance(value, list):
+        return ",".join(str(item) for item in value)
+    if isinstance(value, dict):
+        if set(value.keys()) == {"size", "min", "max"}:
+            return f"{value['size']}[{value['min']}..{value['max']}]"
+        return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return str(value)
+
+
+def build_hyperparams_summary(normalized: dict[str, Any]) -> str:
+    priority_keys = (
+        "target_mode",
+        "feature_mode",
+        "lags",
+        "horizons",
+        "transform_mode",
+        "order",
+        "trend",
+        "iterations",
+        "depth",
+        "learning_rate",
+        "l2_leaf_reg",
+        "n_estimators",
+        "max_depth",
+        "max_features",
+        "subsample",
+        "colsample_bytree",
+        "reg_alpha",
+        "reg_lambda",
+        "inner_splits",
+        "tuning_strategy",
+    )
+    parts: list[str] = []
+    used_keys: set[str] = set()
+    for key in priority_keys:
+        value = normalized.get(key)
+        if value in (None, "", [], {}):
+            continue
+        parts.append(f"{key}={compact_value_for_signature(value)}")
+        used_keys.add(key)
+    for key in sorted(normalized):
+        if key in used_keys:
+            continue
+        value = normalized[key]
+        if value in (None, "", [], {}):
+            continue
+        parts.append(f"{key}={compact_value_for_signature(value)}")
+    return " | ".join(parts[:8])
+
+
+def normalize_hyperparams(
+    *,
+    record: RunDirectoryRecord,
+    target_mode: str | None,
+    feature_mode: str | None,
+    transform_mode: str | None,
+    lags: str | None,
+    horizons: str | None,
+    initial_train_size: int | None,
+    validation_scheme: str | None,
+) -> HyperparamsNormalizationResult:
+    raw_params = extract_raw_model_params(record)
+    model_name = record.model or ""
+    relevant_keys = select_model_hyperparam_keys(model_name, raw_params)
+
+    normalized: dict[str, Any] = {
+        "target_mode": target_mode,
+        "feature_mode": feature_mode,
+        "transform_mode": transform_mode,
+        "lags": [int(token) for token in str(lags).split(",") if str(token).strip().isdigit()] if lags else None,
+        "horizons": [int(token) for token in str(horizons).split(",") if str(token).strip().isdigit()] if horizons else None,
+        "initial_train_size": initial_train_size,
+        "validation_scheme": validation_scheme,
+    }
+    for key in relevant_keys:
+        value = raw_params.get(key)
+        if value in (None, "", [], {}):
+            continue
+        normalized[key] = normalize_param_value(key, value)
+
+    normalized = {key: value for key, value in normalized.items() if value not in (None, "", [], {})}
+    hyperparams_json = json.dumps(normalized, ensure_ascii=False, sort_keys=True)
+    hyperparams_hash = hashlib.sha1(hyperparams_json.encode("utf-8")).hexdigest()[:12] if normalized else ""
+    hyperparams_resumen = build_hyperparams_summary(normalized)
+    hyperparams_firma = f"{record.model}|{hyperparams_resumen}" if hyperparams_resumen else str(record.model or "")
+    hyperparams_firma = hyperparams_firma[:240]
+
+    structural_ok = all(value not in (None, "", [], {}) for value in (record.model, target_mode, lags, horizons))
+    model_specific_keys = {
+        key
+        for key in normalized
+        if key
+        not in {
+            "target_mode",
+            "feature_mode",
+            "transform_mode",
+            "lags",
+            "horizons",
+            "initial_train_size",
+            "validation_scheme",
+        }
+    }
+    if not model_specific_keys:
+        status = "no_recuperable"
+        note = "sin_parametros_modelo_suficientes"
+    elif structural_ok:
+        status = "completo"
+        note = "reconstruccion_desde_parametros_y_metadata"
+    else:
+        status = "parcial"
+        note = "faltan_campos_estructurales_pero_el_modelo_se_reconstruyo_parcialmente"
+
+    return HyperparamsNormalizationResult(
+        hyperparams_json=hyperparams_json,
+        hyperparams_hash=hyperparams_hash,
+        hyperparams_firma=hyperparams_firma,
+        hyperparams_resumen=hyperparams_resumen,
+        reconstruction_status=status,
+        reconstruction_note=note,
+    )
+
+
+def detect_explainability_artifacts(record: RunDirectoryRecord) -> ExplainabilityAuditResult:
+    coef_paths: list[Path] = []
+    importance_paths: list[Path] = []
+    shap_paths: list[Path] = []
+    for artifact in record.path.rglob("*"):
+        if not artifact.is_file():
+            continue
+        name = artifact.name.lower()
+        if any(token in name for token in EXPLAINABILITY_COEF_PATTERNS):
+            coef_paths.append(artifact)
+        if any(token in name for token in EXPLAINABILITY_IMPORTANCE_PATTERNS):
+            importance_paths.append(artifact)
+        if any(token in name for token in EXPLAINABILITY_SHAP_PATTERNS):
+            shap_paths.append(artifact)
+
+    primary_path = ""
+    if coef_paths:
+        primary_path = str(coef_paths[0].resolve())
+    elif importance_paths:
+        primary_path = str(importance_paths[0].resolve())
+    elif shap_paths:
+        primary_path = str(shap_paths[0].resolve())
+
+    tiene_coeficientes = bool(coef_paths)
+    tiene_importancias = bool(importance_paths)
+    tiene_shap = bool(shap_paths)
+    explicabilidad_homogenea = bool(primary_path)
+
+    if explicabilidad_homogenea:
+        observacion = "Artefacto explicativo localizado, pero la homogeneidad transversal debe validarse por familia."
+    elif record.selected_feature_files:
+        observacion = "Solo hay features_seleccionadas por horizonte; no hay coeficientes/importancias comparables."
+    else:
+        observacion = "Sin artefactos explicativos comparables exportados."
+
+    return ExplainabilityAuditResult(
+        tiene_coeficientes=tiene_coeficientes,
+        tiene_importancias=tiene_importancias,
+        tiene_shap_o_equivalente=tiene_shap,
+        explicabilidad_transversal_homogenea=explicabilidad_homogenea,
+        artifact_explicabilidad_path=primary_path,
+        observacion_explicabilidad=observacion,
+    )
+
+
+def compute_best_horizon_by_loss(row: dict[str, Any], *, task_type: str) -> str | None:
+    metric_suffix = "loss_clasificacion" if task_type == "clasificacion" else "loss"
+    values = {
+        f"H{horizon}": row.get(f"H{horizon}_{metric_suffix}")
+        for horizon in (1, 2, 3, 4)
+        if row.get(f"H{horizon}_{metric_suffix}") is not None
+    }
+    if not values:
+        return None
+    return min(values.items(), key=lambda item: float(item[1]))[0]
+
+
+def build_fortalezas_operativas(row: dict[str, Any], *, task_type: str) -> str:
+    if task_type == "clasificacion":
+        values = {
+            f"H{horizon}": row.get(f"H{horizon}_recall_baja_fuerte")
+            for horizon in (1, 2, 3, 4)
+            if row.get(f"H{horizon}_recall_baja_fuerte") is not None
+        }
+        if not values:
+            return ""
+        best_h, best_value = max(values.items(), key=lambda item: float(item[1]))
+        return f"mejor_recall_baja_fuerte={best_h}:{best_value:.6f}"
+
+    dir_values = {
+        f"H{horizon}": row.get(f"H{horizon}_direction_accuracy")
+        for horizon in (1, 2, 3, 4)
+        if row.get(f"H{horizon}_direction_accuracy") is not None
+    }
+    risk_values = {
+        f"H{horizon}": row.get(f"H{horizon}_deteccion_caidas")
+        for horizon in (1, 2, 3, 4)
+        if row.get(f"H{horizon}_deteccion_caidas") is not None
+    }
+    best_dir = max(dir_values.items(), key=lambda item: float(item[1])) if dir_values else None
+    best_risk = max(risk_values.items(), key=lambda item: float(item[1])) if risk_values else None
+    parts: list[str] = []
+    if best_dir is not None:
+        parts.append(f"mejor_dir={best_dir[0]}:{best_dir[1]:.6f}")
+    if best_risk is not None:
+        parts.append(f"mejor_caidas={best_risk[0]}:{best_risk[1]:.6f}")
+    return " | ".join(parts)
+
+
+def build_notas_config_clave(
+    *,
+    validation_scheme: str | None,
+    tuning_interno: bool | None,
+    tuning_metric: str | None,
+    hyperparams_summary: str,
+) -> str:
+    parts: list[str] = []
+    if validation_scheme:
+        parts.append(f"validacion={validation_scheme}")
+    if tuning_interno is not None:
+        parts.append("tuning=si" if tuning_interno else "tuning=no")
+    if tuning_metric:
+        parts.append(f"metric_tuning={tuning_metric}")
+    if hyperparams_summary:
+        parts.append(hyperparams_summary)
+    return " | ".join(parts)
+
+
 def build_master_rows(
     canonical: dict[str, RunDirectoryRecord],
     summary_lookup: dict[str, dict[str, Any]],
@@ -520,8 +1159,10 @@ def build_master_rows(
         summary = summary_lookup.get(run_id, {})
         workbook_horizons = results_lookup.get(run_id, {})
         feature_count_prom = parse_feature_count_prom(record.resumen, record.metricas)
+        task_type = extract_task_type(record, summary)
         row: dict[str, Any] = {
             "run_id": run_id,
+            "task_type": task_type,
             "family": normalize_family(run_id, (record.metadata or {}).get("family"), record.model),
             "model": record.model,
             "target_mode": extract_target_mode(record, horizon_map),
@@ -530,6 +1171,7 @@ def build_master_rows(
             "lags": extract_lags(record, horizon_map),
             "feature_count_prom": feature_count_prom,
             "L_total_Radar": summary.get("L_total_Radar"),
+            "L_total_Clasificacion": summary.get("L_total_Clasificacion"),
             "observacion_breve": summary.get("Comentarios") or (
                 "Run consolidado desde artefactos en disco."
                 if record.artifact_status == "completo"
@@ -549,6 +1191,45 @@ def build_master_rows(
                 "deteccion_caidas", workbook_row.get("Deteccion_caidas")
             )
             row[f"H{horizon}_loss"] = horizon_row.get("loss_h", workbook_row.get("Loss_h"))
+            row[f"H{horizon}_accuracy_5clases"] = horizon_row.get(
+                "accuracy_5clases", workbook_row.get("Accuracy_5clases")
+            )
+            row[f"H{horizon}_balanced_accuracy_5clases"] = horizon_row.get(
+                "balanced_accuracy_5clases", workbook_row.get("Balanced_accuracy_5clases")
+            )
+            row[f"H{horizon}_macro_f1_5clases"] = horizon_row.get(
+                "macro_f1_5clases", workbook_row.get("Macro_f1_5clases")
+            )
+            row[f"H{horizon}_weighted_f1_5clases"] = horizon_row.get(
+                "weighted_f1_5clases", workbook_row.get("Weighted_f1_5clases")
+            )
+            row[f"H{horizon}_recall_baja_fuerte"] = horizon_row.get(
+                "recall_baja_fuerte", workbook_row.get("Recall_baja_fuerte")
+            )
+            row[f"H{horizon}_recall_baja_total"] = horizon_row.get(
+                "recall_baja_total", workbook_row.get("Recall_baja_total")
+            )
+            row[f"H{horizon}_precision_baja_fuerte"] = horizon_row.get(
+                "precision_baja_fuerte", workbook_row.get("Precision_baja_fuerte")
+            )
+            row[f"H{horizon}_recall_sube_fuerte"] = horizon_row.get(
+                "recall_sube_fuerte", workbook_row.get("Recall_sube_fuerte")
+            )
+            row[f"H{horizon}_recall_sube_total"] = horizon_row.get(
+                "recall_sube_total", workbook_row.get("Recall_sube_total")
+            )
+            row[f"H{horizon}_accuracy_3clases"] = horizon_row.get(
+                "accuracy_3clases", workbook_row.get("Accuracy_3clases")
+            )
+            row[f"H{horizon}_macro_f1_3clases"] = horizon_row.get(
+                "macro_f1_3clases", workbook_row.get("Macro_f1_3clases")
+            )
+            row[f"H{horizon}_balanced_accuracy_3clases"] = horizon_row.get(
+                "balanced_accuracy_3clases", workbook_row.get("Balanced_accuracy_3clases")
+            )
+            row[f"H{horizon}_loss_clasificacion"] = horizon_row.get(
+                "loss_clasificacion_h", workbook_row.get("Loss_clasificacion_h")
+            )
 
         row["mae_promedio"] = summary.get("Avg_MAE")
         if row["mae_promedio"] is None:
@@ -582,29 +1263,67 @@ def build_master_rows(
                 float(sum(risk_values) / len(risk_values)) if risk_values else None
             )
 
-        required_columns = [
-            "L_total_Radar",
-            "H1_mae",
-            "H1_rmse",
-            "H1_direction_accuracy",
-            "H1_deteccion_caidas",
-            "H1_loss",
-            "H2_mae",
-            "H2_rmse",
-            "H2_direction_accuracy",
-            "H2_deteccion_caidas",
-            "H2_loss",
-            "H3_mae",
-            "H3_rmse",
-            "H3_direction_accuracy",
-            "H3_deteccion_caidas",
-            "H3_loss",
-            "H4_mae",
-            "H4_rmse",
-            "H4_direction_accuracy",
-            "H4_deteccion_caidas",
-            "H4_loss",
-        ]
+        row["accuracy_5clases_promedio"] = summary.get("Avg_Accuracy_5clases")
+        row["balanced_accuracy_5clases_promedio"] = summary.get("Avg_Balanced_accuracy_5clases")
+        row["macro_f1_5clases_promedio"] = summary.get("Avg_Macro_f1_5clases")
+        row["weighted_f1_5clases_promedio"] = summary.get("Avg_Weighted_f1_5clases")
+        row["recall_baja_fuerte_promedio"] = summary.get("Avg_Recall_baja_fuerte")
+        row["recall_baja_total_promedio"] = summary.get("Avg_Recall_baja_total")
+        row["precision_baja_fuerte_promedio"] = summary.get("Avg_Precision_baja_fuerte")
+        row["recall_sube_fuerte_promedio"] = summary.get("Avg_Recall_sube_fuerte")
+        row["recall_sube_total_promedio"] = summary.get("Avg_Recall_sube_total")
+        row["accuracy_3clases_promedio"] = summary.get("Avg_Accuracy_3clases")
+        row["macro_f1_3clases_promedio"] = summary.get("Avg_Macro_f1_3clases")
+        row["balanced_accuracy_3clases_promedio"] = summary.get("Avg_Balanced_accuracy_3clases")
+
+        if task_type == "clasificacion":
+            required_columns = [
+                "L_total_Clasificacion",
+                "H1_accuracy_5clases",
+                "H1_balanced_accuracy_5clases",
+                "H1_macro_f1_5clases",
+                "H1_recall_baja_fuerte",
+                "H1_loss_clasificacion",
+                "H2_accuracy_5clases",
+                "H2_balanced_accuracy_5clases",
+                "H2_macro_f1_5clases",
+                "H2_recall_baja_fuerte",
+                "H2_loss_clasificacion",
+                "H3_accuracy_5clases",
+                "H3_balanced_accuracy_5clases",
+                "H3_macro_f1_5clases",
+                "H3_recall_baja_fuerte",
+                "H3_loss_clasificacion",
+                "H4_accuracy_5clases",
+                "H4_balanced_accuracy_5clases",
+                "H4_macro_f1_5clases",
+                "H4_recall_baja_fuerte",
+                "H4_loss_clasificacion",
+            ]
+        else:
+            required_columns = [
+                "L_total_Radar",
+                "H1_mae",
+                "H1_rmse",
+                "H1_direction_accuracy",
+                "H1_deteccion_caidas",
+                "H1_loss",
+                "H2_mae",
+                "H2_rmse",
+                "H2_direction_accuracy",
+                "H2_deteccion_caidas",
+                "H2_loss",
+                "H3_mae",
+                "H3_rmse",
+                "H3_direction_accuracy",
+                "H3_deteccion_caidas",
+                "H3_loss",
+                "H4_mae",
+                "H4_rmse",
+                "H4_direction_accuracy",
+                "H4_deteccion_caidas",
+                "H4_loss",
+            ]
         missing_required = [column for column in required_columns if row.get(column) is None]
         if missing_required:
             row["status_run"] = "parcial" if record.artifact_status == "completo" else record.artifact_status
@@ -672,39 +1391,149 @@ def build_runs_catalog_rows(
     for run_id in sorted(canonical):
         record = canonical[run_id]
         horizon_map = horizon_metrics_map(record)
+        resumen_map = resumen_by_horizon(record)
         summary = summary_lookup.get(run_id, {})
+        task_type = extract_task_type(record, summary)
+        target_mode = extract_target_mode(record, horizon_map)
+        feature_mode = extract_feature_mode(record, horizon_map)
+        transform_mode = extract_transform_mode(record, horizon_map)
+        lags = extract_lags(record, horizon_map)
+        horizons = extract_horizons(record, horizon_map)
+        initial_train_size = extract_initial_train_size(record, horizon_map)
+        validation_scheme = extract_validation_scheme(record, horizon_map)
+        tuning_interno = infer_tuning_interno(record, horizon_map)
+        tuning_metric = extract_tuning_metric(record, horizon_map)
+        feature_counts = extract_feature_counts_by_horizon(record, horizon_map)
+        feature_count_promedio = parse_feature_count_prom(record.resumen, record.metricas)
+        hyperparams = normalize_hyperparams(
+            record=record,
+            target_mode=target_mode,
+            feature_mode=feature_mode,
+            transform_mode=transform_mode,
+            lags=lags,
+            horizons=horizons,
+            initial_train_size=initial_train_size,
+            validation_scheme=validation_scheme,
+        )
+        explainability = detect_explainability_artifacts(record)
+        dataset_period = extract_source_dataset_period(horizon_map)
+        dataset_path = extract_dataset_path(record)
+        feature_columns = extract_feature_columns(record)
+        observacion_breve = summary.get("Comentarios") or (
+            "Run consolidado desde artefactos en disco."
+            if record.artifact_status == "completo"
+            else "Run con artefactos incompletos."
+        )
         metadata_path = record.path / "metadata_run.json"
         parametros_path = record.path / "parametros_run.json"
         metricas_path = record.path / "metricas_horizonte.json"
         resumen_path = record.path / "resumen_modeling_horizontes.json"
         row: dict[str, Any] = {
             "run_id": run_id,
+            "task_type": task_type,
             "family": normalize_family(run_id, (record.metadata or {}).get("family"), record.model),
             "model": record.model,
             "script_family": resolve_script_family(record),
-            "target_mode": extract_target_mode(record, horizon_map),
-            "feature_mode": extract_feature_mode(record, horizon_map),
-            "transform_mode": extract_transform_mode(record, horizon_map),
-            "lags": extract_lags(record, horizon_map),
-            "horizons": extract_horizons(record, horizon_map),
-            "initial_train_size": extract_initial_train_size(record, horizon_map),
-            "tuning_interno": infer_tuning_interno(record, horizon_map),
+            "script_nombre": extract_script_name(record),
+            "script_ruta": extract_script_path(record),
+            "target_mode": target_mode,
+            "feature_mode": feature_mode,
+            "transform_mode": transform_mode,
+            "lags": lags,
+            "horizons": horizons,
+            "initial_train_size": initial_train_size,
+            "validation_scheme": validation_scheme,
+            "tuning_interno": tuning_interno,
+            "tuning_metric": tuning_metric,
             "fecha_run": normalize_created_at(record),
+            "timestamp_run": extract_timestamp_run(record),
+            "run_dir": str(record.path.resolve()),
+            "version_canonica": extract_version_canonica(run_id),
+            "es_run_maestro": True,
+            "status_canonico": build_status_canonico(record),
+            "motivo_exclusion_si_aplica": build_canonical_exclusion_reason(record),
             "status_run": record.artifact_status,
             "L_total_Radar": summary.get("L_total_Radar"),
+            "L_total_Clasificacion": summary.get("L_total_Clasificacion"),
             "path_run": str(record.path.resolve()),
             "metadata_run_path": resolve_path_if_exists(metadata_path),
             "parametros_run_path": resolve_path_if_exists(parametros_path),
             "metricas_horizonte_path": resolve_path_if_exists(metricas_path),
             "resumen_horizontes_path": resolve_path_if_exists(resumen_path),
+            "dataset_path": dataset_path or "",
+            "source_dataset_period": dataset_period or "",
             "notas_config": extract_notes_config_text(record, horizon_map),
+            "notas_config_clave": build_notas_config_clave(
+                validation_scheme=validation_scheme,
+                tuning_interno=tuning_interno,
+                tuning_metric=tuning_metric,
+                hyperparams_summary=hyperparams.hyperparams_resumen,
+            ),
+            "hyperparams_json": hyperparams.hyperparams_json,
+            "hyperparams_hash": hyperparams.hyperparams_hash,
+            "hyperparams_firma": hyperparams.hyperparams_firma,
+            "hyperparams_resumen": hyperparams.hyperparams_resumen,
+            "reconstruccion_hiperparams_status": hyperparams.reconstruction_status,
+            "reconstruccion_hiperparams_nota": hyperparams.reconstruction_note,
+            "feature_count_promedio": feature_count_promedio,
+            "feature_count_h1": feature_counts.get(1),
+            "feature_count_h2": feature_counts.get(2),
+            "feature_count_h3": feature_counts.get(3),
+            "feature_count_h4": feature_counts.get(4),
+            "features_artifact_available": bool(record.selected_feature_files),
+            "seleccion_variables_tipo": feature_mode,
+            "feature_columns_count": len(feature_columns),
+            "exogenas_o_no": "con_exogenas" if feature_columns else "sin_exogenas",
+            "usa_target_delta": target_mode == "delta",
+            "usa_target_nivel": target_mode == "nivel",
+            "mae_promedio": summary.get("Avg_MAE"),
+            "rmse_promedio": summary.get("Avg_RMSE"),
+            "direction_accuracy_promedio": summary.get("Dir_acc_prom"),
+            "deteccion_caidas_promedio": summary.get("Det_caidas_prom"),
+            "loss_h1": horizon_map.get(1, {}).get("loss_h"),
+            "loss_h2": horizon_map.get(2, {}).get("loss_h"),
+            "loss_h3": horizon_map.get(3, {}).get("loss_h"),
+            "loss_h4": horizon_map.get(4, {}).get("loss_h"),
+            "mejor_horizonte_por_loss": "",
+            "fortalezas_operativas": "",
+            "observacion_breve": observacion_breve,
+            "tiene_predicciones_h1": False,
+            "tiene_predicciones_h2": False,
+            "tiene_predicciones_h3": False,
+            "tiene_predicciones_h4": False,
+            "filas_pred_h1": 0,
+            "filas_pred_h2": 0,
+            "filas_pred_h3": 0,
+            "filas_pred_h4": 0,
+            "mergeable_h1": False,
+            "mergeable_h2": False,
+            "mergeable_h3": False,
+            "mergeable_h4": False,
+            "stacking_eligible_global": False,
+            "stacking_eligible_h1": False,
+            "stacking_eligible_h2": False,
+            "stacking_eligible_h3": False,
+            "stacking_eligible_h4": False,
             "es_candidato_meta_modelo": False,
+            "motivo_no_elegibilidad": "",
             "motivo_exclusion_meta_modelo": "",
+            "tiene_coeficientes": explainability.tiene_coeficientes,
+            "tiene_importancias": explainability.tiene_importancias,
+            "tiene_shap_o_equivalente": explainability.tiene_shap_o_equivalente,
+            "explicabilidad_transversal_homogenea": explainability.explicabilidad_transversal_homogenea,
+            "artifact_explicabilidad_path": explainability.artifact_explicabilidad_path,
+            "observacion_explicabilidad": explainability.observacion_explicabilidad,
         }
         for horizon in (1, 2, 3, 4):
             pred_path = get_prediction_file(record, horizon)
             row[f"predicciones_h{horizon}_path"] = resolve_path_if_exists(pred_path)
             row[f"predicciones_h{horizon}_existe"] = pred_path.exists()
+            if row.get(f"loss_h{horizon}") is None and horizon_map.get(horizon, {}).get("loss_h") is not None:
+                row[f"loss_h{horizon}"] = horizon_map[horizon]["loss_h"]
+            if row.get(f"feature_count_h{horizon}") is None and resumen_map.get(horizon, {}).get("selected_feature_count_avg") is not None:
+                row[f"feature_count_h{horizon}"] = float(resumen_map[horizon]["selected_feature_count_avg"])
+        row["mejor_horizonte_por_loss"] = compute_best_horizon_by_loss(row, task_type=task_type)
+        row["fortalezas_operativas"] = build_fortalezas_operativas(row, task_type=task_type)
         rows.append(row)
     return rows
 
@@ -730,6 +1559,7 @@ def build_metricas_por_horizonte_long(
             rows.append(
                 {
                     "run_id": run_id,
+                    "task_type": master_row.get("task_type"),
                     "horizonte": horizon,
                     "horizonte_label": f"H{horizon}",
                     "family": master_row.get("family"),
@@ -750,8 +1580,40 @@ def build_metricas_por_horizonte_long(
                     "l_risk": horizon_row.get("l_risk"),
                     "l_tol": horizon_row.get("l_tol"),
                     "loss_h": horizon_row.get("loss_h", workbook_row.get("Loss_h")),
+                    "accuracy_5clases": horizon_row.get("accuracy_5clases", workbook_row.get("Accuracy_5clases")),
+                    "balanced_accuracy_5clases": horizon_row.get(
+                        "balanced_accuracy_5clases", workbook_row.get("Balanced_accuracy_5clases")
+                    ),
+                    "macro_f1_5clases": horizon_row.get("macro_f1_5clases", workbook_row.get("Macro_f1_5clases")),
+                    "weighted_f1_5clases": horizon_row.get(
+                        "weighted_f1_5clases", workbook_row.get("Weighted_f1_5clases")
+                    ),
+                    "recall_baja_fuerte": horizon_row.get(
+                        "recall_baja_fuerte", workbook_row.get("Recall_baja_fuerte")
+                    ),
+                    "recall_baja_total": horizon_row.get(
+                        "recall_baja_total", workbook_row.get("Recall_baja_total")
+                    ),
+                    "precision_baja_fuerte": horizon_row.get(
+                        "precision_baja_fuerte", workbook_row.get("Precision_baja_fuerte")
+                    ),
+                    "recall_sube_fuerte": horizon_row.get(
+                        "recall_sube_fuerte", workbook_row.get("Recall_sube_fuerte")
+                    ),
+                    "recall_sube_total": horizon_row.get(
+                        "recall_sube_total", workbook_row.get("Recall_sube_total")
+                    ),
+                    "accuracy_3clases": horizon_row.get("accuracy_3clases", workbook_row.get("Accuracy_3clases")),
+                    "macro_f1_3clases": horizon_row.get("macro_f1_3clases", workbook_row.get("Macro_f1_3clases")),
+                    "balanced_accuracy_3clases": horizon_row.get(
+                        "balanced_accuracy_3clases", workbook_row.get("Balanced_accuracy_3clases")
+                    ),
+                    "loss_clasificacion_h": horizon_row.get(
+                        "loss_clasificacion_h", workbook_row.get("Loss_clasificacion_h")
+                    ),
                     "status_run": master_row.get("status_run"),
                     "L_total_Radar": master_row.get("L_total_Radar"),
+                    "L_total_Clasificacion": master_row.get("L_total_Clasificacion"),
                 }
             )
 
@@ -912,49 +1774,45 @@ def build_prediction_coverage(
 def build_stacking_readiness(
     runs_catalog_df: pd.DataFrame,
     coverage_df: pd.DataFrame,
+    stacking_eligibility_df: pd.DataFrame,
 ) -> pd.DataFrame:
     rows: list[dict[str, Any]] = []
     coverage_lookup = coverage_df.groupby("run_id", sort=True)
+    eligibility_lookup = stacking_eligibility_df.groupby("run_id", sort=True)
 
     for _, catalog_row in runs_catalog_df.iterrows():
         run_id = catalog_row["run_id"]
-        subset = coverage_lookup.get_group(run_id) if run_id in coverage_lookup.groups else pd.DataFrame()
-        compatible_horizons = subset[subset["compatible_para_merge"]]["horizonte"].tolist()
-        available_horizons = subset[subset["existe_archivo"]]["horizonte"].tolist()
-        predicciones_completas = set(available_horizons) == {1, 2, 3, 4}
-        columnas_minimas_ok = bool(not subset.empty and subset["columnas_minimas_ok"].all())
-        tiene_fecha = bool(not subset.empty and subset["tiene_fecha"].all())
-        tiene_y_true = bool(not subset.empty and subset["tiene_y_true"].all())
-        tiene_y_pred = bool(not subset.empty and subset["tiene_y_pred"].all())
-        orden_temporal_ok = bool(not subset.empty and subset["orden_temporal_ok"].all())
-        sin_duplicados = bool(not subset.empty and subset["sin_duplicados_fecha"].all())
-        compatible_para_stacking = bool(
-            catalog_row["status_run"] == "completo"
-            and predicciones_completas
-            and set(compatible_horizons) == {1, 2, 3, 4}
+        coverage_subset = (
+            coverage_lookup.get_group(run_id) if run_id in coverage_lookup.groups else pd.DataFrame()
         )
+        eligibility_subset = (
+            eligibility_lookup.get_group(run_id) if run_id in eligibility_lookup.groups else pd.DataFrame()
+        )
+        available_horizons = coverage_subset[coverage_subset["existe_archivo"]]["horizonte"].tolist()
+        compatible_horizons = coverage_subset[coverage_subset["compatible_para_merge"]]["horizonte"].tolist()
+        eligible_horizons = eligibility_subset[
+            eligibility_subset["stacking_eligible_horizonte"] == True
+        ]["horizonte"].tolist()
+        predicciones_completas = set(available_horizons) == {1, 2, 3, 4}
+        columnas_minimas_ok = bool(not coverage_subset.empty and coverage_subset["columnas_minimas_ok"].all())
+        tiene_fecha = bool(not coverage_subset.empty and coverage_subset["tiene_fecha"].all())
+        tiene_y_true = bool(not coverage_subset.empty and coverage_subset["tiene_y_true"].all())
+        tiene_y_pred = bool(not coverage_subset.empty and coverage_subset["tiene_y_pred"].all())
+        orden_temporal_ok = bool(not coverage_subset.empty and coverage_subset["orden_temporal_ok"].all())
+        sin_duplicados = bool(not coverage_subset.empty and coverage_subset["sin_duplicados_fecha"].all())
+        compatible_para_stacking = bool(set(eligible_horizons) == {1, 2, 3, 4})
 
-        motivos: list[str] = []
-        if catalog_row["status_run"] != "completo":
-            motivos.append(f"status_run={catalog_row['status_run']}")
-        if not predicciones_completas:
-            motivos.append("predicciones_incompletas_1a4")
-        if not columnas_minimas_ok:
-            motivos.append("columnas_minimas_no_validas")
-        if not tiene_fecha:
-            motivos.append("falta_fecha")
-        if not tiene_y_true:
-            motivos.append("falta_y_true")
-        if not tiene_y_pred:
-            motivos.append("falta_y_pred")
-        if not sin_duplicados:
-            motivos.append("duplicados_fecha")
-        if set(compatible_horizons) != {1, 2, 3, 4}:
-            faltantes = [str(h) for h in (1, 2, 3, 4) if h not in set(compatible_horizons)]
-            if faltantes:
-                motivos.append(f"horizontes_no_mergeables={','.join(faltantes)}")
+        motivos_globales: list[str] = []
+        for horizon in (1, 2, 3, 4):
+            horizon_subset = eligibility_subset[eligibility_subset["horizonte"] == horizon]
+            if horizon_subset.empty:
+                motivos_globales.append(f"H{horizon}:sin_auditoria")
+                continue
+            horizon_reason = str(horizon_subset.iloc[0]["motivo_no_elegibilidad_horizonte"] or "")
+            if horizon_reason:
+                motivos_globales.append(f"H{horizon}:{horizon_reason}")
 
-        compatible_count = len(compatible_horizons)
+        compatible_count = len(eligible_horizons)
         if compatible_para_stacking:
             prioridad = "alta"
         elif compatible_count >= 2:
@@ -968,7 +1826,11 @@ def build_stacking_readiness(
             "run_id": run_id,
             "family": catalog_row["family"],
             "model": catalog_row["model"],
+            "identidad_canonica_clara": bool(catalog_row.get("es_run_maestro") and catalog_row.get("version_canonica")),
+            "reconstruccion_hiperparams_status": catalog_row.get("reconstruccion_hiperparams_status"),
             "horizontes_disponibles": ",".join(str(h) for h in available_horizons),
+            "horizontes_mergeables": ",".join(str(h) for h in compatible_horizons),
+            "horizontes_elegibles_stacking": ",".join(str(h) for h in eligible_horizons),
             "predicciones_completas_1a4": predicciones_completas,
             "columnas_minimas_ok": columnas_minimas_ok,
             "tiene_fecha": tiene_fecha,
@@ -976,37 +1838,132 @@ def build_stacking_readiness(
             "tiene_y_pred": tiene_y_pred,
             "orden_temporal_ok": orden_temporal_ok,
             "sin_duplicados_fecha": sin_duplicados,
-            "cantidad_obs_h1": int(subset.loc[subset["horizonte"] == 1, "n_predicciones"].max()) if 1 in set(subset["horizonte"]) else 0,
-            "cantidad_obs_h2": int(subset.loc[subset["horizonte"] == 2, "n_predicciones"].max()) if 2 in set(subset["horizonte"]) else 0,
-            "cantidad_obs_h3": int(subset.loc[subset["horizonte"] == 3, "n_predicciones"].max()) if 3 in set(subset["horizonte"]) else 0,
-            "cantidad_obs_h4": int(subset.loc[subset["horizonte"] == 4, "n_predicciones"].max()) if 4 in set(subset["horizonte"]) else 0,
-            "cobertura_total_predicciones": int(subset["n_predicciones"].sum()) if not subset.empty else 0,
+            "mergeable_h1": 1 in set(compatible_horizons),
+            "mergeable_h2": 2 in set(compatible_horizons),
+            "mergeable_h3": 3 in set(compatible_horizons),
+            "mergeable_h4": 4 in set(compatible_horizons),
+            "stacking_eligible_h1": 1 in set(eligible_horizons),
+            "stacking_eligible_h2": 2 in set(eligible_horizons),
+            "stacking_eligible_h3": 3 in set(eligible_horizons),
+            "stacking_eligible_h4": 4 in set(eligible_horizons),
+            "cantidad_obs_h1": int(coverage_subset.loc[coverage_subset["horizonte"] == 1, "n_predicciones"].max()) if 1 in set(coverage_subset["horizonte"]) else 0,
+            "cantidad_obs_h2": int(coverage_subset.loc[coverage_subset["horizonte"] == 2, "n_predicciones"].max()) if 2 in set(coverage_subset["horizonte"]) else 0,
+            "cantidad_obs_h3": int(coverage_subset.loc[coverage_subset["horizonte"] == 3, "n_predicciones"].max()) if 3 in set(coverage_subset["horizonte"]) else 0,
+            "cantidad_obs_h4": int(coverage_subset.loc[coverage_subset["horizonte"] == 4, "n_predicciones"].max()) if 4 in set(coverage_subset["horizonte"]) else 0,
+            "cobertura_total_predicciones": int(coverage_subset["n_predicciones"].sum()) if not coverage_subset.empty else 0,
             "compatible_para_stacking": compatible_para_stacking,
             "prioridad_para_meta_modelo": prioridad,
-            "motivo_no_compatible": ";".join(motivos),
+            "motivo_no_compatible": "; ".join([reason for reason in motivos_globales if reason]),
         }
         rows.append(row)
 
-    return pd.DataFrame(rows).sort_values(["compatible_para_stacking", "run_id"], ascending=[False, True]).reset_index(drop=True)
+    return (
+        pd.DataFrame(rows)
+        .sort_values(["compatible_para_stacking", "run_id"], ascending=[False, True])
+        .reset_index(drop=True)
+    )
+
+
+def build_stacking_eligibility_by_horizon(
+    runs_catalog_df: pd.DataFrame,
+    coverage_df: pd.DataFrame,
+) -> pd.DataFrame:
+    rows: list[dict[str, Any]] = []
+    coverage_map = {
+        (row["run_id"], int(row["horizonte"])): row
+        for row in coverage_df.to_dict(orient="records")
+    }
+    for _, catalog_row in runs_catalog_df.iterrows():
+        for horizon in (1, 2, 3, 4):
+            coverage_row = coverage_map.get((catalog_row["run_id"], horizon), {})
+            motives: list[str] = []
+            identidad_canonica_clara = bool(
+                catalog_row.get("es_run_maestro") and catalog_row.get("version_canonica")
+            )
+            configuracion_recuperable = catalog_row.get("reconstruccion_hiperparams_status") in {"completo", "parcial"}
+            metrica_trazable = pd.notna(catalog_row.get(f"loss_h{horizon}"))
+            task_type_ok = catalog_row.get("task_type", "regresion") == "regresion"
+            status_ok = catalog_row.get("status_run") == "completo"
+            existe_archivo = bool(coverage_row.get("existe_archivo", False))
+            mergeable = bool(coverage_row.get("compatible_para_merge", False))
+            columnas_minimas_ok = bool(coverage_row.get("columnas_minimas_ok", False))
+            if not identidad_canonica_clara:
+                motives.append("identidad_canonica_no_clara")
+            if not task_type_ok:
+                motives.append(f"task_type={catalog_row.get('task_type')}")
+            if not status_ok:
+                motives.append(f"status_run={catalog_row.get('status_run')}")
+            if not configuracion_recuperable:
+                motives.append("configuracion_no_recuperable")
+            if not metrica_trazable:
+                motives.append("sin_loss_h")
+            if not existe_archivo:
+                motives.append("sin_predicciones")
+            if existe_archivo and not columnas_minimas_ok:
+                motives.append("columnas_minimas_invalidas")
+            if existe_archivo and not mergeable:
+                motives.append("predicciones_no_mergeables")
+            stacking_eligible = bool(
+                identidad_canonica_clara
+                and task_type_ok
+                and status_ok
+                and configuracion_recuperable
+                and metrica_trazable
+                and existe_archivo
+                and columnas_minimas_ok
+                and mergeable
+            )
+            rows.append(
+                {
+                    "run_id": catalog_row["run_id"],
+                    "family": catalog_row["family"],
+                    "model": catalog_row["model"],
+                    "task_type": catalog_row.get("task_type"),
+                    "horizonte": horizon,
+                    "horizonte_label": f"H{horizon}",
+                    "identidad_canonica_clara": identidad_canonica_clara,
+                    "status_run": catalog_row.get("status_run"),
+                    "reconstruccion_hiperparams_status": catalog_row.get("reconstruccion_hiperparams_status"),
+                    "configuracion_recuperable": configuracion_recuperable,
+                    "tiene_metrica_h": metrica_trazable,
+                    "pred_path": coverage_row.get("pred_path", ""),
+                    "tiene_predicciones_h": existe_archivo,
+                    "mergeable_h": mergeable,
+                    "filas_pred_h": int(coverage_row.get("n_predicciones", 0) or 0),
+                    "stacking_eligible_horizonte": stacking_eligible,
+                    "motivo_no_elegibilidad_horizonte": ";".join(motives),
+                }
+            )
+
+    return (
+        pd.DataFrame(rows)
+        .sort_values(["horizonte", "stacking_eligible_horizonte", "run_id"], ascending=[True, False, True])
+        .reset_index(drop=True)
+    )
 
 
 def build_stacking_base_sheet(
     *,
     horizon: int,
-    coverage_df: pd.DataFrame,
-    runs_catalog_df: pd.DataFrame,
+    stacking_eligibility_df: pd.DataFrame,
     standardized_lookup: dict[tuple[str, int], pd.DataFrame],
 ) -> pd.DataFrame:
-    run_status_lookup = dict(zip(runs_catalog_df["run_id"], runs_catalog_df["status_run"]))
-    eligible = coverage_df[
-        (coverage_df["horizonte"] == horizon)
-        & (coverage_df["compatible_para_merge"] == True)
+    eligible = stacking_eligibility_df[
+        (stacking_eligibility_df["horizonte"] == horizon)
+        & (stacking_eligibility_df["stacking_eligible_horizonte"] == True)
     ].copy()
-    eligible = eligible[eligible["run_id"].map(run_status_lookup).fillna("") == "completo"]
     eligible = eligible.sort_values("run_id").reset_index(drop=True)
 
     if eligible.empty:
-        return pd.DataFrame(columns=["fecha", "y_true", "n_modelos_disponibles_fila"])
+        return pd.DataFrame(
+            columns=[
+                "fecha",
+                "y_true",
+                "n_modelos_disponibles_fila",
+                "fila_completa_todos_modelos",
+                "cobertura_modelos_fila",
+            ]
+        )
 
     merged_df: pd.DataFrame | None = None
     y_true_columns: list[str] = []
@@ -1042,10 +1999,169 @@ def build_stacking_base_sheet(
     ordered_columns = ["fecha", "y_true", *pred_columns]
     merged_df = merged_df[ordered_columns]
     merged_df["n_modelos_disponibles_fila"] = merged_df[pred_columns].notna().sum(axis=1) if pred_columns else 0
+    total_models = len(pred_columns)
+    merged_df["fila_completa_todos_modelos"] = (
+        merged_df["n_modelos_disponibles_fila"] == total_models if total_models else False
+    )
+    merged_df["cobertura_modelos_fila"] = (
+        merged_df["n_modelos_disponibles_fila"] / total_models if total_models else 0.0
+    )
     return merged_df
 
 
+def build_stacking_base_summary(
+    *,
+    stacking_eligibility_df: pd.DataFrame,
+    stacking_base_sheets: dict[str, pd.DataFrame],
+) -> pd.DataFrame:
+    rows: list[dict[str, Any]] = []
+    for horizon in (1, 2, 3, 4):
+        eligibility_subset = stacking_eligibility_df[stacking_eligibility_df["horizonte"] == horizon].copy()
+        included = eligibility_subset[eligibility_subset["stacking_eligible_horizonte"] == True].sort_values("run_id")
+        excluded = eligibility_subset[eligibility_subset["stacking_eligible_horizonte"] != True].sort_values("run_id")
+        base_df = stacking_base_sheets.get(f"stacking_base_h{horizon}", pd.DataFrame())
+        rows.append(
+            {
+                "horizonte": f"H{horizon}",
+                "run_ids_incluidos": ",".join(included["run_id"].tolist()),
+                "n_runs_incluidos": int(len(included)),
+                "run_ids_excluidos": ",".join(excluded["run_id"].tolist()),
+                "exclusiones_detalle": " | ".join(
+                    f"{row['run_id']}:{row['motivo_no_elegibilidad_horizonte']}"
+                    for _, row in excluded.iterrows()
+                    if row["motivo_no_elegibilidad_horizonte"]
+                ),
+                "filas_base": int(len(base_df)),
+                "filas_completas_todos_modelos": int(base_df["fila_completa_todos_modelos"].sum())
+                if "fila_completa_todos_modelos" in base_df.columns
+                else 0,
+                "filas_incompletas": int(
+                    len(base_df) - int(base_df["fila_completa_todos_modelos"].sum())
+                )
+                if "fila_completa_todos_modelos" in base_df.columns
+                else int(len(base_df)),
+                "cobertura_promedio_modelos_fila": float(base_df["cobertura_modelos_fila"].mean())
+                if "cobertura_modelos_fila" in base_df.columns and not base_df.empty
+                else 0.0,
+            }
+        )
+    return pd.DataFrame(rows)
+
+
+def enrich_runs_catalog_with_stacking(
+    runs_catalog_df: pd.DataFrame,
+    coverage_df: pd.DataFrame,
+    stacking_eligibility_df: pd.DataFrame,
+    stacking_readiness_df: pd.DataFrame,
+) -> pd.DataFrame:
+    enriched = runs_catalog_df.copy()
+    coverage_map = {
+        (row["run_id"], int(row["horizonte"])): row
+        for row in coverage_df.to_dict(orient="records")
+    }
+    eligibility_map = {
+        (row["run_id"], int(row["horizonte"])): row
+        for row in stacking_eligibility_df.to_dict(orient="records")
+    }
+    readiness_lookup = stacking_readiness_df.set_index("run_id").to_dict(orient="index")
+
+    for horizon in (1, 2, 3, 4):
+        enriched[f"tiene_predicciones_h{horizon}"] = enriched["run_id"].map(
+            lambda run_id: bool(coverage_map.get((run_id, horizon), {}).get("existe_archivo", False))
+        )
+        enriched[f"filas_pred_h{horizon}"] = enriched["run_id"].map(
+            lambda run_id: int(coverage_map.get((run_id, horizon), {}).get("n_predicciones", 0) or 0)
+        )
+        enriched[f"mergeable_h{horizon}"] = enriched["run_id"].map(
+            lambda run_id: bool(coverage_map.get((run_id, horizon), {}).get("compatible_para_merge", False))
+        )
+        enriched[f"stacking_eligible_h{horizon}"] = enriched["run_id"].map(
+            lambda run_id: bool(eligibility_map.get((run_id, horizon), {}).get("stacking_eligible_horizonte", False))
+        )
+
+    enriched["stacking_eligible_global"] = enriched["run_id"].map(
+        lambda run_id: bool(readiness_lookup.get(run_id, {}).get("compatible_para_stacking", False))
+    )
+    enriched["es_candidato_meta_modelo"] = enriched["stacking_eligible_global"]
+    enriched["motivo_no_elegibilidad"] = enriched["run_id"].map(
+        lambda run_id: str(readiness_lookup.get(run_id, {}).get("motivo_no_compatible", "") or "")
+    )
+    enriched["motivo_exclusion_meta_modelo"] = enriched["motivo_no_elegibilidad"]
+    return enriched
+
+
+def enrich_master_with_catalog(master_df: pd.DataFrame, runs_catalog_df: pd.DataFrame) -> pd.DataFrame:
+    catalog_columns = [
+        "run_id",
+        "script_nombre",
+        "script_ruta",
+        "timestamp_run",
+        "run_dir",
+        "version_canonica",
+        "es_run_maestro",
+        "status_canonico",
+        "motivo_exclusion_si_aplica",
+        "validation_scheme",
+        "initial_train_size",
+        "tuning_interno",
+        "tuning_metric",
+        "hyperparams_json",
+        "hyperparams_hash",
+        "hyperparams_firma",
+        "hyperparams_resumen",
+        "reconstruccion_hiperparams_status",
+        "reconstruccion_hiperparams_nota",
+        "feature_count_promedio",
+        "feature_count_h1",
+        "feature_count_h2",
+        "feature_count_h3",
+        "feature_count_h4",
+        "features_artifact_available",
+        "seleccion_variables_tipo",
+        "source_dataset_period",
+        "dataset_path",
+        "feature_columns_count",
+        "exogenas_o_no",
+        "usa_target_delta",
+        "usa_target_nivel",
+        "loss_h1",
+        "loss_h2",
+        "loss_h3",
+        "loss_h4",
+        "mejor_horizonte_por_loss",
+        "fortalezas_operativas",
+        "tiene_predicciones_h1",
+        "tiene_predicciones_h2",
+        "tiene_predicciones_h3",
+        "tiene_predicciones_h4",
+        "filas_pred_h1",
+        "filas_pred_h2",
+        "filas_pred_h3",
+        "filas_pred_h4",
+        "mergeable_h1",
+        "mergeable_h2",
+        "mergeable_h3",
+        "mergeable_h4",
+        "stacking_eligible_global",
+        "stacking_eligible_h1",
+        "stacking_eligible_h2",
+        "stacking_eligible_h3",
+        "stacking_eligible_h4",
+        "motivo_no_elegibilidad",
+        "tiene_coeficientes",
+        "tiene_importancias",
+        "tiene_shap_o_equivalente",
+        "explicabilidad_transversal_homogenea",
+        "artifact_explicabilidad_path",
+        "observacion_explicabilidad",
+        "notas_config_clave",
+    ]
+    catalog_subset = runs_catalog_df[catalog_columns].copy()
+    return master_df.merge(catalog_subset, on="run_id", how="left")
+
+
 def build_rankings(master_df: pd.DataFrame) -> pd.DataFrame:
+    ranking_source = master_df[master_df["task_type"].fillna("regresion") == "regresion"].copy()
     rows: list[dict[str, Any]] = []
     ranking_specs = [
         ("global", "L_total_Radar"),
@@ -1055,7 +2171,7 @@ def build_rankings(master_df: pd.DataFrame) -> pd.DataFrame:
         ("H4", "H4_loss"),
     ]
     for criterio, column in ranking_specs:
-        subset = master_df.dropna(subset=[column]).sort_values(column, ascending=True).reset_index(drop=True)
+        subset = ranking_source.dropna(subset=[column]).sort_values(column, ascending=True).reset_index(drop=True)
         for index, (_, row) in enumerate(subset.iterrows(), start=1):
             rows.append(
                 {
@@ -1085,11 +2201,12 @@ def sort_metric_subset(subset: pd.DataFrame, *, metric_col: str, ascending: bool
 
 
 def build_metric_rankings_long(master_df: pd.DataFrame) -> pd.DataFrame:
+    ranking_source = master_df[master_df["task_type"].fillna("regresion") == "regresion"].copy()
     rows: list[dict[str, Any]] = []
     for horizon in (1, 2, 3, 4):
         for spec in HORIZON_METRIC_SPECS:
             metric_col = f"H{horizon}_{spec['column_suffix']}"
-            subset = master_df.dropna(subset=[metric_col]).copy()
+            subset = ranking_source.dropna(subset=[metric_col]).copy()
             if subset.empty:
                 continue
             subset = sort_metric_subset(
@@ -1163,6 +2280,7 @@ def build_metric_winners_compact(metric_rankings_df: pd.DataFrame) -> pd.DataFra
 
 
 def build_dimension_rankings(master_df: pd.DataFrame) -> pd.DataFrame:
+    ranking_source = master_df[master_df["task_type"].fillna("regresion") == "regresion"].copy()
     rows: list[dict[str, Any]] = []
     for horizon in (1, 2, 3, 4):
         mae_col = f"H{horizon}_mae"
@@ -1172,27 +2290,27 @@ def build_dimension_rankings(master_df: pd.DataFrame) -> pd.DataFrame:
         loss_col = f"H{horizon}_loss"
 
         best_mae = sort_metric_subset(
-            master_df.dropna(subset=[mae_col]),
+            ranking_source.dropna(subset=[mae_col]),
             metric_col=mae_col,
             ascending=True,
         ).iloc[0]
         best_rmse = sort_metric_subset(
-            master_df.dropna(subset=[rmse_col]),
+            ranking_source.dropna(subset=[rmse_col]),
             metric_col=rmse_col,
             ascending=True,
         ).iloc[0]
         best_direction = sort_metric_subset(
-            master_df.dropna(subset=[dir_col]),
+            ranking_source.dropna(subset=[dir_col]),
             metric_col=dir_col,
             ascending=False,
         ).iloc[0]
         best_risk = sort_metric_subset(
-            master_df.dropna(subset=[risk_col]),
+            ranking_source.dropna(subset=[risk_col]),
             metric_col=risk_col,
             ascending=False,
         ).iloc[0]
         best_loss = sort_metric_subset(
-            master_df.dropna(subset=[loss_col]),
+            ranking_source.dropna(subset=[loss_col]),
             metric_col=loss_col,
             ascending=True,
         ).iloc[0]
@@ -1277,19 +2395,128 @@ def build_horizon_metric_sections(compact_df: pd.DataFrame) -> str:
     return "\n".join(sections)
 
 
+def render_dataframe_markdown(df: pd.DataFrame, empty_message: str) -> str:
+    if df.empty:
+        return empty_message
+    return "```\n" + df.to_string(index=False) + "\n```"
+
+
+def build_stacking_readiness_documentation(
+    *,
+    runs_catalog_df: pd.DataFrame,
+    stacking_readiness_df: pd.DataFrame,
+    stacking_eligibility_df: pd.DataFrame,
+    stacking_base_summary_df: pd.DataFrame,
+) -> str:
+    reconstruction_counts = (
+        runs_catalog_df["reconstruccion_hiperparams_status"].fillna("no_recuperable").value_counts().to_dict()
+        if not runs_catalog_df.empty
+        else {}
+    )
+    eligible_by_horizon = (
+        stacking_eligibility_df.groupby("horizonte_label")["stacking_eligible_horizonte"].sum().to_dict()
+        if not stacking_eligibility_df.empty
+        else {}
+    )
+    return f"""# Readiness para Stacking y Master Table Enriquecida
+
+## Que significa un run elegible para stacking en Radar
+
+Un run se considera elegible para stacking solo si cumple simultaneamente estas reglas:
+
+1. Tiene identidad canonica clara (`run_id`, directorio canonico y metadata recuperable).
+2. No es un intento abortado, inconsistente o parcial.
+3. Tiene predicciones fuera de muestra por horizonte en archivos reales `predicciones_h*.csv`.
+4. Esas predicciones incluyen fecha, `y_true` y `y_pred`, sin duplicados de fecha y con merge estructuralmente valido.
+5. Tiene metricas trazables por horizonte (`loss_h` y resto del bloque Radar).
+6. Su configuracion puede reconstruirse con certeza suficiente desde artefactos reales (`completo` o `parcial`, nunca inventada).
+7. No presenta una inconsistencia critica que invalide su reutilizacion.
+
+La elegibilidad se distingue en dos niveles:
+
+- Global: el run es elegible en `H1`, `H2`, `H3` y `H4`.
+- Por horizonte: el run puede ser elegible solo en algunos horizontes.
+
+## Campos nuevos incorporados a la tabla maestra
+
+Se amplian cuatro capas:
+
+- Identidad y linaje: `script_nombre`, `script_ruta`, `timestamp_run`, `version_canonica`, `status_canonico`, `motivo_exclusion_si_aplica`.
+- Configuracion y reconstruccion: `validation_scheme`, `tuning_metric`, `hyperparams_json`, `hyperparams_hash`, `hyperparams_firma`, `hyperparams_resumen`, `reconstruccion_hiperparams_status`.
+- Features y datos: `feature_count_h1..h4`, `features_artifact_available`, `source_dataset_period`, `exogenas_o_no`, `usa_target_delta`, `usa_target_nivel`.
+- Stacking y explicabilidad: `mergeable_h1..h4`, `stacking_eligible_h1..h4`, `stacking_eligible_global`, `motivo_no_elegibilidad`, `tiene_coeficientes`, `tiene_importancias`, `tiene_shap_o_equivalente`.
+
+## Como se reconstruyo retrospectivamente
+
+Fuentes utilizadas:
+
+- `metadata_run.json`
+- `parametros_run.json`
+- `metricas_horizonte.json`
+- `resumen_modeling_horizontes.json`
+- `predicciones_h1..h4.csv`
+- `features_seleccionadas_h1..h4.csv`
+- workbook maestro actual
+- nombres de script y directorios
+
+Supuestos permitidos:
+
+- Se normalizan hiperparametros a partir de los parametros realmente guardados por cada familia.
+- Cuando un run historico no trae exactamente la misma estructura que los recientes, se marca como reconstruccion `parcial`, no se rellena de manera ficticia.
+
+Supuestos no permitidos:
+
+- No se inventan hiperparametros ausentes.
+- No se marcan runs elegibles solo por score.
+- No se tratan directorios abortados como canonicos.
+
+## Estado de reconstruccion retrospectiva
+
+- Hiperparametros completos: {int(reconstruction_counts.get('completo', 0))}
+- Hiperparametros parciales: {int(reconstruction_counts.get('parcial', 0))}
+- Hiperparametros no recuperables: {int(reconstruction_counts.get('no_recuperable', 0))}
+- Runs elegibles globalmente para stacking: {int(stacking_readiness_df['compatible_para_stacking'].sum()) if not stacking_readiness_df.empty else 0}
+- Elegibles por horizonte: {json.dumps(eligible_by_horizon, ensure_ascii=False)}
+
+## Bases stacking por horizonte
+
+{render_dataframe_markdown(stacking_base_summary_df, 'No se construyeron bases stacking.')}
+
+## Limitaciones vigentes
+
+- La explicabilidad transversal entre familias sigue sin estar homogenea.
+- Algunos runs historicos mantienen estructura antigua y su reconstruccion es solo parcial.
+- La elegibilidad global y la elegibilidad por horizonte no coinciden siempre.
+- Las bases stacking siguen siendo preparatorias: no contienen todavia meta-features ni entrenamiento del meta-modelo.
+
+## Uso hacia adelante
+
+La automatizacion hacia adelante no requiere infraestructura paralela:
+
+- `experiment_logger.py` ya refresca la auditoria maestra al cerrar runs completos.
+- `backfill_runs.py` ya rehidrata el workbook y dispara el refresh unico al final.
+- Esta ampliacion hace que cada corrida nueva quede retroproyectada automaticamente al catalogo enriquecido y a las bases stacking por horizonte.
+"""
+
+
 def build_markdown_summary(
     *,
     master_df: pd.DataFrame,
     runs_catalog_df: pd.DataFrame,
     inventory_df: pd.DataFrame,
     stacking_readiness_df: pd.DataFrame,
+    stacking_eligibility_df: pd.DataFrame,
     coverage_df: pd.DataFrame,
     stacking_base_sheets: dict[str, pd.DataFrame],
+    stacking_base_summary_df: pd.DataFrame,
     planned_run_ids: list[str],
 ) -> str:
     metric_rankings_df = build_metric_rankings_long(master_df)
     winners_compact_df = build_metric_winners_compact(metric_rankings_df)
-    complete_master = master_df[master_df["status_run"] == "completo"].copy()
+    complete_master = master_df[
+        (master_df["status_run"] == "completo")
+        & (master_df["task_type"].fillna("regresion") == "regresion")
+    ].copy()
     best_global = complete_master.nsmallest(1, "L_total_Radar").iloc[0]
     best_h1 = complete_master.nsmallest(1, "H1_loss").iloc[0]
     best_h2 = complete_master.nsmallest(1, "H2_loss").iloc[0]
@@ -1327,6 +2554,16 @@ def build_markdown_summary(
         (stacking_readiness_df["compatible_para_stacking"] != True)
         & (stacking_readiness_df["prioridad_para_meta_modelo"].isin(["media", "baja"]))
     ]
+    reconstruction_counts = (
+        runs_catalog_df["reconstruccion_hiperparams_status"].fillna("no_recuperable").value_counts().to_dict()
+        if not runs_catalog_df.empty
+        else {}
+    )
+    eligible_by_horizon = (
+        stacking_eligibility_df.groupby("horizonte_label")["stacking_eligible_horizonte"].sum().to_dict()
+        if not stacking_eligibility_df.empty
+        else {}
+    )
     per_horizon_mergeable = (
         coverage_df.groupby("horizonte_label")["compatible_para_merge"].sum().to_dict()
         if not coverage_df.empty
@@ -1334,11 +2571,33 @@ def build_markdown_summary(
     )
     stacking_base_lines = []
     for sheet_name, sheet_df in stacking_base_sheets.items():
-        pred_columns = [column for column in sheet_df.columns if column not in {"fecha", "y_true", "n_modelos_disponibles_fila"}]
+        pred_columns = [
+            column
+            for column in sheet_df.columns
+            if column
+            not in {
+                "fecha",
+                "y_true",
+                "n_modelos_disponibles_fila",
+                "fila_completa_todos_modelos",
+                "cobertura_modelos_fila",
+            }
+        ]
         stacking_base_lines.append(
             f"- `{sheet_name}`: filas={len(sheet_df)}, modelos_integrados={len(pred_columns)}"
         )
     stacking_base_text = "\n".join(stacking_base_lines) if stacking_base_lines else "- No se construyeron bases parciales."
+    incompatibility_examples = stacking_eligibility_df[
+        stacking_eligibility_df["stacking_eligible_horizonte"] != True
+    ].head(10)
+    incompatibility_text = (
+        "\n".join(
+            f"- `{row['run_id']}` {row['horizonte_label']}: {row['motivo_no_elegibilidad_horizonte']}"
+            for _, row in incompatibility_examples.iterrows()
+        )
+        if not incompatibility_examples.empty
+        else "- No se detectaron incompatibilidades de elegibilidad."
+    )
 
     return f"""# Resumen Auditoria Experimentos Radar
 
@@ -1408,17 +2667,30 @@ Nota: esta lista sale de menciones en prompts/documentos `.md`; no distingue aut
 
 - Runs compatibles para stacking 1..4: {len(stacking_compatible)}
 - Runs con utilidad parcial para merge por horizonte: {len(stacking_partial)}
+- Reconstrucciones completas de hiperparametros: {int(reconstruction_counts.get('completo', 0))}
+- Reconstrucciones parciales de hiperparametros: {int(reconstruction_counts.get('parcial', 0))}
+- Runs con hiperparametros no recuperables: {int(reconstruction_counts.get('no_recuperable', 0))}
 - Cobertura mergeable por horizonte: {json.dumps(per_horizon_mergeable, ensure_ascii=False)}
+- Elegibilidad real para stacking por horizonte: {json.dumps(eligible_by_horizon, ensure_ascii=False)}
 
 ### Bases parciales reconstruidas
 
 {stacking_base_text}
 
+### Resumen de bases stacking por horizonte
+
+{render_dataframe_markdown(stacking_base_summary_df, 'No se generaron resumenes de bases stacking.')}
+
 ### Lectura retrospectiva
 
 - Se pudo reconstruir retrospectivamente catalogo, metricas por horizonte, cobertura de predicciones y compatibilidad estructural para stacking a partir de artefactos reales en disco.
+- Se pudo normalizar retrospectivamente la configuracion e hiperparametros de las familias existentes sin inventar campos ausentes.
 - Se pudieron construir hojas `stacking_base_h1` a `stacking_base_h4` con los runs que tienen predicciones mergeables por horizonte.
 - Lo que todavia no se pudo homogeneizar retrospectivamente es la capa explicativa transversal entre familias: coeficientes, importancias e interpretabilidad comparable.
+
+### Incompatibilidades tipicas detectadas
+
+{incompatibility_text}
 
 ## Lectura preliminar
 
@@ -1449,9 +2721,17 @@ def build_experiments_master_table(
     master_df = pd.DataFrame(master_rows).sort_values("run_id").reset_index(drop=True)
     runs_catalog_rows = build_runs_catalog_rows(canonical, summary_lookup)
     runs_catalog_df = pd.DataFrame(runs_catalog_rows).sort_values("run_id").reset_index(drop=True)
-    metricas_long_df = build_metricas_por_horizonte_long(canonical, master_df, results_lookup)
     coverage_df, standardized_lookup = build_prediction_coverage(canonical)
-    stacking_readiness_df = build_stacking_readiness(runs_catalog_df, coverage_df)
+    stacking_eligibility_df = build_stacking_eligibility_by_horizon(runs_catalog_df, coverage_df)
+    stacking_readiness_df = build_stacking_readiness(runs_catalog_df, coverage_df, stacking_eligibility_df)
+    runs_catalog_df = enrich_runs_catalog_with_stacking(
+        runs_catalog_df,
+        coverage_df,
+        stacking_eligibility_df,
+        stacking_readiness_df,
+    )
+    master_df = enrich_master_with_catalog(master_df, runs_catalog_df)
+    metricas_long_df = build_metricas_por_horizonte_long(canonical, master_df, results_lookup)
 
     inventory_rows = build_inventory_rows(records, canonical, grouped)
     inventory_df = pd.DataFrame(inventory_rows).sort_values(["run_id", "path_run"]).reset_index(drop=True)
@@ -1461,23 +2741,25 @@ def build_experiments_master_table(
     metric_rankings_df = build_metric_rankings_long(master_df)
     winners_compact_df = build_metric_winners_compact(metric_rankings_df)
     planned_run_ids = discover_planned_run_ids(prompts_dir)
-    stacking_readiness_lookup = stacking_readiness_df.set_index("run_id").to_dict(orient="index")
-    runs_catalog_df["es_candidato_meta_modelo"] = runs_catalog_df["run_id"].map(
-        lambda run_id: stacking_readiness_lookup.get(run_id, {}).get("compatible_para_stacking", False)
-    )
-    runs_catalog_df["motivo_exclusion_meta_modelo"] = runs_catalog_df["run_id"].map(
-        lambda run_id: stacking_readiness_lookup.get(run_id, {}).get("motivo_no_compatible", "")
-    )
 
     stacking_base_sheets = {
         f"stacking_base_h{horizon}": build_stacking_base_sheet(
             horizon=horizon,
-            coverage_df=coverage_df,
-            runs_catalog_df=runs_catalog_df,
+            stacking_eligibility_df=stacking_eligibility_df,
             standardized_lookup=standardized_lookup,
         )
         for horizon in (1, 2, 3, 4)
     }
+    stacking_base_summary_df = build_stacking_base_summary(
+        stacking_eligibility_df=stacking_eligibility_df,
+        stacking_base_sheets=stacking_base_sheets,
+    )
+    reconstruction_counts = runs_catalog_df["reconstruccion_hiperparams_status"].fillna("no_recuperable").value_counts().to_dict()
+    eligible_by_horizon = (
+        stacking_eligibility_df.groupby("horizonte_label")["stacking_eligible_horizonte"].sum().to_dict()
+        if not stacking_eligibility_df.empty
+        else {}
+    )
 
     inventory_json = {
         "summary": {
@@ -1488,19 +2770,45 @@ def build_experiments_master_table(
             "e2_master_runs": int(sum(master_df["run_id"].str.startswith("E2_"))),
             "e3_master_runs": int(sum(master_df["run_id"].str.startswith("E3_"))),
             "e4_master_runs": int(sum(master_df["run_id"].str.startswith("E4_"))),
+            "c1_master_runs": int(sum(master_df["run_id"].str.startswith("C1_"))),
+            "c2_master_runs": int(sum(master_df["run_id"].str.startswith("C2_"))),
+            "c3_master_runs": int(sum(master_df["run_id"].str.startswith("C3_"))),
+            "c4_master_runs": int(sum(master_df["run_id"].str.startswith("C4_"))),
             "stacking_compatible_runs": int(stacking_readiness_df["compatible_para_stacking"].sum()),
+            "hyperparams_reconstruccion_completa": int(reconstruction_counts.get("completo", 0)),
+            "hyperparams_reconstruccion_parcial": int(reconstruction_counts.get("parcial", 0)),
+            "hyperparams_no_recuperables": int(reconstruction_counts.get("no_recuperable", 0)),
+            "stacking_eligible_h1": int(eligible_by_horizon.get("H1", 0)),
+            "stacking_eligible_h2": int(eligible_by_horizon.get("H2", 0)),
+            "stacking_eligible_h3": int(eligible_by_horizon.get("H3", 0)),
+            "stacking_eligible_h4": int(eligible_by_horizon.get("H4", 0)),
         },
-        "canonical_runs": master_rows,
+        "canonical_runs": master_df.to_dict(orient="records"),
         "runs_catalogo": runs_catalog_df.to_dict(orient="records"),
         "metricas_por_horizonte_long": metricas_long_df.to_dict(orient="records"),
         "inventory_directories": inventory_rows,
         "stacking_readiness": stacking_readiness_df.to_dict(orient="records"),
+        "stacking_elegibilidad_por_horizonte": stacking_eligibility_df.to_dict(orient="records"),
         "cobertura_predicciones": coverage_df.to_dict(orient="records"),
+        "stacking_bases_resumen": stacking_base_summary_df.to_dict(orient="records"),
         "stacking_base_summary": {
             sheet_name: {
                 "filas": int(len(sheet_df)),
                 "columnas_modelo": int(
-                    len([c for c in sheet_df.columns if c not in {"fecha", "y_true", "n_modelos_disponibles_fila"}])
+                    len(
+                        [
+                            c
+                            for c in sheet_df.columns
+                            if c
+                            not in {
+                                "fecha",
+                                "y_true",
+                                "n_modelos_disponibles_fila",
+                                "fila_completa_todos_modelos",
+                                "cobertura_modelos_fila",
+                            }
+                        ]
+                    )
                 ),
             }
             for sheet_name, sheet_df in stacking_base_sheets.items()
@@ -1515,6 +2823,7 @@ def build_experiments_master_table(
     xlsx_path = output_dir / "tabla_maestra_experimentos_radar.xlsx"
     json_path = output_dir / "inventario_experimentos_radar.json"
     md_path = output_dir / "resumen_auditoria_experimentos.md"
+    readiness_doc_path = output_dir / "documentacion_stacking_readiness_radar.md"
 
     master_df.to_csv(csv_path, index=False)
     with pd.ExcelWriter(xlsx_path, engine="openpyxl") as writer:
@@ -1526,7 +2835,9 @@ def build_experiments_master_table(
         metric_rankings_df.to_excel(writer, sheet_name="ranking_metricas_por_horizonte", index=False)
         winners_compact_df.to_excel(writer, sheet_name="ganadores_por_metrica_horizonte", index=False)
         stacking_readiness_df.to_excel(writer, sheet_name="stacking_readiness", index=False)
+        stacking_eligibility_df.to_excel(writer, sheet_name="stacking_elegibilidad_h", index=False)
         coverage_df.to_excel(writer, sheet_name="cobertura_predicciones", index=False)
+        stacking_base_summary_df.to_excel(writer, sheet_name="stacking_bases_resumen", index=False)
         inventory_df.to_excel(writer, sheet_name="inventario_runs", index=False)
         for sheet_name, sheet_df in stacking_base_sheets.items():
             sheet_df.to_excel(writer, sheet_name=sheet_name, index=False)
@@ -1538,9 +2849,19 @@ def build_experiments_master_table(
             runs_catalog_df=runs_catalog_df,
             inventory_df=inventory_df,
             stacking_readiness_df=stacking_readiness_df,
+            stacking_eligibility_df=stacking_eligibility_df,
             coverage_df=coverage_df,
             stacking_base_sheets=stacking_base_sheets,
+            stacking_base_summary_df=stacking_base_summary_df,
             planned_run_ids=planned_run_ids,
+        )
+    )
+    readiness_doc_path.write_text(
+        build_stacking_readiness_documentation(
+            runs_catalog_df=runs_catalog_df,
+            stacking_readiness_df=stacking_readiness_df,
+            stacking_eligibility_df=stacking_eligibility_df,
+            stacking_base_summary_df=stacking_base_summary_df,
         )
     )
 

@@ -22,6 +22,12 @@ Capas comunes:
    Tracker del grid y de artefactos.
 9. `backfill_runs.py`
    Repara o retrocarga resultados numericos al grid desde runs ya guardados.
+10. `classification_targets.py`
+   Construccion reusable del target de clasificacion por bandas politicas.
+11. `classification_evaluation.py`
+   Walk-forward de clasificacion, metricas multiclase y perdida compuesta de clasificacion.
+12. `classification_pipeline_common.py`
+   Orquestacion reusable de clasificacion con el mismo tracker del pipeline principal.
 
 Runners por familia:
 
@@ -36,6 +42,10 @@ Runners por familia:
 - `run_e7_prophet.py`
 - `run_e8_hibrido_residuales.py`
 - `run_e9_stacking.py`
+- `run_c1_random_forest_classifier.py`
+- `run_c2_xgboost_classifier.py`
+- `run_c3_catboost_classifier.py`
+- `run_c4_lightgbm_classifier.py`
 
 Reglas de organizacion:
 
@@ -49,4 +59,9 @@ Estado metodologico:
 
 - `E1` Ridge queda cerrado como baseline lineal principal: `E1_v5_clean` mejor global y `E1_v4_clean` referencia parsimoniosa.
 - `E2` Huber queda cerrado como familia no competitiva: `E2_v3_clean` gana internamente, pero no supera a Ridge y `E2_v4_clean` se cancela por decision metodologica.
+- `E3` queda cerrado en su rama base con `E3_v2_clean` como mejor bagging interno.
+- `E4` queda cerrado en su rama base con `E4_v1_clean` como mejor run interno, pero sin superar a `E3_v2_clean` ni a Ridge.
+- `E5` ya queda abierto con `run_e5_catboost.py` y `E5_v1_clean` como primera referencia CatBoost.
 - `E3`, `E4` y `E5` usan la misma base reusable para comparaciones contra runs de referencia y guardado de features seleccionadas cuando aplica.
+- La rama `C1-C4` de clasificacion queda preparada con scripts por familia, pero todavia sin corridas ejecutadas.
+- La clasificacion reutiliza el mismo `RadarExperimentTracker`; no abre un tracker paralelo.

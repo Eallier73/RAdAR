@@ -1,0 +1,50 @@
+[
+  {
+    "feature_candidates": 83,
+    "feature_mode": "corr",
+    "horizonte_sem": 1,
+    "rows_eval": 26,
+    "rows_modeling": 66,
+    "selected_feature_count_avg": 30.0,
+    "selected_feature_count_max": 30,
+    "selected_feature_count_min": 30,
+    "target_mode": "nivel",
+    "transform_mode": ""
+  },
+  {
+    "feature_candidates": 83,
+    "feature_mode": "corr",
+    "horizonte_sem": 2,
+    "rows_eval": 25,
+    "rows_modeling": 65,
+    "selected_feature_count_avg": 30.0,
+    "selected_feature_count_max": 30,
+    "selected_feature_count_min": 30,
+    "target_mode": "nivel",
+    "transform_mode": ""
+  },
+  {
+    "feature_candidates": 83,
+    "feature_mode": "corr",
+    "horizonte_sem": 3,
+    "rows_eval": 24,
+    "rows_modeling": 64,
+    "selected_feature_count_avg": 30.0,
+    "selected_feature_count_max": 30,
+    "selected_feature_count_min": 30,
+    "target_mode": "nivel",
+    "transform_mode": ""
+  },
+  {
+    "feature_candidates": 83,
+    "feature_mode": "corr",
+    "horizonte_sem": 4,
+    "rows_eval": 23,
+    "rows_modeling": 63,
+    "selected_feature_count_avg": 30.0,
+    "selected_feature_count_max": 30,
+    "selected_feature_count_min": 30,
+    "target_mode": "nivel",
+    "transform_mode": ""
+  }
+]

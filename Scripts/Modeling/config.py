@@ -45,6 +45,30 @@ TARGET_MODE_CHOICES = (
     TARGET_MODE_DELTA,
 )
 
+TARGET_MODE_CLF_BANDAS_5CLASES = "bandas_5clases"
+TARGET_MODE_CLF_CHOICES = (TARGET_MODE_CLF_BANDAS_5CLASES,)
+
+CLASS_LABELS_5 = (
+    "baja_fuerte",
+    "baja_moderada",
+    "se_mantiene",
+    "sube_moderada",
+    "sube_fuerte",
+)
+
+CLASS_LABELS_3 = (
+    "baja",
+    "se_mantiene",
+    "sube",
+)
+
+CLASS_CHANGE_THRESHOLDS = {
+    "baja_fuerte_max": -3.0,
+    "baja_moderada_max": -1.5,
+    "sube_moderada_min": 1.5,
+    "sube_fuerte_min": 3.0,
+}
+
 FEATURE_MODE_ALL = "all"
 FEATURE_MODE_CORR = "corr"
 FEATURE_MODE_LASSO = "lasso"

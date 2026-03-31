@@ -1,0 +1,12 @@
+{
+  "created_at": "2026-03-30 09:04:43",
+  "experiment_id": "E5",
+  "family": "arboles_boosting",
+  "model": "catboost_regressor",
+  "parametros_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E5_v2_clean_20260330_090443/parametros_run.json",
+  "run_dir": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E5_v2_clean_20260330_090443",
+  "run_id": "E5_v2_clean",
+  "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e5_catboost.py",
+  "snapshot_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E5_v2_clean_20260330_090443/scripts/run_e5_catboost.py",
+  "task_type": "regresion"
+}

@@ -19,6 +19,22 @@ Estructura:
   Tambien incluye prompts para automatizar esa auditoria dentro del tracker.
 - `07_familia_boosting/`
   Prompts de apertura de la familia E4 Boosting, comparacion contra Ridge y arboles bagging, y continuidad futura.
+- `08_familia_catboost/`
+  Prompts de cierre formal de E4 y apertura de la familia E5 CatBoost, dejando mapeada la continuidad hacia E6, E7 y E8.
+- `09_clasificacion_radar/`
+  Prompt rector de apertura de la rama paralela de clasificacion C1-C4.
+- `10_clasificacion_random_forest/`
+  Prompt operativo de la familia C1 RandomForestClassifier.
+- `11_clasificacion_xgboost/`
+  Prompt operativo de la familia C2 XGBoostClassifier.
+- `12_clasificacion_catboost/`
+  Prompt operativo de la familia C3 CatBoostClassifier.
+- `13_clasificacion_lightgbm/`
+  Prompt operativo de la familia C4 LightGBMClassifier.
+- `14_familia_arimax/`
+  Prompt operativo de apertura de la familia E6 ARIMAX/SARIMAX con exogenas.
+- `15_familia_prophet/`
+  Prompt operativo de apertura de la familia E7 Prophet con regresores exogenos.
 
 Convencion de nombres:
 
@@ -43,5 +59,14 @@ Mapa actual:
 - `06_auditoria_experimental/02_integracion_automatica_auditoria_tracker.md`
 - `06_auditoria_experimental/03_ampliacion_tabla_maestra_ranking_metricas_horizonte.md`
 - `06_auditoria_experimental/04_ampliacion_tabla_maestra_para_stacking.md`
+- `06_auditoria_experimental/05_retrofitting_stacking_y_hiperparametros_master_table.md`
 - `07_familia_boosting/01_apertura_e4_boosting.md`
 - `07_familia_boosting/02_continuacion_controlada_e4_v2_e4_v3.md`
+- `08_familia_catboost/01_cierre_e4_y_apertura_e5_catboost.md`
+- `09_clasificacion_radar/01_apertura_rama_clasificacion_c1_c4.md`
+- `10_clasificacion_random_forest/01_c1_random_forest_classifier.md`
+- `11_clasificacion_xgboost/01_c2_xgboost_classifier.md`
+- `12_clasificacion_catboost/01_c3_catboost_classifier.md`
+- `13_clasificacion_lightgbm/01_c4_lightgbm_classifier.md`
+- `14_familia_arimax/01_apertura_e6_arimax.md`
+- `15_familia_prophet/01_apertura_e7_prophet.md`
