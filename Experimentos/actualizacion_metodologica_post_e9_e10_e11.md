@@ -6,6 +6,14 @@ Fecha: `2026-04-01`
 
 Este documento registra una decision metodologica posterior a la apertura de `E9`, sin reescribir la historia del proyecto ni forzar una lectura simplista de ganador unico.
 
+Nota de alcance:
+
+- Este documento conserva la decision tomada justo despues de `E9_v2_clean`.
+- El estado canonico posterior de `E10`, de la clasificacion y de la capa explicativa transversal debe leerse hoy junto con:
+  - [plan_de_experimentacion_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/plan_de_experimentacion_radar.md)
+  - [bitacora_experimental_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/bitacora_experimental_radar.md)
+  - [resumen_saneamiento_documental_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_saneamiento_documental_radar.md)
+
 La decision parte de la evidencia ya observada en:
 
 - `E1_v5_clean`

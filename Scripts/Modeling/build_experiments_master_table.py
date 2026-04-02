@@ -56,6 +56,25 @@ MODEL_HYPERPARAM_KEYS: tuple[tuple[tuple[str, ...], tuple[str, ...]], ...] = (
         ),
     ),
     (
+        ("bayesian",),
+        (
+            "alpha_1",
+            "alpha_2",
+            "alpha_init",
+            "compute_score",
+            "copy_x",
+            "fit_intercept",
+            "lambda_1",
+            "lambda_2",
+            "lambda_init",
+            "max_iter",
+            "tol",
+            "verbose",
+            "tuning_strategy",
+            "uses_scaling",
+        ),
+    ),
+    (
         ("huber",),
         (
             "alpha",
@@ -299,14 +318,15 @@ FAMILY_STATUS_VIGENTE_ROWS: tuple[dict[str, str], ...] = (
     },
     {
         "family": "E10",
-        "estado_vigente": "activa premodelado",
-        "mejor_run": "",
-        "rol_funcional": "familia contextual / gating",
+        "estado_vigente": "modelado inicial fragil",
+        "mejor_run": "E10_v1_clean",
+        "rol_funcional": "selector contextual duro",
         "decision_metodologica": (
-            "La tabla operativa de E10 ya fue construida; la siguiente tarea es correr el primer selector/gating "
-            "contextual sin repetir E9."
+            "E10 ya tiene corrida canonica inicial. E10_v1_clean fue metodologicamente limpio y trazable, "
+            "pero no supero al selector fijo, a E1_v5_clean ni a E9_v2_clean; la familia queda abierta en "
+            "evaluacion fragil, no en premodelado."
         ),
-        "siguiente_movimiento": "primer runner/modelo canonico de E10",
+        "siguiente_movimiento": "reformular selector antes de E10_v2; no escalar aun",
     },
     {
         "family": "E11",
@@ -318,7 +338,213 @@ FAMILY_STATUS_VIGENTE_ROWS: tuple[dict[str, str], ...] = (
         ),
         "siguiente_movimiento": "preapertura conceptual; no ejecutar todavia",
     },
+    {
+        "family": "C1",
+        "estado_vigente": "evaluada y pausada tempranamente",
+        "mejor_run": "",
+        "rol_funcional": "clasificacion bagging base",
+        "decision_metodologica": (
+            "C1 si se ejecuto con tres corridas canonicas, pero las tres colapsaron a clase unica y no dejaron "
+            "senal discriminativa util. La rama queda abierta solo como antecedente, no como linea prioritaria."
+        ),
+        "siguiente_movimiento": "sin expansion inmediata; revisar target clasificacion antes de reactivar",
+    },
+    {
+        "family": "C2",
+        "estado_vigente": "infraestructura preparada",
+        "mejor_run": "",
+        "rol_funcional": "clasificacion boosting",
+        "decision_metodologica": (
+            "La familia tiene runner y prompt canonicos, pero no corridas ejecutadas todavia."
+        ),
+        "siguiente_movimiento": "no prioritaria; ejecutar solo si se redefine la agenda de clasificacion",
+    },
+    {
+        "family": "C3",
+        "estado_vigente": "infraestructura preparada",
+        "mejor_run": "",
+        "rol_funcional": "clasificacion boosting",
+        "decision_metodologica": (
+            "La familia tiene runner y prompt canonicos, pero no corridas ejecutadas todavia."
+        ),
+        "siguiente_movimiento": "no prioritaria; ejecutar solo si se redefine la agenda de clasificacion",
+    },
+    {
+        "family": "C4",
+        "estado_vigente": "infraestructura preparada",
+        "mejor_run": "",
+        "rol_funcional": "clasificacion boosting",
+        "decision_metodologica": (
+            "La familia tiene runner y prompt canonicos, pero no corridas ejecutadas todavia."
+        ),
+        "siguiente_movimiento": "no prioritaria; ejecutar solo si se redefine la agenda de clasificacion",
+    },
 )
+
+FAMILY_CANONICAL_CONSTRUCTS: dict[str, str] = {
+    "E1": "baseline lineal numerico principal",
+    "E2": "familia robusta de contraste historico",
+    "E3": "referencia bagging de diversidad",
+    "E4": "boosting historico cerrado",
+    "E5": "campeon no lineal tabular vigente",
+    "E6": "referencia temporal debilitada",
+    "E7": "referencia temporal secundaria",
+    "E8": "hibrido residual auditable",
+    "E9": "rama operativa de riesgo-direccion-caidas",
+    "E10": "selector contextual inicial",
+    "E11": "linea futura dual numerica+categórica",
+    "C1": "clasificacion base evaluada",
+    "C2": "clasificacion boosting preparada",
+    "C3": "clasificacion boosting preparada",
+    "C4": "clasificacion boosting preparada",
+}
+
+RUN_CANONICAL_CONSTRUCTS: dict[str, dict[str, str]] = {
+    "C1_v1_clean": {
+        "constructo": "baseline prudente de clasificacion",
+        "justificacion": "Primera apertura real de clasificacion; sirve como antecedente metodologico, pero no dejo senal util por colapso del target.",
+    },
+    "C1_v2_clean": {
+        "constructo": "control parsimonioso de clasificacion",
+        "justificacion": "Variante mas contenida dentro de C1; confirma que el problema era el target y no solo la complejidad del clasificador.",
+    },
+    "C1_v3_clean": {
+        "constructo": "control flexible de clasificacion",
+        "justificacion": "Variante mas flexible de C1; tampoco rompe el colapso a clase unica y cierra la rama temprana.",
+    },
+    "E10_v1_clean": {
+        "constructo": "selector contextual duro inicial",
+        "justificacion": "Primera corrida canonica de gating contextual; metodologicamente limpia pero todavia fragil frente a benchmarks.",
+    },
+    "E1_1_v1_bayesian_base": {
+        "constructo": "micro-rama tactica bayesiana",
+        "justificacion": "Verificacion corta para probar margen lineal adicional; no altero el cierre principal de E1.",
+    },
+    "E1_v1": {
+        "constructo": "baseline historico retrointegrado",
+        "justificacion": "Run historico recuperado para trazabilidad y comparacion retrospectiva; no gobierna la lectura vigente.",
+    },
+    "E1_v2": {
+        "constructo": "baseline historico documentado",
+        "justificacion": "Version historica previa al cierre limpio; sirve como antecedente de la evolucion de Ridge.",
+    },
+    "E1_v2_clean": {
+        "constructo": "baseline Ridge limpio historico",
+        "justificacion": "Primera referencia limpia reconstruida de Ridge; importante como antecedente comparativo, pero superada por E1_v4 y E1_v5.",
+    },
+    "E1_v3_clean": {
+        "constructo": "hipotesis delta descartada",
+        "justificacion": "Control sobre target delta; su deterioro ayudo a cerrar la via de Ridge en nivel como direccion preferible.",
+    },
+    "E1_v4_clean": {
+        "constructo": "referencia parsimoniosa vigente",
+        "justificacion": "Run equilibrado y mas simple dentro de E1; conserva valor canonico aunque no sea el campeon global.",
+    },
+    "E1_v5_clean": {
+        "constructo": "campeon numerico puro vigente",
+        "justificacion": "Mejor referente actual para pronostico numerico puro del Radar.",
+    },
+    "E2_v1_clean": {
+        "constructo": "baseline robusto limpio",
+        "justificacion": "Primera apertura Huber bajo el marco limpio; fija el punto de partida de la familia robusta.",
+    },
+    "E2_v2_clean": {
+        "constructo": "control de convergencia",
+        "justificacion": "Sirve para descartar que el desempeno de Huber se explicara por optimizacion incompleta.",
+    },
+    "E2_v3_clean": {
+        "constructo": "campeon interno de familia cerrada",
+        "justificacion": "Mejor Huber interno; conserva valor historico como referencia robusta, pero no reabre la familia.",
+    },
+    "E3_v1_clean": {
+        "constructo": "baseline no lineal bagging",
+        "justificacion": "Primera apertura no lineal util de bagging; demuestra que la no linealidad si agrega senal.",
+    },
+    "E3_v2_clean": {
+        "constructo": "campeon bagging vigente",
+        "justificacion": "Mejor referencia bagging cerrada; sigue aportando diversidad real frente a lineales y boosting.",
+    },
+    "E3_v3_clean": {
+        "constructo": "variante extra trees descartada",
+        "justificacion": "Prueba de flexibilidad adicional que no justifico expansion dentro de E3.",
+    },
+    "E4_v1_clean": {
+        "constructo": "campeon boosting historico",
+        "justificacion": "Mejor run interno de XGBoost; se conserva como referencia secundaria, no como linea vigente.",
+    },
+    "E4_v2_clean": {
+        "constructo": "variante parsimoniosa descartada",
+        "justificacion": "Control corr vs all dentro de boosting; no mejoro al baseline de la familia.",
+    },
+    "E4_v3_clean": {
+        "constructo": "variante delta descartada",
+        "justificacion": "Control target delta dentro de boosting; deterioro fuerte que ayudo a cerrar E4.",
+    },
+    "E5_v1_clean": {
+        "constructo": "baseline catboost",
+        "justificacion": "Primera apertura de CatBoost bajo el marco limpio; punto de partida de la familia tabular dominante.",
+    },
+    "E5_v2_clean": {
+        "constructo": "control corr_vs_all catboost",
+        "justificacion": "Prueba focal del universo exogeno en CatBoost; quedo dominada por E5_v4.",
+    },
+    "E5_v3_clean": {
+        "constructo": "control de profundidad catboost",
+        "justificacion": "Ajuste acotado de complejidad en CatBoost; no mejoro al campeon interno.",
+    },
+    "E5_v4_clean": {
+        "constructo": "campeon no lineal tabular vigente",
+        "justificacion": "Mejor run no lineal tabular del proyecto y referencia competitiva central.",
+    },
+    "E5_v5_clean": {
+        "constructo": "tuning focal dominado",
+        "justificacion": "Segunda ola de tuning acotado; util para cierre interno, pero superada por E5_v4.",
+    },
+    "E6_v1_clean": {
+        "constructo": "campeon interno debilitado",
+        "justificacion": "Mejor ARIMAX interno, aunque claramente no competitivo; conserva valor solo como referencia temporal debil.",
+    },
+    "E6_v2_clean": {
+        "constructo": "control amplitud exogena descartado",
+        "justificacion": "Prueba de amplitud exogena en ARIMAX; empeoro y debilito aun mas a la familia.",
+    },
+    "E7_v1_clean": {
+        "constructo": "baseline temporal parsimonioso",
+        "justificacion": "Apertura limpia de Prophet con exogenas parsimoniosas; prueba que la familia mejora a E6.",
+    },
+    "E7_v2_clean": {
+        "constructo": "variante all colapsada",
+        "justificacion": "Control de amplitud exogena en Prophet; colapso numerico que refuerza la parsimonia.",
+    },
+    "E7_v3_clean": {
+        "constructo": "campeon temporal secundario",
+        "justificacion": "Mejor Prophet interno; aporta sesgo temporal estructurado sin entrar al bloque principal.",
+    },
+    "E8_v1_clean": {
+        "constructo": "hibrido residual inicial",
+        "justificacion": "Primera apertura residual limpia; valida la arquitectura, pero no la vuelve competitiva.",
+    },
+    "E8_v2_clean": {
+        "constructo": "campeon hibrido residual",
+        "justificacion": "Mejor residual interno y referencia de la familia hibrida, aunque no supera a sus mejores bases.",
+    },
+    "E8_v3_clean": {
+        "constructo": "variante prophet residual colapsada",
+        "justificacion": "Prueba temporal residual sobre CatBoost que no funciono y cerro esa direccion.",
+    },
+    "E9_smoke_tmp": {
+        "constructo": "smoke tecnico no canonico",
+        "justificacion": "Corrida tecnica de integracion para E9; no debe leerse como evidencia comparativa final.",
+    },
+    "E9_v1_clean": {
+        "constructo": "baseline stacking clasico ridge",
+        "justificacion": "Primera corrida operativa de stacking controlado; deja una mejora parcial localizada pero no gana el global.",
+    },
+    "E9_v2_clean": {
+        "constructo": "campeon riesgo-direccion-caidas",
+        "justificacion": "Mejor referente actual de riesgo, direccion y deteccion de caidas dentro del Radar.",
+    },
+}
 
 E9_PRIORITY_RUN_NOTES: dict[str, dict[str, str]] = {
     "E1_v5_clean": {
@@ -2584,6 +2810,134 @@ def build_family_status_vigente_df() -> pd.DataFrame:
     return pd.DataFrame(FAMILY_STATUS_VIGENTE_ROWS)
 
 
+def infer_family_code_from_run_id(run_id: str) -> str:
+    if run_id.startswith("E1_1_"):
+        return "E1.1"
+    match = re.match(r"^(E\d+|C\d+)", run_id)
+    return match.group(1) if match else ""
+
+
+def build_family_constructs_df() -> pd.DataFrame:
+    family_status_df = build_family_status_vigente_df().copy()
+    family_status_df["constructo_familia"] = family_status_df["family"].map(FAMILY_CANONICAL_CONSTRUCTS).fillna(
+        family_status_df["rol_funcional"]
+    )
+    return family_status_df[
+        [
+            "family",
+            "constructo_familia",
+            "estado_vigente",
+            "mejor_run",
+            "rol_funcional",
+            "decision_metodologica",
+            "siguiente_movimiento",
+        ]
+    ].copy()
+
+
+def build_run_constructs_df(master_df: pd.DataFrame, family_status_df: pd.DataFrame) -> pd.DataFrame:
+    family_lookup = family_status_df.set_index("family").to_dict(orient="index")
+    rows: list[dict[str, Any]] = []
+    for _, row in master_df.sort_values("run_id").iterrows():
+        run_id = str(row.get("run_id", ""))
+        family_code = infer_family_code_from_run_id(run_id)
+        family_info = family_lookup.get(family_code, {})
+        manual = RUN_CANONICAL_CONSTRUCTS.get(run_id)
+        if manual:
+            constructo = manual["constructo"]
+            justificacion = manual["justificacion"]
+        elif str(row.get("status_canonico", "")) != "canonico_completo":
+            constructo = "run tecnico no canonico"
+            justificacion = "Run retenido solo por trazabilidad; no debe leerse como evidencia comparativa principal."
+        else:
+            constructo = "run documentado"
+            justificacion = "Run registrado con trazabilidad suficiente, pero sin un constructo especifico adicional."
+        rows.append(
+            {
+                "run_id": run_id,
+                "family_code": family_code,
+                "family_group": row.get("family"),
+                "model": row.get("model"),
+                "status_canonico": row.get("status_canonico"),
+                "L_total_Radar": row.get("L_total_Radar"),
+                "estado_familia_vigente": family_info.get("estado_vigente", ""),
+                "constructo_run": constructo,
+                "rol_funcional_familia": family_info.get("rol_funcional", ""),
+                "justificacion_breve": justificacion,
+            }
+        )
+    return pd.DataFrame(rows)
+
+
+def build_explainability_status_df(runs_catalog_df: pd.DataFrame) -> pd.DataFrame:
+    total_runs = int(len(runs_catalog_df))
+    with_selected_features = int(runs_catalog_df["features_artifact_available"].fillna(False).sum())
+    with_coefficients = int(runs_catalog_df["tiene_coeficientes"].fillna(False).sum())
+    with_importances = int(runs_catalog_df["tiene_importancias"].fillna(False).sum())
+    with_shap = int(runs_catalog_df["tiene_shap_o_equivalente"].fillna(False).sum())
+    comparable_homogeneous = int(
+        runs_catalog_df["explicabilidad_transversal_homogenea"].fillna(False).sum()
+    )
+
+    rows = [
+        {
+            "dimension": "clasificacion_principal",
+            "valor": "parcial intra-familia",
+            "justificacion": (
+                "Existen artefactos parciales de seleccion de variables por horizonte en una fraccion de runs, "
+                "pero no hay coeficientes, importancias o SHAP exportados de forma homogénea y comparable entre familias."
+            ),
+        },
+        {
+            "dimension": "runs_con_features_seleccionadas",
+            "valor": with_selected_features,
+            "justificacion": (
+                f"{with_selected_features} de {total_runs} runs maestros tienen archivos "
+                "`features_seleccionadas_h*.csv`; esto sirve para lectura intra-run o intra-familia, no para comparacion transversal canonica."
+            ),
+        },
+        {
+            "dimension": "runs_con_coeficientes_exportados",
+            "valor": with_coefficients,
+            "justificacion": "No se localizaron artefactos de coeficientes exportados de forma sistematica.",
+        },
+        {
+            "dimension": "runs_con_importancias_exportadas",
+            "valor": with_importances,
+            "justificacion": "No se localizaron artefactos de importancias exportadas de forma sistematica.",
+        },
+        {
+            "dimension": "runs_con_shap_exportado",
+            "valor": with_shap,
+            "justificacion": "No se localizaron artefactos SHAP o equivalentes reutilizables de forma sistematica.",
+        },
+        {
+            "dimension": "runs_marcados_como_homogeneos",
+            "valor": comparable_homogeneous,
+            "justificacion": (
+                "Ningun run puede considerarse parte de una capa explicativa transversal canonica solo con la evidencia actual."
+            ),
+        },
+        {
+            "dimension": "lectura_metodologica_vigente",
+            "valor": "performance_y_riesgo_siguen_siendo_la_base_de_decision",
+            "justificacion": (
+                "La eleccion de modelos sigue descansando principalmente en performance, direccion y deteccion de caidas; "
+                "la interpretabilidad actual es fragmentaria y no resuelve comparabilidad inter-familias."
+            ),
+        },
+        {
+            "dimension": "faltante_para_capa_transversal_canonica",
+            "valor": "exportar_artefactos_homogeneos_por_familia_y_horizonte",
+            "justificacion": (
+                "Haria falta exportar de forma sistematica, por horizonte y con taxonomia comun, coeficientes o importancias "
+                "comparables entre lineales, arboles, boosting y familias temporales."
+            ),
+        },
+    ]
+    return pd.DataFrame(rows)
+
+
 def build_e9_curacion_resumen_df(
     *,
     source_xlsx_path: Path,
@@ -3145,6 +3499,15 @@ def build_stacking_readiness_documentation(
     )
     return f"""# Readiness para Stacking y Master Table Enriquecida
 
+## Alcance de este documento
+
+Este documento audita elegibilidad para stacking de runs base reutilizables. No fija por si solo el estado canónico completo de cada familia.
+
+En particular:
+
+- `E10_v1_clean` ya existe como corrida canonica de la familia `E10`, pero no aparece como elegible para stacking porque es un meta-selector final y sus predicciones no son mergeables como base simple de `E9`.
+- `C1_v1_clean`, `C1_v2_clean` y `C1_v3_clean` si existen como corridas canonicas de clasificacion, pero quedan fuera de stacking por cambio de tarea (`task_type=clasificacion`).
+
 ## Que significa un run elegible para stacking en Radar
 
 Un run se considera elegible para stacking solo si cumple simultaneamente estas reglas:
@@ -3213,6 +3576,7 @@ Supuestos no permitidos:
 - Algunos runs historicos mantienen estructura antigua y su reconstruccion es solo parcial.
 - La elegibilidad global y la elegibilidad por horizonte no coinciden siempre.
 - Las bases stacking siguen siendo preparatorias: no contienen todavia meta-features ni entrenamiento del meta-modelo.
+- La no elegibilidad de `E10_v1_clean` en este documento no equivale a que `E10` siga en premodelado; solo significa que `E10` no es un modelo base reutilizable dentro de stacking clasico.
 
 ## Uso hacia adelante
 
@@ -3221,6 +3585,34 @@ La automatizacion hacia adelante no requiere infraestructura paralela:
 - `experiment_logger.py` ya refresca la auditoria maestra al cerrar runs completos.
 - `backfill_runs.py` ya rehidrata el workbook y dispara el refresh unico al final.
 - Esta ampliacion hace que cada corrida nueva quede retroproyectada automaticamente al catalogo enriquecido y a las bases stacking por horizonte.
+"""
+
+
+def build_constructs_documentation(
+    *,
+    family_constructs_df: pd.DataFrame,
+    run_constructs_df: pd.DataFrame,
+) -> str:
+    return f"""# Diccionario de Constructos Canonicos Radar
+
+## Proposito
+
+Este documento fija los constructos canonicos de familias y runs para mantener una lectura metodologica consistente del proyecto.
+
+## Reglas de lectura
+
+- `constructo_familia` describe el papel vigente de la familia en el programa experimental.
+- `constructo_run` describe el papel metodologico del run dentro de su familia o dentro de la historia experimental.
+- Un constructo ordena la lectura; no reemplaza metricas, artefactos ni evidencia numerica.
+- Los runs tecnicos o no canonicos se conservan por trazabilidad, no como evidencia competitiva principal.
+
+## Constructos de familia
+
+{render_dataframe_markdown(family_constructs_df, 'Sin constructos de familia.')}
+
+## Constructos de run
+
+{render_dataframe_markdown(run_constructs_df, 'Sin constructos de run.')}
 """
 
 
@@ -3234,7 +3626,9 @@ def build_markdown_summary(
     coverage_df: pd.DataFrame,
     stacking_base_sheets: dict[str, pd.DataFrame],
     stacking_base_summary_df: pd.DataFrame,
+    explainability_status_df: pd.DataFrame,
     planned_run_ids: list[str],
+    family_constructs_df: pd.DataFrame,
 ) -> str:
     family_status_df = build_family_status_vigente_df()
     metric_rankings_df = build_metric_rankings_long(master_df)
@@ -3333,7 +3727,8 @@ def build_markdown_summary(
 - Runs en catalogo integral: {len(runs_catalog_df)}
 - Directorios auditados en inventario: {len(inventory_df)}
 - Directorios con artefactos parciales o inconsistentes: {len(partial_dirs)}
-- Familias con runs maestros: {json.dumps(family_counts, ensure_ascii=False)}
+- Familias con runs maestros de regresion: {json.dumps(family_counts, ensure_ascii=False)}
+- Corridas canonicas de clasificacion detectadas: `C1={int(sum(master_df['run_id'].str.startswith('C1_')))}, C2={int(sum(master_df['run_id'].str.startswith('C2_')))}, C3={int(sum(master_df['run_id'].str.startswith('C3_')))}, C4={int(sum(master_df['run_id'].str.startswith('C4_')))}`
 
 ## Mejor desempeño encontrado
 
@@ -3351,7 +3746,7 @@ def build_markdown_summary(
 - `E1_v5_clean` sigue siendo el referente numerico puro principal del Radar.
 - `E9_v2_clean` queda como el mejor referente actual orientado a riesgo, direccion y deteccion de caidas.
 - Esa diferencia no se interpreta como contradiccion, sino como dualidad funcional entre pronostico numerico del porcentaje y utilidad operativa del movimiento.
-- En consecuencia, `E9` queda util pero pausada, `E10` sigue como siguiente linea activa y `E11` queda abierta como familia futura de arquitectura dual.
+- En consecuencia, `E9` queda util pero pausada, `E10` ya fue abierto formalmente con `E10_v1_clean` y queda en modelado inicial fragil, y `E11` queda abierta como familia futura de arquitectura dual.
 
 ## Fortalezas operativas por horizonte
 
@@ -3379,6 +3774,18 @@ def build_markdown_summary(
 
 {render_dataframe_markdown(family_status_df, 'No se pudo construir el estado vigente de familias.')}
 
+## Constructos canonicos
+
+{render_dataframe_markdown(family_constructs_df[['family', 'constructo_familia', 'mejor_run', 'estado_vigente']], 'No se pudo sintetizar constructos de familia.')}
+
+Registro ampliado:
+
+- El detalle completo de constructos por run se exporta en `registro_constructos_runs_radar.csv` y `diccionario_constructos_canonicos_radar.md`.
+
+## Estado de la capa explicativa transversal
+
+{render_dataframe_markdown(explainability_status_df, 'No se pudo sintetizar el estado de la capa explicativa.')}
+
 ## Runs parciales / inconsistentes
 
 {partial_dirs_text}
@@ -3400,6 +3807,7 @@ Nota: esta lista sale de menciones en prompts/documentos `.md`; no distingue aut
 - Directorios con `features_seleccionadas_h*.csv`: {selected_features_count}
 - Directorios con `resumen_modeling_horizontes.json`: {resumen_count}
 - No se encontraron artefactos homogéneos y reutilizables de importancias de variables o coeficientes comparables entre familias. Esa capa explicativa sigue pendiente.
+- La clasificacion principal de esa capa sigue siendo `parcial intra-familia`: hay seleccion de variables por horizonte en algunos runs, pero no una taxonomia homogenea y comparable entre familias.
 
 ## Readiness para stacking / hipermodelo
 
@@ -3513,6 +3921,9 @@ def build_experiments_master_table(
     }
     e9_base_summary_df = build_e9_bases_summary(e9_base_sheets)
     family_status_df = build_family_status_vigente_df()
+    family_constructs_df = build_family_constructs_df()
+    run_constructs_df = build_run_constructs_df(master_df, family_status_df)
+    explainability_status_df = build_explainability_status_df(runs_catalog_df)
     reconstruction_counts = runs_catalog_df["reconstruccion_hiperparams_status"].fillna("no_recuperable").value_counts().to_dict()
     eligible_by_horizon = (
         stacking_eligibility_df.groupby("horizonte_label")["stacking_eligible_horizonte"].sum().to_dict()
@@ -3586,6 +3997,9 @@ def build_experiments_master_table(
             "bases_resumen": e9_base_summary_df.to_dict(orient="records"),
         },
         "estado_familias_vigente": family_status_df.to_dict(orient="records"),
+        "constructos_familias_vigente": family_constructs_df.to_dict(orient="records"),
+        "constructos_runs_vigente": run_constructs_df.to_dict(orient="records"),
+        "estado_capa_explicativa_transversal": explainability_status_df.to_dict(orient="records"),
         "planned_run_ids_detected": planned_run_ids,
         "planned_without_artifacts": [
             run_id for run_id in planned_run_ids if run_id not in set(master_df["run_id"])
@@ -3599,8 +4013,11 @@ def build_experiments_master_table(
     md_path = output_dir / "resumen_auditoria_experimentos.md"
     readiness_doc_path = output_dir / "documentacion_stacking_readiness_radar.md"
     e9_markdown_path = output_dir / "preparacion_tabla_e9_stacking_controlado.md"
+    constructs_doc_path = output_dir / "diccionario_constructos_canonicos_radar.md"
+    constructs_csv_path = output_dir / "registro_constructos_runs_radar.csv"
 
     master_df.to_csv(csv_path, index=False)
+    run_constructs_df.to_csv(constructs_csv_path, index=False)
     with pd.ExcelWriter(xlsx_path, engine="openpyxl") as writer:
         runs_catalog_df.to_excel(writer, sheet_name="runs_catalogo", index=False)
         master_df.to_excel(writer, sheet_name="runs_consolidados", index=False)
@@ -3614,6 +4031,9 @@ def build_experiments_master_table(
         coverage_df.to_excel(writer, sheet_name="cobertura_predicciones", index=False)
         stacking_base_summary_df.to_excel(writer, sheet_name="stacking_bases_resumen", index=False)
         family_status_df.to_excel(writer, sheet_name="estado_familias_vigente", index=False)
+        family_constructs_df.to_excel(writer, sheet_name="constructos_familias_vigente", index=False)
+        run_constructs_df.to_excel(writer, sheet_name="constructos_runs_vigente", index=False)
+        explainability_status_df.to_excel(writer, sheet_name="estado_explicabilidad_transversal", index=False)
         inventory_df.to_excel(writer, sheet_name="inventario_runs", index=False)
         for sheet_name, sheet_df in stacking_base_sheets.items():
             sheet_df.to_excel(writer, sheet_name=sheet_name, index=False)
@@ -3635,6 +4055,9 @@ def build_experiments_master_table(
         coverage_df.to_excel(writer, sheet_name="cobertura_predicciones", index=False)
         stacking_base_summary_df.to_excel(writer, sheet_name="stacking_bases_resumen", index=False)
         family_status_df.to_excel(writer, sheet_name="estado_familias_vigente", index=False)
+        family_constructs_df.to_excel(writer, sheet_name="constructos_familias_vigente", index=False)
+        run_constructs_df.to_excel(writer, sheet_name="constructos_runs_vigente", index=False)
+        explainability_status_df.to_excel(writer, sheet_name="estado_explicabilidad_transversal", index=False)
         inventory_df.to_excel(writer, sheet_name="inventario_runs", index=False)
         for sheet_name, sheet_df in stacking_base_sheets.items():
             sheet_df.to_excel(writer, sheet_name=sheet_name, index=False)
@@ -3658,7 +4081,9 @@ def build_experiments_master_table(
             coverage_df=coverage_df,
             stacking_base_sheets=stacking_base_sheets,
             stacking_base_summary_df=stacking_base_summary_df,
+            explainability_status_df=explainability_status_df,
             planned_run_ids=planned_run_ids,
+            family_constructs_df=family_constructs_df,
         )
     )
     readiness_doc_path.write_text(
@@ -3675,6 +4100,12 @@ def build_experiments_master_table(
             curated_xlsx_path=e9_curated_xlsx_path,
             construct_df=e9_construct_df,
             e9_bases_summary_df=e9_base_summary_df,
+        )
+    )
+    constructs_doc_path.write_text(
+        build_constructs_documentation(
+            family_constructs_df=family_constructs_df,
+            run_constructs_df=run_constructs_df,
         )
     )
 

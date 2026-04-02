@@ -61,6 +61,7 @@ import argparse
 import fcntl
 import json
 import shutil
+import sys
 from copy import copy
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -70,6 +71,12 @@ from typing import Any
 from openpyxl import load_workbook
 from openpyxl.styles import Font, PatternFill
 from openpyxl.utils import get_column_letter
+
+SCRIPTS_DIR = Path(__file__).resolve().parents[1]
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
+
+from common_runtime_logging import log_event
 
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
@@ -270,6 +277,14 @@ class RunContext:
         output_path = self.run_dir / filename
         ensure_parent(output_path)
         output_path.write_text(json_dumps_pretty(payload), encoding="utf-8")
+        log_event(
+            "experiment_logger",
+            "INFO",
+            "Artefacto JSON guardado",
+            run_id=self.run_id,
+            artifact=output_path.name,
+            artifact_type=artifact_type,
+        )
         return self.register_artifact(output_path, artifact_type=artifact_type, notes=notes)
 
     def save_text(
@@ -282,6 +297,14 @@ class RunContext:
         output_path = self.run_dir / filename
         ensure_parent(output_path)
         output_path.write_text(content, encoding="utf-8")
+        log_event(
+            "experiment_logger",
+            "INFO",
+            "Artefacto de texto guardado",
+            run_id=self.run_id,
+            artifact=output_path.name,
+            artifact_type=artifact_type,
+        )
         return self.register_artifact(output_path, artifact_type=artifact_type, notes=notes)
 
     def save_dataframe(
@@ -299,6 +322,16 @@ class RunContext:
             dataframe.to_excel(output_path, index=index)
         else:
             dataframe.to_csv(output_path, index=index)
+        log_event(
+            "experiment_logger",
+            "INFO",
+            "Artefacto tabular guardado",
+            run_id=self.run_id,
+            artifact=output_path.name,
+            artifact_type=artifact_type,
+            rows=getattr(dataframe, "shape", (None, None))[0],
+            cols=getattr(dataframe, "shape", (None, None))[1],
+        )
         return self.register_artifact(output_path, artifact_type=artifact_type, notes=notes)
 
     def copy_file(
@@ -313,6 +346,15 @@ class RunContext:
         destination = self.run_dir / subdir / source.name
         ensure_parent(destination)
         shutil.copy2(source, destination)
+        log_event(
+            "experiment_logger",
+            "INFO",
+            "Archivo copiado al run",
+            run_id=self.run_id,
+            source=source.name,
+            destination=destination.name,
+            artifact_type=artifact_type,
+        )
         return self.register_artifact(destination, artifact_type=artifact_type, label=label, notes=notes)
 
     def finalize(
@@ -421,9 +463,14 @@ class RunContext:
                         "inventory_directories_total": audit_result["inventory_directories_total"],
                     }
                 )
-                print(
-                    "[master_audit] "
-                    f"Regenerada auditoria maestra tras {self.run_id}: {audit_result['xlsx_path']}"
+                log_event(
+                    "master_audit",
+                    "INFO",
+                    "Auditoria maestra regenerada",
+                    run_id=self.run_id,
+                    xlsx_path=audit_result["xlsx_path"],
+                    master_runs_total=audit_result["master_runs_total"],
+                    inventory_directories_total=audit_result["inventory_directories_total"],
                 )
             except Exception as exc:
                 audit_status_payload.update(
@@ -433,9 +480,13 @@ class RunContext:
                         "error": str(exc),
                     }
                 )
-                print(
-                    "[master_audit] WARNING "
-                    f"{self.run_id}: fallo al regenerar auditoria maestra: {exc}"
+                log_event(
+                    "master_audit",
+                    "WARNING",
+                    "Fallo al regenerar auditoria maestra",
+                    run_id=self.run_id,
+                    error_type=exc.__class__.__name__,
+                    error=str(exc),
                 )
         else:
             reason = (
@@ -444,14 +495,25 @@ class RunContext:
                 else f"estado_no_dispara_refresh:{estado}"
             )
             audit_status_payload["reason"] = reason
-            print(f"[master_audit] Skip para {self.run_id}: {reason}")
+            log_event(
+                "master_audit",
+                "INFO",
+                "Refresh maestro omitido",
+                run_id=self.run_id,
+                reason=reason,
+            )
 
         try:
             self.tracker.write_master_audit_status(run_dir=self.run_dir, payload=audit_status_payload)
         except Exception as exc:
-            print(
-                "[master_audit] WARNING "
-                f"{self.run_id}: no se pudo escribir {MASTER_AUDIT_STATUS_FILENAME}: {exc}"
+            log_event(
+                "master_audit",
+                "WARNING",
+                "No se pudo escribir estado de auditoria maestra",
+                run_id=self.run_id,
+                artifact=MASTER_AUDIT_STATUS_FILENAME,
+                error_type=exc.__class__.__name__,
+                error=str(exc),
             )
         return results_path
 
@@ -511,6 +573,14 @@ class RadarExperimentTracker:
         status_path = Path(run_dir).expanduser().resolve() / MASTER_AUDIT_STATUS_FILENAME
         ensure_parent(status_path)
         status_path.write_text(json_dumps_pretty(payload), encoding="utf-8")
+        log_event(
+            "master_audit",
+            "INFO",
+            "Estado de auditoria maestra persistido",
+            run_id=payload.get("run_id"),
+            status=payload.get("status"),
+            artifact=status_path.name,
+        )
         return status_path
 
     def start_run(
@@ -557,6 +627,13 @@ class RadarExperimentTracker:
             parametros_path = run_dir / "parametros_run.json"
             parametros_path.write_text(json_dumps_pretty(parametros), encoding="utf-8")
             context.parametros_path = parametros_path
+            log_event(
+                "experiment_logger",
+                "INFO",
+                "Parametros del run guardados",
+                run_id=run_id,
+                artifact=parametros_path.name,
+            )
             context.register_artifact(
                 parametros_path,
                 artifact_type="parametros",
@@ -1079,7 +1156,7 @@ def main() -> None:
     tracker = RadarExperimentTracker(workbook_path=args.workbook)
     if args.prepare_workbook:
         updated_path = tracker.prepare_workbook()
-        print(f"Workbook preparado: {updated_path}")
+        log_event("experiment_logger", "INFO", "Workbook preparado", workbook_path=updated_path)
     else:
         raise SystemExit("Usa --prepare-workbook para preparar el Excel.")
 

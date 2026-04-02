@@ -42,6 +42,10 @@ Estructura:
   Tambien incluye la apertura operativa del runner E9 sobre esa tabla curada.
 - `18_continuidad_post_e9/`
   Prompt de registro de decision metodologica posterior a E9 y de apertura conceptual de E10/E11.
+- `19_familia_gating_contextual/`
+  Prompts operativos de construccion de tabla E10 y de la primera corrida canonica de meta-seleccion/gating.
+- `20_saneamiento_canonico/`
+  Prompt de saneamiento documental-metodologico integral para alinear plan, bitacora, inventario, tabla maestra y README(s).
 
 Convencion de nombres:
 
@@ -58,6 +62,7 @@ Mapa actual:
 - `03_familia_ridge/03_continuacion_ridge_e1_v3_clean_e1_v4_clean.md`
 - `03_familia_ridge/04_continuacion_ridge_e1_v5_clean_memoria_larga.md`
 - `03_familia_ridge/05_cierre_ridge_y_transicion_a_familia_no_lineal.md`
+- `03_familia_ridge/06_micro_rama_e1_1_bayesian.md`
 - `04_familia_huber/01_transicion_ridge_a_huber_clean.md`
 - `04_familia_huber/02_micro_rama_diagnostica_huber_e2_v2_a_e2_v4.md`
 - `05_familia_random_forest/01_cierre_e2_y_arranque_e3_random_forest.md`
@@ -83,3 +88,4 @@ Mapa actual:
 - `18_continuidad_post_e9/01_registro_decision_metodologica_post_e9_e10_e11.md`
 - `19_familia_gating_contextual/01_construccion_tabla_operativa_e10.md`
 - `19_familia_gating_contextual/02_modelado_operativo_e10_v1_clean.md`
+- `20_saneamiento_canonico/01_saneamiento_canonico_integral.md`

@@ -1,6 +1,6 @@
 # Plan de Experimentacion Radar
 
-Fecha de actualizacion: `2026-04-01`
+Fecha de actualizacion: `2026-04-02`
 
 ## Proposito
 
@@ -30,10 +30,21 @@ Su funcion es dejar por escrito:
   [resumen_metodologico_e2_huber.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e2_huber.md)
   [resumen_metodologico_e3_arboles.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e3_arboles.md)
   [resumen_metodologico_e4_boosting.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e4_boosting.md)
+  [resumen_metodologico_e5_catboost.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e5_catboost.md)
+  [resumen_metodologico_e6_arimax.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e6_arimax.md)
+  [resumen_metodologico_e7_prophet.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e7_prophet.md)
+  [resumen_metodologico_e8_hibrido_residual.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e8_hibrido_residual.md)
+  [resumen_metodologico_e9_stacking.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e9_stacking.md)
+  [resumen_metodologico_e10_gating_contextual.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e10_gating_contextual.md)
+  [resumen_metodologico_clasificacion_c1_c4.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_clasificacion_c1_c4.md)
 - Auditoria maestra retrospectiva:
   [resumen_auditoria_experimentos.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_auditoria_experimentos.md)
+- Diccionario canonico de constructos:
+  [diccionario_constructos_canonicos_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/diccionario_constructos_canonicos_radar.md)
 - Actualizacion metodologica posterior a `E9_v2_clean`:
   [actualizacion_metodologica_post_e9_e10_e11.md](/home/emilio/Documentos/RAdAR/Experimentos/actualizacion_metodologica_post_e9_e10_e11.md)
+- Informe canonico de saneamiento documental:
+  [resumen_saneamiento_documental_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_saneamiento_documental_radar.md)
 
 ## Principios que no cambiaron
 
@@ -92,11 +103,9 @@ Scripts previstos en la arquitectura:
 
 El plan original, por tanto, no era quedarse solo en Ridge. La idea era recorrer familias comparables bajo un mismo marco experimental y terminar con una capa hibrida / stacking.
 
-## Rama paralela planificada de clasificacion
+## Rama paralela de clasificacion
 
-Ademas del frente principal de regresion, el proyecto ya deja planificada una rama paralela de clasificacion del movimiento del Radar.
-
-Esta rama todavia no se ejecuto, pero queda documentada y trazable.
+Ademas del frente principal de regresion, el proyecto ya abrio una rama paralela de clasificacion del movimiento del Radar.
 
 Familias previstas:
 
@@ -116,7 +125,10 @@ Estado actual:
 - rama documentada: si
 - runners por familia preparados: si
 - prompts guardados: si
-- corridas ejecutadas: no
+- corridas ejecutadas: `C1_v1_clean`, `C1_v2_clean`, `C1_v3_clean`
+- familias con corrida real: `C1`
+- familias con infraestructura pero sin corrida: `C2`, `C3`, `C4`
+- prioridad actual: baja; la rama queda abierta pero no prioritaria
 
 Organizacion actual de la documentacion:
 
@@ -125,6 +137,10 @@ Organizacion actual de la documentacion:
 - `11_clasificacion_xgboost/` para `C2`
 - `12_clasificacion_catboost/` para `C3`
 - `13_clasificacion_lightgbm/` para `C4`
+
+Documento de cierre de rama:
+
+- [resumen_metodologico_clasificacion_c1_c4.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_clasificacion_c1_c4.md)
 
 ## Secuencia real ejecutada hasta hoy
 
@@ -141,8 +157,17 @@ Organizacion actual de la documentacion:
 | `E7` Prophet | abierta | `E7_v3_clean` | supera a E6 pero sigue por detrás del bloque contendiente |
 | `E8` hibridos residuales | abierta | `E8_v2_clean` | híbrido residual válido, pero no competitivo frente al bloque fuerte |
 | `E9` stacking | pausada util | `E9_v2_clean` | mejor rama actual de riesgo-direccion-caidas; no reemplaza a E1 y queda en pausa metodologica |
-| `E10` gating contextual | activa premodelado | n/a | tabla operativa construida; siguiente paso = primer runner/modelo de meta-seleccion o gating contextual |
+| `E10` gating contextual | modelado inicial fragil | `E10_v1_clean` | ya tiene corrida canonica; la señal de seleccion existe pero no supera a selector fijo ni a benchmarks centrales |
 | `E11` dual numerica+categórica | planificada | n/a | familia futura para separar pronostico numerico del porcentaje y clasificacion operativa del movimiento |
+
+### Estado resumido de la rama de clasificacion
+
+| familia | estado actual | mejor run interno | lectura vigente |
+|---|---|---|---|
+| `C1` RandomForestClassifier | evaluada y pausada tempranamente | n/a | tres corridas reales, pero colapsaron a clase unica y no dejaron señal discriminativa util |
+| `C2` XGBoostClassifier | infraestructura preparada | n/a | runner y prompts listos, sin corrida real |
+| `C3` CatBoostClassifier | infraestructura preparada | n/a | runner y prompts listos, sin corrida real |
+| `C4` LightGBMClassifier | infraestructura preparada | n/a | runner y prompts listos, sin corrida real |
 
 ### Referencias vigentes
 
@@ -224,6 +249,28 @@ Decision formal:
 - `E1` queda cerrada como familia explorada suficientemente.
 - `E1_v5_clean` queda como mejor baseline global.
 - `E1_v4_clean` queda como referencia parsimoniosa.
+
+#### Verificacion tactica posterior
+
+Despues del cierre principal de `E1`, se corrio una micro-rama diagnostica y de muy bajo costo:
+
+- `E1_1_v1_bayesian_base`
+
+Lectura:
+
+- `BayesianRidge` se evaluo bajo el mismo marco temporal limpio de `E1_v5_clean`.
+- No mejoro `L_total_Radar` frente a `E1_v5_clean`.
+- Solo mostro una mejora parcial en `H3`, compensada por deterioro en `H1`, `H2` y sin ganancia material en `H4`.
+- La evidencia no justifico abrir `E1_1_v2_bayesian_control`.
+
+Decision:
+
+- La micro-rama `E1.1 Bayesian` queda cerrada como verificacion util pero no preferible.
+- El cierre metodologico principal de `E1` no cambia: `E1_v5_clean` sigue como mejor referente numerico puro.
+
+Documento de trazabilidad especifica:
+
+- [resumen_micro_rama_e1_1_bayesian.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_micro_rama_e1_1_bayesian.md)
 
 ### E2 Huber
 
@@ -360,6 +407,10 @@ Estado actual:
 - `E5_v4_clean` es la referencia no lineal tabular vigente
 - nuevas corridas solo se justifican con hipotesis distintas, no con microvariantes locales
 
+Documento de cierre:
+
+- [resumen_metodologico_e5_catboost.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e5_catboost.md)
+
 ### E6 ARIMAX
 
 #### Lo planeado
@@ -384,6 +435,10 @@ Estado actual:
 - `E6` queda debilitada
 - no es la linea principal para seguir
 - conserva valor potencial solo como referencia temporal o pieza futura de hibridos
+
+Documento de cierre:
+
+- [resumen_metodologico_e6_arimax.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e6_arimax.md)
 
 ### E7 Prophet
 
@@ -411,6 +466,10 @@ Estado actual:
 - `E7` queda abierta como familia intermedia
 - supera a `E6`, pero no desplaza a las referencias principales
 
+Documento de cierre:
+
+- [resumen_metodologico_e7_prophet.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e7_prophet.md)
+
 ### E8 Hibridos residuales
 
 #### Lo planeado
@@ -437,6 +496,10 @@ Estado actual:
 - `E8` queda abierta como familia intermedia y metodologicamente valida
 - no se vuelve linea principal
 - solo se justificaria una prueba adicional si hay una hipotesis residual muy acotada
+
+Documento de cierre:
+
+- [resumen_metodologico_e8_hibrido_residual.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e8_hibrido_residual.md)
 
 ### E9 Stacking
 
@@ -469,11 +532,16 @@ Estado actual:
 - `E9` no se cierra como fallida, pero tampoco queda como ganadora global unica.
 - La familia queda en pausa metodologica: util, no descartada y potencialmente reactivable mas adelante.
 
+Documento de cierre:
+
+- [resumen_metodologico_e9_stacking.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e9_stacking.md)
+
 ### E10 Gating / meta-selector contextual
 
 #### Estado actual
 
-- `E10` queda abierta como la siguiente familia activa del proyecto.
+- `E10` ya fue abierta formalmente y ya tiene una corrida canonica:
+  - [E10_v1_clean_20260401_090439](/home/emilio/Documentos/RAdAR/Experimentos/runs/E10_v1_clean_20260401_090439)
 - La infraestructura de datos de `E10` ya fue construida en una tabla derivada especifica y trazable:
   - `tabla_e10_meta_selector_base.csv`
   - `tabla_e10_meta_selector_base.xlsx`
@@ -489,7 +557,18 @@ Estado actual:
 
 - `E10` sigue porque la evidencia de `E9_v2_clean` sugiere que la utilidad del sistema ya no se agota en encontrar un unico ganador global.
 - El proyecto necesita una familia que explore decision contextual o gating sin mezclar todavía la tarea numerica y la tarea categorica en una sola arquitectura improvisada.
-- La fase actual de `E10` ya no es "curar candidatos" sino "correr el primer modelo controlado usando la tabla operativa construida".
+- `E10_v1_clean` resolvio la primera pregunta de apertura con un selector duro lineal y trazable:
+  - el experimento fue metodologicamente limpio
+  - no supero al selector fijo en el global
+  - no supero a `E1_v5_clean`
+  - no supero a `E9_v2_clean`
+  - solo mostro señal parcial en `H2-H4`, especialmente `H4`
+- En consecuencia, `E10` ya no esta en premodelado. Queda en `modelado inicial fragil`, abierto pero no consolidado.
+- El siguiente movimiento prudente no es escalar complejidad, sino reformular el problema de seleccion antes de un eventual `E10_v2`.
+
+Documento de cierre:
+
+- [resumen_metodologico_e10_gating_contextual.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e10_gating_contextual.md)
 
 ### E11 Arquitectura dual numerica + categorica
 
@@ -614,7 +693,9 @@ El plan vigente deja una secuencia principal clara:
 3. abrir `E10` como siguiente familia activa:
 - gating o meta-selector contextual
 - distinta de `E9`
-- con tabla operativa ya construida y runner/modelo todavia pendiente
+- con tabla operativa ya construida
+- con `E10_v1_clean` ya ejecutada como primera apertura
+- pendiente de decidir si la familia merece `E10_v2` o una reformulacion previa del problema
 
 4. dejar `E11` como familia futura solo planificada:
 - arquitectura dual numerica + categorica
@@ -643,7 +724,9 @@ Hoy las referencias que guian cualquier apertura nueva son:
 - La evidencia sugiere una estructura funcional dual:
   - mejor referente numerico puro
   - mejor referente de riesgo-direccion-caidas
+- La rama de clasificacion existe de forma real, pero hoy solo `C1` fue ejecutada y quedo pausada tempranamente por colapso del target.
+- La capa explicativa transversal sigue siendo parcial intra-familia: hay seleccion de variables por horizonte en algunos runs, pero no una taxonomia homogenea de coeficientes, importancias o SHAP comparable entre familias.
 - En consecuencia:
   - `E9` queda pausada como rama util pero no definitiva
-  - `E10` sigue como siguiente linea activa, ya con infraestructura de datos preparada
+  - `E10` queda abierta en modelado inicial fragil tras `E10_v1_clean`
   - `E11` queda abierta como futura familia explicitamente dual

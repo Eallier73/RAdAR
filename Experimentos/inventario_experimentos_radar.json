@@ -1,9 +1,9 @@
 {
   "summary": {
-    "master_runs_total": 35,
-    "runs_catalog_total": 35,
-    "inventory_directories_total": 41,
-    "e1_master_runs": 6,
+    "master_runs_total": 36,
+    "runs_catalog_total": 36,
+    "inventory_directories_total": 43,
+    "e1_master_runs": 7,
     "e2_master_runs": 3,
     "e3_master_runs": 3,
     "e4_master_runs": 3,
@@ -11,14 +11,14 @@
     "c2_master_runs": 0,
     "c3_master_runs": 0,
     "c4_master_runs": 0,
-    "stacking_compatible_runs": 29,
-    "hyperparams_reconstruccion_completa": 31,
+    "stacking_compatible_runs": 30,
+    "hyperparams_reconstruccion_completa": 32,
     "hyperparams_reconstruccion_parcial": 4,
     "hyperparams_no_recuperables": 0,
-    "stacking_eligible_h1": 29,
-    "stacking_eligible_h2": 29,
-    "stacking_eligible_h3": 29,
-    "stacking_eligible_h4": 29
+    "stacking_eligible_h1": 30,
+    "stacking_eligible_h2": 30,
+    "stacking_eligible_h3": 30,
+    "stacking_eligible_h4": 30
   },
   "canonical_runs": [
     {
@@ -680,6 +680,171 @@
       "artifact_explicabilidad_path": "",
       "observacion_explicabilidad": "Sin artefactos explicativos comparables exportados.",
       "notas_config_clave": "validacion=walk-forward_expanding_meta_selector_duro | target_mode=nivel | feature_mode=solo_feature_candidate_desde_inventario_e10 | horizons=1,2,3,4 | transform_mode=imputer_median_plus_scaler_in_pipeline | class_weight=balanced | feature_candidate_columns={\"size\":82} | included_model_ids=E1_v5_clean,E2_v3_clean,E3_v2_clean,E5_v4_clean,E7_v3_clean,E9_v2_clean | initial_train_size=12"
+    },
+    {
+      "run_id": "E1_1_v1_bayesian_base",
+      "task_type": "regresion",
+      "family": "lineal_regularizado",
+      "model": "bayesian_ridge",
+      "target_mode": "nivel",
+      "feature_mode": "corr",
+      "transform_mode": "standard",
+      "lags": "1,2,3,4,5,6",
+      "feature_count_prom": 30.0,
+      "L_total_Radar": 0.26494553341851,
+      "L_total_Clasificacion": NaN,
+      "observacion_breve": "bayesianridge_micro_branch_vs_ridge | BayesianRidge controlado | L_total_Radar=0.264946",
+      "status_run": "completo",
+      "H1_mae": 0.11163016553611817,
+      "H1_rmse": 0.13638875321633837,
+      "H1_direction_accuracy": 0.7692307692307693,
+      "H1_deteccion_caidas": 0.6666666666666666,
+      "H1_loss": 0.08558847111896559,
+      "H1_accuracy_5clases": NaN,
+      "H1_balanced_accuracy_5clases": NaN,
+      "H1_macro_f1_5clases": NaN,
+      "H1_weighted_f1_5clases": NaN,
+      "H1_recall_baja_fuerte": NaN,
+      "H1_recall_baja_total": NaN,
+      "H1_precision_baja_fuerte": NaN,
+      "H1_recall_sube_fuerte": NaN,
+      "H1_recall_sube_total": NaN,
+      "H1_accuracy_3clases": NaN,
+      "H1_macro_f1_3clases": NaN,
+      "H1_balanced_accuracy_3clases": NaN,
+      "H1_loss_clasificacion": 0.08558847111896559,
+      "H2_mae": 0.11070850408853582,
+      "H2_rmse": 0.14051130856239094,
+      "H2_direction_accuracy": 0.6,
+      "H2_deteccion_caidas": 0.7,
+      "H2_loss": 0.07649393783108974,
+      "H2_accuracy_5clases": NaN,
+      "H2_balanced_accuracy_5clases": NaN,
+      "H2_macro_f1_5clases": NaN,
+      "H2_weighted_f1_5clases": NaN,
+      "H2_recall_baja_fuerte": NaN,
+      "H2_recall_baja_total": NaN,
+      "H2_precision_baja_fuerte": NaN,
+      "H2_recall_sube_fuerte": NaN,
+      "H2_recall_sube_total": NaN,
+      "H2_accuracy_3clases": NaN,
+      "H2_macro_f1_3clases": NaN,
+      "H2_balanced_accuracy_3clases": NaN,
+      "H2_loss_clasificacion": 0.07649393783108974,
+      "H3_mae": 0.11542343425962436,
+      "H3_rmse": 0.1507317243837629,
+      "H3_direction_accuracy": 0.875,
+      "H3_deteccion_caidas": 0.8181818181818182,
+      "H3_loss": 0.06395870546059566,
+      "H3_accuracy_5clases": NaN,
+      "H3_balanced_accuracy_5clases": NaN,
+      "H3_macro_f1_5clases": NaN,
+      "H3_weighted_f1_5clases": NaN,
+      "H3_recall_baja_fuerte": NaN,
+      "H3_recall_baja_total": NaN,
+      "H3_precision_baja_fuerte": NaN,
+      "H3_recall_sube_fuerte": NaN,
+      "H3_recall_sube_total": NaN,
+      "H3_accuracy_3clases": NaN,
+      "H3_macro_f1_3clases": NaN,
+      "H3_balanced_accuracy_3clases": NaN,
+      "H3_loss_clasificacion": 0.06395870546059566,
+      "H4_mae": 0.10987723541276632,
+      "H4_rmse": 0.15371009477457925,
+      "H4_direction_accuracy": 0.6956521739130435,
+      "H4_deteccion_caidas": 0.7777777777777778,
+      "H4_loss": 0.038904419007858945,
+      "H4_accuracy_5clases": NaN,
+      "H4_balanced_accuracy_5clases": NaN,
+      "H4_macro_f1_5clases": NaN,
+      "H4_weighted_f1_5clases": NaN,
+      "H4_recall_baja_fuerte": NaN,
+      "H4_recall_baja_total": NaN,
+      "H4_precision_baja_fuerte": NaN,
+      "H4_recall_sube_fuerte": NaN,
+      "H4_recall_sube_total": NaN,
+      "H4_accuracy_3clases": NaN,
+      "H4_macro_f1_3clases": NaN,
+      "H4_balanced_accuracy_3clases": NaN,
+      "H4_loss_clasificacion": 0.03890441900785895,
+      "mae_promedio": 0.1119098348242612,
+      "rmse_promedio": 0.1453354702342678,
+      "direction_accuracy_promedio": 0.7349707357859532,
+      "deteccion_caidas_promedio": 0.7406565656565657,
+      "accuracy_5clases_promedio": NaN,
+      "balanced_accuracy_5clases_promedio": NaN,
+      "macro_f1_5clases_promedio": NaN,
+      "weighted_f1_5clases_promedio": NaN,
+      "recall_baja_fuerte_promedio": NaN,
+      "recall_baja_total_promedio": NaN,
+      "precision_baja_fuerte_promedio": NaN,
+      "recall_sube_fuerte_promedio": NaN,
+      "recall_sube_total_promedio": NaN,
+      "accuracy_3clases_promedio": NaN,
+      "macro_f1_3clases_promedio": NaN,
+      "balanced_accuracy_3clases_promedio": NaN,
+      "script_nombre": "run_e1_bayesian_ridge.py",
+      "script_ruta": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e1_bayesian_ridge.py",
+      "timestamp_run": "20260402_063714",
+      "run_dir": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714",
+      "version_canonica": "1_v1_bayesian_base",
+      "es_run_maestro": true,
+      "status_canonico": "canonico_completo",
+      "motivo_exclusion_si_aplica": "",
+      "validation_scheme": "walk-forward_expanding",
+      "initial_train_size": 40,
+      "tuning_interno": false,
+      "tuning_metric": NaN,
+      "hyperparams_json": "{\"alpha_1\": 1e-06, \"alpha_2\": 1e-06, \"compute_score\": false, \"copy_X\": true, \"feature_mode\": \"corr\", \"fit_intercept\": true, \"horizons\": [1, 2, 3, 4], \"initial_train_size\": 40, \"lags\": [1, 2, 3, 4, 5, 6], \"lambda_1\": 1e-06, \"lambda_2\": 1e-06, \"max_iter\": 300, \"target_mode\": \"nivel\", \"tol\": 0.001, \"transform_mode\": \"standard\", \"tuning_strategy\": \"sin_tuning_externo_micro_rama_controlada\", \"uses_scaling\": true, \"validation_scheme\": \"walk-forward_expanding\", \"verbose\": false}",
+      "hyperparams_hash": "89d14e338895",
+      "hyperparams_firma": "bayesian_ridge|target_mode=nivel | feature_mode=corr | lags=1,2,3,4,5,6 | horizons=1,2,3,4 | transform_mode=standard | tuning_strategy=sin_tuning_externo_micro_rama_controlada | alpha_1=1e-06 | alpha_2=1e-06",
+      "hyperparams_resumen": "target_mode=nivel | feature_mode=corr | lags=1,2,3,4,5,6 | horizons=1,2,3,4 | transform_mode=standard | tuning_strategy=sin_tuning_externo_micro_rama_controlada | alpha_1=1e-06 | alpha_2=1e-06",
+      "reconstruccion_hiperparams_status": "completo",
+      "reconstruccion_hiperparams_nota": "reconstruccion_desde_parametros_y_metadata",
+      "feature_count_promedio": 30.0,
+      "feature_count_h1": 30.0,
+      "feature_count_h2": 30.0,
+      "feature_count_h3": 30.0,
+      "feature_count_h4": 30.0,
+      "features_artifact_available": true,
+      "seleccion_variables_tipo": "corr",
+      "source_dataset_period": "2024-10-14 a 2026-03-02",
+      "dataset_path": "/home/emilio/Documentos/RAdAR/Datos_Modelo_ML/datos_ML_master_indice_aceptación_digital.xlsx",
+      "feature_columns_count": 11,
+      "exogenas_o_no": "con_exogenas",
+      "usa_target_delta": false,
+      "usa_target_nivel": true,
+      "loss_h1": 0.08558847111896559,
+      "loss_h2": 0.07649393783108974,
+      "loss_h3": 0.06395870546059566,
+      "loss_h4": 0.038904419007858945,
+      "mejor_horizonte_por_loss": null,
+      "fortalezas_operativas": "",
+      "tiene_predicciones_h1": true,
+      "tiene_predicciones_h2": true,
+      "tiene_predicciones_h3": true,
+      "tiene_predicciones_h4": true,
+      "filas_pred_h1": 26,
+      "filas_pred_h2": 25,
+      "filas_pred_h3": 24,
+      "filas_pred_h4": 23,
+      "mergeable_h1": true,
+      "mergeable_h2": true,
+      "mergeable_h3": true,
+      "mergeable_h4": true,
+      "stacking_eligible_global": true,
+      "stacking_eligible_h1": true,
+      "stacking_eligible_h2": true,
+      "stacking_eligible_h3": true,
+      "stacking_eligible_h4": true,
+      "motivo_no_elegibilidad": "",
+      "tiene_coeficientes": false,
+      "tiene_importancias": false,
+      "tiene_shap_o_equivalente": false,
+      "explicabilidad_transversal_homogenea": false,
+      "artifact_explicabilidad_path": "",
+      "observacion_explicabilidad": "Solo hay features_seleccionadas por horizonte; no hay coeficientes/importancias comparables.",
+      "notas_config_clave": "validacion=walk-forward_expanding | tuning=no | target_mode=nivel | feature_mode=corr | lags=1,2,3,4,5,6 | horizons=1,2,3,4 | transform_mode=standard | tuning_strategy=sin_tuning_externo_micro_rama_controlada | alpha_1=1e-06 | alpha_2=1e-06"
     },
     {
       "run_id": "E1_v1",
@@ -6195,6 +6360,105 @@
       "predicciones_h4_existe": true
     },
     {
+      "run_id": "E1_1_v1_bayesian_base",
+      "task_type": "regresion",
+      "family": "lineal_regularizado",
+      "model": "bayesian_ridge",
+      "script_family": "run_e1_bayesian_ridge.py",
+      "script_nombre": "run_e1_bayesian_ridge.py",
+      "script_ruta": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e1_bayesian_ridge.py",
+      "target_mode": "nivel",
+      "feature_mode": "corr",
+      "transform_mode": "standard",
+      "lags": "1,2,3,4,5,6",
+      "horizons": "1,2,3,4",
+      "initial_train_size": 40,
+      "validation_scheme": "walk-forward_expanding",
+      "tuning_interno": false,
+      "tuning_metric": NaN,
+      "fecha_run": "2026-04-02 06:37:14",
+      "timestamp_run": "20260402_063714",
+      "run_dir": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714",
+      "version_canonica": "1_v1_bayesian_base",
+      "es_run_maestro": true,
+      "status_canonico": "canonico_completo",
+      "motivo_exclusion_si_aplica": "",
+      "status_run": "completo",
+      "L_total_Radar": 0.26494553341851,
+      "L_total_Clasificacion": NaN,
+      "path_run": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714",
+      "metadata_run_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714/metadata_run.json",
+      "parametros_run_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714/parametros_run.json",
+      "metricas_horizonte_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714/metricas_horizonte.json",
+      "resumen_horizontes_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714/resumen_modeling_horizontes.json",
+      "dataset_path": "/home/emilio/Documentos/RAdAR/Datos_Modelo_ML/datos_ML_master_indice_aceptación_digital.xlsx",
+      "source_dataset_period": "2024-10-14 a 2026-03-02",
+      "notas_config": "{\"feature_candidates\": 83, \"feature_mode\": \"corr\", \"horizon\": 1, \"initial_train_size\": 40, \"lags\": [1, 2, 3, 4, 5, 6], \"model\": \"bayesian_ridge\", \"model_params\": {\"alpha_1\": 1e-06, \"alpha_2\": 1e-06, \"alpha_init\": null, \"compute_score\": false, \"copy_X\": true, \"fit_intercept\": true, \"lambda_1\": 1e-06, \"lambda_2\": 1e-06, \"lambda_init\": null, \"max_iter\": 300, \"tol\": 0.001, \"transform_mode\": \"standard\", \"tuning_strategy\": \"sin_tuning_externo_micro_rama_controlada\", \"uses_scaling\": true, \"verbose\": false}, \"rows_eval\": 26, \"rows_modeling\": 66, \"selected_feature_count_avg\": 30.0, \"target_mode\": \"nivel\", \"transform_mode\": \"standard\"}",
+      "notas_config_clave": "validacion=walk-forward_expanding | tuning=no | target_mode=nivel | feature_mode=corr | lags=1,2,3,4,5,6 | horizons=1,2,3,4 | transform_mode=standard | tuning_strategy=sin_tuning_externo_micro_rama_controlada | alpha_1=1e-06 | alpha_2=1e-06",
+      "hyperparams_json": "{\"alpha_1\": 1e-06, \"alpha_2\": 1e-06, \"compute_score\": false, \"copy_X\": true, \"feature_mode\": \"corr\", \"fit_intercept\": true, \"horizons\": [1, 2, 3, 4], \"initial_train_size\": 40, \"lags\": [1, 2, 3, 4, 5, 6], \"lambda_1\": 1e-06, \"lambda_2\": 1e-06, \"max_iter\": 300, \"target_mode\": \"nivel\", \"tol\": 0.001, \"transform_mode\": \"standard\", \"tuning_strategy\": \"sin_tuning_externo_micro_rama_controlada\", \"uses_scaling\": true, \"validation_scheme\": \"walk-forward_expanding\", \"verbose\": false}",
+      "hyperparams_hash": "89d14e338895",
+      "hyperparams_firma": "bayesian_ridge|target_mode=nivel | feature_mode=corr | lags=1,2,3,4,5,6 | horizons=1,2,3,4 | transform_mode=standard | tuning_strategy=sin_tuning_externo_micro_rama_controlada | alpha_1=1e-06 | alpha_2=1e-06",
+      "hyperparams_resumen": "target_mode=nivel | feature_mode=corr | lags=1,2,3,4,5,6 | horizons=1,2,3,4 | transform_mode=standard | tuning_strategy=sin_tuning_externo_micro_rama_controlada | alpha_1=1e-06 | alpha_2=1e-06",
+      "reconstruccion_hiperparams_status": "completo",
+      "reconstruccion_hiperparams_nota": "reconstruccion_desde_parametros_y_metadata",
+      "feature_count_promedio": 30.0,
+      "feature_count_h1": 30.0,
+      "feature_count_h2": 30.0,
+      "feature_count_h3": 30.0,
+      "feature_count_h4": 30.0,
+      "features_artifact_available": true,
+      "seleccion_variables_tipo": "corr",
+      "feature_columns_count": 11,
+      "exogenas_o_no": "con_exogenas",
+      "usa_target_delta": false,
+      "usa_target_nivel": true,
+      "mae_promedio": 0.1119098348242612,
+      "rmse_promedio": 0.1453354702342678,
+      "direction_accuracy_promedio": 0.7349707357859532,
+      "deteccion_caidas_promedio": 0.7406565656565657,
+      "loss_h1": 0.08558847111896559,
+      "loss_h2": 0.07649393783108974,
+      "loss_h3": 0.06395870546059566,
+      "loss_h4": 0.038904419007858945,
+      "mejor_horizonte_por_loss": null,
+      "fortalezas_operativas": "",
+      "observacion_breve": "bayesianridge_micro_branch_vs_ridge | BayesianRidge controlado | L_total_Radar=0.264946",
+      "tiene_predicciones_h1": true,
+      "tiene_predicciones_h2": true,
+      "tiene_predicciones_h3": true,
+      "tiene_predicciones_h4": true,
+      "filas_pred_h1": 26,
+      "filas_pred_h2": 25,
+      "filas_pred_h3": 24,
+      "filas_pred_h4": 23,
+      "mergeable_h1": true,
+      "mergeable_h2": true,
+      "mergeable_h3": true,
+      "mergeable_h4": true,
+      "stacking_eligible_global": true,
+      "stacking_eligible_h1": true,
+      "stacking_eligible_h2": true,
+      "stacking_eligible_h3": true,
+      "stacking_eligible_h4": true,
+      "es_candidato_meta_modelo": true,
+      "motivo_no_elegibilidad": "",
+      "motivo_exclusion_meta_modelo": "",
+      "tiene_coeficientes": false,
+      "tiene_importancias": false,
+      "tiene_shap_o_equivalente": false,
+      "explicabilidad_transversal_homogenea": false,
+      "artifact_explicabilidad_path": "",
+      "observacion_explicabilidad": "Solo hay features_seleccionadas por horizonte; no hay coeficientes/importancias comparables.",
+      "predicciones_h1_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714/predicciones_h1.csv",
+      "predicciones_h1_existe": true,
+      "predicciones_h2_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714/predicciones_h2.csv",
+      "predicciones_h2_existe": true,
+      "predicciones_h3_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714/predicciones_h3.csv",
+      "predicciones_h3_existe": true,
+      "predicciones_h4_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714/predicciones_h4.csv",
+      "predicciones_h4_existe": true
+    },
+    {
       "run_id": "E1_v1",
       "task_type": "regresion",
       "family": "lineal_regularizado",
@@ -9300,8 +9564,8 @@
       "status_run": "completo",
       "L_total_Radar": 0.2275096201736237,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 20.0,
-      "rank_rmse_por_horizonte": 21.0,
+      "rank_mae_por_horizonte": 21.0,
+      "rank_rmse_por_horizonte": 22.0,
       "rank_direction_accuracy_por_horizonte": 1.0,
       "rank_deteccion_caidas_por_horizonte": 1.0,
       "rank_loss_h_por_horizonte": 1
@@ -9546,9 +9810,9 @@
       "status_run": "completo",
       "L_total_Radar": 0.3019073236793116,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 16.0,
-      "rank_rmse_por_horizonte": 17.0,
-      "rank_direction_accuracy_por_horizonte": 17.0,
+      "rank_mae_por_horizonte": 17.0,
+      "rank_rmse_por_horizonte": 18.0,
+      "rank_direction_accuracy_por_horizonte": 18.0,
       "rank_deteccion_caidas_por_horizonte": 9.0,
       "rank_loss_h_por_horizonte": 7
     },
@@ -9587,9 +9851,9 @@
       "status_run": "completo",
       "L_total_Radar": 0.3019203219833318,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 17.0,
-      "rank_rmse_por_horizonte": 16.0,
-      "rank_direction_accuracy_por_horizonte": 18.0,
+      "rank_mae_por_horizonte": 18.0,
+      "rank_rmse_por_horizonte": 17.0,
+      "rank_direction_accuracy_por_horizonte": 19.0,
       "rank_deteccion_caidas_por_horizonte": 10.0,
       "rank_loss_h_por_horizonte": 8
     },
@@ -9628,9 +9892,9 @@
       "status_run": "completo",
       "L_total_Radar": 0.2864645117875421,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 19.0,
-      "rank_rmse_por_horizonte": 18.0,
-      "rank_direction_accuracy_por_horizonte": 19.0,
+      "rank_mae_por_horizonte": 20.0,
+      "rank_rmse_por_horizonte": 19.0,
+      "rank_direction_accuracy_por_horizonte": 20.0,
       "rank_deteccion_caidas_por_horizonte": 4.0,
       "rank_loss_h_por_horizonte": 9
     },
@@ -9793,7 +10057,7 @@
       "L_total_Radar": 0.261061299229139,
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 11.0,
-      "rank_rmse_por_horizonte": 13.0,
+      "rank_rmse_por_horizonte": 14.0,
       "rank_direction_accuracy_por_horizonte": 4.0,
       "rank_deteccion_caidas_por_horizonte": 11.0,
       "rank_loss_h_por_horizonte": 13
@@ -9834,7 +10098,7 @@
       "L_total_Radar": 0.261061299229139,
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 12.0,
-      "rank_rmse_por_horizonte": 14.0,
+      "rank_rmse_por_horizonte": 15.0,
       "rank_direction_accuracy_por_horizonte": 5.0,
       "rank_deteccion_caidas_por_horizonte": 12.0,
       "rank_loss_h_por_horizonte": 14
@@ -9916,7 +10180,7 @@
       "L_total_Radar": 0.2872893466271498,
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 15.0,
-      "rank_rmse_por_horizonte": 15.0,
+      "rank_rmse_por_horizonte": 16.0,
       "rank_direction_accuracy_por_horizonte": 11.0,
       "rank_deteccion_caidas_por_horizonte": 20.0,
       "rank_loss_h_por_horizonte": 16
@@ -9958,7 +10222,7 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 7.0,
       "rank_rmse_por_horizonte": 8.0,
-      "rank_direction_accuracy_por_horizonte": 16.0,
+      "rank_direction_accuracy_por_horizonte": 17.0,
       "rank_deteccion_caidas_por_horizonte": 21.0,
       "rank_loss_h_por_horizonte": 17
     },
@@ -9999,7 +10263,7 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 14.0,
       "rank_rmse_por_horizonte": 7.0,
-      "rank_direction_accuracy_por_horizonte": 15.0,
+      "rank_direction_accuracy_por_horizonte": 16.0,
       "rank_deteccion_caidas_por_horizonte": 18.0,
       "rank_loss_h_por_horizonte": 18
     },
@@ -10038,8 +10302,8 @@
       "status_run": "parcial",
       "L_total_Radar": 0.07934166609971609,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 23.0,
-      "rank_rmse_por_horizonte": 24.0,
+      "rank_mae_por_horizonte": 24.0,
+      "rank_rmse_por_horizonte": 25.0,
       "rank_direction_accuracy_por_horizonte": 12.0,
       "rank_deteccion_caidas_por_horizonte": 2.0,
       "rank_loss_h_por_horizonte": 19
@@ -10081,7 +10345,7 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 9.0,
       "rank_rmse_por_horizonte": 10.0,
-      "rank_direction_accuracy_por_horizonte": 20.0,
+      "rank_direction_accuracy_por_horizonte": 21.0,
       "rank_deteccion_caidas_por_horizonte": 17.0,
       "rank_loss_h_por_horizonte": 20
     },
@@ -10120,11 +10384,52 @@
       "status_run": "completo",
       "L_total_Radar": 0.2857208904369485,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 18.0,
-      "rank_rmse_por_horizonte": 19.0,
-      "rank_direction_accuracy_por_horizonte": 21.0,
+      "rank_mae_por_horizonte": 19.0,
+      "rank_rmse_por_horizonte": 20.0,
+      "rank_direction_accuracy_por_horizonte": 22.0,
       "rank_deteccion_caidas_por_horizonte": 19.0,
       "rank_loss_h_por_horizonte": 21
+    },
+    {
+      "run_id": "E1_1_v1_bayesian_base",
+      "task_type": "regresion",
+      "horizonte": 1,
+      "horizonte_label": "H1",
+      "family": "lineal_regularizado",
+      "model": "bayesian_ridge",
+      "target_mode": "nivel",
+      "feature_mode": "corr",
+      "lags": "1,2,3,4,5,6",
+      "mae": 0.11163016553611817,
+      "rmse": 0.13638875321633837,
+      "direction_accuracy": 0.7692307692307693,
+      "deteccion_caidas": 0.6666666666666666,
+      "l_num": 0.18142866267146723,
+      "l_trend": 0.23076923076923073,
+      "l_risk": 0.33333333333333337,
+      "l_tol": 0.8076923076923077,
+      "loss_h": 0.08558847111896559,
+      "accuracy_5clases": NaN,
+      "balanced_accuracy_5clases": NaN,
+      "macro_f1_5clases": NaN,
+      "weighted_f1_5clases": NaN,
+      "recall_baja_fuerte": NaN,
+      "recall_baja_total": NaN,
+      "precision_baja_fuerte": NaN,
+      "recall_sube_fuerte": NaN,
+      "recall_sube_total": NaN,
+      "accuracy_3clases": NaN,
+      "macro_f1_3clases": NaN,
+      "balanced_accuracy_3clases": NaN,
+      "loss_clasificacion_h": 0.08558847111896559,
+      "status_run": "completo",
+      "L_total_Radar": 0.26494553341851,
+      "L_total_Clasificacion": NaN,
+      "rank_mae_por_horizonte": 16.0,
+      "rank_rmse_por_horizonte": 13.0,
+      "rank_direction_accuracy_por_horizonte": 15.0,
+      "rank_deteccion_caidas_por_horizonte": 23.0,
+      "rank_loss_h_por_horizonte": 22
     },
     {
       "run_id": "E9_v1_clean",
@@ -10161,11 +10466,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.2684745612625059,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 22.0,
-      "rank_rmse_por_horizonte": 23.0,
-      "rank_direction_accuracy_por_horizonte": 22.0,
+      "rank_mae_por_horizonte": 23.0,
+      "rank_rmse_por_horizonte": 24.0,
+      "rank_direction_accuracy_por_horizonte": 23.0,
       "rank_deteccion_caidas_por_horizonte": 22.0,
-      "rank_loss_h_por_horizonte": 22
+      "rank_loss_h_por_horizonte": 23
     },
     {
       "run_id": "E10_v1_clean",
@@ -10202,11 +10507,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.2712202353073486,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 21.0,
-      "rank_rmse_por_horizonte": 20.0,
-      "rank_direction_accuracy_por_horizonte": 28.0,
-      "rank_deteccion_caidas_por_horizonte": 23.0,
-      "rank_loss_h_por_horizonte": 23
+      "rank_mae_por_horizonte": 22.0,
+      "rank_rmse_por_horizonte": 21.0,
+      "rank_direction_accuracy_por_horizonte": 29.0,
+      "rank_deteccion_caidas_por_horizonte": 24.0,
+      "rank_loss_h_por_horizonte": 24
     },
     {
       "run_id": "E6_v2_clean",
@@ -10243,11 +10548,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.4457690443532661,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 27.0,
-      "rank_rmse_por_horizonte": 30.0,
-      "rank_direction_accuracy_por_horizonte": 25.0,
-      "rank_deteccion_caidas_por_horizonte": 26.0,
-      "rank_loss_h_por_horizonte": 24
+      "rank_mae_por_horizonte": 28.0,
+      "rank_rmse_por_horizonte": 31.0,
+      "rank_direction_accuracy_por_horizonte": 26.0,
+      "rank_deteccion_caidas_por_horizonte": 27.0,
+      "rank_loss_h_por_horizonte": 25
     },
     {
       "run_id": "E8_v1_clean",
@@ -10284,11 +10589,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.3364815593128823,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 25.0,
-      "rank_rmse_por_horizonte": 22.0,
-      "rank_direction_accuracy_por_horizonte": 23.0,
-      "rank_deteccion_caidas_por_horizonte": 24.0,
-      "rank_loss_h_por_horizonte": 25
+      "rank_mae_por_horizonte": 26.0,
+      "rank_rmse_por_horizonte": 23.0,
+      "rank_direction_accuracy_por_horizonte": 24.0,
+      "rank_deteccion_caidas_por_horizonte": 25.0,
+      "rank_loss_h_por_horizonte": 26
     },
     {
       "run_id": "E6_v1_clean",
@@ -10325,11 +10630,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.3703183972542414,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 29.0,
-      "rank_rmse_por_horizonte": 27.0,
-      "rank_direction_accuracy_por_horizonte": 24.0,
-      "rank_deteccion_caidas_por_horizonte": 25.0,
-      "rank_loss_h_por_horizonte": 26
+      "rank_mae_por_horizonte": 30.0,
+      "rank_rmse_por_horizonte": 28.0,
+      "rank_direction_accuracy_por_horizonte": 25.0,
+      "rank_deteccion_caidas_por_horizonte": 26.0,
+      "rank_loss_h_por_horizonte": 27
     },
     {
       "run_id": "E7_v1_clean",
@@ -10366,11 +10671,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.3255019750760202,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 24.0,
-      "rank_rmse_por_horizonte": 25.0,
-      "rank_direction_accuracy_por_horizonte": 27.0,
-      "rank_deteccion_caidas_por_horizonte": 29.0,
-      "rank_loss_h_por_horizonte": 27
+      "rank_mae_por_horizonte": 25.0,
+      "rank_rmse_por_horizonte": 26.0,
+      "rank_direction_accuracy_por_horizonte": 28.0,
+      "rank_deteccion_caidas_por_horizonte": 30.0,
+      "rank_loss_h_por_horizonte": 28
     },
     {
       "run_id": "E7_v3_clean",
@@ -10407,11 +10712,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.321327838487649,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 26.0,
-      "rank_rmse_por_horizonte": 26.0,
-      "rank_direction_accuracy_por_horizonte": 26.0,
-      "rank_deteccion_caidas_por_horizonte": 28.0,
-      "rank_loss_h_por_horizonte": 28
+      "rank_mae_por_horizonte": 27.0,
+      "rank_rmse_por_horizonte": 27.0,
+      "rank_direction_accuracy_por_horizonte": 27.0,
+      "rank_deteccion_caidas_por_horizonte": 29.0,
+      "rank_loss_h_por_horizonte": 29
     },
     {
       "run_id": "E1_v3_clean",
@@ -10448,11 +10753,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.3980475726547684,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 28.0,
-      "rank_rmse_por_horizonte": 29.0,
-      "rank_direction_accuracy_por_horizonte": 32.0,
-      "rank_deteccion_caidas_por_horizonte": 27.0,
-      "rank_loss_h_por_horizonte": 29
+      "rank_mae_por_horizonte": 29.0,
+      "rank_rmse_por_horizonte": 30.0,
+      "rank_direction_accuracy_por_horizonte": 33.0,
+      "rank_deteccion_caidas_por_horizonte": 28.0,
+      "rank_loss_h_por_horizonte": 30
     },
     {
       "run_id": "C1_v1_clean",
@@ -10493,7 +10798,7 @@
       "rank_rmse_por_horizonte": NaN,
       "rank_direction_accuracy_por_horizonte": NaN,
       "rank_deteccion_caidas_por_horizonte": NaN,
-      "rank_loss_h_por_horizonte": 30
+      "rank_loss_h_por_horizonte": 31
     },
     {
       "run_id": "C1_v2_clean",
@@ -10534,7 +10839,7 @@
       "rank_rmse_por_horizonte": NaN,
       "rank_direction_accuracy_por_horizonte": NaN,
       "rank_deteccion_caidas_por_horizonte": NaN,
-      "rank_loss_h_por_horizonte": 31
+      "rank_loss_h_por_horizonte": 32
     },
     {
       "run_id": "C1_v3_clean",
@@ -10575,7 +10880,7 @@
       "rank_rmse_por_horizonte": NaN,
       "rank_direction_accuracy_por_horizonte": NaN,
       "rank_deteccion_caidas_por_horizonte": NaN,
-      "rank_loss_h_por_horizonte": 32
+      "rank_loss_h_por_horizonte": 33
     },
     {
       "run_id": "E4_v3_clean",
@@ -10612,11 +10917,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.4247743104980723,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 30.0,
-      "rank_rmse_por_horizonte": 28.0,
-      "rank_direction_accuracy_por_horizonte": 31.0,
-      "rank_deteccion_caidas_por_horizonte": 32.0,
-      "rank_loss_h_por_horizonte": 33
+      "rank_mae_por_horizonte": 31.0,
+      "rank_rmse_por_horizonte": 29.0,
+      "rank_direction_accuracy_por_horizonte": 32.0,
+      "rank_deteccion_caidas_por_horizonte": 33.0,
+      "rank_loss_h_por_horizonte": 34
     },
     {
       "run_id": "E8_v3_clean",
@@ -10653,11 +10958,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.6277552922651639,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 31.0,
-      "rank_rmse_por_horizonte": 31.0,
-      "rank_direction_accuracy_por_horizonte": 29.0,
-      "rank_deteccion_caidas_por_horizonte": 30.0,
-      "rank_loss_h_por_horizonte": 34
+      "rank_mae_por_horizonte": 32.0,
+      "rank_rmse_por_horizonte": 32.0,
+      "rank_direction_accuracy_por_horizonte": 30.0,
+      "rank_deteccion_caidas_por_horizonte": 31.0,
+      "rank_loss_h_por_horizonte": 35
     },
     {
       "run_id": "E7_v2_clean",
@@ -10694,11 +10999,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.6819919935137326,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 32.0,
-      "rank_rmse_por_horizonte": 32.0,
-      "rank_direction_accuracy_por_horizonte": 30.0,
-      "rank_deteccion_caidas_por_horizonte": 31.0,
-      "rank_loss_h_por_horizonte": 35
+      "rank_mae_por_horizonte": 33.0,
+      "rank_rmse_por_horizonte": 33.0,
+      "rank_direction_accuracy_por_horizonte": 31.0,
+      "rank_deteccion_caidas_por_horizonte": 32.0,
+      "rank_loss_h_por_horizonte": 36
     },
     {
       "run_id": "E9_v2_clean",
@@ -10735,8 +11040,8 @@
       "status_run": "completo",
       "L_total_Radar": 0.2275096201736237,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 17.0,
-      "rank_rmse_por_horizonte": 16.0,
+      "rank_mae_por_horizonte": 18.0,
+      "rank_rmse_por_horizonte": 17.0,
       "rank_direction_accuracy_por_horizonte": 1.0,
       "rank_deteccion_caidas_por_horizonte": 2.0,
       "rank_loss_h_por_horizonte": 1.0
@@ -10776,8 +11081,8 @@
       "status_run": "completo",
       "L_total_Radar": 0.321327838487649,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 23.0,
-      "rank_rmse_por_horizonte": 24.0,
+      "rank_mae_por_horizonte": 24.0,
+      "rank_rmse_por_horizonte": 25.0,
       "rank_direction_accuracy_por_horizonte": 7.0,
       "rank_deteccion_caidas_por_horizonte": 5.0,
       "rank_loss_h_por_horizonte": 2.0
@@ -10817,8 +11122,8 @@
       "status_run": "completo",
       "L_total_Radar": 0.2857208904369485,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 19.0,
-      "rank_rmse_por_horizonte": 21.0,
+      "rank_mae_por_horizonte": 20.0,
+      "rank_rmse_por_horizonte": 22.0,
       "rank_direction_accuracy_por_horizonte": 6.0,
       "rank_deteccion_caidas_por_horizonte": 4.0,
       "rank_loss_h_por_horizonte": 3.0
@@ -10858,8 +11163,8 @@
       "status_run": "completo",
       "L_total_Radar": 0.2864645117875421,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 18.0,
-      "rank_rmse_por_horizonte": 20.0,
+      "rank_mae_por_horizonte": 19.0,
+      "rank_rmse_por_horizonte": 21.0,
       "rank_direction_accuracy_por_horizonte": 4.0,
       "rank_deteccion_caidas_por_horizonte": 7.0,
       "rank_loss_h_por_horizonte": 4.0
@@ -10899,8 +11204,8 @@
       "status_run": "completo",
       "L_total_Radar": 0.3255019750760202,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 25.0,
-      "rank_rmse_por_horizonte": 25.0,
+      "rank_mae_por_horizonte": 26.0,
+      "rank_rmse_por_horizonte": 26.0,
       "rank_direction_accuracy_por_horizonte": 8.0,
       "rank_deteccion_caidas_por_horizonte": 6.0,
       "rank_loss_h_por_horizonte": 5.0
@@ -10981,10 +11286,10 @@
       "status_run": "completo",
       "L_total_Radar": 0.2684745612625059,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 14.0,
-      "rank_rmse_por_horizonte": 22.0,
+      "rank_mae_por_horizonte": 15.0,
+      "rank_rmse_por_horizonte": 23.0,
       "rank_direction_accuracy_por_horizonte": 2.0,
-      "rank_deteccion_caidas_por_horizonte": 12.0,
+      "rank_deteccion_caidas_por_horizonte": 13.0,
       "rank_loss_h_por_horizonte": 7.0
     },
     {
@@ -11022,11 +11327,52 @@
       "status_run": "completo",
       "L_total_Radar": 0.2712202353073486,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 20.0,
-      "rank_rmse_por_horizonte": 19.0,
-      "rank_direction_accuracy_por_horizonte": 14.0,
+      "rank_mae_por_horizonte": 21.0,
+      "rank_rmse_por_horizonte": 20.0,
+      "rank_direction_accuracy_por_horizonte": 15.0,
       "rank_deteccion_caidas_por_horizonte": 3.0,
       "rank_loss_h_por_horizonte": 8.0
+    },
+    {
+      "run_id": "E1_1_v1_bayesian_base",
+      "task_type": "regresion",
+      "horizonte": 2,
+      "horizonte_label": "H2",
+      "family": "lineal_regularizado",
+      "model": "bayesian_ridge",
+      "target_mode": "nivel",
+      "feature_mode": "corr",
+      "lags": "1,2,3,4,5,6",
+      "mae": 0.11070850408853582,
+      "rmse": 0.14051130856239094,
+      "direction_accuracy": 0.6,
+      "deteccion_caidas": 0.7,
+      "l_num": 0.17993071806959696,
+      "l_trend": 0.4,
+      "l_risk": 0.30000000000000004,
+      "l_tol": 0.68,
+      "loss_h": 0.07649393783108974,
+      "accuracy_5clases": NaN,
+      "balanced_accuracy_5clases": NaN,
+      "macro_f1_5clases": NaN,
+      "weighted_f1_5clases": NaN,
+      "recall_baja_fuerte": NaN,
+      "recall_baja_total": NaN,
+      "precision_baja_fuerte": NaN,
+      "recall_sube_fuerte": NaN,
+      "recall_sube_total": NaN,
+      "accuracy_3clases": NaN,
+      "macro_f1_3clases": NaN,
+      "balanced_accuracy_3clases": NaN,
+      "loss_clasificacion_h": 0.07649393783108974,
+      "status_run": "completo",
+      "L_total_Radar": 0.26494553341851,
+      "L_total_Clasificacion": NaN,
+      "rank_mae_por_horizonte": 14.0,
+      "rank_rmse_por_horizonte": 16.0,
+      "rank_direction_accuracy_por_horizonte": 14.0,
+      "rank_deteccion_caidas_por_horizonte": 9.0,
+      "rank_loss_h_por_horizonte": 9.0
     },
     {
       "run_id": "E4_v3_clean",
@@ -11063,11 +11409,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.4247743104980723,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 24.0,
-      "rank_rmse_por_horizonte": 23.0,
-      "rank_direction_accuracy_por_horizonte": 25.0,
-      "rank_deteccion_caidas_por_horizonte": 11.0,
-      "rank_loss_h_por_horizonte": 9.0
+      "rank_mae_por_horizonte": 25.0,
+      "rank_rmse_por_horizonte": 24.0,
+      "rank_direction_accuracy_por_horizonte": 26.0,
+      "rank_deteccion_caidas_por_horizonte": 12.0,
+      "rank_loss_h_por_horizonte": 10.0
     },
     {
       "run_id": "E6_v1_clean",
@@ -11104,11 +11450,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.3703183972542414,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 28.0,
-      "rank_rmse_por_horizonte": 28.0,
-      "rank_direction_accuracy_por_horizonte": 28.0,
+      "rank_mae_por_horizonte": 29.0,
+      "rank_rmse_por_horizonte": 29.0,
+      "rank_direction_accuracy_por_horizonte": 29.0,
       "rank_deteccion_caidas_por_horizonte": 1.0,
-      "rank_loss_h_por_horizonte": 10.0
+      "rank_loss_h_por_horizonte": 11.0
     },
     {
       "run_id": "E5_v1_clean",
@@ -11148,8 +11494,8 @@
       "rank_mae_por_horizonte": 5.0,
       "rank_rmse_por_horizonte": 8.0,
       "rank_direction_accuracy_por_horizonte": 10.0,
-      "rank_deteccion_caidas_por_horizonte": 14.0,
-      "rank_loss_h_por_horizonte": 11.0
+      "rank_deteccion_caidas_por_horizonte": 15.0,
+      "rank_loss_h_por_horizonte": 12.0
     },
     {
       "run_id": "E5_v4_clean",
@@ -11189,8 +11535,8 @@
       "rank_mae_por_horizonte": 7.0,
       "rank_rmse_por_horizonte": 7.0,
       "rank_direction_accuracy_por_horizonte": 9.0,
-      "rank_deteccion_caidas_por_horizonte": 13.0,
-      "rank_loss_h_por_horizonte": 12.0
+      "rank_deteccion_caidas_por_horizonte": 14.0,
+      "rank_loss_h_por_horizonte": 13.0
     },
     {
       "run_id": "E5_v3_clean",
@@ -11230,8 +11576,8 @@
       "rank_mae_por_horizonte": 8.0,
       "rank_rmse_por_horizonte": 9.0,
       "rank_direction_accuracy_por_horizonte": 11.0,
-      "rank_deteccion_caidas_por_horizonte": 15.0,
-      "rank_loss_h_por_horizonte": 13.0
+      "rank_deteccion_caidas_por_horizonte": 16.0,
+      "rank_loss_h_por_horizonte": 14.0
     },
     {
       "run_id": "E5_v2_clean",
@@ -11271,8 +11617,8 @@
       "rank_mae_por_horizonte": 10.0,
       "rank_rmse_por_horizonte": 11.0,
       "rank_direction_accuracy_por_horizonte": 12.0,
-      "rank_deteccion_caidas_por_horizonte": 16.0,
-      "rank_loss_h_por_horizonte": 14.0
+      "rank_deteccion_caidas_por_horizonte": 17.0,
+      "rank_loss_h_por_horizonte": 15.0
     },
     {
       "run_id": "E5_v5_clean",
@@ -11312,8 +11658,8 @@
       "rank_mae_por_horizonte": 11.0,
       "rank_rmse_por_horizonte": 14.0,
       "rank_direction_accuracy_por_horizonte": 13.0,
-      "rank_deteccion_caidas_por_horizonte": 17.0,
-      "rank_loss_h_por_horizonte": 15.0
+      "rank_deteccion_caidas_por_horizonte": 18.0,
+      "rank_loss_h_por_horizonte": 16.0
     },
     {
       "run_id": "E3_v2_clean",
@@ -11353,8 +11699,8 @@
       "rank_mae_por_horizonte": 9.0,
       "rank_rmse_por_horizonte": 6.0,
       "rank_direction_accuracy_por_horizonte": 5.0,
-      "rank_deteccion_caidas_por_horizonte": 18.0,
-      "rank_loss_h_por_horizonte": 16.0
+      "rank_deteccion_caidas_por_horizonte": 19.0,
+      "rank_loss_h_por_horizonte": 17.0
     },
     {
       "run_id": "E4_v1_clean",
@@ -11391,11 +11737,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.2839341113264429,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 16.0,
+      "rank_mae_por_horizonte": 17.0,
       "rank_rmse_por_horizonte": 13.0,
-      "rank_direction_accuracy_por_horizonte": 16.0,
-      "rank_deteccion_caidas_por_horizonte": 20.0,
-      "rank_loss_h_por_horizonte": 17.0
+      "rank_direction_accuracy_por_horizonte": 17.0,
+      "rank_deteccion_caidas_por_horizonte": 21.0,
+      "rank_loss_h_por_horizonte": 18.0
     },
     {
       "run_id": "E3_v1_clean",
@@ -11434,9 +11780,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 12.0,
       "rank_rmse_por_horizonte": 10.0,
-      "rank_direction_accuracy_por_horizonte": 15.0,
-      "rank_deteccion_caidas_por_horizonte": 19.0,
-      "rank_loss_h_por_horizonte": 18.0
+      "rank_direction_accuracy_por_horizonte": 16.0,
+      "rank_deteccion_caidas_por_horizonte": 20.0,
+      "rank_loss_h_por_horizonte": 19.0
     },
     {
       "run_id": "E1_v4_clean",
@@ -11475,9 +11821,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 1.0,
       "rank_rmse_por_horizonte": 3.0,
-      "rank_direction_accuracy_por_horizonte": 20.0,
-      "rank_deteccion_caidas_por_horizonte": 23.0,
-      "rank_loss_h_por_horizonte": 19.0
+      "rank_direction_accuracy_por_horizonte": 21.0,
+      "rank_deteccion_caidas_por_horizonte": 24.0,
+      "rank_loss_h_por_horizonte": 20.0
     },
     {
       "run_id": "E1_v2_clean",
@@ -11516,9 +11862,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 2.0,
       "rank_rmse_por_horizonte": 1.0,
-      "rank_direction_accuracy_por_horizonte": 23.0,
-      "rank_deteccion_caidas_por_horizonte": 26.0,
-      "rank_loss_h_por_horizonte": 20.0
+      "rank_direction_accuracy_por_horizonte": 24.0,
+      "rank_deteccion_caidas_por_horizonte": 27.0,
+      "rank_loss_h_por_horizonte": 21.0
     },
     {
       "run_id": "E1_v1",
@@ -11557,9 +11903,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 3.0,
       "rank_rmse_por_horizonte": 4.0,
-      "rank_direction_accuracy_por_horizonte": 21.0,
-      "rank_deteccion_caidas_por_horizonte": 24.0,
-      "rank_loss_h_por_horizonte": 21.0
+      "rank_direction_accuracy_por_horizonte": 22.0,
+      "rank_deteccion_caidas_por_horizonte": 25.0,
+      "rank_loss_h_por_horizonte": 22.0
     },
     {
       "run_id": "E1_v2",
@@ -11598,9 +11944,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 4.0,
       "rank_rmse_por_horizonte": 5.0,
-      "rank_direction_accuracy_por_horizonte": 22.0,
-      "rank_deteccion_caidas_por_horizonte": 25.0,
-      "rank_loss_h_por_horizonte": 22.0
+      "rank_direction_accuracy_por_horizonte": 23.0,
+      "rank_deteccion_caidas_por_horizonte": 26.0,
+      "rank_loss_h_por_horizonte": 23.0
     },
     {
       "run_id": "E2_v1_clean",
@@ -11637,11 +11983,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.3019073236793116,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 21.0,
-      "rank_rmse_por_horizonte": 17.0,
-      "rank_direction_accuracy_por_horizonte": 26.0,
-      "rank_deteccion_caidas_por_horizonte": 9.0,
-      "rank_loss_h_por_horizonte": 23.0
+      "rank_mae_por_horizonte": 22.0,
+      "rank_rmse_por_horizonte": 18.0,
+      "rank_direction_accuracy_por_horizonte": 27.0,
+      "rank_deteccion_caidas_por_horizonte": 10.0,
+      "rank_loss_h_por_horizonte": 24.0
     },
     {
       "run_id": "E2_v2_clean",
@@ -11678,11 +12024,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.3019203219833318,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 22.0,
-      "rank_rmse_por_horizonte": 18.0,
-      "rank_direction_accuracy_por_horizonte": 27.0,
-      "rank_deteccion_caidas_por_horizonte": 10.0,
-      "rank_loss_h_por_horizonte": 24.0
+      "rank_mae_por_horizonte": 23.0,
+      "rank_rmse_por_horizonte": 19.0,
+      "rank_direction_accuracy_por_horizonte": 28.0,
+      "rank_deteccion_caidas_por_horizonte": 11.0,
+      "rank_loss_h_por_horizonte": 25.0
     },
     {
       "run_id": "E3_v3_clean",
@@ -11719,11 +12065,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.2872893466271498,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 15.0,
+      "rank_mae_por_horizonte": 16.0,
       "rank_rmse_por_horizonte": 15.0,
-      "rank_direction_accuracy_por_horizonte": 17.0,
-      "rank_deteccion_caidas_por_horizonte": 27.0,
-      "rank_loss_h_por_horizonte": 25.0
+      "rank_direction_accuracy_por_horizonte": 18.0,
+      "rank_deteccion_caidas_por_horizonte": 28.0,
+      "rank_loss_h_por_horizonte": 26.0
     },
     {
       "run_id": "E8_v1_clean",
@@ -11760,11 +12106,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.3364815593128823,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 26.0,
-      "rank_rmse_por_horizonte": 26.0,
-      "rank_direction_accuracy_por_horizonte": 18.0,
-      "rank_deteccion_caidas_por_horizonte": 21.0,
-      "rank_loss_h_por_horizonte": 26.0
+      "rank_mae_por_horizonte": 27.0,
+      "rank_rmse_por_horizonte": 27.0,
+      "rank_direction_accuracy_por_horizonte": 19.0,
+      "rank_deteccion_caidas_por_horizonte": 22.0,
+      "rank_loss_h_por_horizonte": 27.0
     },
     {
       "run_id": "E4_v2_clean",
@@ -11803,9 +12149,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 13.0,
       "rank_rmse_por_horizonte": 2.0,
-      "rank_direction_accuracy_por_horizonte": 24.0,
-      "rank_deteccion_caidas_por_horizonte": 28.0,
-      "rank_loss_h_por_horizonte": 27.0
+      "rank_direction_accuracy_por_horizonte": 25.0,
+      "rank_deteccion_caidas_por_horizonte": 29.0,
+      "rank_loss_h_por_horizonte": 28.0
     },
     {
       "run_id": "E1_v3_clean",
@@ -11842,11 +12188,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.3980475726547684,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 27.0,
-      "rank_rmse_por_horizonte": 27.0,
-      "rank_direction_accuracy_por_horizonte": 30.0,
-      "rank_deteccion_caidas_por_horizonte": 29.0,
-      "rank_loss_h_por_horizonte": 28.0
+      "rank_mae_por_horizonte": 28.0,
+      "rank_rmse_por_horizonte": 28.0,
+      "rank_direction_accuracy_por_horizonte": 31.0,
+      "rank_deteccion_caidas_por_horizonte": 30.0,
+      "rank_loss_h_por_horizonte": 29.0
     },
     {
       "run_id": "C1_v1_clean",
@@ -11887,7 +12233,7 @@
       "rank_rmse_por_horizonte": NaN,
       "rank_direction_accuracy_por_horizonte": NaN,
       "rank_deteccion_caidas_por_horizonte": NaN,
-      "rank_loss_h_por_horizonte": 29.0
+      "rank_loss_h_por_horizonte": 30.0
     },
     {
       "run_id": "C1_v2_clean",
@@ -11928,7 +12274,7 @@
       "rank_rmse_por_horizonte": NaN,
       "rank_direction_accuracy_por_horizonte": NaN,
       "rank_deteccion_caidas_por_horizonte": NaN,
-      "rank_loss_h_por_horizonte": 30.0
+      "rank_loss_h_por_horizonte": 31.0
     },
     {
       "run_id": "C1_v3_clean",
@@ -11969,7 +12315,7 @@
       "rank_rmse_por_horizonte": NaN,
       "rank_direction_accuracy_por_horizonte": NaN,
       "rank_deteccion_caidas_por_horizonte": NaN,
-      "rank_loss_h_por_horizonte": 31.0
+      "rank_loss_h_por_horizonte": 32.0
     },
     {
       "run_id": "E8_v3_clean",
@@ -12006,11 +12352,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.6277552922651639,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 30.0,
-      "rank_rmse_por_horizonte": 30.0,
-      "rank_direction_accuracy_por_horizonte": 29.0,
-      "rank_deteccion_caidas_por_horizonte": 30.0,
-      "rank_loss_h_por_horizonte": 32.0
+      "rank_mae_por_horizonte": 31.0,
+      "rank_rmse_por_horizonte": 31.0,
+      "rank_direction_accuracy_por_horizonte": 30.0,
+      "rank_deteccion_caidas_por_horizonte": 31.0,
+      "rank_loss_h_por_horizonte": 33.0
     },
     {
       "run_id": "E6_v2_clean",
@@ -12047,11 +12393,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.4457690443532661,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 29.0,
-      "rank_rmse_por_horizonte": 29.0,
-      "rank_direction_accuracy_por_horizonte": 31.0,
-      "rank_deteccion_caidas_por_horizonte": 31.0,
-      "rank_loss_h_por_horizonte": 33.0
+      "rank_mae_por_horizonte": 30.0,
+      "rank_rmse_por_horizonte": 30.0,
+      "rank_direction_accuracy_por_horizonte": 32.0,
+      "rank_deteccion_caidas_por_horizonte": 32.0,
+      "rank_loss_h_por_horizonte": 34.0
     },
     {
       "run_id": "E7_v2_clean",
@@ -12088,11 +12434,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.6819919935137326,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 31.0,
-      "rank_rmse_por_horizonte": 31.0,
-      "rank_direction_accuracy_por_horizonte": 19.0,
-      "rank_deteccion_caidas_por_horizonte": 22.0,
-      "rank_loss_h_por_horizonte": 34.0
+      "rank_mae_por_horizonte": 32.0,
+      "rank_rmse_por_horizonte": 32.0,
+      "rank_direction_accuracy_por_horizonte": 20.0,
+      "rank_deteccion_caidas_por_horizonte": 23.0,
+      "rank_loss_h_por_horizonte": 35.0
     },
     {
       "run_id": "E9_smoke_tmp",
@@ -12170,9 +12516,9 @@
       "status_run": "completo",
       "L_total_Radar": 0.2684745612625059,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 16.0,
-      "rank_rmse_por_horizonte": 19.0,
-      "rank_direction_accuracy_por_horizonte": 6.0,
+      "rank_mae_por_horizonte": 17.0,
+      "rank_rmse_por_horizonte": 20.0,
+      "rank_direction_accuracy_por_horizonte": 7.0,
       "rank_deteccion_caidas_por_horizonte": 2.0,
       "rank_loss_h_por_horizonte": 1.0
     },
@@ -12211,11 +12557,52 @@
       "status_run": "completo",
       "L_total_Radar": 0.2712202353073486,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 20.0,
-      "rank_rmse_por_horizonte": 20.0,
-      "rank_direction_accuracy_por_horizonte": 1.0,
+      "rank_mae_por_horizonte": 21.0,
+      "rank_rmse_por_horizonte": 21.0,
+      "rank_direction_accuracy_por_horizonte": 2.0,
       "rank_deteccion_caidas_por_horizonte": 3.0,
       "rank_loss_h_por_horizonte": 2.0
+    },
+    {
+      "run_id": "E1_1_v1_bayesian_base",
+      "task_type": "regresion",
+      "horizonte": 3,
+      "horizonte_label": "H3",
+      "family": "lineal_regularizado",
+      "model": "bayesian_ridge",
+      "target_mode": "nivel",
+      "feature_mode": "corr",
+      "lags": "1,2,3,4,5,6",
+      "mae": 0.11542343425962436,
+      "rmse": 0.1507317243837629,
+      "direction_accuracy": 0.875,
+      "deteccion_caidas": 0.8181818181818182,
+      "l_num": 0.18759373165935259,
+      "l_trend": 0.125,
+      "l_risk": 0.18181818181818177,
+      "l_tol": 0.7083333333333334,
+      "loss_h": 0.06395870546059566,
+      "accuracy_5clases": NaN,
+      "balanced_accuracy_5clases": NaN,
+      "macro_f1_5clases": NaN,
+      "weighted_f1_5clases": NaN,
+      "recall_baja_fuerte": NaN,
+      "recall_baja_total": NaN,
+      "precision_baja_fuerte": NaN,
+      "recall_sube_fuerte": NaN,
+      "recall_sube_total": NaN,
+      "accuracy_3clases": NaN,
+      "macro_f1_3clases": NaN,
+      "balanced_accuracy_3clases": NaN,
+      "loss_clasificacion_h": 0.06395870546059566,
+      "status_run": "completo",
+      "L_total_Radar": 0.26494553341851,
+      "L_total_Clasificacion": NaN,
+      "rank_mae_por_horizonte": 15.0,
+      "rank_rmse_por_horizonte": 16.0,
+      "rank_direction_accuracy_por_horizonte": 1.0,
+      "rank_deteccion_caidas_por_horizonte": 16.0,
+      "rank_loss_h_por_horizonte": 3.0
     },
     {
       "run_id": "E1_v2_clean",
@@ -12254,9 +12641,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 1.0,
       "rank_rmse_por_horizonte": 1.0,
-      "rank_direction_accuracy_por_horizonte": 4.0,
+      "rank_direction_accuracy_por_horizonte": 5.0,
       "rank_deteccion_caidas_por_horizonte": 9.0,
-      "rank_loss_h_por_horizonte": 3.0
+      "rank_loss_h_por_horizonte": 4.0
     },
     {
       "run_id": "E5_v1_clean",
@@ -12295,9 +12682,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 2.0,
       "rank_rmse_por_horizonte": 3.0,
-      "rank_direction_accuracy_por_horizonte": 5.0,
+      "rank_direction_accuracy_por_horizonte": 6.0,
       "rank_deteccion_caidas_por_horizonte": 12.0,
-      "rank_loss_h_por_horizonte": 4.0
+      "rank_loss_h_por_horizonte": 5.0
     },
     {
       "run_id": "E1_v1",
@@ -12336,9 +12723,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 7.0,
       "rank_rmse_por_horizonte": 9.0,
-      "rank_direction_accuracy_por_horizonte": 2.0,
+      "rank_direction_accuracy_por_horizonte": 3.0,
       "rank_deteccion_caidas_por_horizonte": 7.0,
-      "rank_loss_h_por_horizonte": 5.0
+      "rank_loss_h_por_horizonte": 6.0
     },
     {
       "run_id": "E1_v2",
@@ -12377,9 +12764,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 8.0,
       "rank_rmse_por_horizonte": 10.0,
-      "rank_direction_accuracy_por_horizonte": 3.0,
+      "rank_direction_accuracy_por_horizonte": 4.0,
       "rank_deteccion_caidas_por_horizonte": 8.0,
-      "rank_loss_h_por_horizonte": 6.0
+      "rank_loss_h_por_horizonte": 7.0
     },
     {
       "run_id": "E5_v4_clean",
@@ -12418,9 +12805,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 5.0,
       "rank_rmse_por_horizonte": 4.0,
-      "rank_direction_accuracy_por_horizonte": 12.0,
+      "rank_direction_accuracy_por_horizonte": 13.0,
       "rank_deteccion_caidas_por_horizonte": 11.0,
-      "rank_loss_h_por_horizonte": 7.0
+      "rank_loss_h_por_horizonte": 8.0
     },
     {
       "run_id": "E1_v4_clean",
@@ -12459,9 +12846,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 3.0,
       "rank_rmse_por_horizonte": 2.0,
-      "rank_direction_accuracy_por_horizonte": 10.0,
+      "rank_direction_accuracy_por_horizonte": 11.0,
       "rank_deteccion_caidas_por_horizonte": 6.0,
-      "rank_loss_h_por_horizonte": 8.0
+      "rank_loss_h_por_horizonte": 9.0
     },
     {
       "run_id": "E1_v5_clean",
@@ -12500,9 +12887,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 4.0,
       "rank_rmse_por_horizonte": 8.0,
-      "rank_direction_accuracy_por_horizonte": 11.0,
+      "rank_direction_accuracy_por_horizonte": 12.0,
       "rank_deteccion_caidas_por_horizonte": 10.0,
-      "rank_loss_h_por_horizonte": 9.0
+      "rank_loss_h_por_horizonte": 10.0
     },
     {
       "run_id": "E3_v1_clean",
@@ -12541,9 +12928,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 9.0,
       "rank_rmse_por_horizonte": 6.0,
-      "rank_direction_accuracy_por_horizonte": 7.0,
-      "rank_deteccion_caidas_por_horizonte": 17.0,
-      "rank_loss_h_por_horizonte": 10.0
+      "rank_direction_accuracy_por_horizonte": 8.0,
+      "rank_deteccion_caidas_por_horizonte": 18.0,
+      "rank_loss_h_por_horizonte": 11.0
     },
     {
       "run_id": "E7_v3_clean",
@@ -12580,11 +12967,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.321327838487649,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 23.0,
-      "rank_rmse_por_horizonte": 22.0,
-      "rank_direction_accuracy_por_horizonte": 9.0,
+      "rank_mae_por_horizonte": 24.0,
+      "rank_rmse_por_horizonte": 23.0,
+      "rank_direction_accuracy_por_horizonte": 10.0,
       "rank_deteccion_caidas_por_horizonte": 4.0,
-      "rank_loss_h_por_horizonte": 11.0
+      "rank_loss_h_por_horizonte": 12.0
     },
     {
       "run_id": "E5_v5_clean",
@@ -12623,9 +13010,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 6.0,
       "rank_rmse_por_horizonte": 7.0,
-      "rank_direction_accuracy_por_horizonte": 15.0,
+      "rank_direction_accuracy_por_horizonte": 16.0,
       "rank_deteccion_caidas_por_horizonte": 15.0,
-      "rank_loss_h_por_horizonte": 12.0
+      "rank_loss_h_por_horizonte": 13.0
     },
     {
       "run_id": "E3_v2_clean",
@@ -12664,9 +13051,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 10.0,
       "rank_rmse_por_horizonte": 11.0,
-      "rank_direction_accuracy_por_horizonte": 16.0,
-      "rank_deteccion_caidas_por_horizonte": 16.0,
-      "rank_loss_h_por_horizonte": 13.0
+      "rank_direction_accuracy_por_horizonte": 17.0,
+      "rank_deteccion_caidas_por_horizonte": 17.0,
+      "rank_loss_h_por_horizonte": 14.0
     },
     {
       "run_id": "E5_v3_clean",
@@ -12705,9 +13092,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 11.0,
       "rank_rmse_por_horizonte": 12.0,
-      "rank_direction_accuracy_por_horizonte": 13.0,
+      "rank_direction_accuracy_por_horizonte": 14.0,
       "rank_deteccion_caidas_por_horizonte": 13.0,
-      "rank_loss_h_por_horizonte": 14.0
+      "rank_loss_h_por_horizonte": 15.0
     },
     {
       "run_id": "E5_v2_clean",
@@ -12746,9 +13133,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 12.0,
       "rank_rmse_por_horizonte": 13.0,
-      "rank_direction_accuracy_por_horizonte": 14.0,
+      "rank_direction_accuracy_por_horizonte": 15.0,
       "rank_deteccion_caidas_por_horizonte": 14.0,
-      "rank_loss_h_por_horizonte": 15.0
+      "rank_loss_h_por_horizonte": 16.0
     },
     {
       "run_id": "E3_v3_clean",
@@ -12787,9 +13174,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 14.0,
       "rank_rmse_por_horizonte": 14.0,
-      "rank_direction_accuracy_por_horizonte": 8.0,
-      "rank_deteccion_caidas_por_horizonte": 19.0,
-      "rank_loss_h_por_horizonte": 16.0
+      "rank_direction_accuracy_por_horizonte": 9.0,
+      "rank_deteccion_caidas_por_horizonte": 20.0,
+      "rank_loss_h_por_horizonte": 17.0
     },
     {
       "run_id": "E7_v1_clean",
@@ -12826,11 +13213,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.3255019750760202,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 22.0,
-      "rank_rmse_por_horizonte": 23.0,
-      "rank_direction_accuracy_por_horizonte": 18.0,
+      "rank_mae_por_horizonte": 23.0,
+      "rank_rmse_por_horizonte": 24.0,
+      "rank_direction_accuracy_por_horizonte": 19.0,
       "rank_deteccion_caidas_por_horizonte": 5.0,
-      "rank_loss_h_por_horizonte": 17.0
+      "rank_loss_h_por_horizonte": 18.0
     },
     {
       "run_id": "E9_v2_clean",
@@ -12867,11 +13254,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.2275096201736237,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 19.0,
-      "rank_rmse_por_horizonte": 21.0,
-      "rank_direction_accuracy_por_horizonte": 23.0,
+      "rank_mae_por_horizonte": 20.0,
+      "rank_rmse_por_horizonte": 22.0,
+      "rank_direction_accuracy_por_horizonte": 24.0,
       "rank_deteccion_caidas_por_horizonte": 1.0,
-      "rank_loss_h_por_horizonte": 18.0
+      "rank_loss_h_por_horizonte": 19.0
     },
     {
       "run_id": "E4_v2_clean",
@@ -12910,9 +13297,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 13.0,
       "rank_rmse_por_horizonte": 5.0,
-      "rank_direction_accuracy_por_horizonte": 17.0,
-      "rank_deteccion_caidas_por_horizonte": 24.0,
-      "rank_loss_h_por_horizonte": 19.0
+      "rank_direction_accuracy_por_horizonte": 18.0,
+      "rank_deteccion_caidas_por_horizonte": 25.0,
+      "rank_loss_h_por_horizonte": 20.0
     },
     {
       "run_id": "E4_v1_clean",
@@ -12949,11 +13336,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.2839341113264429,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 15.0,
+      "rank_mae_por_horizonte": 16.0,
       "rank_rmse_por_horizonte": 15.0,
-      "rank_direction_accuracy_por_horizonte": 24.0,
-      "rank_deteccion_caidas_por_horizonte": 18.0,
-      "rank_loss_h_por_horizonte": 20.0
+      "rank_direction_accuracy_por_horizonte": 25.0,
+      "rank_deteccion_caidas_por_horizonte": 19.0,
+      "rank_loss_h_por_horizonte": 21.0
     },
     {
       "run_id": "E2_v1_clean",
@@ -12990,11 +13377,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.3019073236793116,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 24.0,
-      "rank_rmse_por_horizonte": 25.0,
-      "rank_direction_accuracy_por_horizonte": 21.0,
-      "rank_deteccion_caidas_por_horizonte": 20.0,
-      "rank_loss_h_por_horizonte": 21.0
+      "rank_mae_por_horizonte": 25.0,
+      "rank_rmse_por_horizonte": 26.0,
+      "rank_direction_accuracy_por_horizonte": 22.0,
+      "rank_deteccion_caidas_por_horizonte": 21.0,
+      "rank_loss_h_por_horizonte": 22.0
     },
     {
       "run_id": "E2_v2_clean",
@@ -13031,11 +13418,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.3019203219833318,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 25.0,
-      "rank_rmse_por_horizonte": 26.0,
-      "rank_direction_accuracy_por_horizonte": 22.0,
-      "rank_deteccion_caidas_por_horizonte": 21.0,
-      "rank_loss_h_por_horizonte": 22.0
+      "rank_mae_por_horizonte": 26.0,
+      "rank_rmse_por_horizonte": 27.0,
+      "rank_direction_accuracy_por_horizonte": 23.0,
+      "rank_deteccion_caidas_por_horizonte": 22.0,
+      "rank_loss_h_por_horizonte": 23.0
     },
     {
       "run_id": "E8_v1_clean",
@@ -13072,11 +13459,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.3364815593128823,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 18.0,
-      "rank_rmse_por_horizonte": 18.0,
-      "rank_direction_accuracy_por_horizonte": 19.0,
-      "rank_deteccion_caidas_por_horizonte": 25.0,
-      "rank_loss_h_por_horizonte": 23.0
+      "rank_mae_por_horizonte": 19.0,
+      "rank_rmse_por_horizonte": 19.0,
+      "rank_direction_accuracy_por_horizonte": 20.0,
+      "rank_deteccion_caidas_por_horizonte": 26.0,
+      "rank_loss_h_por_horizonte": 24.0
     },
     {
       "run_id": "E8_v2_clean",
@@ -13113,11 +13500,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.2857208904369485,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 17.0,
-      "rank_rmse_por_horizonte": 16.0,
-      "rank_direction_accuracy_por_horizonte": 20.0,
-      "rank_deteccion_caidas_por_horizonte": 23.0,
-      "rank_loss_h_por_horizonte": 24.0
+      "rank_mae_por_horizonte": 18.0,
+      "rank_rmse_por_horizonte": 17.0,
+      "rank_direction_accuracy_por_horizonte": 21.0,
+      "rank_deteccion_caidas_por_horizonte": 24.0,
+      "rank_loss_h_por_horizonte": 25.0
     },
     {
       "run_id": "E6_v1_clean",
@@ -13154,11 +13541,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.3703183972542414,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 27.0,
-      "rank_rmse_por_horizonte": 27.0,
-      "rank_direction_accuracy_por_horizonte": 27.0,
-      "rank_deteccion_caidas_por_horizonte": 26.0,
-      "rank_loss_h_por_horizonte": 25.0
+      "rank_mae_por_horizonte": 28.0,
+      "rank_rmse_por_horizonte": 28.0,
+      "rank_direction_accuracy_por_horizonte": 28.0,
+      "rank_deteccion_caidas_por_horizonte": 27.0,
+      "rank_loss_h_por_horizonte": 26.0
     },
     {
       "run_id": "E2_v3_clean",
@@ -13195,11 +13582,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.2864645117875421,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 21.0,
-      "rank_rmse_por_horizonte": 17.0,
-      "rank_direction_accuracy_por_horizonte": 26.0,
-      "rank_deteccion_caidas_por_horizonte": 29.0,
-      "rank_loss_h_por_horizonte": 26.0
+      "rank_mae_por_horizonte": 22.0,
+      "rank_rmse_por_horizonte": 18.0,
+      "rank_direction_accuracy_por_horizonte": 27.0,
+      "rank_deteccion_caidas_por_horizonte": 30.0,
+      "rank_loss_h_por_horizonte": 27.0
     },
     {
       "run_id": "E1_v3_clean",
@@ -13236,11 +13623,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.3980475726547684,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 26.0,
-      "rank_rmse_por_horizonte": 24.0,
-      "rank_direction_accuracy_por_horizonte": 29.0,
-      "rank_deteccion_caidas_por_horizonte": 28.0,
-      "rank_loss_h_por_horizonte": 27.0
+      "rank_mae_por_horizonte": 27.0,
+      "rank_rmse_por_horizonte": 25.0,
+      "rank_direction_accuracy_por_horizonte": 30.0,
+      "rank_deteccion_caidas_por_horizonte": 29.0,
+      "rank_loss_h_por_horizonte": 28.0
     },
     {
       "run_id": "E6_v2_clean",
@@ -13277,11 +13664,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.4457690443532661,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 29.0,
-      "rank_rmse_por_horizonte": 29.0,
-      "rank_direction_accuracy_por_horizonte": 25.0,
-      "rank_deteccion_caidas_por_horizonte": 31.0,
-      "rank_loss_h_por_horizonte": 28.0
+      "rank_mae_por_horizonte": 30.0,
+      "rank_rmse_por_horizonte": 30.0,
+      "rank_direction_accuracy_por_horizonte": 26.0,
+      "rank_deteccion_caidas_por_horizonte": 32.0,
+      "rank_loss_h_por_horizonte": 29.0
     },
     {
       "run_id": "E4_v3_clean",
@@ -13318,11 +13705,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.4247743104980723,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 28.0,
-      "rank_rmse_por_horizonte": 28.0,
-      "rank_direction_accuracy_por_horizonte": 31.0,
-      "rank_deteccion_caidas_por_horizonte": 30.0,
-      "rank_loss_h_por_horizonte": 29.0
+      "rank_mae_por_horizonte": 29.0,
+      "rank_rmse_por_horizonte": 29.0,
+      "rank_direction_accuracy_por_horizonte": 32.0,
+      "rank_deteccion_caidas_por_horizonte": 31.0,
+      "rank_loss_h_por_horizonte": 30.0
     },
     {
       "run_id": "C1_v1_clean",
@@ -13363,7 +13750,7 @@
       "rank_rmse_por_horizonte": NaN,
       "rank_direction_accuracy_por_horizonte": NaN,
       "rank_deteccion_caidas_por_horizonte": NaN,
-      "rank_loss_h_por_horizonte": 30.0
+      "rank_loss_h_por_horizonte": 31.0
     },
     {
       "run_id": "C1_v2_clean",
@@ -13404,7 +13791,7 @@
       "rank_rmse_por_horizonte": NaN,
       "rank_direction_accuracy_por_horizonte": NaN,
       "rank_deteccion_caidas_por_horizonte": NaN,
-      "rank_loss_h_por_horizonte": 31.0
+      "rank_loss_h_por_horizonte": 32.0
     },
     {
       "run_id": "C1_v3_clean",
@@ -13445,7 +13832,7 @@
       "rank_rmse_por_horizonte": NaN,
       "rank_direction_accuracy_por_horizonte": NaN,
       "rank_deteccion_caidas_por_horizonte": NaN,
-      "rank_loss_h_por_horizonte": 32.0
+      "rank_loss_h_por_horizonte": 33.0
     },
     {
       "run_id": "E7_v2_clean",
@@ -13482,11 +13869,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.6819919935137326,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 31.0,
-      "rank_rmse_por_horizonte": 31.0,
-      "rank_direction_accuracy_por_horizonte": 28.0,
-      "rank_deteccion_caidas_por_horizonte": 22.0,
-      "rank_loss_h_por_horizonte": 33.0
+      "rank_mae_por_horizonte": 32.0,
+      "rank_rmse_por_horizonte": 32.0,
+      "rank_direction_accuracy_por_horizonte": 29.0,
+      "rank_deteccion_caidas_por_horizonte": 23.0,
+      "rank_loss_h_por_horizonte": 34.0
     },
     {
       "run_id": "E8_v3_clean",
@@ -13523,11 +13910,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.6277552922651639,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 30.0,
-      "rank_rmse_por_horizonte": 30.0,
-      "rank_direction_accuracy_por_horizonte": 30.0,
-      "rank_deteccion_caidas_por_horizonte": 27.0,
-      "rank_loss_h_por_horizonte": 34.0
+      "rank_mae_por_horizonte": 31.0,
+      "rank_rmse_por_horizonte": 31.0,
+      "rank_direction_accuracy_por_horizonte": 31.0,
+      "rank_deteccion_caidas_por_horizonte": 28.0,
+      "rank_loss_h_por_horizonte": 35.0
     },
     {
       "run_id": "E9_smoke_tmp",
@@ -13687,8 +14074,8 @@
       "status_run": "completo",
       "L_total_Radar": 0.2864645117875421,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 22.0,
-      "rank_rmse_por_horizonte": 19.0,
+      "rank_mae_por_horizonte": 23.0,
+      "rank_rmse_por_horizonte": 20.0,
       "rank_direction_accuracy_por_horizonte": 2.0,
       "rank_deteccion_caidas_por_horizonte": 1.0,
       "rank_loss_h_por_horizonte": 3.0
@@ -13892,8 +14279,8 @@
       "status_run": "completo",
       "L_total_Radar": 0.2712202353073486,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 23.0,
-      "rank_rmse_por_horizonte": 23.0,
+      "rank_mae_por_horizonte": 24.0,
+      "rank_rmse_por_horizonte": 24.0,
       "rank_direction_accuracy_por_horizonte": 1.0,
       "rank_deteccion_caidas_por_horizonte": 3.0,
       "rank_loss_h_por_horizonte": 8.0
@@ -13940,6 +14327,47 @@
       "rank_loss_h_por_horizonte": 9.0
     },
     {
+      "run_id": "E1_1_v1_bayesian_base",
+      "task_type": "regresion",
+      "horizonte": 4,
+      "horizonte_label": "H4",
+      "family": "lineal_regularizado",
+      "model": "bayesian_ridge",
+      "target_mode": "nivel",
+      "feature_mode": "corr",
+      "lags": "1,2,3,4,5,6",
+      "mae": 0.10987723541276632,
+      "rmse": 0.15371009477457925,
+      "direction_accuracy": 0.6956521739130435,
+      "deteccion_caidas": 0.7777777777777778,
+      "l_num": 0.17857968572595376,
+      "l_trend": 0.30434782608695654,
+      "l_risk": 0.2222222222222222,
+      "l_tol": 0.6521739130434783,
+      "loss_h": 0.038904419007858945,
+      "accuracy_5clases": NaN,
+      "balanced_accuracy_5clases": NaN,
+      "macro_f1_5clases": NaN,
+      "weighted_f1_5clases": NaN,
+      "recall_baja_fuerte": NaN,
+      "recall_baja_total": NaN,
+      "precision_baja_fuerte": NaN,
+      "recall_sube_fuerte": NaN,
+      "recall_sube_total": NaN,
+      "accuracy_3clases": NaN,
+      "macro_f1_3clases": NaN,
+      "balanced_accuracy_3clases": NaN,
+      "loss_clasificacion_h": 0.03890441900785895,
+      "status_run": "completo",
+      "L_total_Radar": 0.26494553341851,
+      "L_total_Clasificacion": NaN,
+      "rank_mae_por_horizonte": 15.0,
+      "rank_rmse_por_horizonte": 15.0,
+      "rank_direction_accuracy_por_horizonte": 13.0,
+      "rank_deteccion_caidas_por_horizonte": 11.0,
+      "rank_loss_h_por_horizonte": 10.0
+    },
+    {
       "run_id": "E9_v2_clean",
       "task_type": "regresion",
       "horizonte": 4,
@@ -13974,11 +14402,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.2275096201736237,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 20.0,
-      "rank_rmse_por_horizonte": 22.0,
+      "rank_mae_por_horizonte": 21.0,
+      "rank_rmse_por_horizonte": 23.0,
       "rank_direction_accuracy_por_horizonte": 6.0,
       "rank_deteccion_caidas_por_horizonte": 2.0,
-      "rank_loss_h_por_horizonte": 10.0
+      "rank_loss_h_por_horizonte": 11.0
     },
     {
       "run_id": "E5_v5_clean",
@@ -14018,8 +14446,8 @@
       "rank_mae_por_horizonte": 9.0,
       "rank_rmse_por_horizonte": 8.0,
       "rank_direction_accuracy_por_horizonte": 12.0,
-      "rank_deteccion_caidas_por_horizonte": 14.0,
-      "rank_loss_h_por_horizonte": 11.0
+      "rank_deteccion_caidas_por_horizonte": 15.0,
+      "rank_loss_h_por_horizonte": 12.0
     },
     {
       "run_id": "E3_v2_clean",
@@ -14058,9 +14486,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 1.0,
       "rank_rmse_por_horizonte": 6.0,
-      "rank_direction_accuracy_por_horizonte": 13.0,
-      "rank_deteccion_caidas_por_horizonte": 15.0,
-      "rank_loss_h_por_horizonte": 12.0
+      "rank_direction_accuracy_por_horizonte": 14.0,
+      "rank_deteccion_caidas_por_horizonte": 16.0,
+      "rank_loss_h_por_horizonte": 13.0
     },
     {
       "run_id": "E4_v1_clean",
@@ -14097,11 +14525,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.2839341113264429,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 15.0,
-      "rank_rmse_por_horizonte": 15.0,
+      "rank_mae_por_horizonte": 16.0,
+      "rank_rmse_por_horizonte": 16.0,
       "rank_direction_accuracy_por_horizonte": 5.0,
-      "rank_deteccion_caidas_por_horizonte": 17.0,
-      "rank_loss_h_por_horizonte": 13.0
+      "rank_deteccion_caidas_por_horizonte": 18.0,
+      "rank_loss_h_por_horizonte": 14.0
     },
     {
       "run_id": "E5_v2_clean",
@@ -14140,9 +14568,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 14.0,
       "rank_rmse_por_horizonte": 14.0,
-      "rank_direction_accuracy_por_horizonte": 16.0,
-      "rank_deteccion_caidas_por_horizonte": 13.0,
-      "rank_loss_h_por_horizonte": 14.0
+      "rank_direction_accuracy_por_horizonte": 17.0,
+      "rank_deteccion_caidas_por_horizonte": 14.0,
+      "rank_loss_h_por_horizonte": 15.0
     },
     {
       "run_id": "E8_v2_clean",
@@ -14179,11 +14607,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.2857208904369485,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 18.0,
-      "rank_rmse_por_horizonte": 21.0,
-      "rank_direction_accuracy_por_horizonte": 14.0,
-      "rank_deteccion_caidas_por_horizonte": 18.0,
-      "rank_loss_h_por_horizonte": 15.0
+      "rank_mae_por_horizonte": 19.0,
+      "rank_rmse_por_horizonte": 22.0,
+      "rank_direction_accuracy_por_horizonte": 15.0,
+      "rank_deteccion_caidas_por_horizonte": 19.0,
+      "rank_loss_h_por_horizonte": 16.0
     },
     {
       "run_id": "E4_v3_clean",
@@ -14222,9 +14650,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 13.0,
       "rank_rmse_por_horizonte": 9.0,
-      "rank_direction_accuracy_por_horizonte": 22.0,
-      "rank_deteccion_caidas_por_horizonte": 22.0,
-      "rank_loss_h_por_horizonte": 16.0
+      "rank_direction_accuracy_por_horizonte": 23.0,
+      "rank_deteccion_caidas_por_horizonte": 23.0,
+      "rank_loss_h_por_horizonte": 17.0
     },
     {
       "run_id": "E4_v2_clean",
@@ -14261,11 +14689,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.2973425926212152,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 16.0,
-      "rank_rmse_por_horizonte": 16.0,
-      "rank_direction_accuracy_por_horizonte": 19.0,
-      "rank_deteccion_caidas_por_horizonte": 19.0,
-      "rank_loss_h_por_horizonte": 17.0
+      "rank_mae_por_horizonte": 17.0,
+      "rank_rmse_por_horizonte": 17.0,
+      "rank_direction_accuracy_por_horizonte": 20.0,
+      "rank_deteccion_caidas_por_horizonte": 20.0,
+      "rank_loss_h_por_horizonte": 18.0
     },
     {
       "run_id": "E3_v1_clean",
@@ -14304,9 +14732,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 8.0,
       "rank_rmse_por_horizonte": 7.0,
-      "rank_direction_accuracy_por_horizonte": 17.0,
-      "rank_deteccion_caidas_por_horizonte": 24.0,
-      "rank_loss_h_por_horizonte": 18.0
+      "rank_direction_accuracy_por_horizonte": 18.0,
+      "rank_deteccion_caidas_por_horizonte": 25.0,
+      "rank_loss_h_por_horizonte": 19.0
     },
     {
       "run_id": "E5_v3_clean",
@@ -14345,9 +14773,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 12.0,
       "rank_rmse_por_horizonte": 12.0,
-      "rank_direction_accuracy_por_horizonte": 15.0,
-      "rank_deteccion_caidas_por_horizonte": 23.0,
-      "rank_loss_h_por_horizonte": 19.0
+      "rank_direction_accuracy_por_horizonte": 16.0,
+      "rank_deteccion_caidas_por_horizonte": 24.0,
+      "rank_loss_h_por_horizonte": 20.0
     },
     {
       "run_id": "E1_v3_clean",
@@ -14384,11 +14812,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.3980475726547684,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 19.0,
-      "rank_rmse_por_horizonte": 17.0,
-      "rank_direction_accuracy_por_horizonte": 24.0,
-      "rank_deteccion_caidas_por_horizonte": 12.0,
-      "rank_loss_h_por_horizonte": 20.0
+      "rank_mae_por_horizonte": 20.0,
+      "rank_rmse_por_horizonte": 18.0,
+      "rank_direction_accuracy_por_horizonte": 25.0,
+      "rank_deteccion_caidas_por_horizonte": 13.0,
+      "rank_loss_h_por_horizonte": 21.0
     },
     {
       "run_id": "E8_v1_clean",
@@ -14425,11 +14853,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.3364815593128823,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 21.0,
-      "rank_rmse_por_horizonte": 18.0,
-      "rank_direction_accuracy_por_horizonte": 20.0,
-      "rank_deteccion_caidas_por_horizonte": 20.0,
-      "rank_loss_h_por_horizonte": 21.0
+      "rank_mae_por_horizonte": 22.0,
+      "rank_rmse_por_horizonte": 19.0,
+      "rank_direction_accuracy_por_horizonte": 21.0,
+      "rank_deteccion_caidas_por_horizonte": 21.0,
+      "rank_loss_h_por_horizonte": 22.0
     },
     {
       "run_id": "E3_v3_clean",
@@ -14468,9 +14896,9 @@
       "L_total_Clasificacion": NaN,
       "rank_mae_por_horizonte": 11.0,
       "rank_rmse_por_horizonte": 10.0,
-      "rank_direction_accuracy_por_horizonte": 18.0,
-      "rank_deteccion_caidas_por_horizonte": 25.0,
-      "rank_loss_h_por_horizonte": 22.0
+      "rank_direction_accuracy_por_horizonte": 19.0,
+      "rank_deteccion_caidas_por_horizonte": 26.0,
+      "rank_loss_h_por_horizonte": 23.0
     },
     {
       "run_id": "E9_v1_clean",
@@ -14507,11 +14935,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.2684745612625059,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 17.0,
-      "rank_rmse_por_horizonte": 20.0,
-      "rank_direction_accuracy_por_horizonte": 21.0,
-      "rank_deteccion_caidas_por_horizonte": 16.0,
-      "rank_loss_h_por_horizonte": 23.0
+      "rank_mae_por_horizonte": 18.0,
+      "rank_rmse_por_horizonte": 21.0,
+      "rank_direction_accuracy_por_horizonte": 22.0,
+      "rank_deteccion_caidas_por_horizonte": 17.0,
+      "rank_loss_h_por_horizonte": 24.0
     },
     {
       "run_id": "E6_v2_clean",
@@ -14548,11 +14976,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.4457690443532661,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 29.0,
-      "rank_rmse_por_horizonte": 29.0,
-      "rank_direction_accuracy_por_horizonte": 23.0,
-      "rank_deteccion_caidas_por_horizonte": 11.0,
-      "rank_loss_h_por_horizonte": 24.0
+      "rank_mae_por_horizonte": 30.0,
+      "rank_rmse_por_horizonte": 30.0,
+      "rank_direction_accuracy_por_horizonte": 24.0,
+      "rank_deteccion_caidas_por_horizonte": 12.0,
+      "rank_loss_h_por_horizonte": 25.0
     },
     {
       "run_id": "E2_v1_clean",
@@ -14589,11 +15017,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.3019073236793116,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 24.0,
-      "rank_rmse_por_horizonte": 26.0,
-      "rank_direction_accuracy_por_horizonte": 26.0,
-      "rank_deteccion_caidas_por_horizonte": 26.0,
-      "rank_loss_h_por_horizonte": 25.0
+      "rank_mae_por_horizonte": 25.0,
+      "rank_rmse_por_horizonte": 27.0,
+      "rank_direction_accuracy_por_horizonte": 27.0,
+      "rank_deteccion_caidas_por_horizonte": 27.0,
+      "rank_loss_h_por_horizonte": 26.0
     },
     {
       "run_id": "E2_v2_clean",
@@ -14630,11 +15058,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.3019203219833318,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 25.0,
-      "rank_rmse_por_horizonte": 27.0,
-      "rank_direction_accuracy_por_horizonte": 27.0,
-      "rank_deteccion_caidas_por_horizonte": 27.0,
-      "rank_loss_h_por_horizonte": 26.0
+      "rank_mae_por_horizonte": 26.0,
+      "rank_rmse_por_horizonte": 28.0,
+      "rank_direction_accuracy_por_horizonte": 28.0,
+      "rank_deteccion_caidas_por_horizonte": 28.0,
+      "rank_loss_h_por_horizonte": 27.0
     },
     {
       "run_id": "E7_v3_clean",
@@ -14671,11 +15099,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.321327838487649,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 26.0,
-      "rank_rmse_por_horizonte": 25.0,
-      "rank_direction_accuracy_por_horizonte": 28.0,
-      "rank_deteccion_caidas_por_horizonte": 28.0,
-      "rank_loss_h_por_horizonte": 27.0
+      "rank_mae_por_horizonte": 27.0,
+      "rank_rmse_por_horizonte": 26.0,
+      "rank_direction_accuracy_por_horizonte": 29.0,
+      "rank_deteccion_caidas_por_horizonte": 29.0,
+      "rank_loss_h_por_horizonte": 28.0
     },
     {
       "run_id": "E7_v1_clean",
@@ -14712,11 +15140,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.3255019750760202,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 27.0,
-      "rank_rmse_por_horizonte": 24.0,
-      "rank_direction_accuracy_por_horizonte": 29.0,
-      "rank_deteccion_caidas_por_horizonte": 29.0,
-      "rank_loss_h_por_horizonte": 28.0
+      "rank_mae_por_horizonte": 28.0,
+      "rank_rmse_por_horizonte": 25.0,
+      "rank_direction_accuracy_por_horizonte": 30.0,
+      "rank_deteccion_caidas_por_horizonte": 30.0,
+      "rank_loss_h_por_horizonte": 29.0
     },
     {
       "run_id": "E6_v1_clean",
@@ -14753,11 +15181,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.3703183972542414,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 28.0,
-      "rank_rmse_por_horizonte": 28.0,
-      "rank_direction_accuracy_por_horizonte": 30.0,
-      "rank_deteccion_caidas_por_horizonte": 21.0,
-      "rank_loss_h_por_horizonte": 29.0
+      "rank_mae_por_horizonte": 29.0,
+      "rank_rmse_por_horizonte": 29.0,
+      "rank_direction_accuracy_por_horizonte": 31.0,
+      "rank_deteccion_caidas_por_horizonte": 22.0,
+      "rank_loss_h_por_horizonte": 30.0
     },
     {
       "run_id": "C1_v1_clean",
@@ -14798,7 +15226,7 @@
       "rank_rmse_por_horizonte": NaN,
       "rank_direction_accuracy_por_horizonte": NaN,
       "rank_deteccion_caidas_por_horizonte": NaN,
-      "rank_loss_h_por_horizonte": 30.0
+      "rank_loss_h_por_horizonte": 31.0
     },
     {
       "run_id": "C1_v2_clean",
@@ -14839,7 +15267,7 @@
       "rank_rmse_por_horizonte": NaN,
       "rank_direction_accuracy_por_horizonte": NaN,
       "rank_deteccion_caidas_por_horizonte": NaN,
-      "rank_loss_h_por_horizonte": 31.0
+      "rank_loss_h_por_horizonte": 32.0
     },
     {
       "run_id": "C1_v3_clean",
@@ -14880,7 +15308,7 @@
       "rank_rmse_por_horizonte": NaN,
       "rank_direction_accuracy_por_horizonte": NaN,
       "rank_deteccion_caidas_por_horizonte": NaN,
-      "rank_loss_h_por_horizonte": 32.0
+      "rank_loss_h_por_horizonte": 33.0
     },
     {
       "run_id": "E8_v3_clean",
@@ -14917,11 +15345,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.6277552922651639,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 30.0,
-      "rank_rmse_por_horizonte": 30.0,
-      "rank_direction_accuracy_por_horizonte": 25.0,
-      "rank_deteccion_caidas_por_horizonte": 30.0,
-      "rank_loss_h_por_horizonte": 33.0
+      "rank_mae_por_horizonte": 31.0,
+      "rank_rmse_por_horizonte": 31.0,
+      "rank_direction_accuracy_por_horizonte": 26.0,
+      "rank_deteccion_caidas_por_horizonte": 31.0,
+      "rank_loss_h_por_horizonte": 34.0
     },
     {
       "run_id": "E7_v2_clean",
@@ -14958,11 +15386,11 @@
       "status_run": "completo",
       "L_total_Radar": 0.6819919935137326,
       "L_total_Clasificacion": NaN,
-      "rank_mae_por_horizonte": 31.0,
-      "rank_rmse_por_horizonte": 31.0,
-      "rank_direction_accuracy_por_horizonte": 31.0,
-      "rank_deteccion_caidas_por_horizonte": 31.0,
-      "rank_loss_h_por_horizonte": 34.0
+      "rank_mae_por_horizonte": 32.0,
+      "rank_rmse_por_horizonte": 32.0,
+      "rank_direction_accuracy_por_horizonte": 32.0,
+      "rank_deteccion_caidas_por_horizonte": 32.0,
+      "rank_loss_h_por_horizonte": 35.0
     },
     {
       "run_id": "E9_smoke_tmp",
@@ -15101,6 +15529,38 @@
       "resumen_horizontes": 1,
       "status_artifactos": "completo",
       "comentario": "duplicado_detectado=3; directorio_valido_resuelto",
+      "es_directorio_canonico": true
+    },
+    {
+      "run_id": "E1_1_v1_bayesian_base",
+      "family": "lineal_regularizado",
+      "model": "bayesian_ridge",
+      "path_run": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063647",
+      "metadata_run": "",
+      "metricas_horizonte": "",
+      "parametros_run": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063647/parametros_run.json",
+      "predicciones": 4,
+      "comparaciones": 1,
+      "features_seleccionadas": 4,
+      "resumen_horizontes": 1,
+      "status_artifactos": "parcial",
+      "comentario": "duplicado_detectado=2; intento_descartado_por_menor_completitud; faltante_metadata,faltante_metricas",
+      "es_directorio_canonico": false
+    },
+    {
+      "run_id": "E1_1_v1_bayesian_base",
+      "family": "lineal_regularizado",
+      "model": "bayesian_ridge",
+      "path_run": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714",
+      "metadata_run": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714/metadata_run.json",
+      "metricas_horizonte": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714/metricas_horizonte.json",
+      "parametros_run": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714/parametros_run.json",
+      "predicciones": 4,
+      "comparaciones": 3,
+      "features_seleccionadas": 4,
+      "resumen_horizontes": 1,
+      "status_artifactos": "completo",
+      "comentario": "duplicado_detectado=2; directorio_valido_resuelto",
       "es_directorio_canonico": true
     },
     {
@@ -15665,6 +16125,39 @@
     }
   ],
   "stacking_readiness": [
+    {
+      "run_id": "E1_1_v1_bayesian_base",
+      "family": "lineal_regularizado",
+      "model": "bayesian_ridge",
+      "identidad_canonica_clara": true,
+      "reconstruccion_hiperparams_status": "completo",
+      "horizontes_disponibles": "1,2,3,4",
+      "horizontes_mergeables": "1,2,3,4",
+      "horizontes_elegibles_stacking": "1,2,3,4",
+      "predicciones_completas_1a4": true,
+      "columnas_minimas_ok": true,
+      "tiene_fecha": true,
+      "tiene_y_true": true,
+      "tiene_y_pred": true,
+      "orden_temporal_ok": true,
+      "sin_duplicados_fecha": true,
+      "mergeable_h1": true,
+      "mergeable_h2": true,
+      "mergeable_h3": true,
+      "mergeable_h4": true,
+      "stacking_eligible_h1": true,
+      "stacking_eligible_h2": true,
+      "stacking_eligible_h3": true,
+      "stacking_eligible_h4": true,
+      "cantidad_obs_h1": 26,
+      "cantidad_obs_h2": 25,
+      "cantidad_obs_h3": 24,
+      "cantidad_obs_h4": 23,
+      "cobertura_total_predicciones": 98,
+      "compatible_para_stacking": true,
+      "prioridad_para_meta_modelo": "alta",
+      "motivo_no_compatible": ""
+    },
     {
       "run_id": "E1_v2",
       "family": "lineal_regularizado",
@@ -16823,6 +17316,25 @@
   ],
   "stacking_elegibilidad_por_horizonte": [
     {
+      "run_id": "E1_1_v1_bayesian_base",
+      "family": "lineal_regularizado",
+      "model": "bayesian_ridge",
+      "task_type": "regresion",
+      "horizonte": 1,
+      "horizonte_label": "H1",
+      "identidad_canonica_clara": true,
+      "status_run": "completo",
+      "reconstruccion_hiperparams_status": "completo",
+      "configuracion_recuperable": true,
+      "tiene_metrica_h": true,
+      "pred_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714/predicciones_h1.csv",
+      "tiene_predicciones_h": true,
+      "mergeable_h": true,
+      "filas_pred_h": 26,
+      "stacking_eligible_horizonte": true,
+      "motivo_no_elegibilidad_horizonte": ""
+    },
+    {
       "run_id": "E1_v2",
       "family": "lineal_regularizado",
       "model": "RidgeCV",
@@ -17486,6 +17998,25 @@
       "filas_pred_h": 14,
       "stacking_eligible_horizonte": false,
       "motivo_no_elegibilidad_horizonte": "status_run=parcial"
+    },
+    {
+      "run_id": "E1_1_v1_bayesian_base",
+      "family": "lineal_regularizado",
+      "model": "bayesian_ridge",
+      "task_type": "regresion",
+      "horizonte": 2,
+      "horizonte_label": "H2",
+      "identidad_canonica_clara": true,
+      "status_run": "completo",
+      "reconstruccion_hiperparams_status": "completo",
+      "configuracion_recuperable": true,
+      "tiene_metrica_h": true,
+      "pred_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714/predicciones_h2.csv",
+      "tiene_predicciones_h": true,
+      "mergeable_h": true,
+      "filas_pred_h": 25,
+      "stacking_eligible_horizonte": true,
+      "motivo_no_elegibilidad_horizonte": ""
     },
     {
       "run_id": "E1_v2",
@@ -18153,6 +18684,25 @@
       "motivo_no_elegibilidad_horizonte": "status_run=parcial;sin_loss_h;sin_predicciones"
     },
     {
+      "run_id": "E1_1_v1_bayesian_base",
+      "family": "lineal_regularizado",
+      "model": "bayesian_ridge",
+      "task_type": "regresion",
+      "horizonte": 3,
+      "horizonte_label": "H3",
+      "identidad_canonica_clara": true,
+      "status_run": "completo",
+      "reconstruccion_hiperparams_status": "completo",
+      "configuracion_recuperable": true,
+      "tiene_metrica_h": true,
+      "pred_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714/predicciones_h3.csv",
+      "tiene_predicciones_h": true,
+      "mergeable_h": true,
+      "filas_pred_h": 24,
+      "stacking_eligible_horizonte": true,
+      "motivo_no_elegibilidad_horizonte": ""
+    },
+    {
       "run_id": "E1_v2",
       "family": "lineal_regularizado",
       "model": "RidgeCV",
@@ -18816,6 +19366,25 @@
       "filas_pred_h": 0,
       "stacking_eligible_horizonte": false,
       "motivo_no_elegibilidad_horizonte": "status_run=parcial;sin_loss_h;sin_predicciones"
+    },
+    {
+      "run_id": "E1_1_v1_bayesian_base",
+      "family": "lineal_regularizado",
+      "model": "bayesian_ridge",
+      "task_type": "regresion",
+      "horizonte": 4,
+      "horizonte_label": "H4",
+      "identidad_canonica_clara": true,
+      "status_run": "completo",
+      "reconstruccion_hiperparams_status": "completo",
+      "configuracion_recuperable": true,
+      "tiene_metrica_h": true,
+      "pred_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714/predicciones_h4.csv",
+      "tiene_predicciones_h": true,
+      "mergeable_h": true,
+      "filas_pred_h": 23,
+      "stacking_eligible_horizonte": true,
+      "motivo_no_elegibilidad_horizonte": ""
     },
     {
       "run_id": "E1_v2",
@@ -19851,6 +20420,98 @@
       "orden_temporal_ok": false,
       "compatible_para_merge": false,
       "comentario": "columnas_faltantes=y_pred"
+    },
+    {
+      "run_id": "E1_1_v1_bayesian_base",
+      "horizonte": 1,
+      "horizonte_label": "H1",
+      "pred_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714/predicciones_h1.csv",
+      "existe_archivo": true,
+      "fecha_min_pred": "2025-09-01",
+      "fecha_max_pred": "2026-02-23",
+      "n_predicciones": 26,
+      "n_fechas_unicas": 26,
+      "sin_duplicados_fecha": true,
+      "columnas_detectadas": "fecha_inicio_semana,y_current,y_true,y_pred,y_true_model,y_pred_model,error,selected_feature_count,selected_features,horizonte_sem,target_mode,feature_mode,transform_mode,run_id,model_name",
+      "date_column": "fecha_inicio_semana",
+      "y_true_column": "y_true",
+      "y_pred_column": "y_pred",
+      "tiene_fecha": true,
+      "tiene_y_true": true,
+      "tiene_y_pred": true,
+      "columnas_minimas_ok": true,
+      "orden_temporal_ok": true,
+      "compatible_para_merge": true,
+      "comentario": "ok"
+    },
+    {
+      "run_id": "E1_1_v1_bayesian_base",
+      "horizonte": 2,
+      "horizonte_label": "H2",
+      "pred_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714/predicciones_h2.csv",
+      "existe_archivo": true,
+      "fecha_min_pred": "2025-09-01",
+      "fecha_max_pred": "2026-02-16",
+      "n_predicciones": 25,
+      "n_fechas_unicas": 25,
+      "sin_duplicados_fecha": true,
+      "columnas_detectadas": "fecha_inicio_semana,y_current,y_true,y_pred,y_true_model,y_pred_model,error,selected_feature_count,selected_features,horizonte_sem,target_mode,feature_mode,transform_mode,run_id,model_name",
+      "date_column": "fecha_inicio_semana",
+      "y_true_column": "y_true",
+      "y_pred_column": "y_pred",
+      "tiene_fecha": true,
+      "tiene_y_true": true,
+      "tiene_y_pred": true,
+      "columnas_minimas_ok": true,
+      "orden_temporal_ok": true,
+      "compatible_para_merge": true,
+      "comentario": "ok"
+    },
+    {
+      "run_id": "E1_1_v1_bayesian_base",
+      "horizonte": 3,
+      "horizonte_label": "H3",
+      "pred_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714/predicciones_h3.csv",
+      "existe_archivo": true,
+      "fecha_min_pred": "2025-09-01",
+      "fecha_max_pred": "2026-02-09",
+      "n_predicciones": 24,
+      "n_fechas_unicas": 24,
+      "sin_duplicados_fecha": true,
+      "columnas_detectadas": "fecha_inicio_semana,y_current,y_true,y_pred,y_true_model,y_pred_model,error,selected_feature_count,selected_features,horizonte_sem,target_mode,feature_mode,transform_mode,run_id,model_name",
+      "date_column": "fecha_inicio_semana",
+      "y_true_column": "y_true",
+      "y_pred_column": "y_pred",
+      "tiene_fecha": true,
+      "tiene_y_true": true,
+      "tiene_y_pred": true,
+      "columnas_minimas_ok": true,
+      "orden_temporal_ok": true,
+      "compatible_para_merge": true,
+      "comentario": "ok"
+    },
+    {
+      "run_id": "E1_1_v1_bayesian_base",
+      "horizonte": 4,
+      "horizonte_label": "H4",
+      "pred_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714/predicciones_h4.csv",
+      "existe_archivo": true,
+      "fecha_min_pred": "2025-09-01",
+      "fecha_max_pred": "2026-02-02",
+      "n_predicciones": 23,
+      "n_fechas_unicas": 23,
+      "sin_duplicados_fecha": true,
+      "columnas_detectadas": "fecha_inicio_semana,y_current,y_true,y_pred,y_true_model,y_pred_model,error,selected_feature_count,selected_features,horizonte_sem,target_mode,feature_mode,transform_mode,run_id,model_name",
+      "date_column": "fecha_inicio_semana",
+      "y_true_column": "y_true",
+      "y_pred_column": "y_pred",
+      "tiene_fecha": true,
+      "tiene_y_true": true,
+      "tiene_y_pred": true,
+      "columnas_minimas_ok": true,
+      "orden_temporal_ok": true,
+      "compatible_para_merge": true,
+      "comentario": "ok"
     },
     {
       "run_id": "E1_v1",
@@ -22708,65 +23369,65 @@
   "stacking_bases_resumen": [
     {
       "horizonte": "H1",
-      "run_ids_incluidos": "E1_v2,E1_v2_clean,E1_v3_clean,E1_v4_clean,E1_v5_clean,E2_v1_clean,E2_v2_clean,E2_v3_clean,E3_v1_clean,E3_v2_clean,E3_v3_clean,E4_v1_clean,E4_v2_clean,E4_v3_clean,E5_v1_clean,E5_v2_clean,E5_v3_clean,E5_v4_clean,E5_v5_clean,E6_v1_clean,E6_v2_clean,E7_v1_clean,E7_v2_clean,E7_v3_clean,E8_v1_clean,E8_v2_clean,E8_v3_clean,E9_v1_clean,E9_v2_clean",
-      "n_runs_incluidos": 29,
+      "run_ids_incluidos": "E1_1_v1_bayesian_base,E1_v2,E1_v2_clean,E1_v3_clean,E1_v4_clean,E1_v5_clean,E2_v1_clean,E2_v2_clean,E2_v3_clean,E3_v1_clean,E3_v2_clean,E3_v3_clean,E4_v1_clean,E4_v2_clean,E4_v3_clean,E5_v1_clean,E5_v2_clean,E5_v3_clean,E5_v4_clean,E5_v5_clean,E6_v1_clean,E6_v2_clean,E7_v1_clean,E7_v2_clean,E7_v3_clean,E8_v1_clean,E8_v2_clean,E8_v3_clean,E9_v1_clean,E9_v2_clean",
+      "n_runs_incluidos": 30,
       "run_ids_excluidos": "C1_v1_clean,C1_v2_clean,C1_v3_clean,E10_v1_clean,E1_v1,E9_smoke_tmp",
       "exclusiones_detalle": "C1_v1_clean:task_type=clasificacion | C1_v2_clean:task_type=clasificacion | C1_v3_clean:task_type=clasificacion | E10_v1_clean:columnas_minimas_invalidas;predicciones_no_mergeables | E1_v1:sin_loss_h | E9_smoke_tmp:status_run=parcial",
       "filas_base": 28,
       "filas_completas_todos_modelos": 14,
       "filas_incompletas": 14,
-      "cobertura_promedio_modelos_fila": 0.9113300492610836
+      "cobertura_promedio_modelos_fila": 0.911904761904762
     },
     {
       "horizonte": "H2",
-      "run_ids_incluidos": "E1_v2,E1_v2_clean,E1_v3_clean,E1_v4_clean,E1_v5_clean,E2_v1_clean,E2_v2_clean,E2_v3_clean,E3_v1_clean,E3_v2_clean,E3_v3_clean,E4_v1_clean,E4_v2_clean,E4_v3_clean,E5_v1_clean,E5_v2_clean,E5_v3_clean,E5_v4_clean,E5_v5_clean,E6_v1_clean,E6_v2_clean,E7_v1_clean,E7_v2_clean,E7_v3_clean,E8_v1_clean,E8_v2_clean,E8_v3_clean,E9_v1_clean,E9_v2_clean",
-      "n_runs_incluidos": 29,
+      "run_ids_incluidos": "E1_1_v1_bayesian_base,E1_v2,E1_v2_clean,E1_v3_clean,E1_v4_clean,E1_v5_clean,E2_v1_clean,E2_v2_clean,E2_v3_clean,E3_v1_clean,E3_v2_clean,E3_v3_clean,E4_v1_clean,E4_v2_clean,E4_v3_clean,E5_v1_clean,E5_v2_clean,E5_v3_clean,E5_v4_clean,E5_v5_clean,E6_v1_clean,E6_v2_clean,E7_v1_clean,E7_v2_clean,E7_v3_clean,E8_v1_clean,E8_v2_clean,E8_v3_clean,E9_v1_clean,E9_v2_clean",
+      "n_runs_incluidos": 30,
       "run_ids_excluidos": "C1_v1_clean,C1_v2_clean,C1_v3_clean,E10_v1_clean,E1_v1,E9_smoke_tmp",
       "exclusiones_detalle": "C1_v1_clean:task_type=clasificacion | C1_v2_clean:task_type=clasificacion | C1_v3_clean:task_type=clasificacion | E10_v1_clean:columnas_minimas_invalidas;predicciones_no_mergeables | E1_v1:sin_loss_h | E9_smoke_tmp:status_run=parcial;sin_loss_h;sin_predicciones",
       "filas_base": 27,
       "filas_completas_todos_modelos": 13,
       "filas_incompletas": 14,
-      "cobertura_promedio_modelos_fila": 0.9080459770114941
+      "cobertura_promedio_modelos_fila": 0.908641975308642
     },
     {
       "horizonte": "H3",
-      "run_ids_incluidos": "E1_v2,E1_v2_clean,E1_v3_clean,E1_v4_clean,E1_v5_clean,E2_v1_clean,E2_v2_clean,E2_v3_clean,E3_v1_clean,E3_v2_clean,E3_v3_clean,E4_v1_clean,E4_v2_clean,E4_v3_clean,E5_v1_clean,E5_v2_clean,E5_v3_clean,E5_v4_clean,E5_v5_clean,E6_v1_clean,E6_v2_clean,E7_v1_clean,E7_v2_clean,E7_v3_clean,E8_v1_clean,E8_v2_clean,E8_v3_clean,E9_v1_clean,E9_v2_clean",
-      "n_runs_incluidos": 29,
+      "run_ids_incluidos": "E1_1_v1_bayesian_base,E1_v2,E1_v2_clean,E1_v3_clean,E1_v4_clean,E1_v5_clean,E2_v1_clean,E2_v2_clean,E2_v3_clean,E3_v1_clean,E3_v2_clean,E3_v3_clean,E4_v1_clean,E4_v2_clean,E4_v3_clean,E5_v1_clean,E5_v2_clean,E5_v3_clean,E5_v4_clean,E5_v5_clean,E6_v1_clean,E6_v2_clean,E7_v1_clean,E7_v2_clean,E7_v3_clean,E8_v1_clean,E8_v2_clean,E8_v3_clean,E9_v1_clean,E9_v2_clean",
+      "n_runs_incluidos": 30,
       "run_ids_excluidos": "C1_v1_clean,C1_v2_clean,C1_v3_clean,E10_v1_clean,E1_v1,E9_smoke_tmp",
       "exclusiones_detalle": "C1_v1_clean:task_type=clasificacion | C1_v2_clean:task_type=clasificacion | C1_v3_clean:task_type=clasificacion | E10_v1_clean:columnas_minimas_invalidas;predicciones_no_mergeables | E1_v1:sin_loss_h | E9_smoke_tmp:status_run=parcial;sin_loss_h;sin_predicciones",
       "filas_base": 26,
       "filas_completas_todos_modelos": 12,
       "filas_incompletas": 14,
-      "cobertura_promedio_modelos_fila": 0.9045092838196285
+      "cobertura_promedio_modelos_fila": 0.9051282051282052
     },
     {
       "horizonte": "H4",
-      "run_ids_incluidos": "E1_v2,E1_v2_clean,E1_v3_clean,E1_v4_clean,E1_v5_clean,E2_v1_clean,E2_v2_clean,E2_v3_clean,E3_v1_clean,E3_v2_clean,E3_v3_clean,E4_v1_clean,E4_v2_clean,E4_v3_clean,E5_v1_clean,E5_v2_clean,E5_v3_clean,E5_v4_clean,E5_v5_clean,E6_v1_clean,E6_v2_clean,E7_v1_clean,E7_v2_clean,E7_v3_clean,E8_v1_clean,E8_v2_clean,E8_v3_clean,E9_v1_clean,E9_v2_clean",
-      "n_runs_incluidos": 29,
+      "run_ids_incluidos": "E1_1_v1_bayesian_base,E1_v2,E1_v2_clean,E1_v3_clean,E1_v4_clean,E1_v5_clean,E2_v1_clean,E2_v2_clean,E2_v3_clean,E3_v1_clean,E3_v2_clean,E3_v3_clean,E4_v1_clean,E4_v2_clean,E4_v3_clean,E5_v1_clean,E5_v2_clean,E5_v3_clean,E5_v4_clean,E5_v5_clean,E6_v1_clean,E6_v2_clean,E7_v1_clean,E7_v2_clean,E7_v3_clean,E8_v1_clean,E8_v2_clean,E8_v3_clean,E9_v1_clean,E9_v2_clean",
+      "n_runs_incluidos": 30,
       "run_ids_excluidos": "C1_v1_clean,C1_v2_clean,C1_v3_clean,E10_v1_clean,E1_v1,E9_smoke_tmp",
       "exclusiones_detalle": "C1_v1_clean:task_type=clasificacion | C1_v2_clean:task_type=clasificacion | C1_v3_clean:task_type=clasificacion | E10_v1_clean:columnas_minimas_invalidas;predicciones_no_mergeables | E1_v1:sin_loss_h | E9_smoke_tmp:status_run=parcial;sin_loss_h;sin_predicciones",
       "filas_base": 25,
       "filas_completas_todos_modelos": 11,
       "filas_incompletas": 14,
-      "cobertura_promedio_modelos_fila": 0.9006896551724136
+      "cobertura_promedio_modelos_fila": 0.9013333333333334
     }
   ],
   "stacking_base_summary": {
     "stacking_base_h1": {
       "filas": 28,
-      "columnas_modelo": 29
+      "columnas_modelo": 30
     },
     "stacking_base_h2": {
       "filas": 27,
-      "columnas_modelo": 29
+      "columnas_modelo": 30
     },
     "stacking_base_h3": {
       "filas": 26,
-      "columnas_modelo": 29
+      "columnas_modelo": 30
     },
     "stacking_base_h4": {
       "filas": 25,
-      "columnas_modelo": 29
+      "columnas_modelo": 30
     }
   },
   "e9_curacion": {
@@ -23095,11 +23756,11 @@
     },
     {
       "family": "E10",
-      "estado_vigente": "activa premodelado",
-      "mejor_run": "",
-      "rol_funcional": "familia contextual / gating",
-      "decision_metodologica": "La tabla operativa de E10 ya fue construida; la siguiente tarea es correr el primer selector/gating contextual sin repetir E9.",
-      "siguiente_movimiento": "primer runner/modelo canonico de E10"
+      "estado_vigente": "modelado inicial fragil",
+      "mejor_run": "E10_v1_clean",
+      "rol_funcional": "selector contextual duro",
+      "decision_metodologica": "E10 ya tiene corrida canonica inicial. E10_v1_clean fue metodologicamente limpio y trazable, pero no supero al selector fijo, a E1_v5_clean ni a E9_v2_clean; la familia queda abierta en evaluacion fragil, no en premodelado.",
+      "siguiente_movimiento": "reformular selector antes de E10_v2; no escalar aun"
     },
     {
       "family": "E11",
@@ -23108,6 +23769,651 @@
       "rol_funcional": "arquitectura dual numerica + categorica",
       "decision_metodologica": "Familia futura para separar pronostico numerico del porcentaje y prediccion categorica del movimiento.",
       "siguiente_movimiento": "preapertura conceptual; no ejecutar todavia"
+    },
+    {
+      "family": "C1",
+      "estado_vigente": "evaluada y pausada tempranamente",
+      "mejor_run": "",
+      "rol_funcional": "clasificacion bagging base",
+      "decision_metodologica": "C1 si se ejecuto con tres corridas canonicas, pero las tres colapsaron a clase unica y no dejaron senal discriminativa util. La rama queda abierta solo como antecedente, no como linea prioritaria.",
+      "siguiente_movimiento": "sin expansion inmediata; revisar target clasificacion antes de reactivar"
+    },
+    {
+      "family": "C2",
+      "estado_vigente": "infraestructura preparada",
+      "mejor_run": "",
+      "rol_funcional": "clasificacion boosting",
+      "decision_metodologica": "La familia tiene runner y prompt canonicos, pero no corridas ejecutadas todavia.",
+      "siguiente_movimiento": "no prioritaria; ejecutar solo si se redefine la agenda de clasificacion"
+    },
+    {
+      "family": "C3",
+      "estado_vigente": "infraestructura preparada",
+      "mejor_run": "",
+      "rol_funcional": "clasificacion boosting",
+      "decision_metodologica": "La familia tiene runner y prompt canonicos, pero no corridas ejecutadas todavia.",
+      "siguiente_movimiento": "no prioritaria; ejecutar solo si se redefine la agenda de clasificacion"
+    },
+    {
+      "family": "C4",
+      "estado_vigente": "infraestructura preparada",
+      "mejor_run": "",
+      "rol_funcional": "clasificacion boosting",
+      "decision_metodologica": "La familia tiene runner y prompt canonicos, pero no corridas ejecutadas todavia.",
+      "siguiente_movimiento": "no prioritaria; ejecutar solo si se redefine la agenda de clasificacion"
+    }
+  ],
+  "constructos_familias_vigente": [
+    {
+      "family": "E1",
+      "constructo_familia": "baseline lineal numerico principal",
+      "estado_vigente": "cerrada",
+      "mejor_run": "E1_v5_clean",
+      "rol_funcional": "referente numerico puro",
+      "decision_metodologica": "Mejor baseline lineal y mejor referente actual para pronostico numerico puro del porcentaje.",
+      "siguiente_movimiento": "sin expansion prevista"
+    },
+    {
+      "family": "E2",
+      "constructo_familia": "familia robusta de contraste historico",
+      "estado_vigente": "cerrada",
+      "mejor_run": "E2_v3_clean",
+      "rol_funcional": "referencia robusta",
+      "decision_metodologica": "Familia robusta util como contraste historico, pero sin competitividad frente a Ridge.",
+      "siguiente_movimiento": "sin expansion prevista"
+    },
+    {
+      "family": "E3",
+      "constructo_familia": "referencia bagging de diversidad",
+      "estado_vigente": "cerrada en rama base",
+      "mejor_run": "E3_v2_clean",
+      "rol_funcional": "referencia no lineal base",
+      "decision_metodologica": "Sigue siendo la referencia bagging util, pero ya desplazada por CatBoost.",
+      "siguiente_movimiento": "mantener como candidato de diversidad"
+    },
+    {
+      "family": "E4",
+      "constructo_familia": "boosting historico cerrado",
+      "estado_vigente": "cerrada",
+      "mejor_run": "E4_v1_clean",
+      "rol_funcional": "boosting historico",
+      "decision_metodologica": "No desplazo a E3 ni a Ridge; queda como referencia secundaria.",
+      "siguiente_movimiento": "sin expansion prevista"
+    },
+    {
+      "family": "E5",
+      "constructo_familia": "campeon no lineal tabular vigente",
+      "estado_vigente": "abierta madura",
+      "mejor_run": "E5_v4_clean",
+      "rol_funcional": "mejor no lineal tabular",
+      "decision_metodologica": "Campeon no lineal tabular vigente; sigue siendo referencia competitiva central.",
+      "siguiente_movimiento": "mantener como candidato fuerte para arquitecturas compuestas"
+    },
+    {
+      "family": "E6",
+      "constructo_familia": "referencia temporal debilitada",
+      "estado_vigente": "debilitada",
+      "mejor_run": "E6_v1_clean",
+      "rol_funcional": "referencia temporal estructurada debil",
+      "decision_metodologica": "ARIMAX no fue competitivo y no justifica continuidad inmediata.",
+      "siguiente_movimiento": "solo reserva conceptual para hibridos"
+    },
+    {
+      "family": "E7",
+      "constructo_familia": "referencia temporal secundaria",
+      "estado_vigente": "intermedia",
+      "mejor_run": "E7_v3_clean",
+      "rol_funcional": "referencia temporal con changepoints",
+      "decision_metodologica": "Prophet supero a E6 pero no entro al bloque contendiente principal.",
+      "siguiente_movimiento": "mantener como referencia temporal secundaria"
+    },
+    {
+      "family": "E8",
+      "constructo_familia": "hibrido residual auditable",
+      "estado_vigente": "intermedia",
+      "mejor_run": "E8_v2_clean",
+      "rol_funcional": "hibrido residual auditable",
+      "decision_metodologica": "Mostro validez metodologica, pero no agrego mejora suficiente frente a su base.",
+      "siguiente_movimiento": "sin expansion amplia; solo hipotesis residual muy acotada si reaparece"
+    },
+    {
+      "family": "E9",
+      "constructo_familia": "rama operativa de riesgo-direccion-caidas",
+      "estado_vigente": "pausada util",
+      "mejor_run": "E9_v2_clean",
+      "rol_funcional": "referente riesgo-direccion-caidas",
+      "decision_metodologica": "No reemplaza a E1_v5_clean; aporta valor operativo en riesgo, direccion y deteccion de caidas. Queda util pero no definitiva.",
+      "siguiente_movimiento": "pausa metodologica; posible reactivacion futura"
+    },
+    {
+      "family": "E10",
+      "constructo_familia": "selector contextual inicial",
+      "estado_vigente": "modelado inicial fragil",
+      "mejor_run": "E10_v1_clean",
+      "rol_funcional": "selector contextual duro",
+      "decision_metodologica": "E10 ya tiene corrida canonica inicial. E10_v1_clean fue metodologicamente limpio y trazable, pero no supero al selector fijo, a E1_v5_clean ni a E9_v2_clean; la familia queda abierta en evaluacion fragil, no en premodelado.",
+      "siguiente_movimiento": "reformular selector antes de E10_v2; no escalar aun"
+    },
+    {
+      "family": "E11",
+      "constructo_familia": "linea futura dual numerica+categórica",
+      "estado_vigente": "planificada",
+      "mejor_run": "",
+      "rol_funcional": "arquitectura dual numerica + categorica",
+      "decision_metodologica": "Familia futura para separar pronostico numerico del porcentaje y prediccion categorica del movimiento.",
+      "siguiente_movimiento": "preapertura conceptual; no ejecutar todavia"
+    },
+    {
+      "family": "C1",
+      "constructo_familia": "clasificacion base evaluada",
+      "estado_vigente": "evaluada y pausada tempranamente",
+      "mejor_run": "",
+      "rol_funcional": "clasificacion bagging base",
+      "decision_metodologica": "C1 si se ejecuto con tres corridas canonicas, pero las tres colapsaron a clase unica y no dejaron senal discriminativa util. La rama queda abierta solo como antecedente, no como linea prioritaria.",
+      "siguiente_movimiento": "sin expansion inmediata; revisar target clasificacion antes de reactivar"
+    },
+    {
+      "family": "C2",
+      "constructo_familia": "clasificacion boosting preparada",
+      "estado_vigente": "infraestructura preparada",
+      "mejor_run": "",
+      "rol_funcional": "clasificacion boosting",
+      "decision_metodologica": "La familia tiene runner y prompt canonicos, pero no corridas ejecutadas todavia.",
+      "siguiente_movimiento": "no prioritaria; ejecutar solo si se redefine la agenda de clasificacion"
+    },
+    {
+      "family": "C3",
+      "constructo_familia": "clasificacion boosting preparada",
+      "estado_vigente": "infraestructura preparada",
+      "mejor_run": "",
+      "rol_funcional": "clasificacion boosting",
+      "decision_metodologica": "La familia tiene runner y prompt canonicos, pero no corridas ejecutadas todavia.",
+      "siguiente_movimiento": "no prioritaria; ejecutar solo si se redefine la agenda de clasificacion"
+    },
+    {
+      "family": "C4",
+      "constructo_familia": "clasificacion boosting preparada",
+      "estado_vigente": "infraestructura preparada",
+      "mejor_run": "",
+      "rol_funcional": "clasificacion boosting",
+      "decision_metodologica": "La familia tiene runner y prompt canonicos, pero no corridas ejecutadas todavia.",
+      "siguiente_movimiento": "no prioritaria; ejecutar solo si se redefine la agenda de clasificacion"
+    }
+  ],
+  "constructos_runs_vigente": [
+    {
+      "run_id": "C1_v1_clean",
+      "family_code": "C1",
+      "family_group": "clasificacion_random_forest",
+      "model": "random_forest_classifier",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": NaN,
+      "estado_familia_vigente": "evaluada y pausada tempranamente",
+      "constructo_run": "baseline prudente de clasificacion",
+      "rol_funcional_familia": "clasificacion bagging base",
+      "justificacion_breve": "Primera apertura real de clasificacion; sirve como antecedente metodologico, pero no dejo senal util por colapso del target."
+    },
+    {
+      "run_id": "C1_v2_clean",
+      "family_code": "C1",
+      "family_group": "clasificacion_random_forest",
+      "model": "random_forest_classifier",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": NaN,
+      "estado_familia_vigente": "evaluada y pausada tempranamente",
+      "constructo_run": "control parsimonioso de clasificacion",
+      "rol_funcional_familia": "clasificacion bagging base",
+      "justificacion_breve": "Variante mas contenida dentro de C1; confirma que el problema era el target y no solo la complejidad del clasificador."
+    },
+    {
+      "run_id": "C1_v3_clean",
+      "family_code": "C1",
+      "family_group": "clasificacion_random_forest",
+      "model": "random_forest_classifier",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": NaN,
+      "estado_familia_vigente": "evaluada y pausada tempranamente",
+      "constructo_run": "control flexible de clasificacion",
+      "rol_funcional_familia": "clasificacion bagging base",
+      "justificacion_breve": "Variante mas flexible de C1; tampoco rompe el colapso a clase unica y cierra la rama temprana."
+    },
+    {
+      "run_id": "E10_v1_clean",
+      "family_code": "E10",
+      "family_group": "gating_contextual",
+      "model": "meta_selector_hard_logistic_regression",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.2712202353073486,
+      "estado_familia_vigente": "modelado inicial fragil",
+      "constructo_run": "selector contextual duro inicial",
+      "rol_funcional_familia": "selector contextual duro",
+      "justificacion_breve": "Primera corrida canonica de gating contextual; metodologicamente limpia pero todavia fragil frente a benchmarks."
+    },
+    {
+      "run_id": "E1_1_v1_bayesian_base",
+      "family_code": "E1.1",
+      "family_group": "lineal_regularizado",
+      "model": "bayesian_ridge",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.26494553341851,
+      "estado_familia_vigente": "",
+      "constructo_run": "micro-rama tactica bayesiana",
+      "rol_funcional_familia": "",
+      "justificacion_breve": "Verificacion corta para probar margen lineal adicional; no altero el cierre principal de E1."
+    },
+    {
+      "run_id": "E1_v1",
+      "family_code": "E1",
+      "family_group": "lineal_regularizado",
+      "model": "RidgeCV",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.261061299229139,
+      "estado_familia_vigente": "cerrada",
+      "constructo_run": "baseline historico retrointegrado",
+      "rol_funcional_familia": "referente numerico puro",
+      "justificacion_breve": "Run historico recuperado para trazabilidad y comparacion retrospectiva; no gobierna la lectura vigente."
+    },
+    {
+      "run_id": "E1_v2",
+      "family_code": "E1",
+      "family_group": "lineal_regularizado",
+      "model": "RidgeCV",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.261061299229139,
+      "estado_familia_vigente": "cerrada",
+      "constructo_run": "baseline historico documentado",
+      "rol_funcional_familia": "referente numerico puro",
+      "justificacion_breve": "Version historica previa al cierre limpio; sirve como antecedente de la evolucion de Ridge."
+    },
+    {
+      "run_id": "E1_v2_clean",
+      "family_code": "E1",
+      "family_group": "lineal_regularizado",
+      "model": "ridge_tscv",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.2612386698909632,
+      "estado_familia_vigente": "cerrada",
+      "constructo_run": "baseline Ridge limpio historico",
+      "rol_funcional_familia": "referente numerico puro",
+      "justificacion_breve": "Primera referencia limpia reconstruida de Ridge; importante como antecedente comparativo, pero superada por E1_v4 y E1_v5."
+    },
+    {
+      "run_id": "E1_v3_clean",
+      "family_code": "E1",
+      "family_group": "lineal_regularizado",
+      "model": "ridge_tscv",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.3980475726547684,
+      "estado_familia_vigente": "cerrada",
+      "constructo_run": "hipotesis delta descartada",
+      "rol_funcional_familia": "referente numerico puro",
+      "justificacion_breve": "Control sobre target delta; su deterioro ayudo a cerrar la via de Ridge en nivel como direccion preferible."
+    },
+    {
+      "run_id": "E1_v4_clean",
+      "family_code": "E1",
+      "family_group": "lineal_regularizado",
+      "model": "ridge_tscv",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.2532774442495118,
+      "estado_familia_vigente": "cerrada",
+      "constructo_run": "referencia parsimoniosa vigente",
+      "rol_funcional_familia": "referente numerico puro",
+      "justificacion_breve": "Run equilibrado y mas simple dentro de E1; conserva valor canonico aunque no sea el campeon global."
+    },
+    {
+      "run_id": "E1_v5_clean",
+      "family_code": "E1",
+      "family_group": "lineal_regularizado",
+      "model": "ridge_tscv",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.2434417610666145,
+      "estado_familia_vigente": "cerrada",
+      "constructo_run": "campeon numerico puro vigente",
+      "rol_funcional_familia": "referente numerico puro",
+      "justificacion_breve": "Mejor referente actual para pronostico numerico puro del Radar."
+    },
+    {
+      "run_id": "E2_v1_clean",
+      "family_code": "E2",
+      "family_group": "robusto",
+      "model": "huber_tscv",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.3019073236793116,
+      "estado_familia_vigente": "cerrada",
+      "constructo_run": "baseline robusto limpio",
+      "rol_funcional_familia": "referencia robusta",
+      "justificacion_breve": "Primera apertura Huber bajo el marco limpio; fija el punto de partida de la familia robusta."
+    },
+    {
+      "run_id": "E2_v2_clean",
+      "family_code": "E2",
+      "family_group": "robusto",
+      "model": "huber_tscv",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.3019203219833318,
+      "estado_familia_vigente": "cerrada",
+      "constructo_run": "control de convergencia",
+      "rol_funcional_familia": "referencia robusta",
+      "justificacion_breve": "Sirve para descartar que el desempeno de Huber se explicara por optimizacion incompleta."
+    },
+    {
+      "run_id": "E2_v3_clean",
+      "family_code": "E2",
+      "family_group": "robusto",
+      "model": "huber_tscv",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.2864645117875421,
+      "estado_familia_vigente": "cerrada",
+      "constructo_run": "campeon interno de familia cerrada",
+      "rol_funcional_familia": "referencia robusta",
+      "justificacion_breve": "Mejor Huber interno; conserva valor historico como referencia robusta, pero no reabre la familia."
+    },
+    {
+      "run_id": "E3_v1_clean",
+      "family_code": "E3",
+      "family_group": "arboles_boosting",
+      "model": "random_forest_regressor",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.2808923211670988,
+      "estado_familia_vigente": "cerrada en rama base",
+      "constructo_run": "baseline no lineal bagging",
+      "rol_funcional_familia": "referencia no lineal base",
+      "justificacion_breve": "Primera apertura no lineal util de bagging; demuestra que la no linealidad si agrega senal."
+    },
+    {
+      "run_id": "E3_v2_clean",
+      "family_code": "E3",
+      "family_group": "arboles_boosting",
+      "model": "random_forest_regressor",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.2663866980744075,
+      "estado_familia_vigente": "cerrada en rama base",
+      "constructo_run": "campeon bagging vigente",
+      "rol_funcional_familia": "referencia no lineal base",
+      "justificacion_breve": "Mejor referencia bagging cerrada; sigue aportando diversidad real frente a lineales y boosting."
+    },
+    {
+      "run_id": "E3_v3_clean",
+      "family_code": "E3",
+      "family_group": "arboles_boosting",
+      "model": "extra_trees_regressor",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.2872893466271498,
+      "estado_familia_vigente": "cerrada en rama base",
+      "constructo_run": "variante extra trees descartada",
+      "rol_funcional_familia": "referencia no lineal base",
+      "justificacion_breve": "Prueba de flexibilidad adicional que no justifico expansion dentro de E3."
+    },
+    {
+      "run_id": "E4_v1_clean",
+      "family_code": "E4",
+      "family_group": "arboles_boosting",
+      "model": "xgboost_regressor",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.2839341113264429,
+      "estado_familia_vigente": "cerrada",
+      "constructo_run": "campeon boosting historico",
+      "rol_funcional_familia": "boosting historico",
+      "justificacion_breve": "Mejor run interno de XGBoost; se conserva como referencia secundaria, no como linea vigente."
+    },
+    {
+      "run_id": "E4_v2_clean",
+      "family_code": "E4",
+      "family_group": "arboles_boosting",
+      "model": "xgboost_regressor",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.2973425926212152,
+      "estado_familia_vigente": "cerrada",
+      "constructo_run": "variante parsimoniosa descartada",
+      "rol_funcional_familia": "boosting historico",
+      "justificacion_breve": "Control corr vs all dentro de boosting; no mejoro al baseline de la familia."
+    },
+    {
+      "run_id": "E4_v3_clean",
+      "family_code": "E4",
+      "family_group": "arboles_boosting",
+      "model": "xgboost_regressor",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.4247743104980723,
+      "estado_familia_vigente": "cerrada",
+      "constructo_run": "variante delta descartada",
+      "rol_funcional_familia": "boosting historico",
+      "justificacion_breve": "Control target delta dentro de boosting; deterioro fuerte que ayudo a cerrar E4."
+    },
+    {
+      "run_id": "E5_v1_clean",
+      "family_code": "E5",
+      "family_group": "arboles_boosting",
+      "model": "catboost_regressor",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.2552591894544091,
+      "estado_familia_vigente": "abierta madura",
+      "constructo_run": "baseline catboost",
+      "rol_funcional_familia": "mejor no lineal tabular",
+      "justificacion_breve": "Primera apertura de CatBoost bajo el marco limpio; punto de partida de la familia tabular dominante."
+    },
+    {
+      "run_id": "E5_v2_clean",
+      "family_code": "E5",
+      "family_group": "arboles_boosting",
+      "model": "catboost_regressor",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.2618185352281958,
+      "estado_familia_vigente": "abierta madura",
+      "constructo_run": "control corr_vs_all catboost",
+      "rol_funcional_familia": "mejor no lineal tabular",
+      "justificacion_breve": "Prueba focal del universo exogeno en CatBoost; quedo dominada por E5_v4."
+    },
+    {
+      "run_id": "E5_v3_clean",
+      "family_code": "E5",
+      "family_group": "arboles_boosting",
+      "model": "catboost_regressor",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.2613186266534276,
+      "estado_familia_vigente": "abierta madura",
+      "constructo_run": "control de profundidad catboost",
+      "rol_funcional_familia": "mejor no lineal tabular",
+      "justificacion_breve": "Ajuste acotado de complejidad en CatBoost; no mejoro al campeon interno."
+    },
+    {
+      "run_id": "E5_v4_clean",
+      "family_code": "E5",
+      "family_group": "arboles_boosting",
+      "model": "catboost_regressor",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.2477879377205662,
+      "estado_familia_vigente": "abierta madura",
+      "constructo_run": "campeon no lineal tabular vigente",
+      "rol_funcional_familia": "mejor no lineal tabular",
+      "justificacion_breve": "Mejor run no lineal tabular del proyecto y referencia competitiva central."
+    },
+    {
+      "run_id": "E5_v5_clean",
+      "family_code": "E5",
+      "family_group": "arboles_boosting",
+      "model": "catboost_regressor",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.2644266343784683,
+      "estado_familia_vigente": "abierta madura",
+      "constructo_run": "tuning focal dominado",
+      "rol_funcional_familia": "mejor no lineal tabular",
+      "justificacion_breve": "Segunda ola de tuning acotado; util para cierre interno, pero superada por E5_v4."
+    },
+    {
+      "run_id": "E6_v1_clean",
+      "family_code": "E6",
+      "family_group": "series_tiempo_exogenas",
+      "model": "sarimax_regressor",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.3703183972542414,
+      "estado_familia_vigente": "debilitada",
+      "constructo_run": "campeon interno debilitado",
+      "rol_funcional_familia": "referencia temporal estructurada debil",
+      "justificacion_breve": "Mejor ARIMAX interno, aunque claramente no competitivo; conserva valor solo como referencia temporal debil."
+    },
+    {
+      "run_id": "E6_v2_clean",
+      "family_code": "E6",
+      "family_group": "series_tiempo_exogenas",
+      "model": "sarimax_regressor",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.4457690443532661,
+      "estado_familia_vigente": "debilitada",
+      "constructo_run": "control amplitud exogena descartado",
+      "rol_funcional_familia": "referencia temporal estructurada debil",
+      "justificacion_breve": "Prueba de amplitud exogena en ARIMAX; empeoro y debilito aun mas a la familia."
+    },
+    {
+      "run_id": "E7_v1_clean",
+      "family_code": "E7",
+      "family_group": "series_tiempo_exogenas",
+      "model": "prophet_exogenous_regressor",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.3255019750760202,
+      "estado_familia_vigente": "intermedia",
+      "constructo_run": "baseline temporal parsimonioso",
+      "rol_funcional_familia": "referencia temporal con changepoints",
+      "justificacion_breve": "Apertura limpia de Prophet con exogenas parsimoniosas; prueba que la familia mejora a E6."
+    },
+    {
+      "run_id": "E7_v2_clean",
+      "family_code": "E7",
+      "family_group": "series_tiempo_exogenas",
+      "model": "prophet_exogenous_regressor",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.6819919935137326,
+      "estado_familia_vigente": "intermedia",
+      "constructo_run": "variante all colapsada",
+      "rol_funcional_familia": "referencia temporal con changepoints",
+      "justificacion_breve": "Control de amplitud exogena en Prophet; colapso numerico que refuerza la parsimonia."
+    },
+    {
+      "run_id": "E7_v3_clean",
+      "family_code": "E7",
+      "family_group": "series_tiempo_exogenas",
+      "model": "prophet_exogenous_regressor",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.321327838487649,
+      "estado_familia_vigente": "intermedia",
+      "constructo_run": "campeon temporal secundario",
+      "rol_funcional_familia": "referencia temporal con changepoints",
+      "justificacion_breve": "Mejor Prophet interno; aporta sesgo temporal estructurado sin entrar al bloque principal."
+    },
+    {
+      "run_id": "E8_v1_clean",
+      "family_code": "E8",
+      "family_group": "hibrido_residual",
+      "model": "hybrid_residual_ridge_tscv_catboost_regressor",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.3364815593128823,
+      "estado_familia_vigente": "intermedia",
+      "constructo_run": "hibrido residual inicial",
+      "rol_funcional_familia": "hibrido residual auditable",
+      "justificacion_breve": "Primera apertura residual limpia; valida la arquitectura, pero no la vuelve competitiva."
+    },
+    {
+      "run_id": "E8_v2_clean",
+      "family_code": "E8",
+      "family_group": "hibrido_residual",
+      "model": "hybrid_residual_catboost_regressor_ridge_tscv",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.2857208904369485,
+      "estado_familia_vigente": "intermedia",
+      "constructo_run": "campeon hibrido residual",
+      "rol_funcional_familia": "hibrido residual auditable",
+      "justificacion_breve": "Mejor residual interno y referencia de la familia hibrida, aunque no supera a sus mejores bases."
+    },
+    {
+      "run_id": "E8_v3_clean",
+      "family_code": "E8",
+      "family_group": "hibrido_residual",
+      "model": "hybrid_residual_catboost_regressor_prophet_exogenous_regressor",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.6277552922651639,
+      "estado_familia_vigente": "intermedia",
+      "constructo_run": "variante prophet residual colapsada",
+      "rol_funcional_familia": "hibrido residual auditable",
+      "justificacion_breve": "Prueba temporal residual sobre CatBoost que no funciono y cerro esa direccion."
+    },
+    {
+      "run_id": "E9_smoke_tmp",
+      "family_code": "E9",
+      "family_group": "stacking_controlado",
+      "model": "stacking_ridge_curado_por_horizonte",
+      "status_canonico": "canonico_parcial",
+      "L_total_Radar": 0.07934166609971609,
+      "estado_familia_vigente": "pausada util",
+      "constructo_run": "smoke tecnico no canonico",
+      "rol_funcional_familia": "referente riesgo-direccion-caidas",
+      "justificacion_breve": "Corrida tecnica de integracion para E9; no debe leerse como evidencia comparativa final."
+    },
+    {
+      "run_id": "E9_v1_clean",
+      "family_code": "E9",
+      "family_group": "stacking_controlado",
+      "model": "stacking_ridge_curado_por_horizonte",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.2684745612625059,
+      "estado_familia_vigente": "pausada util",
+      "constructo_run": "baseline stacking clasico ridge",
+      "rol_funcional_familia": "referente riesgo-direccion-caidas",
+      "justificacion_breve": "Primera corrida operativa de stacking controlado; deja una mejora parcial localizada pero no gana el global."
+    },
+    {
+      "run_id": "E9_v2_clean",
+      "family_code": "E9",
+      "family_group": "stacking_controlado",
+      "model": "stacking_huber_curado_por_horizonte",
+      "status_canonico": "canonico_completo",
+      "L_total_Radar": 0.2275096201736237,
+      "estado_familia_vigente": "pausada util",
+      "constructo_run": "campeon riesgo-direccion-caidas",
+      "rol_funcional_familia": "referente riesgo-direccion-caidas",
+      "justificacion_breve": "Mejor referente actual de riesgo, direccion y deteccion de caidas dentro del Radar."
+    }
+  ],
+  "estado_capa_explicativa_transversal": [
+    {
+      "dimension": "clasificacion_principal",
+      "valor": "parcial intra-familia",
+      "justificacion": "Existen artefactos parciales de seleccion de variables por horizonte en una fraccion de runs, pero no hay coeficientes, importancias o SHAP exportados de forma homogénea y comparable entre familias."
+    },
+    {
+      "dimension": "runs_con_features_seleccionadas",
+      "valor": 13,
+      "justificacion": "13 de 36 runs maestros tienen archivos `features_seleccionadas_h*.csv`; esto sirve para lectura intra-run o intra-familia, no para comparacion transversal canonica."
+    },
+    {
+      "dimension": "runs_con_coeficientes_exportados",
+      "valor": 0,
+      "justificacion": "No se localizaron artefactos de coeficientes exportados de forma sistematica."
+    },
+    {
+      "dimension": "runs_con_importancias_exportadas",
+      "valor": 0,
+      "justificacion": "No se localizaron artefactos de importancias exportadas de forma sistematica."
+    },
+    {
+      "dimension": "runs_con_shap_exportado",
+      "valor": 0,
+      "justificacion": "No se localizaron artefactos SHAP o equivalentes reutilizables de forma sistematica."
+    },
+    {
+      "dimension": "runs_marcados_como_homogeneos",
+      "valor": 0,
+      "justificacion": "Ningun run puede considerarse parte de una capa explicativa transversal canonica solo con la evidencia actual."
+    },
+    {
+      "dimension": "lectura_metodologica_vigente",
+      "valor": "performance_y_riesgo_siguen_siendo_la_base_de_decision",
+      "justificacion": "La eleccion de modelos sigue descansando principalmente en performance, direccion y deteccion de caidas; la interpretabilidad actual es fragmentaria y no resuelve comparabilidad inter-familias."
+    },
+    {
+      "dimension": "faltante_para_capa_transversal_canonica",
+      "valor": "exportar_artefactos_homogeneos_por_familia_y_horizonte",
+      "justificacion": "Haria falta exportar de forma sistematica, por horizonte y con taxonomia comun, coeficientes o importancias comparables entre lineales, arboles, boosting y familias temporales."
     }
   ],
   "planned_run_ids_detected": [

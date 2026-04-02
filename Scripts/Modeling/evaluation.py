@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import math
+import sys
 import warnings
 from itertools import product
+from pathlib import Path
 from typing import Any
 
 import numpy as np
@@ -25,6 +27,12 @@ from config import (
     TARGET_MODE_DELTA,
     TARGET_MODE_LEVEL,
 )
+
+SCRIPTS_DIR = Path(__file__).resolve().parents[1]
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
+
+from common_runtime_logging import log_event
 
 
 def resolve_feature_mode(
@@ -170,7 +178,18 @@ def walk_forward_predict(
             }
         )
 
-    return pd.DataFrame(predictions)
+    predictions_df = pd.DataFrame(predictions)
+    log_event(
+        "evaluation",
+        "INFO",
+        "Walk-forward completado",
+        rows_total=len(data),
+        initial_train_size=initial_train_size,
+        predictions=len(predictions_df),
+        feature_mode=feature_mode,
+        target_mode=target_mode,
+    )
+    return predictions_df
 
 
 def select_best_alpha_time_series(
@@ -244,6 +263,17 @@ def select_best_alpha_time_series(
         )
 
     best_result = min(alpha_results, key=lambda item: (item["mean_score"], item["alpha"]))
+    log_event(
+        "evaluation",
+        "INFO",
+        "Tuning temporal de alpha completado",
+        rows_train=len(train_data),
+        split_count=split_count,
+        tuning_metric=tuning_metric,
+        best_alpha=best_result["alpha"],
+        best_score=best_result["mean_score"],
+        alpha_grid_size=len(alpha_grid),
+    )
     return {
         "best_alpha": float(best_result["alpha"]),
         "best_score": float(best_result["mean_score"]),

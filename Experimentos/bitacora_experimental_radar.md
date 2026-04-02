@@ -12,16 +12,37 @@ Su función es servir como capa narrativa corta para ubicarse rápido.
 
 ## Estado actual
 
-- Fecha de actualizacion: `2026-04-01`
-- Rama de trabajo actual: `feature/e4-boosting`
+- Fecha de actualizacion: `2026-04-02`
+- Rama de trabajo actual: `main`
 - Referente numerico puro vigente: `E1_v5_clean` con `L_total_Radar=0.243442`
 - Referente operativo vigente de riesgo-direccion-caidas: `E9_v2_clean` con `L_total_Radar=0.227510`
 - Mejor no lineal tabular abierta: `E5_v4_clean` con `L_total_Radar=0.247788`
+- Estado actual de `E10`: `modelado inicial fragil` con [E10_v1_clean_20260401_090439](/home/emilio/Documentos/RAdAR/Experimentos/runs/E10_v1_clean_20260401_090439)
+- Estado actual de clasificacion: `C1` ejecutada y pausada tempranamente; `C2-C4` con infraestructura preparada pero sin corridas
 - Plan rector vigente:
   - [plan_de_experimentacion_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/plan_de_experimentacion_radar.md)
 - Tabla maestra vigente:
   - [tabla_maestra_experimentos_radar.xlsx](/home/emilio/Documentos/RAdAR/Experimentos/tabla_maestra_experimentos_radar.xlsx)
   - [tabla_maestra_experimentos_radar.csv](/home/emilio/Documentos/RAdAR/Experimentos/tabla_maestra_experimentos_radar.csv)
+
+## Documentos canónicos de referencia
+
+- familias `E1-E4`:
+  - [resumen_metodologico_e1_ridge.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e1_ridge.md)
+  - [resumen_metodologico_e2_huber.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e2_huber.md)
+  - [resumen_metodologico_e3_arboles.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e3_arboles.md)
+  - [resumen_metodologico_e4_boosting.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e4_boosting.md)
+- familias `E5-E10`:
+  - [resumen_metodologico_e5_catboost.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e5_catboost.md)
+  - [resumen_metodologico_e6_arimax.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e6_arimax.md)
+  - [resumen_metodologico_e7_prophet.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e7_prophet.md)
+  - [resumen_metodologico_e8_hibrido_residual.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e8_hibrido_residual.md)
+  - [resumen_metodologico_e9_stacking.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e9_stacking.md)
+  - [resumen_metodologico_e10_gating_contextual.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e10_gating_contextual.md)
+- clasificacion:
+  - [resumen_metodologico_clasificacion_c1_c4.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_clasificacion_c1_c4.md)
+- constructos:
+  - [diccionario_constructos_canonicos_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/diccionario_constructos_canonicos_radar.md)
 
 ## Línea de tiempo
 
@@ -45,6 +66,32 @@ Rama asociada:
 Documentos clave:
 
 - [resumen_metodologico_e1_ridge.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e1_ridge.md)
+
+### 2026-04-02 | Micro-rama E1.1 Bayesian
+
+- Se implemento y corrio [E1_1_v1_bayesian_base_20260402_063714](/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714) como verificacion tactica de muy bajo costo dentro de la via lineal.
+- El modelo usado fue [run_e1_bayesian_ridge.py](/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e1_bayesian_ridge.py), reutilizando el mismo `walk-forward expanding`, el mismo `target_mode=nivel`, `feature_mode=corr`, `transform_mode=standard` y `lags=1..6`.
+
+Resultado:
+
+- `E1_1_v1_bayesian_base = 0.264946`
+- `E1_v5_clean = 0.243442`
+- `E1_v4_clean = 0.253277`
+
+Lectura:
+
+- `BayesianRidge` no mejoro el global frente a `Ridge`.
+- Solo mostro una mejora parcial en `H3`, insuficiente para compensar el deterioro en `H1` y `H2`.
+- La micro-rama no cambia el cierre principal de `E1`.
+
+Decision:
+
+- no correr `E1_1_v2_bayesian_control`
+- cerrar `E1.1 Bayesian` como verificacion util pero no preferible
+
+Documento de cierre:
+
+- [resumen_micro_rama_e1_1_bayesian.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_micro_rama_e1_1_bayesian.md)
 
 ### 2026-03-23 | E2 Huber limpio
 
@@ -338,7 +385,17 @@ Estado:
 
 - documentada y trazable
 - scripts preparados
-- sin corridas ejecutadas todavia
+- nota historica original: en este punto todavia no habia corridas ejecutadas registradas en la bitacora
+
+Actualizacion posterior de estado:
+
+- `C1` si tuvo tres corridas canonicas el mismo 2026-03-30:
+  - [C1_v1_clean_20260330_085747](/home/emilio/Documentos/RAdAR/Experimentos/runs/C1_v1_clean_20260330_085747)
+  - [C1_v2_clean_20260330_085846](/home/emilio/Documentos/RAdAR/Experimentos/runs/C1_v2_clean_20260330_085846)
+  - [C1_v3_clean_20260330_085854](/home/emilio/Documentos/RAdAR/Experimentos/runs/C1_v3_clean_20260330_085854)
+- Las tres corridas empataron por colapso del target a clase unica y no dejaron señal discriminativa util.
+- `C1` queda evaluada y pausada tempranamente.
+- `C2`, `C3` y `C4` siguen solo con infraestructura y prompts preparados, sin corrida real.
 
 Documento asociado:
 
@@ -386,6 +443,34 @@ Estado:
 - queda en estado de premodelado;
 - no se corrio todavia ningun `run` canonico de `E10`.
 
+Nota de actualizacion posterior:
+
+- Esta entrada conserva el estado de la fase de infraestructura.
+- Posteriormente si se corrio [E10_v1_clean_20260401_090439](/home/emilio/Documentos/RAdAR/Experimentos/runs/E10_v1_clean_20260401_090439), por lo que `E10` ya no debe leerse hoy como premodelado.
+
+## 2026-04-01 | E10_v1_clean meta-selector duro
+
+- Se implemento y corrio [E10_v1_clean_20260401_090439](/home/emilio/Documentos/RAdAR/Experimentos/runs/E10_v1_clean_20260401_090439) como primera corrida canonica de `E10`.
+- El runner [run_e10_meta_selector.py](/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e10_meta_selector.py) usa solo columnas permitidas de la tabla E10, validacion `walk-forward expanding`, `LogisticRegression` regularizado y reconstruccion numerica final a partir del modelo base seleccionado.
+
+Resultados:
+
+- `E10_v1_clean`: `0.271220`
+
+Lectura:
+
+- `E10_v1_clean` fue metodologicamente limpio, pero fragil.
+- No supero al selector fijo en el global.
+- No supero a `E1_v5_clean`.
+- No supero a `E9_v2_clean`.
+- La señal mas util aparecio en `H4`, con aportes parciales en `H2-H3`, pero sin mejora global defendible.
+
+Decision:
+
+- `E10` deja de estar en premodelado y pasa a `modelado inicial fragil`.
+- La familia no se cierra, pero tampoco se vuelve linea competitiva consolidada.
+- Antes de `E10_v2` hace falta reformular el problema de seleccion, no escalar complejidad.
+
 ## Lectura consolidada vigente
 
 - Referente numerico puro principal: `E1_v5_clean`
@@ -397,11 +482,14 @@ Estado:
 - Mejor familia no lineal tabular abierta: `E5_v4_clean`
 - Familias cerradas: `E1`, `E2`, `E4`
 - Familias abiertas o vigentes como referencia: `E3`, `E5`, `E7`, `E8` y `E9`
+- `E10` ya fue abierta formalmente y queda en modelado inicial fragil, no en premodelado
+- La clasificacion ya no debe describirse como solo planificada: `C1` tuvo corridas reales; `C2-C4` siguen sin corrida
+- La capa explicativa transversal sigue siendo parcial intra-familia: hay seleccion de variables por horizonte en algunos runs, pero no coeficientes/importancias/SHAP homologados entre familias
 
 ## Próximo paso lógico
 
 - `E9` queda en pausa metodologica: util, pero no definitiva.
-- `E10` pasa a ser la siguiente familia activa, con tabla operativa ya construida.
+- `E10` sigue como familia activa, pero ya en modelado inicial fragil tras `E10_v1_clean`.
 - `E11` queda solo planificada.
 
 Secuencia vigente:

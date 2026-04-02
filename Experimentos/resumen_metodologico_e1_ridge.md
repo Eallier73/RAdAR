@@ -22,6 +22,32 @@ La exploracion principal de la familia Ridge en `E1` se considera cerrada.
 - No continuar automaticamente con `E1_v6_clean`.
 - Mantener Ridge como baseline lineal regularizado principal del proyecto.
 
+## Actualizacion posterior: micro-rama `E1.1 Bayesian`
+
+El `2026-04-02` se ejecuto una verificacion tactica corta y controlada para probar si `BayesianRidge` podia extraer un margen lineal adicional sin reabrir la familia principal.
+
+Run canónico:
+
+- [E1_1_v1_bayesian_base_20260402_063714](/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_1_v1_bayesian_base_20260402_063714)
+
+Lectura:
+
+- `E1_1_v1_bayesian_base = 0.264946`
+- `E1_v5_clean = 0.243442`
+- `E1_v4_clean = 0.253277`
+- La unica senal parcial aparecio en `H3`.
+- No hubo mejora global ni mejor equilibrio operativo frente a las referencias Ridge ya cerradas.
+
+Decision:
+
+- no correr `E1_1_v2_bayesian_control`
+- no abrir familia bayesiana nueva
+- mantener intacto el cierre principal de `E1`
+
+Documento especifico de la micro-rama:
+
+- [resumen_micro_rama_e1_1_bayesian.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_micro_rama_e1_1_bayesian.md)
+
 ## Continuacion segun plan original
 
 La siguiente familia a explorar, siguiendo el catalogo original del grid, es:

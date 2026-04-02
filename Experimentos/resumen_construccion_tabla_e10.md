@@ -1,5 +1,14 @@
 # Resumen de construccion de la tabla E10
 
+Nota de alcance historico:
+
+- Este documento resume la fase de infraestructura de datos previa al primer modelado de `E10`.
+- El estado canonico actual de la familia ya incluye [E10_v1_clean_20260401_090439](/home/emilio/Documentos/RAdAR/Experimentos/runs/E10_v1_clean_20260401_090439).
+- Para el estado vigente de la familia debe leerse junto con:
+  - [plan_de_experimentacion_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/plan_de_experimentacion_radar.md)
+  - [bitacora_experimental_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/bitacora_experimental_radar.md)
+  - [resumen_saneamiento_documental_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_saneamiento_documental_radar.md)
+
 ## 1. Archivo base
 
 - Workbook maestro canonico: `/home/emilio/Documentos/RAdAR/Experimentos/tabla_maestra_experimentos_radar.xlsx`

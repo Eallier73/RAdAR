@@ -1,5 +1,14 @@
 # Readiness para Stacking y Master Table Enriquecida
 
+## Alcance de este documento
+
+Este documento audita elegibilidad para stacking de runs base reutilizables. No fija por si solo el estado canónico completo de cada familia.
+
+En particular:
+
+- `E10_v1_clean` ya existe como corrida canonica de la familia `E10`, pero no aparece como elegible para stacking porque es un meta-selector final y sus predicciones no son mergeables como base simple de `E9`.
+- `C1_v1_clean`, `C1_v2_clean` y `C1_v3_clean` si existen como corridas canonicas de clasificacion, pero quedan fuera de stacking por cambio de tarea (`task_type=clasificacion`).
+
 ## Que significa un run elegible para stacking en Radar
 
 Un run se considera elegible para stacking solo si cumple simultaneamente estas reglas:
@@ -52,20 +61,20 @@ Supuestos no permitidos:
 
 ## Estado de reconstruccion retrospectiva
 
-- Hiperparametros completos: 31
+- Hiperparametros completos: 32
 - Hiperparametros parciales: 4
 - Hiperparametros no recuperables: 0
-- Runs elegibles globalmente para stacking: 29
-- Elegibles por horizonte: {"H1": 29, "H2": 29, "H3": 29, "H4": 29}
+- Runs elegibles globalmente para stacking: 30
+- Elegibles por horizonte: {"H1": 30, "H2": 30, "H3": 30, "H4": 30}
 
 ## Bases stacking por horizonte
 
 ```
-horizonte                                                                                                                                                                                                                                                                                                                                     run_ids_incluidos  n_runs_incluidos                                                   run_ids_excluidos                                                                                                                                                                                                                                                   exclusiones_detalle  filas_base  filas_completas_todos_modelos  filas_incompletas  cobertura_promedio_modelos_fila
-       H1 E1_v2,E1_v2_clean,E1_v3_clean,E1_v4_clean,E1_v5_clean,E2_v1_clean,E2_v2_clean,E2_v3_clean,E3_v1_clean,E3_v2_clean,E3_v3_clean,E4_v1_clean,E4_v2_clean,E4_v3_clean,E5_v1_clean,E5_v2_clean,E5_v3_clean,E5_v4_clean,E5_v5_clean,E6_v1_clean,E6_v2_clean,E7_v1_clean,E7_v2_clean,E7_v3_clean,E8_v1_clean,E8_v2_clean,E8_v3_clean,E9_v1_clean,E9_v2_clean                29 C1_v1_clean,C1_v2_clean,C1_v3_clean,E10_v1_clean,E1_v1,E9_smoke_tmp                             C1_v1_clean:task_type=clasificacion | C1_v2_clean:task_type=clasificacion | C1_v3_clean:task_type=clasificacion | E10_v1_clean:columnas_minimas_invalidas;predicciones_no_mergeables | E1_v1:sin_loss_h | E9_smoke_tmp:status_run=parcial          28                             14                 14                         0.911330
-       H2 E1_v2,E1_v2_clean,E1_v3_clean,E1_v4_clean,E1_v5_clean,E2_v1_clean,E2_v2_clean,E2_v3_clean,E3_v1_clean,E3_v2_clean,E3_v3_clean,E4_v1_clean,E4_v2_clean,E4_v3_clean,E5_v1_clean,E5_v2_clean,E5_v3_clean,E5_v4_clean,E5_v5_clean,E6_v1_clean,E6_v2_clean,E7_v1_clean,E7_v2_clean,E7_v3_clean,E8_v1_clean,E8_v2_clean,E8_v3_clean,E9_v1_clean,E9_v2_clean                29 C1_v1_clean,C1_v2_clean,C1_v3_clean,E10_v1_clean,E1_v1,E9_smoke_tmp C1_v1_clean:task_type=clasificacion | C1_v2_clean:task_type=clasificacion | C1_v3_clean:task_type=clasificacion | E10_v1_clean:columnas_minimas_invalidas;predicciones_no_mergeables | E1_v1:sin_loss_h | E9_smoke_tmp:status_run=parcial;sin_loss_h;sin_predicciones          27                             13                 14                         0.908046
-       H3 E1_v2,E1_v2_clean,E1_v3_clean,E1_v4_clean,E1_v5_clean,E2_v1_clean,E2_v2_clean,E2_v3_clean,E3_v1_clean,E3_v2_clean,E3_v3_clean,E4_v1_clean,E4_v2_clean,E4_v3_clean,E5_v1_clean,E5_v2_clean,E5_v3_clean,E5_v4_clean,E5_v5_clean,E6_v1_clean,E6_v2_clean,E7_v1_clean,E7_v2_clean,E7_v3_clean,E8_v1_clean,E8_v2_clean,E8_v3_clean,E9_v1_clean,E9_v2_clean                29 C1_v1_clean,C1_v2_clean,C1_v3_clean,E10_v1_clean,E1_v1,E9_smoke_tmp C1_v1_clean:task_type=clasificacion | C1_v2_clean:task_type=clasificacion | C1_v3_clean:task_type=clasificacion | E10_v1_clean:columnas_minimas_invalidas;predicciones_no_mergeables | E1_v1:sin_loss_h | E9_smoke_tmp:status_run=parcial;sin_loss_h;sin_predicciones          26                             12                 14                         0.904509
-       H4 E1_v2,E1_v2_clean,E1_v3_clean,E1_v4_clean,E1_v5_clean,E2_v1_clean,E2_v2_clean,E2_v3_clean,E3_v1_clean,E3_v2_clean,E3_v3_clean,E4_v1_clean,E4_v2_clean,E4_v3_clean,E5_v1_clean,E5_v2_clean,E5_v3_clean,E5_v4_clean,E5_v5_clean,E6_v1_clean,E6_v2_clean,E7_v1_clean,E7_v2_clean,E7_v3_clean,E8_v1_clean,E8_v2_clean,E8_v3_clean,E9_v1_clean,E9_v2_clean                29 C1_v1_clean,C1_v2_clean,C1_v3_clean,E10_v1_clean,E1_v1,E9_smoke_tmp C1_v1_clean:task_type=clasificacion | C1_v2_clean:task_type=clasificacion | C1_v3_clean:task_type=clasificacion | E10_v1_clean:columnas_minimas_invalidas;predicciones_no_mergeables | E1_v1:sin_loss_h | E9_smoke_tmp:status_run=parcial;sin_loss_h;sin_predicciones          25                             11                 14                         0.900690
+horizonte                                                                                                                                                                                                                                                                                                                                                           run_ids_incluidos  n_runs_incluidos                                                   run_ids_excluidos                                                                                                                                                                                                                                                   exclusiones_detalle  filas_base  filas_completas_todos_modelos  filas_incompletas  cobertura_promedio_modelos_fila
+       H1 E1_1_v1_bayesian_base,E1_v2,E1_v2_clean,E1_v3_clean,E1_v4_clean,E1_v5_clean,E2_v1_clean,E2_v2_clean,E2_v3_clean,E3_v1_clean,E3_v2_clean,E3_v3_clean,E4_v1_clean,E4_v2_clean,E4_v3_clean,E5_v1_clean,E5_v2_clean,E5_v3_clean,E5_v4_clean,E5_v5_clean,E6_v1_clean,E6_v2_clean,E7_v1_clean,E7_v2_clean,E7_v3_clean,E8_v1_clean,E8_v2_clean,E8_v3_clean,E9_v1_clean,E9_v2_clean                30 C1_v1_clean,C1_v2_clean,C1_v3_clean,E10_v1_clean,E1_v1,E9_smoke_tmp                             C1_v1_clean:task_type=clasificacion | C1_v2_clean:task_type=clasificacion | C1_v3_clean:task_type=clasificacion | E10_v1_clean:columnas_minimas_invalidas;predicciones_no_mergeables | E1_v1:sin_loss_h | E9_smoke_tmp:status_run=parcial          28                             14                 14                         0.911905
+       H2 E1_1_v1_bayesian_base,E1_v2,E1_v2_clean,E1_v3_clean,E1_v4_clean,E1_v5_clean,E2_v1_clean,E2_v2_clean,E2_v3_clean,E3_v1_clean,E3_v2_clean,E3_v3_clean,E4_v1_clean,E4_v2_clean,E4_v3_clean,E5_v1_clean,E5_v2_clean,E5_v3_clean,E5_v4_clean,E5_v5_clean,E6_v1_clean,E6_v2_clean,E7_v1_clean,E7_v2_clean,E7_v3_clean,E8_v1_clean,E8_v2_clean,E8_v3_clean,E9_v1_clean,E9_v2_clean                30 C1_v1_clean,C1_v2_clean,C1_v3_clean,E10_v1_clean,E1_v1,E9_smoke_tmp C1_v1_clean:task_type=clasificacion | C1_v2_clean:task_type=clasificacion | C1_v3_clean:task_type=clasificacion | E10_v1_clean:columnas_minimas_invalidas;predicciones_no_mergeables | E1_v1:sin_loss_h | E9_smoke_tmp:status_run=parcial;sin_loss_h;sin_predicciones          27                             13                 14                         0.908642
+       H3 E1_1_v1_bayesian_base,E1_v2,E1_v2_clean,E1_v3_clean,E1_v4_clean,E1_v5_clean,E2_v1_clean,E2_v2_clean,E2_v3_clean,E3_v1_clean,E3_v2_clean,E3_v3_clean,E4_v1_clean,E4_v2_clean,E4_v3_clean,E5_v1_clean,E5_v2_clean,E5_v3_clean,E5_v4_clean,E5_v5_clean,E6_v1_clean,E6_v2_clean,E7_v1_clean,E7_v2_clean,E7_v3_clean,E8_v1_clean,E8_v2_clean,E8_v3_clean,E9_v1_clean,E9_v2_clean                30 C1_v1_clean,C1_v2_clean,C1_v3_clean,E10_v1_clean,E1_v1,E9_smoke_tmp C1_v1_clean:task_type=clasificacion | C1_v2_clean:task_type=clasificacion | C1_v3_clean:task_type=clasificacion | E10_v1_clean:columnas_minimas_invalidas;predicciones_no_mergeables | E1_v1:sin_loss_h | E9_smoke_tmp:status_run=parcial;sin_loss_h;sin_predicciones          26                             12                 14                         0.905128
+       H4 E1_1_v1_bayesian_base,E1_v2,E1_v2_clean,E1_v3_clean,E1_v4_clean,E1_v5_clean,E2_v1_clean,E2_v2_clean,E2_v3_clean,E3_v1_clean,E3_v2_clean,E3_v3_clean,E4_v1_clean,E4_v2_clean,E4_v3_clean,E5_v1_clean,E5_v2_clean,E5_v3_clean,E5_v4_clean,E5_v5_clean,E6_v1_clean,E6_v2_clean,E7_v1_clean,E7_v2_clean,E7_v3_clean,E8_v1_clean,E8_v2_clean,E8_v3_clean,E9_v1_clean,E9_v2_clean                30 C1_v1_clean,C1_v2_clean,C1_v3_clean,E10_v1_clean,E1_v1,E9_smoke_tmp C1_v1_clean:task_type=clasificacion | C1_v2_clean:task_type=clasificacion | C1_v3_clean:task_type=clasificacion | E10_v1_clean:columnas_minimas_invalidas;predicciones_no_mergeables | E1_v1:sin_loss_h | E9_smoke_tmp:status_run=parcial;sin_loss_h;sin_predicciones          25                             11                 14                         0.901333
 ```
 
 ## Limitaciones vigentes
@@ -74,6 +83,7 @@ horizonte                                                                       
 - Algunos runs historicos mantienen estructura antigua y su reconstruccion es solo parcial.
 - La elegibilidad global y la elegibilidad por horizonte no coinciden siempre.
 - Las bases stacking siguen siendo preparatorias: no contienen todavia meta-features ni entrenamiento del meta-modelo.
+- La no elegibilidad de `E10_v1_clean` en este documento no equivale a que `E10` siga en premodelado; solo significa que `E10` no es un modelo base reutilizable dentro de stacking clasico.
 
 ## Uso hacia adelante
 

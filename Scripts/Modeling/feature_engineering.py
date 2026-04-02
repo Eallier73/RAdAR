@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import pandas as pd
+import sys
+from pathlib import Path
 
 from config import (
     CURRENT_TARGET_COLUMN,
@@ -10,6 +12,12 @@ from config import (
     TARGET_MODE_DELTA,
     TARGET_MODE_LEVEL,
 )
+
+SCRIPTS_DIR = Path(__file__).resolve().parents[1]
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
+
+from common_runtime_logging import log_event
 
 
 def build_lagged_dataset(
@@ -58,5 +66,18 @@ def build_model_frame(
     if target_column not in modeling_columns:
         modeling_columns.append(target_column)
 
+    rows_before_dropna = len(lagged)
     modeling_df = lagged[modeling_columns].dropna().reset_index(drop=True)
+    log_event(
+        "feature_engineering",
+        "INFO",
+        "Model frame construido",
+        horizon=horizon,
+        target_mode=target_mode,
+        feature_count=len(feature_columns),
+        lag_count=len(lags),
+        rows_before_dropna=rows_before_dropna,
+        rows_after_dropna=len(modeling_df),
+        rows_removed=rows_before_dropna - len(modeling_df),
+    )
     return modeling_df, [*feature_columns, *lagged_feature_columns], target_column
