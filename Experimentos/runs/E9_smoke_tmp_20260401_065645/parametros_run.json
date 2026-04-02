@@ -1,0 +1,43 @@
+{
+  "alpha_grid_max_exp": 4.0,
+  "alpha_grid_min_exp": -4.0,
+  "alpha_grid_size": 8,
+  "alpha_selection_metric": "mae",
+  "curated_candidates_by_horizon": {
+    "1": [
+      "E1_v5_clean",
+      "E5_v4_clean",
+      "E3_v2_clean",
+      "E2_v3_clean"
+    ],
+    "2": [
+      "E1_v5_clean",
+      "E5_v4_clean",
+      "E2_v3_clean",
+      "E7_v3_clean"
+    ],
+    "3": [
+      "E1_v5_clean",
+      "E5_v4_clean",
+      "E3_v2_clean",
+      "E7_v3_clean"
+    ],
+    "4": [
+      "E1_v5_clean",
+      "E5_v4_clean",
+      "E3_v2_clean",
+      "E2_v3_clean"
+    ]
+  },
+  "dataset_path": "/home/emilio/Documentos/RAdAR/Datos_Modelo_ML/datos_ML_master_indice_aceptación_digital.xlsx",
+  "horizons": [
+    1
+  ],
+  "initial_train_size": 12,
+  "inner_splits": 2,
+  "meta_model": "ridge",
+  "sheet_name": "Sheet1",
+  "table_path": "/home/emilio/Documentos/RAdAR/Experimentos/tabla_maestra_experimentos_radar_e9_curada.xlsx",
+  "target_mode": "nivel",
+  "use_only_complete_rows": true
+}

@@ -35,6 +35,13 @@ Estructura:
   Prompt operativo de apertura de la familia E6 ARIMAX/SARIMAX con exogenas.
 - `15_familia_prophet/`
   Prompt operativo de apertura de la familia E7 Prophet con regresores exogenos.
+- `16_familia_hibrido_residual/`
+  Prompt operativo de apertura de la familia E8 hibrido residual con dos etapas auditables.
+- `17_familia_stacking/`
+  Prompt operativo de preparacion de la tabla base para E9 stacking clasico controlado.
+  Tambien incluye la apertura operativa del runner E9 sobre esa tabla curada.
+- `18_continuidad_post_e9/`
+  Prompt de registro de decision metodologica posterior a E9 y de apertura conceptual de E10/E11.
 
 Convencion de nombres:
 
@@ -70,3 +77,9 @@ Mapa actual:
 - `13_clasificacion_lightgbm/01_c4_lightgbm_classifier.md`
 - `14_familia_arimax/01_apertura_e6_arimax.md`
 - `15_familia_prophet/01_apertura_e7_prophet.md`
+- `16_familia_hibrido_residual/01_apertura_e8_hibrido_residual.md`
+- `17_familia_stacking/01_preparacion_tabla_e9_stacking_controlado.md`
+- `17_familia_stacking/02_modelado_operativo_e9_stacking_controlado.md`
+- `18_continuidad_post_e9/01_registro_decision_metodologica_post_e9_e10_e11.md`
+- `19_familia_gating_contextual/01_construccion_tabla_operativa_e10.md`
+- `19_familia_gating_contextual/02_modelado_operativo_e10_v1_clean.md`

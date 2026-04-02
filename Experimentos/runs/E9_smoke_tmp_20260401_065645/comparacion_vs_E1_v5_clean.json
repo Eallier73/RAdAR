@@ -1,0 +1,25 @@
+{
+  "clean_run_id": "E9_smoke_tmp",
+  "comparacion_por_horizonte": [
+    {
+      "delta_direction_accuracy": -0.02197802197802201,
+      "delta_loss_h": 0.014481886207327183,
+      "delta_mae": 0.04135082482543699,
+      "delta_risk_detection": 0.023809523809523725,
+      "delta_rmse": 0.0442601607475748,
+      "direction_accuracy_clean": 0.7857142857142857,
+      "direction_accuracy_original": 0.8076923076923077,
+      "horizonte_sem": 1,
+      "loss_h_clean": 0.07934166609971609,
+      "loss_h_original": 0.0648597798923889,
+      "mae_clean": 0.1419496069642681,
+      "mae_original": 0.1005987821388311,
+      "risk_detection_clean": 0.8571428571428571,
+      "risk_detection_original": 0.8333333333333334,
+      "rmse_clean": 0.1771121423681828,
+      "rmse_original": 0.132851981620608
+    }
+  ],
+  "l_total_radar_clean": 0.07934166609971609,
+  "reference_run_id": "E1_v5_clean"
+}

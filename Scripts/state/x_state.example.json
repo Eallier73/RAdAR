@@ -1,0 +1,36 @@
+{
+  "cookies": [
+    {
+      "name": "auth_token",
+      "value": "YOUR_AUTH_TOKEN_HERE",
+      "domain": ".x.com",
+      "path": "/",
+      "expires": 1801751327.500155,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "ct0",
+      "value": "YOUR_CT0_TOKEN_HERE",
+      "domain": ".x.com",
+      "path": "/",
+      "expires": 1801751327.806516,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://x.com",
+      "localStorage": [
+        {
+          "name": "__cuid",
+          "value": "YOUR_CUID_HERE"
+        }
+      ]
+    }
+  ],
+  "_comment": "Este es un ejemplo de estructura para x_state.json. Reemplaza los valores de placeholder con tus cookies reales de Twitter/X. El archivo real (x_state.json) NO debe versionarse."
+}

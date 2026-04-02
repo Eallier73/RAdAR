@@ -1,0 +1,47 @@
+{
+  "comparacion_por_horizonte": [
+    {
+      "base_models": [
+        {
+          "deteccion_caidas": 0.8571428571428571,
+          "direccion_accuracy": 0.7857142857142857,
+          "loss_h": 0.06971811368050837,
+          "mae": 0.12358733303149272,
+          "rmse": 0.16298873201291136,
+          "run_id": "E1_v5_clean"
+        },
+        {
+          "deteccion_caidas": 0.8571428571428571,
+          "direccion_accuracy": 0.8571428571428571,
+          "loss_h": 0.06396243718914925,
+          "mae": 0.1212968706517944,
+          "rmse": 0.15397401518607012,
+          "run_id": "E5_v4_clean"
+        },
+        {
+          "deteccion_caidas": 0.7142857142857143,
+          "direccion_accuracy": 0.7857142857142857,
+          "loss_h": 0.08334915684025108,
+          "mae": 0.12803511203069315,
+          "rmse": 0.15730921794073727,
+          "run_id": "E3_v2_clean"
+        },
+        {
+          "deteccion_caidas": 0.8571428571428571,
+          "direccion_accuracy": 0.8571428571428571,
+          "loss_h": 0.06485679495793567,
+          "mae": 0.12643694578604156,
+          "rmse": 0.15430586068117036,
+          "run_id": "E2_v3_clean"
+        }
+      ],
+      "best_base_loss_h": 0.06396243718914925,
+      "best_base_run_id": "E5_v4_clean",
+      "horizonte_sem": 1,
+      "rows_eval": 14
+    }
+  ],
+  "meta_model": "ridge",
+  "run_id": "E9_smoke_tmp",
+  "table_path": "/home/emilio/Documentos/RAdAR/Experimentos/tabla_maestra_experimentos_radar_e9_curada.xlsx"
+}

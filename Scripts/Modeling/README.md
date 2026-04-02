@@ -63,5 +63,10 @@ Estado metodologico:
 - `E4` queda cerrado en su rama base con `E4_v1_clean` como mejor run interno, pero sin superar a `E3_v2_clean` ni a Ridge.
 - `E5` ya queda abierto con `run_e5_catboost.py` y `E5_v1_clean` como primera referencia CatBoost.
 - `E3`, `E4` y `E5` usan la misma base reusable para comparaciones contra runs de referencia y guardado de features seleccionadas cuando aplica.
+- `E9` ya no usa el stacking tabular generico anterior; consume directamente la tabla curada `tabla_maestra_experimentos_radar_e9_curada.xlsx`, restringe por default a `fila_completa == True` y reconstruye `y_current` desde el dataset maestro solo para evaluar metricas Radar sin leakage.
+- `E9_v2_clean` queda como mejor run interno de la familia de stacking clasico controlado y como referente operativo actual de riesgo-direccion-caidas.
+- `E10` ya tiene infraestructura de datos especifica en `build_e10_meta_selector_table.py`, que construye la tabla operativa de meta-seleccion/gating a partir de predicciones OOF, contexto observable, desacuerdo entre modelos y etiquetas retrospectivas del selector.
+- `E10` ya tiene runner canonico en `run_e10_meta_selector.py` y una primera corrida diagnostica `E10_v1_clean`; la familia ya paso de premodelado a modelado inicial, aunque todavia sin consolidarse frente a los benchmarks centrales.
+- `E11` queda solo como familia conceptual futura de arquitectura dual numerica + categorica.
 - La rama `C1-C4` de clasificacion queda preparada con scripts por familia, pero todavia sin corridas ejecutadas.
 - La clasificacion reutiliza el mismo `RadarExperimentTracker`; no abre un tracker paralelo.

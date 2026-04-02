@@ -196,6 +196,177 @@ PREDICTION_DATE_CANDIDATES = (DATE_COLUMN, "fecha", "fecha_semana", "week_start"
 PREDICTION_Y_TRUE_CANDIDATES = ("y_true", "y_true_model", "actual", "y_actual")
 PREDICTION_Y_PRED_CANDIDATES = ("y_pred", "y_pred_model", "pred", "prediction")
 
+E9_FINAL_CANDIDATES_BY_HORIZON: dict[int, list[str]] = {
+    1: ["E1_v5_clean", "E5_v4_clean", "E3_v2_clean", "E2_v3_clean"],
+    2: ["E1_v5_clean", "E5_v4_clean", "E2_v3_clean", "E7_v3_clean"],
+    3: ["E1_v5_clean", "E5_v4_clean", "E3_v2_clean", "E7_v3_clean"],
+    4: ["E1_v5_clean", "E5_v4_clean", "E3_v2_clean", "E2_v3_clean"],
+}
+
+E9_RESERVE_CANDIDATES_BY_HORIZON: dict[int, list[str]] = {
+    1: ["E1_v4_clean"],
+    2: ["E1_v4_clean", "E8_v2_clean"],
+    3: ["E1_v4_clean", "E1_v2_clean"],
+    4: ["E1_v4_clean", "E4_v1_clean"],
+}
+
+E9_CONSTRUCT_DEFINITIONS: dict[str, str] = {
+    "campeon global de familia": "Mejor run vigente dentro de su familia experimental y ancla natural para el ensemble.",
+    "referencia parsimoniosa": "Run conservado por simplicidad, estabilidad o interpretabilidad, aunque no sea el campeon global.",
+    "especialista de horizonte": "Run con senal particularmente util en uno o mas horizontes concretos y con diversidad util frente al nucleo.",
+    "candidato reserva": "Run documentado como alternativa metodologica, pero fuera del bloque principal por tamano o estabilidad.",
+    "run dominado": "Run superado por otro muy cercano de su misma familia sin aportar diversidad real adicional.",
+    "run no preferible para ensemble principal": "Run excluido del ensemble principal por ruido, redundancia, inestabilidad o comparabilidad deficiente.",
+}
+
+FAMILY_STATUS_VIGENTE_ROWS: tuple[dict[str, str], ...] = (
+    {
+        "family": "E1",
+        "estado_vigente": "cerrada",
+        "mejor_run": "E1_v5_clean",
+        "rol_funcional": "referente numerico puro",
+        "decision_metodologica": (
+            "Mejor baseline lineal y mejor referente actual para pronostico numerico puro del porcentaje."
+        ),
+        "siguiente_movimiento": "sin expansion prevista",
+    },
+    {
+        "family": "E2",
+        "estado_vigente": "cerrada",
+        "mejor_run": "E2_v3_clean",
+        "rol_funcional": "referencia robusta",
+        "decision_metodologica": "Familia robusta util como contraste historico, pero sin competitividad frente a Ridge.",
+        "siguiente_movimiento": "sin expansion prevista",
+    },
+    {
+        "family": "E3",
+        "estado_vigente": "cerrada en rama base",
+        "mejor_run": "E3_v2_clean",
+        "rol_funcional": "referencia no lineal base",
+        "decision_metodologica": "Sigue siendo la referencia bagging util, pero ya desplazada por CatBoost.",
+        "siguiente_movimiento": "mantener como candidato de diversidad",
+    },
+    {
+        "family": "E4",
+        "estado_vigente": "cerrada",
+        "mejor_run": "E4_v1_clean",
+        "rol_funcional": "boosting historico",
+        "decision_metodologica": "No desplazo a E3 ni a Ridge; queda como referencia secundaria.",
+        "siguiente_movimiento": "sin expansion prevista",
+    },
+    {
+        "family": "E5",
+        "estado_vigente": "abierta madura",
+        "mejor_run": "E5_v4_clean",
+        "rol_funcional": "mejor no lineal tabular",
+        "decision_metodologica": "Campeon no lineal tabular vigente; sigue siendo referencia competitiva central.",
+        "siguiente_movimiento": "mantener como candidato fuerte para arquitecturas compuestas",
+    },
+    {
+        "family": "E6",
+        "estado_vigente": "debilitada",
+        "mejor_run": "E6_v1_clean",
+        "rol_funcional": "referencia temporal estructurada debil",
+        "decision_metodologica": "ARIMAX no fue competitivo y no justifica continuidad inmediata.",
+        "siguiente_movimiento": "solo reserva conceptual para hibridos",
+    },
+    {
+        "family": "E7",
+        "estado_vigente": "intermedia",
+        "mejor_run": "E7_v3_clean",
+        "rol_funcional": "referencia temporal con changepoints",
+        "decision_metodologica": "Prophet supero a E6 pero no entro al bloque contendiente principal.",
+        "siguiente_movimiento": "mantener como referencia temporal secundaria",
+    },
+    {
+        "family": "E8",
+        "estado_vigente": "intermedia",
+        "mejor_run": "E8_v2_clean",
+        "rol_funcional": "hibrido residual auditable",
+        "decision_metodologica": "Mostro validez metodologica, pero no agrego mejora suficiente frente a su base.",
+        "siguiente_movimiento": "sin expansion amplia; solo hipotesis residual muy acotada si reaparece",
+    },
+    {
+        "family": "E9",
+        "estado_vigente": "pausada util",
+        "mejor_run": "E9_v2_clean",
+        "rol_funcional": "referente riesgo-direccion-caidas",
+        "decision_metodologica": (
+            "No reemplaza a E1_v5_clean; aporta valor operativo en riesgo, direccion y deteccion de caidas. "
+            "Queda util pero no definitiva."
+        ),
+        "siguiente_movimiento": "pausa metodologica; posible reactivacion futura",
+    },
+    {
+        "family": "E10",
+        "estado_vigente": "activa premodelado",
+        "mejor_run": "",
+        "rol_funcional": "familia contextual / gating",
+        "decision_metodologica": (
+            "La tabla operativa de E10 ya fue construida; la siguiente tarea es correr el primer selector/gating "
+            "contextual sin repetir E9."
+        ),
+        "siguiente_movimiento": "primer runner/modelo canonico de E10",
+    },
+    {
+        "family": "E11",
+        "estado_vigente": "planificada",
+        "mejor_run": "",
+        "rol_funcional": "arquitectura dual numerica + categorica",
+        "decision_metodologica": (
+            "Familia futura para separar pronostico numerico del porcentaje y prediccion categorica del movimiento."
+        ),
+        "siguiente_movimiento": "preapertura conceptual; no ejecutar todavia",
+    },
+)
+
+E9_PRIORITY_RUN_NOTES: dict[str, dict[str, str]] = {
+    "E1_v5_clean": {
+        "constructo": "campeon global de familia",
+        "justificacion": "Mejor run global vigente y ancla lineal principal del stacking controlado.",
+    },
+    "E1_v4_clean": {
+        "constructo": "referencia parsimoniosa",
+        "justificacion": "Ridge parsimonioso y equilibrado; se conserva como control auditable y reserva, pero no entra por redundancia alta con E1_v5_clean.",
+    },
+    "E1_v2_clean": {
+        "constructo": "candidato reserva",
+        "justificacion": "Reserva puntual para H3 por buen loss_h3, pero se excluye del bloque principal por duplicidad interna dentro de Ridge.",
+    },
+    "E2_v3_clean": {
+        "constructo": "especialista de horizonte",
+        "justificacion": "Huber robusto con senal real en H2 y H4; aporta diversidad util frente a Ridge y CatBoost.",
+    },
+    "E3_v2_clean": {
+        "constructo": "campeon global de familia",
+        "justificacion": "Mejor bagging vigente; mantiene diversidad real frente a lineales y boosting.",
+    },
+    "E4_v1_clean": {
+        "constructo": "candidato reserva",
+        "justificacion": "Campeon interno de XGBoost, pero queda fuera del ensemble principal por redundancia con CatBoost y bagging; se conserva solo como reserva tardia.",
+    },
+    "E5_v4_clean": {
+        "constructo": "campeon global de familia",
+        "justificacion": "Mejor no lineal tabular vigente; entra como eje principal de E9 en todos los horizontes.",
+    },
+    "E7_v3_clean": {
+        "constructo": "especialista de horizonte",
+        "justificacion": "Prophet parsimonioso mejora claramente a E6 y aporta sesgo temporal estructurado util en H2 y H3.",
+    },
+    "E8_v2_clean": {
+        "constructo": "candidato reserva",
+        "justificacion": "Mejor hibrido residual interno; se conserva solo como reserva puntual por H2, no como base principal.",
+    },
+    "E6_v1_clean": {
+        "constructo": "run no preferible para ensemble principal",
+        "justificacion": "ARIMAX quedo debilitado y no competitivo; no agrega una ventaja suficiente frente a E7 ni frente al bloque principal.",
+    },
+    "E6_v2_clean": {
+        "constructo": "run no preferible para ensemble principal",
+        "justificacion": "Variante all de ARIMAX empeoro a la base parsimoniosa y no debe entrar al ensemble principal.",
+    },
+}
+
 
 @dataclass
 class PredictionAuditResult:
@@ -290,6 +461,8 @@ class MasterAuditBuildResult:
     markdown_path: Path
     master_runs_total: int
     inventory_directories_total: int
+    e9_curated_xlsx_path: Path | None = None
+    e9_markdown_path: Path | None = None
 
 
 def parse_args() -> argparse.Namespace:
@@ -2048,6 +2221,558 @@ def build_stacking_base_summary(
     return pd.DataFrame(rows)
 
 
+def extract_experiment_family(run_id: str) -> str:
+    match = re.match(r"^([A-Z]\d+)", str(run_id))
+    return match.group(1) if match else str(run_id)
+
+
+def invert_horizon_candidate_mapping(mapping: dict[int, list[str]]) -> dict[str, list[int]]:
+    inverted: dict[str, list[int]] = {}
+    for horizon, run_ids in mapping.items():
+        for run_id in run_ids:
+            inverted.setdefault(run_id, []).append(int(horizon))
+    return {run_id: sorted(horizons) for run_id, horizons in inverted.items()}
+
+
+def build_regression_family_champions(runs_catalog_df: pd.DataFrame) -> dict[str, str]:
+    regression_df = runs_catalog_df[
+        (runs_catalog_df["task_type"].fillna("regresion") == "regresion")
+        & (runs_catalog_df["status_run"] == "completo")
+    ].copy()
+    if regression_df.empty:
+        return {}
+    regression_df["familia_experimental"] = regression_df["run_id"].map(extract_experiment_family)
+    champions = (
+        regression_df.sort_values(["familia_experimental", "L_total_Radar", "run_id"], kind="mergesort")
+        .drop_duplicates("familia_experimental", keep="first")
+    )
+    return dict(zip(champions["familia_experimental"], champions["run_id"]))
+
+
+def infer_e9_default_note(
+    *,
+    run_id: str,
+    row: pd.Series,
+    family_champions: dict[str, str],
+) -> tuple[str, str]:
+    if row.get("task_type", "regresion") != "regresion":
+        return (
+            "run no preferible para ensemble principal",
+            "E9 se restringe a regresion; las corridas de clasificacion quedan fuera por comparabilidad.",
+        )
+
+    eligible_any = any(bool(row.get(f"stacking_eligible_h{horizon}", False)) for horizon in (1, 2, 3, 4))
+    if not eligible_any:
+        reason = str(row.get("motivo_no_elegibilidad", "") or "sin elegibilidad estructural para stacking")
+        return (
+            "run no preferible para ensemble principal",
+            f"Queda fuera del universo E9 porque no cumple elegibilidad estructural suficiente: {reason}.",
+        )
+
+    familia_experimental = extract_experiment_family(run_id)
+    family_champion = family_champions.get(familia_experimental)
+    if family_champion and family_champion != run_id:
+        return (
+            "run dominado",
+            f"Dominado dentro de {familia_experimental} por {family_champion}; no agrega diversidad real suficiente frente al campeon de su familia.",
+        )
+
+    return (
+        "run no preferible para ensemble principal",
+        "No entra al ensemble principal porque su senal no compensa la redundancia, la complejidad o la debilidad relativa frente al nucleo seleccionado.",
+    )
+
+
+def build_e9_construct_dictionary(runs_catalog_df: pd.DataFrame) -> pd.DataFrame:
+    final_horizon_map = invert_horizon_candidate_mapping(E9_FINAL_CANDIDATES_BY_HORIZON)
+    reserve_horizon_map = invert_horizon_candidate_mapping(E9_RESERVE_CANDIDATES_BY_HORIZON)
+    family_champions = build_regression_family_champions(runs_catalog_df)
+
+    rows: list[dict[str, Any]] = []
+    for _, row in runs_catalog_df.sort_values("run_id", kind="mergesort").iterrows():
+        run_id = str(row["run_id"])
+        familia_experimental = extract_experiment_family(run_id)
+        final_horizons = final_horizon_map.get(run_id, [])
+        reserve_horizons = reserve_horizon_map.get(run_id, [])
+        manual_note = E9_PRIORITY_RUN_NOTES.get(run_id)
+        if manual_note:
+            constructo = manual_note["constructo"]
+            justificacion = manual_note["justificacion"]
+        else:
+            constructo, justificacion = infer_e9_default_note(
+                run_id=run_id,
+                row=row,
+                family_champions=family_champions,
+            )
+
+        entra = bool(final_horizons)
+        reserva = bool(reserve_horizons)
+        decision_global = "entra" if entra else "reserva" if reserva else "sale"
+        motivo_exclusion = "" if (entra or reserva) else justificacion
+
+        rows.append(
+            {
+                "run_id": run_id,
+                "familia": familia_experimental,
+                "categoria_modelo": row.get("family"),
+                "modelo": row.get("model"),
+                "estatus_canonico": row.get("status_canonico"),
+                "stacking_eligible_global": bool(row.get("stacking_eligible_global", False)),
+                "horizontes_entrada": ",".join(f"H{h}" for h in final_horizons),
+                "horizontes_reserva": ",".join(f"H{h}" for h in reserve_horizons),
+                "constructo_en_E9": constructo,
+                "justificacion_breve": justificacion,
+                "entra_a_E9": "si" if entra else "no",
+                "reserva": "si" if reserva else "no",
+                "decision_global_E9": decision_global,
+                "motivo_exclusion": motivo_exclusion,
+            }
+        )
+
+    return pd.DataFrame(rows)
+
+
+def compute_e9_coverage_ratios(runs_catalog_df: pd.DataFrame) -> dict[int, int]:
+    regression_df = runs_catalog_df[runs_catalog_df["task_type"].fillna("regresion") == "regresion"].copy()
+    result: dict[int, int] = {}
+    for horizon in (1, 2, 3, 4):
+        result[horizon] = int(regression_df[f"filas_pred_h{horizon}"].fillna(0).max()) if not regression_df.empty else 0
+    return result
+
+
+def build_e9_metricas_candidatos(
+    runs_catalog_df: pd.DataFrame,
+    construct_df: pd.DataFrame,
+) -> pd.DataFrame:
+    construct_lookup = construct_df.set_index("run_id").to_dict(orient="index")
+    coverage_max = compute_e9_coverage_ratios(runs_catalog_df)
+    regression_df = runs_catalog_df[runs_catalog_df["task_type"].fillna("regresion") == "regresion"].copy()
+
+    rows: list[dict[str, Any]] = []
+    for _, row in regression_df.iterrows():
+        run_id = str(row["run_id"])
+        construct_info = construct_lookup.get(run_id, {})
+        coverage_ratios = []
+        for horizon in (1, 2, 3, 4):
+            max_rows = coverage_max.get(horizon, 0)
+            current_rows = int(row.get(f"filas_pred_h{horizon}", 0) or 0)
+            if max_rows > 0:
+                coverage_ratios.append(current_rows / max_rows)
+
+        rows.append(
+            {
+                "run_id": run_id,
+                "familia": extract_experiment_family(run_id),
+                "categoria_modelo": row.get("family"),
+                "modelo": row.get("model"),
+                "target_mode": row.get("target_mode"),
+                "feature_mode": row.get("feature_mode"),
+                "transform_mode": row.get("transform_mode"),
+                "lags": row.get("lags"),
+                "mae_promedio": row.get("mae_promedio"),
+                "rmse_promedio": row.get("rmse_promedio"),
+                "direction_accuracy_promedio": row.get("direction_accuracy_promedio"),
+                "deteccion_caidas_promedio": row.get("deteccion_caidas_promedio"),
+                "L_total_Radar": row.get("L_total_Radar"),
+                "loss_h1": row.get("loss_h1"),
+                "loss_h2": row.get("loss_h2"),
+                "loss_h3": row.get("loss_h3"),
+                "loss_h4": row.get("loss_h4"),
+                "cobertura_media": float(sum(coverage_ratios) / len(coverage_ratios)) if coverage_ratios else 0.0,
+                "horizontes_completos": int(
+                    sum(int(bool(row.get(f"stacking_eligible_h{horizon}", False))) for horizon in (1, 2, 3, 4))
+                ),
+                "elegible_E9": "si"
+                if construct_info.get("decision_global_E9") in {"entra", "reserva"}
+                else "no",
+                "constructo_en_E9": construct_info.get("constructo_en_E9", ""),
+                "decision_global_E9": construct_info.get("decision_global_E9", "sale"),
+                "observacion_breve": row.get("observacion_breve"),
+            }
+        )
+
+    result = pd.DataFrame(rows)
+    if result.empty:
+        return result
+    decision_rank = {"entra": 0, "reserva": 1, "sale": 2}
+    result["__decision_rank"] = result["decision_global_E9"].map(decision_rank).fillna(9)
+    result = result.sort_values(
+        ["__decision_rank", "L_total_Radar", "run_id"],
+        ascending=[True, True, True],
+        kind="mergesort",
+    ).drop(columns="__decision_rank")
+    return result.reset_index(drop=True)
+
+
+def build_e9_curated_base_sheet(
+    *,
+    horizon: int,
+    stacking_base_sheet: pd.DataFrame,
+) -> pd.DataFrame:
+    selected_runs = E9_FINAL_CANDIDATES_BY_HORIZON[horizon]
+    available_runs = [run_id for run_id in selected_runs if run_id in stacking_base_sheet.columns]
+    if stacking_base_sheet.empty or not available_runs:
+        return pd.DataFrame(columns=["fecha", "y_true", "fila_completa", "n_modelos_disponibles"])
+
+    base_df = stacking_base_sheet[["fecha", "y_true", *available_runs]].copy()
+    base_df["n_modelos_disponibles"] = base_df[available_runs].notna().sum(axis=1)
+    base_df["fila_completa"] = base_df["n_modelos_disponibles"] == len(available_runs)
+    base_df["cobertura_modelos_fila"] = base_df["n_modelos_disponibles"] / len(available_runs)
+    return base_df
+
+
+def describe_redundancy_against_finals(
+    *,
+    raw_base_sheet: pd.DataFrame,
+    horizon: int,
+    run_id: str,
+) -> tuple[float | None, str, str]:
+    final_runs = [candidate for candidate in E9_FINAL_CANDIDATES_BY_HORIZON[horizon] if candidate in raw_base_sheet.columns]
+    if run_id not in raw_base_sheet.columns:
+        return None, "", "sin_columna_de_prediccion_en_base_raw"
+
+    comparison_runs = [candidate for candidate in final_runs if candidate != run_id]
+    if not comparison_runs:
+        return None, "", "sin_otro_principal_para_comparar"
+
+    corr_series = raw_base_sheet[[run_id, *comparison_runs]].corr(min_periods=10)[run_id].drop(run_id)
+    corr_series = corr_series.dropna()
+    if corr_series.empty:
+        return None, "", "sin_correlacion_estimable_con_principales"
+
+    closest_run = str(corr_series.abs().idxmax())
+    closest_value = float(corr_series.loc[closest_run])
+    if abs(closest_value) >= 0.995:
+        note = f"predicciones casi duplicadas de {closest_run} (corr={closest_value:.3f})"
+    elif abs(closest_value) >= 0.90:
+        note = f"redundancia alta con {closest_run} (corr={closest_value:.3f})"
+    elif abs(closest_value) >= 0.75:
+        note = f"solapamiento moderado con {closest_run} (corr={closest_value:.3f})"
+    else:
+        note = f"diversidad util frente a {closest_run} (corr={closest_value:.3f})"
+    return closest_value, closest_run, note
+
+
+def build_e9_diagnostic_sheet(
+    *,
+    horizon: int,
+    master_df: pd.DataFrame,
+    construct_df: pd.DataFrame,
+    stacking_base_sheet: pd.DataFrame,
+    e9_base_sheet: pd.DataFrame,
+) -> pd.DataFrame:
+    horizon_label = f"H{horizon}"
+    regression_df = master_df[
+        (master_df["task_type"].fillna("regresion") == "regresion")
+        & (master_df[f"stacking_eligible_h{horizon}"] == True)
+    ].copy()
+    construct_lookup = construct_df.set_index("run_id").to_dict(orient="index")
+    max_rows = int(regression_df[f"filas_pred_h{horizon}"].fillna(0).max()) if not regression_df.empty else 0
+    final_runs = set(E9_FINAL_CANDIDATES_BY_HORIZON[horizon])
+    reserve_runs = set(E9_RESERVE_CANDIDATES_BY_HORIZON[horizon])
+
+    rows: list[dict[str, Any]] = []
+    for _, row in regression_df.iterrows():
+        run_id = str(row["run_id"])
+        construct_info = construct_lookup.get(run_id, {})
+        reserve_horizons_text = str(construct_info.get("horizontes_reserva", "") or "")
+        if run_id in final_runs:
+            decision = "entra"
+        elif run_id in reserve_runs:
+            decision = "reserva"
+        else:
+            decision = "sale"
+
+        corr_value, closest_run, redundancy_note = describe_redundancy_against_finals(
+            raw_base_sheet=stacking_base_sheet,
+            horizon=horizon,
+            run_id=run_id,
+        )
+
+        rows.append(
+            {
+                "run_id": run_id,
+                "familia": extract_experiment_family(run_id),
+                "categoria_modelo": row.get("family"),
+                "modelo": row.get("model"),
+                "constructo_en_E9": construct_info.get("constructo_en_E9", ""),
+                "decision_sugerida": decision,
+                "loss_h": row.get(f"loss_h{horizon}"),
+                "mae_h": row.get(f"H{horizon}_mae"),
+                "rmse_h": row.get(f"H{horizon}_rmse"),
+                "direction_accuracy_h": row.get(f"H{horizon}_direction_accuracy"),
+                "deteccion_caidas_h": row.get(f"H{horizon}_deteccion_caidas"),
+                "filas_pred_h": int(row.get(f"filas_pred_h{horizon}", 0) or 0),
+                "cobertura_relativa_h": (
+                    float((row.get(f"filas_pred_h{horizon}", 0) or 0) / max_rows) if max_rows else 0.0
+                ),
+                "run_principal_mas_parecido": closest_run,
+                "correlacion_abs_max_con_principales": abs(corr_value) if corr_value is not None else None,
+                "observacion_redundancia": redundancy_note,
+                "filas_base_final": int(len(e9_base_sheet)),
+                "filas_completas_base_final": int(e9_base_sheet["fila_completa"].sum())
+                if "fila_completa" in e9_base_sheet.columns
+                else 0,
+                "motivo_decision": (
+                    construct_info.get("justificacion_breve")
+                    if decision in {"entra", "reserva"}
+                    else (
+                        f"Se conserva solo como reserva en {reserve_horizons_text}; no entra en {horizon_label}."
+                        if construct_info.get("decision_global_E9") == "reserva" and reserve_horizons_text
+                        else construct_info.get("motivo_exclusion", "")
+                    )
+                ),
+            }
+        )
+
+    result = pd.DataFrame(rows)
+    if result.empty:
+        return result
+    decision_rank = {"entra": 0, "reserva": 1, "sale": 2}
+    result["__decision_rank"] = result["decision_sugerida"].map(decision_rank).fillna(9)
+    result = result.sort_values(
+        ["__decision_rank", "loss_h", "run_id"],
+        ascending=[True, True, True],
+        kind="mergesort",
+    ).drop(columns="__decision_rank")
+    return result.reset_index(drop=True)
+
+
+def build_e9_bases_summary(
+    e9_base_sheets: dict[str, pd.DataFrame],
+) -> pd.DataFrame:
+    rows: list[dict[str, Any]] = []
+    for horizon in (1, 2, 3, 4):
+        base_df = e9_base_sheets.get(f"E9_base_h{horizon}", pd.DataFrame())
+        candidate_runs = E9_FINAL_CANDIDATES_BY_HORIZON[horizon]
+        reserve_runs = E9_RESERVE_CANDIDATES_BY_HORIZON[horizon]
+        model_columns = [column for column in base_df.columns if column in candidate_runs]
+        coverage_per_model = [
+            float(base_df[column].notna().mean()) for column in model_columns
+        ] if model_columns else []
+
+        rows.append(
+            {
+                "horizonte": f"H{horizon}",
+                "candidatos_finales": ",".join(candidate_runs),
+                "candidatos_reserva": ",".join(reserve_runs),
+                "n_candidatos_finales": len(candidate_runs),
+                "n_candidatos_reserva": len(reserve_runs),
+                "filas_totales": int(len(base_df)),
+                "filas_completas": int(base_df["fila_completa"].sum()) if "fila_completa" in base_df.columns else 0,
+                "filas_incompletas": int(len(base_df) - int(base_df["fila_completa"].sum()))
+                if "fila_completa" in base_df.columns
+                else int(len(base_df)),
+                "cobertura_media_fila": float(base_df["cobertura_modelos_fila"].mean())
+                if "cobertura_modelos_fila" in base_df.columns and not base_df.empty
+                else 0.0,
+                "cobertura_media_por_modelo": float(sum(coverage_per_model) / len(coverage_per_model))
+                if coverage_per_model
+                else 0.0,
+                "base_lista_para_E9": bool(
+                    len(candidate_runs) >= 3
+                    and "fila_completa" in base_df.columns
+                    and int(base_df["fila_completa"].sum()) > 0
+                ),
+                "nota_metodologica": "Base curada pequena, con diversidad util y reglas ex ante; lista como insumo de stacking controlado por horizonte.",
+            }
+        )
+    return pd.DataFrame(rows)
+
+
+def build_family_status_vigente_df() -> pd.DataFrame:
+    return pd.DataFrame(FAMILY_STATUS_VIGENTE_ROWS)
+
+
+def build_e9_curacion_resumen_df(
+    *,
+    source_xlsx_path: Path,
+    curated_xlsx_path: Path,
+) -> pd.DataFrame:
+    rows: list[dict[str, str]] = [
+        {
+            "seccion": "objetivo",
+            "campo": "descripcion",
+            "valor": "Curar una base pequena, trazable y metodologicamente defendible para E9 stacking clasico controlado por horizonte.",
+        },
+        {
+            "seccion": "fuente",
+            "campo": "archivo_fuente",
+            "valor": str(source_xlsx_path),
+        },
+        {
+            "seccion": "salida",
+            "campo": "archivo_curado",
+            "valor": str(curated_xlsx_path),
+        },
+        {
+            "seccion": "reglas",
+            "campo": "criterio_principal",
+            "valor": "Priorizar runs canonicos, OOF mergeables, diversidad real entre familias y base pequena por horizonte.",
+        },
+        {
+            "seccion": "reglas",
+            "campo": "regla_exclusion",
+            "valor": "Excluir corridas no canonicas, dominadas, colapsadas, redundantes o sin valor adicional claro para el ensemble principal.",
+        },
+        {
+            "seccion": "reglas",
+            "campo": "tamano_objetivo",
+            "valor": "Ideal 3-5 modelos por horizonte; maximo razonable 6.",
+        },
+        {
+            "seccion": "advertencias",
+            "campo": "no_es_E10",
+            "valor": "E9 en esta etapa no es gating contextual ni mezcla oportunista ex post; es stacking clasico controlado por horizonte.",
+        },
+        {
+            "seccion": "uso_esperado",
+            "campo": "siguiente_paso",
+            "valor": "Usar E9_base_h1..h4 como insumo curado para adaptar y correr run_e9_stacking.py sin leakage.",
+        },
+    ]
+
+    for constructo, definition in E9_CONSTRUCT_DEFINITIONS.items():
+        rows.append(
+            {
+                "seccion": "constructos",
+                "campo": constructo,
+                "valor": definition,
+            }
+        )
+
+    common_core = sorted(
+        set(E9_FINAL_CANDIDATES_BY_HORIZON[1])
+        & set(E9_FINAL_CANDIDATES_BY_HORIZON[2])
+        & set(E9_FINAL_CANDIDATES_BY_HORIZON[3])
+        & set(E9_FINAL_CANDIDATES_BY_HORIZON[4])
+    )
+    rows.append(
+        {
+            "seccion": "reglas",
+            "campo": "nucleo_comun",
+            "valor": ",".join(common_core),
+        }
+    )
+
+    for horizon in (1, 2, 3, 4):
+        rows.extend(
+            [
+                {
+                    "seccion": f"H{horizon}",
+                    "campo": "candidatos_finales",
+                    "valor": ",".join(E9_FINAL_CANDIDATES_BY_HORIZON[horizon]),
+                },
+                {
+                    "seccion": f"H{horizon}",
+                    "campo": "candidatos_reserva",
+                    "valor": ",".join(E9_RESERVE_CANDIDATES_BY_HORIZON[horizon]),
+                },
+            ]
+        )
+
+    return pd.DataFrame(rows)
+
+
+def build_e9_markdown_report(
+    *,
+    source_xlsx_path: Path,
+    curated_xlsx_path: Path,
+    construct_df: pd.DataFrame,
+    e9_bases_summary_df: pd.DataFrame,
+) -> str:
+    final_runs_by_horizon = {
+        f"H{horizon}": ", ".join(E9_FINAL_CANDIDATES_BY_HORIZON[horizon]) for horizon in (1, 2, 3, 4)
+    }
+    reserve_runs = (
+        construct_df[construct_df["decision_global_E9"] == "reserva"][
+            ["run_id", "constructo_en_E9", "justificacion_breve"]
+        ]
+        .sort_values("run_id", kind="mergesort")
+        .reset_index(drop=True)
+    )
+    excluded_runs = (
+        construct_df[construct_df["decision_global_E9"] == "sale"][
+            ["run_id", "constructo_en_E9", "motivo_exclusion"]
+        ]
+        .sort_values("run_id", kind="mergesort")
+        .reset_index(drop=True)
+    )
+    complete_rows_lookup = {
+        row["horizonte"]: int(row["filas_completas"])
+        for row in e9_bases_summary_df.to_dict(orient="records")
+    }
+
+    return f"""# Preparacion de tabla E9 stacking controlado
+
+## 1. Archivo base
+
+- Fuente original: `{source_xlsx_path}`
+- Salida curada: `{curated_xlsx_path}`
+
+## 2. Hojas creadas o modificadas
+
+- `E9_curacion_resumen`
+- `E9_diccionario_constructos`
+- `E9_metricas_candidatos`
+- `E9_diagnostico_h1`
+- `E9_diagnostico_h2`
+- `E9_diagnostico_h3`
+- `E9_diagnostico_h4`
+- `E9_base_h1`
+- `E9_base_h2`
+- `E9_base_h3`
+- `E9_base_h4`
+- `E9_bases_resumen`
+
+## 3. Criterio de curacion
+
+- Universo base: tabla maestra completa, sin borrar materia prima.
+- Universo elegible: solo runs canonicos de regresion con predicciones OOF mergeables y trazabilidad suficiente.
+- Base final E9: 4 candidatos por horizonte, con nucleo comun `E1_v5_clean` + `E5_v4_clean` y rotacion controlada de diversidad (`E3_v2_clean`, `E2_v3_clean`, `E7_v3_clean`).
+- Regla de exclusion: sacar variantes dominadas, familias debilitadas, corridas colapsadas y duplicados sin diversidad real.
+
+## 4. Constructos usados
+
+{render_dataframe_markdown(construct_df[['run_id', 'constructo_en_E9', 'decision_global_E9', 'justificacion_breve']], 'Sin constructos.')}
+
+## 5. Runs que entran a E9 por horizonte
+
+- H1: {final_runs_by_horizon['H1']}
+- H2: {final_runs_by_horizon['H2']}
+- H3: {final_runs_by_horizon['H3']}
+- H4: {final_runs_by_horizon['H4']}
+
+## 6. Runs que quedan como reserva
+
+{render_dataframe_markdown(reserve_runs, 'Sin reservas documentadas.')}
+
+## 7. Runs excluidos y por que
+
+{render_dataframe_markdown(excluded_runs, 'Sin exclusiones documentadas.')}
+
+## 8. Filas completas por horizonte
+
+- H1: {complete_rows_lookup.get('H1', 0)}
+- H2: {complete_rows_lookup.get('H2', 0)}
+- H3: {complete_rows_lookup.get('H3', 0)}
+- H4: {complete_rows_lookup.get('H4', 0)}
+
+## 9. Estado de la base para run_e9_stacking.py
+
+- La base curada ya fue integrada operativamente a `run_e9_stacking.py`.
+- `E9_base_h1..h4` ya funciona como insumo oficial del stacking clasico controlado por horizonte.
+- La tabla ya no es un pendiente de infraestructura: queda como capa curada de seleccion ex ante y trazabilidad para futuras iteraciones de `E9`.
+
+## 10. Riesgos metodologicos residuales
+
+- Sigue existiendo redundancia natural entre variantes de una misma familia; por eso se mantuvo un corte conservador.
+- `E8_v2_clean` aporta una senal puntual, pero no lo suficiente para entrar al bloque principal.
+- `E7_v3_clean` solo entra donde aporta sesgo temporal distintivo real (`H2` y `H3`).
+- El stacking futuro debe seguir usando solo predicciones OOF y un meta-modelo regularizado sobrio.
+"""
+
+
 def enrich_runs_catalog_with_stacking(
     runs_catalog_df: pd.DataFrame,
     coverage_df: pd.DataFrame,
@@ -2511,6 +3236,7 @@ def build_markdown_summary(
     stacking_base_summary_df: pd.DataFrame,
     planned_run_ids: list[str],
 ) -> str:
+    family_status_df = build_family_status_vigente_df()
     metric_rankings_df = build_metric_rankings_long(master_df)
     winners_compact_df = build_metric_winners_compact(metric_rankings_df)
     complete_master = master_df[
@@ -2611,13 +3337,21 @@ def build_markdown_summary(
 
 ## Mejor desempeño encontrado
 
-- Mejor global por `L_total_Radar`: `{best_global['run_id']}` con `{best_global['L_total_Radar']:.6f}`
+- Mejor global crudo por `L_total_Radar`: `{best_global['run_id']}` con `{best_global['L_total_Radar']:.6f}`
 - Mejor `H1`: `{best_h1['run_id']}` con `loss_h={best_h1['H1_loss']:.6f}`
 - Mejor `H2`: `{best_h2['run_id']}` con `loss_h={best_h2['H2_loss']:.6f}`
 - Mejor `H3`: `{best_h3['run_id']}` con `loss_h={best_h3['H3_loss']:.6f}`
 - Mejor `H4`: `{best_h4['run_id']}` con `loss_h={best_h4['H4_loss']:.6f}`
 - Mejor `direction_accuracy` promedio: `{best_dir_global['run_id']}` con `{best_dir_global['direction_accuracy_promedio']:.6f}`
 - Mejor `deteccion_caidas` promedio: `{best_risk_global['run_id']}` con `{best_risk_global['deteccion_caidas_promedio']:.6f}`
+
+## Nota metodologica vigente
+
+- El ranking crudo por `L_total_Radar` no agota la adjudicacion metodologica del proyecto.
+- `E1_v5_clean` sigue siendo el referente numerico puro principal del Radar.
+- `E9_v2_clean` queda como el mejor referente actual orientado a riesgo, direccion y deteccion de caidas.
+- Esa diferencia no se interpreta como contradiccion, sino como dualidad funcional entre pronostico numerico del porcentaje y utilidad operativa del movimiento.
+- En consecuencia, `E9` queda util pero pausada, `E10` sigue como siguiente linea activa y `E11` queda abierta como familia futura de arquitectura dual.
 
 ## Fortalezas operativas por horizonte
 
@@ -2640,6 +3374,10 @@ def build_markdown_summary(
 - `E2`: {sum(run_id.startswith('E2_') for run_id in master_df['run_id'])} runs maestros
 - `E3`: {sum(run_id.startswith('E3_') for run_id in master_df['run_id'])} runs maestros
 - `E4`: {sum(run_id.startswith('E4_') for run_id in master_df['run_id'])} runs maestros
+
+## Estado vigente de familias
+
+{render_dataframe_markdown(family_status_df, 'No se pudo construir el estado vigente de familias.')}
 
 ## Runs parciales / inconsistentes
 
@@ -2754,6 +3492,27 @@ def build_experiments_master_table(
         stacking_eligibility_df=stacking_eligibility_df,
         stacking_base_sheets=stacking_base_sheets,
     )
+    e9_construct_df = build_e9_construct_dictionary(runs_catalog_df)
+    e9_metricas_df = build_e9_metricas_candidatos(runs_catalog_df, e9_construct_df)
+    e9_base_sheets = {
+        f"E9_base_h{horizon}": build_e9_curated_base_sheet(
+            horizon=horizon,
+            stacking_base_sheet=stacking_base_sheets.get(f"stacking_base_h{horizon}", pd.DataFrame()),
+        )
+        for horizon in (1, 2, 3, 4)
+    }
+    e9_diagnostic_sheets = {
+        f"E9_diagnostico_h{horizon}": build_e9_diagnostic_sheet(
+            horizon=horizon,
+            master_df=master_df,
+            construct_df=e9_construct_df,
+            stacking_base_sheet=stacking_base_sheets.get(f"stacking_base_h{horizon}", pd.DataFrame()),
+            e9_base_sheet=e9_base_sheets.get(f"E9_base_h{horizon}", pd.DataFrame()),
+        )
+        for horizon in (1, 2, 3, 4)
+    }
+    e9_base_summary_df = build_e9_bases_summary(e9_base_sheets)
+    family_status_df = build_family_status_vigente_df()
     reconstruction_counts = runs_catalog_df["reconstruccion_hiperparams_status"].fillna("no_recuperable").value_counts().to_dict()
     eligible_by_horizon = (
         stacking_eligibility_df.groupby("horizonte_label")["stacking_eligible_horizonte"].sum().to_dict()
@@ -2813,6 +3572,20 @@ def build_experiments_master_table(
             }
             for sheet_name, sheet_df in stacking_base_sheets.items()
         },
+        "e9_curacion": {
+            "candidatos_finales_por_horizonte": {
+                f"H{horizon}": E9_FINAL_CANDIDATES_BY_HORIZON[horizon]
+                for horizon in (1, 2, 3, 4)
+            },
+            "reservas_por_horizonte": {
+                f"H{horizon}": E9_RESERVE_CANDIDATES_BY_HORIZON[horizon]
+                for horizon in (1, 2, 3, 4)
+            },
+            "runs_principales": e9_construct_df[e9_construct_df["decision_global_E9"] == "entra"].to_dict(orient="records"),
+            "runs_reserva": e9_construct_df[e9_construct_df["decision_global_E9"] == "reserva"].to_dict(orient="records"),
+            "bases_resumen": e9_base_summary_df.to_dict(orient="records"),
+        },
+        "estado_familias_vigente": family_status_df.to_dict(orient="records"),
         "planned_run_ids_detected": planned_run_ids,
         "planned_without_artifacts": [
             run_id for run_id in planned_run_ids if run_id not in set(master_df["run_id"])
@@ -2821,9 +3594,11 @@ def build_experiments_master_table(
 
     csv_path = output_dir / "tabla_maestra_experimentos_radar.csv"
     xlsx_path = output_dir / "tabla_maestra_experimentos_radar.xlsx"
+    e9_curated_xlsx_path = output_dir / "tabla_maestra_experimentos_radar_e9_curada.xlsx"
     json_path = output_dir / "inventario_experimentos_radar.json"
     md_path = output_dir / "resumen_auditoria_experimentos.md"
     readiness_doc_path = output_dir / "documentacion_stacking_readiness_radar.md"
+    e9_markdown_path = output_dir / "preparacion_tabla_e9_stacking_controlado.md"
 
     master_df.to_csv(csv_path, index=False)
     with pd.ExcelWriter(xlsx_path, engine="openpyxl") as writer:
@@ -2838,9 +3613,39 @@ def build_experiments_master_table(
         stacking_eligibility_df.to_excel(writer, sheet_name="stacking_elegibilidad_h", index=False)
         coverage_df.to_excel(writer, sheet_name="cobertura_predicciones", index=False)
         stacking_base_summary_df.to_excel(writer, sheet_name="stacking_bases_resumen", index=False)
+        family_status_df.to_excel(writer, sheet_name="estado_familias_vigente", index=False)
         inventory_df.to_excel(writer, sheet_name="inventario_runs", index=False)
         for sheet_name, sheet_df in stacking_base_sheets.items():
             sheet_df.to_excel(writer, sheet_name=sheet_name, index=False)
+
+    e9_curacion_resumen_df = build_e9_curacion_resumen_df(
+        source_xlsx_path=xlsx_path,
+        curated_xlsx_path=e9_curated_xlsx_path,
+    )
+    with pd.ExcelWriter(e9_curated_xlsx_path, engine="openpyxl") as writer:
+        runs_catalog_df.to_excel(writer, sheet_name="runs_catalogo", index=False)
+        master_df.to_excel(writer, sheet_name="runs_consolidados", index=False)
+        metricas_long_df.to_excel(writer, sheet_name="metricas_por_horizonte_long", index=False)
+        ranking_df.to_excel(writer, sheet_name="ranking_por_horizonte", index=False)
+        ranking_dim_df.to_excel(writer, sheet_name="ranking_dimensiones", index=False)
+        metric_rankings_df.to_excel(writer, sheet_name="ranking_metricas_por_horizonte", index=False)
+        winners_compact_df.to_excel(writer, sheet_name="ganadores_por_metrica_horizonte", index=False)
+        stacking_readiness_df.to_excel(writer, sheet_name="stacking_readiness", index=False)
+        stacking_eligibility_df.to_excel(writer, sheet_name="stacking_elegibilidad_h", index=False)
+        coverage_df.to_excel(writer, sheet_name="cobertura_predicciones", index=False)
+        stacking_base_summary_df.to_excel(writer, sheet_name="stacking_bases_resumen", index=False)
+        family_status_df.to_excel(writer, sheet_name="estado_familias_vigente", index=False)
+        inventory_df.to_excel(writer, sheet_name="inventario_runs", index=False)
+        for sheet_name, sheet_df in stacking_base_sheets.items():
+            sheet_df.to_excel(writer, sheet_name=sheet_name, index=False)
+        e9_curacion_resumen_df.to_excel(writer, sheet_name="E9_curacion_resumen", index=False)
+        e9_construct_df.to_excel(writer, sheet_name="E9_diccionario_constructos", index=False)
+        e9_metricas_df.to_excel(writer, sheet_name="E9_metricas_candidatos", index=False)
+        for sheet_name, sheet_df in e9_diagnostic_sheets.items():
+            sheet_df.to_excel(writer, sheet_name=sheet_name, index=False)
+        for sheet_name, sheet_df in e9_base_sheets.items():
+            sheet_df.to_excel(writer, sheet_name=sheet_name, index=False)
+        e9_base_summary_df.to_excel(writer, sheet_name="E9_bases_resumen", index=False)
 
     json_path.write_text(json.dumps(inventory_json, ensure_ascii=False, indent=2))
     md_path.write_text(
@@ -2864,6 +3669,14 @@ def build_experiments_master_table(
             stacking_base_summary_df=stacking_base_summary_df,
         )
     )
+    e9_markdown_path.write_text(
+        build_e9_markdown_report(
+            source_xlsx_path=xlsx_path,
+            curated_xlsx_path=e9_curated_xlsx_path,
+            construct_df=e9_construct_df,
+            e9_bases_summary_df=e9_base_summary_df,
+        )
+    )
 
     return MasterAuditBuildResult(
         csv_path=csv_path,
@@ -2872,6 +3685,8 @@ def build_experiments_master_table(
         markdown_path=md_path,
         master_runs_total=len(master_df),
         inventory_directories_total=len(inventory_df),
+        e9_curated_xlsx_path=e9_curated_xlsx_path,
+        e9_markdown_path=e9_markdown_path,
     )
 
 
@@ -2886,8 +3701,12 @@ def main() -> None:
 
     print(f"CSV: {result.csv_path}")
     print(f"XLSX: {result.xlsx_path}")
+    if result.e9_curated_xlsx_path is not None:
+        print(f"E9_CURATED_XLSX: {result.e9_curated_xlsx_path}")
     print(f"JSON: {result.json_path}")
     print(f"MD: {result.markdown_path}")
+    if result.e9_markdown_path is not None:
+        print(f"E9_MD: {result.e9_markdown_path}")
     print(f"Runs maestros: {result.master_runs_total}")
     print(f"Directorios inventariados: {result.inventory_directories_total}")
 

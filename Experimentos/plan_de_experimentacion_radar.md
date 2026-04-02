@@ -1,6 +1,6 @@
 # Plan de Experimentacion Radar
 
-Fecha de actualizacion: `2026-03-30`
+Fecha de actualizacion: `2026-04-01`
 
 ## Proposito
 
@@ -32,6 +32,8 @@ Su funcion es dejar por escrito:
   [resumen_metodologico_e4_boosting.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e4_boosting.md)
 - Auditoria maestra retrospectiva:
   [resumen_auditoria_experimentos.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_auditoria_experimentos.md)
+- Actualizacion metodologica posterior a `E9_v2_clean`:
+  [actualizacion_metodologica_post_e9_e10_e11.md](/home/emilio/Documentos/RAdAR/Experimentos/actualizacion_metodologica_post_e9_e10_e11.md)
 
 ## Principios que no cambiaron
 
@@ -62,6 +64,19 @@ Familias planeadas originalmente:
 7. `E7` Prophet
 8. `E8` hibridos / residuales
 9. `E9` stacking / ensembles
+
+## Extension posterior del programa
+
+La arquitectura original llegaba hasta `E9`. Despues de la evidencia acumulada en `E9_v2_clean`, el programa queda extendido formalmente con dos familias conceptuales nuevas:
+
+10. `E10` meta-selector / gating contextual
+11. `E11` arquitectura dual numerica + categorica
+
+Importante:
+
+- `E10` no reabre `E9`; la sucede con una pregunta distinta.
+- `E11` no es una corrida inmediata ni una mezcla improvisada con `E10`.
+- `E11` queda abierta solo como linea conceptual futura, todavia no ejecutable.
 
 Scripts previstos en la arquitectura:
 
@@ -124,17 +139,37 @@ Organizacion actual de la documentacion:
 | `E5` CatBoost | abierta y madura | `E5_v4_clean` | mejor no lineal tabular actual; supera a E1_v4 pero no a E1_v5 |
 | `E6` ARIMAX | debilitada | `E6_v1_clean` | apertura débil; `all` empeoró frente a `corr` |
 | `E7` Prophet | abierta | `E7_v3_clean` | supera a E6 pero sigue por detrás del bloque contendiente |
-| `E8` hibridos residuales | no iniciada | n/a | pendiente |
-| `E9` stacking | no iniciada como modelo | n/a | preparada a nivel infraestructura |
+| `E8` hibridos residuales | abierta | `E8_v2_clean` | híbrido residual válido, pero no competitivo frente al bloque fuerte |
+| `E9` stacking | pausada util | `E9_v2_clean` | mejor rama actual de riesgo-direccion-caidas; no reemplaza a E1 y queda en pausa metodologica |
+| `E10` gating contextual | activa premodelado | n/a | tabla operativa construida; siguiente paso = primer runner/modelo de meta-seleccion o gating contextual |
+| `E11` dual numerica+categórica | planificada | n/a | familia futura para separar pronostico numerico del porcentaje y clasificacion operativa del movimiento |
 
 ### Referencias vigentes
 
-- mejor global: `E1_v5_clean` con `L_total_Radar = 0.243442`
+- referente numerico puro principal: `E1_v5_clean` con `L_total_Radar = 0.243442`
+- referente operativo de riesgo-direccion-caidas: `E9_v2_clean` con `L_total_Radar = 0.227510`, `direction_accuracy_promedio = 0.735847` y `deteccion_caidas_promedio = 0.916667`
 - referencia parsimoniosa: `E1_v4_clean` con `0.253277`
 - mejor no lineal tabular abierta: `E5_v4_clean` con `0.247788`
 - mejor no lineal base previa: `E3_v2_clean` con `0.266387`
-- mejor H2 y H4 por `loss_h`: `E2_v3_clean`
-- mejor H3 por `loss_h`: `E1_v2_clean`
+- mejor H2 y H4 por `loss_h` historico base: `E2_v3_clean`
+- mejor H3 por `loss_h` historico base: `E1_v2_clean`
+
+### Dualidad funcional vigente del Radar
+
+La evidencia ya no permite pensar el proyecto como si tuviera una sola tarea predictiva homogenea.
+
+El Radar queda formalmente leido en dos planos:
+
+- tarea numerica: pronostico del porcentaje o nivel esperado
+- tarea categórica / operativa: lectura de movimiento, direccion y especialmente deteccion de bajas
+
+Conclusion metodologica explicita:
+
+`E1_v5_clean` no reemplaza a `E9_v2_clean`, y `E9_v2_clean` no reemplaza a `E1_v5_clean`.
+Ambos representan funciones distintas y complementarias dentro del Radar.
+`E1_v5_clean` queda como mejor referente numerico puro.
+`E9_v2_clean` queda como mejor referente actual de riesgo, direccion y caidas.
+La arquitectura futura del Radar debe reconocer explicitamente esta dualidad funcional.
 
 ## Que se planeo y que paso realmente
 
@@ -376,19 +411,114 @@ Estado actual:
 - `E7` queda abierta como familia intermedia
 - supera a `E6`, pero no desplaza a las referencias principales
 
-### E8 Hibridos y E9 Stacking
+### E8 Hibridos residuales
 
 #### Lo planeado
 
-Estas familias si estaban dentro de la arquitectura original y siguen siendo la continuacion natural del plan.
+`E8` debia probar una familia intermedia entre modelos base y stacking, corrigiendo residuales de forma auditable sin pegar manualmente ganadores por horizonte.
+
+#### Lo que si se hizo
+
+Se ejecutaron:
+
+- `E8_v1_clean`
+- `E8_v2_clean`
+- `E8_v3_clean`
+
+Lectura:
+
+- `E8_v1_clean` mostro que un esquema `Ridge -> CatBoost residual` no fue suficiente.
+- `E8_v2_clean` mejoro claramente a `E8_v1_clean` y quedo como campeon interno de la familia.
+- `E8_v3_clean` colapso; `Prophet` como residual learner sobre `CatBoost` no fue una direccion util.
+- aun el mejor hibrido (`E8_v2_clean`) quedo por debajo de `E4_v1_clean`, `E3_v2_clean`, `E1_v4_clean`, `E5_v4_clean` y `E1_v5_clean`.
+
+Estado actual:
+
+- `E8` queda abierta como familia intermedia y metodologicamente valida
+- no se vuelve linea principal
+- solo se justificaria una prueba adicional si hay una hipotesis residual muy acotada
+
+### E9 Stacking
 
 #### Estado actual
 
-- `E8` sigue pendiente, no cancelada
-- `E9` no se ejecuto como modelo, pero su infraestructura preparatoria ya existe parcialmente via:
+- `E9` ya tiene:
+  - tabla curada por horizonte
+  - runner operativo
+  - dos corridas limpias y trazables:
+    - [E9_v1_clean_20260401_065743](/home/emilio/Documentos/RAdAR/Experimentos/runs/E9_v1_clean_20260401_065743)
+    - [E9_v2_clean_20260401_070431](/home/emilio/Documentos/RAdAR/Experimentos/runs/E9_v2_clean_20260401_070431)
+- la infraestructura preparatoria sigue siendo:
   - tabla maestra ampliada
   - `stacking_readiness`
   - `stacking_base_h1..h4`
+  - [tabla_maestra_experimentos_radar_e9_curada.xlsx](/home/emilio/Documentos/RAdAR/Experimentos/tabla_maestra_experimentos_radar_e9_curada.xlsx)
+  - [preparacion_tabla_e9_stacking_controlado.md](/home/emilio/Documentos/RAdAR/Experimentos/preparacion_tabla_e9_stacking_controlado.md)
+- la primera apertura operativa de `E9` arrojo:
+  - `E9_v1_clean = 0.268475`
+  - `E9_v2_clean = 0.227510`
+  - `E9_v1_clean` mostro una mejora puntual en `H3`
+  - `E9_v2_clean` mejoro fuertemente la rama en `H1`, `H2` y `H4`, y quedo como campeon interno de la familia
+  - `E9_v2_clean` no debe leerse como reemplazo numerico puro de `E1_v5_clean`, sino como la mejor referencia actual de riesgo-direccion-caidas
+
+#### Lectura vigente
+
+- `E9` ya no esta pendiente de wiring; ese trabajo ya se hizo.
+- `E9_v2_clean` fue la unica corrida de la familia que produjo una mejora operativa seria, especialmente en deteccion de caidas y trade-off de riesgo.
+- Esa mejora no se interpreta como victoria absoluta del stacking sobre Ridge, porque responde a una funcion distinta dentro del Radar.
+- `E9` no se cierra como fallida, pero tampoco queda como ganadora global unica.
+- La familia queda en pausa metodologica: util, no descartada y potencialmente reactivable mas adelante.
+
+### E10 Gating / meta-selector contextual
+
+#### Estado actual
+
+- `E10` queda abierta como la siguiente familia activa del proyecto.
+- La infraestructura de datos de `E10` ya fue construida en una tabla derivada especifica y trazable:
+  - `tabla_e10_meta_selector_base.csv`
+  - `tabla_e10_meta_selector_base.xlsx`
+  - `inventario_columnas_e10.csv`
+  - `diccionario_tabla_e10.md`
+  - `resumen_construccion_tabla_e10.md`
+- Su pregunta ya no es "como promediar mejor los mismos modelos", sino "cuando conviene que tipo de salida o familia segun el contexto temporal y operativo".
+- `E10` debe seguir siendo una familia distinta de `E9`:
+  - `E9` = stacking clasico controlado
+  - `E10` = seleccion o combinacion contextual, con trazabilidad fuerte y sin leakage
+
+#### Lectura vigente
+
+- `E10` sigue porque la evidencia de `E9_v2_clean` sugiere que la utilidad del sistema ya no se agota en encontrar un unico ganador global.
+- El proyecto necesita una familia que explore decision contextual o gating sin mezclar todavía la tarea numerica y la tarea categorica en una sola arquitectura improvisada.
+- La fase actual de `E10` ya no es "curar candidatos" sino "correr el primer modelo controlado usando la tabla operativa construida".
+
+### E11 Arquitectura dual numerica + categorica
+
+#### Estado actual
+
+- `E11` queda abierta formalmente en el plan, pero solo como familia conceptual futura.
+- No debe correrse todavia.
+- No debe contaminar la evaluacion de `E10`.
+
+#### Definicion metodologica
+
+`E11` debera explorar una arquitectura con dos componentes distintos:
+
+- componente numerico: estimacion del porcentaje, nivel o cambio esperado
+- componente categorico / operativo: clasificacion de sube, baja o se mantiene
+
+Y, si mas adelante se justifica:
+
+- una version ordinal o de intensidad:
+  - baja fuerte
+  - baja moderada
+  - se mantiene
+  - sube moderada
+  - sube fuerte
+
+#### Diferencia conceptual frente a E10
+
+- `E10` pregunta cuando conviene que familia o salida dentro de una arquitectura contextual.
+- `E11` pregunta si el Radar necesita separar explicitamente la tarea numerica y la tarea categorica como dos problemas distintos y coordinados.
 
 ## Por que cambio el rumbo del plan
 
@@ -454,6 +584,8 @@ La consecuencia es que el plan vigente ya no es solo "abrir mas modelos", sino d
 - `E3` queda cerrada en su rama base y conserva valor historico como referencia de bagging mediante `E3_v2_clean`
 - `E5` queda abierta y madura mediante `E5_v4_clean` como mejor no lineal tabular actual
 - `E7` queda abierta como referencia temporal estructurada secundaria, por encima de `E6` pero por debajo del bloque contendiente
+- `E8` queda abierta como referencia híbrida residual secundaria, por encima de `E6` y `E7_v2`, pero sin desplazar a `E5_v4_clean`
+- `E9` queda pausada como rama util de riesgo-direccion-caidas, con `E9_v2_clean` como campeon interno
 
 ### Infraestructura ya preparada
 
@@ -468,20 +600,25 @@ La consecuencia es que el plan vigente ya no es solo "abrir mas modelos", sino d
 
 ### Siguiente paso razonable
 
-El plan vigente deja dos rutas validas:
+El plan vigente deja una secuencia principal clara:
 
-1. Ruta de continuidad base inmediata
-- correr `E5_v2_clean` para aislar si `feature_mode=corr` mejora o empeora CatBoost
-- luego decidir si `E5` merece expansion real
+1. reconocer la dualidad funcional del Radar:
+- `E1_v5_clean` como referente numerico puro
+- `E9_v2_clean` como referente operativo de riesgo-direccion-caidas
 
-2. Ruta de infraestructura / hipermodelo
-- estandarizar artefactos explicativos por horizonte
-- usar `stacking_base_h1..h4`
-- abrir formalmente la familia `E9` stacking
+2. mantener `E9` en pausa metodologica:
+- util
+- no descartada
+- no ganadora absoluta
 
-3. Ruta de exploracion de la siguiente familia base pendiente
-- despues de `E5`, abrir `E6` ARIMAX
-- mantener luego la continuidad hacia `E7` y `E8`
+3. abrir `E10` como siguiente familia activa:
+- gating o meta-selector contextual
+- distinta de `E9`
+- con tabla operativa ya construida y runner/modelo todavia pendiente
+
+4. dejar `E11` como familia futura solo planificada:
+- arquitectura dual numerica + categorica
+- sin ejecucion todavia
 
 ## Regla de lectura para futuras decisiones
 
@@ -494,14 +631,19 @@ Una familia o subrama futura solo debe expandirse si:
 
 Hoy las referencias que guian cualquier apertura nueva son:
 
-- `E1_v5_clean` como campeon global
+- `E1_v5_clean` como referente numerico puro principal
+- `E9_v2_clean` como referente operativo principal de riesgo-direccion-caidas
 - `E1_v4_clean` como referencia parsimoniosa
-- `E5_v1_clean` como mejor no lineal tabular abierta
+- `E5_v4_clean` como mejor no lineal tabular abierta
 - `E3_v2_clean` como mejor referencia de bagging ya cerrada
 
 ## Resumen operativo final
 
-- El prompt original de arquitectura si sigue vigente en su estructura por familias.
-- Lo que cambio fue la secuencia real de profundizacion, guiada por evidencia y no por completar corridas por inercia.
-- Las familias no ejecutadas no quedaron olvidadas; quedaron diferidas o canceladas con motivo explicito.
-- La fase actual del proyecto ya esta mejor preparada para decidir entre abrir `E5` o pasar a `E9` stacking con base real.
+- El proyecto ya no debe leerse como una busqueda de un unico ganador global.
+- La evidencia sugiere una estructura funcional dual:
+  - mejor referente numerico puro
+  - mejor referente de riesgo-direccion-caidas
+- En consecuencia:
+  - `E9` queda pausada como rama util pero no definitiva
+  - `E10` sigue como siguiente linea activa, ya con infraestructura de datos preparada
+  - `E11` queda abierta como futura familia explicitamente dual

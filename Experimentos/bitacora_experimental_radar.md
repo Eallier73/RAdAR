@@ -12,9 +12,10 @@ Su función es servir como capa narrativa corta para ubicarse rápido.
 
 ## Estado actual
 
-- Fecha de actualización: `2026-03-30`
+- Fecha de actualizacion: `2026-04-01`
 - Rama de trabajo actual: `feature/e4-boosting`
-- Mejor run global vigente: `E1_v5_clean` con `L_total_Radar=0.243442`
+- Referente numerico puro vigente: `E1_v5_clean` con `L_total_Radar=0.243442`
+- Referente operativo vigente de riesgo-direccion-caidas: `E9_v2_clean` con `L_total_Radar=0.227510`
 - Mejor no lineal tabular abierta: `E5_v4_clean` con `L_total_Radar=0.247788`
 - Plan rector vigente:
   - [plan_de_experimentacion_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/plan_de_experimentacion_radar.md)
@@ -208,6 +209,110 @@ Decisión:
 - mayor flexibilidad en changepoints ayudó un poco frente al baseline (`E7_v3_clean > E7_v1_clean`), sobre todo en `H2/H3`, pero no volvió competitiva a la familia frente a `E5_v4_clean`, `E1_v4_clean` o `E3_v2_clean`.
 - `E7` queda como familia intermedia: útil como referencia temporal estructurada, no como línea principal.
 
+### 2026-04-01 | E8 híbrido residual
+
+- Se rehízo `run_e8_hibrido_residuales.py` para que el learner residual ya no vea residuales in-sample optimistas.
+- La familia quedó definida como una arquitectura de dos etapas con:
+  - modelo base
+  - residuales OOF temporales dentro de cada fold externo
+  - learner residual
+  - reconstrucción `y_pred_final = y_pred_base + y_pred_residual`
+- Se corrieron tres variantes canónicas:
+  - `E8_v1_clean`: base `Ridge`, residual `CatBoost`
+  - `E8_v2_clean`: base `CatBoost`, residual `Ridge`
+  - `E8_v3_clean`: base `CatBoost`, residual `Prophet`
+
+Resultados:
+
+- `E8_v1_clean`: `0.336482`
+- `E8_v2_clean`: `0.285721`
+- `E8_v3_clean`: `0.627755`
+
+Decisión:
+
+- `E8_v2_clean` fue el mejor híbrido residual de apertura.
+- el espejo `CatBoost -> Ridge residual` sí agregó valor frente a `E8_v1_clean`, pero no superó a `E4_v1_clean`, `E3_v2_clean`, `E1_v4_clean`, `E5_v4_clean` ni `E1_v5_clean`.
+- `E8_v3_clean` colapsó; usar `Prophet` como residual learner sobre `CatBoost` no fue una dirección útil.
+- `E8` queda como familia intermedia: metodológicamente válida y auditable, pero sin mejora suficiente para volverse nueva línea principal.
+
+### 2026-04-01 | Curacion de tabla base para E9 stacking controlado
+
+- Se amplió el builder [build_experiments_master_table.py](/home/emilio/Documentos/RAdAR/Scripts/Modeling/build_experiments_master_table.py) para generar una copia curada y versionada de la tabla maestra orientada a `E9`.
+- Se creó el workbook:
+  - [tabla_maestra_experimentos_radar_e9_curada.xlsx](/home/emilio/Documentos/RAdAR/Experimentos/tabla_maestra_experimentos_radar_e9_curada.xlsx)
+- Se generó la nota metodológica:
+  - [preparacion_tabla_e9_stacking_controlado.md](/home/emilio/Documentos/RAdAR/Experimentos/preparacion_tabla_e9_stacking_controlado.md)
+- La curacion dejó:
+  - constructos explicitos por run
+  - bases finales `E9_base_h1..h4`
+  - reservas documentadas por horizonte
+  - exclusiones metodologicamente justificadas
+
+Decision:
+
+- `E9` queda preparada a nivel de tabla curada y bases pequenas por horizonte.
+- El nucleo final recomendado para `E9` gira alrededor de `E1_v5_clean` y `E5_v4_clean`, con rotacion controlada de `E3_v2_clean`, `E2_v3_clean` y `E7_v3_clean`.
+- `E8_v2_clean` queda solo como reserva puntual y no como candidato principal.
+- La siguiente implementacion ya no necesita mas curacion de tabla; necesita adaptar `run_e9_stacking.py` para consumir estas hojas curadas.
+
+### 2026-04-01 | E9 stacking clasico controlado
+
+- Se reescribio [run_e9_stacking.py](/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e9_stacking.py) para que deje de usar el stacking tabular generico anterior.
+- El nuevo runner:
+  - lee directamente [tabla_maestra_experimentos_radar_e9_curada.xlsx](/home/emilio/Documentos/RAdAR/Experimentos/tabla_maestra_experimentos_radar_e9_curada.xlsx),
+  - consume `E9_base_h1..h4`,
+  - restringe por default a `fila_completa == True`,
+  - reconstruye `y_current` desde el dataset maestro solo para evaluar metricas Radar,
+  - y hace tuning temporal interno de `alpha` para un meta-modelo `Ridge`.
+- Se corrio [E9_v1_clean_20260401_065743](/home/emilio/Documentos/RAdAR/Experimentos/runs/E9_v1_clean_20260401_065743).
+
+Resultados:
+
+- `E9_v1_clean`: `0.268475`
+
+Lectura:
+
+- `E9_v1_clean` no mejora al mejor modelo individual global del proyecto.
+- Tampoco mejora al mejor base comun dentro del subset curado del propio stacking (`E1_v5_clean` y `E5_v4_clean` siguen mejores).
+- El ensemble solo aporta una mejora puntual en `H3`; en `H1`, `H2` y `H4` queda por debajo del mejor base del horizonte.
+- El tuning de `alpha` mostro regularizacion muy alta en buena parte de los folds, lo que sugiere que el meta-modelo encontro poca senal adicional mas alla de un promedio fuertemente encogido.
+
+Decision:
+
+- `E9` queda abierta, pero esta primera apertura no justifica declararla nueva familia lider.
+- La lectura correcta es `trade-off dudoso`: mejora local en `H3`, pero no mejora global defendible frente a `E1_v5_clean` ni `E5_v4_clean`.
+- Si la familia continua, el siguiente paso ya no debe ser meter mas bases sin control, sino abrir una sola hipotesis nueva y contenida o pasar a una familia posterior tipo `E10` contextual.
+
+### 2026-04-01 | Decision metodologica posterior a E9_v2_clean
+
+- Se corrio [E9_v2_clean_20260401_070431](/home/emilio/Documentos/RAdAR/Experimentos/runs/E9_v2_clean_20260401_070431) con `Huber` como meta-modelo, misma tabla curada, mismas columnas y mismas filas completas que `E9_v1_clean`.
+
+Resultados:
+
+- `E9_v2_clean`: `0.227510`
+
+Lectura:
+
+- `E9_v2_clean` mejora de forma clara la rama `E9`.
+- La mejora viene sobre todo por una lectura operativa mas fuerte en:
+  - deteccion de caidas
+  - direccion
+  - trade-off de riesgo en `H1-H2`
+- Esa mejora no debe leerse como reemplazo simple de `E1_v5_clean`.
+
+Decision:
+
+- `E1_v5_clean` queda como mejor referente numerico puro observado hasta ahora.
+- `E9_v2_clean` queda como mejor referente actual orientado a riesgo, direccion y caidas.
+- La diferencia entre ambos no se registra como contradiccion sino como dualidad funcional del Radar.
+- `E9` queda util, no descartada, no ganadora absoluta y en pausa metodologica.
+- `E10` pasa a ser la siguiente linea activa del proyecto.
+- `E11` queda abierta formalmente solo como familia conceptual futura, todavia no ejecutable.
+
+Documento asociado:
+
+- [actualizacion_metodologica_post_e9_e10_e11.md](/home/emilio/Documentos/RAdAR/Experimentos/actualizacion_metodologica_post_e9_e10_e11.md)
+
 ### 2026-03-30 | Rama planificada de clasificacion C1-C4
 
 - Se dejo documentada una rama paralela de clasificacion del movimiento del Radar.
@@ -239,23 +344,69 @@ Documento asociado:
 
 - [plan_inicial_clasificacion_radar_c1_c4.md](/home/emilio/Documentos/RAdAR/Experimentos/plan_inicial_clasificacion_radar_c1_c4.md)
 
+## 2026-04-01 | Construccion de tabla operativa E10
+
+Se construyo la infraestructura de datos especifica para `E10` como familia de meta-seleccion / gating contextual, sin correr todavia un modelo final de la familia.
+
+Artefactos principales generados:
+
+- [tabla_e10_meta_selector_base.csv](/home/emilio/Documentos/RAdAR/Experimentos/tabla_e10_meta_selector_base.csv)
+- [tabla_e10_meta_selector_base.xlsx](/home/emilio/Documentos/RAdAR/Experimentos/tabla_e10_meta_selector_base.xlsx)
+- [inventario_columnas_e10.csv](/home/emilio/Documentos/RAdAR/Experimentos/inventario_columnas_e10.csv)
+- [diccionario_tabla_e10.md](/home/emilio/Documentos/RAdAR/Experimentos/diccionario_tabla_e10.md)
+- [resumen_construccion_tabla_e10.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_construccion_tabla_e10.md)
+
+Pool base incluido:
+
+- `E1_v5_clean`
+- `E2_v3_clean`
+- `E3_v2_clean`
+- `E5_v4_clean`
+- `E7_v3_clean`
+- `E9_v2_clean`
+
+Pool explicitamente excluido de la tabla canonica E10:
+
+- `E1_v4_clean`
+- `E4_v1_clean`
+- `E6_v1_clean`
+- `E8_v2_clean`
+
+Lectura metodologica dejada por escrito:
+
+- la tabla E10 es distinta de la base usada por `E9`;
+- la unidad de analisis canonica es `fila-horizonte`;
+- se separaron features observables, diagnosticos retrospectivos, targets del selector y columnas prohibidas para entrenamiento;
+- la base quedo `utilizable con reservas` tanto para selector duro como para gating blando;
+- la principal limitacion de solapamiento completo proviene de `E9_v2_clean`.
+
+Estado:
+
+- `E10` deja de estar "no iniciada" en sentido de infraestructura;
+- queda en estado de premodelado;
+- no se corrio todavia ningun `run` canonico de `E10`.
+
 ## Lectura consolidada vigente
 
-- Campeón global: `E1_v5_clean`
+- Referente numerico puro principal: `E1_v5_clean`
+- Referente operativo de riesgo-direccion-caidas: `E9_v2_clean`
 - Referencia parsimoniosa: `E1_v4_clean`
 - Mejor H2 y H4 por `loss_h`: `E2_v3_clean`
 - Mejor H3 por `loss_h`: `E1_v2_clean`
 - Mejor familia no lineal base de bagging: `E3_v2_clean`
 - Mejor familia no lineal tabular abierta: `E5_v4_clean`
 - Familias cerradas: `E1`, `E2`, `E4`
-- Familias abiertas o vigentes como referencia: `E3`, `E5` y `E7`
+- Familias abiertas o vigentes como referencia: `E3`, `E5`, `E7`, `E8` y `E9`
 
 ## Próximo paso lógico
 
-No hace falta más trabajo sobre `E4` base.
+- `E9` queda en pausa metodologica: util, pero no definitiva.
+- `E10` pasa a ser la siguiente familia activa, con tabla operativa ya construida.
+- `E11` queda solo planificada.
 
-Los siguientes pasos razonables son:
+Secuencia vigente:
 
-1. decidir si conviene abrir `E8` híbrido residual o si ya vale más preparar la selección formal de candidatos para stacking por horizonte;
-2. mantener `E6` y `E7` como referencias temporales estructuradas, no como frente principal salvo nueva hipótesis fuerte;
-3. después decidir si conviene seguir con más familias base o pasar a `E9` stacking usando `stacking_base_h1..h4`.
+1. mantener `E1_v5_clean` como benchmark numerico puro principal;
+2. mantener `E9_v2_clean` como benchmark operativo de riesgo-direccion-caidas;
+3. abrir `E10` como siguiente familia activa;
+4. reservar `E11` como familia futura explicitamente dual.

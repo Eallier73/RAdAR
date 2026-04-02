@@ -1,0 +1,85 @@
+{
+  "equivalent_column": "mejor_modelo_operativo",
+  "mismatch_count": 0,
+  "mismatches_sample": [],
+  "per_horizon": {
+    "1": {
+      "operativo_distribution": {
+        "E1_v5_clean": 6,
+        "E2_v3_clean": 6,
+        "E3_v2_clean": 3,
+        "E5_v4_clean": 4,
+        "E7_v3_clean": 5,
+        "E9_v2_clean": 4
+      },
+      "same_share": 1.0,
+      "target_distribution": {
+        "E1_v5_clean": 6,
+        "E2_v3_clean": 6,
+        "E3_v2_clean": 3,
+        "E5_v4_clean": 4,
+        "E7_v3_clean": 5,
+        "E9_v2_clean": 4
+      }
+    },
+    "2": {
+      "operativo_distribution": {
+        "E1_v5_clean": 5,
+        "E2_v3_clean": 7,
+        "E3_v2_clean": 3,
+        "E5_v4_clean": 3,
+        "E7_v3_clean": 6,
+        "E9_v2_clean": 3
+      },
+      "same_share": 1.0,
+      "target_distribution": {
+        "E1_v5_clean": 5,
+        "E2_v3_clean": 7,
+        "E3_v2_clean": 3,
+        "E5_v4_clean": 3,
+        "E7_v3_clean": 6,
+        "E9_v2_clean": 3
+      }
+    },
+    "3": {
+      "operativo_distribution": {
+        "E1_v5_clean": 6,
+        "E2_v3_clean": 5,
+        "E3_v2_clean": 2,
+        "E5_v4_clean": 2,
+        "E7_v3_clean": 7,
+        "E9_v2_clean": 4
+      },
+      "same_share": 1.0,
+      "target_distribution": {
+        "E1_v5_clean": 6,
+        "E2_v3_clean": 5,
+        "E3_v2_clean": 2,
+        "E5_v4_clean": 2,
+        "E7_v3_clean": 7,
+        "E9_v2_clean": 4
+      }
+    },
+    "4": {
+      "operativo_distribution": {
+        "E1_v5_clean": 4,
+        "E2_v3_clean": 7,
+        "E3_v2_clean": 2,
+        "E5_v4_clean": 6,
+        "E7_v3_clean": 3,
+        "E9_v2_clean": 3
+      },
+      "same_share": 1.0,
+      "target_distribution": {
+        "E1_v5_clean": 4,
+        "E2_v3_clean": 7,
+        "E3_v2_clean": 2,
+        "E5_v4_clean": 6,
+        "E7_v3_clean": 3,
+        "E9_v2_clean": 3
+      }
+    }
+  },
+  "same_share_global": 1.0,
+  "target_column": "mejor_modelo_loss_radar_local"
+}

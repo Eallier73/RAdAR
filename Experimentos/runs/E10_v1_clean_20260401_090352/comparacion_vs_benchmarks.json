@@ -1,0 +1,261 @@
+{
+  "benchmark_strategy_fixed": "modelo_con_menor_mean_loss_local_train_por_fold_con_fallback_a_mejor_disponible",
+  "global": {
+    "E1_v5_clean": {
+      "avg_deteccion_caidas": 0.8854166666666667,
+      "avg_direction_accuracy": 0.7738209706959707,
+      "avg_mae": 0.12029916113758471,
+      "avg_rmse": 0.16222611160708353,
+      "horizontes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "l_total_radar": 0.21786553684588505
+    },
+    "E9_v2_clean": {
+      "avg_deteccion_caidas": 0.9166666666666667,
+      "avg_direction_accuracy": 0.7358474858474857,
+      "avg_mae": 0.12640729880148097,
+      "avg_rmse": 0.16860427774961725,
+      "horizontes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "l_total_radar": 0.22750962017362367
+    },
+    "selector_fijo": {
+      "avg_deteccion_caidas": 0.8125,
+      "avg_direction_accuracy": 0.7092376373626375,
+      "avg_mae": 0.1277387733254194,
+      "avg_rmse": 0.16710677129274149,
+      "horizontes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "l_total_radar": 0.2652291168460982
+    }
+  },
+  "per_horizon": [
+    {
+      "E10_v1_clean": {
+        "deteccion_caidas": 0.625,
+        "direccion_accuracy": 0.5625,
+        "l_num": 0.20531355480901317,
+        "l_risk": 0.375,
+        "l_tol": 0.5625,
+        "l_trend": 0.4375,
+        "loss_h": 0.09937042325494638,
+        "mae": 0.12389823081552613,
+        "rmse": 0.15915871519701028,
+        "rows_eval": 16
+      },
+      "E1_v5_clean": {
+        "deteccion_caidas": 0.875,
+        "direccion_accuracy": 0.8125,
+        "l_num": 0.19092348681950486,
+        "l_risk": 0.125,
+        "l_tol": 0.6875,
+        "l_trend": 0.1875,
+        "loss_h": 0.06410946611604801,
+        "mae": 0.1152144204997693,
+        "rmse": 0.15489178141831675,
+        "rows_eval": 16
+      },
+      "E9_v2_clean": {
+        "deteccion_caidas": 1.0,
+        "direccion_accuracy": 0.8571428571428571,
+        "l_num": 0.20530592808011755,
+        "l_risk": 0.0,
+        "l_tol": 0.6428571428571429,
+        "l_trend": 0.1428571428571429,
+        "loss_h": 0.051557122448412346,
+        "mae": 0.12389362840036676,
+        "rmse": 0.16687812023759005,
+        "rows_eval": 14
+      },
+      "horizonte_sem": 1,
+      "selector_accuracy": 0.1875,
+      "selector_balanced_accuracy": 0.15833333333333333,
+      "selector_fijo": {
+        "deteccion_caidas": 0.75,
+        "direccion_accuracy": 0.6875,
+        "l_num": 0.2008704005088793,
+        "l_risk": 0.25,
+        "l_tol": 0.75,
+        "l_trend": 0.3125,
+        "loss_h": 0.08577889205343232,
+        "mae": 0.12121697113182395,
+        "rmse": 0.15517926937223608,
+        "rows_eval": 16
+      }
+    },
+    {
+      "E10_v1_clean": {
+        "deteccion_caidas": 0.8333333333333334,
+        "direccion_accuracy": 0.6,
+        "l_num": 0.20199972969294397,
+        "l_risk": 0.16666666666666663,
+        "l_tol": 0.8666666666666667,
+        "l_trend": 0.4,
+        "loss_h": 0.07475830968146593,
+        "mae": 0.121898474542761,
+        "rmse": 0.14674840181792986,
+        "rows_eval": 15
+      },
+      "E1_v5_clean": {
+        "deteccion_caidas": 0.8333333333333334,
+        "direccion_accuracy": 0.7333333333333333,
+        "l_num": 0.19521050240454874,
+        "l_risk": 0.16666666666666663,
+        "l_tol": 0.6666666666666666,
+        "l_trend": 0.2666666666666667,
+        "loss_h": 0.06083091896039801,
+        "mae": 0.11780145693270044,
+        "rmse": 0.16034835324845087,
+        "rows_eval": 15
+      },
+      "E9_v2_clean": {
+        "deteccion_caidas": 0.8333333333333334,
+        "direccion_accuracy": 0.6923076923076923,
+        "l_num": 0.1880023122106572,
+        "l_risk": 0.16666666666666663,
+        "l_tol": 0.6923076923076923,
+        "l_trend": 0.3076923076923077,
+        "loss_h": 0.0634053305235607,
+        "mae": 0.11345161255327918,
+        "rmse": 0.1458496449259018,
+        "rows_eval": 13
+      },
+      "horizonte_sem": 2,
+      "selector_accuracy": 0.2,
+      "selector_balanced_accuracy": 0.16666666666666666,
+      "selector_fijo": {
+        "deteccion_caidas": 0.6666666666666666,
+        "direccion_accuracy": 0.6,
+        "l_num": 0.20373072883445448,
+        "l_risk": 0.33333333333333337,
+        "l_tol": 0.6666666666666666,
+        "l_trend": 0.4,
+        "loss_h": 0.08032643877301476,
+        "mae": 0.12294306086525612,
+        "rmse": 0.15813414514426521,
+        "rows_eval": 15
+      }
+    },
+    {
+      "E10_v1_clean": {
+        "deteccion_caidas": 1.0,
+        "direccion_accuracy": 0.8571428571428571,
+        "l_num": 0.23427057033788465,
+        "l_risk": 0.0,
+        "l_tol": 0.7857142857142857,
+        "l_trend": 0.1428571428571429,
+        "loss_h": 0.05888412417119218,
+        "mae": 0.14137259093296828,
+        "rmse": 0.1716232368460483,
+        "rows_eval": 14
+      },
+      "E1_v5_clean": {
+        "deteccion_caidas": 1.0,
+        "direccion_accuracy": 0.8571428571428571,
+        "l_num": 0.20986400844457662,
+        "l_risk": 0.0,
+        "l_tol": 0.7142857142857143,
+        "l_trend": 0.1428571428571429,
+        "loss_h": 0.05417857802953769,
+        "mae": 0.1266442412062129,
+        "rmse": 0.16570842989783302,
+        "rows_eval": 14
+      },
+      "E9_v2_clean": {
+        "deteccion_caidas": 1.0,
+        "direccion_accuracy": 0.6666666666666666,
+        "l_num": 0.22515236101040698,
+        "l_risk": 0.0,
+        "l_tol": 0.8333333333333334,
+        "l_trend": 0.33333333333333337,
+        "loss_h": 0.07364099790609273,
+        "mae": 0.13587012907685259,
+        "rmse": 0.17540011384999166,
+        "rows_eval": 12
+      },
+      "horizonte_sem": 3,
+      "selector_accuracy": 0.14285714285714285,
+      "selector_balanced_accuracy": 0.1,
+      "selector_fijo": {
+        "deteccion_caidas": 1.0,
+        "direccion_accuracy": 0.8571428571428571,
+        "l_num": 0.21545456239278304,
+        "l_risk": 0.0,
+        "l_tol": 0.8571428571428571,
+        "l_trend": 0.1428571428571429,
+        "loss_h": 0.05905130047981364,
+        "mae": 0.130017909077805,
+        "rmse": 0.1669139715734975,
+        "rows_eval": 14
+      }
+    },
+    {
+      "E10_v1_clean": {
+        "deteccion_caidas": 0.8333333333333334,
+        "direccion_accuracy": 0.7692307692307693,
+        "l_num": 0.24607460307204942,
+        "l_risk": 0.16666666666666663,
+        "l_tol": 0.6923076923076923,
+        "l_trend": 0.23076923076923073,
+        "loss_h": 0.03820737819974413,
+        "mae": 0.14849583602807181,
+        "rmse": 0.20622731682220732,
+        "rows_eval": 13
+      },
+      "E1_v5_clean": {
+        "deteccion_caidas": 0.8333333333333334,
+        "direccion_accuracy": 0.6923076923076923,
+        "l_num": 0.2013999393680843,
+        "l_risk": 0.16666666666666663,
+        "l_tol": 0.6923076923076923,
+        "l_trend": 0.3076923076923077,
+        "loss_h": 0.03874657373990135,
+        "mae": 0.12153652591165622,
+        "rmse": 0.16795588186373353,
+        "rows_eval": 13
+      },
+      "E9_v2_clean": {
+        "deteccion_caidas": 0.8333333333333334,
+        "direccion_accuracy": 0.7272727272727273,
+        "l_num": 0.2194248696989381,
+        "l_risk": 0.16666666666666663,
+        "l_tol": 0.7272727272727273,
+        "l_trend": 0.2727272727272727,
+        "loss_h": 0.03890616929555788,
+        "mae": 0.13241382517542533,
+        "rmse": 0.1862892319849855,
+        "rows_eval": 11
+      },
+      "horizonte_sem": 4,
+      "selector_accuracy": 0.3076923076923077,
+      "selector_balanced_accuracy": 0.3055555555555555,
+      "selector_fijo": {
+        "deteccion_caidas": 0.8333333333333334,
+        "direccion_accuracy": 0.6923076923076923,
+        "l_num": 0.22665540222400998,
+        "l_risk": 0.16666666666666663,
+        "l_tol": 0.6923076923076923,
+        "l_trend": 0.3076923076923077,
+        "loss_h": 0.04007248553983745,
+        "mae": 0.13677715222679251,
+        "rmse": 0.1881996990809671,
+        "rows_eval": 13
+      }
+    }
+  ],
+  "run_id": "E10_v1_clean",
+  "target_column": "mejor_modelo_loss_radar_local",
+  "target_operativo_same_share_global": 1.0
+}

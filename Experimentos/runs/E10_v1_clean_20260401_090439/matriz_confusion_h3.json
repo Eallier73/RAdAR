@@ -1,0 +1,64 @@
+{
+  "accuracy": 0.14285714285714285,
+  "balanced_accuracy": 0.1,
+  "class_distribution_pred": {
+    "E1_v5_clean": 4,
+    "E2_v3_clean": 3,
+    "E7_v3_clean": 5,
+    "E9_v2_clean": 2
+  },
+  "class_distribution_real": {
+    "E1_v5_clean": 2,
+    "E2_v3_clean": 2,
+    "E3_v2_clean": 2,
+    "E7_v3_clean": 4,
+    "E9_v2_clean": 4
+  },
+  "confusion_labels": [
+    "E1_v5_clean",
+    "E2_v3_clean",
+    "E3_v2_clean",
+    "E7_v3_clean",
+    "E9_v2_clean"
+  ],
+  "confusion_matrix": [
+    [
+      0,
+      0,
+      0,
+      1,
+      1
+    ],
+    [
+      1,
+      0,
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      1,
+      0
+    ],
+    [
+      2,
+      1,
+      0,
+      1,
+      0
+    ],
+    [
+      1,
+      1,
+      0,
+      1,
+      1
+    ]
+  ],
+  "horizonte_sem": 3,
+  "n_classes_pred": 4,
+  "n_classes_real": 5
+}

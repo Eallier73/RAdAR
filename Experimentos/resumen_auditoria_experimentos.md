@@ -2,31 +2,39 @@
 
 ## Hallazgos principales
 
-- Runs maestros consolidados: 28
-- Runs en catalogo integral: 28
-- Directorios auditados en inventario: 32
-- Directorios con artefactos parciales o inconsistentes: 4
-- Familias con runs maestros: {"arboles_boosting": 11, "lineal_regularizado": 6, "series_tiempo_exogenas": 5, "robusto": 3}
+- Runs maestros consolidados: 35
+- Runs en catalogo integral: 35
+- Directorios auditados en inventario: 41
+- Directorios con artefactos parciales o inconsistentes: 7
+- Familias con runs maestros: {"arboles_boosting": 11, "lineal_regularizado": 6, "series_tiempo_exogenas": 5, "robusto": 3, "hibrido_residual": 3, "stacking_controlado": 2, "gating_contextual": 1}
 
 ## Mejor desempeño encontrado
 
-- Mejor global por `L_total_Radar`: `E1_v5_clean` con `0.243442`
-- Mejor `H1`: `E5_v3_clean` con `loss_h=0.060367`
-- Mejor `H2`: `E7_v3_clean` con `loss_h=0.068430`
-- Mejor `H3`: `E1_v2_clean` con `loss_h=0.064304`
+- Mejor global crudo por `L_total_Radar`: `E9_v2_clean` con `0.227510`
+- Mejor `H1`: `E9_v2_clean` con `loss_h=0.051557`
+- Mejor `H2`: `E9_v2_clean` con `loss_h=0.063405`
+- Mejor `H3`: `E9_v1_clean` con `loss_h=0.054110`
 - Mejor `H4`: `E5_v4_clean` con `loss_h=0.035979`
 - Mejor `direction_accuracy` promedio: `E1_v1` con `0.745044`
-- Mejor `deteccion_caidas` promedio: `E1_v5_clean` con `0.782323`
+- Mejor `deteccion_caidas` promedio: `E9_v2_clean` con `0.916667`
+
+## Nota metodologica vigente
+
+- El ranking crudo por `L_total_Radar` no agota la adjudicacion metodologica del proyecto.
+- `E1_v5_clean` sigue siendo el referente numerico puro principal del Radar.
+- `E9_v2_clean` queda como el mejor referente actual orientado a riesgo, direccion y deteccion de caidas.
+- Esa diferencia no se interpreta como contradiccion, sino como dualidad funcional entre pronostico numerico del porcentaje y utilidad operativa del movimiento.
+- En consecuencia, `E9` queda util pero pausada, `E10` sigue como siguiente linea activa y `E11` queda abierta como familia futura de arquitectura dual.
 
 ## Fortalezas operativas por horizonte
 
 - Mejor `direction_accuracy` en `H1`: `E1_v4_clean` con `0.857143`
-- Mejor `direction_accuracy` en `H2`: `E1_v5_clean` con `0.680000`
-- Mejor `direction_accuracy` en `H3`: `E1_v1` con `0.846154`
-- Mejor `direction_accuracy` en `H4`: `E2_v3_clean` con `0.760000`
-- Mejor `deteccion_caidas` en `H1`: `E1_v4_clean` con `0.846154`
+- Mejor `direction_accuracy` en `H2`: `E9_v1_clean` con `0.692308`
+- Mejor `direction_accuracy` en `H3`: `E10_v1_clean` con `0.857143`
+- Mejor `direction_accuracy` en `H4`: `E10_v1_clean` con `0.769231`
+- Mejor `deteccion_caidas` en `H1`: `E9_v2_clean` con `1.000000`
 - Mejor `deteccion_caidas` en `H2`: `E6_v1_clean` con `0.900000`
-- Mejor `deteccion_caidas` en `H3`: `E7_v1_clean` con `0.909091`
+- Mejor `deteccion_caidas` en `H3`: `E10_v1_clean` con `1.000000`
 - Mejor `deteccion_caidas` en `H4`: `E2_v3_clean` con `0.900000`
 
 ## Ganadores por metrica y horizonte
@@ -34,31 +42,31 @@
 ### H1
 - mejor en mae: `E5_v4_clean` con `0.095556`
 - mejor en rmse: `E5_v4_clean` con `0.125179`
-- mejor en direction_accuracy: `E1_v4_clean` con `0.857143`
-- mejor en deteccion_caidas: `E1_v4_clean` con `0.846154` | empate exacto con `E2_v3_clean`
-- mejor en loss_h: `E5_v3_clean` con `0.060367`
-- dominio_multiple: `E5_v4_clean` gana 2 de 5 metricas en H1.
+- mejor en direction_accuracy: `E9_v2_clean` con `0.857143` | empate exacto con `E1_v4_clean`
+- mejor en deteccion_caidas: `E9_v2_clean` con `1.000000`
+- mejor en loss_h: `E9_v2_clean` con `0.051557`
+- dominio_multiple: `E9_v2_clean` gana 3 de 5 metricas en H1.
 ### H2
 - mejor en mae: `E1_v4_clean` con `0.100670`
 - mejor en rmse: `E1_v2_clean` con `0.129020`
-- mejor en direction_accuracy: `E1_v5_clean` con `0.680000`
+- mejor en direction_accuracy: `E9_v2_clean` con `0.692308` | empate exacto con `E9_v1_clean`
 - mejor en deteccion_caidas: `E6_v1_clean` con `0.900000`
-- mejor en loss_h: `E7_v3_clean` con `0.068430`
-- lectura: no hay un dominador unico en H2; el horizonte reparte ventajas.
+- mejor en loss_h: `E9_v2_clean` con `0.063405`
+- dominio_multiple: `E9_v2_clean` gana 2 de 5 metricas en H2.
 ### H3
 - mejor en mae: `E1_v2_clean` con `0.100720`
 - mejor en rmse: `E1_v2_clean` con `0.130351`
-- mejor en direction_accuracy: `E1_v1` con `0.846154` | empate exacto con `E1_v2`
-- mejor en deteccion_caidas: `E7_v3_clean` con `0.909091` | empate exacto con `E7_v1_clean`
-- mejor en loss_h: `E1_v2_clean` con `0.064304`
-- dominio_multiple: `E1_v2_clean` gana 3 de 5 metricas en H3.
+- mejor en direction_accuracy: `E10_v1_clean` con `0.857143`
+- mejor en deteccion_caidas: `E9_v2_clean` con `1.000000` | empate exacto con `E9_v1_clean`
+- mejor en loss_h: `E9_v1_clean` con `0.054110`
+- dominio_multiple: `E1_v2_clean` gana 2 de 5 metricas en H3.
 ### H4
 - mejor en mae: `E3_v2_clean` con `0.100297`
 - mejor en rmse: `E1_v2_clean` con `0.135512`
-- mejor en direction_accuracy: `E2_v3_clean` con `0.760000`
+- mejor en direction_accuracy: `E10_v1_clean` con `0.769231`
 - mejor en deteccion_caidas: `E2_v3_clean` con `0.900000`
 - mejor en loss_h: `E5_v4_clean` con `0.035979`
-- dominio_multiple: `E2_v3_clean` gana 2 de 5 metricas en H4.
+- lectura: no hay un dominador unico en H4; el horizonte reparte ventajas.
 
 ## Inventario real por familia
 
@@ -67,12 +75,32 @@
 - `E3`: 3 runs maestros
 - `E4`: 3 runs maestros
 
+## Estado vigente de familias
+
+```
+family       estado_vigente   mejor_run                           rol_funcional                                                                                                          decision_metodologica                                                   siguiente_movimiento
+    E1              cerrada E1_v5_clean                 referente numerico puro                                   Mejor baseline lineal y mejor referente actual para pronostico numerico puro del porcentaje.                                                 sin expansion prevista
+    E2              cerrada E2_v3_clean                      referencia robusta                                         Familia robusta util como contraste historico, pero sin competitividad frente a Ridge.                                                 sin expansion prevista
+    E3 cerrada en rama base E3_v2_clean               referencia no lineal base                                                      Sigue siendo la referencia bagging util, pero ya desplazada por CatBoost.                                  mantener como candidato de diversidad
+    E4              cerrada E4_v1_clean                      boosting historico                                                                 No desplazo a E3 ni a Ridge; queda como referencia secundaria.                                                 sin expansion prevista
+    E5       abierta madura E5_v4_clean                 mejor no lineal tabular                                                Campeon no lineal tabular vigente; sigue siendo referencia competitiva central.           mantener como candidato fuerte para arquitecturas compuestas
+    E6           debilitada E6_v1_clean  referencia temporal estructurada debil                                                                ARIMAX no fue competitivo y no justifica continuidad inmediata.                                  solo reserva conceptual para hibridos
+    E7           intermedia E7_v3_clean    referencia temporal con changepoints                                                            Prophet supero a E6 pero no entro al bloque contendiente principal.                           mantener como referencia temporal secundaria
+    E8           intermedia E8_v2_clean              hibrido residual auditable                                                Mostro validez metodologica, pero no agrego mejora suficiente frente a su base. sin expansion amplia; solo hipotesis residual muy acotada si reaparece
+    E9         pausada util E9_v2_clean       referente riesgo-direccion-caidas  No reemplaza a E1_v5_clean; aporta valor operativo en riesgo, direccion y deteccion de caidas. Queda util pero no definitiva.                        pausa metodologica; posible reactivacion futura
+   E10   activa premodelado                         familia contextual / gating La tabla operativa de E10 ya fue construida; la siguiente tarea es correr el primer selector/gating contextual sin repetir E9.                                   primer runner/modelo canonico de E10
+   E11          planificada             arquitectura dual numerica + categorica                         Familia futura para separar pronostico numerico del porcentaje y prediccion categorica del movimiento.                            preapertura conceptual; no ejecutar todavia
+```
+
 ## Runs parciales / inconsistentes
 
+- `E10_v1_clean` | `inconsistente` | `/home/emilio/Documentos/RAdAR/Experimentos/runs/E10_v1_clean_20260401_090258` | duplicado_detectado=3; intento_descartado_por_menor_completitud; faltante_metadata,faltante_metricas,faltante_resumen,predicciones_incompletas
+- `E10_v1_clean` | `parcial` | `/home/emilio/Documentos/RAdAR/Experimentos/runs/E10_v1_clean_20260401_090352` | duplicado_detectado=3; intento_descartado_por_menor_completitud; faltante_metadata,faltante_metricas
 - `E2_v1_clean` | `parcial` | `/home/emilio/Documentos/RAdAR/Experimentos/runs/E2_v1_clean_20260323_045221_aborted` | duplicado_detectado=3; intento_descartado_por_menor_completitud; directorio_abortado; faltante_metadata,faltante_metricas,faltante_resumen,predicciones_incompletas
 - `E2_v1_clean` | `inconsistente` | `/home/emilio/Documentos/RAdAR/Experimentos/runs/E2_v1_clean_20260323_045930_aborted` | duplicado_detectado=3; intento_descartado_por_menor_completitud; directorio_abortado; faltante_metadata,faltante_metricas,faltante_resumen,predicciones_incompletas
 - `E5_v4_clean` | `inconsistente` | `/home/emilio/Documentos/RAdAR/Experimentos/runs/E5_v4_clean_20260330_091517` | duplicado_detectado=2; intento_descartado_por_menor_completitud; faltante_metadata,faltante_metricas,faltante_resumen,predicciones_incompletas
 - `E6_v1_clean` | `parcial` | `/home/emilio/Documentos/RAdAR/Experimentos/runs/E6_v1_clean_20260330_095252` | duplicado_detectado=2; intento_descartado_por_menor_completitud; faltante_metadata,faltante_metricas
+- `E9_smoke_tmp` | `parcial` | `/home/emilio/Documentos/RAdAR/Experimentos/runs/E9_smoke_tmp_20260401_065645` | predicciones_incompletas
 
 ## Runs planeados detectados sin artefactos consolidados
 
@@ -89,34 +117,34 @@ Nota: esta lista sale de menciones en prompts/documentos `.md`; no distingue aut
 ## Artefactos útiles para explicación por horizonte
 
 - Directorios con `features_seleccionadas_h*.csv`: 14
-- Directorios con `resumen_modeling_horizontes.json`: 29
+- Directorios con `resumen_modeling_horizontes.json`: 37
 - No se encontraron artefactos homogéneos y reutilizables de importancias de variables o coeficientes comparables entre familias. Esa capa explicativa sigue pendiente.
 
 ## Readiness para stacking / hipermodelo
 
-- Runs compatibles para stacking 1..4: 24
+- Runs compatibles para stacking 1..4: 29
 - Runs con utilidad parcial para merge por horizonte: 0
-- Reconstrucciones completas de hiperparametros: 28
-- Reconstrucciones parciales de hiperparametros: 0
+- Reconstrucciones completas de hiperparametros: 31
+- Reconstrucciones parciales de hiperparametros: 4
 - Runs con hiperparametros no recuperables: 0
-- Cobertura mergeable por horizonte: {"H1": 28, "H2": 28, "H3": 28, "H4": 28}
-- Elegibilidad real para stacking por horizonte: {"H1": 24, "H2": 24, "H3": 24, "H4": 24}
+- Cobertura mergeable por horizonte: {"H1": 34, "H2": 33, "H3": 33, "H4": 33}
+- Elegibilidad real para stacking por horizonte: {"H1": 29, "H2": 29, "H3": 29, "H4": 29}
 
 ### Bases parciales reconstruidas
 
-- `stacking_base_h1`: filas=28, modelos_integrados=24
-- `stacking_base_h2`: filas=27, modelos_integrados=24
-- `stacking_base_h3`: filas=26, modelos_integrados=24
-- `stacking_base_h4`: filas=25, modelos_integrados=24
+- `stacking_base_h1`: filas=28, modelos_integrados=29
+- `stacking_base_h2`: filas=27, modelos_integrados=29
+- `stacking_base_h3`: filas=26, modelos_integrados=29
+- `stacking_base_h4`: filas=25, modelos_integrados=29
 
 ### Resumen de bases stacking por horizonte
 
 ```
-horizonte                                                                                                                                                                                                                                                                         run_ids_incluidos  n_runs_incluidos                         run_ids_excluidos                                                                                                                exclusiones_detalle  filas_base  filas_completas_todos_modelos  filas_incompletas  cobertura_promedio_modelos_fila
-       H1 E1_v2,E1_v2_clean,E1_v3_clean,E1_v4_clean,E1_v5_clean,E2_v1_clean,E2_v2_clean,E2_v3_clean,E3_v1_clean,E3_v2_clean,E3_v3_clean,E4_v1_clean,E4_v2_clean,E4_v3_clean,E5_v1_clean,E5_v2_clean,E5_v3_clean,E5_v4_clean,E5_v5_clean,E6_v1_clean,E6_v2_clean,E7_v1_clean,E7_v2_clean,E7_v3_clean                24 C1_v1_clean,C1_v2_clean,C1_v3_clean,E1_v1 C1_v1_clean:task_type=clasificacion | C1_v2_clean:task_type=clasificacion | C1_v3_clean:task_type=clasificacion | E1_v1:sin_loss_h          28                             26                  2                         0.943452
-       H2 E1_v2,E1_v2_clean,E1_v3_clean,E1_v4_clean,E1_v5_clean,E2_v1_clean,E2_v2_clean,E2_v3_clean,E3_v1_clean,E3_v2_clean,E3_v3_clean,E4_v1_clean,E4_v2_clean,E4_v3_clean,E5_v1_clean,E5_v2_clean,E5_v3_clean,E5_v4_clean,E5_v5_clean,E6_v1_clean,E6_v2_clean,E7_v1_clean,E7_v2_clean,E7_v3_clean                24 C1_v1_clean,C1_v2_clean,C1_v3_clean,E1_v1 C1_v1_clean:task_type=clasificacion | C1_v2_clean:task_type=clasificacion | C1_v3_clean:task_type=clasificacion | E1_v1:sin_loss_h          27                             25                  2                         0.941358
-       H3 E1_v2,E1_v2_clean,E1_v3_clean,E1_v4_clean,E1_v5_clean,E2_v1_clean,E2_v2_clean,E2_v3_clean,E3_v1_clean,E3_v2_clean,E3_v3_clean,E4_v1_clean,E4_v2_clean,E4_v3_clean,E5_v1_clean,E5_v2_clean,E5_v3_clean,E5_v4_clean,E5_v5_clean,E6_v1_clean,E6_v2_clean,E7_v1_clean,E7_v2_clean,E7_v3_clean                24 C1_v1_clean,C1_v2_clean,C1_v3_clean,E1_v1 C1_v1_clean:task_type=clasificacion | C1_v2_clean:task_type=clasificacion | C1_v3_clean:task_type=clasificacion | E1_v1:sin_loss_h          26                             24                  2                         0.939103
-       H4 E1_v2,E1_v2_clean,E1_v3_clean,E1_v4_clean,E1_v5_clean,E2_v1_clean,E2_v2_clean,E2_v3_clean,E3_v1_clean,E3_v2_clean,E3_v3_clean,E4_v1_clean,E4_v2_clean,E4_v3_clean,E5_v1_clean,E5_v2_clean,E5_v3_clean,E5_v4_clean,E5_v5_clean,E6_v1_clean,E6_v2_clean,E7_v1_clean,E7_v2_clean,E7_v3_clean                24 C1_v1_clean,C1_v2_clean,C1_v3_clean,E1_v1 C1_v1_clean:task_type=clasificacion | C1_v2_clean:task_type=clasificacion | C1_v3_clean:task_type=clasificacion | E1_v1:sin_loss_h          25                             23                  2                         0.936667
+horizonte                                                                                                                                                                                                                                                                                                                                     run_ids_incluidos  n_runs_incluidos                                                   run_ids_excluidos                                                                                                                                                                                                                                                   exclusiones_detalle  filas_base  filas_completas_todos_modelos  filas_incompletas  cobertura_promedio_modelos_fila
+       H1 E1_v2,E1_v2_clean,E1_v3_clean,E1_v4_clean,E1_v5_clean,E2_v1_clean,E2_v2_clean,E2_v3_clean,E3_v1_clean,E3_v2_clean,E3_v3_clean,E4_v1_clean,E4_v2_clean,E4_v3_clean,E5_v1_clean,E5_v2_clean,E5_v3_clean,E5_v4_clean,E5_v5_clean,E6_v1_clean,E6_v2_clean,E7_v1_clean,E7_v2_clean,E7_v3_clean,E8_v1_clean,E8_v2_clean,E8_v3_clean,E9_v1_clean,E9_v2_clean                29 C1_v1_clean,C1_v2_clean,C1_v3_clean,E10_v1_clean,E1_v1,E9_smoke_tmp                             C1_v1_clean:task_type=clasificacion | C1_v2_clean:task_type=clasificacion | C1_v3_clean:task_type=clasificacion | E10_v1_clean:columnas_minimas_invalidas;predicciones_no_mergeables | E1_v1:sin_loss_h | E9_smoke_tmp:status_run=parcial          28                             14                 14                         0.911330
+       H2 E1_v2,E1_v2_clean,E1_v3_clean,E1_v4_clean,E1_v5_clean,E2_v1_clean,E2_v2_clean,E2_v3_clean,E3_v1_clean,E3_v2_clean,E3_v3_clean,E4_v1_clean,E4_v2_clean,E4_v3_clean,E5_v1_clean,E5_v2_clean,E5_v3_clean,E5_v4_clean,E5_v5_clean,E6_v1_clean,E6_v2_clean,E7_v1_clean,E7_v2_clean,E7_v3_clean,E8_v1_clean,E8_v2_clean,E8_v3_clean,E9_v1_clean,E9_v2_clean                29 C1_v1_clean,C1_v2_clean,C1_v3_clean,E10_v1_clean,E1_v1,E9_smoke_tmp C1_v1_clean:task_type=clasificacion | C1_v2_clean:task_type=clasificacion | C1_v3_clean:task_type=clasificacion | E10_v1_clean:columnas_minimas_invalidas;predicciones_no_mergeables | E1_v1:sin_loss_h | E9_smoke_tmp:status_run=parcial;sin_loss_h;sin_predicciones          27                             13                 14                         0.908046
+       H3 E1_v2,E1_v2_clean,E1_v3_clean,E1_v4_clean,E1_v5_clean,E2_v1_clean,E2_v2_clean,E2_v3_clean,E3_v1_clean,E3_v2_clean,E3_v3_clean,E4_v1_clean,E4_v2_clean,E4_v3_clean,E5_v1_clean,E5_v2_clean,E5_v3_clean,E5_v4_clean,E5_v5_clean,E6_v1_clean,E6_v2_clean,E7_v1_clean,E7_v2_clean,E7_v3_clean,E8_v1_clean,E8_v2_clean,E8_v3_clean,E9_v1_clean,E9_v2_clean                29 C1_v1_clean,C1_v2_clean,C1_v3_clean,E10_v1_clean,E1_v1,E9_smoke_tmp C1_v1_clean:task_type=clasificacion | C1_v2_clean:task_type=clasificacion | C1_v3_clean:task_type=clasificacion | E10_v1_clean:columnas_minimas_invalidas;predicciones_no_mergeables | E1_v1:sin_loss_h | E9_smoke_tmp:status_run=parcial;sin_loss_h;sin_predicciones          26                             12                 14                         0.904509
+       H4 E1_v2,E1_v2_clean,E1_v3_clean,E1_v4_clean,E1_v5_clean,E2_v1_clean,E2_v2_clean,E2_v3_clean,E3_v1_clean,E3_v2_clean,E3_v3_clean,E4_v1_clean,E4_v2_clean,E4_v3_clean,E5_v1_clean,E5_v2_clean,E5_v3_clean,E5_v4_clean,E5_v5_clean,E6_v1_clean,E6_v2_clean,E7_v1_clean,E7_v2_clean,E7_v3_clean,E8_v1_clean,E8_v2_clean,E8_v3_clean,E9_v1_clean,E9_v2_clean                29 C1_v1_clean,C1_v2_clean,C1_v3_clean,E10_v1_clean,E1_v1,E9_smoke_tmp C1_v1_clean:task_type=clasificacion | C1_v2_clean:task_type=clasificacion | C1_v3_clean:task_type=clasificacion | E10_v1_clean:columnas_minimas_invalidas;predicciones_no_mergeables | E1_v1:sin_loss_h | E9_smoke_tmp:status_run=parcial;sin_loss_h;sin_predicciones          25                             11                 14                         0.900690
 ```
 
 ### Lectura retrospectiva
@@ -131,17 +159,17 @@ horizonte                                                                       
 - `C1_v1_clean` H1: task_type=clasificacion
 - `C1_v2_clean` H1: task_type=clasificacion
 - `C1_v3_clean` H1: task_type=clasificacion
+- `E10_v1_clean` H1: columnas_minimas_invalidas;predicciones_no_mergeables
 - `E1_v1` H1: sin_loss_h
+- `E9_smoke_tmp` H1: status_run=parcial
 - `C1_v1_clean` H2: task_type=clasificacion
 - `C1_v2_clean` H2: task_type=clasificacion
 - `C1_v3_clean` H2: task_type=clasificacion
-- `E1_v1` H2: sin_loss_h
-- `C1_v1_clean` H3: task_type=clasificacion
-- `C1_v2_clean` H3: task_type=clasificacion
+- `E10_v1_clean` H2: columnas_minimas_invalidas;predicciones_no_mergeables
 
 ## Lectura preliminar
 
-- La evidencia sí sugiere especialización por horizonte: `E5_v3_clean` domina `H1`, `E7_v3_clean` domina `H2`, `E1_v2_clean` domina `H3` y `E5_v4_clean` domina `H4`.
+- La evidencia sí sugiere especialización por horizonte: `E9_v2_clean` domina `H1`, `E9_v2_clean` domina `H2`, `E9_v1_clean` domina `H3` y `E5_v4_clean` domina `H4`.
 - También hay especialización operativa: dirección y detección de caídas no siempre coinciden con el mejor `loss_h`.
 - En `E3`, la señal más útil quedó en `E3_v2_clean`; `E3_v3_clean` no mejora esa línea y `E4` no desplazó a bagging.
 - Ya existe base suficiente para pensar en un ensamblado por horizonte como hipótesis metodológica futura, con cobertura real de `E1-E4` y auditoría explícita de compatibilidad de predicciones.

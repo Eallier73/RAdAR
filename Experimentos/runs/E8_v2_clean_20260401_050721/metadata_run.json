@@ -1,0 +1,12 @@
+{
+  "created_at": "2026-04-01 05:07:21",
+  "experiment_id": "E8",
+  "family": "hibrido_residual",
+  "model": "hybrid_residual_catboost_regressor_ridge_tscv",
+  "parametros_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E8_v2_clean_20260401_050721/parametros_run.json",
+  "run_dir": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E8_v2_clean_20260401_050721",
+  "run_id": "E8_v2_clean",
+  "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e8_hibrido_residuales.py",
+  "snapshot_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E8_v2_clean_20260401_050721/scripts/run_e8_hibrido_residuales.py",
+  "task_type": "regresion"
+}
