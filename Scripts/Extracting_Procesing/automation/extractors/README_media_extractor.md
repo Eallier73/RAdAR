@@ -7,10 +7,11 @@ Profesionalizar el componente de extracción de medios de Radar tomando `04_medi
 ## Renombre y compatibilidad
 
 - Nombre histórico: `04_medios_extractor.py`
-- Nombre canónico nuevo: `media_extractor.py`
-- Núcleo reusable: `media_extractor_core.py`
+- Wrapper canónico para CLI: `Scripts/Extracting_Procesing/media_extractor.py`
+- Módulo real de automatización: `Scripts/Extracting_Procesing/automation/extractors/media_extractor.py`
+- Núcleo reusable: `Scripts/Extracting_Procesing/automation/extractors/media_extractor_core.py`
 
-`04_medios_extractor.py` se conserva como wrapper de compatibilidad para no romper llamados existentes. El entrypoint recomendado a futuro es `media_extractor.py`.
+`04_medios_extractor.py` se conserva como wrapper de compatibilidad para no romper llamados existentes. La automatización real vive en `automation/extractors/` y el nombre recomendado para CLI queda como `media_extractor.py`.
 
 ## Responsabilidades
 
@@ -212,6 +213,12 @@ Este extractor está diseñado para dejar artefactos fuente y metadata suficient
 - use `queries_summary.csv` y `descarga_articulos_summary.csv` para control operativo;
 - use `manifest.json` para localizar artefactos;
 - continúe con limpieza/preprocessing sin tocar el extractor.
+
+Para integrarlo desde Python, importa el módulo de automatización:
+
+```python
+from automation.extractors.media_extractor_core import run_extraction
+```
 
 ## Limitaciones conocidas
 

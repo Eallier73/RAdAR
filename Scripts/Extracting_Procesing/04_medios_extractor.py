@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
 """
-Wrapper de compatibilidad para el extractor canónico de medios en Radar.
+Wrapper historico del extractor canónico de medios en Radar.
 
-La implementación profesionalizada vive en `media_extractor.py` y
-`media_extractor_core.py`. Este archivo conserva el nombre histórico
-`04_medios_extractor.py` para no romper llamados existentes.
+La implementación real de automatización vive en
+`automation/extractors/media_extractor.py` y
+`automation/extractors/media_extractor_core.py`. Este archivo conserva el
+nombre histórico `04_medios_extractor.py` para no romper llamados existentes.
 """
 
 from __future__ import annotations
 
 from pathlib import Path
 
-from media_extractor_core import main
+from automation.extractors.media_extractor_core import main
 
 
 if __name__ == "__main__":

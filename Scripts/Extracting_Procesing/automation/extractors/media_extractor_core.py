@@ -61,7 +61,15 @@ except ImportError:  # pragma: no cover - dependencia opcional
     sync_playwright = None  # type: ignore[assignment]
 
 
-ROOT_DIR = Path(__file__).resolve().parents[2]
+def resolve_repo_root() -> Path:
+    current = Path(__file__).resolve()
+    for candidate in (current.parent, *current.parents):
+        if (candidate / ".git").exists():
+            return candidate
+    return current.parents[4]
+
+
+ROOT_DIR = resolve_repo_root()
 DEFAULT_OUTPUT_DIR = ROOT_DIR / "Datos_RAdAR" / "Medios"
 DEFAULT_CACHE_DIRNAME = "_cache_media_extractor"
 SCRIPT_VERSION = "2.0.0"

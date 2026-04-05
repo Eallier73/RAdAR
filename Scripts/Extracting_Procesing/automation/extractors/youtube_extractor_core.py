@@ -3,10 +3,10 @@
 Nucleo reusable del extractor de YouTube para Radar.
 
 El modulo concentra la configuracion, extraccion, persistencia y trazabilidad
-del componente de ingesta. El entrypoint CLI vive en
-`01_youtube_extractor_Tampico.py`, pero otros scripts pueden importar
-`run_extraction` para orquestar esta pieza sin depender del nombre numerado
-del archivo.
+del componente de ingesta. El entrypoint de automatizacion vive en
+`automation/extractors/youtube_extractor.py`, mientras que
+`youtube_extractor.py` y `01_youtube_extractor_Tampico.py` quedan como
+wrappers estables para CLI y compatibilidad.
 """
 
 from __future__ import annotations
@@ -39,7 +39,15 @@ else:
     GOOGLE_API_IMPORT_ERROR = None
 
 
-ROOT_DIR = Path(__file__).resolve().parents[2]
+def resolve_repo_root() -> Path:
+    current = Path(__file__).resolve()
+    for candidate in (current.parent, *current.parents):
+        if (candidate / ".git").exists():
+            return candidate
+    return current.parents[4]
+
+
+ROOT_DIR = resolve_repo_root()
 DEFAULT_OUTPUT_DIR = ROOT_DIR / "Datos_RAdAR"
 SCRIPT_VERSION = "2.0.0"
 SCRIPT_COMPONENT = "radar.youtube_extractor"

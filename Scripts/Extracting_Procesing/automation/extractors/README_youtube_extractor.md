@@ -4,6 +4,15 @@
 
 Convertir `01_youtube_extractor_Tampico.py` en un componente profesional de ingesta para Radar: reusable, parametrizable, trazable y orquestable, manteniendo su alcance como extractor puro de YouTube.
 
+## Renombre y compatibilidad
+
+- Nombre histórico: `01_youtube_extractor_Tampico.py`
+- Wrapper canónico para CLI: `Scripts/Extracting_Procesing/youtube_extractor.py`
+- Módulo real de automatización: `Scripts/Extracting_Procesing/automation/extractors/youtube_extractor.py`
+- Núcleo reusable: `Scripts/Extracting_Procesing/automation/extractors/youtube_extractor_core.py`
+
+`01_youtube_extractor_Tampico.py` se conserva como wrapper histórico para compatibilidad. La automatización real vive en `automation/extractors/` y el nombre recomendado para CLI queda como `youtube_extractor.py`.
+
 ## Responsabilidades
 
 - Recibir parametros de extraccion por CLI o config JSON.
@@ -49,7 +58,7 @@ export YOUTUBE_API_KEY="tu_api_key_real"
 Tambien puedes apuntar a otra variable:
 
 ```bash
-python3 Scripts/Extracting_Procesing/01_youtube_extractor_Tampico.py \
+python3 Scripts/Extracting_Procesing/youtube_extractor.py \
   --youtube-api-key-env RADAR_YOUTUBE_KEY \
   ...
 ```
@@ -59,7 +68,7 @@ python3 Scripts/Extracting_Procesing/01_youtube_extractor_Tampico.py \
 ```bash
 export YOUTUBE_API_KEY="tu_api_key_real"
 
-python3 Scripts/Extracting_Procesing/01_youtube_extractor_Tampico.py \
+python3 Scripts/Extracting_Procesing/youtube_extractor.py \
   --start-date 2026-02-24 \
   --end-date 2026-03-02 \
   --queries "presidenta municipal de Tampico" "Gobierno de Tampico" \
@@ -136,7 +145,12 @@ El extractor deja datasets crudos/semi-estructurados y metadata suficiente para 
 Para integrarlo desde Python, importa el nucleo reusable:
 
 ```python
-from youtube_extractor_core import parse_args, resolve_config, run_extraction, setup_logging
+from automation.extractors.youtube_extractor_core import (
+    parse_args,
+    resolve_config,
+    run_extraction,
+    setup_logging,
+)
 ```
 
 ## Limitaciones conocidas
