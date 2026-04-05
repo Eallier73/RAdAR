@@ -10,7 +10,7 @@ Convertir `02_twitter_extractor_Tampico.py` en un componente profesional de extr
 - Wrapper canónico para CLI: `Scripts/Extracting_Procesing/twitter_extractor.py`
 - Módulo real de automatización: `Scripts/Extracting_Procesing/automation/extractors/twitter_extractor.py`
 - Núcleo reusable: `Scripts/Extracting_Procesing/automation/extractors/twitter_extractor_core.py`
-- Archivo de queries canónicas: `Scripts/Extracting_Procesing/automation/extractors/twitter_queries_tampico.txt`
+- Archivo de queries canónicas: `Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt`
 
 `02_twitter_extractor_Tampico.py` se conserva como wrapper histórico para no romper llamados existentes. La automatización real vive en `automation/extractors/` y el nombre recomendado para CLI queda como `twitter_extractor.py`.
 
@@ -61,7 +61,7 @@ Las queries pueden venir de:
 
 1. `--queries-file`
 2. `--query` repetido por CLI
-3. el archivo canónico `twitter_queries_tampico.txt`
+3. el archivo canónico `twitter_queries_canonical.txt`
 
 Las queries canónicas por default son:
 
@@ -175,7 +175,7 @@ Con queries externas:
 python3 Scripts/Extracting_Procesing/twitter_extractor.py \
   --since 2026-03-03 \
   --until 2026-03-09 \
-  --queries-file /ruta/queries_twitter_tampico.txt \
+  --queries-file /ruta/twitter_queries_canonical.txt \
   --session-state-file /home/emilio/Documentos/RAdAR/Scripts/state/x_state.json
 ```
 

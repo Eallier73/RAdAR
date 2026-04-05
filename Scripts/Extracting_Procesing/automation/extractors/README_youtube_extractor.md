@@ -10,6 +10,7 @@ Convertir `01_youtube_extractor_Tampico.py` en un componente profesional de inge
 - Wrapper canónico para CLI: `Scripts/Extracting_Procesing/youtube_extractor.py`
 - Módulo real de automatización: `Scripts/Extracting_Procesing/automation/extractors/youtube_extractor.py`
 - Núcleo reusable: `Scripts/Extracting_Procesing/automation/extractors/youtube_extractor_core.py`
+- Archivo de queries canónicas: `Scripts/Extracting_Procesing/automation/extractors/youtube_queries_canonical.txt`
 
 `01_youtube_extractor_Tampico.py` se conserva como wrapper histórico para compatibilidad. La automatización real vive en `automation/extractors/` y el nombre recomendado para CLI queda como `youtube_extractor.py`.
 
@@ -47,6 +48,23 @@ Convertir `01_youtube_extractor_Tampico.py` en un componente profesional de inge
 - `--publish-canonical`
 - Opcionales: `--config-file`, `--country`, `--language`, `--include-replies`, `--dry-run`
 
+## Politica de queries
+
+Las queries pueden venir de:
+
+1. `--queries-file`
+2. `--queries`
+3. el archivo canónico `youtube_queries_canonical.txt`
+
+Las queries canónicas por default son:
+
+- `MonicaVTampico`
+- `TampicoGob`
+- `"Monica Villarreal Tampico"`
+- `"Gobierno de Tampico"`
+
+Esto deja a YouTube en el mismo estándar de configuración externa que medios y Twitter. Si quieres otro universo de búsqueda, cámbialo con `--queries-file` o `--queries` sin tocar la lógica interna.
+
 ## Variables de entorno requeridas
 
 Por default:
@@ -71,7 +89,6 @@ export YOUTUBE_API_KEY="tu_api_key_real"
 python3 Scripts/Extracting_Procesing/youtube_extractor.py \
   --start-date 2026-02-24 \
   --end-date 2026-03-02 \
-  --queries "presidenta municipal de Tampico" "Gobierno de Tampico" \
   --output-dir /home/emilio/Documentos/RAdAR/Datos_RAdAR \
   --week-name-mode exact_range \
   --max-results-search 50 \
@@ -80,6 +97,16 @@ python3 Scripts/Extracting_Procesing/youtube_extractor.py \
   --publish-canonical \
   --overwrite \
   --log-level INFO
+```
+
+Con queries externas:
+
+```bash
+python3 Scripts/Extracting_Procesing/youtube_extractor.py \
+  --start-date 2026-02-24 \
+  --end-date 2026-03-02 \
+  --queries-file /ruta/youtube_queries_canonical.txt \
+  --output-dir /home/emilio/Documentos/RAdAR/Datos_RAdAR
 ```
 
 ## Estructura de salida

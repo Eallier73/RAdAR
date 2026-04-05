@@ -49,6 +49,7 @@ def resolve_repo_root() -> Path:
 
 ROOT_DIR = resolve_repo_root()
 DEFAULT_OUTPUT_DIR = ROOT_DIR / "Datos_RAdAR"
+DEFAULT_QUERIES_FILE = Path(__file__).with_name("youtube_queries_canonical.txt")
 SCRIPT_VERSION = "2.0.0"
 SCRIPT_COMPONENT = "radar.youtube_extractor"
 SOURCE_PLATFORM = "youtube"
@@ -62,6 +63,12 @@ DEFAULT_MAX_RESULTS_SEARCH = 50
 DEFAULT_LOG_LEVEL = "INFO"
 DEFAULT_RUN_ID = "youtube_extract"
 DEFAULT_API_ENV = "YOUTUBE_API_KEY"
+DEFAULT_CANONICAL_QUERIES = [
+    "MonicaVTampico",
+    "TampicoGob",
+    '"Monica Villarreal Tampico"',
+    '"Gobierno de Tampico"',
+]
 
 COMMENTS_FILENAME_PREFIX = "youtube_comentarios"
 VIDEOS_FILENAME = "videos_encontrados.csv"
@@ -284,7 +291,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--end-date", help="Fecha final de busqueda (YYYY-MM-DD).")
     parser.add_argument(
         "--queries-file",
-        help="Archivo externo con queries. Soporta TXT, JSON o CSV.",
+        help="Archivo externo con queries. Soporta TXT, JSON o CSV. Si se omite, usa youtube_queries_canonical.txt.",
     )
     parser.add_argument(
         "--queries",
@@ -458,6 +465,14 @@ def load_queries_from_file(queries_file: Path) -> list[str]:
     ]
 
 
+def load_default_queries() -> tuple[list[str], str]:
+    """Load canonical default queries from file, with a builtin fallback."""
+
+    if DEFAULT_QUERIES_FILE.exists():
+        return load_queries_from_file(DEFAULT_QUERIES_FILE), str(DEFAULT_QUERIES_FILE)
+    return list(DEFAULT_CANONICAL_QUERIES), "default_builtin"
+
+
 def format_spanish_date(raw_date: date) -> str:
     """Format a date as DDmes in Spanish, preserving leading zero in day."""
 
@@ -530,7 +545,7 @@ def resolve_config(args: argparse.Namespace) -> ResolvedConfig:
         queries = [str(query).strip() for query in queries_cli if str(query).strip()]
         queries_source = "cli"
     else:
-        raise ConfigurationError("Debes proporcionar queries via --queries-file o --queries.")
+        queries, queries_source = load_default_queries()
 
     if not queries:
         raise ConfigurationError("La lista final de queries no puede quedar vacia.")

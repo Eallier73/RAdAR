@@ -72,6 +72,7 @@ def resolve_repo_root() -> Path:
 ROOT_DIR = resolve_repo_root()
 DEFAULT_OUTPUT_DIR = ROOT_DIR / "Datos_RAdAR" / "Medios"
 DEFAULT_CACHE_DIRNAME = "_cache_media_extractor"
+DEFAULT_QUERIES_FILE = Path(__file__).with_name("media_queries_canonical.csv")
 SCRIPT_VERSION = "2.0.0"
 SCRIPT_COMPONENT = "radar.media_extractor"
 SOURCE_PLATFORM = "news_media"
@@ -463,7 +464,11 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--before", help="Fecha final de búsqueda (YYYY-MM-DD).")
     parser.add_argument("--medio", dest="medios", action="append", default=None, help="Medio o site: a consultar.")
     parser.add_argument("--termino", dest="terminos", action="append", default=None, help="Término de búsqueda.")
-    parser.add_argument("--queries-file", default=None, help="Archivo externo TXT/JSON/CSV con queries.")
+    parser.add_argument(
+        "--queries-file",
+        default=None,
+        help="Archivo externo TXT/JSON/CSV con queries. Si se omite y no se pasan --medio/--termino, usa media_queries_canonical.csv.",
+    )
     parser.add_argument("--modo-queries", choices=("compacto", "combinado"), default=None)
     parser.add_argument("--config-file", default=None, help="Archivo JSON opcional con configuración base.")
     parser.add_argument("--output-dir", default=None, help=f"Directorio raíz de salida. Default: {DEFAULT_OUTPUT_DIR}")
@@ -543,6 +548,18 @@ def normalize_string_list(raw_values: Any) -> list[str]:
     if isinstance(raw_values, list):
         return [str(value).strip() for value in raw_values if str(value).strip()]
     raise ConfigurationError("Se esperaba una lista o string para los valores configurados.")
+
+
+def unique_non_empty(values: Sequence[str]) -> list[str]:
+    seen: set[str] = set()
+    ordered: list[str] = []
+    for value in values:
+        cleaned = str(value).strip()
+        if not cleaned or cleaned in seen:
+            continue
+        seen.add(cleaned)
+        ordered.append(cleaned)
+    return ordered
 
 
 def format_spanish_date(raw_date: date) -> str:
@@ -678,6 +695,13 @@ def generate_queries(medios: Sequence[str], terminos: Sequence[str], modo: str, 
     return query_specs
 
 
+def load_default_queries(modo_queries: str) -> tuple[list[QuerySpec], str]:
+    if DEFAULT_QUERIES_FILE.exists():
+        return load_queries_from_file(DEFAULT_QUERIES_FILE, modo_queries)
+    queries = generate_queries(DEFAULT_MEDIOS, DEFAULT_TERMINOS, modo_queries, source="default_builtin")
+    return queries, "default_builtin"
+
+
 def resolve_config(
     args: argparse.Namespace,
     *,
@@ -702,19 +726,23 @@ def resolve_config(
         raise ConfigurationError(f"Modo de queries no soportado: {modo_queries}")
 
     queries_file_raw = merged.get("queries_file")
-    medios = normalize_string_list(merged.get("medios")) or list(DEFAULT_MEDIOS)
-    terminos = normalize_string_list(merged.get("terminos")) or list(DEFAULT_TERMINOS)
+    medios_cli = normalize_string_list(merged.get("medios"))
+    terminos_cli = normalize_string_list(merged.get("terminos"))
 
     if queries_file_raw:
         queries_file = Path(str(queries_file_raw)).expanduser().resolve()
         queries, queries_source = load_queries_from_file(queries_file, modo_queries)
-    else:
-        if not medios:
-            raise ConfigurationError("Debes definir al menos un --medio o proveer queries file.")
-        if not terminos:
-            raise ConfigurationError("Debes definir al menos un --termino o proveer queries file.")
-        queries_source = "generated"
+        medios = medios_cli or unique_non_empty(spec.medio for spec in queries)
+        terminos = terminos_cli or unique_non_empty(spec.termino for spec in queries)
+    elif medios_cli or terminos_cli:
+        medios = medios_cli or list(DEFAULT_MEDIOS)
+        terminos = terminos_cli or list(DEFAULT_TERMINOS)
+        queries_source = "generated_cli"
         queries = generate_queries(medios, terminos, modo_queries, source=queries_source)
+    else:
+        queries, queries_source = load_default_queries(modo_queries)
+        medios = unique_non_empty(spec.medio for spec in queries) or list(DEFAULT_MEDIOS)
+        terminos = unique_non_empty(spec.termino for spec in queries) or list(DEFAULT_TERMINOS)
 
     week_name_mode = str(merged.get("week_name_mode", WEEK_MODE_EXACT))
     week_partition = resolve_week_partition(since, before, week_name_mode)

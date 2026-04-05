@@ -1,4 +1,4 @@
-# Queries canónicas base para el caso Tampico.
+# Queries canónicas base para el extractor de X/Twitter en el caso Tampico.
 # Este archivo puede reemplazarse por --queries-file sin tocar la lógica.
 to:MonicaVTampico
 from:MonicaVTampico

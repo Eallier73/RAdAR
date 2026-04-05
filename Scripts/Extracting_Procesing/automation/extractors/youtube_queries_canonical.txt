@@ -1,0 +1,6 @@
+# Queries canónicas base para el extractor de YouTube en el caso Tampico.
+# Este archivo puede reemplazarse por --queries-file o --queries sin tocar la lógica.
+MonicaVTampico
+TampicoGob
+"Monica Villarreal Tampico"
+"Gobierno de Tampico"

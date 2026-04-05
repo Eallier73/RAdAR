@@ -54,7 +54,7 @@ def resolve_repo_root() -> Path:
 ROOT_DIR = resolve_repo_root()
 DEFAULT_OUTPUT_DIR = ROOT_DIR / "Datos_RAdAR" / "Twitter"
 DEFAULT_SESSION_STATE_FILE = ROOT_DIR / "Scripts" / "state" / "x_state.json"
-DEFAULT_QUERIES_FILE = Path(__file__).with_name("twitter_queries_tampico.txt")
+DEFAULT_QUERIES_FILE = Path(__file__).with_name("twitter_queries_canonical.txt")
 SCRIPT_VERSION = "2.0.0"
 SCRIPT_COMPONENT = "radar.twitter_extractor"
 SOURCE_PLATFORM = "x_twitter"
@@ -330,7 +330,10 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument("--since", help="Fecha inicial de búsqueda (YYYY-MM-DD).")
     parser.add_argument("--until", help="Fecha final de búsqueda (YYYY-MM-DD).")
-    parser.add_argument("--queries-file", help="Archivo TXT/JSON/CSV con queries.")
+    parser.add_argument(
+        "--queries-file",
+        help="Archivo TXT/JSON/CSV con queries. Si se omite, usa twitter_queries_canonical.txt.",
+    )
     parser.add_argument(
         "--query",
         dest="queries",

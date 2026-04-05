@@ -10,6 +10,7 @@ Profesionalizar el componente de extracción de medios de Radar tomando `04_medi
 - Wrapper canónico para CLI: `Scripts/Extracting_Procesing/media_extractor.py`
 - Módulo real de automatización: `Scripts/Extracting_Procesing/automation/extractors/media_extractor.py`
 - Núcleo reusable: `Scripts/Extracting_Procesing/automation/extractors/media_extractor_core.py`
+- Archivo de queries canónicas: `Scripts/Extracting_Procesing/automation/extractors/media_queries_canonical.csv`
 
 `04_medios_extractor.py` se conserva como wrapper de compatibilidad para no romper llamados existentes. La automatización real vive en `automation/extractors/` y el nombre recomendado para CLI queda como `media_extractor.py`.
 
@@ -62,7 +63,9 @@ Las queries pueden venir de:
 
 1. `--queries-file`
 2. generación por `--medio` + `--termino`
-3. defaults de compatibilidad del extractor si no se sobreescriben esos argumentos
+3. el archivo canónico `media_queries_canonical.csv`
+
+Si se pasan `--medio` o `--termino`, el extractor genera queries sin tocar el archivo canónico. Si no se pasa nada, carga el archivo canónico por default. Eso deja a medios en el mismo estándar de configuración externa que YouTube y Twitter.
 
 Modos:
 
@@ -183,14 +186,23 @@ Errores recuperables quedan registrados y no tumban toda la corrida si todavía 
 python3 Scripts/Extracting_Procesing/media_extractor.py \
   --since 2026-03-06 \
   --before 2026-03-13 \
-  --medio site:milenio.com \
-  --termino '"tampico"' \
-  --modo-queries combinado \
   --output-dir /home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios \
   --run-id media_semana_20260306 \
   --max-results-per-query 10 \
   --max-articles-per-week 20 \
   --log-level INFO
+```
+
+Con queries generadas por CLI:
+
+```bash
+python3 Scripts/Extracting_Procesing/media_extractor.py \
+  --since 2026-03-06 \
+  --before 2026-03-13 \
+  --medio site:milenio.com \
+  --termino '"tampico"' \
+  --modo-queries combinado \
+  --output-dir /home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios
 ```
 
 Con Playwright explícito:
