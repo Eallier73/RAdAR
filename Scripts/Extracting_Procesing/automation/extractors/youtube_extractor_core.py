@@ -169,6 +169,7 @@ class ResolvedConfig:
     script_name: str
     script_path: Path
     helper_module_path: Path
+    entrypoint_alias: str
     script_version: str
     start_date: date
     end_date: date
@@ -516,7 +517,13 @@ def resolve_week_partition(start_date: date, end_date: date, mode: str) -> WeekP
     )
 
 
-def resolve_config(args: argparse.Namespace) -> ResolvedConfig:
+def resolve_config(
+    args: argparse.Namespace,
+    *,
+    script_name: str,
+    script_path: Path,
+    entrypoint_alias: str,
+) -> ResolvedConfig:
     """Resolve and validate the effective extractor configuration."""
 
     merged = merge_config_sources(args)
@@ -579,9 +586,10 @@ def resolve_config(args: argparse.Namespace) -> ResolvedConfig:
     config_file_path = Path(config_file).resolve() if config_file else None
 
     return ResolvedConfig(
-        script_name="01_youtube_extractor_Tampico.py",
-        script_path=Path(__file__).resolve().with_name("01_youtube_extractor_Tampico.py"),
+        script_name=script_name,
+        script_path=script_path,
         helper_module_path=Path(__file__).resolve(),
+        entrypoint_alias=entrypoint_alias,
         script_version=SCRIPT_VERSION,
         start_date=start_date,
         end_date=end_date,
@@ -1352,6 +1360,7 @@ def build_metadata(
         "script_name": config.script_name,
         "script_path": str(config.script_path),
         "helper_module_path": str(config.helper_module_path),
+        "entrypoint_alias": config.entrypoint_alias,
         "script_version": config.script_version,
         "run_id": config.run_id,
         "run_timestamp": config.run_timestamp,
@@ -1536,6 +1545,7 @@ def persist_outputs(
         "run_id": config.run_id,
         "script_name": config.script_name,
         "script_version": config.script_version,
+        "entrypoint_alias": config.entrypoint_alias,
         "queries": config.queries,
         "queries_source": config.queries_source,
         "week_name": config.week_partition.week_name,
@@ -1841,6 +1851,7 @@ def write_failure_artifacts(
         "script_name": config.script_name,
         "script_path": str(config.script_path),
         "helper_module_path": str(config.helper_module_path),
+        "entrypoint_alias": config.entrypoint_alias,
         "run_id": config.run_id,
         "run_dir": str(config.run_dir),
         "status": status,
@@ -1858,8 +1869,14 @@ def write_failure_artifacts(
         safe_write_json_file(config.run_dir / ERRORS_FILENAME, list(errors), logger)
 
 
-def main(argv: Sequence[str] | None = None) -> int:
-    """CLI entrypoint used by the numbered wrapper script."""
+def main(
+    argv: Sequence[str] | None = None,
+    *,
+    script_name: str,
+    script_path: Path,
+    entrypoint_alias: str,
+) -> int:
+    """CLI entrypoint used by wrappers and automation entrypoints."""
 
     args = parse_args(argv)
     bootstrap_logger = setup_logging((args.log_level or DEFAULT_LOG_LEVEL).upper())
@@ -1867,7 +1884,12 @@ def main(argv: Sequence[str] | None = None) -> int:
     config: ResolvedConfig | None = None
 
     try:
-        config = resolve_config(args)
+        config = resolve_config(
+            args,
+            script_name=script_name,
+            script_path=script_path,
+            entrypoint_alias=entrypoint_alias,
+        )
         result = run_extraction(config, bootstrap_logger)
         return int(result.exit_code)
     except ConfigurationError as exc:

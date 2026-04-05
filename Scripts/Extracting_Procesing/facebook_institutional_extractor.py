@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Wrapper histórico del extractor institucional de Facebook para Radar.
+Wrapper canónico del extractor institucional de Facebook para Radar.
 
 La implementación real de automatización vive en
-`automation/extractors/facebook_institutional_extractor.py`. Este archivo
-conserva el nombre operativo anterior para no romper llamados existentes.
+`automation/extractors/facebook_institutional_extractor.py`. Este archivo deja
+un nombre estable para CLI, runners y futuros orquestadores.
 """
 
 from __future__ import annotations
@@ -17,8 +17,8 @@ from automation.extractors.facebook_institutional_extractor_core import main
 if __name__ == "__main__":
     raise SystemExit(
         main(
-            script_name="03_facebook_extractor_apify_Tampico.py",
+            script_name="facebook_institutional_extractor.py",
             script_path=Path(__file__).resolve(),
-            entrypoint_alias="legacy_wrapper",
+            entrypoint_alias="canonical_wrapper",
         )
     )

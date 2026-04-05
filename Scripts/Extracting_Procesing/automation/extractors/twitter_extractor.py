@@ -7,7 +7,10 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from .twitter_extractor_core import main
+try:
+    from .twitter_extractor_core import main
+except ImportError:  # pragma: no cover - ejecucion directa del archivo
+    from twitter_extractor_core import main
 
 
 if __name__ == "__main__":
