@@ -1,0 +1,8 @@
+# Queries canónicas base para el caso Tampico.
+# Este archivo puede reemplazarse por --queries-file sin tocar la lógica.
+to:MonicaVTampico
+from:MonicaVTampico
+to:TampicoGob
+from:TampicoGob
+@TampicoGob
+@MonicaVTampico
