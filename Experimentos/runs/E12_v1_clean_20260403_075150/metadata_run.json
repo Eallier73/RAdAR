@@ -1,0 +1,12 @@
+{
+  "created_at": "2026-04-03 07:51:50",
+  "experiment_id": "E12",
+  "family": "representacion_enriquecida",
+  "model": "ridge_representacion",
+  "parametros_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E12_v1_clean_20260403_075150/parametros_run.json",
+  "run_dir": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E12_v1_clean_20260403_075150",
+  "run_id": "E12_v1_clean",
+  "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e12_representacion.py",
+  "snapshot_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E12_v1_clean_20260403_075150/scripts/run_e12_representacion.py",
+  "task_type": "regresion"
+}

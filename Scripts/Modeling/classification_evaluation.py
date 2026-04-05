@@ -222,14 +222,28 @@ def walk_forward_predict_classifier(
             feature_mode=feature_mode,
         )
         input_columns = [*include_columns, *selected_features]
-        fitted = clone(estimator)
-        fitted.fit(train[input_columns], train[class_id_column])
+        observed_class_ids = sorted(int(value) for value in train[class_id_column].unique())
+        probas = np.zeros(len(CLASS_LABELS_5), dtype=float)
 
-        predicted_id = int(np.asarray(fitted.predict(test[input_columns]), dtype=int)[0])
-        if hasattr(fitted, "predict_proba"):
-            probas = np.asarray(fitted.predict_proba(test[input_columns]), dtype=float)[0]
+        if len(observed_class_ids) == 1:
+            predicted_id = observed_class_ids[0]
+            probas[predicted_id] = 1.0
         else:
-            probas = np.full(len(CLASS_LABELS_5), np.nan, dtype=float)
+            class_id_to_local = {global_id: local_id for local_id, global_id in enumerate(observed_class_ids)}
+            local_to_class_id = {local_id: global_id for global_id, local_id in class_id_to_local.items()}
+            y_train_local = train[class_id_column].map(class_id_to_local).astype(int)
+
+            fitted = clone(estimator)
+            fitted.fit(train[input_columns], y_train_local)
+
+            predicted_local_id = int(np.asarray(fitted.predict(test[input_columns]), dtype=int)[0])
+            predicted_id = local_to_class_id[predicted_local_id]
+
+            if hasattr(fitted, "predict_proba"):
+                local_probas = np.asarray(fitted.predict_proba(test[input_columns]), dtype=float)[0]
+                for local_id, probability in enumerate(local_probas):
+                    global_id = local_to_class_id[int(local_id)]
+                    probas[global_id] = float(probability)
 
         row: dict[str, Any] = {
             DATE_COLUMN: test[DATE_COLUMN].iloc[0],

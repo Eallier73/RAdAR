@@ -1,0 +1,51 @@
+{
+  "dataset_path": "/home/emilio/Documentos/RAdAR/Datos_Modelo_ML/datos_ML_master_indice_aceptación_digital.xlsx",
+  "feature_columns": [
+    "sentimiento_medios",
+    "v5_agua_neto",
+    "v5_alumbrado_neto",
+    "v5_americo_neto",
+    "v5_basura_neto",
+    "v5_corrupcion_neto",
+    "v5_delitos_neto",
+    "v5_morena_neto",
+    "v5_obras_neto",
+    "v5_prevencion_neto",
+    "v5_vialidad_neto"
+  ],
+  "feature_mode": "all",
+  "horizons": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "initial_train_size": 40,
+  "lags": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "model": "xgboost_classifier",
+  "model_params": {
+    "colsample_bytree": 0.85,
+    "eval_metric": "mlogloss",
+    "learning_rate": 0.05,
+    "max_depth": 4,
+    "min_child_weight": 3.0,
+    "n_estimators": 300,
+    "objective": "multi:softprob",
+    "random_seed": 42,
+    "reg_alpha": 0.25,
+    "reg_lambda": 2.0,
+    "subsample": 0.85,
+    "tuning_strategy": "baseline_fijo_sin_tuning_interno",
+    "uses_scaling": false
+  },
+  "sheet_name": "Sheet1",
+  "target_mode_clf": "bandas_5clases",
+  "task_type": "clasificacion"
+}

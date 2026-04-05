@@ -1,0 +1,7 @@
+{
+  "fall_cut_rule": -0.0,
+  "fall_threshold_cls": 0.0,
+  "movement_threshold": 0.5,
+  "target_mode_cls": "direction_3clases",
+  "threshold_definition": "fijados_ex_ante"
+}

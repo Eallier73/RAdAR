@@ -1,0 +1,197 @@
+[
+  {
+    "accuracy": 0.9615384615384616,
+    "balanced_accuracy": 0.5,
+    "classes_observed": [
+      "se_mantiene",
+      "sube"
+    ],
+    "consistencia_prediccion_dual": 1.0,
+    "dual_mode": "parallel",
+    "fall_threshold_cls": 0.0,
+    "horizonte_sem": 1,
+    "labels": [
+      "baja",
+      "se_mantiene",
+      "sube"
+    ],
+    "macro_f1": 0.32679738562091504,
+    "matriz_confusion": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        25,
+        0
+      ],
+      [
+        0,
+        1,
+        0
+      ]
+    ],
+    "movement_threshold": 0.5,
+    "numeric_implied_labels": {
+      "se_mantiene": 26
+    },
+    "precision_baja": 0.0,
+    "recall_baja": 0.0,
+    "recall_sube": 0.0,
+    "rows_eval": 26,
+    "soporte_por_clase": {
+      "baja": 0,
+      "se_mantiene": 25,
+      "sube": 1
+    },
+    "target_mode_cls": "direction_3clases"
+  },
+  {
+    "accuracy": 0.96,
+    "balanced_accuracy": 0.5,
+    "classes_observed": [
+      "baja",
+      "se_mantiene"
+    ],
+    "consistencia_prediccion_dual": 1.0,
+    "dual_mode": "parallel",
+    "fall_threshold_cls": 0.0,
+    "horizonte_sem": 2,
+    "labels": [
+      "baja",
+      "se_mantiene",
+      "sube"
+    ],
+    "macro_f1": 0.32653061224489793,
+    "matriz_confusion": [
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        24,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "movement_threshold": 0.5,
+    "numeric_implied_labels": {
+      "se_mantiene": 25
+    },
+    "precision_baja": 0.0,
+    "recall_baja": 0.0,
+    "recall_sube": 0.0,
+    "rows_eval": 25,
+    "soporte_por_clase": {
+      "baja": 1,
+      "se_mantiene": 24,
+      "sube": 0
+    },
+    "target_mode_cls": "direction_3clases"
+  },
+  {
+    "accuracy": 0.9583333333333334,
+    "balanced_accuracy": 0.5,
+    "classes_observed": [
+      "se_mantiene",
+      "sube"
+    ],
+    "consistencia_prediccion_dual": 1.0,
+    "dual_mode": "parallel",
+    "fall_threshold_cls": 0.0,
+    "horizonte_sem": 3,
+    "labels": [
+      "baja",
+      "se_mantiene",
+      "sube"
+    ],
+    "macro_f1": 0.326241134751773,
+    "matriz_confusion": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        23,
+        0
+      ],
+      [
+        0,
+        1,
+        0
+      ]
+    ],
+    "movement_threshold": 0.5,
+    "numeric_implied_labels": {
+      "se_mantiene": 24
+    },
+    "precision_baja": 0.0,
+    "recall_baja": 0.0,
+    "recall_sube": 0.0,
+    "rows_eval": 24,
+    "soporte_por_clase": {
+      "baja": 0,
+      "se_mantiene": 23,
+      "sube": 1
+    },
+    "target_mode_cls": "direction_3clases"
+  },
+  {
+    "accuracy": 1.0,
+    "balanced_accuracy": 1.0,
+    "classes_observed": [
+      "se_mantiene"
+    ],
+    "consistencia_prediccion_dual": 1.0,
+    "dual_mode": "parallel",
+    "fall_threshold_cls": 0.0,
+    "horizonte_sem": 4,
+    "labels": [
+      "baja",
+      "se_mantiene",
+      "sube"
+    ],
+    "macro_f1": 0.3333333333333333,
+    "matriz_confusion": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        23,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "movement_threshold": 0.5,
+    "numeric_implied_labels": {
+      "se_mantiene": 23
+    },
+    "precision_baja": 0.0,
+    "recall_baja": 0.0,
+    "recall_sube": 0.0,
+    "rows_eval": 23,
+    "soporte_por_clase": {
+      "baja": 0,
+      "se_mantiene": 23,
+      "sube": 0
+    },
+    "target_mode_cls": "direction_3clases"
+  }
+]

@@ -12,39 +12,246 @@ Su función es servir como capa narrativa corta para ubicarse rápido.
 
 ## Estado actual
 
-- Fecha de actualizacion: `2026-04-02`
+- Fecha de actualizacion: `2026-04-03`
 - Rama de trabajo actual: `main`
 - Referente numerico puro vigente: `E1_v5_clean` con `L_total_Radar=0.243442`
 - Referente operativo vigente de riesgo-direccion-caidas: `E9_v2_clean` con `L_total_Radar=0.227510`
 - Mejor no lineal tabular abierta: `E5_v4_clean` con `L_total_Radar=0.247788`
-- Estado actual de `E10`: `modelado inicial fragil` con [E10_v1_clean_20260401_090439](/home/emilio/Documentos/RAdAR/Experimentos/runs/E10_v1_clean_20260401_090439)
-- Estado actual de clasificacion: `C1` ejecutada y pausada tempranamente; `C2-C4` con infraestructura preparada pero sin corridas
+- Estado actual de `E10`: `cerrada para promocion bajo su formulacion actual` con [E10_v1_clean_20260401_090439](/home/emilio/Documentos/RAdAR/Experimentos/runs/E10_v1_clean_20260401_090439)
+- Estado actual de `E11`: `evaluada sin promocion en su primera apertura dual` con [E11_v2_clean_20260403_051823](/home/emilio/Documentos/RAdAR/Experimentos/runs/E11_v2_clean_20260403_051823) como mejor apertura interna
+- Estado actual de `E12`: `evaluada sin promocion como hallazgo parcial de representacion` con [E12_v3_clean_20260403_080040](/home/emilio/Documentos/RAdAR/Experimentos/runs/E12_v3_clean_20260403_080040) como mejor apertura interna
+- Estado actual de clasificacion: `C1` y `C2` ejecutadas y pausadas tempranamente; `C3-C4` con infraestructura preparada pero sin corridas
+- Fase vigente oficial: [fase_produccion_controlada_dual_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/fase_produccion_controlada_dual_radar.md)
+- Politica operativa vigente:
+  - salida numerica principal: `E1_v5_clean`
+  - deteccion de caidas: `E9_v2_clean`
+  - direction por horizonte: `H1=E9`, `H2=E1`, `H3=E9`, `H4=E1`
+- Siguiente paso recomendado hoy: no abrir una familia nueva; cerrar la fase operativa dual y pasar a automatizacion controlada
 - Plan rector vigente:
   - [plan_de_experimentacion_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/plan_de_experimentacion_radar.md)
 - Tabla maestra vigente:
   - [tabla_maestra_experimentos_radar.xlsx](/home/emilio/Documentos/RAdAR/Experimentos/tabla_maestra_experimentos_radar.xlsx)
   - [tabla_maestra_experimentos_radar.csv](/home/emilio/Documentos/RAdAR/Experimentos/tabla_maestra_experimentos_radar.csv)
+- Fase vigente:
+  - [fase_produccion_controlada_dual_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/fase_produccion_controlada_dual_radar.md)
 
 ## Documentos canónicos de referencia
 
 - familias `E1-E4`:
+  - [resumen_metodologico_e1_1_bayesian.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e1_1_bayesian.md)
   - [resumen_metodologico_e1_ridge.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e1_ridge.md)
   - [resumen_metodologico_e2_huber.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e2_huber.md)
   - [resumen_metodologico_e3_arboles.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e3_arboles.md)
   - [resumen_metodologico_e4_boosting.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e4_boosting.md)
-- familias `E5-E10`:
+- familias `E5-E12`:
   - [resumen_metodologico_e5_catboost.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e5_catboost.md)
   - [resumen_metodologico_e6_arimax.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e6_arimax.md)
   - [resumen_metodologico_e7_prophet.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e7_prophet.md)
   - [resumen_metodologico_e8_hibrido_residual.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e8_hibrido_residual.md)
   - [resumen_metodologico_e9_stacking.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e9_stacking.md)
   - [resumen_metodologico_e10_gating_contextual.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e10_gating_contextual.md)
+  - [resumen_metodologico_e11_dual.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e11_dual.md)
+  - [resumen_metodologico_e12_representacion.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e12_representacion.md)
+  - [constructos_representacion_e12.md](/home/emilio/Documentos/RAdAR/Experimentos/constructos_representacion_e12.md)
 - clasificacion:
   - [resumen_metodologico_clasificacion_c1_c4.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_clasificacion_c1_c4.md)
 - constructos:
   - [diccionario_constructos_canonicos_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/diccionario_constructos_canonicos_radar.md)
+- produccion controlada:
+  - [fase_produccion_controlada_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/fase_produccion_controlada_radar.md)
+  - [fase_produccion_controlada_dual_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/fase_produccion_controlada_dual_radar.md)
+  - [resumen_metodologico_operacion_controlada.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_operacion_controlada.md)
+  - [politica_operativa_sistema_dual_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/politica_operativa_sistema_dual_radar.md)
+  - [preparacion_automatizacion_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/preparacion_automatizacion_radar.md)
+  - [verificacion_reproducibilidad_dual_controlada.md](/home/emilio/Documentos/RAdAR/Experimentos/verificacion_reproducibilidad_dual_controlada.md)
+  - [politica_promocion_sistemas_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/politica_promocion_sistemas_radar.md)
+  - [consolidacion_operativa_post_produccion_controlada.md](/home/emilio/Documentos/RAdAR/Experimentos/consolidacion_operativa_post_produccion_controlada.md)
+  - [cierre_formal_e10_no_promocionable.md](/home/emilio/Documentos/RAdAR/Experimentos/cierre_formal_e10_no_promocionable.md)
+  - [especificacion_futura_e11_dual.md](/home/emilio/Documentos/RAdAR/Experimentos/especificacion_futura_e11_dual.md)
 
 ## Línea de tiempo
+
+### 2026-04-03 | Cierre experimental y apertura formal de fase operativa dual
+
+- Se cierra temporalmente la expansion experimental del proyecto.
+- Se congela formalmente el sistema operativo compuesto vigente:
+  - salida numerica principal: `E1_v5_clean`
+  - deteccion de caidas: `E9_v2_clean`
+  - direction por horizonte: `9-1-9-1`
+- Se implementa [run_sistema_dual_operativo_radar.py](/home/emilio/Documentos/RAdAR/Scripts/Operational_Controlada/run_sistema_dual_operativo_radar.py) para empaquetar salidas canonicas del sistema dual.
+- Se verifico reproducibilidad fuerte con reejecuciones controladas:
+  - [E1_v5_operativo_rebuild_v2_20260403_092120](/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_v5_operativo_rebuild_v2_20260403_092120)
+  - [E9_v2_operativo_rebuild_20260403_092042](/home/emilio/Documentos/RAdAR/Experimentos/runs/E9_v2_operativo_rebuild_20260403_092042)
+- Se fijan rutas operativas estables en:
+  - `/home/emilio/Documentos/RAdAR/Experimentos/operacion_dual_controlada/paquete_vigente/`
+- Documentos canonicos nuevos:
+  - [fase_produccion_controlada_dual_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/fase_produccion_controlada_dual_radar.md)
+  - [politica_operativa_sistema_dual_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/politica_operativa_sistema_dual_radar.md)
+  - [preparacion_automatizacion_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/preparacion_automatizacion_radar.md)
+  - [verificacion_reproducibilidad_dual_controlada.md](/home/emilio/Documentos/RAdAR/Experimentos/verificacion_reproducibilidad_dual_controlada.md)
+
+Decision:
+
+- la expansion experimental queda temporalmente cerrada;
+- el sistema vigente ya no se describe solo como “benchmarks operativos”, sino como sistema dual funcional congelado;
+- la siguiente etapa formal pasa a ser automatizacion controlada, no nuevas corridas experimentales.
+
+### 2026-04-03 | Apertura controlada E12 representacion por horizonte
+
+- Se implemento [run_e12_representacion.py](/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e12_representacion.py) como runner unico de familia con tres modos:
+  - `minimal`
+  - `expanded`
+  - `disagreement_only`
+- Se corrieron:
+  - [E12_v1_clean_20260403_075150](/home/emilio/Documentos/RAdAR/Experimentos/runs/E12_v1_clean_20260403_075150)
+  - [E12_v2_clean_20260403_075843](/home/emilio/Documentos/RAdAR/Experimentos/runs/E12_v2_clean_20260403_075843)
+  - [E12_v3_clean_20260403_080040](/home/emilio/Documentos/RAdAR/Experimentos/runs/E12_v3_clean_20260403_080040)
+- Documentos canonicos:
+  - [resumen_metodologico_e12_representacion.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e12_representacion.md)
+  - [constructos_representacion_e12.md](/home/emilio/Documentos/RAdAR/Experimentos/constructos_representacion_e12.md)
+  - [resumen_resultados_e12_apertura_controlada.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_resultados_e12_apertura_controlada.md)
+- Resultado:
+  - `E12_v1_clean` y `E12_v2_clean` empeoran con claridad frente a `E1_v5_clean` y `E9_v2_clean`
+  - `E12_v3_clean` queda como mejor variante interna, lo que sugiere que el desacuerdo entre bases aporta mas que el bloque de regimen usado en esta apertura
+  - ninguna variante mejora `H1`, que era la hipotesis central de la familia
+  - ninguna variante supera a los benchmarks vigentes en el mismo subset comun
+
+Decision:
+
+- `E12` queda evaluada sin promocion;
+- la familia deja un hallazgo parcial util, no una mejora defendible;
+- no procede expansion inmediata.
+
+### 2026-04-03 | Autopsia E1 vs E9 + recombinacion ex post + recalibracion de thresholds + verificacion tactica E2
+
+- Se corrio [analyze_post_e11_decision_phase.py](/home/emilio/Documentos/RAdAR/Scripts/Modeling/analyze_post_e11_decision_phase.py) para ejecutar en un solo paso:
+  - autopsia comparativa `E1_v5_clean` vs `E9_v2_clean`
+  - recombinacion ex post por horizonte
+  - sensibilidad de thresholds categoricos
+- Se generaron:
+  - [autopsia_e1_v5_vs_e9_v2.md](/home/emilio/Documentos/RAdAR/Experimentos/autopsia_e1_v5_vs_e9_v2.md)
+  - [analisis_recombinacion_ex_post_horizontes_e1_e9.md](/home/emilio/Documentos/RAdAR/Experimentos/analisis_recombinacion_ex_post_horizontes_e1_e9.md)
+  - [analisis_distribucion_delta_iad.md](/home/emilio/Documentos/RAdAR/Experimentos/analisis_distribucion_delta_iad.md)
+  - [decision_formal_siguiente_paso_post_e11.md](/home/emilio/Documentos/RAdAR/Experimentos/decision_formal_siguiente_paso_post_e11.md)
+- Hallazgos:
+  - `E9_v2_clean` no domina el subset comun completo; su ventaja operativa se concentra sobre todo en `H1`
+  - la pauta observada es mas consistente con una ventaja de representacion que con una ventaja puramente arquitectonica
+  - la mejor recombinacion ex post usa `E9` en `H1` y `E1` en `H2-H4`, pero no es promocionable
+  - `+-0.5` queda descartado como threshold ternario razonable; `+-0.15` queda como valor preferente para una futura reapertura prudente
+- Se cerro la verificacion tactica de `E2` sin nuevas corridas:
+  - [resumen_resultados_e2_verificacion_tactica.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_resultados_e2_verificacion_tactica.md)
+  - la evidencia ya existente en `E2_v1_clean`, `E2_v2_clean` y `E2_v3_clean` fue suficiente para ratificar el cierre formal de la familia
+
+Decision:
+
+- no abrir `E12` todavia por inercia
+- no promocionar recombinaciones ex post ni recalibraciones aisladas
+- mantener `E1_v5_clean` + `E9_v2_clean` como salida dual vigente
+- fijar como siguiente pregunta seria una futura familia centrada en representacion de features, no en algoritmo
+
+Nota de actualizacion:
+
+- esa recomendacion se ejecuto despues el mismo `2026-04-03` en la apertura controlada de `E12`; el documento conserva valor historico, pero ya no describe el estado mas reciente.
+
+### 2026-04-03 | Apertura dual controlada de E11
+
+- Se implemento [run_e11_dual.py](/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e11_dual.py) como runner unico de familia con tres modos:
+  - `parallel`
+  - `fall_detector`
+  - `residual_dual`
+- Se corrieron:
+  - [E11_v1_clean_20260403_051406](/home/emilio/Documentos/RAdAR/Experimentos/runs/E11_v1_clean_20260403_051406)
+  - [E11_v2_clean_20260403_051823](/home/emilio/Documentos/RAdAR/Experimentos/runs/E11_v2_clean_20260403_051823)
+  - [E11_v3_clean_20260403_051823](/home/emilio/Documentos/RAdAR/Experimentos/runs/E11_v3_clean_20260403_051823)
+- Resultado:
+  - `E11_v1_clean` conserva exactamente el bloque numerico de `E1_v5_clean`, pero la tarea ternaria sigue casi colapsada a `se_mantiene`
+  - `E11_v2_clean` conserva exactamente el bloque numerico de `E1_v5_clean` y agrega una capa binaria `cae / no_cae` con señal moderada
+  - `E11_v3_clean` intenta corregir residuales y no mejora el global frente a `E1_v5_clean`
+- Documento canonico:
+  - [resumen_metodologico_e11_dual.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e11_dual.md)
+
+Decision:
+
+- `E11` deja de ser solo especificacion futura y pasa a familia dual ya ejecutada
+- `E11` no queda promocionable todavia
+- `E11_v2_clean` se conserva como mejor apertura interna
+- la salida dual vigente sigue siendo `E1_v5_clean` + `E9_v2_clean`
+
+### 2026-04-03 | Apertura y cierre temprano de C2 XGBoostClassifier
+
+- Se corrigio la utilidad comun de clasificacion para remapear IDs de clase por fold y permitir entrenamiento limpio de `XGBoostClassifier` sin leakage cuando el train temprano no contiene todas las clases globales.
+- Se corrieron:
+  - [C2_v1_clean_20260403_040434](/home/emilio/Documentos/RAdAR/Experimentos/runs/C2_v1_clean_20260403_040434)
+  - [C2_v2_clean_20260403_040456](/home/emilio/Documentos/RAdAR/Experimentos/runs/C2_v2_clean_20260403_040456)
+  - [C2_v3_clean_20260403_040509](/home/emilio/Documentos/RAdAR/Experimentos/runs/C2_v3_clean_20260403_040509)
+- Las tres variantes replicaron exactamente el mismo resultado de `C1`:
+  - `L_total_Clasificacion = 0.483333`
+  - `recall_baja_fuerte = 0.0`
+  - `recall_baja_total = 0.0`
+  - clase efectiva unica en evaluacion por horizonte
+
+Decision:
+
+- `C2` deja de ser infraestructura preparada y pasa a familia evaluada y pausada tempranamente;
+- la evidencia refuerza que el cuello de botella sigue siendo el target categorico, no el clasificador;
+- no procede abrir `C3` o `C4` por inercia.
+
+### 2026-04-02 | Consolidacion operativa post-produccion controlada
+
+- Se endurecio la rutina operativa de benchmarks vigentes con validacion automatizada de integridad.
+- Se dejo un reporte reproducible de auditoria operativa de benchmarks en:
+  - [auditoria_benchmarks_operativos_controlados.md](/home/emilio/Documentos/RAdAR/Experimentos/auditoria_benchmarks_operativos_controlados.md)
+  - [auditoria_benchmarks_operativos_controlados.json](/home/emilio/Documentos/RAdAR/Experimentos/auditoria_benchmarks_operativos_controlados.json)
+- Se volvio aplicable la politica de promocion con una version estructurada en JSON.
+- `E10` quedo cerrado formalmente para promocion bajo su formulacion actual.
+- `E11` quedo especificada como arquitectura futura, sin ejecucion.
+
+Decision:
+
+- los benchmarks vigentes `E1_v5_clean` y `E9_v2_clean` quedan congelados y auditados para operacion controlada;
+- `E10` queda fuera de promocion y ya no sigue como rama incubada;
+- `E11` quedaba fuera de ejecucion en ese momento; ese estado fue superado por la apertura dual controlada del `2026-04-03`.
+
+### 2026-04-02 | Cierre formal de E10
+
+- Se fijo el cierre formal de `E10` como rama no promocionable bajo su formulacion actual.
+- El documento canonico de cierre queda en:
+  - [cierre_formal_e10_no_promocionable.md](/home/emilio/Documentos/RAdAR/Experimentos/cierre_formal_e10_no_promocionable.md)
+- Se amarro el cierre a la evidencia comparativa real de [E10_v1_clean_20260401_090439](/home/emilio/Documentos/RAdAR/Experimentos/runs/E10_v1_clean_20260401_090439):
+  - `E10_v1_clean = 0.271220`
+  - `selector_fijo = 0.265229`
+  - `E1_v5_clean = 0.217866`
+  - `E9_v2_clean = 0.227510`
+- Se registro explicitamente que las accuracies del selector por horizonte fueron bajas.
+
+Decision:
+
+- `E10` se conserva como evidencia historica util;
+- `E10` no queda en observacion promocionable;
+- `E10` no es benchmark vigente;
+- la siguiente frontera real pasa a ser `E11`; ese estado luego se materializo en la apertura dual controlada del `2026-04-03`.
+
+### 2026-04-02 | Fase de Produccion Controlada
+
+- Se formalizo una fase de produccion controlada sin declarar un modelo final unico.
+- Se reconocio explicitamente la dualidad funcional vigente del Radar:
+  - `E1_v5_clean` como benchmark numerico puro
+  - `E9_v2_clean` como benchmark operativo de riesgo-direccion-caidas
+- Se separaron conceptualmente:
+  - capa experimental
+  - capa operativa controlada
+  - capa futura dual `E11`
+- Se dejo registro operativo canonico en:
+  - [fase_produccion_controlada_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/fase_produccion_controlada_radar.md)
+  - [politica_promocion_sistemas_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/politica_promocion_sistemas_radar.md)
+  - [registro_operacion_controlada_radar.json](/home/emilio/Documentos/RAdAR/Experimentos/registro_operacion_controlada_radar.json)
+
+Decisión:
+
+- el proyecto ya madura hacia operacion comparativa controlada
+- todavia no existe una produccion predictiva final unificada
+- `E10` sigue como evidencia contextual fragil
+- `E11` era todavia arquitectura futura no ejecutada en esa fecha; esa condicion luego fue superada por la apertura dual controlada del `2026-04-03`
 
 ### 2026-03-21 | E1 Ridge limpio
 
@@ -459,17 +666,17 @@ Resultados:
 
 Lectura:
 
-- `E10_v1_clean` fue metodologicamente limpio, pero fragil.
+- `E10_v1_clean` fue metodologicamente limpio, pero no competitivo.
 - No supero al selector fijo en el global.
 - No supero a `E1_v5_clean`.
 - No supero a `E9_v2_clean`.
 - La señal mas util aparecio en `H4`, con aportes parciales en `H2-H3`, pero sin mejora global defendible.
 
-Decision:
+Decision historica:
 
-- `E10` deja de estar en premodelado y pasa a `modelado inicial fragil`.
-- La familia no se cierra, pero tampoco se vuelve linea competitiva consolidada.
-- Antes de `E10_v2` hace falta reformular el problema de seleccion, no escalar complejidad.
+- Esta entrada conserva la lectura inmediatamente posterior a la corrida.
+- El estado canonico posterior ya no es `modelado inicial fragil`, sino `cerrada para promocion bajo su formulacion actual`.
+- Ver cierre vigente en [cierre_formal_e10_no_promocionable.md](/home/emilio/Documentos/RAdAR/Experimentos/cierre_formal_e10_no_promocionable.md).
 
 ## Lectura consolidada vigente
 
@@ -482,19 +689,24 @@ Decision:
 - Mejor familia no lineal tabular abierta: `E5_v4_clean`
 - Familias cerradas: `E1`, `E2`, `E4`
 - Familias abiertas o vigentes como referencia: `E3`, `E5`, `E7`, `E8` y `E9`
-- `E10` ya fue abierta formalmente y queda en modelado inicial fragil, no en premodelado
+- `E10` ya fue abierta formalmente y queda cerrada para promocion, no en premodelado
 - La clasificacion ya no debe describirse como solo planificada: `C1` tuvo corridas reales; `C2-C4` siguen sin corrida
 - La capa explicativa transversal sigue siendo parcial intra-familia: hay seleccion de variables por horizonte en algunos runs, pero no coeficientes/importancias/SHAP homologados entre familias
 
 ## Próximo paso lógico
 
-- `E9` queda en pausa metodologica: util, pero no definitiva.
-- `E10` sigue como familia activa, pero ya en modelado inicial fragil tras `E10_v1_clean`.
-- `E11` queda solo planificada.
+Nota de alcance:
+
+- Esta lectura quedo superada por la apertura dual controlada de `E11` del `2026-04-03`.
+- El estado canonico posterior debe leerse hoy junto con [resumen_metodologico_e11_dual.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e11_dual.md).
+
+- En esa lectura, `E9` quedaba en pausa metodologica: util, pero no definitiva.
+- En esa lectura, `E10` ya no seguia como familia activa para promocion.
+- En esa lectura, `E11` quedaba solo planificada.
 
 Secuencia vigente:
 
 1. mantener `E1_v5_clean` como benchmark numerico puro principal;
 2. mantener `E9_v2_clean` como benchmark operativo de riesgo-direccion-caidas;
-3. abrir `E10` como siguiente familia activa;
+3. cerrar `E10` para promocion bajo su formulacion actual;
 4. reservar `E11` como familia futura explicitamente dual.

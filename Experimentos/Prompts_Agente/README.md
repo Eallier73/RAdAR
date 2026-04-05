@@ -46,6 +46,22 @@ Estructura:
   Prompts operativos de construccion de tabla E10 y de la primera corrida canonica de meta-seleccion/gating.
 - `20_saneamiento_canonico/`
   Prompt de saneamiento documental-metodologico integral para alinear plan, bitacora, inventario, tabla maestra y README(s).
+- `21_fase_produccion_controlada/`
+  Prompt rector de la fase de produccion controlada, separando capa experimental y capa operativa sin declarar un modelo final unico.
+- `22_consolidacion_operativa/`
+  Prompt de consolidacion operativa posterior a la produccion controlada, enfocado en benchmarks vigentes, auditoria operativa, cierre formal de E10 y especificacion futura de E11.
+- `23_cierre_e10_operacion/`
+  Prompt de cierre formal de E10 como rama no promocionable y de refuerzo de la dualidad operativa vigente.
+- `24_familia_e11_dual/`
+  Prompt operativo de apertura controlada de la familia E11 como arquitectura dual numerica + categorica.
+- `25_autopsia_post_e11/`
+  Prompt operativo de la autopsia E1 vs E9, recombinacion ex post por horizonte, recalibracion de thresholds y decision post-E11.
+- `26_verificacion_tactica_e2/`
+  Prompt corto de verificacion tactica de E2/Huber sin reabrir la familia.
+- `27_familia_e12_representacion/`
+  Prompt operativo de apertura controlada de `E12` como familia de representacion por horizonte.
+- `28_fase_operativa_dual/`
+  Prompt rector de cierre temporal de expansion experimental y apertura de la fase operativa / produccion controlada dual.
 
 Convencion de nombres:
 
@@ -89,3 +105,11 @@ Mapa actual:
 - `19_familia_gating_contextual/01_construccion_tabla_operativa_e10.md`
 - `19_familia_gating_contextual/02_modelado_operativo_e10_v1_clean.md`
 - `20_saneamiento_canonico/01_saneamiento_canonico_integral.md`
+- `21_fase_produccion_controlada/01_fase_produccion_controlada_radar.md`
+- `22_consolidacion_operativa/01_consolidacion_operativa_post_produccion_controlada.md`
+- `23_cierre_e10_operacion/01_cierre_formal_e10_y_consolidacion_operativa.md`
+- `24_familia_e11_dual/01_apertura_e11_arquitectura_dual_controlada.md`
+- `25_autopsia_post_e11/01_autopsia_e1_vs_e9_recombinacion_thresholds_e2.md`
+- `26_verificacion_tactica_e2/01_apertura_e2_verificacion_tactica.md`
+- `27_familia_e12_representacion/01_apertura_futura_e12_representacion_por_horizonte.md`
+- `28_fase_operativa_dual/01_cierre_experimental_y_apertura_fase_operativa_dual.md`

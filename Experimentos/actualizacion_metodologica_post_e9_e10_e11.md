@@ -10,9 +10,21 @@ Nota de alcance:
 
 - Este documento conserva la decision tomada justo despues de `E9_v2_clean`.
 - El estado canonico posterior de `E10`, de la clasificacion y de la capa explicativa transversal debe leerse hoy junto con:
+- El estado canonico posterior de `E11` tambien debe leerse hoy junto con:
   - [plan_de_experimentacion_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/plan_de_experimentacion_radar.md)
   - [bitacora_experimental_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/bitacora_experimental_radar.md)
   - [resumen_saneamiento_documental_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_saneamiento_documental_radar.md)
+  - [cierre_formal_e10_no_promocionable.md](/home/emilio/Documentos/RAdAR/Experimentos/cierre_formal_e10_no_promocionable.md)
+  - [resumen_metodologico_e11_dual.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e11_dual.md)
+
+Aclaracion posterior:
+
+- `E10` efectivamente si se ejecuto despues de este documento.
+- La corrida [E10_v1_clean_20260401_090439](/home/emilio/Documentos/RAdAR/Experimentos/runs/E10_v1_clean_20260401_090439) no confirmo la hipotesis de promocion.
+- Por tanto, la parte de este documento que trataba a `E10` como siguiente linea activa debe leerse hoy solo como decision historica posterior a `E9`, no como estado vigente.
+- `E11` tambien si se ejecuto despues de este documento.
+- Las corridas [E11_v1_clean_20260403_051406](/home/emilio/Documentos/RAdAR/Experimentos/runs/E11_v1_clean_20260403_051406), [E11_v2_clean_20260403_051823](/home/emilio/Documentos/RAdAR/Experimentos/runs/E11_v2_clean_20260403_051823) y [E11_v3_clean_20260403_051823](/home/emilio/Documentos/RAdAR/Experimentos/runs/E11_v3_clean_20260403_051823) no produjeron una variante promocionable.
+- Por tanto, la parte de este documento que trataba a `E11` como solo planificada debe leerse hoy tambien como decision historica posterior a `E9`, no como estado vigente.
 
 La decision parte de la evidencia ya observada en:
 
@@ -89,9 +101,9 @@ Benchmark operativo actual:
 
 - `E9_v2_clean`
 
-## Por que E10 sigue
+## Por que E10 siguio en ese momento
 
-`E10` sigue como siguiente familia activa porque la evidencia posterior a `E9` ya no sugiere una sola pregunta del tipo "que modelo promedio mejor".
+En esa decision, `E10` siguio como siguiente familia activa porque la evidencia posterior a `E9` ya no sugeria una sola pregunta del tipo "que modelo promedio mejor".
 
 La pregunta siguiente pasa a ser contextual:
 
@@ -135,9 +147,9 @@ Y, si mas adelante se justifica, una extension ordinal:
 
 `E11` tampoco debe contaminar todavia la evaluacion de `E10`.
 
-## Estado vigente del plan
+## Estado vigente del plan en ese momento
 
-### Activo ahora
+### Activo ahora en esa lectura historica
 
 - `E10` como siguiente familia activa
 

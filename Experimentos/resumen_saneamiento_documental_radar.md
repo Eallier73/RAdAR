@@ -2,6 +2,12 @@
 
 Fecha de cierre: `2026-04-02`
 
+Nota de alcance posterior:
+
+- Este saneamiento fijo el estado vigente hasta el momento en que `E10` ya habia sido corrido, pero antes del cierre formal de promocion de esa rama.
+- El estado canonico posterior de `E10` debe leerse hoy junto con [cierre_formal_e10_no_promocionable.md](/home/emilio/Documentos/RAdAR/Experimentos/cierre_formal_e10_no_promocionable.md) y [consolidacion_operativa_post_produccion_controlada.md](/home/emilio/Documentos/RAdAR/Experimentos/consolidacion_operativa_post_produccion_controlada.md).
+- El estado canonico posterior de `E11` debe leerse hoy junto con [resumen_metodologico_e11_dual.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e11_dual.md), porque la primera apertura dual controlada ocurrio despues de este saneamiento.
+
 ## 1. Resumen ejecutivo del saneamiento realizado
 
 Se ejecutó un saneamiento canónico integral para alinear la lectura metodológica del proyecto Radar con el estado real de los artefactos y runs existentes.
@@ -26,7 +32,7 @@ El resultado es una sola lectura canónica y consistente entre plan, bitácora, 
 
 - [plan_de_experimentacion_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/plan_de_experimentacion_radar.md)
   - Se actualizó la fecha.
-  - Se corrigió el estado de `E10` a `modelado inicial fragil`.
+  - Se corrigió el estado de `E10` al estado vigente en ese momento: `modelado inicial fragil`.
   - Se corrigió la rama de clasificación: `C1` evaluada y pausada tempranamente; `C2-C4` con infraestructura preparada.
   - Se dejó explícita la clasificación de la capa explicativa transversal como `parcial intra-familia`.
   - Mejora trazabilidad porque el plan ya no contradice runs reales ni el inventario.
@@ -73,8 +79,8 @@ El resultado es una sola lectura canónica y consistente entre plan, bitácora, 
 - `E7`: intermedia. Referencia temporal secundaria.
 - `E8`: intermedia. Híbrido residual auditable, sin mejora suficiente frente a su base.
 - `E9`: pausada útil. `E9_v2_clean` es el referente operativo de riesgo-dirección-caídas.
-- `E10`: modelado inicial frágil. Ya fue abierta y corrida, pero no consolidada.
-- `E11`: planificada. Arquitectura dual numérica + categórica, todavía no ejecutada.
+- `E10`: cerrada para promoción. Ya fue abierta, corrida y evaluada; la lectura `modelado inicial fragil` quedó superada por el cierre posterior de promoción.
+- `E11`: evaluada sin promocion. Arquitectura dual numerica + categorica ya abierta en una primera tanda controlada, sin desplazamiento de `E1_v5_clean` ni de `E9_v2_clean`.
 - `C1`: evaluada y pausada tempranamente.
 - `C2`, `C3`, `C4`: infraestructura preparada, sin corrida real.
 
@@ -83,6 +89,7 @@ Lectura funcional vigente:
 - `E1_v5_clean` = referente numérico puro.
 - `E9_v2_clean` = referente operativo de riesgo-dirección-caídas.
 - `E10` = familia contextual ya abierta, pero aún frágil.
+- `E11` = familia dual ya abierta, con evidencia util pero no promocionable en su primera apertura.
 
 ## 5. Situación específica de E10
 
@@ -90,8 +97,8 @@ Lectura funcional vigente:
 - Corrida canónica real: sí, [E10_v1_clean_20260401_090439](/home/emilio/Documentos/RAdAR/Experimentos/runs/E10_v1_clean_20260401_090439).
 - Alcance real: meta-selector duro lineal, trazable y sin leakage.
 - Resultado real: metodológicamente limpio, pero sin superar al selector fijo ni a `E1_v5_clean` ni a `E9_v2_clean` en el global.
-- Estado canónico: `modelado inicial fragil`.
-- Lectura correcta: familia operativa en sentido técnico, todavía no competitiva en sentido metodológico.
+- Estado canónico: `cerrada para promocion`.
+- Lectura correcta: familia operativa en sentido técnico e históricamente útil, pero no competitiva ni promocionable bajo la formulación probada.
 
 ## 6. Situación específica de clasificación
 

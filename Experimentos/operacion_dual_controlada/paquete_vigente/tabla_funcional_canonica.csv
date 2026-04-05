@@ -1,0 +1,21 @@
+horizonte_sem,medida,E1_v5_clean,E9_v2_clean,ganador
+1,MAE,0.121907,0.123894,E1_v5_clean
+1,RMSE,0.16055,0.166878,E1_v5_clean
+1,Direction accuracy,0.846154,0.857143,E9_v2_clean
+1,Deteccion de caidas,0.833333,1.0,E9_v2_clean
+1,Loss_h,0.06486,0.051557,E9_v2_clean
+2,MAE,0.118495,0.136777,E1_v5_clean
+2,RMSE,0.15347,0.178276,E1_v5_clean
+2,Direction accuracy,0.76,0.72,E1_v5_clean
+2,Deteccion de caidas,0.7,0.833333,E9_v2_clean
+2,Loss_h,0.071501,0.063405,E9_v2_clean
+3,MAE,0.092137,0.12978,E1_v5_clean
+3,RMSE,0.123798,0.172374,E1_v5_clean
+3,Direction accuracy,0.666667,0.708333,E9_v2_clean
+3,Deteccion de caidas,0.818182,1.0,E9_v2_clean
+3,Loss_h,0.068181,0.073641,E1_v5_clean
+4,MAE,0.077511,0.115178,E1_v5_clean
+4,RMSE,0.108231,0.157989,E1_v5_clean
+4,Direction accuracy,0.702703,0.658824,E1_v5_clean
+4,Deteccion de caidas,0.777778,0.833333,E9_v2_clean
+4,Loss_h,0.0389,0.038906,E1_v5_clean

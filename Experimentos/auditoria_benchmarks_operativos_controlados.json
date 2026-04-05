@@ -1,0 +1,306 @@
+{
+  "registry_path": "/home/emilio/Documentos/RAdAR/Experimentos/registro_operacion_controlada_radar.json",
+  "inventory_path": "/home/emilio/Documentos/RAdAR/Experimentos/inventario_experimentos_radar.json",
+  "grid_workbook_path": "/home/emilio/Documentos/RAdAR/Experimentos/grid_experimentos_radar.xlsx",
+  "master_workbook_path": "/home/emilio/Documentos/RAdAR/Experimentos/tabla_maestra_experimentos_radar.xlsx",
+  "benchmark_count": 2,
+  "summary": {
+    "benchmarks_ok": 2,
+    "benchmarks_con_gaps": 0,
+    "dual_policy_gaps": 0,
+    "gaps_total": 0,
+    "estado_global": "ok"
+  },
+  "benchmarks": [
+    {
+      "benchmark_id": "benchmark_numerico_puro_vigente",
+      "run_id": "E1_v5_clean",
+      "plano_funcional": "numerico",
+      "run_dir": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_v5_clean_20260321_105449",
+      "runner_script_canonico": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e1_ridge_clean.py",
+      "artefactos_base": {
+        "metadata_run.json": true,
+        "parametros_run.json": true,
+        "metricas_horizonte.json": true,
+        "resumen_modeling_horizontes.json": true
+      },
+      "predicciones_por_horizonte": {
+        "H1": {
+          "path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_v5_clean_20260321_105449/predicciones_h1.csv",
+          "exists": true,
+          "rows": 26,
+          "columns": [
+            "fecha_inicio_semana",
+            "y_current",
+            "y_true",
+            "y_pred",
+            "y_true_model",
+            "y_pred_model",
+            "error",
+            "selected_feature_count",
+            "selected_features",
+            "best_alpha",
+            "inner_tuning_metric",
+            "inner_best_score",
+            "inner_split_count",
+            "horizonte_sem",
+            "target_mode",
+            "feature_mode",
+            "transform_mode",
+            "run_id",
+            "model_name"
+          ],
+          "has_required_columns": true,
+          "has_date_column": true
+        },
+        "H2": {
+          "path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_v5_clean_20260321_105449/predicciones_h2.csv",
+          "exists": true,
+          "rows": 25,
+          "columns": [
+            "fecha_inicio_semana",
+            "y_current",
+            "y_true",
+            "y_pred",
+            "y_true_model",
+            "y_pred_model",
+            "error",
+            "selected_feature_count",
+            "selected_features",
+            "best_alpha",
+            "inner_tuning_metric",
+            "inner_best_score",
+            "inner_split_count",
+            "horizonte_sem",
+            "target_mode",
+            "feature_mode",
+            "transform_mode",
+            "run_id",
+            "model_name"
+          ],
+          "has_required_columns": true,
+          "has_date_column": true
+        },
+        "H3": {
+          "path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_v5_clean_20260321_105449/predicciones_h3.csv",
+          "exists": true,
+          "rows": 24,
+          "columns": [
+            "fecha_inicio_semana",
+            "y_current",
+            "y_true",
+            "y_pred",
+            "y_true_model",
+            "y_pred_model",
+            "error",
+            "selected_feature_count",
+            "selected_features",
+            "best_alpha",
+            "inner_tuning_metric",
+            "inner_best_score",
+            "inner_split_count",
+            "horizonte_sem",
+            "target_mode",
+            "feature_mode",
+            "transform_mode",
+            "run_id",
+            "model_name"
+          ],
+          "has_required_columns": true,
+          "has_date_column": true
+        },
+        "H4": {
+          "path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_v5_clean_20260321_105449/predicciones_h4.csv",
+          "exists": true,
+          "rows": 23,
+          "columns": [
+            "fecha_inicio_semana",
+            "y_current",
+            "y_true",
+            "y_pred",
+            "y_true_model",
+            "y_pred_model",
+            "error",
+            "selected_feature_count",
+            "selected_features",
+            "best_alpha",
+            "inner_tuning_metric",
+            "inner_best_score",
+            "inner_split_count",
+            "horizonte_sem",
+            "target_mode",
+            "feature_mode",
+            "transform_mode",
+            "run_id",
+            "model_name"
+          ],
+          "has_required_columns": true,
+          "has_date_column": true
+        }
+      },
+      "snapshot_scripts": [
+        "run_e1_ridge_clean.py"
+      ],
+      "grid_alignment": {
+        "run_summary_rows": 1,
+        "resultados_grid_rows": 4,
+        "resultados_grid_horizontes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "run_artefactos_rows": 15
+      },
+      "inventory_alignment": {
+        "benchmark_rows": 1,
+        "canonical_run_rows": 1
+      },
+      "master_alignment": {
+        "benchmark_rows": 1
+      },
+      "gaps": [],
+      "estado_integridad": "ok"
+    },
+    {
+      "benchmark_id": "benchmark_operativo_riesgo_vigente",
+      "run_id": "E9_v2_clean",
+      "plano_funcional": "riesgo-direccion-caidas",
+      "run_dir": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E9_v2_clean_20260401_070431",
+      "runner_script_canonico": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e9_stacking.py",
+      "artefactos_base": {
+        "metadata_run.json": true,
+        "parametros_run.json": true,
+        "metricas_horizonte.json": true,
+        "resumen_modeling_horizontes.json": true
+      },
+      "predicciones_por_horizonte": {
+        "H1": {
+          "path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E9_v2_clean_20260401_070431/predicciones_h1.csv",
+          "exists": true,
+          "rows": 14,
+          "columns": [
+            "fecha_inicio_semana",
+            "fecha",
+            "y_current",
+            "y_true",
+            "y_pred",
+            "error",
+            "horizonte_sem",
+            "run_id",
+            "meta_model",
+            "n_modelos_base",
+            "E1_v5_clean",
+            "E5_v4_clean",
+            "E3_v2_clean",
+            "E2_v3_clean"
+          ],
+          "has_required_columns": true,
+          "has_date_column": true
+        },
+        "H2": {
+          "path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E9_v2_clean_20260401_070431/predicciones_h2.csv",
+          "exists": true,
+          "rows": 13,
+          "columns": [
+            "fecha_inicio_semana",
+            "fecha",
+            "y_current",
+            "y_true",
+            "y_pred",
+            "error",
+            "horizonte_sem",
+            "run_id",
+            "meta_model",
+            "n_modelos_base",
+            "E1_v5_clean",
+            "E5_v4_clean",
+            "E2_v3_clean",
+            "E7_v3_clean"
+          ],
+          "has_required_columns": true,
+          "has_date_column": true
+        },
+        "H3": {
+          "path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E9_v2_clean_20260401_070431/predicciones_h3.csv",
+          "exists": true,
+          "rows": 12,
+          "columns": [
+            "fecha_inicio_semana",
+            "fecha",
+            "y_current",
+            "y_true",
+            "y_pred",
+            "error",
+            "horizonte_sem",
+            "run_id",
+            "meta_model",
+            "n_modelos_base",
+            "E1_v5_clean",
+            "E5_v4_clean",
+            "E3_v2_clean",
+            "E7_v3_clean"
+          ],
+          "has_required_columns": true,
+          "has_date_column": true
+        },
+        "H4": {
+          "path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E9_v2_clean_20260401_070431/predicciones_h4.csv",
+          "exists": true,
+          "rows": 11,
+          "columns": [
+            "fecha_inicio_semana",
+            "fecha",
+            "y_current",
+            "y_true",
+            "y_pred",
+            "error",
+            "horizonte_sem",
+            "run_id",
+            "meta_model",
+            "n_modelos_base",
+            "E1_v5_clean",
+            "E5_v4_clean",
+            "E3_v2_clean",
+            "E2_v3_clean"
+          ],
+          "has_required_columns": true,
+          "has_date_column": true
+        }
+      },
+      "snapshot_scripts": [
+        "run_e9_stacking.py"
+      ],
+      "grid_alignment": {
+        "run_summary_rows": 1,
+        "resultados_grid_rows": 4,
+        "resultados_grid_horizontes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "run_artefactos_rows": 21
+      },
+      "inventory_alignment": {
+        "benchmark_rows": 1,
+        "canonical_run_rows": 1
+      },
+      "master_alignment": {
+        "benchmark_rows": 1
+      },
+      "gaps": [],
+      "estado_integridad": "ok"
+    }
+  ],
+  "dual_policy_alignment": {
+    "registry_dual_table_rows": 20,
+    "registry_dual_policy_rows": 6,
+    "inventory_dual_table_rows": 20,
+    "inventory_dual_policy_rows": 6,
+    "master_dual_table_rows": 20,
+    "master_dual_policy_rows": 6,
+    "gaps": [],
+    "estado_integridad": "ok"
+  }
+}

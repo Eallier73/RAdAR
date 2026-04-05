@@ -1,6 +1,6 @@
 # Plan de Experimentacion Radar
 
-Fecha de actualizacion: `2026-04-02`
+Fecha de actualizacion: `2026-04-03`
 
 ## Proposito
 
@@ -26,6 +26,7 @@ Su funcion es dejar por escrito:
 - Bitacora narrativa:
   [bitacora_experimental_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/bitacora_experimental_radar.md)
 - Cierres metodologicos por familia:
+  [resumen_metodologico_e1_1_bayesian.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e1_1_bayesian.md)
   [resumen_metodologico_e1_ridge.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e1_ridge.md)
   [resumen_metodologico_e2_huber.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e2_huber.md)
   [resumen_metodologico_e3_arboles.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e3_arboles.md)
@@ -36,6 +37,8 @@ Su funcion es dejar por escrito:
   [resumen_metodologico_e8_hibrido_residual.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e8_hibrido_residual.md)
   [resumen_metodologico_e9_stacking.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e9_stacking.md)
   [resumen_metodologico_e10_gating_contextual.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e10_gating_contextual.md)
+  [resumen_metodologico_e11_dual.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e11_dual.md)
+  [resumen_metodologico_e12_representacion.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e12_representacion.md)
   [resumen_metodologico_clasificacion_c1_c4.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_clasificacion_c1_c4.md)
 - Auditoria maestra retrospectiva:
   [resumen_auditoria_experimentos.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_auditoria_experimentos.md)
@@ -45,6 +48,26 @@ Su funcion es dejar por escrito:
   [actualizacion_metodologica_post_e9_e10_e11.md](/home/emilio/Documentos/RAdAR/Experimentos/actualizacion_metodologica_post_e9_e10_e11.md)
 - Informe canonico de saneamiento documental:
   [resumen_saneamiento_documental_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_saneamiento_documental_radar.md)
+- Fase rectora de produccion controlada:
+  [fase_produccion_controlada_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/fase_produccion_controlada_radar.md)
+- Politica de promocion futura:
+  [politica_promocion_sistemas_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/politica_promocion_sistemas_radar.md)
+- Consolidacion operativa posterior:
+  [consolidacion_operativa_post_produccion_controlada.md](/home/emilio/Documentos/RAdAR/Experimentos/consolidacion_operativa_post_produccion_controlada.md)
+- Fase operativa dual vigente:
+  [fase_produccion_controlada_dual_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/fase_produccion_controlada_dual_radar.md)
+- Politica operativa del sistema dual:
+  [politica_operativa_sistema_dual_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/politica_operativa_sistema_dual_radar.md)
+- Preparacion formal para automatizacion:
+  [preparacion_automatizacion_radar.md](/home/emilio/Documentos/RAdAR/Experimentos/preparacion_automatizacion_radar.md)
+- Verificacion de reproducibilidad dual:
+  [verificacion_reproducibilidad_dual_controlada.md](/home/emilio/Documentos/RAdAR/Experimentos/verificacion_reproducibilidad_dual_controlada.md)
+- Resumen metodologico de operacion controlada:
+  [resumen_metodologico_operacion_controlada.md](/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_operacion_controlada.md)
+- Cierre formal de `E10`:
+  [cierre_formal_e10_no_promocionable.md](/home/emilio/Documentos/RAdAR/Experimentos/cierre_formal_e10_no_promocionable.md)
+- Especificacion futura de `E11`:
+  [especificacion_futura_e11_dual.md](/home/emilio/Documentos/RAdAR/Experimentos/especificacion_futura_e11_dual.md)
 
 ## Principios que no cambiaron
 
@@ -59,6 +82,37 @@ Aunque el rumbo experimental si cambio varias veces, la disciplina metodologica 
 - `L_total_Radar`
 - trazabilidad por run y por artefacto
 - prohibicion de leakage en tuning, seleccion y transformaciones
+
+## Fase vigente del proyecto
+
+La expansion experimental del proyecto queda temporalmente cerrada.
+
+La fase vigente ya no es abrir nuevas familias. La fase vigente es una **produccion controlada dual**.
+
+Esto significa:
+
+- la salida numerica principal queda congelada en `E1_v5_clean`
+- la deteccion de caidas queda congelada en `E9_v2_clean`
+- la lectura direccional queda congelada con politica fija `9-1-9-1`
+- la operacion dual queda empaquetada y auditable
+- la siguiente etapa formal del proyecto pasa a ser preparacion para automatizacion, no nueva exploracion por inercia
+
+La capa experimental no se borra, pero deja de ser la prioridad operativa. Solo podria reabrirse bajo una nueva hipotesis fuerte, acotada y explicitamente documentada.
+
+Benchmarks operativos vigentes:
+
+- benchmark numerico puro: `E1_v5_clean`
+- benchmark operativo de riesgo-direccion-caidas: `E9_v2_clean`
+- politica direccional fija por horizonte: `H1=E9`, `H2=E1`, `H3=E9`, `H4=E1`
+
+Lectura obligatoria:
+
+- `E1_v5_clean` no reemplaza a `E9_v2_clean`
+- `E9_v2_clean` no reemplaza a `E1_v5_clean`
+- `E10` ya fue probado y queda cerrado para promocion bajo su formulacion actual
+- `E11` ya fue abierta con tres variantes controladas y queda evaluada sin promocion en su primera apertura dual
+- `E12` ya fue abierta, no produjo mejora defendible y no justifica expansion inmediata
+- el sistema vigente no es un modelo unico sino un sistema compuesto / dual con asignacion funcional por salida
 
 ## Arquitectura original planeada
 
@@ -86,8 +140,8 @@ La arquitectura original llegaba hasta `E9`. Despues de la evidencia acumulada e
 Importante:
 
 - `E10` no reabre `E9`; la sucede con una pregunta distinta.
-- `E11` no es una corrida inmediata ni una mezcla improvisada con `E10`.
-- `E11` queda abierta solo como linea conceptual futura, todavia no ejecutable.
+- `E11` no fue una continuidad informal de `E10`; se abrio como arquitectura distinta y controlada.
+- `E11` ya no queda solo conceptual: su primera apertura dual ya fue ejecutada y no produjo una variante promocionable.
 
 Scripts previstos en la arquitectura:
 
@@ -125,9 +179,9 @@ Estado actual:
 - rama documentada: si
 - runners por familia preparados: si
 - prompts guardados: si
-- corridas ejecutadas: `C1_v1_clean`, `C1_v2_clean`, `C1_v3_clean`
-- familias con corrida real: `C1`
-- familias con infraestructura pero sin corrida: `C2`, `C3`, `C4`
+- corridas ejecutadas: `C1_v1_clean`, `C1_v2_clean`, `C1_v3_clean`, `C2_v1_clean`, `C2_v2_clean`, `C2_v3_clean`
+- familias con corrida real: `C1`, `C2`
+- familias con infraestructura pero sin corrida: `C3`, `C4`
 - prioridad actual: baja; la rama queda abierta pero no prioritaria
 
 Organizacion actual de la documentacion:
@@ -157,15 +211,16 @@ Documento de cierre de rama:
 | `E7` Prophet | abierta | `E7_v3_clean` | supera a E6 pero sigue por detrás del bloque contendiente |
 | `E8` hibridos residuales | abierta | `E8_v2_clean` | híbrido residual válido, pero no competitivo frente al bloque fuerte |
 | `E9` stacking | pausada util | `E9_v2_clean` | mejor rama actual de riesgo-direccion-caidas; no reemplaza a E1 y queda en pausa metodologica |
-| `E10` gating contextual | modelado inicial fragil | `E10_v1_clean` | ya tiene corrida canonica; la señal de seleccion existe pero no supera a selector fijo ni a benchmarks centrales |
-| `E11` dual numerica+categórica | planificada | n/a | familia futura para separar pronostico numerico del porcentaje y clasificacion operativa del movimiento |
+| `E10` gating contextual | cerrada para promocion | `E10_v1_clean` | corrida real ya evaluada; no supera a selector fijo ni a benchmarks centrales y no procede promocion bajo su formulacion actual |
+| `E11` dual numerica+categórica | evaluada sin promocion | `E11_v2_clean` | primera apertura dual ya ejecutada; agrega evidencia util, pero no desplaza a `E1_v5_clean` ni a `E9_v2_clean` |
+| `E12` representacion por horizonte | evaluada sin promocion | `E12_v3_clean` | primera apertura de representacion enriquecida; deja hallazgo parcial sobre desacuerdo entre bases, pero no mejora a `E1_v5_clean` ni a `E9_v2_clean` |
 
 ### Estado resumido de la rama de clasificacion
 
 | familia | estado actual | mejor run interno | lectura vigente |
 |---|---|---|---|
 | `C1` RandomForestClassifier | evaluada y pausada tempranamente | n/a | tres corridas reales, pero colapsaron a clase unica y no dejaron señal discriminativa util |
-| `C2` XGBoostClassifier | infraestructura preparada | n/a | runner y prompts listos, sin corrida real |
+| `C2` XGBoostClassifier | evaluada y pausada tempranamente | `C2_v1_clean` | tres corridas reales y mismo colapso de clase unica observado en C1; no agrega señal útil |
 | `C3` CatBoostClassifier | infraestructura preparada | n/a | runner y prompts listos, sin corrida real |
 | `C4` LightGBMClassifier | infraestructura preparada | n/a | runner y prompts listos, sin corrida real |
 
@@ -555,16 +610,15 @@ Documento de cierre:
 
 #### Lectura vigente
 
-- `E10` sigue porque la evidencia de `E9_v2_clean` sugiere que la utilidad del sistema ya no se agota en encontrar un unico ganador global.
-- El proyecto necesita una familia que explore decision contextual o gating sin mezclar todavía la tarea numerica y la tarea categorica en una sola arquitectura improvisada.
+- `E10` ya cumplio la funcion de probar si un selector duro contextual podia desplazar de forma defendible a los referentes vigentes.
 - `E10_v1_clean` resolvio la primera pregunta de apertura con un selector duro lineal y trazable:
   - el experimento fue metodologicamente limpio
   - no supero al selector fijo en el global
   - no supero a `E1_v5_clean`
   - no supero a `E9_v2_clean`
-  - solo mostro señal parcial en `H2-H4`, especialmente `H4`
-- En consecuencia, `E10` ya no esta en premodelado. Queda en `modelado inicial fragil`, abierto pero no consolidado.
-- El siguiente movimiento prudente no es escalar complejidad, sino reformular el problema de seleccion antes de un eventual `E10_v2`.
+  - las accuracies del selector por horizonte fueron bajas
+- En consecuencia, `E10` ya no esta en premodelado ni en incubacion promocionable. Queda cerrada para promocion bajo la formulacion probada.
+- `E10` se conserva como antecedente metodologico util para la frontera futura, pero no como siguiente linea activa.
 
 Documento de cierre:
 
@@ -574,30 +628,76 @@ Documento de cierre:
 
 #### Estado actual
 
-- `E11` queda abierta formalmente en el plan, pero solo como familia conceptual futura.
-- No debe correrse todavia.
-- No debe contaminar la evaluacion de `E10`.
+- `E11` ya fue abierta con tres variantes controladas:
+  - `E11_v1_clean`
+  - `E11_v2_clean`
+  - `E11_v3_clean`
+- La mejor apertura interna fue `E11_v2_clean`.
+- La familia no deja una variante promocionable todavia.
+- `E11` ya no debe leerse como simple especificacion futura, pero tampoco como solucion vigente.
 
 #### Definicion metodologica
 
-`E11` debera explorar una arquitectura con dos componentes distintos:
+La primera apertura de `E11` exploro una arquitectura con dos componentes distintos:
 
 - componente numerico: estimacion del porcentaje, nivel o cambio esperado
 - componente categorico / operativo: clasificacion de sube, baja o se mantiene
 
-Y, si mas adelante se justifica:
+La evidencia de apertura deja esta lectura:
 
-- una version ordinal o de intensidad:
-  - baja fuerte
-  - baja moderada
-  - se mantiene
-  - sube moderada
-  - sube fuerte
+- la version ternaria simple `baja / se_mantiene / sube` siguio casi colapsada a estabilidad
+- la version binaria `cae / no_cae` si dejo una señal operativa moderada
+- la capa residual dual no mejoro el global frente a `E1_v5_clean`
+- la autopsia posterior mostro que `+-0.5` era un threshold excesivo para la escala real del delta, por lo que la lectura ternaria no debe darse por refutada de forma estructural total
 
 #### Diferencia conceptual frente a E10
 
 - `E10` pregunta cuando conviene que familia o salida dentro de una arquitectura contextual.
 - `E11` pregunta si el Radar necesita separar explicitamente la tarea numerica y la tarea categorica como dos problemas distintos y coordinados.
+
+#### Decision vigente
+
+- `E11` queda abierta como evidencia dual ya ejecutada.
+- `E11` no queda promocionable.
+- `E11_v2_clean` conserva valor como mejor apertura interna porque agrega detector binario de caidas sin deterioro numerico.
+- `E11_v3_clean` no justifica todavia una expansion residual adicional.
+- cualquier reapertura futura debe ser una reformulacion dual nueva y no un simple reciclaje de `E10`.
+
+### E12 Representacion por horizonte
+
+#### Estado actual
+
+- `E12` ya fue abierta con tres variantes controladas:
+  - `E12_v1_clean`
+  - `E12_v2_clean`
+  - `E12_v3_clean`
+- La mejor apertura interna fue `E12_v3_clean`.
+- La familia no deja una variante promocionable.
+- `E12` no debe leerse como reapertura de `E9` ni como selector ex post disfrazado.
+
+#### Definicion metodologica
+
+La primera apertura de `E12` exploro una pregunta de representacion:
+
+- si parte de la ventaja operativa observada en `E9_v2_clean`, sobre todo en `H1`, podia absorberse dentro de un `Ridge` simple y trazable;
+- usando predicciones archivadas de bases heterogeneas, consensos, spreads y, cuando aplica, regimen observable en `t`.
+
+La evidencia de apertura deja esta lectura:
+
+- `E12_v1_clean` prueba un bloque minimo de representacion y empeora claramente frente a los benchmarks;
+- `E12_v2_clean` amplia la diversidad funcional, pero agrega complejidad sin mejora defendible;
+- `E12_v3_clean` aisla el desacuerdo entre bases y queda como mejor variante interna;
+- ninguna variante mejora `H1` frente a `E1_v5_clean`;
+- ninguna variante supera a `E9_v2_clean` en el mismo subset comun;
+- la hipotesis fuerte de absorber la ventaja de `E9` via representacion no queda confirmada.
+
+#### Decision vigente
+
+- `E12` queda evaluada sin promocion.
+- `E12_v3_clean` conserva valor como hallazgo parcial:
+  - el desacuerdo entre bases parece aportar mas que el bloque de regimen usado aqui
+  - pero la mejora no alcanza el umbral de expansion inmediata
+- cualquier reapertura futura debe partir de una hipotesis de `H1` mas precisa y no de ampliar features por inercia.
 
 ## Por que cambio el rumbo del plan
 
@@ -690,16 +790,22 @@ El plan vigente deja una secuencia principal clara:
 - no descartada
 - no ganadora absoluta
 
-3. abrir `E10` como siguiente familia activa:
-- gating o meta-selector contextual
-- distinta de `E9`
-- con tabla operativa ya construida
-- con `E10_v1_clean` ya ejecutada como primera apertura
-- pendiente de decidir si la familia merece `E10_v2` o una reformulacion previa del problema
+3. dejar `E10` cerrada para promocion bajo su formulacion actual:
+- corrida real ya ejecutada
+- hipotesis principal no confirmada
+- conservar como antecedente metodologico, no como linea activa
 
-4. dejar `E11` como familia futura solo planificada:
-- arquitectura dual numerica + categorica
-- sin ejecucion todavia
+4. mantener `E11` abierta sin promocion:
+- primera apertura dual ya ejecutada
+- mejor run interno `E11_v2_clean`
+- sin evidencia suficiente para reemplazar la salida dual vigente
+
+5. fijar la siguiente pregunta correcta antes de abrir una nueva familia:
+- la autopsia `E1_v5_clean` vs `E9_v2_clean` sugiere que la ventaja operativa de `E9_v2_clean` se explica mas por representacion que por arquitectura pura
+- la mejor recombinacion ex post por horizonte usa `E9` solo en `H1` y `E1` en `H2-H4`, pero no es promocionable
+- la clasificacion ternaria solo deberia reabrirse en el futuro con thresholds recalibrados, no con `+-0.5`
+- `E2` queda definitivamente cerrada sin expansion adicional
+- `E12` ya probo una primera apertura limpia de representacion y no deja una mejora defendible; por tanto, no procede otra familia nueva por inercia
 
 ## Regla de lectura para futuras decisiones
 
@@ -724,9 +830,11 @@ Hoy las referencias que guian cualquier apertura nueva son:
 - La evidencia sugiere una estructura funcional dual:
   - mejor referente numerico puro
   - mejor referente de riesgo-direccion-caidas
-- La rama de clasificacion existe de forma real, pero hoy solo `C1` fue ejecutada y quedo pausada tempranamente por colapso del target.
+- La rama de clasificacion existe de forma real, pero hoy `C1` y `C2` ya fueron ejecutadas y ambas quedaron pausadas tempranamente por colapso del target.
 - La capa explicativa transversal sigue siendo parcial intra-familia: hay seleccion de variables por horizonte en algunos runs, pero no una taxonomia homogenea de coeficientes, importancias o SHAP comparable entre familias.
 - En consecuencia:
   - `E9` queda pausada como rama util pero no definitiva
-  - `E10` queda abierta en modelado inicial fragil tras `E10_v1_clean`
-  - `E11` queda abierta como futura familia explicitamente dual
+  - `E10` queda cerrada para promocion tras `E10_v1_clean`
+  - `E11` queda abierta como familia dual ya ejecutada, pero todavia no promocionable
+  - `E12` queda evaluada sin promocion como primera familia de representacion por horizonte
+  - la siguiente frontera razonable no es “otro algoritmo”, sino solo una futura hipotesis de representacion mas precisa si la evidencia justifica reabrir ese frente

@@ -1,0 +1,167 @@
+{
+  "comparacion_por_horizonte": [
+    {
+      "base_models": [
+        {
+          "deteccion_caidas": 0.8571428571428571,
+          "direccion_accuracy": 0.7857142857142857,
+          "loss_h": 0.06971811368050837,
+          "mae": 0.12358733303149272,
+          "rmse": 0.16298873201291136,
+          "run_id": "E1_v5_clean"
+        },
+        {
+          "deteccion_caidas": 0.8571428571428571,
+          "direccion_accuracy": 0.8571428571428571,
+          "loss_h": 0.06396243718914925,
+          "mae": 0.1212968706517944,
+          "rmse": 0.15397401518607012,
+          "run_id": "E5_v4_clean"
+        },
+        {
+          "deteccion_caidas": 0.7142857142857143,
+          "direccion_accuracy": 0.7857142857142857,
+          "loss_h": 0.08334915684025108,
+          "mae": 0.12803511203069315,
+          "rmse": 0.15730921794073727,
+          "run_id": "E3_v2_clean"
+        },
+        {
+          "deteccion_caidas": 0.8571428571428571,
+          "direccion_accuracy": 0.8571428571428571,
+          "loss_h": 0.06485679495793567,
+          "mae": 0.12643694578604156,
+          "rmse": 0.15430586068117036,
+          "run_id": "E2_v3_clean"
+        }
+      ],
+      "best_base_loss_h": 0.06396243718914925,
+      "best_base_run_id": "E5_v4_clean",
+      "horizonte_sem": 1,
+      "rows_eval": 14
+    },
+    {
+      "base_models": [
+        {
+          "deteccion_caidas": 0.8333333333333334,
+          "direccion_accuracy": 0.7692307692307693,
+          "loss_h": 0.05997189340289011,
+          "mae": 0.12292939671722357,
+          "rmse": 0.166407942177665,
+          "run_id": "E1_v5_clean"
+        },
+        {
+          "deteccion_caidas": 0.6666666666666666,
+          "direccion_accuracy": 0.6153846153846154,
+          "loss_h": 0.07765106499357288,
+          "mae": 0.11996518897079932,
+          "rmse": 0.15732833020949524,
+          "run_id": "E5_v4_clean"
+        },
+        {
+          "deteccion_caidas": 0.6666666666666666,
+          "direccion_accuracy": 0.6153846153846154,
+          "loss_h": 0.08033888166258088,
+          "mae": 0.13850217285973654,
+          "rmse": 0.18011063354707102,
+          "run_id": "E2_v3_clean"
+        },
+        {
+          "deteccion_caidas": 1.0,
+          "direccion_accuracy": 0.7692307692307693,
+          "loss_h": 0.049984821810832136,
+          "mae": 0.12589217206890976,
+          "rmse": 0.15769133854798387,
+          "run_id": "E7_v3_clean"
+        }
+      ],
+      "best_base_loss_h": 0.049984821810832136,
+      "best_base_run_id": "E7_v3_clean",
+      "horizonte_sem": 2,
+      "rows_eval": 13
+    },
+    {
+      "base_models": [
+        {
+          "deteccion_caidas": 1.0,
+          "direccion_accuracy": 0.8333333333333334,
+          "loss_h": 0.05774201018660035,
+          "mae": 0.13070344457516092,
+          "rmse": 0.17240238832716118,
+          "run_id": "E1_v5_clean"
+        },
+        {
+          "deteccion_caidas": 1.0,
+          "direccion_accuracy": 0.8333333333333334,
+          "loss_h": 0.05485893296243494,
+          "mae": 0.12850181365837368,
+          "rmse": 0.16362953096898275,
+          "run_id": "E5_v4_clean"
+        },
+        {
+          "deteccion_caidas": 1.0,
+          "direccion_accuracy": 0.8333333333333334,
+          "loss_h": 0.057873329317771074,
+          "mae": 0.1314581651403968,
+          "rmse": 0.16967401853956907,
+          "run_id": "E3_v2_clean"
+        },
+        {
+          "deteccion_caidas": 1.0,
+          "direccion_accuracy": 0.9166666666666666,
+          "loss_h": 0.05775728635745874,
+          "mae": 0.15234333310172266,
+          "rmse": 0.19099550442522611,
+          "run_id": "E7_v3_clean"
+        }
+      ],
+      "best_base_loss_h": 0.05485893296243494,
+      "best_base_run_id": "E5_v4_clean",
+      "horizonte_sem": 3,
+      "rows_eval": 12
+    },
+    {
+      "base_models": [
+        {
+          "deteccion_caidas": 0.8333333333333334,
+          "direccion_accuracy": 0.7272727272727273,
+          "loss_h": 0.03812582363114951,
+          "mae": 0.12344418129077338,
+          "rmse": 0.17320265724033385,
+          "run_id": "E1_v5_clean"
+        },
+        {
+          "deteccion_caidas": 0.8333333333333334,
+          "direccion_accuracy": 0.8181818181818182,
+          "loss_h": 0.03380590729743945,
+          "mae": 0.12864899379285677,
+          "rmse": 0.1838055328344494,
+          "run_id": "E5_v4_clean"
+        },
+        {
+          "deteccion_caidas": 0.8333333333333334,
+          "direccion_accuracy": 0.8181818181818182,
+          "loss_h": 0.03450233921667223,
+          "mae": 0.12097984595553958,
+          "rmse": 0.17475993341554294,
+          "run_id": "E3_v2_clean"
+        },
+        {
+          "deteccion_caidas": 0.8333333333333334,
+          "direccion_accuracy": 0.8181818181818182,
+          "loss_h": 0.03904344863490027,
+          "mae": 0.1575031497331969,
+          "rmse": 0.18317704571884916,
+          "run_id": "E2_v3_clean"
+        }
+      ],
+      "best_base_loss_h": 0.03380590729743945,
+      "best_base_run_id": "E5_v4_clean",
+      "horizonte_sem": 4,
+      "rows_eval": 11
+    }
+  ],
+  "meta_model": "huber",
+  "run_id": "E9_v2_operativo_rebuild",
+  "table_path": "/home/emilio/Documentos/RAdAR/Experimentos/tabla_maestra_experimentos_radar_e9_curada.xlsx"
+}

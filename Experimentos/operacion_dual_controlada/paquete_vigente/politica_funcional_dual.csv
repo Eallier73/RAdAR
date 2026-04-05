@@ -1,0 +1,7 @@
+capa,politica_operativa,detalle
+salida_numerica_principal,Siempre E1_v5_clean,Forecast numerico oficial del sistema
+deteccion_de_caidas,Siempre E9_v2_clean,Alerta oficial de caida por horizonte
+direction_accuracy_H1,E9_v2_clean,Politica fija direccional por horizonte
+direction_accuracy_H2,E1_v5_clean,Politica fija direccional por horizonte
+direction_accuracy_H3,E9_v2_clean,Politica fija direccional por horizonte
+direction_accuracy_H4,E1_v5_clean,Politica fija direccional por horizonte

@@ -45,6 +45,8 @@ Runners por familia:
 - `run_e7_prophet.py`
 - `run_e8_hibrido_residuales.py`
 - `run_e9_stacking.py`
+- `run_e11_dual.py`
+- `run_e12_representacion.py`
 - `run_c1_random_forest_classifier.py`
 - `run_c2_xgboost_classifier.py`
 - `run_c3_catboost_classifier.py`
@@ -72,10 +74,13 @@ Estado metodologico:
 - `E9` ya no usa el stacking tabular generico anterior; consume directamente la tabla curada `tabla_maestra_experimentos_radar_e9_curada.xlsx`, restringe por default a `fila_completa == True` y reconstruye `y_current` desde el dataset maestro solo para evaluar metricas Radar sin leakage.
 - `E9_v2_clean` queda como mejor run interno de la familia de stacking clasico controlado y como referente operativo actual de riesgo-direccion-caidas.
 - `E10` ya tiene infraestructura de datos especifica en `build_e10_meta_selector_table.py`, que construye la tabla operativa de meta-seleccion/gating a partir de predicciones OOF, contexto observable, desacuerdo entre modelos y etiquetas retrospectivas del selector.
-- `E10` ya tiene runner canonico en `run_e10_meta_selector.py` y una primera corrida canonica `E10_v1_clean`; la familia ya paso de premodelado a modelado inicial fragil, aunque todavia sin consolidarse frente a los benchmarks centrales.
-- `E11` queda solo como familia conceptual futura de arquitectura dual numerica + categorica.
+- `E10` ya tiene runner canonico en `run_e10_meta_selector.py` y una primera corrida canonica `E10_v1_clean`; la familia ya fue probada y queda cerrada para promocion bajo su formulacion actual porque no supero al selector fijo ni a los benchmarks centrales.
+- `E11` ya fue abierta con tres variantes controladas (`E11_v1_clean`, `E11_v2_clean`, `E11_v3_clean`) y queda evaluada sin promocion; `E11_v2_clean` es la mejor apertura interna, pero no desplaza a `E1_v5_clean` ni a `E9_v2_clean`.
+- La autopsia posterior a `E11` deja dos lecturas utiles: la ventaja operativa de `E9_v2_clean` se concentra sobre todo en `H1` y es mas consistente con representacion enriquecida que con una ventaja puramente arquitectonica; ademas, el `movement_threshold=0.5` de la formulacion ternaria de `E11_v1_clean` resulto excesivo y `+-0.15` queda como valor preferente para una futura reapertura prudente.
+- `E12` ya fue abierta como familia de representacion enriquecida con tres variantes (`E12_v1_clean`, `E12_v2_clean`, `E12_v3_clean`) sobre un `Ridge` simple. Ninguna variante mejora de forma defendible a `E1_v5_clean` ni a `E9_v2_clean`; `E12_v3_clean` deja el mejor hallazgo interno porque el desacuerdo entre bases aporta mas que el bloque de regimen, pero la familia queda evaluada sin promocion.
 - `C1` ya tiene tres corridas canonicas (`C1_v1_clean`, `C1_v2_clean`, `C1_v3_clean`) y queda pausada tempranamente por colapso del target a clase unica.
-- `C2`, `C3` y `C4` quedan con infraestructura preparada y sin corridas ejecutadas todavia.
+- `C2` ya tiene tres corridas canonicas (`C2_v1_clean`, `C2_v2_clean`, `C2_v3_clean`) y replica el mismo colapso de clase unica observado en `C1`, por lo que tambien queda pausada tempranamente.
+- `C3` y `C4` quedan con infraestructura preparada y sin corridas ejecutadas todavia.
 - La clasificacion reutiliza el mismo `RadarExperimentTracker`; no abre un tracker paralelo.
 - La capa explicativa transversal del proyecto sigue siendo parcial intra-familia: hay `features_seleccionadas_h*.csv` en algunos runs, pero no coeficientes, importancias o SHAP exportados de forma homogénea y comparable entre familias.
 
@@ -83,11 +88,38 @@ Documentacion canonica asociada:
 
 - `/home/emilio/Documentos/RAdAR/Experimentos/plan_de_experimentacion_radar.md`
 - `/home/emilio/Documentos/RAdAR/Experimentos/bitacora_experimental_radar.md`
+- `/home/emilio/Documentos/RAdAR/Experimentos/fase_produccion_controlada_radar.md`
+- `/home/emilio/Documentos/RAdAR/Experimentos/fase_produccion_controlada_dual_radar.md`
+- `/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_operacion_controlada.md`
+- `/home/emilio/Documentos/RAdAR/Experimentos/politica_operativa_sistema_dual_radar.md`
+- `/home/emilio/Documentos/RAdAR/Experimentos/preparacion_automatizacion_radar.md`
+- `/home/emilio/Documentos/RAdAR/Experimentos/politica_promocion_sistemas_radar.md`
+- `/home/emilio/Documentos/RAdAR/Experimentos/consolidacion_operativa_post_produccion_controlada.md`
+- `/home/emilio/Documentos/RAdAR/Experimentos/cierre_formal_e10_no_promocionable.md`
+- `/home/emilio/Documentos/RAdAR/Experimentos/especificacion_futura_e11_dual.md`
 - `/home/emilio/Documentos/RAdAR/Experimentos/diccionario_constructos_canonicos_radar.md`
+- `/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e1_1_bayesian.md`
 - `/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e5_catboost.md`
 - `/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e6_arimax.md`
 - `/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e7_prophet.md`
 - `/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e8_hibrido_residual.md`
 - `/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e9_stacking.md`
 - `/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e10_gating_contextual.md`
+- `/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e11_dual.md`
+- `/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_e12_representacion.md`
+- `/home/emilio/Documentos/RAdAR/Experimentos/constructos_representacion_e12.md`
+- `/home/emilio/Documentos/RAdAR/Scripts/Modeling/analyze_post_e11_decision_phase.py`
+- `/home/emilio/Documentos/RAdAR/Experimentos/autopsia_e1_v5_vs_e9_v2.md`
+- `/home/emilio/Documentos/RAdAR/Experimentos/analisis_recombinacion_ex_post_horizontes_e1_e9.md`
+- `/home/emilio/Documentos/RAdAR/Experimentos/recomendacion_thresholds_e11_o_futura_clasificacion.md`
+- `/home/emilio/Documentos/RAdAR/Experimentos/resumen_resultados_e2_verificacion_tactica.md`
+- `/home/emilio/Documentos/RAdAR/Experimentos/decision_formal_siguiente_paso_post_e11.md`
+- `/home/emilio/Documentos/RAdAR/Experimentos/resumen_resultados_e12_apertura_controlada.md`
 - `/home/emilio/Documentos/RAdAR/Experimentos/resumen_metodologico_clasificacion_c1_c4.md`
+
+Separacion de capas vigente:
+
+- `Scripts/Modeling/` sigue siendo la capa experimental canonica.
+- `Scripts/Operational_Controlada/` concentra la capa operativa controlada y no redefine la logica de evaluacion.
+- Los benchmarks operativos vigentes se congelan contra los artefactos reales de `E1_v5_clean` y `E9_v2_clean`.
+- La fase vigente del proyecto ya no es abrir nuevas familias, sino operar el sistema dual compuesto y preparar la futura automatizacion sin reinterpretar la politica funcional congelada.

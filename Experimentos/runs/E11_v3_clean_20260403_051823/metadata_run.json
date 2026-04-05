@@ -1,0 +1,12 @@
+{
+  "created_at": "2026-04-03 05:18:23",
+  "experiment_id": "E11",
+  "family": "arquitectura_dual_controlada",
+  "model": "dual_residual_dual",
+  "parametros_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E11_v3_clean_20260403_051823/parametros_run.json",
+  "run_dir": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E11_v3_clean_20260403_051823",
+  "run_id": "E11_v3_clean",
+  "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e11_dual.py",
+  "snapshot_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E11_v3_clean_20260403_051823/scripts/run_e11_dual.py",
+  "task_type": "regresion"
+}

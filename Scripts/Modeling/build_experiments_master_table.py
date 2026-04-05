@@ -318,25 +318,41 @@ FAMILY_STATUS_VIGENTE_ROWS: tuple[dict[str, str], ...] = (
     },
     {
         "family": "E10",
-        "estado_vigente": "modelado inicial fragil",
+        "estado_vigente": "cerrada para promocion",
         "mejor_run": "E10_v1_clean",
-        "rol_funcional": "selector contextual duro",
+        "rol_funcional": "antecedente metodologico de seleccion contextual",
         "decision_metodologica": (
-            "E10 ya tiene corrida canonica inicial. E10_v1_clean fue metodologicamente limpio y trazable, "
-            "pero no supero al selector fijo, a E1_v5_clean ni a E9_v2_clean; la familia queda abierta en "
-            "evaluacion fragil, no en premodelado."
+            "E10 ya fue probado con E10_v1_clean. La corrida fue metodologicamente limpia y trazable, "
+            "pero no supero al selector fijo, a E1_v5_clean ni a E9_v2_clean; la hipotesis de promocion "
+            "no quedo confirmada y la rama se cierra para promocion bajo su formulacion actual."
         ),
-        "siguiente_movimiento": "reformular selector antes de E10_v2; no escalar aun",
+        "siguiente_movimiento": "conservar como antecedente; no reabrir sin reformulacion fuerte",
     },
     {
         "family": "E11",
-        "estado_vigente": "planificada",
-        "mejor_run": "",
-        "rol_funcional": "arquitectura dual numerica + categorica",
+        "estado_vigente": "evaluada sin promocion",
+        "mejor_run": "E11_v2_clean",
+        "rol_funcional": "apertura dual numerica + categorica",
         "decision_metodologica": (
-            "Familia futura para separar pronostico numerico del porcentaje y prediccion categorica del movimiento."
+            "E11 ya fue abierta con tres variantes controladas. E11_v1_clean y E11_v2_clean preservan "
+            "exactamente el bloque numerico de E1_v5_clean; E11_v2_clean agrega una capa binaria de caidas "
+            "con senal moderada; E11_v3_clean no mejora el global. Ninguna variante desplaza a E1_v5_clean "
+            "ni a E9_v2_clean y la familia queda abierta solo como evidencia dual no promocionable todavia."
         ),
-        "siguiente_movimiento": "preapertura conceptual; no ejecutar todavia",
+        "siguiente_movimiento": "sin promocion; congelar apertura y solo reabrir con hipotesis dual realmente nueva",
+    },
+    {
+        "family": "E12",
+        "estado_vigente": "evaluada sin promocion",
+        "mejor_run": "E12_v3_clean",
+        "rol_funcional": "representacion enriquecida por horizonte",
+        "decision_metodologica": (
+            "E12 abrio la pregunta de si parte de la ventaja operativa de E9 podia absorberse mediante "
+            "representacion enriquecida dentro de un Ridge simple y trazable. Ninguna de sus tres variantes "
+            "mejora de forma defendible a E1_v5_clean ni a E9_v2_clean; la mejor lectura es un hallazgo "
+            "parcial de que el bloque de desacuerdo aporta mas que el bloque de regimen, pero sin promocion."
+        ),
+        "siguiente_movimiento": "sin expansion inmediata; reabrir solo con hipotesis de H1 mas precisa y defendible",
     },
     {
         "family": "C1",
@@ -351,13 +367,14 @@ FAMILY_STATUS_VIGENTE_ROWS: tuple[dict[str, str], ...] = (
     },
     {
         "family": "C2",
-        "estado_vigente": "infraestructura preparada",
-        "mejor_run": "",
+        "estado_vigente": "evaluada y pausada tempranamente",
+        "mejor_run": "C2_v1_clean",
         "rol_funcional": "clasificacion boosting",
         "decision_metodologica": (
-            "La familia tiene runner y prompt canonicos, pero no corridas ejecutadas todavia."
+            "C2 si se ejecuto con tres corridas canonicas de XGBoost, pero las tres reprodujeron el mismo "
+            "colapso a clase unica observado en C1 y no agregaron senal discriminativa util."
         ),
-        "siguiente_movimiento": "no prioritaria; ejecutar solo si se redefine la agenda de clasificacion",
+        "siguiente_movimiento": "sin expansion inmediata; revisar target clasificacion antes de reactivar",
     },
     {
         "family": "C3",
@@ -391,13 +408,119 @@ FAMILY_CANONICAL_CONSTRUCTS: dict[str, str] = {
     "E7": "referencia temporal secundaria",
     "E8": "hibrido residual auditable",
     "E9": "rama operativa de riesgo-direccion-caidas",
-    "E10": "selector contextual inicial",
-    "E11": "linea futura dual numerica+categórica",
+    "E10": "selector contextual probado y no promovido",
+    "E11": "apertura dual controlada no promocionable",
+    "E12": "familia de representacion enriquecida evaluada",
     "C1": "clasificacion base evaluada",
-    "C2": "clasificacion boosting preparada",
+    "C2": "clasificacion boosting evaluada",
     "C3": "clasificacion boosting preparada",
     "C4": "clasificacion boosting preparada",
 }
+
+OPERATIONAL_BENCHMARK_ROWS: tuple[dict[str, str], ...] = (
+    {
+        "benchmark_id": "benchmark_numerico_puro_vigente",
+        "plano_funcional": "numerico",
+        "run_id": "E1_v5_clean",
+        "estado_operativo": "vigente",
+        "rol_operativo": "benchmark numerico puro",
+        "justificacion": (
+            "Mejor referente actual para pronostico numerico puro del Radar; permanece como benchmark "
+            "operativo controlado mientras no exista una arquitectura futura que lo supere de forma defendible."
+        ),
+    },
+    {
+        "benchmark_id": "benchmark_operativo_riesgo_vigente",
+        "plano_funcional": "riesgo-direccion-caidas",
+        "run_id": "E9_v2_clean",
+        "estado_operativo": "vigente",
+        "rol_operativo": "benchmark operativo de riesgo-direccion-caidas",
+        "justificacion": (
+            "Mejor referente actual de direccion y deteccion de caidas; permanece como benchmark operativo "
+            "controlado sin reemplazar al benchmark numerico puro."
+        ),
+    },
+)
+
+RADAR_LAYER_ROWS: tuple[dict[str, str], ...] = (
+    {
+        "capa": "experimental",
+        "estado": "activa",
+        "alcance": "familias E1-E10 y ramas C1-C4 bajo disciplina temporal completa",
+        "objetivo": "seguir evaluando hipotesis nuevas con comparabilidad fuerte y trazabilidad por run",
+        "restriccion": "sin leakage, sin tuning con futuro, sin promotion por intuicion",
+    },
+    {
+        "capa": "operativa_controlada",
+        "estado": "activa",
+        "alcance": "ejecucion estable de benchmarks vigentes E1_v5_clean y E9_v2_clean",
+        "objetivo": "comparacion operativa controlada sin reescribir la logica canonica de los runners",
+        "restriccion": "no equivale a produccion final unificada; conserva dualidad funcional vigente",
+    },
+    {
+        "capa": "futura_dual",
+        "estado": "evaluada sin promocion",
+        "alcance": "familia E11 dual numerica + categorica",
+        "objetivo": "explorar una arquitectura compuesta que en el futuro pueda reemplazar la salida dual vigente",
+        "restriccion": "no promocionar ni vender como resuelta mientras no supere de forma defendible a E1_v5_clean y E9_v2_clean",
+    },
+)
+
+DUAL_FUNCTIONAL_METRIC_ROWS: tuple[dict[str, Any], ...] = (
+    {"horizonte_sem": 1, "medida": "MAE", "E1_v5_clean": 0.121907, "E9_v2_clean": 0.123894, "ganador": "E1_v5_clean"},
+    {"horizonte_sem": 1, "medida": "RMSE", "E1_v5_clean": 0.160550, "E9_v2_clean": 0.166878, "ganador": "E1_v5_clean"},
+    {"horizonte_sem": 1, "medida": "Direction accuracy", "E1_v5_clean": 0.846154, "E9_v2_clean": 0.857143, "ganador": "E9_v2_clean"},
+    {"horizonte_sem": 1, "medida": "Deteccion de caidas", "E1_v5_clean": 0.833333, "E9_v2_clean": 1.000000, "ganador": "E9_v2_clean"},
+    {"horizonte_sem": 1, "medida": "Loss_h", "E1_v5_clean": 0.064860, "E9_v2_clean": 0.051557, "ganador": "E9_v2_clean"},
+    {"horizonte_sem": 2, "medida": "MAE", "E1_v5_clean": 0.118495, "E9_v2_clean": 0.136777, "ganador": "E1_v5_clean"},
+    {"horizonte_sem": 2, "medida": "RMSE", "E1_v5_clean": 0.153470, "E9_v2_clean": 0.178276, "ganador": "E1_v5_clean"},
+    {"horizonte_sem": 2, "medida": "Direction accuracy", "E1_v5_clean": 0.760000, "E9_v2_clean": 0.720000, "ganador": "E1_v5_clean"},
+    {"horizonte_sem": 2, "medida": "Deteccion de caidas", "E1_v5_clean": 0.700000, "E9_v2_clean": 0.833333, "ganador": "E9_v2_clean"},
+    {"horizonte_sem": 2, "medida": "Loss_h", "E1_v5_clean": 0.071501, "E9_v2_clean": 0.063405, "ganador": "E9_v2_clean"},
+    {"horizonte_sem": 3, "medida": "MAE", "E1_v5_clean": 0.092137, "E9_v2_clean": 0.129780, "ganador": "E1_v5_clean"},
+    {"horizonte_sem": 3, "medida": "RMSE", "E1_v5_clean": 0.123798, "E9_v2_clean": 0.172374, "ganador": "E1_v5_clean"},
+    {"horizonte_sem": 3, "medida": "Direction accuracy", "E1_v5_clean": 0.666667, "E9_v2_clean": 0.708333, "ganador": "E9_v2_clean"},
+    {"horizonte_sem": 3, "medida": "Deteccion de caidas", "E1_v5_clean": 0.818182, "E9_v2_clean": 1.000000, "ganador": "E9_v2_clean"},
+    {"horizonte_sem": 3, "medida": "Loss_h", "E1_v5_clean": 0.068181, "E9_v2_clean": 0.073641, "ganador": "E1_v5_clean"},
+    {"horizonte_sem": 4, "medida": "MAE", "E1_v5_clean": 0.077511, "E9_v2_clean": 0.115178, "ganador": "E1_v5_clean"},
+    {"horizonte_sem": 4, "medida": "RMSE", "E1_v5_clean": 0.108231, "E9_v2_clean": 0.157989, "ganador": "E1_v5_clean"},
+    {"horizonte_sem": 4, "medida": "Direction accuracy", "E1_v5_clean": 0.702703, "E9_v2_clean": 0.658824, "ganador": "E1_v5_clean"},
+    {"horizonte_sem": 4, "medida": "Deteccion de caidas", "E1_v5_clean": 0.777778, "E9_v2_clean": 0.833333, "ganador": "E9_v2_clean"},
+    {"horizonte_sem": 4, "medida": "Loss_h", "E1_v5_clean": 0.038900, "E9_v2_clean": 0.038906, "ganador": "E1_v5_clean"},
+)
+
+DUAL_POLICY_SUMMARY_ROWS: tuple[dict[str, str], ...] = (
+    {
+        "capa": "salida_numerica_principal",
+        "politica_operativa": "Siempre E1_v5_clean",
+        "detalle": "Forecast numerico oficial del sistema",
+    },
+    {
+        "capa": "deteccion_de_caidas",
+        "politica_operativa": "Siempre E9_v2_clean",
+        "detalle": "Alerta oficial de caida por horizonte",
+    },
+    {
+        "capa": "direction_accuracy_H1",
+        "politica_operativa": "E9_v2_clean",
+        "detalle": "Politica fija direccional por horizonte",
+    },
+    {
+        "capa": "direction_accuracy_H2",
+        "politica_operativa": "E1_v5_clean",
+        "detalle": "Politica fija direccional por horizonte",
+    },
+    {
+        "capa": "direction_accuracy_H3",
+        "politica_operativa": "E9_v2_clean",
+        "detalle": "Politica fija direccional por horizonte",
+    },
+    {
+        "capa": "direction_accuracy_H4",
+        "politica_operativa": "E1_v5_clean",
+        "detalle": "Politica fija direccional por horizonte",
+    },
+)
 
 RUN_CANONICAL_CONSTRUCTS: dict[str, dict[str, str]] = {
     "C1_v1_clean": {
@@ -412,9 +535,54 @@ RUN_CANONICAL_CONSTRUCTS: dict[str, dict[str, str]] = {
         "constructo": "control flexible de clasificacion",
         "justificacion": "Variante mas flexible de C1; tampoco rompe el colapso a clase unica y cierra la rama temprana.",
     },
+    "C2_v1_clean": {
+        "constructo": "baseline prudente de clasificacion boosting",
+        "justificacion": "Primera apertura real de XGBoost multiclase; replica el mismo colapso a clase unica observado en C1.",
+    },
+    "C2_v2_clean": {
+        "constructo": "control parsimonioso de boosting de clasificacion",
+        "justificacion": "Variante mas regularizada dentro de C2; confirma que el problema sigue siendo el target y no la capacidad del booster.",
+    },
+    "C2_v3_clean": {
+        "constructo": "control flexible de boosting de clasificacion",
+        "justificacion": "Variante algo mas flexible de C2; tampoco rompe el colapso y cierra la familia tempranamente.",
+    },
     "E10_v1_clean": {
-        "constructo": "selector contextual duro inicial",
-        "justificacion": "Primera corrida canonica de gating contextual; metodologicamente limpia pero todavia fragil frente a benchmarks.",
+        "constructo": "selector contextual duro cerrado para promocion",
+        "justificacion": "Primera corrida canonica de gating contextual; metodologicamente limpia, pero no competitiva y cerrada para promocion bajo la formulacion actual.",
+    },
+    "E11_v1_clean": {
+        "constructo": "apertura dual paralela",
+        "justificacion": "Primera apertura dual controlada; conserva exactamente el bloque numerico de E1_v5_clean, pero la capa ternaria de direccion sigue casi colapsada a estabilidad.",
+    },
+    "E11_v2_clean": {
+        "constructo": "mejor apertura dual con detector de caidas",
+        "justificacion": "Mantiene el benchmark numerico de E1_v5_clean y agrega una capa binaria de caidas con senal real, aunque todavia insuficiente para desplazar a E9_v2_clean.",
+    },
+    "E11_v3_clean": {
+        "constructo": "control residual dual no ganador",
+        "justificacion": "Prueba residual dual metodologicamente limpia; agrega complejidad y no mejora el global frente a E1_v5_clean.",
+    },
+    "E12_v1_clean": {
+        "constructo": "baseline de representacion minima no ganador",
+        "justificacion": (
+            "Primera apertura de representacion enriquecida con bloque parsimonioso; no captura la mejora "
+            "esperada en H1 y queda por detras de E1_v5_clean y E9_v2_clean."
+        ),
+    },
+    "E12_v2_clean": {
+        "constructo": "representacion ampliada de diversidad no ganadora",
+        "justificacion": (
+            "Amplia el bloque de representacion con mas diversidad entre familias base; agrega complejidad "
+            "sin mejora defendible frente a los benchmarks vigentes."
+        ),
+    },
+    "E12_v3_clean": {
+        "constructo": "control de desacuerdo puro con hallazgo parcial",
+        "justificacion": (
+            "Aisla senales de desacuerdo entre bases sin bloque de regimen; es la mejor variante interna de "
+            "E12, pero sigue sin superar a E1_v5_clean ni a E9_v2_clean."
+        ),
     },
     "E1_1_v1_bayesian_base": {
         "constructo": "micro-rama tactica bayesiana",
@@ -2938,6 +3106,52 @@ def build_explainability_status_df(runs_catalog_df: pd.DataFrame) -> pd.DataFram
     return pd.DataFrame(rows)
 
 
+def build_operational_benchmarks_df(master_df: pd.DataFrame) -> pd.DataFrame:
+    master_lookup = master_df.set_index("run_id").to_dict(orient="index")
+    rows: list[dict[str, Any]] = []
+    for spec in OPERATIONAL_BENCHMARK_ROWS:
+        run_id = spec["run_id"]
+        run_info = master_lookup.get(run_id, {})
+        run_dir = str(run_info.get("run_dir") or "")
+        parametros_fuente = f"{run_dir}/parametros_run.json" if run_dir else ""
+        rows.append(
+            {
+                "benchmark_id": spec["benchmark_id"],
+                "plano_funcional": spec["plano_funcional"],
+                "run_id": run_id,
+                "family": run_info.get("family"),
+                "model": run_info.get("model"),
+                "estado_operativo": spec["estado_operativo"],
+                "rol_operativo": spec["rol_operativo"],
+                "L_total_Radar": run_info.get("L_total_Radar"),
+                "mae_promedio": run_info.get("mae_promedio"),
+                "rmse_promedio": run_info.get("rmse_promedio"),
+                "direction_accuracy_promedio": run_info.get("direction_accuracy_promedio"),
+                "deteccion_caidas_promedio": run_info.get("deteccion_caidas_promedio"),
+                "script_nombre": run_info.get("script_nombre"),
+                "script_ruta": run_info.get("script_ruta"),
+                "runner_script_canonico": run_info.get("script_ruta"),
+                "run_dir": run_info.get("run_dir"),
+                "parametros_fuente": parametros_fuente,
+                "status_canonico": run_info.get("status_canonico"),
+                "justificacion": spec["justificacion"],
+            }
+        )
+    return pd.DataFrame(rows)
+
+
+def build_radar_layers_df() -> pd.DataFrame:
+    return pd.DataFrame(RADAR_LAYER_ROWS)
+
+
+def build_dual_functional_metrics_df() -> pd.DataFrame:
+    return pd.DataFrame(DUAL_FUNCTIONAL_METRIC_ROWS)
+
+
+def build_dual_policy_summary_df() -> pd.DataFrame:
+    return pd.DataFrame(DUAL_POLICY_SUMMARY_ROWS)
+
+
 def build_e9_curacion_resumen_df(
     *,
     source_xlsx_path: Path,
@@ -3746,7 +3960,7 @@ def build_markdown_summary(
 - `E1_v5_clean` sigue siendo el referente numerico puro principal del Radar.
 - `E9_v2_clean` queda como el mejor referente actual orientado a riesgo, direccion y deteccion de caidas.
 - Esa diferencia no se interpreta como contradiccion, sino como dualidad funcional entre pronostico numerico del porcentaje y utilidad operativa del movimiento.
-- En consecuencia, `E9` queda util pero pausada, `E10` ya fue abierto formalmente con `E10_v1_clean` y queda en modelado inicial fragil, y `E11` queda abierta como familia futura de arquitectura dual.
+- En consecuencia, `E9` queda util pero pausada, `E10` ya fue probado formalmente con `E10_v1_clean` y queda cerrada para promocion bajo su formulacion actual, y `E11` ya fue abierta con tres variantes controladas y queda evaluada sin promocion tras su primera apertura dual.
 
 ## Fortalezas operativas por horizonte
 
@@ -3924,6 +4138,10 @@ def build_experiments_master_table(
     family_constructs_df = build_family_constructs_df()
     run_constructs_df = build_run_constructs_df(master_df, family_status_df)
     explainability_status_df = build_explainability_status_df(runs_catalog_df)
+    operational_benchmarks_df = build_operational_benchmarks_df(master_df)
+    radar_layers_df = build_radar_layers_df()
+    dual_functional_metrics_df = build_dual_functional_metrics_df()
+    dual_policy_summary_df = build_dual_policy_summary_df()
     reconstruction_counts = runs_catalog_df["reconstruccion_hiperparams_status"].fillna("no_recuperable").value_counts().to_dict()
     eligible_by_horizon = (
         stacking_eligibility_df.groupby("horizonte_label")["stacking_eligible_horizonte"].sum().to_dict()
@@ -4000,6 +4218,10 @@ def build_experiments_master_table(
         "constructos_familias_vigente": family_constructs_df.to_dict(orient="records"),
         "constructos_runs_vigente": run_constructs_df.to_dict(orient="records"),
         "estado_capa_explicativa_transversal": explainability_status_df.to_dict(orient="records"),
+        "benchmarks_operativos_vigentes": operational_benchmarks_df.to_dict(orient="records"),
+        "capas_radar_vigentes": radar_layers_df.to_dict(orient="records"),
+        "tabla_funcional_dual_vigente": dual_functional_metrics_df.to_dict(orient="records"),
+        "politica_funcional_dual_vigente": dual_policy_summary_df.to_dict(orient="records"),
         "planned_run_ids_detected": planned_run_ids,
         "planned_without_artifacts": [
             run_id for run_id in planned_run_ids if run_id not in set(master_df["run_id"])
@@ -4015,9 +4237,23 @@ def build_experiments_master_table(
     e9_markdown_path = output_dir / "preparacion_tabla_e9_stacking_controlado.md"
     constructs_doc_path = output_dir / "diccionario_constructos_canonicos_radar.md"
     constructs_csv_path = output_dir / "registro_constructos_runs_radar.csv"
+    operational_json_path = output_dir / "registro_operacion_controlada_radar.json"
 
     master_df.to_csv(csv_path, index=False)
     run_constructs_df.to_csv(constructs_csv_path, index=False)
+    operational_json_path.write_text(
+        json.dumps(
+            {
+                "benchmarks_operativos_vigentes": operational_benchmarks_df.to_dict(orient="records"),
+                "capas_radar_vigentes": radar_layers_df.to_dict(orient="records"),
+                "tabla_funcional_dual_vigente": dual_functional_metrics_df.to_dict(orient="records"),
+                "politica_funcional_dual_vigente": dual_policy_summary_df.to_dict(orient="records"),
+            },
+            ensure_ascii=False,
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
     with pd.ExcelWriter(xlsx_path, engine="openpyxl") as writer:
         runs_catalog_df.to_excel(writer, sheet_name="runs_catalogo", index=False)
         master_df.to_excel(writer, sheet_name="runs_consolidados", index=False)
@@ -4034,6 +4270,10 @@ def build_experiments_master_table(
         family_constructs_df.to_excel(writer, sheet_name="constructos_familias_vigente", index=False)
         run_constructs_df.to_excel(writer, sheet_name="constructos_runs_vigente", index=False)
         explainability_status_df.to_excel(writer, sheet_name="estado_explicabilidad_transversal", index=False)
+        operational_benchmarks_df.to_excel(writer, sheet_name="benchmarks_operativos_vigentes", index=False)
+        radar_layers_df.to_excel(writer, sheet_name="capas_radar_vigentes", index=False)
+        dual_functional_metrics_df.to_excel(writer, sheet_name="tabla_funcional_dual_vigente", index=False)
+        dual_policy_summary_df.to_excel(writer, sheet_name="politica_funcional_dual_vigente", index=False)
         inventory_df.to_excel(writer, sheet_name="inventario_runs", index=False)
         for sheet_name, sheet_df in stacking_base_sheets.items():
             sheet_df.to_excel(writer, sheet_name=sheet_name, index=False)
@@ -4058,6 +4298,10 @@ def build_experiments_master_table(
         family_constructs_df.to_excel(writer, sheet_name="constructos_familias_vigente", index=False)
         run_constructs_df.to_excel(writer, sheet_name="constructos_runs_vigente", index=False)
         explainability_status_df.to_excel(writer, sheet_name="estado_explicabilidad_transversal", index=False)
+        operational_benchmarks_df.to_excel(writer, sheet_name="benchmarks_operativos_vigentes", index=False)
+        radar_layers_df.to_excel(writer, sheet_name="capas_radar_vigentes", index=False)
+        dual_functional_metrics_df.to_excel(writer, sheet_name="tabla_funcional_dual_vigente", index=False)
+        dual_policy_summary_df.to_excel(writer, sheet_name="politica_funcional_dual_vigente", index=False)
         inventory_df.to_excel(writer, sheet_name="inventario_runs", index=False)
         for sheet_name, sheet_df in stacking_base_sheets.items():
             sheet_df.to_excel(writer, sheet_name=sheet_name, index=False)

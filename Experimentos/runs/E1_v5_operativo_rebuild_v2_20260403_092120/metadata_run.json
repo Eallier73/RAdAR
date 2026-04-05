@@ -1,0 +1,12 @@
+{
+  "created_at": "2026-04-03 09:21:20",
+  "experiment_id": "E1",
+  "family": "lineal_regularizado",
+  "model": "ridge_tscv",
+  "parametros_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_v5_operativo_rebuild_v2_20260403_092120/parametros_run.json",
+  "run_dir": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_v5_operativo_rebuild_v2_20260403_092120",
+  "run_id": "E1_v5_operativo_rebuild_v2",
+  "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e1_ridge_clean.py",
+  "snapshot_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_v5_operativo_rebuild_v2_20260403_092120/scripts/run_e1_ridge_clean.py",
+  "task_type": "regresion"
+}

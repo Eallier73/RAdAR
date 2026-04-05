@@ -1,0 +1,12 @@
+{
+  "created_at": "2026-04-03 09:20:42",
+  "experiment_id": "E9",
+  "family": "stacking_controlado",
+  "model": "stacking_huber_curado_por_horizonte",
+  "parametros_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E9_v2_operativo_rebuild_20260403_092042/parametros_run.json",
+  "run_dir": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E9_v2_operativo_rebuild_20260403_092042",
+  "run_id": "E9_v2_operativo_rebuild",
+  "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e9_stacking.py",
+  "snapshot_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E9_v2_operativo_rebuild_20260403_092042/scripts/run_e9_stacking.py",
+  "task_type": "regresion"
+}

@@ -1,0 +1,94 @@
+[
+  {
+    "feature_candidates": 83,
+    "feature_candidates_base": 83,
+    "feature_mode": "corr",
+    "horizonte_sem": 1,
+    "representation_description": "stress test metodologico dejando solo desacuerdo/consenso entre bases y quitando señales de regimen",
+    "representation_feature_count": 10,
+    "representation_mode": "disagreement_only",
+    "representation_source_run_ids": [
+      "E1_v5_clean",
+      "E5_v4_clean",
+      "E3_v2_clean",
+      "E7_v3_clean"
+    ],
+    "rows_eval": 14,
+    "rows_modeling": 26,
+    "selected_feature_count_avg": 30.0,
+    "selected_feature_count_max": 30,
+    "selected_feature_count_min": 30,
+    "selected_total_input_features_avg": 40.0,
+    "target_mode": "nivel",
+    "transform_mode": "standard"
+  },
+  {
+    "feature_candidates": 83,
+    "feature_candidates_base": 83,
+    "feature_mode": "corr",
+    "horizonte_sem": 2,
+    "representation_description": "stress test metodologico dejando solo desacuerdo/consenso entre bases y quitando señales de regimen",
+    "representation_feature_count": 10,
+    "representation_mode": "disagreement_only",
+    "representation_source_run_ids": [
+      "E1_v5_clean",
+      "E5_v4_clean",
+      "E3_v2_clean",
+      "E7_v3_clean"
+    ],
+    "rows_eval": 13,
+    "rows_modeling": 25,
+    "selected_feature_count_avg": 30.0,
+    "selected_feature_count_max": 30,
+    "selected_feature_count_min": 30,
+    "selected_total_input_features_avg": 40.0,
+    "target_mode": "nivel",
+    "transform_mode": "standard"
+  },
+  {
+    "feature_candidates": 83,
+    "feature_candidates_base": 83,
+    "feature_mode": "corr",
+    "horizonte_sem": 3,
+    "representation_description": "stress test metodologico dejando solo desacuerdo/consenso entre bases y quitando señales de regimen",
+    "representation_feature_count": 10,
+    "representation_mode": "disagreement_only",
+    "representation_source_run_ids": [
+      "E1_v5_clean",
+      "E5_v4_clean",
+      "E3_v2_clean",
+      "E7_v3_clean"
+    ],
+    "rows_eval": 12,
+    "rows_modeling": 24,
+    "selected_feature_count_avg": 30.0,
+    "selected_feature_count_max": 30,
+    "selected_feature_count_min": 30,
+    "selected_total_input_features_avg": 40.0,
+    "target_mode": "nivel",
+    "transform_mode": "standard"
+  },
+  {
+    "feature_candidates": 83,
+    "feature_candidates_base": 83,
+    "feature_mode": "corr",
+    "horizonte_sem": 4,
+    "representation_description": "stress test metodologico dejando solo desacuerdo/consenso entre bases y quitando señales de regimen",
+    "representation_feature_count": 10,
+    "representation_mode": "disagreement_only",
+    "representation_source_run_ids": [
+      "E1_v5_clean",
+      "E5_v4_clean",
+      "E3_v2_clean",
+      "E7_v3_clean"
+    ],
+    "rows_eval": 11,
+    "rows_modeling": 23,
+    "selected_feature_count_avg": 30.0,
+    "selected_feature_count_max": 30,
+    "selected_feature_count_min": 30,
+    "selected_total_input_features_avg": 40.0,
+    "target_mode": "nivel",
+    "transform_mode": "standard"
+  }
+]

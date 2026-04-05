@@ -1,0 +1,152 @@
+{
+  "fecha_actualizacion": "2026-04-03",
+  "benchmarks_vigentes": {
+    "numerico_puro": "E1_v5_clean",
+    "operativo_riesgo_direccion_caidas": "E9_v2_clean"
+  },
+  "sistema_operativo_dual_vigente": {
+    "salida_numerica_principal": "E1_v5_clean",
+    "deteccion_caidas": "E9_v2_clean",
+    "politica_direccional_por_horizonte": {
+      "H1": "E9_v2_clean",
+      "H2": "E1_v5_clean",
+      "H3": "E9_v2_clean",
+      "H4": "E1_v5_clean"
+    },
+    "descripcion": "Sistema compuesto / dual con asignacion funcional por salida; no equivale a modelo final unico."
+  },
+  "estados_decision": {
+    "promocion": {
+      "descripcion": "El sistema supera de forma defendible el benchmark funcional correspondiente y mantiene trazabilidad completa.",
+      "requiere": [
+        "mejora_defendible_plano_funcional",
+        "lectura_favorable_h2_h3",
+        "sin_deterioro_severo_h1_h4",
+        "direction_accuracy_y_deteccion_caidas_coherentes",
+        "trazabilidad_completa",
+        "sin_leakage",
+        "reproducibilidad",
+        "comparabilidad_con_benchmark_vigente",
+        "costo_metodologico_justificado"
+      ]
+    },
+    "observacion": {
+      "descripcion": "Hay señal util pero aun insuficiente para promocion o sustitucion.",
+      "requiere": [
+        "senal_parcial",
+        "comparabilidad_fuerte",
+        "sin_leakage",
+        "trazabilidad_completa"
+      ]
+    },
+    "no_promocion": {
+      "descripcion": "El sistema no supera el benchmark vigente o la mejora es cosmetica, fragil o insuficiente.",
+      "requiere": [
+        "sin_superioridad_defendible"
+      ]
+    },
+    "cierre_rama": {
+      "descripcion": "La hipotesis central ya fue probada y no quedo confirmada; la rama se conserva como antecedente metodologico, no como candidata vigente.",
+      "requiere": [
+        "corrida_real_suficiente",
+        "sin_superioridad_defendible",
+        "sin_promocion_razonable_bajo_formulacion_actual"
+      ]
+    },
+    "despromocion": {
+      "descripcion": "Un benchmark vigente pierde integridad, reproducibilidad o es desplazado con evidencia suficiente.",
+      "requiere": [
+        "perdida_integridad_o_superacion_defendible"
+      ]
+    },
+    "sustitucion_benchmark": {
+      "descripcion": "Un sistema reemplaza formalmente a un benchmark vigente dentro del mismo plano funcional o resuelve de forma defendible la dualidad vigente.",
+      "requiere": [
+        "promocion",
+        "superacion_defendible_del_benchmark_correspondiente",
+        "justificacion_de_sustitucion"
+      ]
+    }
+  },
+  "checks_minimos": [
+    {
+      "id": "l_total_radar",
+      "descripcion": "Revisar mejora defendible en L_total_Radar o justificar por que no es la metrica decisiva unica."
+    },
+    {
+      "id": "h2_h3",
+      "descripcion": "Revisar lectura por horizonte con enfasis especial en H2 y H3."
+    },
+    {
+      "id": "h1_h4",
+      "descripcion": "Verificar estabilidad de H1 y H4; no se acepta ganancia con deterioro severo en los extremos."
+    },
+    {
+      "id": "direction_accuracy",
+      "descripcion": "Revisar direction_accuracy en el plano operativo."
+    },
+    {
+      "id": "deteccion_caidas",
+      "descripcion": "Revisar deteccion_caidas y su relevancia operativa."
+    },
+    {
+      "id": "trazabilidad",
+      "descripcion": "Exigir metadata, parametros, metricas, predicciones, snapshot y rastro en tracker."
+    },
+    {
+      "id": "anti_leakage",
+      "descripcion": "Exigir ausencia de leakage en tuning, seleccion, transformaciones y comparacion."
+    },
+    {
+      "id": "reproducibilidad",
+      "descripcion": "La corrida debe poder repetirse sin editar codigo y sin ambiguedad de rutas o parametros."
+    },
+    {
+      "id": "comparabilidad",
+      "descripcion": "La comparacion debe hacerse contra benchmark vigente en el mismo marco temporal y metodologico."
+    },
+    {
+      "id": "costo_metodologico",
+      "descripcion": "La complejidad agregada debe justificarse con la ganancia obtenida."
+    }
+  ],
+  "reglas_fijas": [
+    "No promover por una sola metrica aislada.",
+    "No promover por una sola corrida fragil.",
+    "No promover por conveniencia narrativa.",
+    "No degradar el benchmark vigente sin justificacion funcional explicita.",
+    "No presentar E10 o E11 como resueltos sin evidencia propia suficiente.",
+    "No promover por recombinacion ex post por horizonte sin evidencia prospectiva.",
+    "No promover por sensibilidad favorable de thresholds sin una nueva corrida temporal limpia."
+  ],
+  "casos_aplicados": {
+    "E10_v1_clean": {
+      "decision": "cierre_rama",
+      "justificacion": [
+        "No supero al selector_fijo del mismo subset.",
+        "No supero a E1_v5_clean.",
+        "No supero a E9_v2_clean.",
+        "Las accuracies del selector por horizonte fueron bajas.",
+        "La hipotesis de promocion no quedo confirmada."
+      ]
+    },
+    "E11_apertura_dual_2026_04_03": {
+      "decision": "no_promocion",
+      "justificacion": [
+        "E11_v1_clean preserva exactamente E1_v5_clean, pero la capa ternaria casi colapsa a se_mantiene.",
+        "E11_v2_clean preserva exactamente E1_v5_clean y agrega un detector binario de caidas con señal moderada, pero no desplaza a E9_v2_clean.",
+        "E11_v3_clean agrega complejidad residual dual y no mejora L_total_Radar frente a E1_v5_clean.",
+        "Ninguna variante desplaza de forma defendible la salida dual vigente E1_v5_clean + E9_v2_clean."
+      ]
+    },
+    "E12_apertura_representacion_2026_04_03": {
+      "decision": "no_promocion",
+      "justificacion": [
+        "E12_v1_clean y E12_v2_clean agregan representacion, pero no mejoran de forma defendible a E1_v5_clean ni a E9_v2_clean.",
+        "E12_v3_clean es la mejor variante interna, pero sigue por detras de ambos benchmarks en el mismo subset comun.",
+        "Ninguna variante mejora H1, que era la hipotesis central de la apertura.",
+        "La complejidad agregada no se justifica con la ganancia obtenida."
+      ]
+    }
+  }
+}

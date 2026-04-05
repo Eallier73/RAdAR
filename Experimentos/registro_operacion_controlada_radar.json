@@ -1,0 +1,243 @@
+{
+  "benchmarks_operativos_vigentes": [
+    {
+      "benchmark_id": "benchmark_numerico_puro_vigente",
+      "plano_funcional": "numerico",
+      "run_id": "E1_v5_clean",
+      "family": "lineal_regularizado",
+      "model": "ridge_tscv",
+      "estado_operativo": "vigente",
+      "rol_operativo": "benchmark numerico puro",
+      "L_total_Radar": 0.2434417610666145,
+      "mae_promedio": 0.1025119634230774,
+      "rmse_promedio": 0.1365121771995384,
+      "direction_accuracy_promedio": 0.7437527870680044,
+      "deteccion_caidas_promedio": 0.7823232323232323,
+      "script_nombre": "run_e1_ridge_clean.py",
+      "script_ruta": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e1_ridge_clean.py",
+      "runner_script_canonico": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e1_ridge_clean.py",
+      "run_dir": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_v5_clean_20260321_105449",
+      "parametros_fuente": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_v5_clean_20260321_105449/parametros_run.json",
+      "status_canonico": "canonico_completo",
+      "justificacion": "Mejor referente actual para pronostico numerico puro del Radar; permanece como benchmark operativo controlado mientras no exista una arquitectura futura que lo supere de forma defendible."
+    },
+    {
+      "benchmark_id": "benchmark_operativo_riesgo_vigente",
+      "plano_funcional": "riesgo-direccion-caidas",
+      "run_id": "E9_v2_clean",
+      "family": "stacking_controlado",
+      "model": "stacking_huber_curado_por_horizonte",
+      "estado_operativo": "vigente",
+      "rol_operativo": "benchmark operativo de riesgo-direccion-caidas",
+      "L_total_Radar": 0.2275096201736237,
+      "mae_promedio": 0.1264072988014809,
+      "rmse_promedio": 0.1686042777496172,
+      "direction_accuracy_promedio": 0.7358474858474857,
+      "deteccion_caidas_promedio": 0.9166666666666667,
+      "script_nombre": "run_e9_stacking.py",
+      "script_ruta": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e9_stacking.py",
+      "runner_script_canonico": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e9_stacking.py",
+      "run_dir": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E9_v2_clean_20260401_070431",
+      "parametros_fuente": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E9_v2_clean_20260401_070431/parametros_run.json",
+      "status_canonico": "canonico_completo",
+      "justificacion": "Mejor referente actual de direccion y deteccion de caidas; permanece como benchmark operativo controlado sin reemplazar al benchmark numerico puro."
+    }
+  ],
+  "capas_radar_vigentes": [
+    {
+      "capa": "experimental",
+      "estado": "activa",
+      "alcance": "familias E1-E10 y ramas C1-C4 bajo disciplina temporal completa",
+      "objetivo": "seguir evaluando hipotesis nuevas con comparabilidad fuerte y trazabilidad por run",
+      "restriccion": "sin leakage, sin tuning con futuro, sin promotion por intuicion"
+    },
+    {
+      "capa": "operativa_controlada",
+      "estado": "activa",
+      "alcance": "ejecucion estable de benchmarks vigentes E1_v5_clean y E9_v2_clean",
+      "objetivo": "comparacion operativa controlada sin reescribir la logica canonica de los runners",
+      "restriccion": "no equivale a produccion final unificada; conserva dualidad funcional vigente"
+    },
+    {
+      "capa": "futura_dual",
+      "estado": "evaluada sin promocion",
+      "alcance": "familia E11 dual numerica + categorica",
+      "objetivo": "explorar una arquitectura compuesta que en el futuro pueda reemplazar la salida dual vigente",
+      "restriccion": "no promocionar ni vender como resuelta mientras no supere de forma defendible a E1_v5_clean y E9_v2_clean"
+    }
+  ],
+  "tabla_funcional_dual_vigente": [
+    {
+      "horizonte_sem": 1,
+      "medida": "MAE",
+      "E1_v5_clean": 0.121907,
+      "E9_v2_clean": 0.123894,
+      "ganador": "E1_v5_clean"
+    },
+    {
+      "horizonte_sem": 1,
+      "medida": "RMSE",
+      "E1_v5_clean": 0.16055,
+      "E9_v2_clean": 0.166878,
+      "ganador": "E1_v5_clean"
+    },
+    {
+      "horizonte_sem": 1,
+      "medida": "Direction accuracy",
+      "E1_v5_clean": 0.846154,
+      "E9_v2_clean": 0.857143,
+      "ganador": "E9_v2_clean"
+    },
+    {
+      "horizonte_sem": 1,
+      "medida": "Deteccion de caidas",
+      "E1_v5_clean": 0.833333,
+      "E9_v2_clean": 1.0,
+      "ganador": "E9_v2_clean"
+    },
+    {
+      "horizonte_sem": 1,
+      "medida": "Loss_h",
+      "E1_v5_clean": 0.06486,
+      "E9_v2_clean": 0.051557,
+      "ganador": "E9_v2_clean"
+    },
+    {
+      "horizonte_sem": 2,
+      "medida": "MAE",
+      "E1_v5_clean": 0.118495,
+      "E9_v2_clean": 0.136777,
+      "ganador": "E1_v5_clean"
+    },
+    {
+      "horizonte_sem": 2,
+      "medida": "RMSE",
+      "E1_v5_clean": 0.15347,
+      "E9_v2_clean": 0.178276,
+      "ganador": "E1_v5_clean"
+    },
+    {
+      "horizonte_sem": 2,
+      "medida": "Direction accuracy",
+      "E1_v5_clean": 0.76,
+      "E9_v2_clean": 0.72,
+      "ganador": "E1_v5_clean"
+    },
+    {
+      "horizonte_sem": 2,
+      "medida": "Deteccion de caidas",
+      "E1_v5_clean": 0.7,
+      "E9_v2_clean": 0.833333,
+      "ganador": "E9_v2_clean"
+    },
+    {
+      "horizonte_sem": 2,
+      "medida": "Loss_h",
+      "E1_v5_clean": 0.071501,
+      "E9_v2_clean": 0.063405,
+      "ganador": "E9_v2_clean"
+    },
+    {
+      "horizonte_sem": 3,
+      "medida": "MAE",
+      "E1_v5_clean": 0.092137,
+      "E9_v2_clean": 0.12978,
+      "ganador": "E1_v5_clean"
+    },
+    {
+      "horizonte_sem": 3,
+      "medida": "RMSE",
+      "E1_v5_clean": 0.123798,
+      "E9_v2_clean": 0.172374,
+      "ganador": "E1_v5_clean"
+    },
+    {
+      "horizonte_sem": 3,
+      "medida": "Direction accuracy",
+      "E1_v5_clean": 0.666667,
+      "E9_v2_clean": 0.708333,
+      "ganador": "E9_v2_clean"
+    },
+    {
+      "horizonte_sem": 3,
+      "medida": "Deteccion de caidas",
+      "E1_v5_clean": 0.818182,
+      "E9_v2_clean": 1.0,
+      "ganador": "E9_v2_clean"
+    },
+    {
+      "horizonte_sem": 3,
+      "medida": "Loss_h",
+      "E1_v5_clean": 0.068181,
+      "E9_v2_clean": 0.073641,
+      "ganador": "E1_v5_clean"
+    },
+    {
+      "horizonte_sem": 4,
+      "medida": "MAE",
+      "E1_v5_clean": 0.077511,
+      "E9_v2_clean": 0.115178,
+      "ganador": "E1_v5_clean"
+    },
+    {
+      "horizonte_sem": 4,
+      "medida": "RMSE",
+      "E1_v5_clean": 0.108231,
+      "E9_v2_clean": 0.157989,
+      "ganador": "E1_v5_clean"
+    },
+    {
+      "horizonte_sem": 4,
+      "medida": "Direction accuracy",
+      "E1_v5_clean": 0.702703,
+      "E9_v2_clean": 0.658824,
+      "ganador": "E1_v5_clean"
+    },
+    {
+      "horizonte_sem": 4,
+      "medida": "Deteccion de caidas",
+      "E1_v5_clean": 0.777778,
+      "E9_v2_clean": 0.833333,
+      "ganador": "E9_v2_clean"
+    },
+    {
+      "horizonte_sem": 4,
+      "medida": "Loss_h",
+      "E1_v5_clean": 0.0389,
+      "E9_v2_clean": 0.038906,
+      "ganador": "E1_v5_clean"
+    }
+  ],
+  "politica_funcional_dual_vigente": [
+    {
+      "capa": "salida_numerica_principal",
+      "politica_operativa": "Siempre E1_v5_clean",
+      "detalle": "Forecast numerico oficial del sistema"
+    },
+    {
+      "capa": "deteccion_de_caidas",
+      "politica_operativa": "Siempre E9_v2_clean",
+      "detalle": "Alerta oficial de caida por horizonte"
+    },
+    {
+      "capa": "direction_accuracy_H1",
+      "politica_operativa": "E9_v2_clean",
+      "detalle": "Politica fija direccional por horizonte"
+    },
+    {
+      "capa": "direction_accuracy_H2",
+      "politica_operativa": "E1_v5_clean",
+      "detalle": "Politica fija direccional por horizonte"
+    },
+    {
+      "capa": "direction_accuracy_H3",
+      "politica_operativa": "E9_v2_clean",
+      "detalle": "Politica fija direccional por horizonte"
+    },
+    {
+      "capa": "direction_accuracy_H4",
+      "politica_operativa": "E1_v5_clean",
+      "detalle": "Politica fija direccional por horizonte"
+    }
+  ]
+}

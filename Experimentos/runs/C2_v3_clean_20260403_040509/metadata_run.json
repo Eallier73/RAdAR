@@ -1,0 +1,12 @@
+{
+  "created_at": "2026-04-03 04:05:09",
+  "experiment_id": "C2",
+  "family": "clasificacion_xgboost",
+  "model": "xgboost_classifier",
+  "parametros_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/C2_v3_clean_20260403_040509/parametros_run.json",
+  "run_dir": "/home/emilio/Documentos/RAdAR/Experimentos/runs/C2_v3_clean_20260403_040509",
+  "run_id": "C2_v3_clean",
+  "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_c2_xgboost_classifier.py",
+  "snapshot_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/C2_v3_clean_20260403_040509/scripts/run_c2_xgboost_classifier.py",
+  "task_type": "clasificacion"
+}
