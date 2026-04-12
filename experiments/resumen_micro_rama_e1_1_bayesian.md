@@ -1,1 +1,0 @@
-research/resumen_micro_rama_e1_1_bayesian.md

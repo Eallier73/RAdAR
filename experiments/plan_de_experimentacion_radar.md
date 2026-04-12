@@ -1,1 +1,0 @@
-research/plan_de_experimentacion_radar.md

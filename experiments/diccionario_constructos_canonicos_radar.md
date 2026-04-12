@@ -1,1 +1,0 @@
-research/diccionario_constructos_canonicos_radar.md

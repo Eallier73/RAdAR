@@ -1,1 +1,0 @@
-research/resumen_metodologico_e3_arboles.md

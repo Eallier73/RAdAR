@@ -1,1 +1,0 @@
-audit/resumen_auditoria_experimentos.md

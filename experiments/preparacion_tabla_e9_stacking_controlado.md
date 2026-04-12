@@ -1,1 +1,0 @@
-research/preparacion_tabla_e9_stacking_controlado.md

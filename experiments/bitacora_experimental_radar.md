@@ -1,1 +1,0 @@
-research/bitacora_experimental_radar.md

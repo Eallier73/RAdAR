@@ -1,1 +1,0 @@
-research/diccionario_tabla_e10.md
