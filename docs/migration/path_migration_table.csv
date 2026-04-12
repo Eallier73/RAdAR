@@ -1729,3 +1729,11 @@ experiments/resumen_saneamiento_documental_radar.md,experiments/audit/resumen_sa
 experiments/Funcion_Perdida_Radar_y_Grid_Experimentos.docx,experiments/research/Funcion_Perdida_Radar_y_Grid_Experimentos.docx,removed_symlink,Compatibility symlink retired
 experiments/Prompts_Agente,experiments/prompts/,removed_symlink,Directory symlink alias retired; use experiments/prompts/ directly
 src/common_runtime_logging.py,src/shared/common_runtime_logging.py,removed_symlink,Compatibility symlink retired; use canonical path src/shared/ directly
+src/nlp/Modelo_Radar_1.py,src/nlp/modelo_radar_1.py,renamed,Fase 3: normaliza a ASCII snake_case (mayusculas prohibidas)
+src/nlp/Lageado_Datos_ML.py,src/nlp/lageado_datos_ml.py,renamed,Fase 3: normaliza a ASCII snake_case (mayusculas prohibidas)
+src/nlp/aceptación_digital_redes_ponderacion_medios.py,src/nlp/aceptacion_digital_redes_ponderacion_medios.py,renamed,Fase 3: normaliza a ASCII snake_case (acento prohibido)
+experiments/audit/grid_experimentos_radar.backup_20260321_0600.xlsx,experiments/audit/backups/grid_experimentos_radar.backup_20260321_0600.xlsx,moved,Fase 3: backups de grid movidos a experiments/audit/backups/
+experiments/audit/grid_experimentos_radar.backup_before_e1_close_20260323_032308.xlsx,experiments/audit/backups/grid_experimentos_radar.backup_before_e1_close_20260323_032308.xlsx,moved,Fase 3: backups de grid movidos a experiments/audit/backups/
+experiments/audit/grid_experimentos_radar.backup_before_e2_close_20260323_071415.xlsx,experiments/audit/backups/grid_experimentos_radar.backup_before_e2_close_20260323_071415.xlsx,moved,Fase 3: backups de grid movidos a experiments/audit/backups/
+experiments/audit/grid_experimentos_radar.backup_before_rename_20260321_081609.xlsx,experiments/audit/backups/grid_experimentos_radar.backup_before_rename_20260321_081609.xlsx,moved,Fase 3: backups de grid movidos a experiments/audit/backups/
+src/operations/README.md,,removed,Fase 3: src/operations/ eliminada por ser placeholder vacio sin contenido real
