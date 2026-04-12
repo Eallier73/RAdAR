@@ -1,0 +1,1 @@
+research/documentacion_stacking_readiness_radar.md

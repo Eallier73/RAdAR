@@ -1,0 +1,1 @@
+research/resumen_construccion_tabla_e10.md

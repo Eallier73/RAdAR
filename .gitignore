@@ -24,7 +24,9 @@ ENV/
 .python-version
 
 # Generated lock files
-Experimentos/*.lock
+experiments/*.lock
+experiments/audit/*.lock
+artifacts/**/*.lock
 
 # Temporary files
 *.tmp
