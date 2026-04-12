@@ -14,7 +14,6 @@ Lo que si vive aqui:
 - `preprocessing/`: organizacion, limpieza y transformacion previa al modelado
 - `nlp/`: construccion de variables textuales, diccionarios y clasificacion tematica
 - `modeling/`: pipeline experimental/modelado reusable del Radar
-- `operations/`: orquestacion operativa controlada
 - `shared/`: utilitarios comunes y logging runtime reutilizable
 
 Lo que no debe vivir aqui:
