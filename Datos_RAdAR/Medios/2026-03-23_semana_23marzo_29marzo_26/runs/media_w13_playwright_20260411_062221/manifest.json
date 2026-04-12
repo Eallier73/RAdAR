@@ -1,0 +1,82 @@
+[
+  {
+    "artifact_type": "dataset",
+    "description": "Artículos extraídos de medios.",
+    "name": "media_articles_2026-03-23_semana_23marzo_29marzo_26.csv",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/runs/media_w13_playwright_20260411_062221/media_articles_2026-03-23_semana_23marzo_29marzo_26.csv",
+    "size_bytes": 80256,
+    "timestamp": "2026-04-11T12:24:17Z"
+  },
+  {
+    "artifact_type": "dataset",
+    "description": "Items RSS materializados antes de resolución.",
+    "name": "rss_items_raw.csv",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/runs/media_w13_playwright_20260411_062221/rss_items_raw.csv",
+    "size_bytes": 38933,
+    "timestamp": "2026-04-11T12:24:17Z"
+  },
+  {
+    "artifact_type": "dataset",
+    "description": "Resultado de resolución de URLs de Google News.",
+    "name": "urls_resueltas.csv",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/runs/media_w13_playwright_20260411_062221/urls_resueltas.csv",
+    "size_bytes": 20754,
+    "timestamp": "2026-04-11T12:24:17Z"
+  },
+  {
+    "artifact_type": "summary_table",
+    "description": "Resumen por intento de descarga de artículos.",
+    "name": "descarga_articulos_summary.csv",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/runs/media_w13_playwright_20260411_062221/descarga_articulos_summary.csv",
+    "size_bytes": 11531,
+    "timestamp": "2026-04-11T12:24:17Z"
+  },
+  {
+    "artifact_type": "summary_table",
+    "description": "Resumen operativo por query.",
+    "name": "queries_summary.csv",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/runs/media_w13_playwright_20260411_062221/queries_summary.csv",
+    "size_bytes": 604,
+    "timestamp": "2026-04-11T12:24:17Z"
+  },
+  {
+    "artifact_type": "summary",
+    "description": "Resumen global de la corrida.",
+    "name": "summary.json",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/runs/media_w13_playwright_20260411_062221/summary.json",
+    "size_bytes": 1963,
+    "timestamp": "2026-04-11T12:24:17Z"
+  },
+  {
+    "artifact_type": "parameters",
+    "description": "Parámetros efectivos de la corrida.",
+    "name": "parametros_run.json",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/runs/media_w13_playwright_20260411_062221/parametros_run.json",
+    "size_bytes": 3190,
+    "timestamp": "2026-04-11T12:24:17Z"
+  },
+  {
+    "artifact_type": "log",
+    "description": "Log operativo de la corrida.",
+    "name": "run.log",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/runs/media_w13_playwright_20260411_062221/run.log",
+    "size_bytes": 1673,
+    "timestamp": "2026-04-11T12:24:17Z"
+  },
+  {
+    "artifact_type": "metadata",
+    "description": "Metadata completa y trazabilidad de la corrida.",
+    "name": "metadata_run.json",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/runs/media_w13_playwright_20260411_062221/metadata_run.json",
+    "size_bytes": 8778,
+    "timestamp": "2026-04-11T12:24:17Z"
+  },
+  {
+    "artifact_type": "manifest",
+    "description": "Inventario de artefactos de la corrida.",
+    "name": "manifest.json",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/runs/media_w13_playwright_20260411_062221/manifest.json",
+    "size_bytes": 3337,
+    "timestamp": "2026-04-11T12:24:17Z"
+  }
+]

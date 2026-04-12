@@ -1,0 +1,23 @@
+{
+  "article_text": "Luego de culminar el invierno, Tampico se prepara para la temporada de alberca con la capacitación de personal encargado de la enseñanza y de la seguridad de los usuarios.\nCapacitan a salvavidas e instructores para la temporada\nJorge Lozano, Secretario de Deportes en Tampico, dijo que actualmente se realiza el proceso de selección y reclutamiento de los instructores y vigilantes salvavidas con los cursos de RCP por parte de Protección Civil de Tampico y rescate acuático a cargo de la Secretaría de Marina y Armada de México.\nAgregó que los cursos que aún faltan por desarrollarse se basan en la capacitación para las técnicas de nado y métodos de enseñanza.\n¿Cuándo abrirán las albercas en Tampico?\nLa reapertura para tritones y sirenitas está próximo “el inicio tentativo de la alberca recreativa es el 30 de marzo y el arranque tentativo de los cursos de natación es el día 6 de abril en todas las albercas de las unidades deportivas de Tampico”, dijo el secretario de deportes municipal.\nDistribuyen personal de seguridad en albercas municipales\nEl personal que estará a cargo de la seguridad de los usuarios de las albercas municipales es un grupo de 14 integrantes: Tampico con seis, Puertas Coloradas con cuatro, Colonia Morelos dos y Borreguera dos.\nEn cuanto a los entrenadores de los cursos el grupo es de 33 de los cuales, 17 estarán en la Tampico, 11 en Puertas Coloradas, tres en Borreguera y dos en la colonia Morelos.\nActualmente la alberca de Ciudad Deportiva de Tampico, está en el último proceso de mantenimiento y una vez culminado se procederá a realizar su llenado, al igual que la fosa de clavados.\nJETL",
+  "article_text_length": 1629,
+  "article_title": "Tampico se alista para reabrir sus albercas municipales y cursos de natación - Milenio",
+  "article_url_resolved": "https://www.milenio.com/estados/tampico-alista-apertura-albercas-cursos-natacion",
+  "attempted_methods": [
+    "trafilatura",
+    "cloudscraper"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "cloudscraper",
+  "fallback_used": true,
+  "medio": "site:milenio.com",
+  "playwright_used": false,
+  "query": "\"tampico\" site:milenio.com",
+  "query_index": 6,
+  "retrieved_at": "2026-04-05T17:42:02Z",
+  "source_domain": "www.milenio.com",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

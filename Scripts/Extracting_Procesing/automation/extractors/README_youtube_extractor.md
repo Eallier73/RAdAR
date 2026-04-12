@@ -56,14 +56,19 @@ Las queries pueden venir de:
 2. `--queries`
 3. el archivo canónico `youtube_queries_canonical.txt`
 
-Las queries canónicas por default son:
+Contrato de edición del archivo canónico:
 
-- `MonicaVTampico`
-- `TampicoGob`
-- `"Monica Villarreal Tampico"`
-- `"Gobierno de Tampico"`
+- una query por línea
+- líneas que empiezan con `#` se ignoran
 
-Esto deja a YouTube en el mismo estándar de configuración externa que medios y Twitter. Si quieres otro universo de búsqueda, cámbialo con `--queries-file` o `--queries` sin tocar la lógica interna.
+Las queries canónicas por default preservan el universo del extractor base `01_youtube_extractor_Tampico.py`:
+
+- `presidenta municipal de Tampico`
+- `Presidenta municipal de Tampico`
+- `Gobierno de Tampico`
+- `gobierno de Tampico`
+
+La profesionalización aquí no cambia la lógica base de extracción: mantiene búsqueda por query y rango temporal, detalle de video y comentarios `top_level`; solo externaliza configuración, trazabilidad y artefactos. Si quieres otro universo de búsqueda, cámbialo con `--queries-file` o `--queries` sin tocar la lógica interna.
 
 ## Variables de entorno requeridas
 
@@ -108,6 +113,9 @@ python3 Scripts/Extracting_Procesing/youtube_extractor.py \
   --queries-file /ruta/youtube_queries_canonical.txt \
   --output-dir /home/emilio/Documentos/RAdAR/Datos_RAdAR
 ```
+
+Si quieres aislar la fuente en una raíz propia, pásala explícitamente, por
+ejemplo `--output-dir /home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube`.
 
 ## Estructura de salida
 

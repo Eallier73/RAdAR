@@ -1,0 +1,23 @@
+{
+  "article_text": "La cartelera cultural del sur de Tamaulipas continúa sumando propuestas de entretenimiento en vivo con la llegada de Dramas y Caballeros en Tampico, una obra teatral que reúne a reconocidas figuras del espectáculo mexicano. El montaje forma parte de una gira por distintas ciudades del país y busca ofrecer al público una comedia ligera llena de enredos, conflictos amorosos y situaciones inesperadas sobre el escenario.\nLa presencia de actores conocidos de la televisión y el teatro ha despertado interés entre los asistentes habituales de este tipo de espectáculos, ya que el elenco incluye a Alfredo Adame, Ivonne Montero y Liz Vega, quienes comparten escena en una historia que mezcla drama, humor y relaciones personales que terminan complicándose a lo largo de la trama.\nLa obra se presentará en el Espacio Cultural Metropolitano de Tampico, uno de los recintos culturales más importantes de la región y sede frecuente de conciertos, obras teatrales y eventos artísticos.\n¿Cuándo se presenta Dramas y Caballeros en Tampico?\nLa obra Dramas y Caballeros forma parte de las producciones teatrales comerciales que recorren distintos escenarios del país, acercando espectáculos de comedia al público que busca opciones de entretenimiento en vivo.\nEn el caso de Tampico, la función está programada para el 20 de marzo de 2026 en el Espacio Cultural Metropolitano de Tampico.\n¿De qué trata la obra Dramas y Caballeros?\nLa historia gira en torno a un grupo de personajes cuyas relaciones personales terminan entrelazándose de manera inesperada. A lo largo de la obra se presentan conflictos sentimentales, secretos y decisiones que generan malentendidos, lo que provoca una cadena de situaciones cada vez más complicadas.\nCada personaje posee una personalidad marcada que influye en la forma en que reacciona ante los acontecimientos, creando un ritmo constante de diálogos, confrontaciones y momentos de humor.\nEl título de la obra juega precisamente con la dualidad entre drama y caballerosidad, dos elementos que aparecen en distintos momentos de la narrativa. Mientras algunos personajes intentan mantener una imagen de elegancia o control, otros terminan envueltos en situaciones incómodas o absurdas que rompen con esa apariencia.\nGran parte de la comedia surge de esos malentendidos y de los intentos de los protagonistas por resolver conflictos que, lejos de solucionarse fácilmente, se vuelven cada vez más complejos conforme avanza la historia.\n¿Dónde comprar boletos para Dramas y Caballeros en Tampico?\nLas personas interesadas en asistir a la función pueden adquirir sus entradas a través de la plataforma de venta de boletos Showbiz Ticket, sistema que distribuye accesos para distintos espectáculos en México.\nDe acuerdo con la información del cartel promocional del evento, los precios de los boletos son los siguientes:\n- Zona Diamante: 920 pesos\n- Zona Oro: 800 pesos\n- Zona Plata: 690 pesos\n- Palco (izquierdo y derecho): 590 pesos\nLos precios indicados ya incluyen cargos pagando en efectivo, según se especifica en la información del evento.",
+  "article_text_length": 3060,
+  "article_title": "Alfredo Adame llegará a Tampico ¿Dónde se presentará el 'Golden boy'? Esto sabemos - Milenio",
+  "article_url_resolved": "https://www.milenio.com/comunidad/dramas-caballeros-tampico-alfredo-adame-fecha-boletos",
+  "attempted_methods": [
+    "trafilatura",
+    "cloudscraper"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "cloudscraper",
+  "fallback_used": true,
+  "medio": "site:milenio.com",
+  "playwright_used": false,
+  "query": "\"tampico\" site:milenio.com",
+  "query_index": 6,
+  "retrieved_at": "2026-04-05T17:41:43Z",
+  "source_domain": "www.milenio.com",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

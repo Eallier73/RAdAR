@@ -1,0 +1,82 @@
+[
+  {
+    "artifact_type": "dataset",
+    "description": "Artículos extraídos de medios.",
+    "name": "media_articles_2026-03-09_semana_09marzo_15marzo_26.csv",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-09_semana_09marzo_15marzo_26/runs/media_w11_full_20260411_072316/media_articles_2026-03-09_semana_09marzo_15marzo_26.csv",
+    "size_bytes": 623184,
+    "timestamp": "2026-04-11T13:36:09Z"
+  },
+  {
+    "artifact_type": "dataset",
+    "description": "Items RSS materializados antes de resolución.",
+    "name": "rss_items_raw.csv",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-09_semana_09marzo_15marzo_26/runs/media_w11_full_20260411_072316/rss_items_raw.csv",
+    "size_bytes": 277254,
+    "timestamp": "2026-04-11T13:36:09Z"
+  },
+  {
+    "artifact_type": "dataset",
+    "description": "Resultado de resolución de URLs de Google News.",
+    "name": "urls_resueltas.csv",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-09_semana_09marzo_15marzo_26/runs/media_w11_full_20260411_072316/urls_resueltas.csv",
+    "size_bytes": 138480,
+    "timestamp": "2026-04-11T13:36:09Z"
+  },
+  {
+    "artifact_type": "summary_table",
+    "description": "Resumen por intento de descarga de artículos.",
+    "name": "descarga_articulos_summary.csv",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-09_semana_09marzo_15marzo_26/runs/media_w11_full_20260411_072316/descarga_articulos_summary.csv",
+    "size_bytes": 71472,
+    "timestamp": "2026-04-11T13:36:09Z"
+  },
+  {
+    "artifact_type": "summary_table",
+    "description": "Resumen operativo por query.",
+    "name": "queries_summary.csv",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-09_semana_09marzo_15marzo_26/runs/media_w11_full_20260411_072316/queries_summary.csv",
+    "size_bytes": 810,
+    "timestamp": "2026-04-11T13:36:09Z"
+  },
+  {
+    "artifact_type": "summary",
+    "description": "Resumen global de la corrida.",
+    "name": "summary.json",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-09_semana_09marzo_15marzo_26/runs/media_w11_full_20260411_072316/summary.json",
+    "size_bytes": 2094,
+    "timestamp": "2026-04-11T13:36:09Z"
+  },
+  {
+    "artifact_type": "parameters",
+    "description": "Parámetros efectivos de la corrida.",
+    "name": "parametros_run.json",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-09_semana_09marzo_15marzo_26/runs/media_w11_full_20260411_072316/parametros_run.json",
+    "size_bytes": 3104,
+    "timestamp": "2026-04-11T13:36:09Z"
+  },
+  {
+    "artifact_type": "log",
+    "description": "Log operativo de la corrida.",
+    "name": "run.log",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-09_semana_09marzo_15marzo_26/runs/media_w11_full_20260411_072316/run.log",
+    "size_bytes": 2333,
+    "timestamp": "2026-04-11T13:36:09Z"
+  },
+  {
+    "artifact_type": "metadata",
+    "description": "Metadata completa y trazabilidad de la corrida.",
+    "name": "metadata_run.json",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-09_semana_09marzo_15marzo_26/runs/media_w11_full_20260411_072316/metadata_run.json",
+    "size_bytes": 8767,
+    "timestamp": "2026-04-11T13:36:09Z"
+  },
+  {
+    "artifact_type": "manifest",
+    "description": "Inventario de artefactos de la corrida.",
+    "name": "manifest.json",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-09_semana_09marzo_15marzo_26/runs/media_w11_full_20260411_072316/manifest.json",
+    "size_bytes": 3286,
+    "timestamp": "2026-04-11T13:36:09Z"
+  }
+]

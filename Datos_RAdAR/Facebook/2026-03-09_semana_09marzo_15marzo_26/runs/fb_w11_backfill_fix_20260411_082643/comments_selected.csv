@@ -1,0 +1,471 @@
+﻿run_id,week_name,source_platform,source_scope,page_id,page_label,post_id,comment_id,parent_post_id,record_type,post_url,comment_url,created_time,week_label,text,post_text,comment_count_post,selection_stage,selection_rule,weekly_page_cap,max_comments_per_post,page_week_counter,post_comment_counter,status_extraccion,error_type,error_detail,seed,selected_for_comment_sampling,post_selection_rank,processing_rank,comments_requested_for_post,comments_retrieved_for_post,enrichment_applied,enrichment_source,absorbed_comment_logic,is_reply
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1504974697859086,1421701845883717,1504974697859086,comment,https://www.facebook.com/reel/1418971672824926/,https://www.facebook.com/reel/1418971672824926/?comment_id=1421701845883717,2026-03-31T19:46:53+00:00,2026-03-31,Muchas gracias Alcaldes,"Recibimos 15 toneladas de cebolla que estaremos llevando a distintas colonias de Tampico a través de nuestros programas alimentarios. Gracias a la generosidad de productores de nuestra región seguimos acercando apoyos que ayudan a la alimentación y también a la economía familiar.
+
+Además, con el respaldo de nuestro gobernador, el Dr. Américo Villarreal, a través del programa Nutrimar recibiremos en el mes de septiembre dos toneladas de pescado para las y los tampiqueños.
+
+Seguimos trabajando para que estos apoyos lleguen pronto a tu colonia.
+
+#TampicoVaconTodos
+#TampicoteCuida",244.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,1,1,saved,,,42,True,8,1,25,6,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1504974697859086,1681134276525551,1504974697859086,comment,https://www.facebook.com/reel/1418971672824926/,https://www.facebook.com/reel/1418971672824926/?comment_id=1681134276525551,2026-03-28T20:49:55+00:00,2026-03-31,Excelente alcaldesa dios me la bendiga saludos bendiciones 🙏❤️,"Recibimos 15 toneladas de cebolla que estaremos llevando a distintas colonias de Tampico a través de nuestros programas alimentarios. Gracias a la generosidad de productores de nuestra región seguimos acercando apoyos que ayudan a la alimentación y también a la economía familiar.
+
+Además, con el respaldo de nuestro gobernador, el Dr. Américo Villarreal, a través del programa Nutrimar recibiremos en el mes de septiembre dos toneladas de pescado para las y los tampiqueños.
+
+Seguimos trabajando para que estos apoyos lleguen pronto a tu colonia.
+
+#TampicoVaconTodos
+#TampicoteCuida",244.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,2,2,saved,,,42,True,8,1,25,6,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1504974697859086,1424232885658907,1504974697859086,comment,https://www.facebook.com/reel/1418971672824926/,https://www.facebook.com/reel/1418971672824926/?comment_id=1424232885658907,2026-03-20T03:16:12+00:00,2026-03-24,Muchas gracias Alcaldesa !!,"Recibimos 15 toneladas de cebolla que estaremos llevando a distintas colonias de Tampico a través de nuestros programas alimentarios. Gracias a la generosidad de productores de nuestra región seguimos acercando apoyos que ayudan a la alimentación y también a la economía familiar.
+
+Además, con el respaldo de nuestro gobernador, el Dr. Américo Villarreal, a través del programa Nutrimar recibiremos en el mes de septiembre dos toneladas de pescado para las y los tampiqueños.
+
+Seguimos trabajando para que estos apoyos lleguen pronto a tu colonia.
+
+#TampicoVaconTodos
+#TampicoteCuida",244.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,3,3,saved,,,42,True,8,1,25,6,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1504974697859086,3284731355039964,1504974697859086,comment,https://www.facebook.com/reel/1418971672824926/,https://www.facebook.com/reel/1418971672824926/?comment_id=3284731355039964,2026-03-18T19:21:28+00:00,2026-03-24,Excelente,"Recibimos 15 toneladas de cebolla que estaremos llevando a distintas colonias de Tampico a través de nuestros programas alimentarios. Gracias a la generosidad de productores de nuestra región seguimos acercando apoyos que ayudan a la alimentación y también a la economía familiar.
+
+Además, con el respaldo de nuestro gobernador, el Dr. Américo Villarreal, a través del programa Nutrimar recibiremos en el mes de septiembre dos toneladas de pescado para las y los tampiqueños.
+
+Seguimos trabajando para que estos apoyos lleguen pronto a tu colonia.
+
+#TampicoVaconTodos
+#TampicoteCuida",244.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,4,4,saved,,,42,True,8,1,25,6,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1504974697859086,1194219396122584,1504974697859086,comment,https://www.facebook.com/reel/1418971672824926/,https://www.facebook.com/reel/1418971672824926/?comment_id=1194219396122584,2026-03-16T16:20:14+00:00,2026-03-17,Tampico va y para todos,"Recibimos 15 toneladas de cebolla que estaremos llevando a distintas colonias de Tampico a través de nuestros programas alimentarios. Gracias a la generosidad de productores de nuestra región seguimos acercando apoyos que ayudan a la alimentación y también a la economía familiar.
+
+Además, con el respaldo de nuestro gobernador, el Dr. Américo Villarreal, a través del programa Nutrimar recibiremos en el mes de septiembre dos toneladas de pescado para las y los tampiqueños.
+
+Seguimos trabajando para que estos apoyos lleguen pronto a tu colonia.
+
+#TampicoVaconTodos
+#TampicoteCuida",244.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,5,5,saved,,,42,True,8,1,25,6,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1504974697859086,971494238715453,1504974697859086,comment,https://www.facebook.com/reel/1418971672824926/,https://www.facebook.com/reel/1418971672824926/?comment_id=971494238715453,2026-03-16T00:45:35+00:00,2026-03-17,"Logro tas logros, dios es grande, para poder ayudar a los ciudadanos","Recibimos 15 toneladas de cebolla que estaremos llevando a distintas colonias de Tampico a través de nuestros programas alimentarios. Gracias a la generosidad de productores de nuestra región seguimos acercando apoyos que ayudan a la alimentación y también a la economía familiar.
+
+Además, con el respaldo de nuestro gobernador, el Dr. Américo Villarreal, a través del programa Nutrimar recibiremos en el mes de septiembre dos toneladas de pescado para las y los tampiqueños.
+
+Seguimos trabajando para que estos apoyos lleguen pronto a tu colonia.
+
+#TampicoVaconTodos
+#TampicoteCuida",244.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,6,6,saved,,,42,True,8,1,25,6,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1504014041288485,1700694041351322,1504014041288485,comment,https://www.facebook.com/reel/954565230558935/,https://www.facebook.com/reel/954565230558935/?comment_id=1700694041351322,2026-03-18T05:29:33+00:00,2026-03-24,Soy teresita,"El programa “Mujeres que Cuidan” reconoce a quienes todos los días sostienen a sus familias con amor, esfuerzo y dedicación.
+
+A través del Sistema Municipal de Cuidados estaremos entregando apoyo alimenticio y producto lácteo, porque creemos en un municipio más justo donde el trabajo de cuidar también sea valorado y respaldado. 
+
+#TampicoTeCuida #MujeresQueCuidan
+#TampicoVaConTodos",60.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,7,1,saved,,,42,True,7,2,25,6,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1504014041288485,906559172171428,1504014041288485,comment,https://www.facebook.com/reel/954565230558935/,https://www.facebook.com/reel/954565230558935/?comment_id=906559172171428,2026-03-18T05:29:07+00:00,2026-03-24,Hola buenas noches  como  le puedo hacer  yo que  cuido a mi esposo  de la tercera edad  tiene 87 años,"El programa “Mujeres que Cuidan” reconoce a quienes todos los días sostienen a sus familias con amor, esfuerzo y dedicación.
+
+A través del Sistema Municipal de Cuidados estaremos entregando apoyo alimenticio y producto lácteo, porque creemos en un municipio más justo donde el trabajo de cuidar también sea valorado y respaldado. 
+
+#TampicoTeCuida #MujeresQueCuidan
+#TampicoVaConTodos",60.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,8,2,saved,,,42,True,7,2,25,6,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1504014041288485,2726294964373972,1504014041288485,comment,https://www.facebook.com/reel/954565230558935/,https://www.facebook.com/reel/954565230558935/?comment_id=2726294964373972,2026-03-17T00:13:21+00:00,2026-03-17,Es un gran programa una respuesta muy rápida para la comunidad 👌,"El programa “Mujeres que Cuidan” reconoce a quienes todos los días sostienen a sus familias con amor, esfuerzo y dedicación.
+
+A través del Sistema Municipal de Cuidados estaremos entregando apoyo alimenticio y producto lácteo, porque creemos en un municipio más justo donde el trabajo de cuidar también sea valorado y respaldado. 
+
+#TampicoTeCuida #MujeresQueCuidan
+#TampicoVaConTodos",60.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,9,3,saved,,,42,True,7,2,25,6,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1504014041288485,954663883760585,1504014041288485,comment,https://www.facebook.com/reel/954565230558935/,https://www.facebook.com/reel/954565230558935/?comment_id=954663883760585,2026-03-14T22:48:54+00:00,2026-03-17,Genial,"El programa “Mujeres que Cuidan” reconoce a quienes todos los días sostienen a sus familias con amor, esfuerzo y dedicación.
+
+A través del Sistema Municipal de Cuidados estaremos entregando apoyo alimenticio y producto lácteo, porque creemos en un municipio más justo donde el trabajo de cuidar también sea valorado y respaldado. 
+
+#TampicoTeCuida #MujeresQueCuidan
+#TampicoVaConTodos",60.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,10,4,saved,,,42,True,7,2,25,6,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1504014041288485,844227442034828,1504014041288485,comment,https://www.facebook.com/reel/954565230558935/,https://www.facebook.com/reel/954565230558935/?comment_id=844227442034828,2026-03-14T17:16:48+00:00,2026-03-17,Muchas gracias presidenta por esos programas que nos benefician 🫶🏽,"El programa “Mujeres que Cuidan” reconoce a quienes todos los días sostienen a sus familias con amor, esfuerzo y dedicación.
+
+A través del Sistema Municipal de Cuidados estaremos entregando apoyo alimenticio y producto lácteo, porque creemos en un municipio más justo donde el trabajo de cuidar también sea valorado y respaldado. 
+
+#TampicoTeCuida #MujeresQueCuidan
+#TampicoVaConTodos",60.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,11,5,saved,,,42,True,7,2,25,6,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1504014041288485,974600804893111,1504014041288485,comment,https://www.facebook.com/reel/954565230558935/,https://www.facebook.com/reel/954565230558935/?comment_id=974600804893111,2026-03-14T15:55:04+00:00,2026-03-17,Tampico te cuida 🙏🏻,"El programa “Mujeres que Cuidan” reconoce a quienes todos los días sostienen a sus familias con amor, esfuerzo y dedicación.
+
+A través del Sistema Municipal de Cuidados estaremos entregando apoyo alimenticio y producto lácteo, porque creemos en un municipio más justo donde el trabajo de cuidar también sea valorado y respaldado. 
+
+#TampicoTeCuida #MujeresQueCuidan
+#TampicoVaConTodos",60.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,12,6,saved,,,42,True,7,2,25,6,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1503356838020872,1553074875765865,1503356838020872,comment,https://www.facebook.com/monicavtampico/posts/pfbid02zFJFZTXDGUnQRCgjtk3SbxhDsZUUjXq36BhZSkagr9PV26MartxisAUcZo6aNoLXl,https://www.facebook.com/monicavtampico/posts/pfbid02zFJFZTXDGUnQRCgjtk3SbxhDsZUUjXq36BhZSkagr9PV26MartxisAUcZo6aNoLXl?comment_id=1553074875765865,2026-03-13T04:09:36+00:00,2026-03-17,Genial,"Hoy por la mañana asistí a la mesa de seguridad que se llevó a cabo en Ciudad Madero,  donde di a conocer el diagnóstico municipal de violencia familiar, con la finalidad de identificar el origen de los casos de violencia que se presentan dentro del entorno familiar.
+
+También se dio a conocer el programa operativo “Héroes y Heroinas Paisanos”
+el cual se aplicará en la temporada de las siguientes vacaciones.
+
+Estuve acompañada por el Presidente municipal de Ciudad Madero el C.P. Erasmo Gonzalez Robledo, el Lic Jorge Segura Arias Director Jurídico en representación del Alcalde de Altamira Dr.Armando Martínez Manríquez y la Lic. Diana Lizeth Tejeda Márquez Secretaría técnica regional de la secretaría de Gobernación.
+
+#TampicoVaConTodos
+#tampicosetransforma
+#TampicoTeCuida",36.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,13,1,saved,,,42,True,6,3,25,7,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1503356838020872,1478431940529632,1503356838020872,comment,https://www.facebook.com/monicavtampico/posts/pfbid02zFJFZTXDGUnQRCgjtk3SbxhDsZUUjXq36BhZSkagr9PV26MartxisAUcZo6aNoLXl,https://www.facebook.com/monicavtampico/posts/pfbid02zFJFZTXDGUnQRCgjtk3SbxhDsZUUjXq36BhZSkagr9PV26MartxisAUcZo6aNoLXl?comment_id=1478431940529632,2026-03-13T02:01:38+00:00,2026-03-17,Excelente,"Hoy por la mañana asistí a la mesa de seguridad que se llevó a cabo en Ciudad Madero,  donde di a conocer el diagnóstico municipal de violencia familiar, con la finalidad de identificar el origen de los casos de violencia que se presentan dentro del entorno familiar.
+
+También se dio a conocer el programa operativo “Héroes y Heroinas Paisanos”
+el cual se aplicará en la temporada de las siguientes vacaciones.
+
+Estuve acompañada por el Presidente municipal de Ciudad Madero el C.P. Erasmo Gonzalez Robledo, el Lic Jorge Segura Arias Director Jurídico en representación del Alcalde de Altamira Dr.Armando Martínez Manríquez y la Lic. Diana Lizeth Tejeda Márquez Secretaría técnica regional de la secretaría de Gobernación.
+
+#TampicoVaConTodos
+#tampicosetransforma
+#TampicoTeCuida",36.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,14,2,saved,,,42,True,6,3,25,7,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1503356838020872,1300897514707591,1503356838020872,comment,https://www.facebook.com/monicavtampico/posts/pfbid02zFJFZTXDGUnQRCgjtk3SbxhDsZUUjXq36BhZSkagr9PV26MartxisAUcZo6aNoLXl,https://www.facebook.com/monicavtampico/posts/pfbid02zFJFZTXDGUnQRCgjtk3SbxhDsZUUjXq36BhZSkagr9PV26MartxisAUcZo6aNoLXl?comment_id=1300897514707591,2026-03-13T01:25:41+00:00,2026-03-17,Muy bien alcaldesa 👏,"Hoy por la mañana asistí a la mesa de seguridad que se llevó a cabo en Ciudad Madero,  donde di a conocer el diagnóstico municipal de violencia familiar, con la finalidad de identificar el origen de los casos de violencia que se presentan dentro del entorno familiar.
+
+También se dio a conocer el programa operativo “Héroes y Heroinas Paisanos”
+el cual se aplicará en la temporada de las siguientes vacaciones.
+
+Estuve acompañada por el Presidente municipal de Ciudad Madero el C.P. Erasmo Gonzalez Robledo, el Lic Jorge Segura Arias Director Jurídico en representación del Alcalde de Altamira Dr.Armando Martínez Manríquez y la Lic. Diana Lizeth Tejeda Márquez Secretaría técnica regional de la secretaría de Gobernación.
+
+#TampicoVaConTodos
+#tampicosetransforma
+#TampicoTeCuida",36.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,15,3,saved,,,42,True,6,3,25,7,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1503356838020872,1234638135023964,1503356838020872,comment,https://www.facebook.com/monicavtampico/posts/pfbid02zFJFZTXDGUnQRCgjtk3SbxhDsZUUjXq36BhZSkagr9PV26MartxisAUcZo6aNoLXl,https://www.facebook.com/monicavtampico/posts/pfbid02zFJFZTXDGUnQRCgjtk3SbxhDsZUUjXq36BhZSkagr9PV26MartxisAUcZo6aNoLXl?comment_id=1234638135023964,2026-03-13T01:20:46+00:00,2026-03-17,Excelente  Presidenta👏👏👏,"Hoy por la mañana asistí a la mesa de seguridad que se llevó a cabo en Ciudad Madero,  donde di a conocer el diagnóstico municipal de violencia familiar, con la finalidad de identificar el origen de los casos de violencia que se presentan dentro del entorno familiar.
+
+También se dio a conocer el programa operativo “Héroes y Heroinas Paisanos”
+el cual se aplicará en la temporada de las siguientes vacaciones.
+
+Estuve acompañada por el Presidente municipal de Ciudad Madero el C.P. Erasmo Gonzalez Robledo, el Lic Jorge Segura Arias Director Jurídico en representación del Alcalde de Altamira Dr.Armando Martínez Manríquez y la Lic. Diana Lizeth Tejeda Márquez Secretaría técnica regional de la secretaría de Gobernación.
+
+#TampicoVaConTodos
+#tampicosetransforma
+#TampicoTeCuida",36.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,16,4,saved,,,42,True,6,3,25,7,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1503356838020872,26204298632542070,1503356838020872,comment,https://www.facebook.com/monicavtampico/posts/pfbid02zFJFZTXDGUnQRCgjtk3SbxhDsZUUjXq36BhZSkagr9PV26MartxisAUcZo6aNoLXl,https://www.facebook.com/monicavtampico/posts/pfbid02zFJFZTXDGUnQRCgjtk3SbxhDsZUUjXq36BhZSkagr9PV26MartxisAUcZo6aNoLXl?comment_id=26204298632542070,2026-03-13T00:11:23+00:00,2026-03-17,Muy bien 👍🏻,"Hoy por la mañana asistí a la mesa de seguridad que se llevó a cabo en Ciudad Madero,  donde di a conocer el diagnóstico municipal de violencia familiar, con la finalidad de identificar el origen de los casos de violencia que se presentan dentro del entorno familiar.
+
+También se dio a conocer el programa operativo “Héroes y Heroinas Paisanos”
+el cual se aplicará en la temporada de las siguientes vacaciones.
+
+Estuve acompañada por el Presidente municipal de Ciudad Madero el C.P. Erasmo Gonzalez Robledo, el Lic Jorge Segura Arias Director Jurídico en representación del Alcalde de Altamira Dr.Armando Martínez Manríquez y la Lic. Diana Lizeth Tejeda Márquez Secretaría técnica regional de la secretaría de Gobernación.
+
+#TampicoVaConTodos
+#tampicosetransforma
+#TampicoTeCuida",36.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,17,5,saved,,,42,True,6,3,25,7,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1503356838020872,27049473914642925,1503356838020872,comment,https://www.facebook.com/monicavtampico/posts/pfbid02zFJFZTXDGUnQRCgjtk3SbxhDsZUUjXq36BhZSkagr9PV26MartxisAUcZo6aNoLXl,https://www.facebook.com/monicavtampico/posts/pfbid02zFJFZTXDGUnQRCgjtk3SbxhDsZUUjXq36BhZSkagr9PV26MartxisAUcZo6aNoLXl?comment_id=27049473914642925,2026-03-12T22:09:22+00:00,2026-03-17,Excelente trabajo presidenta felicidades que siga la transformacion,"Hoy por la mañana asistí a la mesa de seguridad que se llevó a cabo en Ciudad Madero,  donde di a conocer el diagnóstico municipal de violencia familiar, con la finalidad de identificar el origen de los casos de violencia que se presentan dentro del entorno familiar.
+
+También se dio a conocer el programa operativo “Héroes y Heroinas Paisanos”
+el cual se aplicará en la temporada de las siguientes vacaciones.
+
+Estuve acompañada por el Presidente municipal de Ciudad Madero el C.P. Erasmo Gonzalez Robledo, el Lic Jorge Segura Arias Director Jurídico en representación del Alcalde de Altamira Dr.Armando Martínez Manríquez y la Lic. Diana Lizeth Tejeda Márquez Secretaría técnica regional de la secretaría de Gobernación.
+
+#TampicoVaConTodos
+#tampicosetransforma
+#TampicoTeCuida",36.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,18,6,saved,,,42,True,6,3,25,7,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1503356838020872,2910444395828846,1503356838020872,comment,https://www.facebook.com/monicavtampico/posts/pfbid02zFJFZTXDGUnQRCgjtk3SbxhDsZUUjXq36BhZSkagr9PV26MartxisAUcZo6aNoLXl,https://www.facebook.com/monicavtampico/posts/pfbid02zFJFZTXDGUnQRCgjtk3SbxhDsZUUjXq36BhZSkagr9PV26MartxisAUcZo6aNoLXl?comment_id=2910444395828846,2026-03-12T21:51:47+00:00,2026-03-17,siempre a la vanguardia Alcaldesa 🙌,"Hoy por la mañana asistí a la mesa de seguridad que se llevó a cabo en Ciudad Madero,  donde di a conocer el diagnóstico municipal de violencia familiar, con la finalidad de identificar el origen de los casos de violencia que se presentan dentro del entorno familiar.
+
+También se dio a conocer el programa operativo “Héroes y Heroinas Paisanos”
+el cual se aplicará en la temporada de las siguientes vacaciones.
+
+Estuve acompañada por el Presidente municipal de Ciudad Madero el C.P. Erasmo Gonzalez Robledo, el Lic Jorge Segura Arias Director Jurídico en representación del Alcalde de Altamira Dr.Armando Martínez Manríquez y la Lic. Diana Lizeth Tejeda Márquez Secretaría técnica regional de la secretaría de Gobernación.
+
+#TampicoVaConTodos
+#tampicosetransforma
+#TampicoTeCuida",36.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,19,7,saved,,,42,True,6,3,25,7,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1502568361433053,1231674965836281,1502568361433053,comment,https://www.facebook.com/monicavtampico/posts/pfbid0LBWQFYhWnLKYvXyANjJm7Vm3ENSJSdjBgwNHBeyYrLMfhBgxGj4Vjz8mnHhzNwDXl,https://www.facebook.com/monicavtampico/posts/pfbid0LBWQFYhWnLKYvXyANjJm7Vm3ENSJSdjBgwNHBeyYrLMfhBgxGj4Vjz8mnHhzNwDXl?comment_id=1231674965836281,2026-03-12T19:30:20+00:00,2026-03-17,Súper bien !!!!,,12.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,20,1,saved,,,42,True,5,4,25,4,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1502568361433053,1642696680485244,1502568361433053,comment,https://www.facebook.com/monicavtampico/posts/pfbid0LBWQFYhWnLKYvXyANjJm7Vm3ENSJSdjBgwNHBeyYrLMfhBgxGj4Vjz8mnHhzNwDXl,https://www.facebook.com/monicavtampico/posts/pfbid0LBWQFYhWnLKYvXyANjJm7Vm3ENSJSdjBgwNHBeyYrLMfhBgxGj4Vjz8mnHhzNwDXl?comment_id=1642696680485244,2026-03-11T22:06:43+00:00,2026-03-17,"Excelente 👏🏻👏🏻 
+#TampicoVaConTodos 
+#TampicoTeCuida",,12.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,21,2,saved,,,42,True,5,4,25,4,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1502568361433053,2101455673951081,1502568361433053,comment,https://www.facebook.com/monicavtampico/posts/pfbid0LBWQFYhWnLKYvXyANjJm7Vm3ENSJSdjBgwNHBeyYrLMfhBgxGj4Vjz8mnHhzNwDXl,https://www.facebook.com/monicavtampico/posts/pfbid0LBWQFYhWnLKYvXyANjJm7Vm3ENSJSdjBgwNHBeyYrLMfhBgxGj4Vjz8mnHhzNwDXl?comment_id=2101455673951081,2026-03-11T20:50:18+00:00,2026-03-17,"Educación, educación y educación!!!",,12.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,22,3,saved,,,42,True,5,4,25,4,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1502568361433053,1594919391732065,1502568361433053,comment,https://www.facebook.com/monicavtampico/posts/pfbid0LBWQFYhWnLKYvXyANjJm7Vm3ENSJSdjBgwNHBeyYrLMfhBgxGj4Vjz8mnHhzNwDXl,https://www.facebook.com/monicavtampico/posts/pfbid0LBWQFYhWnLKYvXyANjJm7Vm3ENSJSdjBgwNHBeyYrLMfhBgxGj4Vjz8mnHhzNwDXl?comment_id=1594919391732065,2026-03-11T20:46:28+00:00,2026-03-17,Muy bien presidenta Mónica Villarreal por un buen aprendizaje y enseñanza de nuestros chiquitines,,12.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,23,4,saved,,,42,True,5,4,25,4,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1501851088171447,2743545432660981,1501851088171447,comment,https://www.facebook.com/reel/1894745901148707/,https://www.facebook.com/reel/1894745901148707/?comment_id=2743545432660981,2026-03-18T15:39:57+00:00,2026-03-24,Excelente 👏🏻👏🏻👏🏻,"Me siento profundamente feliz y conmovida de que las y los alumnos de la generación 2023–2026 de la Escuela Secundaria Andrés Araujo Araujo me hayan escogido como su madrina de generación.
+
+Me llena de orgullo ver a una generación de jóvenes con sueños, talento y un gran futuro por delante.
+#TampicoVaConTodos",70.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,24,1,saved,,,42,True,4,5,25,8,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1501851088171447,871436045944311,1501851088171447,comment,https://www.facebook.com/reel/1894745901148707/,https://www.facebook.com/reel/1894745901148707/?comment_id=871436045944311,2026-03-16T03:40:43+00:00,2026-03-17,"Será la más hermosa madrina,Lic Mónica  Villarreal,ella los guiará moralmente jasta  que culminen  sus estudios no lo duden ,échenle ganas y podrían ser el que quiera Alcalde o Alcaldesa,todo es posible si se quiere,madrina de lujo","Me siento profundamente feliz y conmovida de que las y los alumnos de la generación 2023–2026 de la Escuela Secundaria Andrés Araujo Araujo me hayan escogido como su madrina de generación.
+
+Me llena de orgullo ver a una generación de jóvenes con sueños, talento y un gran futuro por delante.
+#TampicoVaConTodos",70.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,25,2,saved,,,42,True,4,5,25,8,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1501851088171447,1477431333915210,1501851088171447,comment,https://www.facebook.com/reel/1894745901148707/,https://www.facebook.com/reel/1894745901148707/?comment_id=1477431333915210,2026-03-14T18:50:07+00:00,2026-03-17,Más q contratos q sea usted nuestra madrina de generación. Todos somos Oficial Sec4 Andres Araujo Araujo ...todos somos Tampico!,"Me siento profundamente feliz y conmovida de que las y los alumnos de la generación 2023–2026 de la Escuela Secundaria Andrés Araujo Araujo me hayan escogido como su madrina de generación.
+
+Me llena de orgullo ver a una generación de jóvenes con sueños, talento y un gran futuro por delante.
+#TampicoVaConTodos",70.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,26,3,saved,,,42,True,4,5,25,8,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1501851088171447,1997933080759972,1501851088171447,comment,https://www.facebook.com/reel/1894745901148707/,https://www.facebook.com/reel/1894745901148707/?comment_id=1997933080759972,2026-03-14T18:26:11+00:00,2026-03-17,Oficial Sec4 Andres Araujo Araujo,"Me siento profundamente feliz y conmovida de que las y los alumnos de la generación 2023–2026 de la Escuela Secundaria Andrés Araujo Araujo me hayan escogido como su madrina de generación.
+
+Me llena de orgullo ver a una generación de jóvenes con sueños, talento y un gran futuro por delante.
+#TampicoVaConTodos",70.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,27,4,saved,,,42,True,4,5,25,8,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1501851088171447,904410469234862,1501851088171447,comment,https://www.facebook.com/reel/1894745901148707/,https://www.facebook.com/reel/1894745901148707/?comment_id=904410469234862,2026-03-12T17:02:52+00:00,2026-03-17,Dios los bendiga en el nombre del señor Jesucristo,"Me siento profundamente feliz y conmovida de que las y los alumnos de la generación 2023–2026 de la Escuela Secundaria Andrés Araujo Araujo me hayan escogido como su madrina de generación.
+
+Me llena de orgullo ver a una generación de jóvenes con sueños, talento y un gran futuro por delante.
+#TampicoVaConTodos",70.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,28,5,saved,,,42,True,4,5,25,8,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1501851088171447,1653783082469854,1501851088171447,comment,https://www.facebook.com/reel/1894745901148707/,https://www.facebook.com/reel/1894745901148707/?comment_id=1653783082469854,2026-03-12T14:48:31+00:00,2026-03-17,"Belleza de directora y hermosa madrina, excelente!","Me siento profundamente feliz y conmovida de que las y los alumnos de la generación 2023–2026 de la Escuela Secundaria Andrés Araujo Araujo me hayan escogido como su madrina de generación.
+
+Me llena de orgullo ver a una generación de jóvenes con sueños, talento y un gran futuro por delante.
+#TampicoVaConTodos",70.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,29,6,saved,,,42,True,4,5,25,8,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1501851088171447,1246701080345181,1501851088171447,comment,https://www.facebook.com/reel/1894745901148707/,https://www.facebook.com/reel/1894745901148707/?comment_id=1246701080345181,2026-03-12T05:07:25+00:00,2026-03-17,Muchas felicidades Bravo nuestra presidenta Mónica Villareal Anaya la mejor,"Me siento profundamente feliz y conmovida de que las y los alumnos de la generación 2023–2026 de la Escuela Secundaria Andrés Araujo Araujo me hayan escogido como su madrina de generación.
+
+Me llena de orgullo ver a una generación de jóvenes con sueños, talento y un gran futuro por delante.
+#TampicoVaConTodos",70.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,30,7,saved,,,42,True,4,5,25,8,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1501851088171447,1632857390999127,1501851088171447,comment,https://www.facebook.com/reel/1894745901148707/,https://www.facebook.com/reel/1894745901148707/?comment_id=1632857390999127,2026-03-12T00:16:52+00:00,2026-03-17,Que padre esa secundaria fui,"Me siento profundamente feliz y conmovida de que las y los alumnos de la generación 2023–2026 de la Escuela Secundaria Andrés Araujo Araujo me hayan escogido como su madrina de generación.
+
+Me llena de orgullo ver a una generación de jóvenes con sueños, talento y un gran futuro por delante.
+#TampicoVaConTodos",70.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,31,8,saved,,,42,True,4,5,25,8,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1501600678196488,954883370213926,1501600678196488,comment,https://www.facebook.com/monicavtampico/posts/pfbid02oi3qSMuj2JcJMJjgBmmGnKqpezJmcB12CknWbEEkFERo3N9nKUqeyAqVYYprbKqhl,https://www.facebook.com/monicavtampico/posts/pfbid02oi3qSMuj2JcJMJjgBmmGnKqpezJmcB12CknWbEEkFERo3N9nKUqeyAqVYYprbKqhl?comment_id=954883370213926,2026-03-12T12:49:23+00:00,2026-03-17,Está realizando un gran trabajo presidenta felicidades !!!!!,,45.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,32,1,saved,,,42,True,3,6,25,7,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1501600678196488,1517356756617894,1501600678196488,comment,https://www.facebook.com/monicavtampico/posts/pfbid02oi3qSMuj2JcJMJjgBmmGnKqpezJmcB12CknWbEEkFERo3N9nKUqeyAqVYYprbKqhl,https://www.facebook.com/monicavtampico/posts/pfbid02oi3qSMuj2JcJMJjgBmmGnKqpezJmcB12CknWbEEkFERo3N9nKUqeyAqVYYprbKqhl?comment_id=1517356756617894,2026-03-11T21:55:18+00:00,2026-03-17,Excelente 👌  ... que bueno que #TampicoBrilla 😁,,45.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,33,2,saved,,,42,True,3,6,25,7,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1501600678196488,26060625306913700,1501600678196488,comment,https://www.facebook.com/monicavtampico/posts/pfbid02oi3qSMuj2JcJMJjgBmmGnKqpezJmcB12CknWbEEkFERo3N9nKUqeyAqVYYprbKqhl,https://www.facebook.com/monicavtampico/posts/pfbid02oi3qSMuj2JcJMJjgBmmGnKqpezJmcB12CknWbEEkFERo3N9nKUqeyAqVYYprbKqhl?comment_id=26060625306913700,2026-03-11T15:04:03+00:00,2026-03-17,Vamos!!!,,45.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,34,3,saved,,,42,True,3,6,25,7,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1501600678196488,1890539944925050,1501600678196488,comment,https://www.facebook.com/monicavtampico/posts/pfbid02oi3qSMuj2JcJMJjgBmmGnKqpezJmcB12CknWbEEkFERo3N9nKUqeyAqVYYprbKqhl,https://www.facebook.com/monicavtampico/posts/pfbid02oi3qSMuj2JcJMJjgBmmGnKqpezJmcB12CknWbEEkFERo3N9nKUqeyAqVYYprbKqhl?comment_id=1890539944925050,2026-03-11T13:12:10+00:00,2026-03-17,🙌🏻🙌🏻🙌🏻🙌🏻🙌🏻,,45.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,35,4,saved,,,42,True,3,6,25,7,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1501600678196488,1292297432801928,1501600678196488,comment,https://www.facebook.com/monicavtampico/posts/pfbid02oi3qSMuj2JcJMJjgBmmGnKqpezJmcB12CknWbEEkFERo3N9nKUqeyAqVYYprbKqhl,https://www.facebook.com/monicavtampico/posts/pfbid02oi3qSMuj2JcJMJjgBmmGnKqpezJmcB12CknWbEEkFERo3N9nKUqeyAqVYYprbKqhl?comment_id=1292297432801928,2026-03-11T05:25:04+00:00,2026-03-17,Genial 👏👏👏,,45.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,36,5,saved,,,42,True,3,6,25,7,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1501600678196488,930249312875217,1501600678196488,comment,https://www.facebook.com/monicavtampico/posts/pfbid02oi3qSMuj2JcJMJjgBmmGnKqpezJmcB12CknWbEEkFERo3N9nKUqeyAqVYYprbKqhl,https://www.facebook.com/monicavtampico/posts/pfbid02oi3qSMuj2JcJMJjgBmmGnKqpezJmcB12CknWbEEkFERo3N9nKUqeyAqVYYprbKqhl?comment_id=930249312875217,2026-03-11T00:47:06+00:00,2026-03-17,Excelente 👏🏻👏🏻,,45.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,37,6,saved,,,42,True,3,6,25,7,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1501600678196488,3810868849043970,1501600678196488,comment,https://www.facebook.com/monicavtampico/posts/pfbid02oi3qSMuj2JcJMJjgBmmGnKqpezJmcB12CknWbEEkFERo3N9nKUqeyAqVYYprbKqhl,https://www.facebook.com/monicavtampico/posts/pfbid02oi3qSMuj2JcJMJjgBmmGnKqpezJmcB12CknWbEEkFERo3N9nKUqeyAqVYYprbKqhl?comment_id=3810868849043970,2026-03-10T23:20:26+00:00,2026-03-10,Excelente,,45.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,38,7,saved,,,42,True,3,6,25,7,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1501044418252114,1281435014048859,1501044418252114,comment,https://www.facebook.com/monicavtampico/posts/pfbid02PFJPzGWSjeirmjkuDPJ35wii1hDMx6Bu8XRCbdz8citzf7U2idXLxz1JWJewk9Sfl,https://www.facebook.com/monicavtampico/posts/pfbid02PFJPzGWSjeirmjkuDPJ35wii1hDMx6Bu8XRCbdz8citzf7U2idXLxz1JWJewk9Sfl?comment_id=1281435014048859,2026-03-12T02:54:00+00:00,2026-03-17,💯💯💯💯💯💯💯,"Tuve el gusto de acompañar a las niñas y niños de la Escuela Primaria “Gabino Barreda”, en su ceremonia de Honores a la Bandera, un plantel con 112 años de historia en nuestra querida zona centro. 🇲🇽
+
+Desde el Gobierno Municipal seguimos trabajando de la mano con nuestras escuelas, apoyando a sus estudiantes con becas, además de mejorar sus espacios con pintura exterior, mantenimiento de la cancha cívica y la donación de aires acondicionados. Hoy hicimos un compromiso para mejorar los baños de este plantel con equipamiento nuevo, para que estén en óptimas condiciones.
+
+Seguimos sumando esfuerzos por una educación digna y por espacios escolares seguros y funcionales para las y los tampiqueños.
+
+#TampicoVaconTodos  
+#TampicoTeCuida",34.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,39,1,saved,,,42,True,2,7,25,4,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1501044418252114,1899632730880923,1501044418252114,comment,https://www.facebook.com/monicavtampico/posts/pfbid02PFJPzGWSjeirmjkuDPJ35wii1hDMx6Bu8XRCbdz8citzf7U2idXLxz1JWJewk9Sfl,https://www.facebook.com/monicavtampico/posts/pfbid02PFJPzGWSjeirmjkuDPJ35wii1hDMx6Bu8XRCbdz8citzf7U2idXLxz1JWJewk9Sfl?comment_id=1899632730880923,2026-03-11T02:19:04+00:00,2026-03-17,Bravo👏,"Tuve el gusto de acompañar a las niñas y niños de la Escuela Primaria “Gabino Barreda”, en su ceremonia de Honores a la Bandera, un plantel con 112 años de historia en nuestra querida zona centro. 🇲🇽
+
+Desde el Gobierno Municipal seguimos trabajando de la mano con nuestras escuelas, apoyando a sus estudiantes con becas, además de mejorar sus espacios con pintura exterior, mantenimiento de la cancha cívica y la donación de aires acondicionados. Hoy hicimos un compromiso para mejorar los baños de este plantel con equipamiento nuevo, para que estén en óptimas condiciones.
+
+Seguimos sumando esfuerzos por una educación digna y por espacios escolares seguros y funcionales para las y los tampiqueños.
+
+#TampicoVaconTodos  
+#TampicoTeCuida",34.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,40,2,saved,,,42,True,2,7,25,4,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1501044418252114,924288743584686,1501044418252114,comment,https://www.facebook.com/monicavtampico/posts/pfbid02PFJPzGWSjeirmjkuDPJ35wii1hDMx6Bu8XRCbdz8citzf7U2idXLxz1JWJewk9Sfl,https://www.facebook.com/monicavtampico/posts/pfbid02PFJPzGWSjeirmjkuDPJ35wii1hDMx6Bu8XRCbdz8citzf7U2idXLxz1JWJewk9Sfl?comment_id=924288743584686,2026-03-10T15:36:44+00:00,2026-03-10,Excelente inicio de semana llena de Grandes éxitos y muchas Bendiciones.💐🙏🕊️✨,"Tuve el gusto de acompañar a las niñas y niños de la Escuela Primaria “Gabino Barreda”, en su ceremonia de Honores a la Bandera, un plantel con 112 años de historia en nuestra querida zona centro. 🇲🇽
+
+Desde el Gobierno Municipal seguimos trabajando de la mano con nuestras escuelas, apoyando a sus estudiantes con becas, además de mejorar sus espacios con pintura exterior, mantenimiento de la cancha cívica y la donación de aires acondicionados. Hoy hicimos un compromiso para mejorar los baños de este plantel con equipamiento nuevo, para que estén en óptimas condiciones.
+
+Seguimos sumando esfuerzos por una educación digna y por espacios escolares seguros y funcionales para las y los tampiqueños.
+
+#TampicoVaconTodos  
+#TampicoTeCuida",34.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,41,3,saved,,,42,True,2,7,25,4,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1501044418252114,1868901620429654,1501044418252114,comment,https://www.facebook.com/monicavtampico/posts/pfbid02PFJPzGWSjeirmjkuDPJ35wii1hDMx6Bu8XRCbdz8citzf7U2idXLxz1JWJewk9Sfl,https://www.facebook.com/monicavtampico/posts/pfbid02PFJPzGWSjeirmjkuDPJ35wii1hDMx6Bu8XRCbdz8citzf7U2idXLxz1JWJewk9Sfl?comment_id=1868901620429654,2026-03-10T03:48:18+00:00,2026-03-10,Muy bien lnspiracion para los niños,"Tuve el gusto de acompañar a las niñas y niños de la Escuela Primaria “Gabino Barreda”, en su ceremonia de Honores a la Bandera, un plantel con 112 años de historia en nuestra querida zona centro. 🇲🇽
+
+Desde el Gobierno Municipal seguimos trabajando de la mano con nuestras escuelas, apoyando a sus estudiantes con becas, además de mejorar sus espacios con pintura exterior, mantenimiento de la cancha cívica y la donación de aires acondicionados. Hoy hicimos un compromiso para mejorar los baños de este plantel con equipamiento nuevo, para que estén en óptimas condiciones.
+
+Seguimos sumando esfuerzos por una educación digna y por espacios escolares seguros y funcionales para las y los tampiqueños.
+
+#TampicoVaconTodos  
+#TampicoTeCuida",34.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,42,4,saved,,,42,True,2,7,25,4,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1500432701646619,787590814428641,1500432701646619,comment,https://www.facebook.com/monicavtampico/posts/pfbid0ZsuJCzHFagZe72TpmjDkzEH7SwSfiWpQMQc8Nc6PV9bRPGsT4S5wXZUv1aPuJDc5l,https://www.facebook.com/monicavtampico/posts/pfbid0ZsuJCzHFagZe72TpmjDkzEH7SwSfiWpQMQc8Nc6PV9bRPGsT4S5wXZUv1aPuJDc5l?comment_id=787590814428641,2026-03-19T01:02:58+00:00,2026-03-24,Felicidades,"Celebramos la 1era Copa Femenil de Fútbol 8M. Estamos construyendo un Tampico más inclusivo, donde la igualdad entre hombres y mujeres es una realidad también en las canchas.
+
+Felicidades a las campeonas de este torneo y a todas las participantes.
+
+🏅 Categoría Sub-15
+1° lugar: Águilas Tampico
+2° lugar: Cultural Tampico
+
+🏅 Categoría Libre
+1° lugar: Bacanas
+2° lugar: Boca Jr.
+
+Hoy más que nunca, seguimos impulsando el deporte como una herramienta poderosa para fomentar el respeto, la inclusión y la igualdad de género.
+
+#CopaFemenil8M
+#TampicoteCuida
+#TampicoVaConTodos",29.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,43,1,saved,,,42,True,1,8,25,4,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1500432701646619,1445656957018962,1500432701646619,comment,https://www.facebook.com/monicavtampico/posts/pfbid0ZsuJCzHFagZe72TpmjDkzEH7SwSfiWpQMQc8Nc6PV9bRPGsT4S5wXZUv1aPuJDc5l,https://www.facebook.com/monicavtampico/posts/pfbid0ZsuJCzHFagZe72TpmjDkzEH7SwSfiWpQMQc8Nc6PV9bRPGsT4S5wXZUv1aPuJDc5l?comment_id=1445656957018962,2026-03-12T02:54:27+00:00,2026-03-17,Super!!!,"Celebramos la 1era Copa Femenil de Fútbol 8M. Estamos construyendo un Tampico más inclusivo, donde la igualdad entre hombres y mujeres es una realidad también en las canchas.
+
+Felicidades a las campeonas de este torneo y a todas las participantes.
+
+🏅 Categoría Sub-15
+1° lugar: Águilas Tampico
+2° lugar: Cultural Tampico
+
+🏅 Categoría Libre
+1° lugar: Bacanas
+2° lugar: Boca Jr.
+
+Hoy más que nunca, seguimos impulsando el deporte como una herramienta poderosa para fomentar el respeto, la inclusión y la igualdad de género.
+
+#CopaFemenil8M
+#TampicoteCuida
+#TampicoVaConTodos",29.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,44,2,saved,,,42,True,1,8,25,4,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1500432701646619,920911284103899,1500432701646619,comment,https://www.facebook.com/monicavtampico/posts/pfbid0ZsuJCzHFagZe72TpmjDkzEH7SwSfiWpQMQc8Nc6PV9bRPGsT4S5wXZUv1aPuJDc5l,https://www.facebook.com/monicavtampico/posts/pfbid0ZsuJCzHFagZe72TpmjDkzEH7SwSfiWpQMQc8Nc6PV9bRPGsT4S5wXZUv1aPuJDc5l?comment_id=920911284103899,2026-03-10T15:30:54+00:00,2026-03-10,Muy bien,"Celebramos la 1era Copa Femenil de Fútbol 8M. Estamos construyendo un Tampico más inclusivo, donde la igualdad entre hombres y mujeres es una realidad también en las canchas.
+
+Felicidades a las campeonas de este torneo y a todas las participantes.
+
+🏅 Categoría Sub-15
+1° lugar: Águilas Tampico
+2° lugar: Cultural Tampico
+
+🏅 Categoría Libre
+1° lugar: Bacanas
+2° lugar: Boca Jr.
+
+Hoy más que nunca, seguimos impulsando el deporte como una herramienta poderosa para fomentar el respeto, la inclusión y la igualdad de género.
+
+#CopaFemenil8M
+#TampicoteCuida
+#TampicoVaConTodos",29.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,45,3,saved,,,42,True,1,8,25,4,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1500432701646619,940626961874541,1500432701646619,comment,https://www.facebook.com/monicavtampico/posts/pfbid0ZsuJCzHFagZe72TpmjDkzEH7SwSfiWpQMQc8Nc6PV9bRPGsT4S5wXZUv1aPuJDc5l,https://www.facebook.com/monicavtampico/posts/pfbid0ZsuJCzHFagZe72TpmjDkzEH7SwSfiWpQMQc8Nc6PV9bRPGsT4S5wXZUv1aPuJDc5l?comment_id=940626961874541,2026-03-09T04:42:14+00:00,2026-03-10,Excelente torneo presidenta 🏆👏🏻👏🏻👏🏻,"Celebramos la 1era Copa Femenil de Fútbol 8M. Estamos construyendo un Tampico más inclusivo, donde la igualdad entre hombres y mujeres es una realidad también en las canchas.
+
+Felicidades a las campeonas de este torneo y a todas las participantes.
+
+🏅 Categoría Sub-15
+1° lugar: Águilas Tampico
+2° lugar: Cultural Tampico
+
+🏅 Categoría Libre
+1° lugar: Bacanas
+2° lugar: Boca Jr.
+
+Hoy más que nunca, seguimos impulsando el deporte como una herramienta poderosa para fomentar el respeto, la inclusión y la igualdad de género.
+
+#CopaFemenil8M
+#TampicoteCuida
+#TampicoVaConTodos",29.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,46,4,saved,,,42,True,1,8,25,4,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122196051392546197,880876531618859,122196051392546197,comment,https://www.facebook.com/TampicoGob/posts/pfbid0LHWojvrDgTqvc8Bj3AQHnP3WQKxWRsDYUiioXMVFp9LPoEf3dQZQXWPKSTwNqqwgl,https://www.facebook.com/TampicoGob/posts/pfbid0LHWojvrDgTqvc8Bj3AQHnP3WQKxWRsDYUiioXMVFp9LPoEf3dQZQXWPKSTwNqqwgl?comment_id=880876531618859,2026-03-15T04:58:03+00:00,2026-03-17,Excelente Alcaldesa!!!,,10.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,1,1,saved,,,42,True,8,1,25,2,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122196051392546197,1256528055949546,122196051392546197,comment,https://www.facebook.com/TampicoGob/posts/pfbid0LHWojvrDgTqvc8Bj3AQHnP3WQKxWRsDYUiioXMVFp9LPoEf3dQZQXWPKSTwNqqwgl,https://www.facebook.com/TampicoGob/posts/pfbid0LHWojvrDgTqvc8Bj3AQHnP3WQKxWRsDYUiioXMVFp9LPoEf3dQZQXWPKSTwNqqwgl?comment_id=1256528055949546,2026-03-15T01:07:59+00:00,2026-03-17,Excelente 👏🏻👏🏻,,10.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,2,2,saved,,,42,True,8,1,25,2,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122201505866548816,817397064715654,122201505866548816,comment,https://www.facebook.com/ProteccionCivilTampico/posts/pfbid0C1KN7Ze5oTgNpNJ7RWbWsc1trfKMqWGLXri9YwoYpr6GdDYc2SwVXqgb6xKuWrwul,https://www.facebook.com/ProteccionCivilTampico/posts/pfbid0C1KN7Ze5oTgNpNJ7RWbWsc1trfKMqWGLXri9YwoYpr6GdDYc2SwVXqgb6xKuWrwul?comment_id=817397064715654,2026-03-16T17:09:13+00:00,2026-03-17,Gracias...,"🚨💨EVENTO DE NORTE AGRESIVO💨🚨
+
+Para esté lunes 16 de marzo, se espera el ingreso del frente frío 41 en la zona de Tampico, lo que provocará un evento ""Norte"" intenso con rachas de viento de 100 a 120 km/h. ⚠️
+
+Les damos algunas recomendaciones:
+
+- Asegurara objetos en exteriores como muebles, macetas y anuncios publicitarios
+
+- Extrema precauciones al conducir, especialmente en carreteras y zonas expuestas
+
+- Mantenente informado a través de canales oficiales sobre el avance del evento
+
+- No te acerques a postes o cables eléctricos caídos
+
+- Cuenta con un plan de emergencia en caso de necesidad
+
+*Está información está basada en el pronóstico del Sistema Meteorológico Nacional
+
+¡Tampico Te Cuida Y Protección Civil Somos Todos! #ProteccionCivilTampico #TampicoTeCuida #TampicoSomosTodos #bomberostampico",79.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,3,1,saved,,,42,True,7,2,25,8,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122201505866548816,918917617725472,122201505866548816,comment,https://www.facebook.com/ProteccionCivilTampico/posts/pfbid0C1KN7Ze5oTgNpNJ7RWbWsc1trfKMqWGLXri9YwoYpr6GdDYc2SwVXqgb6xKuWrwul,https://www.facebook.com/ProteccionCivilTampico/posts/pfbid0C1KN7Ze5oTgNpNJ7RWbWsc1trfKMqWGLXri9YwoYpr6GdDYc2SwVXqgb6xKuWrwul?comment_id=918917617725472,2026-03-15T16:06:51+00:00,2026-03-17,Ojalá 🙏🏻😊,"🚨💨EVENTO DE NORTE AGRESIVO💨🚨
+
+Para esté lunes 16 de marzo, se espera el ingreso del frente frío 41 en la zona de Tampico, lo que provocará un evento ""Norte"" intenso con rachas de viento de 100 a 120 km/h. ⚠️
+
+Les damos algunas recomendaciones:
+
+- Asegurara objetos en exteriores como muebles, macetas y anuncios publicitarios
+
+- Extrema precauciones al conducir, especialmente en carreteras y zonas expuestas
+
+- Mantenente informado a través de canales oficiales sobre el avance del evento
+
+- No te acerques a postes o cables eléctricos caídos
+
+- Cuenta con un plan de emergencia en caso de necesidad
+
+*Está información está basada en el pronóstico del Sistema Meteorológico Nacional
+
+¡Tampico Te Cuida Y Protección Civil Somos Todos! #ProteccionCivilTampico #TampicoTeCuida #TampicoSomosTodos #bomberostampico",79.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,4,2,saved,,,42,True,7,2,25,8,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122201505866548816,1742761216700355,122201505866548816,comment,https://www.facebook.com/ProteccionCivilTampico/posts/pfbid0C1KN7Ze5oTgNpNJ7RWbWsc1trfKMqWGLXri9YwoYpr6GdDYc2SwVXqgb6xKuWrwul,https://www.facebook.com/ProteccionCivilTampico/posts/pfbid0C1KN7Ze5oTgNpNJ7RWbWsc1trfKMqWGLXri9YwoYpr6GdDYc2SwVXqgb6xKuWrwul?comment_id=1742761216700355,2026-03-15T15:34:25+00:00,2026-03-17,Rossy Zapata,"🚨💨EVENTO DE NORTE AGRESIVO💨🚨
+
+Para esté lunes 16 de marzo, se espera el ingreso del frente frío 41 en la zona de Tampico, lo que provocará un evento ""Norte"" intenso con rachas de viento de 100 a 120 km/h. ⚠️
+
+Les damos algunas recomendaciones:
+
+- Asegurara objetos en exteriores como muebles, macetas y anuncios publicitarios
+
+- Extrema precauciones al conducir, especialmente en carreteras y zonas expuestas
+
+- Mantenente informado a través de canales oficiales sobre el avance del evento
+
+- No te acerques a postes o cables eléctricos caídos
+
+- Cuenta con un plan de emergencia en caso de necesidad
+
+*Está información está basada en el pronóstico del Sistema Meteorológico Nacional
+
+¡Tampico Te Cuida Y Protección Civil Somos Todos! #ProteccionCivilTampico #TampicoTeCuida #TampicoSomosTodos #bomberostampico",79.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,5,3,saved,,,42,True,7,2,25,8,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122201505866548816,1252574507058127,122201505866548816,comment,https://www.facebook.com/ProteccionCivilTampico/posts/pfbid0C1KN7Ze5oTgNpNJ7RWbWsc1trfKMqWGLXri9YwoYpr6GdDYc2SwVXqgb6xKuWrwul,https://www.facebook.com/ProteccionCivilTampico/posts/pfbid0C1KN7Ze5oTgNpNJ7RWbWsc1trfKMqWGLXri9YwoYpr6GdDYc2SwVXqgb6xKuWrwul?comment_id=1252574507058127,2026-03-15T06:58:49+00:00,2026-03-17,Nooo hay no invoquen no pasará de 20 y ya ✌🏻🥳🥳,"🚨💨EVENTO DE NORTE AGRESIVO💨🚨
+
+Para esté lunes 16 de marzo, se espera el ingreso del frente frío 41 en la zona de Tampico, lo que provocará un evento ""Norte"" intenso con rachas de viento de 100 a 120 km/h. ⚠️
+
+Les damos algunas recomendaciones:
+
+- Asegurara objetos en exteriores como muebles, macetas y anuncios publicitarios
+
+- Extrema precauciones al conducir, especialmente en carreteras y zonas expuestas
+
+- Mantenente informado a través de canales oficiales sobre el avance del evento
+
+- No te acerques a postes o cables eléctricos caídos
+
+- Cuenta con un plan de emergencia en caso de necesidad
+
+*Está información está basada en el pronóstico del Sistema Meteorológico Nacional
+
+¡Tampico Te Cuida Y Protección Civil Somos Todos! #ProteccionCivilTampico #TampicoTeCuida #TampicoSomosTodos #bomberostampico",79.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,6,4,saved,,,42,True,7,2,25,8,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122201505866548816,2338420053290779,122201505866548816,comment,https://www.facebook.com/ProteccionCivilTampico/posts/pfbid0C1KN7Ze5oTgNpNJ7RWbWsc1trfKMqWGLXri9YwoYpr6GdDYc2SwVXqgb6xKuWrwul,https://www.facebook.com/ProteccionCivilTampico/posts/pfbid0C1KN7Ze5oTgNpNJ7RWbWsc1trfKMqWGLXri9YwoYpr6GdDYc2SwVXqgb6xKuWrwul?comment_id=2338420053290779,2026-03-15T04:21:56+00:00,2026-03-17,Gracias por la información oportuna,"🚨💨EVENTO DE NORTE AGRESIVO💨🚨
+
+Para esté lunes 16 de marzo, se espera el ingreso del frente frío 41 en la zona de Tampico, lo que provocará un evento ""Norte"" intenso con rachas de viento de 100 a 120 km/h. ⚠️
+
+Les damos algunas recomendaciones:
+
+- Asegurara objetos en exteriores como muebles, macetas y anuncios publicitarios
+
+- Extrema precauciones al conducir, especialmente en carreteras y zonas expuestas
+
+- Mantenente informado a través de canales oficiales sobre el avance del evento
+
+- No te acerques a postes o cables eléctricos caídos
+
+- Cuenta con un plan de emergencia en caso de necesidad
+
+*Está información está basada en el pronóstico del Sistema Meteorológico Nacional
+
+¡Tampico Te Cuida Y Protección Civil Somos Todos! #ProteccionCivilTampico #TampicoTeCuida #TampicoSomosTodos #bomberostampico",79.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,7,5,saved,,,42,True,7,2,25,8,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122201505866548816,26428079326833100,122201505866548816,comment,https://www.facebook.com/ProteccionCivilTampico/posts/pfbid0C1KN7Ze5oTgNpNJ7RWbWsc1trfKMqWGLXri9YwoYpr6GdDYc2SwVXqgb6xKuWrwul,https://www.facebook.com/ProteccionCivilTampico/posts/pfbid0C1KN7Ze5oTgNpNJ7RWbWsc1trfKMqWGLXri9YwoYpr6GdDYc2SwVXqgb6xKuWrwul?comment_id=26428079326833100,2026-03-15T03:44:46+00:00,2026-03-17,Itzel Herrera,"🚨💨EVENTO DE NORTE AGRESIVO💨🚨
+
+Para esté lunes 16 de marzo, se espera el ingreso del frente frío 41 en la zona de Tampico, lo que provocará un evento ""Norte"" intenso con rachas de viento de 100 a 120 km/h. ⚠️
+
+Les damos algunas recomendaciones:
+
+- Asegurara objetos en exteriores como muebles, macetas y anuncios publicitarios
+
+- Extrema precauciones al conducir, especialmente en carreteras y zonas expuestas
+
+- Mantenente informado a través de canales oficiales sobre el avance del evento
+
+- No te acerques a postes o cables eléctricos caídos
+
+- Cuenta con un plan de emergencia en caso de necesidad
+
+*Está información está basada en el pronóstico del Sistema Meteorológico Nacional
+
+¡Tampico Te Cuida Y Protección Civil Somos Todos! #ProteccionCivilTampico #TampicoTeCuida #TampicoSomosTodos #bomberostampico",79.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,8,6,saved,,,42,True,7,2,25,8,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122201505866548816,1242798737967018,122201505866548816,comment,https://www.facebook.com/ProteccionCivilTampico/posts/pfbid0C1KN7Ze5oTgNpNJ7RWbWsc1trfKMqWGLXri9YwoYpr6GdDYc2SwVXqgb6xKuWrwul,https://www.facebook.com/ProteccionCivilTampico/posts/pfbid0C1KN7Ze5oTgNpNJ7RWbWsc1trfKMqWGLXri9YwoYpr6GdDYc2SwVXqgb6xKuWrwul?comment_id=1242798737967018,2026-03-15T01:34:35+00:00,2026-03-17,Gracias por la información entonces tenemos que prepararnos para recibir al norteño explosivo.en la zona sur de Tamaulipas y el norte de veracruz.estamos listo capitán véngase el norteño y su parentela.ya que.,"🚨💨EVENTO DE NORTE AGRESIVO💨🚨
+
+Para esté lunes 16 de marzo, se espera el ingreso del frente frío 41 en la zona de Tampico, lo que provocará un evento ""Norte"" intenso con rachas de viento de 100 a 120 km/h. ⚠️
+
+Les damos algunas recomendaciones:
+
+- Asegurara objetos en exteriores como muebles, macetas y anuncios publicitarios
+
+- Extrema precauciones al conducir, especialmente en carreteras y zonas expuestas
+
+- Mantenente informado a través de canales oficiales sobre el avance del evento
+
+- No te acerques a postes o cables eléctricos caídos
+
+- Cuenta con un plan de emergencia en caso de necesidad
+
+*Está información está basada en el pronóstico del Sistema Meteorológico Nacional
+
+¡Tampico Te Cuida Y Protección Civil Somos Todos! #ProteccionCivilTampico #TampicoTeCuida #TampicoSomosTodos #bomberostampico",79.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,9,7,saved,,,42,True,7,2,25,8,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122201505866548816,1708851520078794,122201505866548816,comment,https://www.facebook.com/ProteccionCivilTampico/posts/pfbid0C1KN7Ze5oTgNpNJ7RWbWsc1trfKMqWGLXri9YwoYpr6GdDYc2SwVXqgb6xKuWrwul,https://www.facebook.com/ProteccionCivilTampico/posts/pfbid0C1KN7Ze5oTgNpNJ7RWbWsc1trfKMqWGLXri9YwoYpr6GdDYc2SwVXqgb6xKuWrwul?comment_id=1708851520078794,2026-03-15T00:59:51+00:00,2026-03-17,Chequen las tapas de los tinacos,"🚨💨EVENTO DE NORTE AGRESIVO💨🚨
+
+Para esté lunes 16 de marzo, se espera el ingreso del frente frío 41 en la zona de Tampico, lo que provocará un evento ""Norte"" intenso con rachas de viento de 100 a 120 km/h. ⚠️
+
+Les damos algunas recomendaciones:
+
+- Asegurara objetos en exteriores como muebles, macetas y anuncios publicitarios
+
+- Extrema precauciones al conducir, especialmente en carreteras y zonas expuestas
+
+- Mantenente informado a través de canales oficiales sobre el avance del evento
+
+- No te acerques a postes o cables eléctricos caídos
+
+- Cuenta con un plan de emergencia en caso de necesidad
+
+*Está información está basada en el pronóstico del Sistema Meteorológico Nacional
+
+¡Tampico Te Cuida Y Protección Civil Somos Todos! #ProteccionCivilTampico #TampicoTeCuida #TampicoSomosTodos #bomberostampico",79.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,10,8,saved,,,42,True,7,2,25,8,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122195815184546197,741433055573290,122195815184546197,comment,https://www.facebook.com/TampicoGob/posts/pfbid02xukymZfE8QSCwfogQahbTtCJXShf7YErkrzEqLuzGCiU1XQtaBSX6RtZfAm6Kvkql,https://www.facebook.com/TampicoGob/posts/pfbid02xukymZfE8QSCwfogQahbTtCJXShf7YErkrzEqLuzGCiU1XQtaBSX6RtZfAm6Kvkql?comment_id=741433055573290,2026-03-12T23:27:44+00:00,2026-03-17,Felicidades muy buen programa enhorabuena.,,17.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,11,1,saved,,,42,True,5,4,25,2,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122195815184546197,3262881793890111,122195815184546197,comment,https://www.facebook.com/TampicoGob/posts/pfbid02xukymZfE8QSCwfogQahbTtCJXShf7YErkrzEqLuzGCiU1XQtaBSX6RtZfAm6Kvkql,https://www.facebook.com/TampicoGob/posts/pfbid02xukymZfE8QSCwfogQahbTtCJXShf7YErkrzEqLuzGCiU1XQtaBSX6RtZfAm6Kvkql?comment_id=3262881793890111,2026-03-12T23:10:37+00:00,2026-03-17,Excelente Presidenta...las buenas acciones de gobierno...deben aplaudirse.,,17.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,12,2,saved,,,42,True,5,4,25,2,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122195697290546197,1254434342935019,122195697290546197,comment,https://www.facebook.com/reel/757757090531454/,https://www.facebook.com/reel/757757090531454/?comment_id=1254434342935019,2026-03-12T15:10:51+00:00,2026-03-17,Excelente !!!!,"Bajo la instrucción de nuestra Presidenta Municipal, Mónica Zacil Villarreal Anaya, llevamos la Biblioteca Móvil a la Escuela Primaria Centenario “Profra. Elena Maldonado Robles”, donde alumnas y alumnos de primero a sexto grado tuvieron la oportunidad de acercarse al mundo de la lectura.
+
+Durante la jornada, las y los estudiantes pudieron explorar libros, participar en diversas actividades y conocer cómo funciona una biblioteca, así como las reglas y el valor que tiene el cuidado de los libros.
+#TampicoVaConTodos
+#TampicoTeCuida",5.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,13,1,saved,,,42,True,4,5,25,2,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122195697290546197,905286792255900,122195697290546197,comment,https://www.facebook.com/reel/757757090531454/,https://www.facebook.com/reel/757757090531454/?comment_id=905286792255900,2026-03-12T05:01:44+00:00,2026-03-17,Excelente biblioteca,"Bajo la instrucción de nuestra Presidenta Municipal, Mónica Zacil Villarreal Anaya, llevamos la Biblioteca Móvil a la Escuela Primaria Centenario “Profra. Elena Maldonado Robles”, donde alumnas y alumnos de primero a sexto grado tuvieron la oportunidad de acercarse al mundo de la lectura.
+
+Durante la jornada, las y los estudiantes pudieron explorar libros, participar en diversas actividades y conocer cómo funciona una biblioteca, así como las reglas y el valor que tiene el cuidado de los libros.
+#TampicoVaConTodos
+#TampicoTeCuida",5.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,14,2,saved,,,42,True,4,5,25,2,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122195547692546197,2024399755125283,122195547692546197,comment,https://www.facebook.com/TampicoGob/posts/pfbid0z3cZ4zfVNB3s8zGxzqJX1PBWnovm1yUPzKXJT4mZANKHVHaBSbreRFzTifG2ape3l,https://www.facebook.com/TampicoGob/posts/pfbid0z3cZ4zfVNB3s8zGxzqJX1PBWnovm1yUPzKXJT4mZANKHVHaBSbreRFzTifG2ape3l?comment_id=2024399755125283,2026-03-11T05:03:00+00:00,2026-03-17,Hermoso lo que hacen,,8.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,15,1,saved,,,42,True,3,6,25,5,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122195547692546197,1484466993010697,122195547692546197,comment,https://www.facebook.com/TampicoGob/posts/pfbid0z3cZ4zfVNB3s8zGxzqJX1PBWnovm1yUPzKXJT4mZANKHVHaBSbreRFzTifG2ape3l,https://www.facebook.com/TampicoGob/posts/pfbid0z3cZ4zfVNB3s8zGxzqJX1PBWnovm1yUPzKXJT4mZANKHVHaBSbreRFzTifG2ape3l?comment_id=1484466993010697,2026-03-10T23:53:14+00:00,2026-03-10,Felicidades Kathy!!!,,8.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,16,2,saved,,,42,True,3,6,25,5,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122195547692546197,2129910984247623,122195547692546197,comment,https://www.facebook.com/TampicoGob/posts/pfbid0z3cZ4zfVNB3s8zGxzqJX1PBWnovm1yUPzKXJT4mZANKHVHaBSbreRFzTifG2ape3l,https://www.facebook.com/TampicoGob/posts/pfbid0z3cZ4zfVNB3s8zGxzqJX1PBWnovm1yUPzKXJT4mZANKHVHaBSbreRFzTifG2ape3l?comment_id=2129910984247623,2026-03-10T20:02:11+00:00,2026-03-10,Felicidades mi Katy preciosa!,,8.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,17,3,saved,,,42,True,3,6,25,5,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122195547692546197,1643320447012000,122195547692546197,comment,https://www.facebook.com/TampicoGob/posts/pfbid0z3cZ4zfVNB3s8zGxzqJX1PBWnovm1yUPzKXJT4mZANKHVHaBSbreRFzTifG2ape3l,https://www.facebook.com/TampicoGob/posts/pfbid0z3cZ4zfVNB3s8zGxzqJX1PBWnovm1yUPzKXJT4mZANKHVHaBSbreRFzTifG2ape3l?comment_id=1643320447012000,2026-03-10T17:03:40+00:00,2026-03-10,Muy bien maestra felicidades,,8.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,18,4,saved,,,42,True,3,6,25,5,False,,,False
+fb_w11_backfill_fix,2026-03-09_semana_09marzo_15marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122195547692546197,1291429403049505,122195547692546197,comment,https://www.facebook.com/TampicoGob/posts/pfbid0z3cZ4zfVNB3s8zGxzqJX1PBWnovm1yUPzKXJT4mZANKHVHaBSbreRFzTifG2ape3l,https://www.facebook.com/TampicoGob/posts/pfbid0z3cZ4zfVNB3s8zGxzqJX1PBWnovm1yUPzKXJT4mZANKHVHaBSbreRFzTifG2ape3l?comment_id=1291429403049505,2026-03-10T16:37:59+00:00,2026-03-10,Artesanos en Tampico,,8.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,19,5,saved,,,42,True,3,6,25,5,False,,,False

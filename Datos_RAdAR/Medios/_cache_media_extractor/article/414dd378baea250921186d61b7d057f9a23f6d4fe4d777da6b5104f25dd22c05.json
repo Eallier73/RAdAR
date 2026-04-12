@@ -1,0 +1,22 @@
+{
+  "article_text": "Tu voz cuenta: el programa que llega a escuelas de Tampico para hacer frente a la violencia\nLos niños pueden expresar sus emociones mediante dibujos o textos, los cuales depositan en un buzón\nYadira Hernández\nPara que los estudiantes detecten situaciones de violencia\nEstas actividades permiten que los menores aprendan a detectar oportunamente situaciones de violencia y conozcan las vías para solicitar ayuda, como los números de emergencia 911 y el 089 para denuncias anónimas.\nColocan buzón anónimo donde los menores pueden expresar lo que sienten\nAñadió que al analizar los mensajes depositados en el buzón, también se han detectado problemáticas relacionadas con baja autoestima entre los estudiantes.\nActualmente el programa ha llegado a 50 planteles educativos del municipio, donde se han impartido más de mil 200 pláticas, beneficiando a cerca de 16 mil estudiantes.",
+  "article_text_length": 875,
+  "article_title": "Tu voz cuenta: el programa que llega a escuelas de Tampico para hacer frente a la violencia - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/local/tu-voz-cuenta-el-programa-que-llega-a-escuelas-de-tampico-para-hacer-frente-a-la-violencia-28903815",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:48:28Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

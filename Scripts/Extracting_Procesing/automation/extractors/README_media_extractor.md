@@ -52,8 +52,6 @@ Profesionalizar el componente de extracción de medios de Radar tomando `04_medi
 - `--pausa-entre-queries`
 - `--week-name-mode`
 - `--use-playwright`
-- `--max-results-per-query`
-- `--max-articles-per-week`
 - `--dry-run`
 - `--config-file`
 
@@ -118,7 +116,8 @@ La resolución de URLs de Google News usa varias estrategias:
   - si estaba habilitado
   - si se inicializó
   - si realmente se usó
-- qué artículos lo usaron
+  - cuántos artículos lo usaron y qué porcentaje representan del total descargado
+  - qué artículos lo usaron
 
 `trafilatura` es recomendada pero no obligatoria. Si no está instalada, el extractor sigue corriendo con extracción HTML básica y deja esa degradación registrada en logs y metadata.
 
@@ -188,8 +187,6 @@ python3 Scripts/Extracting_Procesing/media_extractor.py \
   --before 2026-03-13 \
   --output-dir /home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios \
   --run-id media_semana_20260306 \
-  --max-results-per-query 10 \
-  --max-articles-per-week 20 \
   --log-level INFO
 ```
 
@@ -238,3 +235,10 @@ from automation.extractors.media_extractor_core import run_extraction
 - Google News RSS puede devolver items sin `pubDate` parseable o con URLs difíciles de resolver.
 - Playwright no se usa automáticamente; debe activarse explícitamente.
 - El extractor no deduplica semánticamente contenidos entre queries.
+- El extractor no recorta artificialmente la semana ni los items por query; la cobertura queda limitada por lo que entregue Google News RSS y por la accesibilidad real de cada sitio.
+
+## Señales operativas a revisar
+
+- `summary.json` expone `total_articles_playwright_used`, `total_articles_fallback_used`, `pct_articles_playwright_used` y `pct_articles_fallback_used`.
+- `metadata_run.json` replica esos contadores y conserva el detalle de dominios prioritarios para Playwright.
+- `descarga_articulos_summary.csv` sigue siendo el nivel fino para auditar artículo por artículo.

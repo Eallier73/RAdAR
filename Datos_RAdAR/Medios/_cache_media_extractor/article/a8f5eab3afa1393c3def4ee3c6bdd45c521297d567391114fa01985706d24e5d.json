@@ -1,0 +1,23 @@
+{
+  "article_text": "Durante el próximo periodo vacacional de Semana Santa, la Coordinación Estatal de Protección Civil reforzará la vigilancia en distintos cuerpos lagunares del sur de Tamaulipas para evitar que visitantes ingresen a nadar en zonas donde existe presencia de cocodrilos.\nEl subdirector regional de Protección Civil en Tamaulipas, Rafael Chirinos Aguilar, informó que el operativo se realizará en coordinación con autoridades municipales y la Guardia Estatal, con especial atención en puntos donde suele concentrarse mayor número de turistas.\nCocodrilos en el parque Fray Andrés de Olmos\nUno de los sitios que tendrá mayor vigilancia será la laguna del Chairel, particularmente en el parque Fray Andrés de Olmos de Tampico, debido a que en esta zona no existen las mismas barreras de seguridad que en otros espacios turísticos como la laguna del Carpintero, donde también se mantendrán recorridos preventivos.\nEl funcionario explicó que el objetivo es evitar que personas ingresen al agua, ya sea para nadar, refrescarse o pescar, ya que se trata de áreas donde se tiene plenamente identificada la presencia de estos reptiles.\nBuscan proteger señalética preventiva\nChirinos Aguilar indicó que, además de la vigilancia, se trabajará en la protección de la señalética preventiva, ya que algunos de los letreros que advierten sobre la presencia de cocodrilos han sido vandalizados o retirados.\nSJHN",
+  "article_text_length": 1390,
+  "article_title": "Reforzarán vigilancia en lagunas de Tampico por presencia de cocodrilos en Semana Santa - Milenio",
+  "article_url_resolved": "https://www.milenio.com/comunidad/refuerzan-vigilancia-tampico-presencia-cocodrilos-semana-santa",
+  "attempted_methods": [
+    "trafilatura",
+    "cloudscraper"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "cloudscraper",
+  "fallback_used": true,
+  "medio": "site:milenio.com",
+  "playwright_used": false,
+  "query": "\"tampico\" site:milenio.com",
+  "query_index": 6,
+  "retrieved_at": "2026-04-05T17:41:52Z",
+  "source_domain": "www.milenio.com",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

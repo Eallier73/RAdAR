@@ -1,0 +1,23 @@
+{
+  "article_text": "La circulación se encuentra parcialmente cerrada en la carretera federal Tampico–Mante luego de registrarse el incendio de un vehículo, lo que obligó a autoridades a restringir el paso en uno de los carriles.\nEl incidente ocurrió en la Carretera Federal 80 Tampico–Mante, donde la circulación fue cerrada en el carril de baja velocidad en el sentido de norte a sur.\nEl hecho se registró a la altura del kilómetro 53, dentro del municipio de González.\nTras el reporte, personal de la Guardia Estatal de Tamaulipas, adscrito al área de Apoyo Carretero y comisionado a la Estación Segura Villa Manuel, acudió al sitio para brindar asistencia y coordinar las labores de seguridad vial.\nSin personas lesionadas\nHasta el momento, las autoridades informaron que no se tiene conocimiento de personas lesionadas a causa del incendio.\nLa circulación en el resto de los carriles continúa fluyendo con normalidad, aunque se recomienda a los automovilistas extremar precauciones al transitar por la zona mientras se realizan las labores correspondientes.\nSJHN",
+  "article_text_length": 1046,
+  "article_title": "Cierran carril en la carretera Tampico-Mante por incendio de vehículo - Milenio",
+  "article_url_resolved": "https://www.milenio.com/estados/incendio-vehiculo-cierra-carril-carretera-tampico-mante-12-marzo-2026",
+  "attempted_methods": [
+    "trafilatura",
+    "cloudscraper"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "cloudscraper",
+  "fallback_used": true,
+  "medio": "site:milenio.com",
+  "playwright_used": false,
+  "query": "\"tampico\" site:milenio.com",
+  "query_index": 6,
+  "retrieved_at": "2026-04-05T17:42:05Z",
+  "source_domain": "www.milenio.com",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

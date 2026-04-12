@@ -1,0 +1,31 @@
+{
+  "run_id": "twitter_w10_backfill",
+  "status": "failed",
+  "since": "2026-03-02",
+  "until": "2026-03-08",
+  "week_name": "2026-03-02_semana_02marzo_08marzo_26",
+  "output_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-02_semana_02marzo_08marzo_26/runs/twitter_w10_backfill_20260405_094628",
+  "total_queries": 6,
+  "queries_processed": 0,
+  "queries_failed": 0,
+  "total_tweets_detected": 0,
+  "total_tweets_saved": 0,
+  "total_replies_saved": 0,
+  "total_items_failed": 1,
+  "text_expansion_attempted": 0,
+  "text_expansion_succeeded": 0,
+  "selector_warnings": 0,
+  "session_state_used": "/home/emilio/Documentos/RAdAR/Scripts/state/x_state.json",
+  "session_state_validated": false,
+  "headless": true,
+  "started_at": "2026-04-05T15:46:29Z",
+  "finished_at": "2026-04-05T15:46:29Z",
+  "duration_seconds": 0.0,
+  "week_name_mode": "canonical_monday_sunday",
+  "script_name": "twitter_extractor.py",
+  "script_version": "2.0.0",
+  "notes": [
+    "La corrida falló antes de completar la extracción.",
+    "Revisar errores_detectados.json, metadata_run.json y run.log para diagnóstico."
+  ]
+}

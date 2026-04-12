@@ -1,0 +1,155 @@
+{
+  "script_name": "facebook_institutional_extractor.py",
+  "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/facebook_institutional_extractor.py",
+  "helper_module_path": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/facebook_institutional_extractor_core.py",
+  "entrypoint_alias": "canonical_wrapper",
+  "script_version": "2.0.0",
+  "run_id": "fb_w12_backfill_fix",
+  "run_timestamp": "20260411_083440",
+  "status": "success",
+  "started_at": "2026-04-11T14:34:40+00:00",
+  "finished_at": "2026-04-11T14:42:05+00:00",
+  "duration_seconds": 445.206,
+  "environment": "Linux-6.14.0-37-generic-x86_64-with-glibc2.39",
+  "hostname": "ThinkPad-T14-Gen-4-Emilio",
+  "user": "emilio",
+  "parameters": {
+    "script_name": "facebook_institutional_extractor.py",
+    "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/facebook_institutional_extractor.py",
+    "helper_module_path": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/facebook_institutional_extractor_core.py",
+    "entrypoint_alias": "canonical_wrapper",
+    "script_version": "2.0.0",
+    "since": "2026-03-16",
+    "until": "2026-03-22",
+    "week_name_mode": "exact_range",
+    "week_partition": {
+      "start_date": "2026-03-16",
+      "end_date": "2026-03-22",
+      "week_name": "2026-03-16_semana_16marzo_22marzo_26",
+      "naming_start_date": "2026-03-16",
+      "naming_end_date": "2026-03-22"
+    },
+    "output_root_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook",
+    "week_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-16_semana_16marzo_22marzo_26",
+    "run_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-16_semana_16marzo_22marzo_26/runs/fb_w12_backfill_fix_20260411_083440",
+    "run_id": "fb_w12_backfill_fix",
+    "run_timestamp": "20260411_083440",
+    "pages": [
+      {
+        "page_id": "964877296876825",
+        "page_label": "MonicaVillarreal",
+        "page_handle": "monicavtampico",
+        "page_url": "https://www.facebook.com/monicavtampico",
+        "enabled": true,
+        "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/facebook_institutional_pages_canonical.csv",
+        "notes": "Pagina institucional canonica del caso Tampico; se conserva id estable pero la extraccion historica opera por handle."
+      },
+      {
+        "page_id": "474462132406835",
+        "page_label": "GobiernoTampico",
+        "page_handle": "tampicogob",
+        "page_url": "https://www.facebook.com/TampicoGob",
+        "enabled": true,
+        "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/facebook_institutional_pages_canonical.csv",
+        "notes": "Pagina institucional canonica del caso Tampico; se conserva id estable pero la extraccion historica opera por handle."
+      }
+    ],
+    "pages_source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/facebook_institutional_pages_canonical.csv",
+    "apify_token_env": "APIFY_TOKEN",
+    "actor_name_posts": "apify/facebook-posts-scraper",
+    "actor_name_comments": "apify/facebook-comments-scraper",
+    "memory_mb": 2048,
+    "timeout_seconds": 1800,
+    "seed": 42,
+    "weekly_comment_cap_per_page": 100,
+    "max_posts_per_page_per_week": 8,
+    "max_comments_per_post": 25,
+    "discovery_results_per_page": 100,
+    "include_replies": true,
+    "log_level": "INFO",
+    "overwrite": true,
+    "publish_canonical": true,
+    "dry_run": false,
+    "config_file": null
+  },
+  "token_env_name_used": "APIFY_TOKEN",
+  "errors": [],
+  "artifact_paths": {
+    "main_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-16_semana_16marzo_22marzo_26/runs/fb_w12_backfill_fix_20260411_083440/facebook_institutional_raw_2026-03-16_semana_16marzo_22marzo_26.csv",
+    "posts_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-16_semana_16marzo_22marzo_26/runs/fb_w12_backfill_fix_20260411_083440/posts_selected.csv",
+    "comments_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-16_semana_16marzo_22marzo_26/runs/fb_w12_backfill_fix_20260411_083440/comments_selected.csv",
+    "audit_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-16_semana_16marzo_22marzo_26/runs/fb_w12_backfill_fix_20260411_083440/selection_audit.csv",
+    "summary_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-16_semana_16marzo_22marzo_26/runs/fb_w12_backfill_fix_20260411_083440/summary.json",
+    "parametros_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-16_semana_16marzo_22marzo_26/runs/fb_w12_backfill_fix_20260411_083440/parametros_run.json"
+  },
+  "sampling_strategy": {
+    "mode": "two_level_sampling_posts_then_comments_with_weekly_page_cap",
+    "post_selection_rule": "temporal_even_spacing_by_created_time_with_seed_tiebreak",
+    "comment_processing_rule": "reverse_chronological_selected_posts_until_page_cap",
+    "weekly_comment_cap_per_page": 100,
+    "max_posts_per_page_per_week": 8,
+    "max_comments_per_post": 25,
+    "seed": 42
+  },
+  "page_level_counts": {
+    "964877296876825": {
+      "page_label": "MonicaVillarreal",
+      "page_handle": "monicavtampico",
+      "candidate_posts_detected": 23,
+      "posts_selected": 8,
+      "comments_attempted": 200,
+      "comments_saved": 47,
+      "comments_skipped_by_cap": 163,
+      "posts_enriched": 0,
+      "items_failed": 0,
+      "status": "success"
+    },
+    "474462132406835": {
+      "page_label": "GobiernoTampico",
+      "page_handle": "tampicogob",
+      "candidate_posts_detected": 38,
+      "posts_selected": 8,
+      "comments_attempted": 200,
+      "comments_saved": 23,
+      "comments_skipped_by_cap": 1,
+      "posts_enriched": 0,
+      "items_failed": 0,
+      "status": "success"
+    }
+  },
+  "apify_usage": {
+    "posts_actor_usage_usd": 0.262,
+    "comments_actor_usage_usd": 0.012,
+    "total_usage_usd": 0.274
+  },
+  "components_absorbed_from_comments_script": [
+    "extraer_texto_post_desde_item: recuperacion multi-campo de texto del post desde items del actor.",
+    "procesar_items_posts: priorizacion del texto mas informativo y relleno de metadata faltante del post padre."
+  ],
+  "discarded_comments_script_logic": [
+    "Dependencia de CSV manual intermedio como insumo obligatorio: descartada para mantener pipeline directo.",
+    "Enriquecimiento del post padre via scraping adicional de URL Facebook: descartado por costo y fragilidad operativa.",
+    "Cualquier logica que aumente llamadas sin mejorar materialmente trazabilidad/costo: descartada."
+  ],
+  "notes": [
+    "Extractor restringido a Facebook institucional de Tampico.",
+    "Sampling mode: two_level_sampling_posts_then_comments_with_weekly_page_cap.",
+    "Post selection rule: temporal_even_spacing_by_created_time_with_seed_tiebreak.",
+    "Comment processing rule: reverse_chronological_selected_posts_until_page_cap.",
+    "La unidad principal de interes analitico es el comentario; el post se conserva como contexto y trazabilidad.",
+    "Se absorbio logica de enriquecimiento liviano desde Facebook_Extractor_Comments_Apify_Tampico.py sin depender de CSV manual.",
+    "Se descarto enriquecimiento adicional por scraping de URL del post para no romper costo ni control operacional.",
+    "Replies incluidos para preservar comparabilidad con el extractor histórico de comentarios."
+  ],
+  "published_canonical_paths": {
+    "main_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-16_semana_16marzo_22marzo_26/facebook_institutional_raw_2026-03-16_semana_16marzo_22marzo_26.csv",
+    "posts_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-16_semana_16marzo_22marzo_26/posts_selected.csv",
+    "comments_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-16_semana_16marzo_22marzo_26/comments_selected.csv",
+    "audit_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-16_semana_16marzo_22marzo_26/selection_audit.csv",
+    "summary_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-16_semana_16marzo_22marzo_26/summary.json",
+    "parametros_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-16_semana_16marzo_22marzo_26/parametros_run.json",
+    "metadata_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-16_semana_16marzo_22marzo_26/metadata_run.json",
+    "run_log": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-16_semana_16marzo_22marzo_26/run.log",
+    "manifest_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-16_semana_16marzo_22marzo_26/manifest.json"
+  }
+}

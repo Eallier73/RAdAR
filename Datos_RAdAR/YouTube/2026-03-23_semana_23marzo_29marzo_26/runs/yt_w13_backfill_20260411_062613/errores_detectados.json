@@ -1,0 +1,30 @@
+[
+  {
+    "fatal": false,
+    "http_reasons": [
+      "commentsDisabled"
+    ],
+    "http_status": 403,
+    "message": "The video identified by the <code><a href=\"/youtube/v3/docs/commentThreads/list#videoId\">videoId</a></code> parameter has disabled comments.",
+    "query": "Gobierno de Tampico",
+    "query_index": 3,
+    "scope": "video",
+    "stage": "get_video_comments",
+    "timestamp": "2026-04-11T12:26:29Z",
+    "video_id": "LRjvGUK8Ubg"
+  },
+  {
+    "fatal": false,
+    "http_reasons": [
+      "commentsDisabled"
+    ],
+    "http_status": 403,
+    "message": "The video identified by the <code><a href=\"/youtube/v3/docs/commentThreads/list#videoId\">videoId</a></code> parameter has disabled comments.",
+    "query": "gobierno de Tampico",
+    "query_index": 4,
+    "scope": "video",
+    "stage": "get_video_comments",
+    "timestamp": "2026-04-11T12:26:49Z",
+    "video_id": "LRjvGUK8Ubg"
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "article_text": "Clima en Tamaulipas: frente frío 43 traerá ‘norte’, ¿cómo afectará a Playa Miramar?\nPara la noche del sábado 4 y madrugada del domingo 5 se esperan rachas de viento de hasta 75 km/h\nMario Cruces\nProbabilidad de tormentas y chubascos en varias regiones de Tamaulipas\nPronóstico del clima en las costas de Tamaulipas\nPlaya Bagdad:\nPlaya Carboneras:\nPlaya La Pesca:\nPlaya Miramar:\nEn el sur de Tamaulipas las lluvias serán dispersas\nPor otra parte, en la zona sur de Tamaulipas, las precipitaciones serán más dispersas, iniciando durante la noche del sábado 4 y extendiéndose de manera intermitente a lo largo del domingo 5 de abril.\nAunque la intensidad será menor en comparación con otras regiones, no se descartan episodios de lluvia moderada acompañada de actividad eléctrica.",
+  "article_text_length": 777,
+  "article_title": "Clima en Tamaulipas: frente frío 43 traerá ‘norte’, ¿cómo afectará a Playa Miramar? - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/local/clima-en-tamaulipas-frente-frio-43-traera-norte-como-afectara-a-playa-miramar-29320189",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:55:22Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

@@ -29,3 +29,7 @@ Experimentos/*.lock
 # Temporary files
 *.tmp
 *.bak
+
+# Local secrets / session state for extractors
+Scripts/state/radar_extractors_secrets.sh
+Scripts/state/radar_extractors_venv/

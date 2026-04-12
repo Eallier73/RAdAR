@@ -1,0 +1,22 @@
+{
+  "article_text": "La madriguera del lobo / Los Aliados y Miami\nLa estrategia mediática y el T-MEC\nEn la práctica, se busca proyectar que “no está solo” y desmotivar a la contraparte. Para ello recurre incluso a frases trilladas o señalamientos hacia nuestro país, indebidos y fuera de lugar. Eso sí, presumiendo su capacidad de convocatoria. Él está en lo suyo.\nMéxico: El socio indispensable\nEl contrapeso del sur y la soberanía\nPorque los aliados cuentan... pero México cuenta más.\nHasta pronto.",
+  "article_text_length": 479,
+  "article_title": "La madriguera del lobo / Los Aliados y Miami - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/analisis/los-aliados-y-miami-29127732",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:53:21Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

@@ -1,0 +1,22 @@
+{
+  "article_text": "¿A misa o a la playa? Así estará el clima este Domingo de Ramos en Tampico y la zona conurbada\nTampico no cuenta con probabilidad de lluvia para el cierre del último fin de semana de marzo, pero inicio de vacaciones\nAdolfo Ruiz Nuñez\nEstimó que la temperatura mínima para este día será de 18°C, principalmente en la madrugada, mientras que la máxima se elevaría hasta los 28°C a lo largo de la tarde.\nFrente frío 42 podría alterar las condiciones del clima en Tamaulipas\nAún así, sostuvo que derivado del frente frío 42 podría haber cambios en las condiciones del clima para Tamaulipas.\nOjo si vas a la playa; alertan por posibles rachas de viento en Tampico\nLas rachas de viento continuarán como un posible factor durante el día; el SMN detalló que se esperan ráfagas de aire de 30 a 40 kilómetros por hora (km/h), con rachas pico de 50 a 70 km/h.\nApuntó que la dirección que tomarán las rachas son hacía el este y se espera que las horas donde más se sentirá es de 18:00 a 23:00 horas.\n¿Niebla? Advierten de posibles bancos de neblina en Tamaulipas\nAdemás, confirmó que podría haber niebla en sectores de la zona, principalmente en zonas rurales o carreteras.\n“Los bancos de niebla podrían reducir la visibilidad en tramos carreteros y zonas urbanas”, alertó.",
+  "article_text_length": 1261,
+  "article_title": "¿A misa o a la playa? Así estará el clima este Domingo de Ramos en Tampico y la zona conurbada - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/local/a-misa-o-a-la-playa-asi-estara-el-clima-este-domingo-de-ramos-en-tampico-y-la-zona-conurbada-29229191",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:53:25Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

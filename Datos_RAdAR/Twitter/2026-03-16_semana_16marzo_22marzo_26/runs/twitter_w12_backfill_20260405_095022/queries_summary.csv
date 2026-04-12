@@ -1,0 +1,7 @@
+query_index,query,status,tweets_detected,tweets_saved,replies_saved,items_failed,scrolls_executed,selector_warning,duration_seconds
+1,to:MonicaVTampico,success,6,1,0,0,6,,10.25
+2,from:MonicaVTampico,success,0,0,0,0,6,,9.656
+3,to:TampicoGob,success,0,0,0,0,6,,9.295
+4,from:TampicoGob,success,0,0,0,0,6,,9.698
+5,@TampicoGob,success,30,5,0,0,6,,10.75
+6,@MonicaVTampico,success,48,16,0,0,6,,12.45

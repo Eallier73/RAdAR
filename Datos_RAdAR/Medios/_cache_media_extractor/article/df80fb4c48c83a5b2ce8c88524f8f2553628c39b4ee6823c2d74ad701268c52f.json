@@ -1,0 +1,23 @@
+{
+  "article_text": "El costo de los productos agrícolas de alto consumo por parte de la población continúan incrementando, uno de ellos muy demandado es el limón, el cual se cotiza actualmente entre 40 y 50 pesos el kilo y se espera se pueda disparar hasta más de los 65 pesos.\n¿Cuánto aumentará el limón?\nSe prevé que el incremento sea de hasta 70 pesos o más durante la temporada vacacional de semana santa, así lo aseguran comerciantes de frutas y verduras en los mercados de Tampico.\n¿Por qué el aumento en el precio del limón?\nMarco Antonio Huerta Nava, señala que la granizada daño la flor del fruto, no se registraron lluvias, por lo que el producto no creció, los fletes se han elevado y la inseguridad en las carreteras para traer cargamentos de limón del estado de Colima los sigue impactado, así que elaborar un ceviche le costará más caro.\nEl precio del tomate\nRecientemente se dio a conocer que una de los productos que también tendrá un aumento significativo en el sur de Tamaulipas es el tomate en mercados municipales de Tampico y Ciudad Madero, hasta las tiendas de autoservicio, modificaron la oferta sobre todo en febrero, mes en que se generó este disparo. Actualmente el promedio se ubica por encima de los 30 pesos, alcanzando en algunos casos los 45 pesos, arrastrando con ello alzas en la preparación de alimentos.\nAA",
+  "article_text_length": 1321,
+  "article_title": "Aumentará el costo del limón en la zona sur de Tamaulipas - Milenio",
+  "article_url_resolved": "https://www.milenio.com/negocios/aumentara-precio-limon-zona-sur-tamaulipas",
+  "attempted_methods": [
+    "trafilatura",
+    "cloudscraper"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "cloudscraper",
+  "fallback_used": true,
+  "medio": "site:milenio.com",
+  "playwright_used": false,
+  "query": "\"tampico\" site:milenio.com",
+  "query_index": 6,
+  "retrieved_at": "2026-04-05T17:41:40Z",
+  "source_domain": "www.milenio.com",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

@@ -1,0 +1,22 @@
+{
+  "article_text": "Paradigmas / Bertha Ruiz: ejemplo de entrega comunitaria\nSociedades de auxilio\nLa idea fue crear sociedades de auxilio en tiempo de paz “cuya finalidad será cuidar de los heridos en la guerra por medio de voluntarios entusiastas y dedicados, perfectamente cualificados para el trabajo”.\nEn marzo de 1943, el presidente Franklin D. Roosevelt emitió la primera proclamación para que fuera el Mes de la Cruz Roja; desde ese entonces, la mayor parte de los países del mundo han enarbolado la celebración.",
+  "article_text_length": 500,
+  "article_title": "Paradigmas / Bertha Ruiz: ejemplo de entrega comunitaria - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/analisis/bertha-ruiz-ejemplo-de-entrega-comunitaria-28838456",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:46:22Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

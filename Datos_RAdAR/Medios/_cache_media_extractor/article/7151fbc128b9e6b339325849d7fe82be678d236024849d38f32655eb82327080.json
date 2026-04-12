@@ -1,0 +1,22 @@
+{
+  "article_text": "Municipios de Tamaulipas podrían ser demandados por no respetar los derechos de autor\nLa Sociedad de Autores y Compositores reveló que hasta 40% de los ayuntamientos adeudan licencias por el uso de música en eventos públicos\nAntonio Campos\nAmplió que cuando un municipio entrega la organización de un evento a terceros, también tiene la responsabilidad de verificar que quienes reciben la concesión cuenten con todos los permisos legales necesarios.\nLos costos de licencia de derechos de autor dependen del tipo de evento\nMontes García precisó que el costo de las licencias por derechos de autor varía dependiendo del tipo de evento y del número de asistentes.\nEn el caso de actividades gratuitas organizadas por gobiernos municipales, el cálculo se basa principalmente en el aforo estimado.\n“El monto mínimo para este tipo de espectáculos ronda las 200 unidades de derechos de autor, lo que equivale aproximadamente a 70 mil pesos por evento”, indicó.\nAdemás, Montes García planteó que cuando estos pagos no se realizan se genera una pérdida importante para los autores cuyas obras son interpretadas durante los espectáculos públicos.\nEl representante afirmó que, teniendo en cuenta la cantidad de ferias, festivales y celebraciones organizadas en los municipios, el monto que se deja de recaudar podría representar cientos de miles de pesos en la entidad.",
+  "article_text_length": 1357,
+  "article_title": "Municipios de Tamaulipas podrían ser demandados por no respetar los derechos de autor - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/local/municipios-de-tamaulipas-podrian-ser-demandados-por-no-respetar-los-derechos-de-autor-28895377",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:48:35Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

@@ -1,0 +1,219 @@
+﻿run_id,week_name,source_platform,source_scope,page_id,page_label,post_id,comment_id,parent_post_id,record_type,post_url,comment_url,created_time,week_label,text,post_text,comment_count_post,selection_stage,selection_rule,weekly_page_cap,max_comments_per_post,page_week_counter,post_comment_counter,status_extraccion,error_type,error_detail,seed,selected_for_comment_sampling,post_selection_rank,processing_rank,comments_requested_for_post,comments_retrieved_for_post,enrichment_applied,enrichment_source,absorbed_comment_logic,is_reply
+fb_w14_backfill,2026-03-30_semana_30marzo_05abril_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1518078019882087,,,post_parent,https://www.facebook.com/monicavtampico/posts/pfbid0329VSox3ozhivutzh3uFXKbRJGKBBmQ4T5y2JckXMXe2fcwnKbrthRkmSCTCEyvvhl,,2026-03-30T14:02:15+00:00,2026-03-31,"Hoy supervisamos los trabajos de rehabilitación del Parque de la Petrolera, un espacio muy importante para nuestras familias tampiqueñas.
+
+Estamos avanzando en su mejora para que sea un lugar digno, seguro y agradable donde niñas, niños, jóvenes y adultos puedan convivir, hacer deporte y disfrutar de su tiempo libre.
+
+Seguimos trabajando con compromiso para rescatar y fortalecer nuestros espacios públicos.
+
+#TampicoVaconTodos
+#TampicoteCuida","Hoy supervisamos los trabajos de rehabilitación del Parque de la Petrolera, un espacio muy importante para nuestras familias tampiqueñas.
+
+Estamos avanzando en su mejora para que sea un lugar digno, seguro y agradable donde niñas, niños, jóvenes y adultos puedan convivir, hacer deporte y disfrutar de su tiempo libre.
+
+Seguimos trabajando con compromiso para rescatar y fortalecer nuestros espacios públicos.
+
+#TampicoVaconTodos
+#TampicoteCuida",104.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,1,,selected_post_with_comments,,,42,True,1,8,25,9,False,,,False
+fb_w14_backfill,2026-03-30_semana_30marzo_05abril_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1518078163215406,,,post_parent,https://www.facebook.com/monicavtampico/posts/pfbid02DS6coxq65FuuJv4tzVtUyVUtCJzQf1jpLodxiELUJA8wy314vHHivCrq13BJCX7Yl,,2026-03-30T14:02:21+00:00,2026-03-31,"Tuve la oportunidad de disfrutar una deliciosa degustación gastronómica en nuestro Mercado Municipal de Tampico.
+
+Gracias a las y los locatarios que con tanto esfuerzo y cariño preparan cada uno de sus platillos. Desde los desayunos hasta las comidas, cada sabor refleja lo mejor de nuestra tradición y nuestra identidad tampiqueña.
+
+Les invito a que visiten nuestro mercado, recorran sus pasillos y se dejen consentir por la comida hecha por manos tampiqueñas. Estoy segura de que van a vivir una experiencia única llena de sabor y calidez.
+
+¡Sigamos apoyando lo nuestro!
+
+#TampicoVaConTodos
+#TampicoteCuida","Tuve la oportunidad de disfrutar una deliciosa degustación gastronómica en nuestro Mercado Municipal de Tampico.
+
+Gracias a las y los locatarios que con tanto esfuerzo y cariño preparan cada uno de sus platillos. Desde los desayunos hasta las comidas, cada sabor refleja lo mejor de nuestra tradición y nuestra identidad tampiqueña.
+
+Les invito a que visiten nuestro mercado, recorran sus pasillos y se dejen consentir por la comida hecha por manos tampiqueñas. Estoy segura de que van a vivir una experiencia única llena de sabor y calidez.
+
+¡Sigamos apoyando lo nuestro!
+
+#TampicoVaConTodos
+#TampicoteCuida",98.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,2,,selected_post_with_comments,,,42,True,2,7,25,9,False,,,False
+fb_w14_backfill,2026-03-30_semana_30marzo_05abril_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1518393909850498,,,post_parent,https://www.facebook.com/reel/4271084729799715/,,2026-03-31T00:01:21+00:00,2026-03-31,"Durante muchos años, las y los vecinos de la colonia Santo Niño se sintieron olvidados. Hoy, eso ya cambió.
+
+Un compromiso que por fin se hace realidad, la pavimentación de sus calles.
+
+Escuchar, atender y resolver es nuestra responsabilidad, seguiremos trabajando todos los días para llevar bienestar a las familias tampiqueñas.
+
+#TampicoVaconTodos
+#TampicoteCuida","Durante muchos años, las y los vecinos de la colonia Santo Niño se sintieron olvidados. Hoy, eso ya cambió.
+
+Un compromiso que por fin se hace realidad, la pavimentación de sus calles.
+
+Escuchar, atender y resolver es nuestra responsabilidad, seguiremos trabajando todos los días para llevar bienestar a las familias tampiqueñas.
+
+#TampicoVaconTodos
+#TampicoteCuida",279.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,3,,selected_post_with_comments,,,42,True,3,6,25,5,False,,,False
+fb_w14_backfill,2026-03-30_semana_30marzo_05abril_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1519130083110214,,,post_parent,https://www.facebook.com/monicavtampico/posts/pfbid02AwHTmzQqDR6W4HaAaMx6EBXr8bsBcRW1CVJfRBWj3t1fv6WcdfXR653eTX998ZMDl,,2026-03-31T23:09:07+00:00,2026-03-31,"Sostuvimos una reunión más para dar seguimiento y brindar atención puntual a los programas y proyectos prioritarios que beneficiarán a las y los tampiqueños.
+
+#TampicoVaconTodos
+#TampicoteCuida","Sostuvimos una reunión más para dar seguimiento y brindar atención puntual a los programas y proyectos prioritarios que beneficiarán a las y los tampiqueños.
+
+#TampicoVaconTodos
+#TampicoteCuida",245.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,4,,selected_post_with_comments,,,42,True,4,5,25,7,False,,,False
+fb_w14_backfill,2026-03-30_semana_30marzo_05abril_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1604014190672921,,,post_parent,https://www.facebook.com/monicavtampico/videos/1604014190672921/,,2026-04-01T20:16:41+00:00,2026-04-07,"¡Te saludo este miércoles de Podcast!, estamos en la Casa de la Naturaleza, donde veremos las acciones que estamos emprendiendo en favor de la fauna y el medio ambiente desde este bello escenario.","¡Te saludo este miércoles de Podcast!, estamos en la Casa de la Naturaleza, donde veremos las acciones que estamos emprendiendo en favor de la fauna y el medio ambiente desde este bello escenario.",355.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,5,,selected_post_with_comments,,,42,True,5,4,25,6,False,,,False
+fb_w14_backfill,2026-03-30_semana_30marzo_05abril_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1519997313023491,,,post_parent,https://www.facebook.com/monicavtampico/posts/pfbid021q9PQMnwJRcJDbNTgzjc3xpHRAG5Hut4uvNi52Ke348GvThAj2gqpN4WR5i5XYQ8l,,2026-04-01T23:59:04+00:00,2026-04-07,"Visitamos un espacio que nos conecta con la riqueza ambiental de Tampico y nos invita a cuidarla, la Casa de la Naturaleza. 🌿
+
+Conocimos, a través de la explicación del biólogo Jorge F. Sosa Alejandre, los puntos clave para el avistamiento e identificación de aves, una experiencia que nos permite valorar aún más la biodiversidad de nuestra ciudad.
+
+Los invitamos a conocer la Ruta de Observación de Aves y Casa de la Naturaleza, y a disfrutar de estos espacios de manera responsable pueden consultar la información a través de la página Turismo Tampico.
+
+#TampicoVaconTodos
+#TampicoteCuida","Visitamos un espacio que nos conecta con la riqueza ambiental de Tampico y nos invita a cuidarla, la Casa de la Naturaleza. 🌿
+
+Conocimos, a través de la explicación del biólogo Jorge F. Sosa Alejandre, los puntos clave para el avistamiento e identificación de aves, una experiencia que nos permite valorar aún más la biodiversidad de nuestra ciudad.
+
+Los invitamos a conocer la Ruta de Observación de Aves y Casa de la Naturaleza, y a disfrutar de estos espacios de manera responsable pueden consultar la información a través de la página Turismo Tampico.
+
+#TampicoVaconTodos
+#TampicoteCuida",193.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,6,,selected_post_with_comments,,,42,True,6,3,25,5,False,,,False
+fb_w14_backfill,2026-03-30_semana_30marzo_05abril_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,122198231336546197,,,post_parent,https://www.facebook.com/reel/1899022397395066/,,2026-04-02T17:49:30+00:00,2026-04-07,"Seguimos trabajando para ti.
+
+Continuamos con las labores de limpieza del canal pluvial en la colonia Borreguera, reforzando acciones para cuidar a las familias tampiqueñas.
+
+#TampicoVaConTodos
+#TampicoTeCuida","Seguimos trabajando para ti.
+
+Continuamos con las labores de limpieza del canal pluvial en la colonia Borreguera, reforzando acciones para cuidar a las familias tampiqueñas.
+
+#TampicoVaConTodos
+#TampicoTeCuida",342.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,7,,selected_post_with_comments,,,42,True,7,2,25,6,False,,,False
+fb_w14_backfill,2026-03-30_semana_30marzo_05abril_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1520724309617458,,,post_parent,https://www.facebook.com/monicavtampico/posts/pfbid02JHkV4eHrLfi54DCnFhhPTdeACNJursQn3KuFD67RSt1wTiwEUUYZYGmm7YcVQuf9l,,2026-04-02T20:18:19+00:00,2026-04-07,Mi turista favorito.🤩,Mi turista favorito.🤩,1155.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,8,,selected_post_with_comments,,,42,True,8,1,25,7,False,,,False
+fb_w14_backfill,2026-03-30_semana_30marzo_05abril_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122197811246546197,,,post_parent,https://www.facebook.com/reel/944843824690927/,,2026-03-30T01:32:24+00:00,2026-03-31,"Gracias a todos los participantes! 
+
+Muchas felicidades a las ganadoras Ma Caro Perez y Zully Arvizu 
+
+#TampicoVaConTodos","Gracias a todos los participantes! 
+
+Muchas felicidades a las ganadoras Ma Caro Perez y Zully Arvizu 
+
+#TampicoVaConTodos",3.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,1,,selected_post_with_comments,,,42,True,1,8,25,1,False,,,False
+fb_w14_backfill,2026-03-30_semana_30marzo_05abril_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122197909772546197,,,post_parent,https://www.facebook.com/TampicoGob/posts/pfbid0pJnAe2pDgMnJhxuAyDs24gRGmUHZQGqZu6TyifMr7ZPwoeG37t7QQPquz5iv3S9Tl,,2026-03-30T18:50:02+00:00,2026-03-31,"Los Bailes populares han sido todo un éxito , reuniendo a familias y amigos en un ambiente lleno de alegría, música y tradición.
+
+Gracias a la gran respuesta de la ciudadanía, seguiremos llevando más bailes a distintos puntos, creando espacios de convivencia que fortalecen nuestras raíces y nuestra comunidad.","Los Bailes populares han sido todo un éxito , reuniendo a familias y amigos en un ambiente lleno de alegría, música y tradición.
+
+Gracias a la gran respuesta de la ciudadanía, seguiremos llevando más bailes a distintos puntos, creando espacios de convivencia que fortalecen nuestras raíces y nuestra comunidad.",214.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,2,,selected_post_with_comments,,,42,True,2,7,25,8,False,,,False
+fb_w14_backfill,2026-03-30_semana_30marzo_05abril_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122199059726562112,,,post_parent,https://www.facebook.com/servpublicostampico/posts/pfbid0H1NxqrDVYtTxgbjBqxDTNbkcaN3oVUe3zqq1jrqkzpTrZM3wyFY7a7uafKfV24fpl,,2026-03-31T01:06:33+00:00,2026-03-31,"¡Jornada 198 cumplida! 👊🏙️
+
+Hoy lunes 30 de marzo, atendiendo las instrucciones de nuestra Presidenta Mónica Villarreal Anaya, nos desplegamos en la Colonia Arenal con un operativo de limpieza profunda.
+
+📊 Cifras del día:
+✅ 20 Toneladas de basura retirada.
+✅ 70 m³ de cacharros y basura especial.
+✅ 5 Camiones trabajando a tope.
+
+La meta es clara: eliminar cualquier foco de infección. ¡Sin criaderos en tu patio, no hay dengue! 🦟🚫
+
+@monicavtampico 
+Mónica Villarreal 
+@tampicogob 
+Tampico Gob 
+#promocióndelasaludtampico 
+#DistritodeSaludParaElBienestarIITampico #SinCriaderosMéxicoProtegeSuSaludYElMundial","¡Jornada 198 cumplida! 👊🏙️
+
+Hoy lunes 30 de marzo, atendiendo las instrucciones de nuestra Presidenta Mónica Villarreal Anaya, nos desplegamos en la Colonia Arenal con un operativo de limpieza profunda.
+
+📊 Cifras del día:
+✅ 20 Toneladas de basura retirada.
+✅ 70 m³ de cacharros y basura especial.
+✅ 5 Camiones trabajando a tope.
+
+La meta es clara: eliminar cualquier foco de infección. ¡Sin criaderos en tu patio, no hay dengue! 🦟🚫
+
+@monicavtampico 
+Mónica Villarreal 
+@tampicogob 
+Tampico Gob 
+#promocióndelasaludtampico 
+#DistritodeSaludParaElBienestarIITampico #SinCriaderosMéxicoProtegeSuSaludYElMundial",,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,3,,selected_post_no_comments,,,42,True,3,6,25,0,False,,,False
+fb_w14_backfill,2026-03-30_semana_30marzo_05abril_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122198031050546197,,,post_parent,https://www.facebook.com/TampicoGob/posts/pfbid0uxr39cQ6fLAWvFng4CoP4NumNij5dAMTX1VwbwKUVYVPwPdXQh3YMCte6R2GqwWHl,,2026-03-31T19:25:19+00:00,2026-03-31,,,4.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,4,,selected_post_no_comments,,,42,True,4,5,25,0,False,,,False
+fb_w14_backfill,2026-03-30_semana_30marzo_05abril_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122203001762548816,,,post_parent,https://www.facebook.com/ProteccionCivilTampico/posts/pfbid02KeVS4mTMhEPjFSHE5WupRYd7yjoMUjVVQFryyhSc4469WnjF7YgaKDcARph5auVrl,,2026-04-01T23:51:29+00:00,2026-04-07,"Supervisión preventiva en las Fiestas de Abril Tampico 2026
+
+Como parte de las acciones de prevención en las Fiestas de Abril Tampico 2026 y brindando un buen servicio a los asistentes, siendo este un tema de gran importancia para la Lic. Mónica Villarreal Anaya, Presidenta Municipal de Tampico.
+
+El personal de Protección Civil y Bomberos de Tampico a cargo del Ing. José Antonio Marín, con la colaboración de Voluntarios Zona Sur de Tamaulipas, llevaron a cabo una inspección recorriendo el recinto ferial. 
+
+👷‍♂️ Durante el recorrido, los inspectores verificaron las condiciones de seguridad del inmueble, rutas de evacuación, señalización, así como el cumplimiento de las medidas necesarias. 
+
+Estas acciones reflejan el compromiso y la responsabilidad de quienes trabajan de manera permanente para salvaguardar la integridad de las y los asistentes.
+
+¡Tampico Te Cuida Y Protección Civil Somos Todos! #ProteccionCivilTampico #TampicoTeCuida #TampicoSomosTodos #bomberostampico #FiestasDeAbril #SemanaSanta2026 🌟🎉👏💪🔥🎊","Supervisión preventiva en las Fiestas de Abril Tampico 2026
+
+Como parte de las acciones de prevención en las Fiestas de Abril Tampico 2026 y brindando un buen servicio a los asistentes, siendo este un tema de gran importancia para la Lic. Mónica Villarreal Anaya, Presidenta Municipal de Tampico.
+
+El personal de Protección Civil y Bomberos de Tampico a cargo del Ing. José Antonio Marín, con la colaboración de Voluntarios Zona Sur de Tamaulipas, llevaron a cabo una inspección recorriendo el recinto ferial. 
+
+👷‍♂️ Durante el recorrido, los inspectores verificaron las condiciones de seguridad del inmueble, rutas de evacuación, señalización, así como el cumplimiento de las medidas necesarias. 
+
+Estas acciones reflejan el compromiso y la responsabilidad de quienes trabajan de manera permanente para salvaguardar la integridad de las y los asistentes.
+
+¡Tampico Te Cuida Y Protección Civil Somos Todos! #ProteccionCivilTampico #TampicoTeCuida #TampicoSomosTodos #bomberostampico #FiestasDeAbril #SemanaSanta2026 🌟🎉👏💪🔥🎊",14.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,5,,selected_post_with_comments,,,42,True,5,4,25,7,False,,,False
+fb_w14_backfill,2026-03-30_semana_30marzo_05abril_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122198242238546197,,,post_parent,https://www.facebook.com/TampicoGob/posts/pfbid02ERS4nN4mUAXwszaAcJUzMiTcMXU2MVdviXMZpkwaPTX3oQ4hJBu4nwuNP89m4dajl,,2026-04-02T19:49:29+00:00,2026-04-07,"¡Tenemos una sorpresa para ti!
+
+Te regalamos 2 pases dobles para el concierto de Bronco.
+
+Para participar:
+Déjanos en comentarios tu canción favorita de la banda.
+El ganador será seleccionado al azar. 
+
+Tienes hasta las 7:00 p.m. para participar
+
+¡No te pierdas la oportunidad de vivir esta gran experiencia! 🎟️","¡Tenemos una sorpresa para ti!
+
+Te regalamos 2 pases dobles para el concierto de Bronco.
+
+Para participar:
+Déjanos en comentarios tu canción favorita de la banda.
+El ganador será seleccionado al azar. 
+
+Tienes hasta las 7:00 p.m. para participar
+
+¡No te pierdas la oportunidad de vivir esta gran experiencia! 🎟️",3546.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,6,,selected_post_with_comments,,,42,True,6,3,25,9,False,,,False
+fb_w14_backfill,2026-03-30_semana_30marzo_05abril_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122198481626546197,,,post_parent,https://www.facebook.com/TampicoGob/posts/pfbid02f6CEuWrA3CKWEWzK5M4qqhWrPE9F3Szoo9GmLrVQKAos2Rhk5JqM4g5Uyf9yk5Szl,,2026-04-04T02:45:39+00:00,2026-04-07,"Tampico arranca Semana Santa 2026 con fuerza. 🌊
+Solo en los primeros 7 días de vacaciones (del 27 de marzo al 2 de abril), el puerto ya registra:
+♦️201,758 visitantes en sitios turísticos
+♦️185,617,360 pesos en derrama económica
+Cifras que reflejan el dinamismo y la confianza en el destino y esto aún no termina.
+El conteo oficial de Semana Santa continúa y cierra este domingo 5 de abril.
+#TampicoteCuida #TampicoVaConTodos","Tampico arranca Semana Santa 2026 con fuerza. 🌊
+Solo en los primeros 7 días de vacaciones (del 27 de marzo al 2 de abril), el puerto ya registra:
+♦️201,758 visitantes en sitios turísticos
+♦️185,617,360 pesos en derrama económica
+Cifras que reflejan el dinamismo y la confianza en el destino y esto aún no termina.
+El conteo oficial de Semana Santa continúa y cierra este domingo 5 de abril.
+#TampicoteCuida #TampicoVaConTodos",3.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,7,,selected_post_no_comments,,,42,True,7,2,25,0,False,,,False
+fb_w14_backfill,2026-03-30_semana_30marzo_05abril_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122203677896548816,,,post_parent,https://www.facebook.com/ProteccionCivilTampico/posts/pfbid02SKrnsdVxctKN9xfKe9EY4qA8aNfv1TYEe1cZY7u6MnULQKsf8yZzZLCmz9LdQq2Ml,,2026-04-04T23:31:20+00:00,2026-04-07,"🔵 *AVISO METEOROLÓGICO – TAMPICO Y ZONA SUR*
+
+📅 *Mañana Domingo 05 de abril*
+
+👉 Se informa que se prevé el ingreso del *Frente Frío No. 43*, el cual podría generar las siguientes condiciones en la región:
+
+🌬️ *Evento de “Norte”* moderado:
+Se prevén rachas de viento de *35 a 55 km/h*, así como velocidades de 55 a 75 km/h en el Golfo de México, además de un ligero pero notorio descenso de temperatura.
+
+🌧️ *Lluvias:*
+Se prevén chubascos dispersos durante el día domingo, sin descartar actividad eléctrica aislada.
+
+⏱️ *Periodo de afectación:*
+Condiciones que podrían presentarse durante la madrugada, mañana y parte del día domingo.
+
+¡Tampico Te Cuida Y Protección Civil Somos Todos! #ProteccionCivilTampico #TampicoTeCuida #TampicoSomosTodos  #bomberostampico","🔵 *AVISO METEOROLÓGICO – TAMPICO Y ZONA SUR*
+
+📅 *Mañana Domingo 05 de abril*
+
+👉 Se informa que se prevé el ingreso del *Frente Frío No. 43*, el cual podría generar las siguientes condiciones en la región:
+
+🌬️ *Evento de “Norte”* moderado:
+Se prevén rachas de viento de *35 a 55 km/h*, así como velocidades de 55 a 75 km/h en el Golfo de México, además de un ligero pero notorio descenso de temperatura.
+
+🌧️ *Lluvias:*
+Se prevén chubascos dispersos durante el día domingo, sin descartar actividad eléctrica aislada.
+
+⏱️ *Periodo de afectación:*
+Condiciones que podrían presentarse durante la madrugada, mañana y parte del día domingo.
+
+¡Tampico Te Cuida Y Protección Civil Somos Todos! #ProteccionCivilTampico #TampicoTeCuida #TampicoSomosTodos  #bomberostampico",41.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,8,,selected_post_with_comments,,,42,True,8,1,25,9,False,,,False

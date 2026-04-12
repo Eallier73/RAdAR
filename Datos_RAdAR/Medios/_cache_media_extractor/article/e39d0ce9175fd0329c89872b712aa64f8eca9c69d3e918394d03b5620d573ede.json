@@ -1,0 +1,22 @@
+{
+  "article_text": "Ni la tortilla se salva: Profeco sanciona a cuatro tiendas por fallar en normas sanitarias en Tamaulipas\nPodrían recibir multas por más de cuatro millones de pesos por no cumplir con las normas oficiales de higiene y etiquetado\nYadira Hernández\nMultan por tener las tortillas dentro de hieleras en Tamaulipas\nAl venderlas en hieleras no se cumplen los lineamientos, lo que representa una violación a la norma y puede afectar la calidad del producto que llega al consumidor.\nSin fecha, peso ni información: así se venden las tortillas fuera de la Norma\nEntre los datos que deben mostrarse se encuentran:",
+  "article_text_length": 602,
+  "article_title": "Ni la tortilla se salva: Profeco sanciona a cuatro tiendas por fallar en normas sanitarias en Tamaulipas - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/local/ni-la-tortilla-se-salva-profeco-sanciona-a-cuatro-tiendas-por-fallar-en-normas-sanitarias-en-tamaulipas-28833778",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:44:29Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

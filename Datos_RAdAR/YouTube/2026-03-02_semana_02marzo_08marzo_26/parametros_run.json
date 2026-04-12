@@ -1,0 +1,31 @@
+{
+  "api_key_source": "env:YOUTUBE_API_KEY",
+  "country": null,
+  "dry_run": false,
+  "entrypoint_alias": "automation_canonical_entrypoint",
+  "language": null,
+  "max_comments_per_video": null,
+  "max_results_search": 50,
+  "naming_end_date": "2026-03-08",
+  "naming_start_date": "2026-03-02",
+  "output_root_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube",
+  "overwrite": true,
+  "publish_canonical": true,
+  "queries": [
+    "presidenta municipal de Tampico",
+    "Presidenta municipal de Tampico",
+    "Gobierno de Tampico",
+    "gobierno de Tampico"
+  ],
+  "queries_source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/youtube_queries_canonical.txt",
+  "run_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-02_semana_02marzo_08marzo_26/runs/yt_w10_backfill_20260411_050457",
+  "run_id": "yt_w10_backfill",
+  "script_name": "youtube_extractor.py",
+  "script_version": "2.0.0",
+  "search_end_datetime": "2026-03-08T23:59:59",
+  "search_start_datetime": "2026-03-02T00:00:00",
+  "week_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-02_semana_02marzo_08marzo_26",
+  "week_name": "2026-03-02_semana_02marzo_08marzo_26",
+  "week_name_mode": "exact_range",
+  "youtube_api_key_env": "YOUTUBE_API_KEY"
+}

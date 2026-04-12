@@ -1,0 +1,22 @@
+{
+  "article_text": "¡Qué no se te vuele la ropa! Evento de norte violento afectará la región noroeste del Golfo de México\nEl ingreso del sistema frontal provocará lluvias fuertes y chubascos en la región durante las próximas 48 horas\nAlfredo Márquez\n¿Qué provocará el nuevo frente frío en el sur de Tamaulipas?\nEn el aviso de temporal se advirtió sobre reducción de la visibilidad en zonas marítimas y costeras, condiciones que podrían afectar las actividades pesqueras, portuarias y turísticas.\nDe acuerdo con el reporte oficial, el sistema frontal ingresará por la región noroeste del Golfo de México durante las primeras horas del lunes.\nEn la zona centro de Veracruz y el suroeste del Golfo, las condiciones podrían intensificarse, con vientos sostenidos de 65 a 75 km/h y rachas que alcanzarían entre 101 y 120 km/h, acompañadas de fuerte oleaje.",
+  "article_text_length": 831,
+  "article_title": "¡Qué no se te vuele la ropa! Evento de norte violento afectará la región noroeste del Golfo de México - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/local/que-no-se-te-vuele-la-ropa-evento-de-norte-violento-afectara-la-region-noroeste-del-golfo-de-mexico-28961321",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:47:56Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

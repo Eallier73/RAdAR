@@ -1,0 +1,22 @@
+{
+  "article_text": "Viernes 6 y sábado 7, toma rutas alternas: avisan cierre de carriles en la avenida Hidalgo en Tampico\nDurante la noche del viernes 6 y hasta la tarde del sábado 7 de marzo, cinco carriles de la prolongación de la avenida Hidalgo estarán cerrados\nItzia Rangole / El Sol de Tampico\nEl cierre de circulación de norte a sur iniciará en la avenida Márquez de Guadalupe y se extenderá hasta la calle Regiomontana por un periodo aproximado de 20 horas.\nHorario del cierre de carriles en la avenida Hidalgo de Tampico\nDe acuerdo con el comunicado oficial el cierre de vialidad iniciará a las 22:00 horas del viernes 6 y se extenderá hasta las 18:00 horas del sábado 7 de marzo.\nEl motivo que se aduce son: “los trabajos subterráneos en el canal pluvial que desemboca en la Laguna del Chairel”.\n¿Cuáles serán las rutas alternas?\nLo anterior implica que la circulación de sur a norte solo dispondrá de tres carriles, por lo cual se aconseja a la ciudadanía tomar rutas alternas a la avenida Hidalgo para evitar el tráfico vehicular.\nEvitar inundaciones: el objeto de los trabajos en el canal pluvial\nAmbas dependencias solicitan a la ciudadanía su comprensión y ofrecen una disculpa por la molestia. Durante las próximas semanas se esperan nuevos comunicados de cierre de vialidades por los trabajos en el canal pluvial.",
+  "article_text_length": 1310,
+  "article_title": "Viernes 6 y sábado 7, toma rutas alternas: avisan cierre de carriles en la avenida Hidalgo en Tampico - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/local/viernes-6-y-sabado-7-toma-rutas-alternas-avisan-cierre-de-carriles-en-la-avenida-hidalgo-en-tampico-28820808",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"gobierno de tampico\" site:oem.com.mx",
+  "query_index": 2,
+  "retrieved_at": "2026-04-05T15:43:48Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"gobierno de tampico\""
+}

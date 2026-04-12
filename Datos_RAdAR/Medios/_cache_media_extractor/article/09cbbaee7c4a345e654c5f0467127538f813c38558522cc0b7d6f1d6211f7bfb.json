@@ -1,0 +1,22 @@
+{
+  "article_text": "6 de mayo de 2024Enfrenta las enfermedades del corazón con nueva estrategia de prevención en Tamaulipas\n5 de mayo de 2024Carlos Fernández promete transformar Playa Miramar en un centro de cultura y deporte\n5 de mayo de 2024Alerta por calor extremo en Tamaulipas: directores decidirán en qué escuelas se suspenden clases\n2TURISMOViernes Santo histórico en Ciudad Madero: Playa Miramar se consolida como el destino favorito del noreste\nDEPORTESFelipe “Gambo” Hernández firma con los Yankees de Nueva York y recibe respaldo del INDE Tamaulipas\nFINANZASCosta Clara: el megaproyecto de viviendas que transformará Ciudad Madero con 2 mil millones de pesos",
+  "article_text_length": 649,
+  "article_title": "Tamaulipas - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/tags/temas/tamaulipas/app.json?page=482",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"Monica Villarreal\" site:oem.com.mx",
+  "query_index": 1,
+  "retrieved_at": "2026-04-05T15:54:10Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"Monica Villarreal\""
+}

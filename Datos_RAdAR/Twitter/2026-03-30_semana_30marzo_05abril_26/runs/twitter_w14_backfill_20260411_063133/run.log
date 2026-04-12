@@ -1,0 +1,34 @@
+2026-04-11 06:31:33 | INFO | radar.twitter_extractor | Inicio de corrida | run_id=twitter_w14_backfill week_name=2026-03-30_semana_30marzo_05abril_26 output_root=/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter week_name_mode=canonical_monday_sunday
+2026-04-11 06:31:33 | INFO | radar.twitter_extractor | Parámetros efectivos | since=2026-03-30 until=2026-04-05 total_queries=9 max_scrolls=6 max_tweets_per_query=100 include_replies=False headless=True
+2026-04-11 06:31:33 | INFO | radar.twitter_extractor | Archivo de sesión | session_state_file=/home/emilio/Documentos/RAdAR/Scripts/state/x_state.json
+2026-04-11 06:31:33 | INFO | radar.twitter_extractor | Playwright inicializado | headless=True session_state_file=/home/emilio/Documentos/RAdAR/Scripts/state/x_state.json
+2026-04-11 06:31:37 | INFO | radar.twitter_extractor | Sesión persistida validada correctamente contra X/Twitter.
+2026-04-11 06:31:37 | INFO | radar.twitter_extractor | Procesando query 1/9 | query=to:MonicaVTampico
+2026-04-11 06:31:41 | INFO | radar.twitter_extractor | Búsqueda abierta | query=to:MonicaVTampico since:2026-03-30 until:2026-04-05
+2026-04-11 06:31:47 | INFO | radar.twitter_extractor | Query procesada | query_index=1 query=to:MonicaVTampico tweets_guardados=0 replies_guardados=0 errores=0 scrolls=6
+2026-04-11 06:31:47 | INFO | radar.twitter_extractor | Procesando query 2/9 | query=from:MonicaVTampico
+2026-04-11 06:31:50 | INFO | radar.twitter_extractor | Búsqueda abierta | query=from:MonicaVTampico since:2026-03-30 until:2026-04-05
+2026-04-11 06:31:56 | INFO | radar.twitter_extractor | Query procesada | query_index=2 query=from:MonicaVTampico tweets_guardados=0 replies_guardados=0 errores=0 scrolls=6
+2026-04-11 06:31:56 | INFO | radar.twitter_extractor | Procesando query 3/9 | query=to:TampicoGob
+2026-04-11 06:32:00 | INFO | radar.twitter_extractor | Búsqueda abierta | query=to:TampicoGob since:2026-03-30 until:2026-04-05
+2026-04-11 06:32:06 | INFO | radar.twitter_extractor | Query procesada | query_index=3 query=to:TampicoGob tweets_guardados=1 replies_guardados=0 errores=0 scrolls=6
+2026-04-11 06:32:06 | INFO | radar.twitter_extractor | Procesando query 4/9 | query=from:TampicoGob
+2026-04-11 06:32:09 | INFO | radar.twitter_extractor | Búsqueda abierta | query=from:TampicoGob since:2026-03-30 until:2026-04-05
+2026-04-11 06:32:15 | INFO | radar.twitter_extractor | Query procesada | query_index=4 query=from:TampicoGob tweets_guardados=0 replies_guardados=0 errores=0 scrolls=6
+2026-04-11 06:32:15 | INFO | radar.twitter_extractor | Procesando query 5/9 | query=@TampicoGob
+2026-04-11 06:32:19 | INFO | radar.twitter_extractor | Búsqueda abierta | query=@TampicoGob since:2026-03-30 until:2026-04-05
+2026-04-11 06:32:27 | INFO | radar.twitter_extractor | Query procesada | query_index=5 query=@TampicoGob tweets_guardados=9 replies_guardados=0 errores=0 scrolls=6
+2026-04-11 06:32:27 | INFO | radar.twitter_extractor | Procesando query 6/9 | query=@MonicaVTampico
+2026-04-11 06:32:30 | INFO | radar.twitter_extractor | Búsqueda abierta | query=@MonicaVTampico since:2026-03-30 until:2026-04-05
+2026-04-11 06:32:38 | INFO | radar.twitter_extractor | Query procesada | query_index=6 query=@MonicaVTampico tweets_guardados=15 replies_guardados=0 errores=0 scrolls=6
+2026-04-11 06:32:38 | INFO | radar.twitter_extractor | Procesando query 7/9 | query=monica villarreal
+2026-04-11 06:32:41 | INFO | radar.twitter_extractor | Búsqueda abierta | query="monica villarreal" since:2026-03-30 until:2026-04-05
+2026-04-11 06:32:50 | INFO | radar.twitter_extractor | Query procesada | query_index=7 query=monica villarreal tweets_guardados=20 replies_guardados=0 errores=0 scrolls=6
+2026-04-11 06:32:50 | INFO | radar.twitter_extractor | Procesando query 8/9 | query=gobierno de tampico
+2026-04-11 06:32:53 | INFO | radar.twitter_extractor | Búsqueda abierta | query="gobierno de tampico" since:2026-03-30 until:2026-04-05
+2026-04-11 06:33:01 | INFO | radar.twitter_extractor | Query procesada | query_index=8 query=gobierno de tampico tweets_guardados=9 replies_guardados=0 errores=0 scrolls=6
+2026-04-11 06:33:01 | INFO | radar.twitter_extractor | Procesando query 9/9 | query=tampico
+2026-04-11 06:33:04 | INFO | radar.twitter_extractor | Búsqueda abierta | query=tampico since:2026-03-30 until:2026-04-05
+2026-04-11 06:33:17 | INFO | radar.twitter_extractor | Query procesada | query_index=9 query=tampico tweets_guardados=53 replies_guardados=0 errores=0 scrolls=6
+2026-04-11 06:33:17 | INFO | radar.twitter_extractor | Artefactos canónicos publicados | total=7
+2026-04-11 06:33:17 | INFO | radar.twitter_extractor | Cierre de corrida | status=success tweets_detected=273 tweets_saved=107 replies_saved=0 run_dir=/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-30_semana_30marzo_05abril_26/runs/twitter_w14_backfill_20260411_063133

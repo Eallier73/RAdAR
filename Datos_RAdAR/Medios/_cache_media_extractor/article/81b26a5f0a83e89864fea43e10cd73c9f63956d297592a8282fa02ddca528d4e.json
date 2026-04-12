@@ -1,0 +1,22 @@
+{
+  "article_text": "Que la visita de la presidenta de la República, Claudia Sheinbaum Pardo, programada para este miércoles, generó un blindaje especial de seguridad desde este martes, mediante sobrevuelos de la Marina y recorridos terrestres de la Guardia Nacional. Incluso le dieron una “manita de gato” a la ruta que seguirá la líder de la 4T por el puerto de Tampico, con motivo del Día de la Expropiación Petrolera.\nQue fueron un verdadero terremoto los cambios en el gabinete de Américo Villarreal Anaya: primero, la llegada de Adriana Marcela Hernández Campos como secretaria de Salud; Karl Heinz Becker Hernández como titular de la Seduma; y Gerardo Algarín Hernández como coordinador de Comunicación Social. La responsabilidad de los nuevos funcionarios será mantener y fortalecer la labor en favor de los tamaulipecos.\nQue en redes sociales el secretario de Seguridad de Puebla, Jorge Méndez Guillén, presumió su trayectoria en el rubro y reconoció la labor de “El Batman mexicano” (Omar García Harfuch), así como del gobierno estatal y del municipio de Tampico, encabezado por Mónica Villarreal Anaya.\nQue en el mercado de Tampico, Francisco Santacruz, quien se presenta como locatario, insiste en organizar bailes con venta de alcohol. Aquí, los comerciantes lo que buscan es coordinación entre la Dirección de Mercados y Cultura para llevar a cabo actividades recreativas y culturales, no fiestas donde solo unos cuantos resulten beneficiados.\nQue sorprendió el auditor Francisco Noriega al calificar como “escandalosas” las cifras de observaciones de cuentas públicas y señalar que no necesariamente implican corrupción. ¿Se trata de errores administrativos masivos, descuidos sistemáticos o simples detallitos contables? Minimizar el fondo puede enviar un mensaje peligroso: que se pueden seguir acumulando irregularidades sin consecuencia.\nQue en el INE Tampico los movimientos se dieron en lo oscurito, pues no invitaron ni a la prensa ni a los partidos. Rindió protesta la encargada de despacho de la Vocalía Ejecutiva, Gloria del Ángel, junto con una interina en la Secretaría y otro en Capacitación Electoral. Este último, según las malas lenguas, hasta hace poco era el contador y ahora tendrá que navegar en otras aguas.",
+  "article_text_length": 2222,
+  "article_title": "La Grilla - Milenio",
+  "article_url_resolved": "https://www.milenio.com/opinion/editoriales/se-dice-en-la-grilla-tamaulipas/la-grilla_1102",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:milenio.com",
+  "playwright_used": false,
+  "query": "\"Monica Villarreal\" site:milenio.com",
+  "query_index": 4,
+  "retrieved_at": "2026-04-05T15:51:21Z",
+  "source_domain": "www.milenio.com",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"Monica Villarreal\""
+}

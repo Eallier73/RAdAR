@@ -1,0 +1,22 @@
+{
+  "article_text": "Detectan siete árboles en estado crítico en Tampico; autoridades refuerzan vigilancia preventiva\nPiden a la ciudadanía realizar los reportes para disminuir los riesgos; dos sectores del municipios acaparan los casos más riesgosos\nYadira Hernández\nHay dos colonias de Tampico que tienen mayor riesgo de caída de árboles\nPiden el apoyo ciudadano para detectar árboles de gran tamaño en Tampico\nEl funcionario señaló que en muchos casos es necesario dialogar con los habitantes, ya que algunos árboles se encuentran dentro de propiedades particulares, mientras que otros están ubicados en jardineras o espacios públicos.",
+  "article_text_length": 617,
+  "article_title": "Detectan siete árboles en estado crítico en Tampico; autoridades refuerzan vigilancia preventiva - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/local/detectan-siete-arboles-en-estado-critico-en-tampico-autoridades-refuerzan-vigilancia-preventiva-28962044",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:48:32Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

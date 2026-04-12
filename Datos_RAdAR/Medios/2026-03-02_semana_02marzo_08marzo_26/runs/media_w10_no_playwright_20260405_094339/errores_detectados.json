@@ -1,0 +1,14 @@
+[
+  {
+    "article_url": null,
+    "details": {},
+    "error_type": "runtime_error",
+    "fatal": true,
+    "message": "automation.extractors.media_extractor_core.URLResolutionRecord() got multiple values for keyword argument 'cache_hit_url_resolution'",
+    "query": null,
+    "query_index": null,
+    "scope": "run",
+    "stage": "runtime",
+    "timestamp": "2026-04-05T15:44:31Z"
+  }
+]

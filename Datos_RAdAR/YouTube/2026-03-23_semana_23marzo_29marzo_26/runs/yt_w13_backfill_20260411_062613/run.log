@@ -1,0 +1,85 @@
+2026-04-11 06:26:13 | INFO | radar.youtube_extractor | Inicio de corrida | run_id=yt_w13_backfill week_name=2026-03-23_semana_23marzo_29marzo_26 output_root=/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube week_name_mode=exact_range
+2026-04-11 06:26:13 | INFO | radar.youtube_extractor | Parametros efectivos | start_date=2026-03-23 end_date=2026-03-29 total_queries=4 max_results_search=25 max_comments_per_video=100
+2026-04-11 06:26:13 | INFO | radar.youtube_extractor | Procesando query 1/4 | query=presidenta municipal de Tampico
+2026-04-11 06:26:14 | INFO | radar.youtube_extractor | Query con videos encontrados | query=presidenta municipal de Tampico videos=5
+2026-04-11 06:26:14 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=presidenta municipal de Tampico video_rank=1 video_id=Hjrp1sb9oiY
+2026-04-11 06:26:15 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=presidenta municipal de Tampico video_rank=2 video_id=JqDdTA17_n4
+2026-04-11 06:26:16 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=presidenta municipal de Tampico video_rank=3 video_id=e5sm7i7HdAE
+2026-04-11 06:26:17 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=presidenta municipal de Tampico video_rank=4 video_id=8s4PwgEglk8
+2026-04-11 06:26:18 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=presidenta municipal de Tampico video_rank=5 video_id=9GiRI7zy1k8
+2026-04-11 06:26:19 | INFO | radar.youtube_extractor | Query finalizada | query=presidenta municipal de Tampico status=success videos=5 videos_con_comentarios=5 comentarios=297
+2026-04-11 06:26:19 | INFO | radar.youtube_extractor | Procesando query 2/4 | query=Presidenta municipal de Tampico
+2026-04-11 06:26:19 | INFO | radar.youtube_extractor | Query con videos encontrados | query=Presidenta municipal de Tampico videos=5
+2026-04-11 06:26:19 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Presidenta municipal de Tampico video_rank=1 video_id=Hjrp1sb9oiY
+2026-04-11 06:26:20 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Presidenta municipal de Tampico video_rank=2 video_id=JqDdTA17_n4
+2026-04-11 06:26:21 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Presidenta municipal de Tampico video_rank=3 video_id=e5sm7i7HdAE
+2026-04-11 06:26:21 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Presidenta municipal de Tampico video_rank=4 video_id=8s4PwgEglk8
+2026-04-11 06:26:22 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Presidenta municipal de Tampico video_rank=5 video_id=9GiRI7zy1k8
+2026-04-11 06:26:23 | INFO | radar.youtube_extractor | Query finalizada | query=Presidenta municipal de Tampico status=success videos=5 videos_con_comentarios=5 comentarios=297
+2026-04-11 06:26:23 | INFO | radar.youtube_extractor | Procesando query 3/4 | query=Gobierno de Tampico
+2026-04-11 06:26:23 | INFO | radar.youtube_extractor | Query con videos encontrados | query=Gobierno de Tampico videos=25
+2026-04-11 06:26:23 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=1 video_id=x8Ma00LzU_A
+2026-04-11 06:26:24 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=2 video_id=K7SDlLvYPfk
+2026-04-11 06:26:25 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=3 video_id=5s49BevXbvQ
+2026-04-11 06:26:25 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=4 video_id=WlUIMqp9_l8
+2026-04-11 06:26:26 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=5 video_id=upoaA0omhvE
+2026-04-11 06:26:27 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=6 video_id=HQlV2RaY7ac
+2026-04-11 06:26:27 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=7 video_id=_YWbwfJw0KM
+2026-04-11 06:26:28 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=8 video_id=_NeqpemMV1Q
+2026-04-11 06:26:29 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=9 video_id=LRjvGUK8Ubg
+2026-04-11 06:26:29 | WARNING | radar.youtube_extractor | Error recuperable en video | query=Gobierno de Tampico video_id=LRjvGUK8Ubg mensaje=The video identified by the <code><a href="/youtube/v3/docs/commentThreads/list#videoId">videoId</a></code> parameter has disabled comments.
+2026-04-11 06:26:29 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=10 video_id=CKcvzNtHkII
+2026-04-11 06:26:30 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=11 video_id=n3s_ktZol-A
+2026-04-11 06:26:31 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=12 video_id=DpA1KlWaENM
+2026-04-11 06:26:31 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=13 video_id=Dwy_i8AAX3U
+2026-04-11 06:26:32 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=14 video_id=D3-qEaZtpcg
+2026-04-11 06:26:33 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=15 video_id=bZWe7PFquUo
+2026-04-11 06:26:33 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=16 video_id=e6JqE7qpCCs
+2026-04-11 06:26:34 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=17 video_id=ldifJCqyiHI
+2026-04-11 06:26:35 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=18 video_id=xmdWOjlxUMA
+2026-04-11 06:26:36 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=19 video_id=k4uP4jsFmcc
+2026-04-11 06:26:37 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=20 video_id=7aq4Dq0Kcos
+2026-04-11 06:26:37 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=21 video_id=rqpIy6rd0OA
+2026-04-11 06:26:38 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=22 video_id=6siujUAF7BY
+2026-04-11 06:26:39 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=23 video_id=SC8Fng7OwCc
+2026-04-11 06:26:39 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=24 video_id=dBbVEcwHQ3c
+2026-04-11 06:26:40 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=Gobierno de Tampico video_rank=25 video_id=_mnZSUOtAIQ
+2026-04-11 06:26:41 | INFO | radar.youtube_extractor | Query finalizada | query=Gobierno de Tampico status=partial_success videos=25 videos_con_comentarios=12 comentarios=497
+2026-04-11 06:26:41 | INFO | radar.youtube_extractor | Procesando query 4/4 | query=gobierno de Tampico
+2026-04-11 06:26:41 | INFO | radar.youtube_extractor | Query con videos encontrados | query=gobierno de Tampico videos=25
+2026-04-11 06:26:41 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=1 video_id=5s49BevXbvQ
+2026-04-11 06:26:42 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=2 video_id=x8Ma00LzU_A
+2026-04-11 06:26:43 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=3 video_id=K7SDlLvYPfk
+2026-04-11 06:26:43 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=4 video_id=upoaA0omhvE
+2026-04-11 06:26:44 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=5 video_id=_YWbwfJw0KM
+2026-04-11 06:26:44 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=6 video_id=HQlV2RaY7ac
+2026-04-11 06:26:45 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=7 video_id=_NeqpemMV1Q
+2026-04-11 06:26:46 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=8 video_id=Dwy_i8AAX3U
+2026-04-11 06:26:46 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=9 video_id=DpA1KlWaENM
+2026-04-11 06:26:47 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=10 video_id=WlUIMqp9_l8
+2026-04-11 06:26:48 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=11 video_id=CKcvzNtHkII
+2026-04-11 06:26:48 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=12 video_id=ldifJCqyiHI
+2026-04-11 06:26:49 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=13 video_id=LRjvGUK8Ubg
+2026-04-11 06:26:49 | WARNING | radar.youtube_extractor | Error recuperable en video | query=gobierno de Tampico video_id=LRjvGUK8Ubg mensaje=The video identified by the <code><a href="/youtube/v3/docs/commentThreads/list#videoId">videoId</a></code> parameter has disabled comments.
+2026-04-11 06:26:50 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=14 video_id=n3s_ktZol-A
+2026-04-11 06:26:50 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=15 video_id=xmdWOjlxUMA
+2026-04-11 06:26:51 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=16 video_id=k4uP4jsFmcc
+2026-04-11 06:26:52 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=17 video_id=D3-qEaZtpcg
+2026-04-11 06:26:53 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=18 video_id=bZWe7PFquUo
+2026-04-11 06:26:54 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=19 video_id=e6JqE7qpCCs
+2026-04-11 06:26:55 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=20 video_id=dBbVEcwHQ3c
+2026-04-11 06:26:57 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=21 video_id=ekK_tbA5EtE
+2026-04-11 06:26:58 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=22 video_id=_mnZSUOtAIQ
+2026-04-11 06:26:58 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=23 video_id=TI7rMpL00lY
+2026-04-11 06:26:59 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=24 video_id=SC8Fng7OwCc
+2026-04-11 06:27:00 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query=gobierno de Tampico video_rank=25 video_id=6siujUAF7BY
+2026-04-11 06:27:00 | INFO | radar.youtube_extractor | Query finalizada | query=gobierno de Tampico status=partial_success videos=25 videos_con_comentarios=14 comentarios=600
+2026-04-11 06:27:00 | INFO | radar.youtube_extractor | Artefacto canonico publicado | key=comments_csv path=/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-23_semana_23marzo_29marzo_26/youtube_comentarios_2026-03-23_semana_23marzo_29marzo_26.csv
+2026-04-11 06:27:00 | INFO | radar.youtube_extractor | Artefacto canonico publicado | key=videos_csv path=/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-23_semana_23marzo_29marzo_26/videos_encontrados.csv
+2026-04-11 06:27:00 | INFO | radar.youtube_extractor | Artefacto canonico publicado | key=queries_csv path=/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-23_semana_23marzo_29marzo_26/queries_summary.csv
+2026-04-11 06:27:00 | INFO | radar.youtube_extractor | Artefacto canonico publicado | key=summary_json path=/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-23_semana_23marzo_29marzo_26/summary.json
+2026-04-11 06:27:00 | INFO | radar.youtube_extractor | Artefacto canonico publicado | key=parametros_json path=/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-23_semana_23marzo_29marzo_26/parametros_run.json
+2026-04-11 06:27:00 | INFO | radar.youtube_extractor | Artefacto canonico publicado | key=metadata_json path=/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-23_semana_23marzo_29marzo_26/metadata_run.json
+2026-04-11 06:27:00 | INFO | radar.youtube_extractor | Artefacto canonico publicado | key=errors_json path=/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-23_semana_23marzo_29marzo_26/errores_detectados.json
+2026-04-11 06:27:00 | INFO | radar.youtube_extractor | Artefacto canonico publicado | key=manifest_json path=/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-23_semana_23marzo_29marzo_26/manifest.json
+2026-04-11 06:27:00 | INFO | radar.youtube_extractor | Cierre de corrida | status=partial_success comentarios=1691 videos=60 run_dir=/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-23_semana_23marzo_29marzo_26/runs/yt_w13_backfill_20260411_062613

@@ -1,0 +1,22 @@
+{
+  "article_text": "Tendenciasmiércoles, 25 de marzo de 2026\nGuía de apps vigentes para pedir comida a domicilio en Tampico sin complicaciones: Soy Juan ya cerró\nPlataformas digitales mantienen su presencia en la zona con diversas opciones para ordenar comida y productos sin salir de casa\nRoberto González / El Sol de Tampico",
+  "article_text_length": 306,
+  "article_title": "Guía de apps vigentes para pedir comida a domicilio en Tampico sin complicaciones: Soy Juan ya cerró - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/tendencias/guia-de-apps-vigentes-para-pedir-comida-a-domicilio-en-tampico-sin-complicaciones-soy-juan-ya-cerro-29159309",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:53:13Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

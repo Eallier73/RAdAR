@@ -1,0 +1,22 @@
+2026-04-05 09:49:37 | INFO | radar.media_extractor | Inicio de corrida | run_id=media_w12_playwright week_name=2026-03-16_semana_16marzo_22marzo_26 output_root=/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios week_name_mode=canonical_monday_sunday
+2026-04-05 09:49:37 | INFO | radar.media_extractor | Parámetros efectivos | since=2026-03-16 before=2026-03-22 total_queries=6 max_results_per_query=20 max_articles_per_week=30 use_playwright=True
+2026-04-05 09:49:38 | INFO | radar.media_extractor | Playwright inicializado correctamente para fallback de artículos.
+2026-04-05 09:49:38 | INFO | radar.media_extractor | Procesando query 1/6 | query="Monica Villarreal" site:oem.com.mx
+2026-04-05 09:49:38 | INFO | radar.media_extractor | RSS obtenido | query_index=1 query="Monica Villarreal" site:oem.com.mx items=1
+2026-04-05 09:49:45 | INFO | radar.media_extractor | Procesando query 2/6 | query="gobierno de tampico" site:oem.com.mx
+2026-04-05 09:49:46 | INFO | radar.media_extractor | RSS obtenido | query_index=2 query="gobierno de tampico" site:oem.com.mx items=2
+2026-04-05 09:49:57 | INFO | radar.media_extractor | Procesando query 3/6 | query="tampico" site:oem.com.mx
+2026-04-05 09:49:58 | INFO | radar.media_extractor | RSS obtenido | query_index=3 query="tampico" site:oem.com.mx items=20
+2026-04-05 09:51:14 | INFO | radar.media_extractor | Procesando query 4/6 | query="Monica Villarreal" site:milenio.com
+2026-04-05 09:51:14 | INFO | radar.media_extractor | RSS obtenido | query_index=4 query="Monica Villarreal" site:milenio.com items=8
+2026-04-05 09:51:45 | INFO | radar.media_extractor | Se alcanzó max_articles_per_week; no se procesarán más queries.
+2026-04-05 09:51:45 | INFO | radar.media_extractor | Artefacto canónico publicado | key=articles_csv path=/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-16_semana_16marzo_22marzo_26/media_articles_2026-03-16_semana_16marzo_22marzo_26.csv
+2026-04-05 09:51:45 | INFO | radar.media_extractor | Artefacto canónico publicado | key=rss_raw_csv path=/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-16_semana_16marzo_22marzo_26/rss_items_raw.csv
+2026-04-05 09:51:45 | INFO | radar.media_extractor | Artefacto canónico publicado | key=urls_resolved_csv path=/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-16_semana_16marzo_22marzo_26/urls_resueltas.csv
+2026-04-05 09:51:45 | INFO | radar.media_extractor | Artefacto canónico publicado | key=download_summary_csv path=/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-16_semana_16marzo_22marzo_26/descarga_articulos_summary.csv
+2026-04-05 09:51:45 | INFO | radar.media_extractor | Artefacto canónico publicado | key=queries_csv path=/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-16_semana_16marzo_22marzo_26/queries_summary.csv
+2026-04-05 09:51:45 | INFO | radar.media_extractor | Artefacto canónico publicado | key=summary_json path=/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-16_semana_16marzo_22marzo_26/summary.json
+2026-04-05 09:51:45 | INFO | radar.media_extractor | Artefacto canónico publicado | key=parametros_json path=/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-16_semana_16marzo_22marzo_26/parametros_run.json
+2026-04-05 09:51:45 | INFO | radar.media_extractor | Artefacto canónico publicado | key=metadata_json path=/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-16_semana_16marzo_22marzo_26/metadata_run.json
+2026-04-05 09:51:45 | INFO | radar.media_extractor | Artefacto canónico publicado | key=manifest_json path=/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-16_semana_16marzo_22marzo_26/manifest.json
+2026-04-05 09:51:45 | INFO | radar.media_extractor | Cierre de corrida | status=success rss_items=30 urls_resueltas=30 artículos_ok=30 run_dir=/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-16_semana_16marzo_22marzo_26/runs/media_w12_playwright_20260405_094937

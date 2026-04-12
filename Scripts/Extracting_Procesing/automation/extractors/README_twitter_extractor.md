@@ -21,7 +21,7 @@ Convertir `02_twitter_extractor_Tampico.py` en un componente profesional de extr
 - Cargar queries canónicas o queries externas.
 - Ejecutar búsquedas live en X/Twitter.
 - Extraer tweets visibles y replies cuando se habilitan.
-- Expandir texto truncado cuando la interfaz lo permite.
+- Conservar el texto visible tal como lo entrega la interfaz, sin expansión forzada, para preservar comparabilidad histórica.
 - Persistir datasets y artefactos de corrida.
 - Generar `summary.json`, `metadata_run.json`, `parametros_run.json` y `manifest.json`.
 - Devolver un estado final reusable por un orquestador.
@@ -63,6 +63,11 @@ Las queries pueden venir de:
 2. `--query` repetido por CLI
 3. el archivo canónico `twitter_queries_canonical.txt`
 
+Contrato de edición del archivo canónico:
+
+- una query por línea
+- líneas que empiezan con `#` se ignoran
+
 Las queries canónicas por default son:
 
 - `to:MonicaVTampico`
@@ -71,6 +76,9 @@ Las queries canónicas por default son:
 - `from:TampicoGob`
 - `@TampicoGob`
 - `@MonicaVTampico`
+- `monica villarreal`
+- `gobierno de tampico`
+- `tampico`
 
 La query `"presidenta municipal"` queda explícitamente fuera de la versión canónica.
 
@@ -100,6 +108,7 @@ La query `"presidenta municipal"` queda explícitamente fuera de la versión can
 - `--headed` fuerza modo visible para debugging.
 - Si Playwright no está instalado o el browser no puede abrirse, la corrida falla con error fatal controlado.
 - `metadata_run.json` y `summary.json` registran si Playwright estuvo disponible, si se usó y si la corrida fue headless.
+- `queries_summary.csv` y `metadata_run.json` registran alertas de selectores cuando la estructura visible de X/Twitter deja de parecer compatible con el extractor.
 
 ## Outputs
 
@@ -198,5 +207,11 @@ from automation.extractors.twitter_extractor_core import run_extraction
 
 - Depende de la disponibilidad de la interfaz web de X/Twitter y de una sesión válida.
 - La extracción de métricas visibles puede variar según cambios del DOM.
-- `view_count` y `conversation_id` son best effort; pueden quedar vacíos en algunos casos.
-- Replies y expansión de texto dependen del DOM efectivo cargado por X/Twitter.
+- `conversation_id` es best effort; puede quedar vacío en algunos casos.
+- Replies dependen del DOM efectivo cargado por X/Twitter.
+
+## Señales operativas a revisar
+
+- `summary.json` expone `text_expansion_attempted`, `text_expansion_succeeded` y `selector_warnings`; en la configuración canónica, la expansión forzada debe permanecer en `0`.
+- `queries_summary.csv` agrega `selector_warning` por query para detectar cambios del DOM sin leer todo el log.
+- `metadata_run.json` agrega `selector_health` con la muestra inicial de selectores críticos por query.

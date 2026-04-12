@@ -1,0 +1,113 @@
+{
+  "artifact_paths": {
+    "comments_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26/runs/yt_w11_rerun_20260405_113959/youtube_comentarios_2026-03-09_semana_09marzo_15marzo_26.csv",
+    "manifest_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26/runs/yt_w11_rerun_20260405_113959/manifest.json",
+    "metadata_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26/runs/yt_w11_rerun_20260405_113959/metadata_run.json",
+    "parametros_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26/runs/yt_w11_rerun_20260405_113959/parametros_run.json",
+    "queries_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26/runs/yt_w11_rerun_20260405_113959/queries_summary.csv",
+    "run_log": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26/runs/yt_w11_rerun_20260405_113959/run.log",
+    "summary_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26/runs/yt_w11_rerun_20260405_113959/summary.json",
+    "videos_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26/runs/yt_w11_rerun_20260405_113959/videos_encontrados.csv"
+  },
+  "config": {
+    "api_key_source": "env:YOUTUBE_API_KEY",
+    "config_file": null,
+    "country": null,
+    "dry_run": false,
+    "end_date": "2026-03-15",
+    "entrypoint_alias": "automation_canonical_entrypoint",
+    "helper_module_path": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/youtube_extractor_core.py",
+    "include_replies": false,
+    "include_replies_implemented": false,
+    "language": null,
+    "log_level": "INFO",
+    "max_comments_per_video": null,
+    "max_results_search": 50,
+    "output_root_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube",
+    "overwrite": true,
+    "publish_canonical": true,
+    "queries": [
+      "presidenta municipal de Tampico",
+      "Presidenta municipal de Tampico",
+      "Gobierno de Tampico",
+      "gobierno de Tampico"
+    ],
+    "queries_source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/youtube_queries_canonical.txt",
+    "run_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26/runs/yt_w11_rerun_20260405_113959",
+    "run_id": "yt_w11_rerun",
+    "run_timestamp": "20260405_113959",
+    "script_name": "youtube_extractor.py",
+    "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/youtube_extractor.py",
+    "script_version": "2.0.0",
+    "search_end_datetime": "2026-03-15T23:59:59",
+    "search_start_datetime": "2026-03-09T00:00:00",
+    "start_date": "2026-03-09",
+    "week_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26",
+    "week_name_mode": "exact_range",
+    "week_partition": {
+      "end_date": "2026-03-15",
+      "naming_end_date": "2026-03-15",
+      "naming_start_date": "2026-03-09",
+      "start_date": "2026-03-09",
+      "week_name": "2026-03-09_semana_09marzo_15marzo_26"
+    },
+    "youtube_api_key_env": "YOUTUBE_API_KEY"
+  },
+  "counts": {
+    "comments_extracted": 2666,
+    "queries": 4,
+    "queries_failed": 0,
+    "video_errors": 0,
+    "videos_found": 68,
+    "videos_with_comments": 32
+  },
+  "entrypoint_alias": "automation_canonical_entrypoint",
+  "environment": {
+    "cwd": "/home/emilio/Documentos/RAdAR",
+    "hostname": "ThinkPad-T14-Gen-4-Emilio",
+    "platform": "Linux-6.14.0-37-generic-x86_64-with-glibc2.39",
+    "python_version": "3.12.3",
+    "user": "emilio"
+  },
+  "errors": [],
+  "execution": {
+    "dry_run": false,
+    "duration_seconds": 49.99,
+    "exit_code": 0,
+    "finished_at": "2026-04-05T17:40:49Z",
+    "started_at": "2026-04-05T17:39:59Z",
+    "status": "success"
+  },
+  "helper_module_path": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/youtube_extractor_core.py",
+  "notes": [
+    "Extractor puro de YouTube: busqueda por query/rango, metadata de video y comentarios top-level.",
+    "No se extraen replies por defecto ni se implementan en esta version.",
+    "No se realiza NLP, deduplicacion de negocio, consolidacion maestra ni modelado.",
+    "La disponibilidad final depende de la API de YouTube y sus limites de cuota.",
+    "El nombre semanal usa exactamente start_date y end_date, sin alineacion automatica a lunes-domingo."
+  ],
+  "published_canonical_paths": {
+    "comments_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26/youtube_comentarios_2026-03-09_semana_09marzo_15marzo_26.csv",
+    "manifest_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26/manifest.json",
+    "metadata_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26/metadata_run.json",
+    "parametros_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26/parametros_run.json",
+    "queries_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26/queries_summary.csv",
+    "summary_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26/summary.json",
+    "videos_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26/videos_encontrados.csv"
+  },
+  "run_id": "yt_w11_rerun",
+  "run_timestamp": "20260405_113959",
+  "script_name": "youtube_extractor.py",
+  "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/youtube_extractor.py",
+  "script_version": "2.0.0",
+  "search_window": {
+    "end_date": "2026-03-15",
+    "naming_end_date": "2026-03-15",
+    "naming_start_date": "2026-03-09",
+    "search_end_datetime": "2026-03-15T23:59:59",
+    "search_start_datetime": "2026-03-09T00:00:00",
+    "start_date": "2026-03-09"
+  },
+  "week_name": "2026-03-09_semana_09marzo_15marzo_26",
+  "week_name_mode": "exact_range"
+}

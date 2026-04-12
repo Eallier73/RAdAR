@@ -1,0 +1,22 @@
+{
+  "article_text": "El secretario de Turismo de Tamaulipas, Benjamín Hernández Rodríguez, informó que para el próximo periodo vacacional de Semana Santa se desplegarán más de cinco mil elementos de distintas corporaciones para garantizar la seguridad de los visitantes en todo el estado.\nDetalló que en el operativo participarán instancias como la Secretaría de Marina, Guardia Estatal, Guardia Nacional, Secretaría de Salud, Coepris y el CRUM, quienes trabajarán de manera coordinada para salvaguardar la integridad de turistas y residentes en los principales destinos turísticos.\nPor su parte, los alcaldes de la zona conurbada se reunieron a inicios de esta semana para coordinarse y afinar los operativos de vigilancia y seguridad para el período vacacional para garantizar la protección de visitantes y turistas.\nEn este sentido, la alcaldesa de Tampico, Mónica Villarreal Anaya dio a conocer que se desplegarán a partir del próximo 27 de marzo más de 400 elementos de los tres órdenes de gobierno para cuidar el turismo.\nMientras que, el alcalde de Madero, Erasmo González Robledo dio a conocer que más de 800 personas entre funcionarios de gobierno y elementos de seguridad estarán al pendiente las 24 horas del día del turismo que llegue a la ciudad, pero sobre todo a Playa Miramar en dónde esperan a más de un millón y medio de turistas.\nPrevén cerca de 3 millones de visitantes en Tamaulipas\nEn cuanto a la afluencia, señaló que se prevé la llegada de aproximadamente 2.9 millones de visitantes, lo que representa un incremento respecto al año anterior. De este total, alrededor del 70 por ciento se concentraría en la zona sur del estado, principalmente en destinos de playa.\nEl funcionario destacó que este flujo turístico generaría una derrama económica superior a los 2 mil millones de pesos durante el periodo vacacional, con un gasto promedio diario de entre mil 200 y mil 900 pesos por persona, dependiendo del tipo de turismo.\nSJHN",
+  "article_text_length": 1930,
+  "article_title": "Con más de 5 mil elementos, Tamaulipas se prepara para recibir cerca de 3 millones de turistas - Milenio",
+  "article_url_resolved": "https://www.milenio.com/estados/tamaulipas-listo-semana-santa-seguridad-millones-visitas",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:milenio.com",
+  "playwright_used": false,
+  "query": "\"Monica Villarreal\" site:milenio.com",
+  "query_index": 4,
+  "retrieved_at": "2026-04-05T15:51:29Z",
+  "source_domain": "www.milenio.com",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"Monica Villarreal\""
+}

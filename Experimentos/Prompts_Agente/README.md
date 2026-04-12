@@ -62,6 +62,8 @@ Estructura:
   Prompt operativo de apertura controlada de `E12` como familia de representacion por horizonte.
 - `28_fase_operativa_dual/`
   Prompt rector de cierre temporal de expansion experimental y apertura de la fase operativa / produccion controlada dual.
+- `29_consolidacion_final_extractores/`
+  Prompt operativo de auditoria, correccion fina y consolidacion de la capa de extractores con backfill real W10-W14.
 
 Convencion de nombres:
 
@@ -113,3 +115,4 @@ Mapa actual:
 - `26_verificacion_tactica_e2/01_apertura_e2_verificacion_tactica.md`
 - `27_familia_e12_representacion/01_apertura_futura_e12_representacion_por_horizonte.md`
 - `28_fase_operativa_dual/01_cierre_experimental_y_apertura_fase_operativa_dual.md`
+- `29_consolidacion_final_extractores/01_auditoria_correccion_consolidacion_extractores_w10_w14.md`

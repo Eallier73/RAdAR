@@ -1,0 +1,14 @@
+[
+  {
+    "stage": "run_extraction",
+    "scope": "run",
+    "message": "No se pudo inicializar Playwright o abrir Chromium.",
+    "timestamp": "2026-04-05T15:46:29Z",
+    "fatal": true,
+    "error_type": "fatal:PlatformRuntimeError",
+    "query_index": null,
+    "query": null,
+    "tweet_url": null,
+    "details": {}
+  }
+]

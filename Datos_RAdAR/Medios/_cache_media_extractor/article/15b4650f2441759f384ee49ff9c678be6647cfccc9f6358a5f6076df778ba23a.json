@@ -1,0 +1,23 @@
+{
+  "article_text": "La realización de proyectos de infraestructura carretera y hospitalaria son las necesidades que planteará el Consejo de Instituciones Empresariales (Ciest) para fortalecer el Polo de Desarrollo del Bienestar en Altamira, al requerirse un nuevo nosocomio ante la saturación del Instituto Mexicano del Seguro Social (IMSS) y anunciar la modernización de la vía a Ciudad Valles.\nIntegrados en su agenda, en el organismo ven la designación del municipio conurbado en la estrategia del Plan México un motivo para generar más economía regional, por ello, dijo el presidente Marco Cortés Salazar, se puntualiza los servicios básicos complementarios y hacer atractiva la localidad a los inversionistas extranjeros.\nImpulsan modernización carretera hacia Ciudad Valles\nAñadió que con la modernización del tramo desde el estado de San Luis Potosí hacia Tampico, previsto a arrancar en este año, necesita concretarse con prontitud. En tanto, la gestión para donar un terreno en Altamira e instalar un nuevo centro de atención médica del IMSS es un avance para ampliar la cobertura, toda vez que las instalaciones actuales están rebasadas.\n“Son proyectos muy importantes que en el marco del Polo de Desarrollo del Bienestar ayudarán mucho para complementar la conectividad y el servicio a la salud. En el segundo caso, el Seguro Social tiene instalaciones saturadas y se convierte en un problema, eso vamos a empujar, ya con la intención de Altamira de donar un terreno, se realice esta obra”, externó.\nBuscan ampliar cobertura médica del IMSS\nTambién recalcó la intención de la Secretaría de Infraestructura, Comunicaciones y Transporte (SICT) en avanzar con la vía carretera que permita desde Ciudad Valles hasta este puerto, un mayor flujo de vehículos desde pesados hasta ligeros, logrando con esto incrementar los accesos desde occidente, centro y Bajío del país.\nProyectos energéticos y de agua, otras prioridades\nLe suma a está prioridad el potencial de empleos y actividad de proveeduría al ponerse en marcha el proyecto petrolero Trión, operado por la australiana Woodside Energy en sociedad con Pemex, la instalación de plantas fotovoltaicas, sin dejar a un lado la garantía de agua potable.\n“Los temas energéticos como tener el equipamiento necesario que nos garantice agua, fue propuesto por muchos socios en la reunión. La siguiente parte es seguirnos involucrando con los tres niveles de gobierno y estos últimos sean los encargados de materializarlos”, puntualizó Cortés Salazar.\nSJHN",
+  "article_text_length": 2487,
+  "article_title": "IP urge infraestructura carretera y hospitalaria en Tampico - Milenio",
+  "article_url_resolved": "https://www.milenio.com/negocios/ip-urge-infraestructura-carretera-hospitalaria-tampico",
+  "attempted_methods": [
+    "trafilatura",
+    "cloudscraper"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "cloudscraper",
+  "fallback_used": true,
+  "medio": "site:milenio.com",
+  "playwright_used": false,
+  "query": "\"tampico\" site:milenio.com",
+  "query_index": 6,
+  "retrieved_at": "2026-04-05T17:41:24Z",
+  "source_domain": "www.milenio.com",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

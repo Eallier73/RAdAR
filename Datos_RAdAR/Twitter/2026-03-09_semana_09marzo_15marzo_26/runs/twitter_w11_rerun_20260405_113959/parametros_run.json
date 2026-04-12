@@ -1,0 +1,82 @@
+{
+  "script_name": "twitter_extractor.py",
+  "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_extractor.py",
+  "helper_module_path": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_extractor_core.py",
+  "entrypoint_alias": "automation_canonical_entrypoint",
+  "script_version": "2.0.0",
+  "since": "2026-03-09",
+  "until": "2026-03-15",
+  "week_name_mode": "exact_range",
+  "week_partition": {
+    "start_date": "2026-03-09",
+    "end_date": "2026-03-15",
+    "week_name": "2026-03-09_semana_09marzo_15marzo_26",
+    "naming_start_date": "2026-03-09",
+    "naming_end_date": "2026-03-15"
+  },
+  "output_root_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter",
+  "week_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-09_semana_09marzo_15marzo_26",
+  "run_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-09_semana_09marzo_15marzo_26/runs/twitter_w11_rerun_20260405_113959",
+  "session_state_file": "/home/emilio/Documentos/RAdAR/Scripts/state/x_state.json",
+  "run_id": "twitter_w11_rerun",
+  "run_timestamp": "20260405_113959",
+  "queries": [
+    {
+      "query_index": 1,
+      "query": "to:MonicaVTampico",
+      "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt"
+    },
+    {
+      "query_index": 2,
+      "query": "from:MonicaVTampico",
+      "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt"
+    },
+    {
+      "query_index": 3,
+      "query": "to:TampicoGob",
+      "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt"
+    },
+    {
+      "query_index": 4,
+      "query": "from:TampicoGob",
+      "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt"
+    },
+    {
+      "query_index": 5,
+      "query": "@TampicoGob",
+      "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt"
+    },
+    {
+      "query_index": 6,
+      "query": "@MonicaVTampico",
+      "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt"
+    },
+    {
+      "query_index": 7,
+      "query": "monica villarreal",
+      "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt"
+    },
+    {
+      "query_index": 8,
+      "query": "gobierno de tampico",
+      "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt"
+    },
+    {
+      "query_index": 9,
+      "query": "tampico",
+      "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt"
+    }
+  ],
+  "queries_source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt",
+  "log_level": "INFO",
+  "overwrite": true,
+  "publish_canonical": true,
+  "max_scrolls": 10,
+  "max_tweets_per_query": 3000,
+  "max_replies_per_tweet": 200,
+  "include_replies": true,
+  "headless": true,
+  "pause_seconds": 1.0,
+  "dry_run": false,
+  "config_file": null
+}

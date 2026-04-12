@@ -1,0 +1,19 @@
+2026-04-05 09:43:39 | INFO | radar.media_extractor | Inicio de corrida | run_id=media_w10_no_playwright week_name=2026-03-02_semana_02marzo_08marzo_26 output_root=/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios week_name_mode=canonical_monday_sunday
+2026-04-05 09:43:39 | INFO | radar.media_extractor | Parámetros efectivos | since=2026-03-02 before=2026-03-08 total_queries=6 max_results_per_query=20 max_articles_per_week=30 use_playwright=False
+2026-04-05 09:43:39 | INFO | radar.media_extractor | Procesando query 1/6 | query="Monica Villarreal" site:oem.com.mx
+2026-04-05 09:43:39 | INFO | radar.media_extractor | RSS obtenido | query_index=1 query="Monica Villarreal" site:oem.com.mx items=1
+2026-04-05 09:43:46 | INFO | radar.media_extractor | Procesando query 2/6 | query="gobierno de tampico" site:oem.com.mx
+2026-04-05 09:43:46 | INFO | radar.media_extractor | RSS obtenido | query_index=2 query="gobierno de tampico" site:oem.com.mx items=1
+2026-04-05 09:43:53 | INFO | radar.media_extractor | Procesando query 3/6 | query="tampico" site:oem.com.mx
+2026-04-05 09:43:53 | INFO | radar.media_extractor | RSS obtenido | query_index=3 query="tampico" site:oem.com.mx items=20
+2026-04-05 09:44:31 | ERROR | radar.media_extractor | Fallo no controlado del extractor de medios: automation.extractors.media_extractor_core.URLResolutionRecord() got multiple values for keyword argument 'cache_hit_url_resolution'
+Traceback (most recent call last):
+  File "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/media_extractor_core.py", line 2644, in main
+    result = run_extraction(config, bootstrap_logger)
+  File "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/media_extractor_core.py", line 2488, in run_extraction
+    result = extract_query_batch(
+  File "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/media_extractor_core.py", line 1737, in extract_query_batch
+    resolution = resolve_article_url(item, cache_manager=cache_manager, logger=logger)
+  File "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/media_extractor_core.py", line 1380, in resolve_article_url
+    return URLResolutionRecord(**cached, cache_hit_url_resolution=True)
+TypeError: automation.extractors.media_extractor_core.URLResolutionRecord() got multiple values for keyword argument 'cache_hit_url_resolution'

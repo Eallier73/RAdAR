@@ -1,0 +1,22 @@
+{
+  "article_text": "Localmartes, 24 de marzo de 2026\nMúsica, comparsas y sorpresas: así será el Carnaval Tampico Alto 2026\nAutoridades invitan a familias y visitantes a disfrutar dos días de tradición, baile y convivencia en el municipio veracruzano\nPaulo Monsiváis\nEl director de Turismo, Matías Alejandro Castillo Altamirano, extendió una cálida invitación a todas las familias de la zona para ser parte de esta celebración.",
+  "article_text_length": 406,
+  "article_title": "Música, comparsas y sorpresas: así será el Carnaval Tampico Alto 2026 - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/local/musica-comparsas-y-sorpresas-asi-sera-el-carnaval-tampico-alto-2026-29059534",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"gobierno de tampico\" site:oem.com.mx",
+  "query_index": 2,
+  "retrieved_at": "2026-04-05T15:52:06Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"gobierno de tampico\""
+}

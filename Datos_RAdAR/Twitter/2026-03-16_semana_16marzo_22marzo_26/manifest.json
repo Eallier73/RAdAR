@@ -1,0 +1,66 @@
+[
+  {
+    "name": "twitter_data_2026-03-16_semana_16marzo_22marzo_26.csv",
+    "artifact_type": "dataset",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-16_semana_16marzo_22marzo_26/runs/twitter_w12_backfill_20260405_095022/twitter_data_2026-03-16_semana_16marzo_22marzo_26.csv",
+    "description": "Tweets y replies materializados.",
+    "timestamp": "2026-04-05T15:51:28Z",
+    "size_bytes": 13558
+  },
+  {
+    "name": "tweets_raw.jsonl",
+    "artifact_type": "dataset",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-16_semana_16marzo_22marzo_26/runs/twitter_w12_backfill_20260405_095022/tweets_raw.jsonl",
+    "description": "Registro raw JSONL de tweets extraídos.",
+    "timestamp": "2026-04-05T15:51:28Z",
+    "size_bytes": 23797
+  },
+  {
+    "name": "queries_summary.csv",
+    "artifact_type": "summary_table",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-16_semana_16marzo_22marzo_26/runs/twitter_w12_backfill_20260405_095022/queries_summary.csv",
+    "description": "Resumen operativo por query.",
+    "timestamp": "2026-04-05T15:51:28Z",
+    "size_bytes": 393
+  },
+  {
+    "name": "parametros_run.json",
+    "artifact_type": "parameters",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-16_semana_16marzo_22marzo_26/runs/twitter_w12_backfill_20260405_095022/parametros_run.json",
+    "description": "Parámetros efectivos de la corrida.",
+    "timestamp": "2026-04-05T15:51:28Z",
+    "size_bytes": 2771
+  },
+  {
+    "name": "summary.json",
+    "artifact_type": "summary",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-16_semana_16marzo_22marzo_26/runs/twitter_w12_backfill_20260405_095022/summary.json",
+    "description": "Resumen global de la corrida.",
+    "timestamp": "2026-04-05T15:51:28Z",
+    "size_bytes": 1763
+  },
+  {
+    "name": "run.log",
+    "artifact_type": "log",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-16_semana_16marzo_22marzo_26/runs/twitter_w12_backfill_20260405_095022/run.log",
+    "description": "Log operativo de la corrida.",
+    "timestamp": "2026-04-05T15:51:28Z",
+    "size_bytes": 3288
+  },
+  {
+    "name": "metadata_run.json",
+    "artifact_type": "metadata",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-16_semana_16marzo_22marzo_26/runs/twitter_w12_backfill_20260405_095022/metadata_run.json",
+    "description": "Metadata completa y trazabilidad de la corrida.",
+    "timestamp": "2026-04-05T15:51:28Z",
+    "size_bytes": 7288
+  },
+  {
+    "name": "manifest.json",
+    "artifact_type": "manifest",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-16_semana_16marzo_22marzo_26/runs/twitter_w12_backfill_20260405_095022/manifest.json",
+    "description": "Inventario de artefactos de la corrida.",
+    "timestamp": "2026-04-05T15:51:28Z",
+    "size_bytes": 2910
+  }
+]

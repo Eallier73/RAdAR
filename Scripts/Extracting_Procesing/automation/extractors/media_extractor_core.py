@@ -73,7 +73,7 @@ ROOT_DIR = resolve_repo_root()
 DEFAULT_OUTPUT_DIR = ROOT_DIR / "Datos_RAdAR" / "Medios"
 DEFAULT_CACHE_DIRNAME = "_cache_media_extractor"
 DEFAULT_QUERIES_FILE = Path(__file__).with_name("media_queries_canonical.csv")
-SCRIPT_VERSION = "2.0.0"
+SCRIPT_VERSION = "2.0.1"
 SCRIPT_COMPONENT = "radar.media_extractor"
 SOURCE_PLATFORM = "news_media"
 
@@ -95,7 +95,7 @@ DEFAULT_LOG_LEVEL = "INFO"
 DEFAULT_RUN_ID = "media_extract"
 DEFAULT_PAUSA = 2.0
 DEFAULT_PAUSA_ENTRE_QUERIES = 3.0
-DEFAULT_MAX_RESULTS_PER_QUERY = 50
+DEFAULT_DECODER_PAUSA_ENTRE_URLS = 1.5
 DEFAULT_RSS_TIMEOUT = 30
 DEFAULT_RSS_MAX_REINTENTOS = 3
 DEFAULT_RSS_BACKOFF_INICIAL = 5.0
@@ -293,8 +293,6 @@ class ResolvedConfig:
     omitir_semanas_existentes: bool
     pausa: float
     pausa_entre_queries: float
-    max_results_per_query: int
-    max_articles_per_week: int | None
     dry_run: bool
     use_playwright: bool
     ignore_cache: bool
@@ -498,8 +496,6 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         default=None,
         help="Habilita Playwright como estrategia controlada de fallback.",
     )
-    parser.add_argument("--max-results-per-query", type=int, default=None)
-    parser.add_argument("--max-articles-per-week", type=int, default=None)
     parser.add_argument("--dry-run", action="store_true", default=None)
     return parser.parse_args(argv)
 
@@ -760,17 +756,6 @@ def resolve_config(
         else output_root_dir / DEFAULT_CACHE_DIRNAME
     )
 
-    max_results_per_query = int(merged.get("max_results_per_query", DEFAULT_MAX_RESULTS_PER_QUERY))
-    if max_results_per_query <= 0:
-        raise ConfigurationError("--max-results-per-query debe ser mayor que 0.")
-
-    max_articles_per_week_raw = merged.get("max_articles_per_week")
-    max_articles_per_week = None
-    if max_articles_per_week_raw is not None:
-        max_articles_per_week = int(max_articles_per_week_raw)
-        if max_articles_per_week <= 0:
-            raise ConfigurationError("--max-articles-per-week debe ser mayor que 0.")
-
     pausa = float(merged.get("pausa", DEFAULT_PAUSA))
     pausa_entre_queries = float(merged.get("pausa_entre_queries", DEFAULT_PAUSA_ENTRE_QUERIES))
     if pausa < 0 or pausa_entre_queries < 0:
@@ -813,8 +798,6 @@ def resolve_config(
         omitir_semanas_existentes=bool(merged.get("omitir_semanas_existentes", False)),
         pausa=pausa,
         pausa_entre_queries=pausa_entre_queries,
-        max_results_per_query=max_results_per_query,
-        max_articles_per_week=max_articles_per_week,
         dry_run=bool(merged.get("dry_run", False)),
         use_playwright=use_playwright,
         ignore_cache=bool(merged.get("ignore_cache", False)),
@@ -1065,6 +1048,14 @@ def week_has_existing_outputs(config: ResolvedConfig) -> bool:
     return False
 
 
+def rss_headers() -> dict[str, str]:
+    return {
+        "User-Agent": random.choice(USER_AGENTS),
+        "Accept": "application/rss+xml, application/xml, text/xml, */*",
+        "Accept-Language": "es-MX,es;q=0.9",
+    }
+
+
 def random_headers() -> dict[str, str]:
     return {
         "User-Agent": random.choice(USER_AGENTS),
@@ -1149,18 +1140,16 @@ def fetch_rss_items(
             len(cached),
         )
         items = [
-            RSSItemRecord(**record, cache_hit_rss=True)
+            RSSItemRecord(**{**record, "cache_hit_rss": True})
             for record in cached
         ]
-        if config.max_results_per_query:
-            items = items[: config.max_results_per_query]
         return items, []
 
     wait_seconds = DEFAULT_RSS_BACKOFF_INICIAL
     last_error: Exception | None = None
     for attempt in range(1, DEFAULT_RSS_MAX_REINTENTOS + 1):
         try:
-            response = requests.get(rss_source, headers=random_headers(), timeout=DEFAULT_RSS_TIMEOUT)
+            response = requests.get(rss_source, headers=rss_headers(), timeout=DEFAULT_RSS_TIMEOUT)
             if response.status_code == 429:
                 raise SourceAccessError("Google News RSS devolvió 429.")
             if response.status_code != 200:
@@ -1172,8 +1161,6 @@ def fetch_rss_items(
                 retrieved_at=retrieved_at,
                 rss_source=rss_source,
             )
-            if config.max_results_per_query:
-                items = items[: config.max_results_per_query]
             cache_manager.save("rss", rss_source, [serialize_for_json(item) for item in items])
             logger.info(
                 "RSS obtenido | query_index=%s query=%s items=%s",
@@ -1326,7 +1313,7 @@ def decode_with_gnewsdecoder(google_url: str) -> str | None:
     if gnewsdecoder is None:
         return None
     try:
-        result = gnewsdecoder(google_url, interval=1.0)
+        result = gnewsdecoder(google_url, interval=DEFAULT_DECODER_PAUSA_ENTRE_URLS)
     except Exception:
         return None
     if not result or not result.get("status"):
@@ -1377,7 +1364,7 @@ def resolve_article_url(
 
     cached = cache_manager.load("url_resolution", original_url)
     if cached is not None:
-        return URLResolutionRecord(**cached, cache_hit_url_resolution=True)
+        return URLResolutionRecord(**{**cached, "cache_hit_url_resolution": True})
 
     if "news.google.com" not in original_url:
         record = URLResolutionRecord(
@@ -1601,7 +1588,7 @@ def download_article(
 
     cached = cache_manager.load("article", resolved_url)
     if cached is not None:
-        return ArticleDownloadRecord(**cached, cache_hit_article=True)
+        return ArticleDownloadRecord(**{**cached, "cache_hit_article": True})
 
     attempted_methods: list[str] = []
     method_success = ""
@@ -1704,6 +1691,88 @@ def build_article_row(
     }
 
 
+def parse_rss_item_datetime(item: RSSItemRecord) -> datetime | None:
+    candidates = [item.published_at, item.published_at_raw]
+    for candidate in candidates:
+        if not candidate:
+            continue
+        try:
+            parsed = datetime.fromisoformat(candidate.replace("Z", "+00:00"))
+        except ValueError:
+            try:
+                parsed = parsedate_to_datetime(candidate)
+            except Exception:
+                continue
+        return parsed.replace(tzinfo=None)
+    return None
+
+
+def deduplicate_rss_items(items: Sequence[RSSItemRecord]) -> tuple[list[RSSItemRecord], int]:
+    unique_items: list[RSSItemRecord] = []
+    seen: set[str] = set()
+    duplicates = 0
+    for item in items:
+        key = item.article_url_original.strip() or item.article_title.strip()
+        if not key:
+            unique_items.append(item)
+            continue
+        if key in seen:
+            duplicates += 1
+            continue
+        seen.add(key)
+        unique_items.append(item)
+    return unique_items, duplicates
+
+
+def filter_rss_items_by_date(
+    items: Sequence[RSSItemRecord],
+    since: date,
+    before: date,
+) -> tuple[list[RSSItemRecord], int]:
+    selected: list[RSSItemRecord] = []
+    without_parseable_date = 0
+    start_dt = datetime.combine(since, datetime.min.time())
+    end_dt = datetime.combine(before + timedelta(days=1), datetime.min.time())
+    for item in items:
+        parsed = parse_rss_item_datetime(item)
+        if parsed is None:
+            without_parseable_date += 1
+            selected.append(item)
+            continue
+        if start_dt <= parsed < end_dt:
+            selected.append(item)
+    return selected, without_parseable_date
+
+
+def deduplicate_resolved_pairs(
+    pairs: Sequence[tuple[RSSItemRecord, URLResolutionRecord]],
+) -> tuple[list[tuple[RSSItemRecord, URLResolutionRecord]], int]:
+    unique_pairs: list[tuple[RSSItemRecord, URLResolutionRecord]] = []
+    seen: set[str] = set()
+    duplicates = 0
+    for item, resolution in pairs:
+        key = resolution.article_url_resolved.strip() or item.article_url_original.strip() or item.article_title.strip()
+        if not key:
+            unique_pairs.append((item, resolution))
+            continue
+        if key in seen:
+            duplicates += 1
+            continue
+        seen.add(key)
+        unique_pairs.append((item, resolution))
+    return unique_pairs, duplicates
+
+
+def refresh_query_result_status(result: QueryExecutionResult) -> None:
+    if result.errors and not result.rss_items and not result.url_resolutions and not result.article_downloads:
+        result.status = "failed"
+        return
+    if result.errors:
+        result.status = "partial_success"
+        return
+    result.status = "success"
+
+
 def extract_query_batch(
     query_spec: QuerySpec,
     config: ResolvedConfig,
@@ -1712,7 +1781,6 @@ def extract_query_batch(
     logger: logging.Logger,
     playwright_manager: PlaywrightManager,
     scraper,
-    remaining_articles_budget: int | None,
 ) -> QueryExecutionResult:
     started = time.perf_counter()
     errors: list[ErrorRecord] = []
@@ -1725,9 +1793,6 @@ def extract_query_batch(
             duration_seconds=round(time.perf_counter() - started, 3),
             errors=errors,
         )
-
-    if remaining_articles_budget is not None:
-        rss_items = rss_items[:remaining_articles_budget]
 
     url_resolutions: list[URLResolutionRecord] = []
     article_downloads: list[ArticleDownloadRecord] = []
@@ -1913,12 +1978,40 @@ def determine_run_status(query_results: Sequence[QueryExecutionResult], *, dry_r
     return "success"
 
 
-def build_notes(config: ResolvedConfig, *, skipped: bool, status: str, playwright_used: bool) -> list[str]:
+def summarize_playwright_usage(query_results: Sequence[QueryExecutionResult]) -> dict[str, float | int]:
+    articles_attempted = sum(len(result.article_downloads) for result in query_results)
+    articles_playwright_used = sum(
+        1 for result in query_results for item in result.article_downloads if item.playwright_used
+    )
+    articles_fallback_used = sum(
+        1 for result in query_results for item in result.article_downloads if item.fallback_used
+    )
+    return {
+        "articles_attempted": articles_attempted,
+        "articles_playwright_used": articles_playwright_used,
+        "articles_fallback_used": articles_fallback_used,
+        "articles_playwright_used_pct": round((articles_playwright_used / articles_attempted) * 100, 2)
+        if articles_attempted
+        else 0.0,
+        "articles_fallback_used_pct": round((articles_fallback_used / articles_attempted) * 100, 2)
+        if articles_attempted
+        else 0.0,
+    }
+
+
+def build_notes(
+    config: ResolvedConfig,
+    *,
+    skipped: bool,
+    status: str,
+    playwright_usage: dict[str, float | int],
+) -> list[str]:
     notes = [
         "Extractor puro de medios: RSS Google News, resolución de URLs y descarga de artículos.",
         "No realiza clasificación, NLP, consolidación multi-fuente ni modelado.",
         "El texto persistido es material fuente o semi-estructurado para preprocessing posterior.",
         "La disponibilidad final depende del feed RSS, la resolubilidad de Google News y la accesibilidad de los sitios.",
+        "La semana se consolida con deduplicación global por URL RSS y una segunda deduplicación por URL resuelta antes de descargar artículos.",
     ]
     if config.week_name_mode == WEEK_MODE_CANONICAL:
         notes.append(
@@ -1932,10 +2025,19 @@ def build_notes(config: ResolvedConfig, *, skipped: bool, status: str, playwrigh
         notes.append(
             "Playwright quedó habilitado como fallback controlado; su uso real se registra por artículo y en metadata."
         )
+        notes.append(
+            "Uso agregado de Playwright: "
+            f"{int(playwright_usage['articles_playwright_used'])}/{int(playwright_usage['articles_attempted'])} "
+            f"artículos ({float(playwright_usage['articles_playwright_used_pct']):.2f}%)."
+        )
     else:
         notes.append("Playwright quedó deshabilitado; solo se usaron estrategias HTTP directas.")
-    if playwright_used:
-        notes.append("Se utilizó Playwright al menos una vez durante la corrida.")
+    if int(playwright_usage["articles_fallback_used"]) > 0:
+        notes.append(
+            "Fallbacks múltiples activados en "
+            f"{int(playwright_usage['articles_fallback_used'])}/{int(playwright_usage['articles_attempted'])} "
+            f"artículos ({float(playwright_usage['articles_fallback_used_pct']):.2f}%)."
+        )
     if skipped:
         notes.append("La semana se registró como omitida por existencia previa de artefactos.")
     if config.dry_run:
@@ -1967,6 +2069,7 @@ def build_summary(
     playwright_manager: PlaywrightManager,
     skipped_existing_outputs: bool,
 ) -> dict[str, Any]:
+    playwright_usage = summarize_playwright_usage(query_results)
     rss_items_detected = sum(len(result.rss_items) for result in query_results)
     urls_resolved_ok = sum(
         1 for result in query_results for item in result.url_resolutions if item.status == "success"
@@ -1995,6 +2098,10 @@ def build_summary(
         "total_articles_failed": articles_failed,
         "playwright_used": playwright_manager.used,
         "playwright_enabled": config.use_playwright,
+        "total_articles_playwright_used": int(playwright_usage["articles_playwright_used"]),
+        "total_articles_fallback_used": int(playwright_usage["articles_fallback_used"]),
+        "pct_articles_playwright_used": float(playwright_usage["articles_playwright_used_pct"]),
+        "pct_articles_fallback_used": float(playwright_usage["articles_fallback_used_pct"]),
         "started_at": started_at,
         "finished_at": finished_at,
         "duration_seconds": duration_seconds,
@@ -2023,6 +2130,7 @@ def build_metadata(
     dependencies: dict[str, bool],
     skipped_existing_outputs: bool,
 ) -> dict[str, Any]:
+    playwright_usage = summarize_playwright_usage(query_results)
     return {
         "script_name": config.script_name,
         "script_path": str(config.script_path),
@@ -2070,6 +2178,8 @@ def build_metadata(
             "articles_failed": sum(
                 1 for result in query_results for item in result.article_downloads if item.status_descarga != "downloaded_ok"
             ),
+            "articles_playwright_used": int(playwright_usage["articles_playwright_used"]),
+            "articles_fallback_used": int(playwright_usage["articles_fallback_used"]),
         },
         "artifact_paths": artifact_paths,
         "errors": list(errors),
@@ -2079,6 +2189,10 @@ def build_metadata(
             "enabled": config.use_playwright,
             "initialized": playwright_manager.started,
             "used": playwright_manager.used,
+            "articles_playwright_used": int(playwright_usage["articles_playwright_used"]),
+            "articles_fallback_used": int(playwright_usage["articles_fallback_used"]),
+            "articles_playwright_used_pct": float(playwright_usage["articles_playwright_used_pct"]),
+            "articles_fallback_used_pct": float(playwright_usage["articles_fallback_used_pct"]),
             "priority_domains": list(DEFAULT_DOMINIOS_PLAYWRIGHT_PRIORITARIO),
         },
         "dependencies": dependencies,
@@ -2226,8 +2340,6 @@ def persist_outputs(
         "cache_dir": str(config.cache_dir),
         "cache_enabled": not config.ignore_cache,
         "use_playwright": config.use_playwright,
-        "max_results_per_query": config.max_results_per_query,
-        "max_articles_per_week": config.max_articles_per_week,
         "publish_canonical": config.publish_canonical,
         "overwrite": config.overwrite,
         "omitir_semanas_existentes": config.omitir_semanas_existentes,
@@ -2253,6 +2365,10 @@ def persist_outputs(
         write_json_file(errors_path, errors)
         artifact_paths["errors_json"] = errors_path
         add_artifact_record(records, errors_path, "errors", "Errores detectados durante la corrida.")
+    elif config.publish_canonical and config.overwrite:
+        stale_errors_path = config.week_dir / ERRORS_FILENAME
+        if stale_errors_path.exists():
+            stale_errors_path.unlink()
 
     metadata = build_metadata(
         config,
@@ -2285,6 +2401,8 @@ def persist_outputs(
         write_json_file(summary_path, summary)
         write_json_file(metadata_path, metadata)
         write_json_file(manifest_path, manifest_payload)
+        shutil.copy2(summary_path, config.week_dir / SUMMARY_FILENAME)
+        shutil.copy2(metadata_path, config.week_dir / METADATA_FILENAME)
 
     return summary, metadata, manifest_payload, {key: str(value) for key, value in artifact_paths.items()}
 
@@ -2306,11 +2424,12 @@ def build_dry_run_result(
         for query_spec in config.queries
     ]
     status = "success"
+    playwright_usage = summarize_playwright_usage(query_results)
     notes = build_notes(
         config,
         skipped=skipped_existing_outputs,
         status=status,
-        playwright_used=False,
+        playwright_usage=playwright_usage,
     )
     summary, metadata, manifest, artifact_paths = persist_outputs(
         config,
@@ -2365,12 +2484,10 @@ def run_extraction(config: ResolvedConfig, logger: logging.Logger) -> RunExecuti
         config.week_name_mode,
     )
     logger.info(
-        "Parámetros efectivos | since=%s before=%s total_queries=%s max_results_per_query=%s max_articles_per_week=%s use_playwright=%s",
+        "Parámetros efectivos | since=%s before=%s total_queries=%s use_playwright=%s",
         config.since,
         config.before,
         len(config.queries),
-        config.max_results_per_query,
-        config.max_articles_per_week,
         config.use_playwright,
     )
     if trafilatura is None:
@@ -2423,44 +2540,122 @@ def run_extraction(config: ResolvedConfig, logger: logging.Logger) -> RunExecuti
     started_at = now_utc_text()
     started_perf = time.perf_counter()
     query_results: list[QueryExecutionResult] = []
-    remaining_budget = config.max_articles_per_week
-
     try:
         for index, query_spec in enumerate(config.queries, start=1):
-            if remaining_budget is not None and remaining_budget <= 0:
-                logger.info("Se alcanzó max_articles_per_week; no se procesarán más queries.")
-                break
             logger.info(
-                "Procesando query %s/%s | query=%s",
+                "Consultando RSS query %s/%s | query=%s",
                 index,
                 len(config.queries),
                 query_spec.query,
             )
-            result = extract_query_batch(
+            query_started = time.perf_counter()
+            rss_items, rss_errors = fetch_rss_items(
                 query_spec,
                 config,
                 cache_manager=cache_manager,
                 logger=logger,
-                playwright_manager=playwright_manager,
-                scraper=scraper,
-                remaining_articles_budget=remaining_budget,
+            )
+            result = QueryExecutionResult(
+                query_spec=query_spec,
+                status="failed" if rss_errors and not rss_items else "partial_success" if rss_errors else "success",
+                duration_seconds=round(time.perf_counter() - query_started, 3),
+                rss_items=rss_items,
+                errors=list(rss_errors),
             )
             query_results.append(result)
-            if remaining_budget is not None:
-                remaining_budget -= len(result.rss_items)
             if index < len(config.queries):
                 time.sleep(config.pausa_entre_queries)
+
+        rss_items_raw = [item for result in query_results for item in result.rss_items]
+        rss_items_unique, duplicate_original_count = deduplicate_rss_items(rss_items_raw)
+        rss_items_selected, without_parseable_date = filter_rss_items_by_date(
+            rss_items_unique,
+            config.since,
+            config.before,
+        )
+        logger.info(
+            "Consolidación semanal RSS | raw=%s unique_original=%s duplicates_original=%s selected_after_date=%s without_parseable_date=%s",
+            len(rss_items_raw),
+            len(rss_items_unique),
+            duplicate_original_count,
+            len(rss_items_selected),
+            without_parseable_date,
+        )
+
+        result_by_query = {result.query_spec.query_index: result for result in query_results}
+        successful_resolution_pairs: list[tuple[RSSItemRecord, URLResolutionRecord]] = []
+        for item in rss_items_selected:
+            resolution = resolve_article_url(item, cache_manager=cache_manager, logger=logger)
+            if resolution.status == "success":
+                successful_resolution_pairs.append((item, resolution))
+                continue
+            result = result_by_query[item.query_index]
+            result.url_resolutions.append(resolution)
+            result.errors.append(
+                ErrorRecord(
+                    stage="resolve_article_url",
+                    scope="article",
+                    message=resolution.error_detail,
+                    timestamp=now_utc_text(),
+                    query_index=item.query_index,
+                    query=item.query,
+                    article_url=item.article_url_original,
+                    fatal=False,
+                    error_type=resolution.error_type or "url_resolution_failed",
+                )
+            )
+
+        resolved_unique_pairs, duplicate_resolved_count = deduplicate_resolved_pairs(successful_resolution_pairs)
+        logger.info(
+            "Consolidación semanal URLs | resolved_success=%s unique_resolved=%s duplicates_resolved=%s",
+            len(successful_resolution_pairs),
+            len(resolved_unique_pairs),
+            duplicate_resolved_count,
+        )
+
+        for item, resolution in resolved_unique_pairs:
+            result = result_by_query[item.query_index]
+            result.url_resolutions.append(resolution)
+            article = download_article(
+                resolution,
+                cache_manager=cache_manager,
+                config=config,
+                logger=logger,
+                playwright_manager=playwright_manager,
+                scraper=scraper,
+            )
+            result.article_downloads.append(article)
+            if article.status_descarga != "downloaded_ok":
+                result.errors.append(
+                    ErrorRecord(
+                        stage="download_article",
+                        scope="article",
+                        message=article.error_detail,
+                        timestamp=now_utc_text(),
+                        query_index=item.query_index,
+                        query=item.query,
+                        article_url=resolution.article_url_resolved or item.article_url_original,
+                        fatal=False,
+                        error_type=article.error_type or "article_download_failed",
+                    )
+                )
+            result.article_rows.append(build_article_row(config, item, resolution, article))
+            time.sleep(config.pausa)
+
+        for result in query_results:
+            refresh_query_result_status(result)
     finally:
         playwright_manager.close()
 
     finished_at = now_utc_text()
     duration_seconds = round(time.perf_counter() - started_perf, 3)
     status = determine_run_status(query_results, dry_run=False, skipped=False)
+    playwright_usage = summarize_playwright_usage(query_results)
     notes = build_notes(
         config,
         skipped=False,
         status=status,
-        playwright_used=playwright_manager.used,
+        playwright_usage=playwright_usage,
     )
     summary, metadata, manifest, artifact_paths = persist_outputs(
         config,
@@ -2531,13 +2726,23 @@ def write_failure_artifacts(
         "total_articles_downloaded_empty": 0,
         "total_articles_failed": 0,
         "playwright_used": False,
+        "total_articles_playwright_used": 0,
+        "total_articles_fallback_used": 0,
+        "pct_articles_playwright_used": 0.0,
+        "pct_articles_fallback_used": 0.0,
         "started_at": started_at,
         "finished_at": finished_at,
         "duration_seconds": 0.0,
         "week_name_mode": config.week_name_mode,
         "script_name": config.script_name,
         "script_version": config.script_version,
-        "notes": build_notes(config, skipped=False, status=status, playwright_used=False) + [message],
+        "notes": build_notes(
+            config,
+            skipped=False,
+            status=status,
+            playwright_usage=summarize_playwright_usage([]),
+        )
+        + [message],
         "exit_code": exit_code,
     }
     metadata = {

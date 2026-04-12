@@ -1,0 +1,22 @@
+2026-04-05 10:21:48 | INFO | radar.youtube_extractor | Inicio de corrida | run_id=yt_w12_backfill week_name=2026-03-16_semana_16marzo_22marzo_26 output_root=/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube week_name_mode=exact_range
+2026-04-05 10:21:48 | INFO | radar.youtube_extractor | Parametros efectivos | start_date=2026-03-16 end_date=2026-03-22 total_queries=4 max_results_search=25 max_comments_per_video=100
+2026-04-05 10:21:48 | INFO | radar.youtube_extractor | Procesando query 1/4 | query=MonicaVTampico
+2026-04-05 10:21:49 | INFO | radar.youtube_extractor | Query con videos encontrados | query=MonicaVTampico videos=0
+2026-04-05 10:21:49 | INFO | radar.youtube_extractor | Procesando query 2/4 | query=TampicoGob
+2026-04-05 10:21:49 | INFO | radar.youtube_extractor | Query con videos encontrados | query=TampicoGob videos=0
+2026-04-05 10:21:49 | INFO | radar.youtube_extractor | Procesando query 3/4 | query="Monica Villarreal Tampico"
+2026-04-05 10:21:49 | INFO | radar.youtube_extractor | Query con videos encontrados | query="Monica Villarreal Tampico" videos=1
+2026-04-05 10:21:49 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query="Monica Villarreal Tampico" video_rank=1 video_id=Uh17tEdiSrg
+2026-04-05 10:21:50 | INFO | radar.youtube_extractor | Query finalizada | query="Monica Villarreal Tampico" status=success videos=1 videos_con_comentarios=0 comentarios=0
+2026-04-05 10:21:50 | INFO | radar.youtube_extractor | Procesando query 4/4 | query="Gobierno de Tampico"
+2026-04-05 10:21:50 | INFO | radar.youtube_extractor | Query con videos encontrados | query="Gobierno de Tampico" videos=1
+2026-04-05 10:21:50 | INFO | radar.youtube_extractor | Extrayendo comentarios de video | query="Gobierno de Tampico" video_rank=1 video_id=IX-j56DkMEs
+2026-04-05 10:21:50 | INFO | radar.youtube_extractor | Query finalizada | query="Gobierno de Tampico" status=success videos=1 videos_con_comentarios=1 comentarios=1
+2026-04-05 10:21:50 | INFO | radar.youtube_extractor | Artefacto canonico publicado | key=comments_csv path=/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-16_semana_16marzo_22marzo_26/youtube_comentarios_2026-03-16_semana_16marzo_22marzo_26.csv
+2026-04-05 10:21:50 | INFO | radar.youtube_extractor | Artefacto canonico publicado | key=videos_csv path=/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-16_semana_16marzo_22marzo_26/videos_encontrados.csv
+2026-04-05 10:21:50 | INFO | radar.youtube_extractor | Artefacto canonico publicado | key=queries_csv path=/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-16_semana_16marzo_22marzo_26/queries_summary.csv
+2026-04-05 10:21:50 | INFO | radar.youtube_extractor | Artefacto canonico publicado | key=summary_json path=/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-16_semana_16marzo_22marzo_26/summary.json
+2026-04-05 10:21:50 | INFO | radar.youtube_extractor | Artefacto canonico publicado | key=parametros_json path=/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-16_semana_16marzo_22marzo_26/parametros_run.json
+2026-04-05 10:21:50 | INFO | radar.youtube_extractor | Artefacto canonico publicado | key=metadata_json path=/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-16_semana_16marzo_22marzo_26/metadata_run.json
+2026-04-05 10:21:50 | INFO | radar.youtube_extractor | Artefacto canonico publicado | key=manifest_json path=/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-16_semana_16marzo_22marzo_26/manifest.json
+2026-04-05 10:21:50 | INFO | radar.youtube_extractor | Cierre de corrida | status=success comentarios=1 videos=2 run_dir=/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-16_semana_16marzo_22marzo_26/runs/yt_w12_backfill_20260405_102148

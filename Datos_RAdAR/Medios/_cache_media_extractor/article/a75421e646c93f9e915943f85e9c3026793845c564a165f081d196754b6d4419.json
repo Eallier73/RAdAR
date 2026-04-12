@@ -1,0 +1,22 @@
+{
+  "article_text": "¿A la playa? El sur de Tamaulipas tendrá sol y clima ideal este domingo\nTemperaturas agradables y baja probabilidad de lluvia favorecerán las actividades al aire libre en la región\nMario Cruces\nTemperaturas agradables sin lluvias en la zona sur de Tamaulipas\nEn municipios como Tampico, Ciudad Madero y Altamira, el clima será especialmente propicio para el turismo local y regional.\nSitios emblemáticos como Playa Miramar, la Laguna del Carpintero y diversos parques naturales ofrecerán un entorno ideal para la convivencia familiar, el descanso y la recreación.\nClima favorecerá turismo y actividades al aire libre\nEl pronóstico extendido indica que este patrón climático se mantendrá durante los primeros días de la semana, lo que representa un panorama favorable para el sector turístico.",
+  "article_text_length": 792,
+  "article_title": "¿A la playa? El sur de Tamaulipas tendrá sol y clima ideal este domingo - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/local/a-la-playa-el-sur-de-tamaulipas-tendra-sol-y-clima-ideal-este-domingo-29101947",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:50:17Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

@@ -1,0 +1,22 @@
+{
+  "article_text": "Colecta solidaria para Lyan Alexandro: buscan reunir fondos para operación urgente de oído\nLa intervención está programada para el 30 de marzo y tiene un costo total de 256 mil 500 pesos\nMario Cruces\nLa actividad se llevó a cabo sobre Ejército Mexicano, entre avenida Cuauhtémoc y calle Estadio, donde integrantes de los clubes Volkswagen “Sin Ley, Sin Club” y “Club Jaibos 4x4” organizaron un boteo para reunir el dinero faltante.\nLos vehículos participantes también portaban mensajes de apoyo, generando conciencia entre automovilistas y peatones que transitaban por la zona.",
+  "article_text_length": 577,
+  "article_title": "Colecta solidaria para Lyan Alexandro: buscan reunir fondos para operación urgente de oído - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/local/colecta-solidaria-para-lyan-alexandro-buscan-reunir-fondos-para-operacion-urgente-de-oido-29118422",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:51:01Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

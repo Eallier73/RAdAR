@@ -1,0 +1,22 @@
+{
+  "article_text": "¡Que vengan los tianguis! Productores de Veracruz buscan vender sin intermediarios\nCampesinos de municipios como Tampico Alto, Pueblo Viejo y Ozuluama aseguran que estos espacios mejoran sus ingresos\nAlfredo Márquez\nCampesinos de municipios como Tampico Alto y Ozuluama aseguran que los tianguis agropecuarios se han convertido en una alternativa real para mejorar sus ingresos y posicionar sus cosechas en el mercado local.\nHay 697 productores que piden calendarización mensual en el norte de Veracruz\nImpulsan tianguis mensuales en Veracruz para fortalecer la economía rural\nVillar Torre señaló que la organización equitativa también es un punto clave ya que los grupos campesinos deben coordinarse para garantizar que todos tengan oportunidad de participar sin que se acaparen los espacios de venta.\nÉxito rotundo en el último tianguis agropecuario\n“La totalidad de los productos ofertados se agotó en pocas horas, lo que evidenció el interés de la población por adquirir alimentos frescos y orgánicos a precios accesibles”, afirmó.\nMuchos productores lamentaron no haber llevado mayor volumen de mercancía, pues la demanda fue superior a lo previsto.",
+  "article_text_length": 1154,
+  "article_title": "¡Que vengan los tianguis! Productores de Veracruz buscan vender sin intermediarios - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/local/que-vengan-los-tianguis-productores-de-veracruz-buscan-vender-sin-intermediarios-28627812",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:46:19Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

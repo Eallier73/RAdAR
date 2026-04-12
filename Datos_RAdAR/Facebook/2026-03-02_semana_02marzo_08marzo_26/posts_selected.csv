@@ -1,0 +1,107 @@
+﻿run_id,week_name,source_platform,source_scope,page_id,page_label,post_id,comment_id,parent_post_id,record_type,post_url,comment_url,created_time,week_label,text,post_text,comment_count_post,selection_stage,selection_rule,weekly_page_cap,max_comments_per_post,page_week_counter,post_comment_counter,status_extraccion,error_type,error_detail,seed,selected_for_comment_sampling,post_selection_rank,processing_rank,comments_requested_for_post,comments_retrieved_for_post,enrichment_applied,enrichment_source,absorbed_comment_logic,is_reply
+fb_w10_backfill_fix,2026-03-02_semana_02marzo_08marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1495053352184554,,,post_parent,https://www.facebook.com/reel/855266637549960/,,2026-03-02T01:35:12+00:00,2026-03-03,"Las familias son el pilar de nuestra ciudad.
+
+Continuamos con los trabajos de pavimentación, instalación de drenaje y alumbrado público en la colonia Luis Donaldo Colosio, mejorando las condiciones y fortaleciendo la infraestructura que nuestras familias necesitan para vivir mejor.
+
+Gracias al trabajo en conjunto con el Gobierno del Estado, encabezado por nuestro gobernador, el Dr. Américo Villarreal, fue posible llevar a cabo la entrega de casas prefabricadas de madera como parte del programa TECHO en Tamaulipas. Estas acciones reflejan que cuando sociedad y gobierno suman esfuerzos, se logran resultados que transforman vidas.
+
+En Tampico nadie está solo. Seguimos trabajando con hechos.
+
+#TampicoVaConTodos
+#TampicoTeCuida","Las familias son el pilar de nuestra ciudad.
+
+Continuamos con los trabajos de pavimentación, instalación de drenaje y alumbrado público en la colonia Luis Donaldo Colosio, mejorando las condiciones y fortaleciendo la infraestructura que nuestras familias necesitan para vivir mejor.
+
+Gracias al trabajo en conjunto con el Gobierno del Estado, encabezado por nuestro gobernador, el Dr. Américo Villarreal, fue posible llevar a cabo la entrega de casas prefabricadas de madera como parte del programa TECHO en Tamaulipas. Estas acciones reflejan que cuando sociedad y gobierno suman esfuerzos, se logran resultados que transforman vidas.
+
+En Tampico nadie está solo. Seguimos trabajando con hechos.
+
+#TampicoVaConTodos
+#TampicoTeCuida",62,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,1,,selected_post_with_comments,,,42,True,1,8,25,6,False,,,False
+fb_w10_backfill_fix,2026-03-02_semana_02marzo_08marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1495684045454818,,,post_parent,https://www.facebook.com/monicavtampico/posts/pfbid02Urrc8RNcCsqSYKJ6j7wajEmjBwfveaK88hgCXGuKrekfNeNYYmRffBKvWTG9qNsZl,,2026-03-02T19:45:26+00:00,2026-03-03,Vuelo inaugural Tampico–Monterrey con la nueva aerolínea AERUS. 👏🏻,Vuelo inaugural Tampico–Monterrey con la nueva aerolínea AERUS. 👏🏻,35,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,2,,selected_post_with_comments,,,42,True,2,7,25,4,False,,,False
+fb_w10_backfill_fix,2026-03-02_semana_02marzo_08marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1496339982055891,,,post_parent,https://www.facebook.com/reel/1617433752734274/,,2026-03-03T16:50:26+00:00,2026-03-03,"Buenos días, Tampico ☀️
+
+Rumbo a Ciudad Victoria con una agenda muy productiva, con una reunión de trabajo muy importante y participaré en la convocatoria de nuestro Gobernador del Estado, el Dr. Américo Villarreal.
+
+Seguimos trabajando por más resultados para nuestra ciudad.","Buenos días, Tampico ☀️
+
+Rumbo a Ciudad Victoria con una agenda muy productiva, con una reunión de trabajo muy importante y participaré en la convocatoria de nuestro Gobernador del Estado, el Dr. Américo Villarreal.
+
+Seguimos trabajando por más resultados para nuestra ciudad.",309,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,3,,selected_post_with_comments,,,42,True,3,6,25,8,False,,,False
+fb_w10_backfill_fix,2026-03-02_semana_02marzo_08marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1497073228649233,,,post_parent,https://www.facebook.com/reel/1451181499792477/,,2026-03-04T16:43:45+00:00,2026-03-10,"Asistí con mucho gusto a la Toma de Protesta de la Mesa Directiva 2026–2027 del Consejo de Instituciones Empresariales del Sur de Tamaulipas. Felicidades al nuevo presidente, el Ing. Marco Antonio Cortés Salazar y a toda su directiva.
+
+Este espacio reafirma el compromiso, la unidad y la visión compartida por el desarrollo económico y social de nuestra región.","Asistí con mucho gusto a la Toma de Protesta de la Mesa Directiva 2026–2027 del Consejo de Instituciones Empresariales del Sur de Tamaulipas. Felicidades al nuevo presidente, el Ing. Marco Antonio Cortés Salazar y a toda su directiva.
+
+Este espacio reafirma el compromiso, la unidad y la visión compartida por el desarrollo económico y social de nuestra región.",62,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,4,,selected_post_with_comments,,,42,True,4,5,25,4,False,,,False
+fb_w10_backfill_fix,2026-03-02_semana_02marzo_08marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1497203041969585,,,post_parent,https://www.facebook.com/monicavtampico/posts/pfbid0ar33XvaJvbFUuC34SNPL1AXVsVnSjyBNk6GA8XW7mGuDtgCkkU24iKtWQtDLB6ool,,2026-03-04T20:58:31+00:00,2026-03-10,"Un momento histórico para el futuro energético de nuestro estado y del país.
+
+Hoy acompañé a nuestro gobernador, el Dr. Américo Villarreal, y a la secretaria de Energía del Gobierno de México, Mtra. Luz Elena González Escobar, en la ceremonia de inicio de actividades del Campo Trion en el Puerto de Altamira impulsado por Woodside Energy y Pemex.
+
+Este proyecto marca el arranque de uno de los desarrollos energéticos más relevantes de México. que impulsa la siguiente generación de desarrollos en aguas ultraprofundas del Golfo de México, fortaleciendo la infraestructura, la capacidad logística de nuestros puertos y la formación de talento especializado, así como la inversión y la cooperación internacional.
+
+Desde el sur de Tamaulipas celebramos este esfuerzo conjunto que consolida a nuestro estado como un nodo estratégico, energético y logístico para México.
+
+#Tampico #Tamaulipas #Energía #Desarrollo","Un momento histórico para el futuro energético de nuestro estado y del país.
+
+Hoy acompañé a nuestro gobernador, el Dr. Américo Villarreal, y a la secretaria de Energía del Gobierno de México, Mtra. Luz Elena González Escobar, en la ceremonia de inicio de actividades del Campo Trion en el Puerto de Altamira impulsado por Woodside Energy y Pemex.
+
+Este proyecto marca el arranque de uno de los desarrollos energéticos más relevantes de México. que impulsa la siguiente generación de desarrollos en aguas ultraprofundas del Golfo de México, fortaleciendo la infraestructura, la capacidad logística de nuestros puertos y la formación de talento especializado, así como la inversión y la cooperación internacional.
+
+Desde el sur de Tamaulipas celebramos este esfuerzo conjunto que consolida a nuestro estado como un nodo estratégico, energético y logístico para México.
+
+#Tampico #Tamaulipas #Energía #Desarrollo",92,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,5,,selected_post_with_comments,,,42,True,5,4,25,7,False,,,False
+fb_w10_backfill_fix,2026-03-02_semana_02marzo_08marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1497775401912349,,,post_parent,https://www.facebook.com/monicavtampico/posts/pfbid0CYLFPtLycu3MndeWUuGjoEABcqhJ3RiEN4NGffMgweMtA3D36x1T1Mt8oq5JBAaVl,,2026-03-05T16:11:59+00:00,2026-03-10,"Hoy dimos un paso más para fortalecer el corazón comercial de nuestra ciudad. 
+
+Esta mañana inauguramos el nuevo elevador de carga del Mercado Tampico, una obra que mejora las condiciones de trabajo de nuestras y nuestros comerciantes, facilitando el traslado de mercancías y haciendo más eficiente la operación diaria de este espacio tan importante para la economía local.
+
+Los mercados son parte de nuestra historia, de nuestras tradiciones y del sustento de muchas familias tampiqueñas. Por eso seguimos trabajando para que cuenten con instalaciones más funcionales, seguras y dignas.
+
+#TampicoVaConTodos
+#TampicteCuida","Hoy dimos un paso más para fortalecer el corazón comercial de nuestra ciudad. 
+
+Esta mañana inauguramos el nuevo elevador de carga del Mercado Tampico, una obra que mejora las condiciones de trabajo de nuestras y nuestros comerciantes, facilitando el traslado de mercancías y haciendo más eficiente la operación diaria de este espacio tan importante para la economía local.
+
+Los mercados son parte de nuestra historia, de nuestras tradiciones y del sustento de muchas familias tampiqueñas. Por eso seguimos trabajando para que cuenten con instalaciones más funcionales, seguras y dignas.
+
+#TampicoVaConTodos
+#TampicteCuida",238,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,6,,selected_post_with_comments,,,42,True,6,3,25,10,False,,,False
+fb_w10_backfill_fix,2026-03-02_semana_02marzo_08marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1498439475179275,,,post_parent,https://www.facebook.com/monicavtampico/posts/pfbid02689HKyJtJVp2bPMREvwRaTxabC6zmimnvC28Zc7TfTbpaSqy19UA4T4mUyRojutEl,,2026-03-06T13:01:08+00:00,2026-03-10,"Sostuvimos la segunda reunión de trabajo con autoridades de los tres niveles de gobierno para dar seguimiento a los acuerdos emanados de la Mesa de Paz, siempre con el objetivo de fortalecer la tranquilidad y el bienestar de las familias tampiqueñas.
+
+Trabajamos de manera coordinada con ITAVU, la Secretaría General de Gobierno, la Secretaria Técnica Regional de la Secretaría de Gobernación, Secretaría de obras públicas, Dirección de Desarrollo Urbano, Dirección de Catastro y el Registro Público de la Propiedad y revisando avances y programando próximas jornadas de trabajo en distintas colonias de nuestra ciudad.
+
+#TampicoVaConTodos
+#TampicoTeCuida","Sostuvimos la segunda reunión de trabajo con autoridades de los tres niveles de gobierno para dar seguimiento a los acuerdos emanados de la Mesa de Paz, siempre con el objetivo de fortalecer la tranquilidad y el bienestar de las familias tampiqueñas.
+
+Trabajamos de manera coordinada con ITAVU, la Secretaría General de Gobierno, la Secretaria Técnica Regional de la Secretaría de Gobernación, Secretaría de obras públicas, Dirección de Desarrollo Urbano, Dirección de Catastro y el Registro Público de la Propiedad y revisando avances y programando próximas jornadas de trabajo en distintas colonias de nuestra ciudad.
+
+#TampicoVaConTodos
+#TampicoTeCuida",53,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,7,,selected_post_with_comments,,,42,True,7,2,25,4,False,,,False
+fb_w10_backfill_fix,2026-03-02_semana_02marzo_08marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1499387931751096,,,post_parent,https://www.facebook.com/monicavtampico/posts/pfbid0284xXCZbB9XGoA1cvvsuXFNezExcHTWiEiQxUwEKUu2HrCuEk87XSfHzFnUYgDQQcl,,2026-03-07T17:42:30+00:00,2026-03-10,"Recibí con mucho gusto la invitación de la Diócesis de Tampico para dar la bienvenida este 9 de abril a Mons. Margarito Salazar Cárdenas, nuevo Obispo de nuestra ciudad.
+
+Como Gobierno Municipal, escuchamos y atendemos cada petición, por ello estaremos brindando el apoyo necesario para que este importante acontecimiento se realice con orden, seguridad y la participación de las familias.","Recibí con mucho gusto la invitación de la Diócesis de Tampico para dar la bienvenida este 9 de abril a Mons. Margarito Salazar Cárdenas, nuevo Obispo de nuestra ciudad.
+
+Como Gobierno Municipal, escuchamos y atendemos cada petición, por ello estaremos brindando el apoyo necesario para que este importante acontecimiento se realice con orden, seguridad y la participación de las familias.",39,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,8,,selected_post_with_comments,,,42,True,8,1,25,6,False,,,False
+fb_w10_backfill_fix,2026-03-02_semana_02marzo_08marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122194506632546197,,,post_parent,https://www.facebook.com/TampicoGob/posts/pfbid0JNEFEB8mqPShCoGxhS53KHgHZdovhDfeK8ZqwZbYXjzxVqbUYUd9mYxHQymsn74hl,,2026-03-02T01:39:43+00:00,2026-03-03,,,5,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,1,,selected_post_no_comments,,,42,True,1,8,25,0,False,,,False
+fb_w10_backfill_fix,2026-03-02_semana_02marzo_08marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122194574474546197,,,post_parent,https://www.facebook.com/TampicoGob/posts/pfbid0356QULMrCjPuF9kgNBjFpmKWz3cuMXXPFggeTyqHsk9Ub5PuHGMMCQcbzHktK4VENl,,2026-03-02T16:06:52+00:00,2026-03-03,,,10,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,2,,selected_post_with_comments,,,42,True,2,7,25,5,False,,,False
+fb_w10_backfill_fix,2026-03-02_semana_02marzo_08marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122194606106546197,,,post_parent,https://www.facebook.com/TampicoGob/posts/pfbid0e75VjWP66QKhQ7JJbF3W6gvTYLh57GMUQXj1sz86wzt5SxDzzuXWxbMeGotkYx2Ml,,2026-03-02T21:33:22+00:00,2026-03-03,,,2,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,3,,selected_post_no_comments,,,42,True,3,6,25,0,False,,,False
+fb_w10_backfill_fix,2026-03-02_semana_02marzo_08marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122194684928546197,,,post_parent,https://www.facebook.com/TampicoGob/posts/pfbid02zbPjzkPk62sSUAW2sfrjv7qQDEoDgLyhBjCNFXsTpmhtDLDbotyyvc3MvjDN3VLyl,,2026-03-03T14:22:33+00:00,2026-03-03,,,4,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,4,,selected_post_no_comments,,,42,True,4,5,25,0,False,,,False
+fb_w10_backfill_fix,2026-03-02_semana_02marzo_08marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122194743590546197,,,post_parent,https://www.facebook.com/TampicoGob/posts/pfbid0mo6K7CifZ4xnGz1ML54fyW7xD2dDVxYXQbBasmCJC3JxE3mVrpxjCYQcVcNjpyqSl,,2026-03-04T01:40:08+00:00,2026-03-10,,,7,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,5,,selected_post_with_comments,,,42,True,5,4,25,5,False,,,False
+fb_w10_backfill_fix,2026-03-02_semana_02marzo_08marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122194854290546197,,,post_parent,https://www.facebook.com/TampicoGob/posts/pfbid035PzFXkipMpa5FBD3KQjRPr6VY7V3S2WZETc3WibksTbx5yvVCwRiF4oMWNGY7YKtl,,2026-03-04T22:08:59+00:00,2026-03-10,,,5,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,6,,selected_post_no_comments,,,42,True,6,3,25,0,False,,,False
+fb_w10_backfill_fix,2026-03-02_semana_02marzo_08marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122195097374546197,,,post_parent,https://www.facebook.com/TampicoGob/posts/pfbid0262FG6GCA1bpu4SFDUZ5FzZtjvhf7VLRrHZsLNmh6myDhxPANt6Q6j8MhD4SJVmaxl,,2026-03-06T19:58:50+00:00,2026-03-10,"💜Este fin de semana tenemos una cartelera llena de eventos culturales . 
+Síguenos Secretaría de Cultura Tampico
+Tampico Gob TE ESPERAMOS","💜Este fin de semana tenemos una cartelera llena de eventos culturales . 
+Síguenos Secretaría de Cultura Tampico
+Tampico Gob TE ESPERAMOS",2,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,7,,selected_post_no_comments,,,42,True,7,2,25,0,False,,,False
+fb_w10_backfill_fix,2026-03-02_semana_02marzo_08marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122195214500546197,,,post_parent,https://www.facebook.com/TampicoGob/posts/pfbid0KPkQHs73dgSKJZGd8N4PeFEi7djAcXzXmH8LyoJo8yxqwAQ3cWJPjrgeBHMrVTiRl,,2026-03-07T20:38:18+00:00,2026-03-10,"Seguimos trabajando para fortalecer las condiciones de nuestras escuelas. 🏫
+
+En cumplimiento al compromiso de nuestra presidenta municipal, la Lic. Mónica Villarreal Anaya, realizamos la entrega de 10 tazas sanitarias a la Escuela Primaria “José Vasconcelos”, turno vespertino.
+
+Esta acción se llevó a cabo en atención a la solicitud presentada por la directora de la institución, la Mtra. María Luisa Valencia González, en conjunto con madres y padres de familia.
+
+Con estas acciones reafirmamos nuestro compromiso de apoyar a la educación y de contribuir a que nuestras niñas y niños cuenten con espacios más dignos, seguros y adecuados para su desarrollo.","Seguimos trabajando para fortalecer las condiciones de nuestras escuelas. 🏫
+
+En cumplimiento al compromiso de nuestra presidenta municipal, la Lic. Mónica Villarreal Anaya, realizamos la entrega de 10 tazas sanitarias a la Escuela Primaria “José Vasconcelos”, turno vespertino.
+
+Esta acción se llevó a cabo en atención a la solicitud presentada por la directora de la institución, la Mtra. María Luisa Valencia González, en conjunto con madres y padres de familia.
+
+Con estas acciones reafirmamos nuestro compromiso de apoyar a la educación y de contribuir a que nuestras niñas y niños cuenten con espacios más dignos, seguros y adecuados para su desarrollo.",8,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,8,,selected_post_with_comments,,,42,True,8,1,25,2,False,,,False

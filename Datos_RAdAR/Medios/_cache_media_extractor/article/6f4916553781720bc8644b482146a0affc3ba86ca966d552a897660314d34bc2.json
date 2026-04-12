@@ -1,0 +1,22 @@
+{
+  "article_text": "Localjueves, 19 de marzo de 2026\nSi vas por la avenida Hidalgo, ojo, habrá cierre parcial este viernes en Tampico\nLlevarán a cabo la reposición del pavimento en arteria vial más importante de la zona conurbada, por lo que quizás debas tomar vías alternas\nMario Cruces\nPodría generar algunas afectaciones en las horas pico en la avenida Hidalgo\nAún así, el cierre anunciado podría generar congestionamiento en horas pico, al ser especialmente en una vialidad clave para la movilidad urbana.",
+  "article_text_length": 489,
+  "article_title": "Si vas por la avenida Hidalgo, ojo, habrá cierre parcial este viernes en Tampico - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/local/si-vas-por-la-avenida-hidalgo-ojo-habra-cierre-parcial-este-viernes-en-tampico-29063664",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"gobierno de tampico\" site:oem.com.mx",
+  "query_index": 2,
+  "retrieved_at": "2026-04-05T15:49:52Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"gobierno de tampico\""
+}

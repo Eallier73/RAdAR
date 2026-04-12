@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Wrapper histórico del extractor institucional de Facebook para Radar.
+Wrapper legado del extractor institucional de Facebook.
 
-La implementación real de automatización vive en
-`automation/extractors/facebook_institutional_extractor.py`. Este archivo
-conserva el nombre operativo anterior para no romper llamados existentes.
+La implementación real vive en
+`automation/extractors/facebook_institutional_extractor_core.py`.
+Este archivo se conserva solo por compatibilidad con llamadas históricas.
 """
 
 from __future__ import annotations

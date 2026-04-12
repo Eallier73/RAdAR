@@ -1,0 +1,22 @@
+{
+  "article_text": "Adiós a las aulas viejas: primaria de la colonia Américo Villarreal estrena instalaciones de primer nivel\nEl Gobierno Municipal de Nuevo Laredo construyó aulas que permitirán el fortalecimiento de la enseñanza de los niños.\nAntonio Campos\nDurante el evento, se resaltó que esta obra forma parte del compromiso del Gobierno Municipal por fortalecer la infraestructura educativa y garantizar mejores condiciones para el aprendizaje de niñas y niños de Nuevo Laredo.\n“Cuando invertimos en la educación, estamos invirtiendo en el futuro de nuestras niñas y niños. Hoy entregamos estas aulas dignas que brindarán mejores oportunidades de aprendizaje y desarrollo para esta comunidad escolar”, dijo la edil.\nRenovación total de espacios educativos en Nuevo Laredo\nAsimismo, dicha obra incluyó trabajos de demoliciones y remociones, cimentación firme de concreto, construcción de columnas, muros de block, vigas, trabes y losa sólida.",
+  "article_text_length": 927,
+  "article_title": "Adiós a las aulas viejas: primaria de la colonia Américo Villarreal estrena instalaciones de primer nivel - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/local/adios-a-las-aulas-viejas-primaria-de-la-colonia-americo-villarreal-estrena-instalaciones-de-primer-nivel-29057159",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:51:05Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

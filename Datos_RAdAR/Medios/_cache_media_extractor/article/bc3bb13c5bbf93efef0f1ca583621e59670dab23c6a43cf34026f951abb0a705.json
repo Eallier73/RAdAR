@@ -1,0 +1,22 @@
+{
+  "article_text": "¡Prohibido perder! Jaiba Brava recibe a Venados en un duelo de vida o muerte por la Liguilla\nLa Jaiba Brava del Tampico-Madero está obligada a vencer a Venados para mantener vivo el sueño del título\nHéctor Rivera\nEs cierto que la situación se viene complicando para la escuadra comandada por Marco Antonio “Chima” Ruiz, debido a que se han dejado escapar valiosos puntos que, sin duda, en estos momentos servirían de mucho a la causa celeste.\nPanorama en la tabla de clasificación del Tampico-Madero\nPor lo pronto, jugadores y cuerpo técnico están enfocados en la preparación del plantel con miras a este importante encuentro. Los entrenamientos han sido intensos, pues la meta es llegar en óptimas condiciones al compromiso ante los “astados”.",
+  "article_text_length": 744,
+  "article_title": "¡Prohibido perder! Jaiba Brava recibe a Venados en un duelo de vida o muerte por la Liguilla - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/deportes/prohibido-perder-jaiba-brava-recibe-a-venados-en-un-duelo-de-vida-o-muerte-por-la-liguilla-29259890",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:55:33Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

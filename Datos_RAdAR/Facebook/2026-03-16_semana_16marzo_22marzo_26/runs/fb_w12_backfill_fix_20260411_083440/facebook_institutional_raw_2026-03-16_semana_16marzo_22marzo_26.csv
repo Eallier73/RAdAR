@@ -1,0 +1,668 @@
+﻿run_id,week_name,source_platform,source_scope,page_id,page_label,post_id,comment_id,parent_post_id,record_type,post_url,comment_url,created_time,week_label,text,post_text,comment_count_post,selection_stage,selection_rule,weekly_page_cap,max_comments_per_post,page_week_counter,post_comment_counter,status_extraccion,error_type,error_detail,seed,selected_for_comment_sampling,post_selection_rank,processing_rank,comments_requested_for_post,comments_retrieved_for_post,enrichment_applied,enrichment_source,absorbed_comment_logic,is_reply
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1505912757765280,,,post_parent,https://www.facebook.com/monicavtampico/posts/pfbid0EzrQpqZ4pWoqCaUzQ4EDKCCVv3749SCpXH4D8NdsyDYErCSBKt8Jx1tTK2h5Tu3ql,,2026-03-16T02:31:38+00:00,2026-03-17,"Hoy vivimos un momento muy especial en el Parque Lineal del Puente Tampico con la presentación de la obra testimonial “Las Despicadoras del Oro Rojo”, un homenaje lleno de orgullo para las mujeres que, con su trabajo y esfuerzo, han sostenido por generaciones una actividad que forma parte de la identidad de nuestro puerto. 🦐
+
+Fue muy emotivo ver a muchas de las propias despicadoras arriba del escenario, compartiendo su historia a través del arte, acompañadas por más de 400 artistas que hicieron posible esta gran producción.
+
+Me dio mucho gusto acompañar al gobernador, Dr. Américo Villarreal Anaya, a la presidenta del DIF Tamaulipas, Dra. María de Villarreal, y a la presidenta del DIF Tampico, Luz Adriana Villarreal Anaya. Además, se entregó equipamiento como playeras, delantales y botas para apoyar y fortalecer las condiciones en las que realizan su importante labor.
+
+En Tampico vamos a seguir reconociendo su historia, dignificando su trabajo y abriendo más oportunidades para su bienestar.
+
+#TampicoVaConTodos
+#TampicoTeCuida","Hoy vivimos un momento muy especial en el Parque Lineal del Puente Tampico con la presentación de la obra testimonial “Las Despicadoras del Oro Rojo”, un homenaje lleno de orgullo para las mujeres que, con su trabajo y esfuerzo, han sostenido por generaciones una actividad que forma parte de la identidad de nuestro puerto. 🦐
+
+Fue muy emotivo ver a muchas de las propias despicadoras arriba del escenario, compartiendo su historia a través del arte, acompañadas por más de 400 artistas que hicieron posible esta gran producción.
+
+Me dio mucho gusto acompañar al gobernador, Dr. Américo Villarreal Anaya, a la presidenta del DIF Tamaulipas, Dra. María de Villarreal, y a la presidenta del DIF Tampico, Luz Adriana Villarreal Anaya. Además, se entregó equipamiento como playeras, delantales y botas para apoyar y fortalecer las condiciones en las que realizan su importante labor.
+
+En Tampico vamos a seguir reconociendo su historia, dignificando su trabajo y abriendo más oportunidades para su bienestar.
+
+#TampicoVaConTodos
+#TampicoTeCuida",92.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,1,,selected_post_with_comments,,,42,True,1,8,25,10,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1506520287704527,,,post_parent,https://www.facebook.com/monicavtampico/posts/pfbid0bcGPa1F2uvhuKrdkzQ9WGR2Axai8Fr4mT96X9ArGqiptBnRhXS3ygyK1APN9kuXfl,,2026-03-16T19:38:53+00:00,2026-03-17,,,27.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,2,,selected_post_with_comments,,,42,True,2,7,25,5,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1507217994301423,,,post_parent,https://www.facebook.com/monicavtampico/posts/pfbid02oRtMM8ZynST5iCpNuetYAVJnR2BMRxHXziu9vP8ctgfoFBn1arzzHyJqjPmm9E3ql,,2026-03-17T16:38:28+00:00,2026-03-17,"Asistí a la reunión de la Mesa de Paz en Altamira, un espacio fundamental para fortalecer la coordinación entre autoridades y dar continuidad a las acciones que contribuyen a la seguridad en la zona sur de Tamaulipas.
+
+En este marco, también se realizó el banderazo del programa “Heroínas y Héroes Paisanos”, Operativo Especial Semana Santa 2026, con el objetivo de brindar atención, orientación y seguridad a quienes transitan por nuestra región.
+
+Contamos con la participación de representantes de los tres órdenes de gobierno, con quienes trabajamos de manera conjunta en favor de la ciudadanía.
+
+Reafirmo mi compromiso de seguir sumando esfuerzos, con responsabilidad y diálogo, para brindar mayor tranquilidad a las familias de nuestra región.","Asistí a la reunión de la Mesa de Paz en Altamira, un espacio fundamental para fortalecer la coordinación entre autoridades y dar continuidad a las acciones que contribuyen a la seguridad en la zona sur de Tamaulipas.
+
+En este marco, también se realizó el banderazo del programa “Heroínas y Héroes Paisanos”, Operativo Especial Semana Santa 2026, con el objetivo de brindar atención, orientación y seguridad a quienes transitan por nuestra región.
+
+Contamos con la participación de representantes de los tres órdenes de gobierno, con quienes trabajamos de manera conjunta en favor de la ciudadanía.
+
+Reafirmo mi compromiso de seguir sumando esfuerzos, con responsabilidad y diálogo, para brindar mayor tranquilidad a las familias de nuestra región.",27.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,3,,selected_post_with_comments,,,42,True,3,6,25,4,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1507512864271936,,,post_parent,https://www.facebook.com/reel/1429893698802924/,,2026-03-18T02:38:10+00:00,2026-03-24,"Esta tarde inauguramos el gran trabajo de rehabilitación del parque Baby Pérez en la colonia Jesús Elías Piña.
+
+#TampicoVaconTodos.
+#TampicoteCuida.","Esta tarde inauguramos el gran trabajo de rehabilitación del parque Baby Pérez en la colonia Jesús Elías Piña.
+
+#TampicoVaconTodos.
+#TampicoteCuida.",42.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,4,,selected_post_with_comments,,,42,True,4,5,25,6,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1508893380800551,,,post_parent,https://www.facebook.com/monicavtampico/posts/pfbid02hFnZ8anyfKpMpRgpFEr3YW4bMmwqKcTGFLCnNHJroTMFJyrvScr4X7opqAZmJKuBl,,2026-03-19T20:43:17+00:00,2026-03-24,"Esta mañana Asisití al IV Foro Estatal del Agua: “Agua, motor de desarrollo en Tamaulipas”, un espacio donde gobierno, industria y sociedad suman esfuerzos por el futuro de nuestra región.
+
+Durante este foro escuchamos propuestas como la economía circular con soluciones concretas, la irrigación regenerativa, el reúso de aguas y el proyecto Génesis impulsado por la Secretaría de Recursos Hidráulicos para el Desarrollo Social y AISTAC.
+
+Como sociedad, nos toca corresponder a este esfuerzo: cuidar el agua, hacer un uso responsable y participar activamente en su preservación.
+
+En Tampico seguimos trabajando con responsabilidad y visión a futuro, porque garantizar el agua es garantizar la vida de las próximas generaciones.
+
+#TampicoVaConTodos
+#TampicoTeCuida","Esta mañana Asisití al IV Foro Estatal del Agua: “Agua, motor de desarrollo en Tamaulipas”, un espacio donde gobierno, industria y sociedad suman esfuerzos por el futuro de nuestra región.
+
+Durante este foro escuchamos propuestas como la economía circular con soluciones concretas, la irrigación regenerativa, el reúso de aguas y el proyecto Génesis impulsado por la Secretaría de Recursos Hidráulicos para el Desarrollo Social y AISTAC.
+
+Como sociedad, nos toca corresponder a este esfuerzo: cuidar el agua, hacer un uso responsable y participar activamente en su preservación.
+
+En Tampico seguimos trabajando con responsabilidad y visión a futuro, porque garantizar el agua es garantizar la vida de las próximas generaciones.
+
+#TampicoVaConTodos
+#TampicoTeCuida",32.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,5,,selected_post_with_comments,,,42,True,5,4,25,6,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1509646950725194,,,post_parent,https://www.facebook.com/reel/785931874567154/,,2026-03-20T16:11:13+00:00,2026-03-24,"¡Los esperamos en la zona sur para vivir una Semana Santa llena de alegría, tradición y momentos inolvidables! ☀️🌊
+
+Tenemos preparadas muchas actividades para que todas las familias disfruten y se lleven lo mejor de Tampico. 🙌🏻
+
+Gracias a nuestros amigos de Telediario Mty por la entrevista y por ayudarnos a compartir todo lo que nuestra zona conurbada tiene para ofrecer.
+
+#TampicoVaConTodos
+#TampicoTeCuida","¡Los esperamos en la zona sur para vivir una Semana Santa llena de alegría, tradición y momentos inolvidables! ☀️🌊
+
+Tenemos preparadas muchas actividades para que todas las familias disfruten y se lleven lo mejor de Tampico. 🙌🏻
+
+Gracias a nuestros amigos de Telediario Mty por la entrevista y por ayudarnos a compartir todo lo que nuestra zona conurbada tiene para ofrecer.
+
+#TampicoVaConTodos
+#TampicoTeCuida",42.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,6,,selected_post_with_comments,,,42,True,6,3,25,4,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1510546790635210,,,post_parent,https://www.facebook.com/reel/901841016049759/,,2026-03-21T15:48:32+00:00,2026-03-24,"Estamos listos para recibirlos en esta Semana Santa con historia, cultura, naturaleza y muchas experiencias para disfrutar en familia.
+
+Los esperamos con los brazos abiertos para que vivan y se enamoren de nuestra ciudad. 
+
+Gracias a Telediario Mty por este valioso espacio para compartir todo lo que Tampico tiene para ofrecer y llevar nuestra oferta turística a más personas.
+
+#TampicoVaconTodos
+#TampicoteCuida","Estamos listos para recibirlos en esta Semana Santa con historia, cultura, naturaleza y muchas experiencias para disfrutar en familia.
+
+Los esperamos con los brazos abiertos para que vivan y se enamoren de nuestra ciudad. 
+
+Gracias a Telediario Mty por este valioso espacio para compartir todo lo que Tampico tiene para ofrecer y llevar nuestra oferta turística a más personas.
+
+#TampicoVaconTodos
+#TampicoteCuida",76.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,7,,selected_post_with_comments,,,42,True,7,2,25,7,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1510834640606425,,,post_parent,https://www.facebook.com/monicavtampico/posts/pfbid0bLkwDE535qKuoVJyfuRLwNsUTENNDNwHGycKR6A2AozfYejCmSiU6NxccQJfFiX6l,,2026-03-21T23:52:01+00:00,2026-03-24,"Todos los logros son colectivos, gracias Lic. Gracia Elena Medina por el trabajo dedicado y bien hecho a favor de la mediación. Tampico avanza y se fortalece en acciones que construyen paz Felicidades a todos los participantes.","Todos los logros son colectivos, gracias Lic. Gracia Elena Medina por el trabajo dedicado y bien hecho a favor de la mediación. Tampico avanza y se fortalece en acciones que construyen paz Felicidades a todos los participantes.",14.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,8,,selected_post_with_comments,,,42,True,8,1,25,5,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1510834640606425,25718945327783173,1510834640606425,comment,https://www.facebook.com/monicavtampico/posts/pfbid0bLkwDE535qKuoVJyfuRLwNsUTENNDNwHGycKR6A2AozfYejCmSiU6NxccQJfFiX6l,https://www.facebook.com/monicavtampico/posts/pfbid0bLkwDE535qKuoVJyfuRLwNsUTENNDNwHGycKR6A2AozfYejCmSiU6NxccQJfFiX6l?comment_id=25718945327783173,2026-03-23T14:34:14+00:00,2026-03-24,Que bien,"Todos los logros son colectivos, gracias Lic. Gracia Elena Medina por el trabajo dedicado y bien hecho a favor de la mediación. Tampico avanza y se fortalece en acciones que construyen paz Felicidades a todos los participantes.",14.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,1,1,saved,,,42,True,8,1,25,5,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1510834640606425,1469854291397145,1510834640606425,comment,https://www.facebook.com/monicavtampico/posts/pfbid0bLkwDE535qKuoVJyfuRLwNsUTENNDNwHGycKR6A2AozfYejCmSiU6NxccQJfFiX6l,https://www.facebook.com/monicavtampico/posts/pfbid0bLkwDE535qKuoVJyfuRLwNsUTENNDNwHGycKR6A2AozfYejCmSiU6NxccQJfFiX6l?comment_id=1469854291397145,2026-03-22T16:38:11+00:00,2026-03-24,Excelente 👏,"Todos los logros son colectivos, gracias Lic. Gracia Elena Medina por el trabajo dedicado y bien hecho a favor de la mediación. Tampico avanza y se fortalece en acciones que construyen paz Felicidades a todos los participantes.",14.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,2,2,saved,,,42,True,8,1,25,5,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1510834640606425,1473064217518168,1510834640606425,comment,https://www.facebook.com/monicavtampico/posts/pfbid0bLkwDE535qKuoVJyfuRLwNsUTENNDNwHGycKR6A2AozfYejCmSiU6NxccQJfFiX6l,https://www.facebook.com/monicavtampico/posts/pfbid0bLkwDE535qKuoVJyfuRLwNsUTENNDNwHGycKR6A2AozfYejCmSiU6NxccQJfFiX6l?comment_id=1473064217518168,2026-03-22T04:23:53+00:00,2026-03-24,"Excelente trabajo, siempre bajo las directrices del Gobierno de Tampico MVA","Todos los logros son colectivos, gracias Lic. Gracia Elena Medina por el trabajo dedicado y bien hecho a favor de la mediación. Tampico avanza y se fortalece en acciones que construyen paz Felicidades a todos los participantes.",14.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,3,3,saved,,,42,True,8,1,25,5,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1510834640606425,2327862844372417,1510834640606425,comment,https://www.facebook.com/monicavtampico/posts/pfbid0bLkwDE535qKuoVJyfuRLwNsUTENNDNwHGycKR6A2AozfYejCmSiU6NxccQJfFiX6l,https://www.facebook.com/monicavtampico/posts/pfbid0bLkwDE535qKuoVJyfuRLwNsUTENNDNwHGycKR6A2AozfYejCmSiU6NxccQJfFiX6l?comment_id=2327862844372417,2026-03-22T04:04:02+00:00,2026-03-24,Seguimos construyendo junt@s el camino de la paz.,"Todos los logros son colectivos, gracias Lic. Gracia Elena Medina por el trabajo dedicado y bien hecho a favor de la mediación. Tampico avanza y se fortalece en acciones que construyen paz Felicidades a todos los participantes.",14.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,4,4,saved,,,42,True,8,1,25,5,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1510834640606425,1923545448530557,1510834640606425,comment,https://www.facebook.com/monicavtampico/posts/pfbid0bLkwDE535qKuoVJyfuRLwNsUTENNDNwHGycKR6A2AozfYejCmSiU6NxccQJfFiX6l,https://www.facebook.com/monicavtampico/posts/pfbid0bLkwDE535qKuoVJyfuRLwNsUTENNDNwHGycKR6A2AozfYejCmSiU6NxccQJfFiX6l?comment_id=1923545448530557,2026-03-22T03:54:42+00:00,2026-03-24,"Construyendo una mejor sociedad, muchas felicidades a la coordinación Municipio -UAT enhorabuena","Todos los logros son colectivos, gracias Lic. Gracia Elena Medina por el trabajo dedicado y bien hecho a favor de la mediación. Tampico avanza y se fortalece en acciones que construyen paz Felicidades a todos los participantes.",14.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,5,5,saved,,,42,True,8,1,25,5,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1510546790635210,924044787148179,1510546790635210,comment,https://www.facebook.com/reel/901841016049759/,https://www.facebook.com/reel/901841016049759/?comment_id=924044787148179,2026-03-24T23:33:09+00:00,2026-03-24,🌴🌴🌴🌴🦐🦞🦐🦞🐟🐙🦂,"Estamos listos para recibirlos en esta Semana Santa con historia, cultura, naturaleza y muchas experiencias para disfrutar en familia.
+
+Los esperamos con los brazos abiertos para que vivan y se enamoren de nuestra ciudad. 
+
+Gracias a Telediario Mty por este valioso espacio para compartir todo lo que Tampico tiene para ofrecer y llevar nuestra oferta turística a más personas.
+
+#TampicoVaconTodos
+#TampicoteCuida",76.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,6,1,saved,,,42,True,7,2,25,7,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1510546790635210,1615816976341507,1510546790635210,comment,https://www.facebook.com/reel/901841016049759/,https://www.facebook.com/reel/901841016049759/?comment_id=1615816976341507,2026-03-23T19:08:26+00:00,2026-03-24,"Tampico hermoso, puerto para disfrutar","Estamos listos para recibirlos en esta Semana Santa con historia, cultura, naturaleza y muchas experiencias para disfrutar en familia.
+
+Los esperamos con los brazos abiertos para que vivan y se enamoren de nuestra ciudad. 
+
+Gracias a Telediario Mty por este valioso espacio para compartir todo lo que Tampico tiene para ofrecer y llevar nuestra oferta turística a más personas.
+
+#TampicoVaconTodos
+#TampicoteCuida",76.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,7,2,saved,,,42,True,7,2,25,7,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1510546790635210,770651412540173,1510546790635210,comment,https://www.facebook.com/reel/901841016049759/,https://www.facebook.com/reel/901841016049759/?comment_id=770651412540173,2026-03-23T17:18:36+00:00,2026-03-24,"Excelente, Tampoco hermoso","Estamos listos para recibirlos en esta Semana Santa con historia, cultura, naturaleza y muchas experiencias para disfrutar en familia.
+
+Los esperamos con los brazos abiertos para que vivan y se enamoren de nuestra ciudad. 
+
+Gracias a Telediario Mty por este valioso espacio para compartir todo lo que Tampico tiene para ofrecer y llevar nuestra oferta turística a más personas.
+
+#TampicoVaconTodos
+#TampicoteCuida",76.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,8,3,saved,,,42,True,7,2,25,7,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1510546790635210,800081496476380,1510546790635210,comment,https://www.facebook.com/reel/901841016049759/,https://www.facebook.com/reel/901841016049759/?comment_id=800081496476380,2026-03-22T19:55:57+00:00,2026-03-24,🫶🏻🫂❤️,"Estamos listos para recibirlos en esta Semana Santa con historia, cultura, naturaleza y muchas experiencias para disfrutar en familia.
+
+Los esperamos con los brazos abiertos para que vivan y se enamoren de nuestra ciudad. 
+
+Gracias a Telediario Mty por este valioso espacio para compartir todo lo que Tampico tiene para ofrecer y llevar nuestra oferta turística a más personas.
+
+#TampicoVaconTodos
+#TampicoteCuida",76.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,9,4,saved,,,42,True,7,2,25,7,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1510546790635210,904823765658304,1510546790635210,comment,https://www.facebook.com/reel/901841016049759/,https://www.facebook.com/reel/901841016049759/?comment_id=904823765658304,2026-03-22T17:55:03+00:00,2026-03-24,Exelente trabajo presidenta,"Estamos listos para recibirlos en esta Semana Santa con historia, cultura, naturaleza y muchas experiencias para disfrutar en familia.
+
+Los esperamos con los brazos abiertos para que vivan y se enamoren de nuestra ciudad. 
+
+Gracias a Telediario Mty por este valioso espacio para compartir todo lo que Tampico tiene para ofrecer y llevar nuestra oferta turística a más personas.
+
+#TampicoVaconTodos
+#TampicoteCuida",76.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,10,5,saved,,,42,True,7,2,25,7,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1510546790635210,2841814636025645,1510546790635210,comment,https://www.facebook.com/reel/901841016049759/,https://www.facebook.com/reel/901841016049759/?comment_id=2841814636025645,2026-03-22T17:46:26+00:00,2026-03-24,Tampico  hermoso😍💚 bello x todos sus lugares turísticos orgullo de mi tierra k me vio nacer#yoamotampico,"Estamos listos para recibirlos en esta Semana Santa con historia, cultura, naturaleza y muchas experiencias para disfrutar en familia.
+
+Los esperamos con los brazos abiertos para que vivan y se enamoren de nuestra ciudad. 
+
+Gracias a Telediario Mty por este valioso espacio para compartir todo lo que Tampico tiene para ofrecer y llevar nuestra oferta turística a más personas.
+
+#TampicoVaconTodos
+#TampicoteCuida",76.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,11,6,saved,,,42,True,7,2,25,7,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1510546790635210,3483100278521365,1510546790635210,comment,https://www.facebook.com/reel/901841016049759/,https://www.facebook.com/reel/901841016049759/?comment_id=3483100278521365,2026-03-22T16:24:14+00:00,2026-03-24,Excelente 👏👏❤️,"Estamos listos para recibirlos en esta Semana Santa con historia, cultura, naturaleza y muchas experiencias para disfrutar en familia.
+
+Los esperamos con los brazos abiertos para que vivan y se enamoren de nuestra ciudad. 
+
+Gracias a Telediario Mty por este valioso espacio para compartir todo lo que Tampico tiene para ofrecer y llevar nuestra oferta turística a más personas.
+
+#TampicoVaconTodos
+#TampicoteCuida",76.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,12,7,saved,,,42,True,7,2,25,7,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1509646950725194,1899330714049102,1509646950725194,comment,https://www.facebook.com/reel/785931874567154/,https://www.facebook.com/reel/785931874567154/?comment_id=1899330714049102,2026-03-23T14:35:07+00:00,2026-03-24,Transformando a T4MPICO,"¡Los esperamos en la zona sur para vivir una Semana Santa llena de alegría, tradición y momentos inolvidables! ☀️🌊
+
+Tenemos preparadas muchas actividades para que todas las familias disfruten y se lleven lo mejor de Tampico. 🙌🏻
+
+Gracias a nuestros amigos de Telediario Mty por la entrevista y por ayudarnos a compartir todo lo que nuestra zona conurbada tiene para ofrecer.
+
+#TampicoVaConTodos
+#TampicoTeCuida",42.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,13,1,saved,,,42,True,6,3,25,4,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1509646950725194,1251624779839469,1509646950725194,comment,https://www.facebook.com/reel/785931874567154/,https://www.facebook.com/reel/785931874567154/?comment_id=1251624779839469,2026-03-21T15:36:59+00:00,2026-03-24,Playa Yupi gracias presidentes,"¡Los esperamos en la zona sur para vivir una Semana Santa llena de alegría, tradición y momentos inolvidables! ☀️🌊
+
+Tenemos preparadas muchas actividades para que todas las familias disfruten y se lleven lo mejor de Tampico. 🙌🏻
+
+Gracias a nuestros amigos de Telediario Mty por la entrevista y por ayudarnos a compartir todo lo que nuestra zona conurbada tiene para ofrecer.
+
+#TampicoVaConTodos
+#TampicoTeCuida",42.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,14,2,saved,,,42,True,6,3,25,4,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1509646950725194,986230340395175,1509646950725194,comment,https://www.facebook.com/reel/785931874567154/,https://www.facebook.com/reel/785931874567154/?comment_id=986230340395175,2026-03-21T15:13:16+00:00,2026-03-24,Hermoso nuestro puerto 🫶,"¡Los esperamos en la zona sur para vivir una Semana Santa llena de alegría, tradición y momentos inolvidables! ☀️🌊
+
+Tenemos preparadas muchas actividades para que todas las familias disfruten y se lleven lo mejor de Tampico. 🙌🏻
+
+Gracias a nuestros amigos de Telediario Mty por la entrevista y por ayudarnos a compartir todo lo que nuestra zona conurbada tiene para ofrecer.
+
+#TampicoVaConTodos
+#TampicoTeCuida",42.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,15,3,saved,,,42,True,6,3,25,4,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1509646950725194,1584992416124895,1509646950725194,comment,https://www.facebook.com/reel/785931874567154/,https://www.facebook.com/reel/785931874567154/?comment_id=1584992416124895,2026-03-21T04:49:11+00:00,2026-03-24,Bienvenidos,"¡Los esperamos en la zona sur para vivir una Semana Santa llena de alegría, tradición y momentos inolvidables! ☀️🌊
+
+Tenemos preparadas muchas actividades para que todas las familias disfruten y se lleven lo mejor de Tampico. 🙌🏻
+
+Gracias a nuestros amigos de Telediario Mty por la entrevista y por ayudarnos a compartir todo lo que nuestra zona conurbada tiene para ofrecer.
+
+#TampicoVaConTodos
+#TampicoTeCuida",42.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,16,4,saved,,,42,True,6,3,25,4,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1508893380800551,2012641259684990,1508893380800551,comment,https://www.facebook.com/monicavtampico/posts/pfbid02hFnZ8anyfKpMpRgpFEr3YW4bMmwqKcTGFLCnNHJroTMFJyrvScr4X7opqAZmJKuBl,https://www.facebook.com/monicavtampico/posts/pfbid02hFnZ8anyfKpMpRgpFEr3YW4bMmwqKcTGFLCnNHJroTMFJyrvScr4X7opqAZmJKuBl?comment_id=2012641259684990,2026-03-21T22:57:27+00:00,2026-03-24,Excelente,"Esta mañana Asisití al IV Foro Estatal del Agua: “Agua, motor de desarrollo en Tamaulipas”, un espacio donde gobierno, industria y sociedad suman esfuerzos por el futuro de nuestra región.
+
+Durante este foro escuchamos propuestas como la economía circular con soluciones concretas, la irrigación regenerativa, el reúso de aguas y el proyecto Génesis impulsado por la Secretaría de Recursos Hidráulicos para el Desarrollo Social y AISTAC.
+
+Como sociedad, nos toca corresponder a este esfuerzo: cuidar el agua, hacer un uso responsable y participar activamente en su preservación.
+
+En Tampico seguimos trabajando con responsabilidad y visión a futuro, porque garantizar el agua es garantizar la vida de las próximas generaciones.
+
+#TampicoVaConTodos
+#TampicoTeCuida",32.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,17,1,saved,,,42,True,5,4,25,6,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1508893380800551,1640595567079869,1508893380800551,comment,https://www.facebook.com/monicavtampico/posts/pfbid02hFnZ8anyfKpMpRgpFEr3YW4bMmwqKcTGFLCnNHJroTMFJyrvScr4X7opqAZmJKuBl,https://www.facebook.com/monicavtampico/posts/pfbid02hFnZ8anyfKpMpRgpFEr3YW4bMmwqKcTGFLCnNHJroTMFJyrvScr4X7opqAZmJKuBl?comment_id=1640595567079869,2026-03-21T15:14:24+00:00,2026-03-24,Excelente foro 👏,"Esta mañana Asisití al IV Foro Estatal del Agua: “Agua, motor de desarrollo en Tamaulipas”, un espacio donde gobierno, industria y sociedad suman esfuerzos por el futuro de nuestra región.
+
+Durante este foro escuchamos propuestas como la economía circular con soluciones concretas, la irrigación regenerativa, el reúso de aguas y el proyecto Génesis impulsado por la Secretaría de Recursos Hidráulicos para el Desarrollo Social y AISTAC.
+
+Como sociedad, nos toca corresponder a este esfuerzo: cuidar el agua, hacer un uso responsable y participar activamente en su preservación.
+
+En Tampico seguimos trabajando con responsabilidad y visión a futuro, porque garantizar el agua es garantizar la vida de las próximas generaciones.
+
+#TampicoVaConTodos
+#TampicoTeCuida",32.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,18,2,saved,,,42,True,5,4,25,6,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1508893380800551,1874260836557660,1508893380800551,comment,https://www.facebook.com/monicavtampico/posts/pfbid02hFnZ8anyfKpMpRgpFEr3YW4bMmwqKcTGFLCnNHJroTMFJyrvScr4X7opqAZmJKuBl,https://www.facebook.com/monicavtampico/posts/pfbid02hFnZ8anyfKpMpRgpFEr3YW4bMmwqKcTGFLCnNHJroTMFJyrvScr4X7opqAZmJKuBl?comment_id=1874260836557660,2026-03-21T13:34:45+00:00,2026-03-24,💯💯💯👏🏻👏🏻,"Esta mañana Asisití al IV Foro Estatal del Agua: “Agua, motor de desarrollo en Tamaulipas”, un espacio donde gobierno, industria y sociedad suman esfuerzos por el futuro de nuestra región.
+
+Durante este foro escuchamos propuestas como la economía circular con soluciones concretas, la irrigación regenerativa, el reúso de aguas y el proyecto Génesis impulsado por la Secretaría de Recursos Hidráulicos para el Desarrollo Social y AISTAC.
+
+Como sociedad, nos toca corresponder a este esfuerzo: cuidar el agua, hacer un uso responsable y participar activamente en su preservación.
+
+En Tampico seguimos trabajando con responsabilidad y visión a futuro, porque garantizar el agua es garantizar la vida de las próximas generaciones.
+
+#TampicoVaConTodos
+#TampicoTeCuida",32.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,19,3,saved,,,42,True,5,4,25,6,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1508893380800551,1570359597995193,1508893380800551,comment,https://www.facebook.com/monicavtampico/posts/pfbid02hFnZ8anyfKpMpRgpFEr3YW4bMmwqKcTGFLCnNHJroTMFJyrvScr4X7opqAZmJKuBl,https://www.facebook.com/monicavtampico/posts/pfbid02hFnZ8anyfKpMpRgpFEr3YW4bMmwqKcTGFLCnNHJroTMFJyrvScr4X7opqAZmJKuBl?comment_id=1570359597995193,2026-03-21T04:25:37+00:00,2026-03-24,PRODUCTOS PERSONALIZADOS ✨ PuntadArt,"Esta mañana Asisití al IV Foro Estatal del Agua: “Agua, motor de desarrollo en Tamaulipas”, un espacio donde gobierno, industria y sociedad suman esfuerzos por el futuro de nuestra región.
+
+Durante este foro escuchamos propuestas como la economía circular con soluciones concretas, la irrigación regenerativa, el reúso de aguas y el proyecto Génesis impulsado por la Secretaría de Recursos Hidráulicos para el Desarrollo Social y AISTAC.
+
+Como sociedad, nos toca corresponder a este esfuerzo: cuidar el agua, hacer un uso responsable y participar activamente en su preservación.
+
+En Tampico seguimos trabajando con responsabilidad y visión a futuro, porque garantizar el agua es garantizar la vida de las próximas generaciones.
+
+#TampicoVaConTodos
+#TampicoTeCuida",32.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,20,4,saved,,,42,True,5,4,25,6,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1508893380800551,3137767956425122,1508893380800551,comment,https://www.facebook.com/monicavtampico/posts/pfbid02hFnZ8anyfKpMpRgpFEr3YW4bMmwqKcTGFLCnNHJroTMFJyrvScr4X7opqAZmJKuBl,https://www.facebook.com/monicavtampico/posts/pfbid02hFnZ8anyfKpMpRgpFEr3YW4bMmwqKcTGFLCnNHJroTMFJyrvScr4X7opqAZmJKuBl?comment_id=3137767956425122,2026-03-20T16:53:42+00:00,2026-03-24,Eventazo 💯,"Esta mañana Asisití al IV Foro Estatal del Agua: “Agua, motor de desarrollo en Tamaulipas”, un espacio donde gobierno, industria y sociedad suman esfuerzos por el futuro de nuestra región.
+
+Durante este foro escuchamos propuestas como la economía circular con soluciones concretas, la irrigación regenerativa, el reúso de aguas y el proyecto Génesis impulsado por la Secretaría de Recursos Hidráulicos para el Desarrollo Social y AISTAC.
+
+Como sociedad, nos toca corresponder a este esfuerzo: cuidar el agua, hacer un uso responsable y participar activamente en su preservación.
+
+En Tampico seguimos trabajando con responsabilidad y visión a futuro, porque garantizar el agua es garantizar la vida de las próximas generaciones.
+
+#TampicoVaConTodos
+#TampicoTeCuida",32.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,21,5,saved,,,42,True,5,4,25,6,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1508893380800551,2321331288358582,1508893380800551,comment,https://www.facebook.com/monicavtampico/posts/pfbid02hFnZ8anyfKpMpRgpFEr3YW4bMmwqKcTGFLCnNHJroTMFJyrvScr4X7opqAZmJKuBl,https://www.facebook.com/monicavtampico/posts/pfbid02hFnZ8anyfKpMpRgpFEr3YW4bMmwqKcTGFLCnNHJroTMFJyrvScr4X7opqAZmJKuBl?comment_id=2321331288358582,2026-03-20T05:05:48+00:00,2026-03-24,Excelente Alcaldesa🌹,"Esta mañana Asisití al IV Foro Estatal del Agua: “Agua, motor de desarrollo en Tamaulipas”, un espacio donde gobierno, industria y sociedad suman esfuerzos por el futuro de nuestra región.
+
+Durante este foro escuchamos propuestas como la economía circular con soluciones concretas, la irrigación regenerativa, el reúso de aguas y el proyecto Génesis impulsado por la Secretaría de Recursos Hidráulicos para el Desarrollo Social y AISTAC.
+
+Como sociedad, nos toca corresponder a este esfuerzo: cuidar el agua, hacer un uso responsable y participar activamente en su preservación.
+
+En Tampico seguimos trabajando con responsabilidad y visión a futuro, porque garantizar el agua es garantizar la vida de las próximas generaciones.
+
+#TampicoVaConTodos
+#TampicoTeCuida",32.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,22,6,saved,,,42,True,5,4,25,6,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1507512864271936,1301768038807343,1507512864271936,comment,https://www.facebook.com/reel/1429893698802924/,https://www.facebook.com/reel/1429893698802924/?comment_id=1301768038807343,2026-03-21T16:28:12+00:00,2026-03-24,Que bello quedó,"Esta tarde inauguramos el gran trabajo de rehabilitación del parque Baby Pérez en la colonia Jesús Elías Piña.
+
+#TampicoVaconTodos.
+#TampicoteCuida.",42.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,23,1,saved,,,42,True,4,5,25,6,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1507512864271936,1698585477971181,1507512864271936,comment,https://www.facebook.com/reel/1429893698802924/,https://www.facebook.com/reel/1429893698802924/?comment_id=1698585477971181,2026-03-19T15:51:17+00:00,2026-03-24,Muy merecido.... Quedó muy bonito el Parque,"Esta tarde inauguramos el gran trabajo de rehabilitación del parque Baby Pérez en la colonia Jesús Elías Piña.
+
+#TampicoVaconTodos.
+#TampicoteCuida.",42.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,24,2,saved,,,42,True,4,5,25,6,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1507512864271936,1266308161577807,1507512864271936,comment,https://www.facebook.com/reel/1429893698802924/,https://www.facebook.com/reel/1429893698802924/?comment_id=1266308161577807,2026-03-19T04:03:48+00:00,2026-03-24,"Excelente corte de listón para un excelente parque 🎉, ahora a disfrutar y cuidar nuestro Baby Pérez. 🥳","Esta tarde inauguramos el gran trabajo de rehabilitación del parque Baby Pérez en la colonia Jesús Elías Piña.
+
+#TampicoVaconTodos.
+#TampicoteCuida.",42.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,25,3,saved,,,42,True,4,5,25,6,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1507512864271936,1406534447938540,1507512864271936,comment,https://www.facebook.com/reel/1429893698802924/,https://www.facebook.com/reel/1429893698802924/?comment_id=1406534447938540,2026-03-18T19:03:59+00:00,2026-03-24,Gracias por hacer su trabajo presi,"Esta tarde inauguramos el gran trabajo de rehabilitación del parque Baby Pérez en la colonia Jesús Elías Piña.
+
+#TampicoVaconTodos.
+#TampicoteCuida.",42.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,26,4,saved,,,42,True,4,5,25,6,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1507512864271936,1285101637136037,1507512864271936,comment,https://www.facebook.com/reel/1429893698802924/,https://www.facebook.com/reel/1429893698802924/?comment_id=1285101637136037,2026-03-18T16:03:31+00:00,2026-03-24,Muchas felicidades!.,"Esta tarde inauguramos el gran trabajo de rehabilitación del parque Baby Pérez en la colonia Jesús Elías Piña.
+
+#TampicoVaconTodos.
+#TampicoteCuida.",42.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,27,5,saved,,,42,True,4,5,25,6,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1507512864271936,4199292133734965,1507512864271936,comment,https://www.facebook.com/reel/1429893698802924/,https://www.facebook.com/reel/1429893698802924/?comment_id=4199292133734965,2026-03-18T15:03:24+00:00,2026-03-24,Súper bien!!!,"Esta tarde inauguramos el gran trabajo de rehabilitación del parque Baby Pérez en la colonia Jesús Elías Piña.
+
+#TampicoVaconTodos.
+#TampicoteCuida.",42.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,28,6,saved,,,42,True,4,5,25,6,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1507217994301423,813828485073283,1507217994301423,comment,https://www.facebook.com/monicavtampico/posts/pfbid02oRtMM8ZynST5iCpNuetYAVJnR2BMRxHXziu9vP8ctgfoFBn1arzzHyJqjPmm9E3ql,https://www.facebook.com/monicavtampico/posts/pfbid02oRtMM8ZynST5iCpNuetYAVJnR2BMRxHXziu9vP8ctgfoFBn1arzzHyJqjPmm9E3ql?comment_id=813828485073283,2026-03-18T13:52:40+00:00,2026-03-24,Importante actividad!,"Asistí a la reunión de la Mesa de Paz en Altamira, un espacio fundamental para fortalecer la coordinación entre autoridades y dar continuidad a las acciones que contribuyen a la seguridad en la zona sur de Tamaulipas.
+
+En este marco, también se realizó el banderazo del programa “Heroínas y Héroes Paisanos”, Operativo Especial Semana Santa 2026, con el objetivo de brindar atención, orientación y seguridad a quienes transitan por nuestra región.
+
+Contamos con la participación de representantes de los tres órdenes de gobierno, con quienes trabajamos de manera conjunta en favor de la ciudadanía.
+
+Reafirmo mi compromiso de seguir sumando esfuerzos, con responsabilidad y diálogo, para brindar mayor tranquilidad a las familias de nuestra región.",27.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,29,1,saved,,,42,True,3,6,25,4,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1507217994301423,1504940450963551,1507217994301423,comment,https://www.facebook.com/monicavtampico/posts/pfbid02oRtMM8ZynST5iCpNuetYAVJnR2BMRxHXziu9vP8ctgfoFBn1arzzHyJqjPmm9E3ql,https://www.facebook.com/monicavtampico/posts/pfbid02oRtMM8ZynST5iCpNuetYAVJnR2BMRxHXziu9vP8ctgfoFBn1arzzHyJqjPmm9E3ql?comment_id=1504940450963551,2026-03-18T10:11:01+00:00,2026-03-24,Excelente Laborrrr,"Asistí a la reunión de la Mesa de Paz en Altamira, un espacio fundamental para fortalecer la coordinación entre autoridades y dar continuidad a las acciones que contribuyen a la seguridad en la zona sur de Tamaulipas.
+
+En este marco, también se realizó el banderazo del programa “Heroínas y Héroes Paisanos”, Operativo Especial Semana Santa 2026, con el objetivo de brindar atención, orientación y seguridad a quienes transitan por nuestra región.
+
+Contamos con la participación de representantes de los tres órdenes de gobierno, con quienes trabajamos de manera conjunta en favor de la ciudadanía.
+
+Reafirmo mi compromiso de seguir sumando esfuerzos, con responsabilidad y diálogo, para brindar mayor tranquilidad a las familias de nuestra región.",27.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,30,2,saved,,,42,True,3,6,25,4,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1507217994301423,788486704323382,1507217994301423,comment,https://www.facebook.com/monicavtampico/posts/pfbid02oRtMM8ZynST5iCpNuetYAVJnR2BMRxHXziu9vP8ctgfoFBn1arzzHyJqjPmm9E3ql,https://www.facebook.com/monicavtampico/posts/pfbid02oRtMM8ZynST5iCpNuetYAVJnR2BMRxHXziu9vP8ctgfoFBn1arzzHyJqjPmm9E3ql?comment_id=788486704323382,2026-03-17T21:54:25+00:00,2026-03-17,"Excelente inicio de semana, saludos y Bendiciones.","Asistí a la reunión de la Mesa de Paz en Altamira, un espacio fundamental para fortalecer la coordinación entre autoridades y dar continuidad a las acciones que contribuyen a la seguridad en la zona sur de Tamaulipas.
+
+En este marco, también se realizó el banderazo del programa “Heroínas y Héroes Paisanos”, Operativo Especial Semana Santa 2026, con el objetivo de brindar atención, orientación y seguridad a quienes transitan por nuestra región.
+
+Contamos con la participación de representantes de los tres órdenes de gobierno, con quienes trabajamos de manera conjunta en favor de la ciudadanía.
+
+Reafirmo mi compromiso de seguir sumando esfuerzos, con responsabilidad y diálogo, para brindar mayor tranquilidad a las familias de nuestra región.",27.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,31,3,saved,,,42,True,3,6,25,4,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1507217994301423,2361327771037284,1507217994301423,comment,https://www.facebook.com/monicavtampico/posts/pfbid02oRtMM8ZynST5iCpNuetYAVJnR2BMRxHXziu9vP8ctgfoFBn1arzzHyJqjPmm9E3ql,https://www.facebook.com/monicavtampico/posts/pfbid02oRtMM8ZynST5iCpNuetYAVJnR2BMRxHXziu9vP8ctgfoFBn1arzzHyJqjPmm9E3ql?comment_id=2361327771037284,2026-03-17T19:16:16+00:00,2026-03-17,"feliz y productiva semana Alcaldesa, saludos cordiales","Asistí a la reunión de la Mesa de Paz en Altamira, un espacio fundamental para fortalecer la coordinación entre autoridades y dar continuidad a las acciones que contribuyen a la seguridad en la zona sur de Tamaulipas.
+
+En este marco, también se realizó el banderazo del programa “Heroínas y Héroes Paisanos”, Operativo Especial Semana Santa 2026, con el objetivo de brindar atención, orientación y seguridad a quienes transitan por nuestra región.
+
+Contamos con la participación de representantes de los tres órdenes de gobierno, con quienes trabajamos de manera conjunta en favor de la ciudadanía.
+
+Reafirmo mi compromiso de seguir sumando esfuerzos, con responsabilidad y diálogo, para brindar mayor tranquilidad a las familias de nuestra región.",27.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,32,4,saved,,,42,True,3,6,25,4,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1506520287704527,915096874754666,1506520287704527,comment,https://www.facebook.com/monicavtampico/posts/pfbid0bcGPa1F2uvhuKrdkzQ9WGR2Axai8Fr4mT96X9ArGqiptBnRhXS3ygyK1APN9kuXfl,https://www.facebook.com/monicavtampico/posts/pfbid0bcGPa1F2uvhuKrdkzQ9WGR2Axai8Fr4mT96X9ArGqiptBnRhXS3ygyK1APN9kuXfl?comment_id=915096874754666,2026-03-18T22:07:27+00:00,2026-03-24,"Excelente trabajo de un Gobierno Humanista comprometido con los Tampiqueños desde el primer día, continúen así.",,27.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,33,1,saved,,,42,True,2,7,25,5,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1506520287704527,1265338714925785,1506520287704527,comment,https://www.facebook.com/monicavtampico/posts/pfbid0bcGPa1F2uvhuKrdkzQ9WGR2Axai8Fr4mT96X9ArGqiptBnRhXS3ygyK1APN9kuXfl,https://www.facebook.com/monicavtampico/posts/pfbid0bcGPa1F2uvhuKrdkzQ9WGR2Axai8Fr4mT96X9ArGqiptBnRhXS3ygyK1APN9kuXfl?comment_id=1265338714925785,2026-03-18T15:51:59+00:00,2026-03-24,Tampico te cuida ❤️,,27.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,34,2,saved,,,42,True,2,7,25,5,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1506520287704527,2477710362689115,1506520287704527,comment,https://www.facebook.com/monicavtampico/posts/pfbid0bcGPa1F2uvhuKrdkzQ9WGR2Axai8Fr4mT96X9ArGqiptBnRhXS3ygyK1APN9kuXfl,https://www.facebook.com/monicavtampico/posts/pfbid0bcGPa1F2uvhuKrdkzQ9WGR2Axai8Fr4mT96X9ArGqiptBnRhXS3ygyK1APN9kuXfl?comment_id=2477710362689115,2026-03-17T18:26:29+00:00,2026-03-17,"""¡Seguimos trabajando! Bajo la coordinación de la presidenta municipal, nuestro equipo de Protección Civil, Bomberos, Servicios Públicos, obras públicas y Tránsito y Vialidad continúa apoyando a la ciudadanía.",,27.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,35,3,saved,,,42,True,2,7,25,5,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1506520287704527,2398034197380207,1506520287704527,comment,https://www.facebook.com/monicavtampico/posts/pfbid0bcGPa1F2uvhuKrdkzQ9WGR2Axai8Fr4mT96X9ArGqiptBnRhXS3ygyK1APN9kuXfl,https://www.facebook.com/monicavtampico/posts/pfbid0bcGPa1F2uvhuKrdkzQ9WGR2Axai8Fr4mT96X9ArGqiptBnRhXS3ygyK1APN9kuXfl?comment_id=2398034197380207,2026-03-17T17:16:38+00:00,2026-03-17,Buen trabajo,,27.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,36,4,saved,,,42,True,2,7,25,5,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1506520287704527,908265635519340,1506520287704527,comment,https://www.facebook.com/monicavtampico/posts/pfbid0bcGPa1F2uvhuKrdkzQ9WGR2Axai8Fr4mT96X9ArGqiptBnRhXS3ygyK1APN9kuXfl,https://www.facebook.com/monicavtampico/posts/pfbid0bcGPa1F2uvhuKrdkzQ9WGR2Axai8Fr4mT96X9ArGqiptBnRhXS3ygyK1APN9kuXfl?comment_id=908265635519340,2026-03-17T13:30:54+00:00,2026-03-17,Muy bien,,27.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,37,5,saved,,,42,True,2,7,25,5,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1505912757765280,1293008272735585,1505912757765280,comment,https://www.facebook.com/monicavtampico/posts/pfbid0EzrQpqZ4pWoqCaUzQ4EDKCCVv3749SCpXH4D8NdsyDYErCSBKt8Jx1tTK2h5Tu3ql,https://www.facebook.com/monicavtampico/posts/pfbid0EzrQpqZ4pWoqCaUzQ4EDKCCVv3749SCpXH4D8NdsyDYErCSBKt8Jx1tTK2h5Tu3ql?comment_id=1293008272735585,2026-03-18T15:50:25+00:00,2026-03-24,Excelente obra y muy emotiva ❤️❤️❤️,"Hoy vivimos un momento muy especial en el Parque Lineal del Puente Tampico con la presentación de la obra testimonial “Las Despicadoras del Oro Rojo”, un homenaje lleno de orgullo para las mujeres que, con su trabajo y esfuerzo, han sostenido por generaciones una actividad que forma parte de la identidad de nuestro puerto. 🦐
+
+Fue muy emotivo ver a muchas de las propias despicadoras arriba del escenario, compartiendo su historia a través del arte, acompañadas por más de 400 artistas que hicieron posible esta gran producción.
+
+Me dio mucho gusto acompañar al gobernador, Dr. Américo Villarreal Anaya, a la presidenta del DIF Tamaulipas, Dra. María de Villarreal, y a la presidenta del DIF Tampico, Luz Adriana Villarreal Anaya. Además, se entregó equipamiento como playeras, delantales y botas para apoyar y fortalecer las condiciones en las que realizan su importante labor.
+
+En Tampico vamos a seguir reconociendo su historia, dignificando su trabajo y abriendo más oportunidades para su bienestar.
+
+#TampicoVaConTodos
+#TampicoTeCuida",92.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,38,1,saved,,,42,True,1,8,25,10,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1505912757765280,919878130777820,1505912757765280,comment,https://www.facebook.com/monicavtampico/posts/pfbid0EzrQpqZ4pWoqCaUzQ4EDKCCVv3749SCpXH4D8NdsyDYErCSBKt8Jx1tTK2h5Tu3ql,https://www.facebook.com/monicavtampico/posts/pfbid0EzrQpqZ4pWoqCaUzQ4EDKCCVv3749SCpXH4D8NdsyDYErCSBKt8Jx1tTK2h5Tu3ql?comment_id=919878130777820,2026-03-18T03:18:00+00:00,2026-03-24,Padrísimo realce a las despicadoras!!!,"Hoy vivimos un momento muy especial en el Parque Lineal del Puente Tampico con la presentación de la obra testimonial “Las Despicadoras del Oro Rojo”, un homenaje lleno de orgullo para las mujeres que, con su trabajo y esfuerzo, han sostenido por generaciones una actividad que forma parte de la identidad de nuestro puerto. 🦐
+
+Fue muy emotivo ver a muchas de las propias despicadoras arriba del escenario, compartiendo su historia a través del arte, acompañadas por más de 400 artistas que hicieron posible esta gran producción.
+
+Me dio mucho gusto acompañar al gobernador, Dr. Américo Villarreal Anaya, a la presidenta del DIF Tamaulipas, Dra. María de Villarreal, y a la presidenta del DIF Tampico, Luz Adriana Villarreal Anaya. Además, se entregó equipamiento como playeras, delantales y botas para apoyar y fortalecer las condiciones en las que realizan su importante labor.
+
+En Tampico vamos a seguir reconociendo su historia, dignificando su trabajo y abriendo más oportunidades para su bienestar.
+
+#TampicoVaConTodos
+#TampicoTeCuida",92.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,39,2,saved,,,42,True,1,8,25,10,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1505912757765280,824258716601669,1505912757765280,comment,https://www.facebook.com/monicavtampico/posts/pfbid0EzrQpqZ4pWoqCaUzQ4EDKCCVv3749SCpXH4D8NdsyDYErCSBKt8Jx1tTK2h5Tu3ql,https://www.facebook.com/monicavtampico/posts/pfbid0EzrQpqZ4pWoqCaUzQ4EDKCCVv3749SCpXH4D8NdsyDYErCSBKt8Jx1tTK2h5Tu3ql?comment_id=824258716601669,2026-03-18T00:23:56+00:00,2026-03-24,Enhorabuena gran evento!!,"Hoy vivimos un momento muy especial en el Parque Lineal del Puente Tampico con la presentación de la obra testimonial “Las Despicadoras del Oro Rojo”, un homenaje lleno de orgullo para las mujeres que, con su trabajo y esfuerzo, han sostenido por generaciones una actividad que forma parte de la identidad de nuestro puerto. 🦐
+
+Fue muy emotivo ver a muchas de las propias despicadoras arriba del escenario, compartiendo su historia a través del arte, acompañadas por más de 400 artistas que hicieron posible esta gran producción.
+
+Me dio mucho gusto acompañar al gobernador, Dr. Américo Villarreal Anaya, a la presidenta del DIF Tamaulipas, Dra. María de Villarreal, y a la presidenta del DIF Tampico, Luz Adriana Villarreal Anaya. Además, se entregó equipamiento como playeras, delantales y botas para apoyar y fortalecer las condiciones en las que realizan su importante labor.
+
+En Tampico vamos a seguir reconociendo su historia, dignificando su trabajo y abriendo más oportunidades para su bienestar.
+
+#TampicoVaConTodos
+#TampicoTeCuida",92.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,40,3,saved,,,42,True,1,8,25,10,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1505912757765280,965571376129752,1505912757765280,comment,https://www.facebook.com/monicavtampico/posts/pfbid0EzrQpqZ4pWoqCaUzQ4EDKCCVv3749SCpXH4D8NdsyDYErCSBKt8Jx1tTK2h5Tu3ql,https://www.facebook.com/monicavtampico/posts/pfbid0EzrQpqZ4pWoqCaUzQ4EDKCCVv3749SCpXH4D8NdsyDYErCSBKt8Jx1tTK2h5Tu3ql?comment_id=965571376129752,2026-03-17T19:32:36+00:00,2026-03-17,"Deben de darles un reconocimiento en efectivo, les servirá de aliciente para llevar algo a sus familias, ya que su paga es una miseria abusan de las necesidades de todas ellas las empresas que las contratan!.","Hoy vivimos un momento muy especial en el Parque Lineal del Puente Tampico con la presentación de la obra testimonial “Las Despicadoras del Oro Rojo”, un homenaje lleno de orgullo para las mujeres que, con su trabajo y esfuerzo, han sostenido por generaciones una actividad que forma parte de la identidad de nuestro puerto. 🦐
+
+Fue muy emotivo ver a muchas de las propias despicadoras arriba del escenario, compartiendo su historia a través del arte, acompañadas por más de 400 artistas que hicieron posible esta gran producción.
+
+Me dio mucho gusto acompañar al gobernador, Dr. Américo Villarreal Anaya, a la presidenta del DIF Tamaulipas, Dra. María de Villarreal, y a la presidenta del DIF Tampico, Luz Adriana Villarreal Anaya. Además, se entregó equipamiento como playeras, delantales y botas para apoyar y fortalecer las condiciones en las que realizan su importante labor.
+
+En Tampico vamos a seguir reconociendo su historia, dignificando su trabajo y abriendo más oportunidades para su bienestar.
+
+#TampicoVaConTodos
+#TampicoTeCuida",92.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,41,4,saved,,,42,True,1,8,25,10,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1505912757765280,1587962638923498,1505912757765280,comment,https://www.facebook.com/monicavtampico/posts/pfbid0EzrQpqZ4pWoqCaUzQ4EDKCCVv3749SCpXH4D8NdsyDYErCSBKt8Jx1tTK2h5Tu3ql,https://www.facebook.com/monicavtampico/posts/pfbid0EzrQpqZ4pWoqCaUzQ4EDKCCVv3749SCpXH4D8NdsyDYErCSBKt8Jx1tTK2h5Tu3ql?comment_id=1587962638923498,2026-03-17T17:17:16+00:00,2026-03-17,👏🏻👏🏻👏🏻👏🏻,"Hoy vivimos un momento muy especial en el Parque Lineal del Puente Tampico con la presentación de la obra testimonial “Las Despicadoras del Oro Rojo”, un homenaje lleno de orgullo para las mujeres que, con su trabajo y esfuerzo, han sostenido por generaciones una actividad que forma parte de la identidad de nuestro puerto. 🦐
+
+Fue muy emotivo ver a muchas de las propias despicadoras arriba del escenario, compartiendo su historia a través del arte, acompañadas por más de 400 artistas que hicieron posible esta gran producción.
+
+Me dio mucho gusto acompañar al gobernador, Dr. Américo Villarreal Anaya, a la presidenta del DIF Tamaulipas, Dra. María de Villarreal, y a la presidenta del DIF Tampico, Luz Adriana Villarreal Anaya. Además, se entregó equipamiento como playeras, delantales y botas para apoyar y fortalecer las condiciones en las que realizan su importante labor.
+
+En Tampico vamos a seguir reconociendo su historia, dignificando su trabajo y abriendo más oportunidades para su bienestar.
+
+#TampicoVaConTodos
+#TampicoTeCuida",92.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,42,5,saved,,,42,True,1,8,25,10,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1505912757765280,2200249374078673,1505912757765280,comment,https://www.facebook.com/monicavtampico/posts/pfbid0EzrQpqZ4pWoqCaUzQ4EDKCCVv3749SCpXH4D8NdsyDYErCSBKt8Jx1tTK2h5Tu3ql,https://www.facebook.com/monicavtampico/posts/pfbid0EzrQpqZ4pWoqCaUzQ4EDKCCVv3749SCpXH4D8NdsyDYErCSBKt8Jx1tTK2h5Tu3ql?comment_id=2200249374078673,2026-03-17T15:13:24+00:00,2026-03-17,"Excelente obra de vida.  Reconocer a mujeres que rua a día trabajan incansablemente.    Las despicadoras.  Un orgullo de mujeres guerreras, lechonas.   Mi reconocimiento. Admiración.    Gracias Dra Luz Adriana Villarreal por su excelente trabajo 💜💜","Hoy vivimos un momento muy especial en el Parque Lineal del Puente Tampico con la presentación de la obra testimonial “Las Despicadoras del Oro Rojo”, un homenaje lleno de orgullo para las mujeres que, con su trabajo y esfuerzo, han sostenido por generaciones una actividad que forma parte de la identidad de nuestro puerto. 🦐
+
+Fue muy emotivo ver a muchas de las propias despicadoras arriba del escenario, compartiendo su historia a través del arte, acompañadas por más de 400 artistas que hicieron posible esta gran producción.
+
+Me dio mucho gusto acompañar al gobernador, Dr. Américo Villarreal Anaya, a la presidenta del DIF Tamaulipas, Dra. María de Villarreal, y a la presidenta del DIF Tampico, Luz Adriana Villarreal Anaya. Además, se entregó equipamiento como playeras, delantales y botas para apoyar y fortalecer las condiciones en las que realizan su importante labor.
+
+En Tampico vamos a seguir reconociendo su historia, dignificando su trabajo y abriendo más oportunidades para su bienestar.
+
+#TampicoVaConTodos
+#TampicoTeCuida",92.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,43,6,saved,,,42,True,1,8,25,10,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1505912757765280,1481675726861789,1505912757765280,comment,https://www.facebook.com/monicavtampico/posts/pfbid0EzrQpqZ4pWoqCaUzQ4EDKCCVv3749SCpXH4D8NdsyDYErCSBKt8Jx1tTK2h5Tu3ql,https://www.facebook.com/monicavtampico/posts/pfbid0EzrQpqZ4pWoqCaUzQ4EDKCCVv3749SCpXH4D8NdsyDYErCSBKt8Jx1tTK2h5Tu3ql?comment_id=1481675726861789,2026-03-17T04:54:13+00:00,2026-03-17,"El arte, cultura con testimonio real de las despicadoras nos conmovieron con esta presentación. Enhorabuena para nuestra alcaldesa y nuestra presidenta de DIF Tampico .","Hoy vivimos un momento muy especial en el Parque Lineal del Puente Tampico con la presentación de la obra testimonial “Las Despicadoras del Oro Rojo”, un homenaje lleno de orgullo para las mujeres que, con su trabajo y esfuerzo, han sostenido por generaciones una actividad que forma parte de la identidad de nuestro puerto. 🦐
+
+Fue muy emotivo ver a muchas de las propias despicadoras arriba del escenario, compartiendo su historia a través del arte, acompañadas por más de 400 artistas que hicieron posible esta gran producción.
+
+Me dio mucho gusto acompañar al gobernador, Dr. Américo Villarreal Anaya, a la presidenta del DIF Tamaulipas, Dra. María de Villarreal, y a la presidenta del DIF Tampico, Luz Adriana Villarreal Anaya. Además, se entregó equipamiento como playeras, delantales y botas para apoyar y fortalecer las condiciones en las que realizan su importante labor.
+
+En Tampico vamos a seguir reconociendo su historia, dignificando su trabajo y abriendo más oportunidades para su bienestar.
+
+#TampicoVaConTodos
+#TampicoTeCuida",92.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,44,7,saved,,,42,True,1,8,25,10,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1505912757765280,1457422929507277,1505912757765280,comment,https://www.facebook.com/monicavtampico/posts/pfbid0EzrQpqZ4pWoqCaUzQ4EDKCCVv3749SCpXH4D8NdsyDYErCSBKt8Jx1tTK2h5Tu3ql,https://www.facebook.com/monicavtampico/posts/pfbid0EzrQpqZ4pWoqCaUzQ4EDKCCVv3749SCpXH4D8NdsyDYErCSBKt8Jx1tTK2h5Tu3ql?comment_id=1457422929507277,2026-03-17T03:39:22+00:00,2026-03-17,"Todo,un,éxito saludos cordiales para todos ustedes y muchas Bendiciones","Hoy vivimos un momento muy especial en el Parque Lineal del Puente Tampico con la presentación de la obra testimonial “Las Despicadoras del Oro Rojo”, un homenaje lleno de orgullo para las mujeres que, con su trabajo y esfuerzo, han sostenido por generaciones una actividad que forma parte de la identidad de nuestro puerto. 🦐
+
+Fue muy emotivo ver a muchas de las propias despicadoras arriba del escenario, compartiendo su historia a través del arte, acompañadas por más de 400 artistas que hicieron posible esta gran producción.
+
+Me dio mucho gusto acompañar al gobernador, Dr. Américo Villarreal Anaya, a la presidenta del DIF Tamaulipas, Dra. María de Villarreal, y a la presidenta del DIF Tampico, Luz Adriana Villarreal Anaya. Además, se entregó equipamiento como playeras, delantales y botas para apoyar y fortalecer las condiciones en las que realizan su importante labor.
+
+En Tampico vamos a seguir reconociendo su historia, dignificando su trabajo y abriendo más oportunidades para su bienestar.
+
+#TampicoVaConTodos
+#TampicoTeCuida",92.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,45,8,saved,,,42,True,1,8,25,10,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1505912757765280,1693194641844769,1505912757765280,comment,https://www.facebook.com/monicavtampico/posts/pfbid0EzrQpqZ4pWoqCaUzQ4EDKCCVv3749SCpXH4D8NdsyDYErCSBKt8Jx1tTK2h5Tu3ql,https://www.facebook.com/monicavtampico/posts/pfbid0EzrQpqZ4pWoqCaUzQ4EDKCCVv3749SCpXH4D8NdsyDYErCSBKt8Jx1tTK2h5Tu3ql?comment_id=1693194641844769,2026-03-17T02:37:15+00:00,2026-03-17,"Increíble, realista y muy emotiva.","Hoy vivimos un momento muy especial en el Parque Lineal del Puente Tampico con la presentación de la obra testimonial “Las Despicadoras del Oro Rojo”, un homenaje lleno de orgullo para las mujeres que, con su trabajo y esfuerzo, han sostenido por generaciones una actividad que forma parte de la identidad de nuestro puerto. 🦐
+
+Fue muy emotivo ver a muchas de las propias despicadoras arriba del escenario, compartiendo su historia a través del arte, acompañadas por más de 400 artistas que hicieron posible esta gran producción.
+
+Me dio mucho gusto acompañar al gobernador, Dr. Américo Villarreal Anaya, a la presidenta del DIF Tamaulipas, Dra. María de Villarreal, y a la presidenta del DIF Tampico, Luz Adriana Villarreal Anaya. Además, se entregó equipamiento como playeras, delantales y botas para apoyar y fortalecer las condiciones en las que realizan su importante labor.
+
+En Tampico vamos a seguir reconociendo su historia, dignificando su trabajo y abriendo más oportunidades para su bienestar.
+
+#TampicoVaConTodos
+#TampicoTeCuida",92.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,46,9,saved,,,42,True,1,8,25,10,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,964877296876825,MonicaVillarreal,1505912757765280,1280851897506994,1505912757765280,comment,https://www.facebook.com/monicavtampico/posts/pfbid0EzrQpqZ4pWoqCaUzQ4EDKCCVv3749SCpXH4D8NdsyDYErCSBKt8Jx1tTK2h5Tu3ql,https://www.facebook.com/monicavtampico/posts/pfbid0EzrQpqZ4pWoqCaUzQ4EDKCCVv3749SCpXH4D8NdsyDYErCSBKt8Jx1tTK2h5Tu3ql?comment_id=1280851897506994,2026-03-16T21:15:59+00:00,2026-03-17,Una inolvidable experiencia.,"Hoy vivimos un momento muy especial en el Parque Lineal del Puente Tampico con la presentación de la obra testimonial “Las Despicadoras del Oro Rojo”, un homenaje lleno de orgullo para las mujeres que, con su trabajo y esfuerzo, han sostenido por generaciones una actividad que forma parte de la identidad de nuestro puerto. 🦐
+
+Fue muy emotivo ver a muchas de las propias despicadoras arriba del escenario, compartiendo su historia a través del arte, acompañadas por más de 400 artistas que hicieron posible esta gran producción.
+
+Me dio mucho gusto acompañar al gobernador, Dr. Américo Villarreal Anaya, a la presidenta del DIF Tamaulipas, Dra. María de Villarreal, y a la presidenta del DIF Tampico, Luz Adriana Villarreal Anaya. Además, se entregó equipamiento como playeras, delantales y botas para apoyar y fortalecer las condiciones en las que realizan su importante labor.
+
+En Tampico vamos a seguir reconociendo su historia, dignificando su trabajo y abriendo más oportunidades para su bienestar.
+
+#TampicoVaConTodos
+#TampicoTeCuida",92.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,47,10,saved,,,42,True,1,8,25,10,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122196264908546197,,,post_parent,https://www.facebook.com/TampicoGob/posts/pfbid031jnvjyGiY5QoVTBRNRPt2cw3Y6RPrfgEwbxVSdbaVTfqjaRXwzAVkqK6DDdUoMJ8l,,2026-03-16T14:50:29+00:00,2026-03-17,"Desde tempranas horas y por instrucciones de nuestra Presidenta Municipal,Mónica Villarreal, personal de la Dirección de Protección Civil Tampico, Bomberos, Servicios Públicos y Tránsito y Vialidad se encuentra atendiendo las diferentes solicitudes derivadas del evento meteorológico de “norte explosivo”. 🌬️⚠️
+
+Nuestro equipo permanece desplegado en distintos puntos de la ciudad trabajando para salvaguardar la seguridad de la ciudadanía.
+
+Invitamos a la población a reportar cualquier situación de riesgo o emergencia a los teléfonos 833 305 2624, 833 305 2625 o al 911.  📞","Desde tempranas horas y por instrucciones de nuestra Presidenta Municipal,Mónica Villarreal, personal de la Dirección de Protección Civil Tampico, Bomberos, Servicios Públicos y Tránsito y Vialidad se encuentra atendiendo las diferentes solicitudes derivadas del evento meteorológico de “norte explosivo”. 🌬️⚠️
+
+Nuestro equipo permanece desplegado en distintos puntos de la ciudad trabajando para salvaguardar la seguridad de la ciudadanía.
+
+Invitamos a la población a reportar cualquier situación de riesgo o emergencia a los teléfonos 833 305 2624, 833 305 2625 o al 911.  📞",26.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,1,,selected_post_with_comments,,,42,True,1,8,25,10,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122211786170572451,,,post_parent,https://www.facebook.com/DireccionSaludTampico/posts/pfbid0vFEAa1cHv86X3DKNEGWHwwxwzbqfEkGjrKrCHQMKzD3mUsgsUuou1pTHmTtNJZe8l,,2026-03-18T15:19:58+00:00,2026-03-24,"Bajo el liderazgo de nuestra presidenta municipal, Lic. Mónica Villarreal, y gracias a la coordinación entre el DIF Tampico, la Dirección de Salud, el Distrito de Salud del Bienestar No. 2 y IMSS-Bienestar, invitamos a la población en general y a las personas que viven con diabetes a participar en esta Jornada de Prevención y Control en Diabetes y Vacunación, que se llevará a cabo en CECODIAT Borreguera.
+
+Durante esta jornada se realizarán tomas gratuitas de hemoglobina glucosilada, en coordinación con el Distrito de Salud del Bienestar No. 2, con el objetivo de apoyar en la detección y control de la diabetes. Asimismo, se contará con un módulo de vacunación, donde se aplicarán vacunas contra sarampión, tétanos, influenza y neumococo.
+
+📅 Jueves 19 de marzo
+🕘 9:00 a.m. a 2:00 p.m.
+📍 CECODIAT Borreguera
+
+Seguimos trabajando de manera coordinada para acercar servicios de prevención y cuidado de la salud a las familias tampiqueñas.","Bajo el liderazgo de nuestra presidenta municipal, Lic. Mónica Villarreal, y gracias a la coordinación entre el DIF Tampico, la Dirección de Salud, el Distrito de Salud del Bienestar No. 2 y IMSS-Bienestar, invitamos a la población en general y a las personas que viven con diabetes a participar en esta Jornada de Prevención y Control en Diabetes y Vacunación, que se llevará a cabo en CECODIAT Borreguera.
+
+Durante esta jornada se realizarán tomas gratuitas de hemoglobina glucosilada, en coordinación con el Distrito de Salud del Bienestar No. 2, con el objetivo de apoyar en la detección y control de la diabetes. Asimismo, se contará con un módulo de vacunación, donde se aplicarán vacunas contra sarampión, tétanos, influenza y neumococo.
+
+📅 Jueves 19 de marzo
+🕘 9:00 a.m. a 2:00 p.m.
+📍 CECODIAT Borreguera
+
+Seguimos trabajando de manera coordinada para acercar servicios de prevención y cuidado de la salud a las familias tampiqueñas.",,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,2,,selected_post_no_comments,,,42,True,2,7,25,0,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122198185868576219,,,post_parent,https://www.facebook.com/PrevencionDelDelitoTampico/posts/pfbid0pRzCUAzF7R5th6UXYY2owRnAHVbjDAxLVBPPUkdfjire278Rev5X94LobTHGnvdFl,,2026-03-19T16:31:32+00:00,2026-03-24,"El Gobierno Municipal de Tampico que encabeza la 𝗣𝗿𝗲𝘀𝗶𝗱𝗲𝗻𝘁𝗮, 𝗠ó𝗻𝗶𝗰𝗮 𝗭𝗮𝗰𝗶𝗹 𝗩𝗶𝗹𝗹𝗮𝗿𝗿𝗲𝗮𝗹 𝗔𝗻𝗮𝘆𝗮, te invita a participar en el 𝟵° 𝗙𝗼𝗿𝗼 𝗱𝗲 𝗣𝗿𝗲𝘃𝗲𝗻𝗰𝗶ó𝗻 𝗱𝗲 𝗹𝗮𝘀 𝗩𝗶𝗼𝗹𝗲𝗻𝗰𝗶𝗮𝘀 de la Dirección de Prevención del Delito.
+
+Será una oportunidad para dialogar sobre las microviolencias que normalizamos en la cotidianidad, realizar gestiones, denuncias anónimas y recibir asesoría.
+
+Además tendremos la 𝐋𝐨𝐭𝐞𝐫í𝐚 𝐩𝐨𝐫 𝐥𝐚 𝐍𝐨 𝐕𝐢𝐨𝐥𝐞𝐧𝐜𝐢𝐚, con grandes premios para toda la familia, en un ambiente sano de aprendizaje y convivencia. 
+
+¡𝐕𝐞𝐧, ú𝐧𝐞𝐭𝐞!
+➡️Jueves 19 de marzo 
+✅5:30 p.m.
+📍Plaza 18 de Marzo en Calle Héroes de Chapultepec entre Bustamante y Simón Bolívar, Col. Tamaulipas.
+#Tampico #TampicoTeCuida #NoalaViolenciadeGenero #loteria #PrevencionDelDelito","El Gobierno Municipal de Tampico que encabeza la 𝗣𝗿𝗲𝘀𝗶𝗱𝗲𝗻𝘁𝗮, 𝗠ó𝗻𝗶𝗰𝗮 𝗭𝗮𝗰𝗶𝗹 𝗩𝗶𝗹𝗹𝗮𝗿𝗿𝗲𝗮𝗹 𝗔𝗻𝗮𝘆𝗮, te invita a participar en el 𝟵° 𝗙𝗼𝗿𝗼 𝗱𝗲 𝗣𝗿𝗲𝘃𝗲𝗻𝗰𝗶ó𝗻 𝗱𝗲 𝗹𝗮𝘀 𝗩𝗶𝗼𝗹𝗲𝗻𝗰𝗶𝗮𝘀 de la Dirección de Prevención del Delito.
+
+Será una oportunidad para dialogar sobre las microviolencias que normalizamos en la cotidianidad, realizar gestiones, denuncias anónimas y recibir asesoría.
+
+Además tendremos la 𝐋𝐨𝐭𝐞𝐫í𝐚 𝐩𝐨𝐫 𝐥𝐚 𝐍𝐨 𝐕𝐢𝐨𝐥𝐞𝐧𝐜𝐢𝐚, con grandes premios para toda la familia, en un ambiente sano de aprendizaje y convivencia. 
+
+¡𝐕𝐞𝐧, ú𝐧𝐞𝐭𝐞!
+➡️Jueves 19 de marzo 
+✅5:30 p.m.
+📍Plaza 18 de Marzo en Calle Héroes de Chapultepec entre Bustamante y Simón Bolívar, Col. Tamaulipas.
+#Tampico #TampicoTeCuida #NoalaViolenciadeGenero #loteria #PrevencionDelDelito",1.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,3,,selected_post_no_comments,,,42,True,3,6,25,0,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122197577768562112,,,post_parent,https://www.facebook.com/servpublicostampico/posts/pfbid02ZhR9zJvj2STmjovm33R4NESqAcFz3hr2UfW1UQQAeonZkwt9X4smR36FAQMd75ePl,,2026-03-19T21:19:09+00:00,2026-03-24,"¡Acción diaria por un Tampico verde! 🚜💦🌴
+
+La transformación de nuestra ciudad también se nota en sus jardines. Por indicación de nuestra Presidenta Municipal, la Lic. Mónica Villarreal Anaya, reforzamos el riego y mantenimiento de las áreas verdes en toda la ciudad. 🌴✨
+
+💧 Agua para nuestras plantas.
+🌱 Vida para nuestros camellones.
+🌹 Dando color a cada rincón.
+
+¡Un Tampico verde es un Tampico lleno de bienestar! 🏘️🤝
+
+@monicavtampico 
+Mónica Villarreal 
+@tampicogob 
+Tampico Gob","¡Acción diaria por un Tampico verde! 🚜💦🌴
+
+La transformación de nuestra ciudad también se nota en sus jardines. Por indicación de nuestra Presidenta Municipal, la Lic. Mónica Villarreal Anaya, reforzamos el riego y mantenimiento de las áreas verdes en toda la ciudad. 🌴✨
+
+💧 Agua para nuestras plantas.
+🌱 Vida para nuestros camellones.
+🌹 Dando color a cada rincón.
+
+¡Un Tampico verde es un Tampico lleno de bienestar! 🏘️🤝
+
+@monicavtampico 
+Mónica Villarreal 
+@tampicogob 
+Tampico Gob",5.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,4,,selected_post_with_comments,,,42,True,4,5,25,2,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122197594544562112,,,post_parent,https://www.facebook.com/servpublicostampico/posts/pfbid02root6iZfHN3Php5qAvjzzpEBquyiaUQQDEBoPsFhwgFGCuo5gVJfPUEFhKS4zY3Vl,,2026-03-20T00:03:55+00:00,2026-03-24,"⚠️ ATENTO AVISO ⚠️
+
+💨🦟🪰 FUMIGACIÓN POR LAS NOCHES EN TU COLONIA‼️
+
+@monicavtampico 
+Mónica Villarreal 
+Tampico Gob  
+@tampicogob 
+Dirección de Salud Tampico   
+#sincriaderosméxicoprotegesusaludyelmundial 
+#PromociónDeLaSaludTampico
+#DistritodeSaludParaElBienestarIITampico","⚠️ ATENTO AVISO ⚠️
+
+💨🦟🪰 FUMIGACIÓN POR LAS NOCHES EN TU COLONIA‼️
+
+@monicavtampico 
+Mónica Villarreal 
+Tampico Gob  
+@tampicogob 
+Dirección de Salud Tampico   
+#sincriaderosméxicoprotegesusaludyelmundial 
+#PromociónDeLaSaludTampico
+#DistritodeSaludParaElBienestarIITampico",2.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,5,,selected_post_with_comments,,,42,True,5,4,25,1,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122196766892546197,,,post_parent,https://www.facebook.com/TampicoGob/posts/pfbid02xQP7EHGxEYv5k5cnD67FJHi1wRtvK3mbdaswPaFRS8Bn7QNGxqpQQLnJKdWJ4PgGl,,2026-03-20T14:29:25+00:00,2026-03-24,,,1.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,6,,selected_post_no_comments,,,42,True,6,3,25,0,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122197709816562112,,,post_parent,https://www.facebook.com/servpublicostampico/posts/pfbid0YgSjJrdVJL4ms6Rj7nYGDEyE63ihN2YsRu6ZP8C6eZqhNceyoDvz7VDCn8WM7x3Ll,,2026-03-21T12:22:01+00:00,2026-03-24,"Embellecer Tampico es tarea de todos los días. 🌉 El mantenimiento integral que impulsa la Presidenta Mónica Villarreal Anaya no se detiene; hoy, las cuadrillas trabajan en la renovación de guarniciones y barandales en puntos clave de la ciudad. 
+
+Detalles que no solo mejoran la imagen urbana, sino que refuerzan nuestro sentido de pertenencia. 
+
+¡Seguimos trabajando por un Tampico de altura! ✅🔝
+
+@monicavtampico 
+Mónica Villarreal 
+@tampicogob 
+Tampico Gob","Embellecer Tampico es tarea de todos los días. 🌉 El mantenimiento integral que impulsa la Presidenta Mónica Villarreal Anaya no se detiene; hoy, las cuadrillas trabajan en la renovación de guarniciones y barandales en puntos clave de la ciudad. 
+
+Detalles que no solo mejoran la imagen urbana, sino que refuerzan nuestro sentido de pertenencia. 
+
+¡Seguimos trabajando por un Tampico de altura! ✅🔝
+
+@monicavtampico 
+Mónica Villarreal 
+@tampicogob 
+Tampico Gob",22.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,7,,selected_post_with_comments,,,42,True,7,2,25,5,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122196918896546197,,,post_parent,https://www.facebook.com/TampicoGob/posts/pfbid0CAbo62S2YzLAqp4KAa7hmsxz8kfxnaKCr2p5dNuCUJ8PBnvC8sz54ivHq7bWJ7D1l,,2026-03-21T23:01:39+00:00,2026-03-24,,,10.0,selected_for_comment_sampling,temporal_even_spacing_by_created_time_with_seed_tiebreak,100,25,8,,selected_post_with_comments,,,42,True,8,1,25,5,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122196918896546197,1945134272762663,122196918896546197,comment,https://www.facebook.com/TampicoGob/posts/pfbid0CAbo62S2YzLAqp4KAa7hmsxz8kfxnaKCr2p5dNuCUJ8PBnvC8sz54ivHq7bWJ7D1l,https://www.facebook.com/TampicoGob/posts/pfbid0CAbo62S2YzLAqp4KAa7hmsxz8kfxnaKCr2p5dNuCUJ8PBnvC8sz54ivHq7bWJ7D1l?comment_id=1945134272762663,2026-03-22T06:13:55+00:00,2026-03-24,Excelente,,10.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,1,1,saved,,,42,True,8,1,25,5,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122196918896546197,886275331114682,122196918896546197,comment,https://www.facebook.com/TampicoGob/posts/pfbid0CAbo62S2YzLAqp4KAa7hmsxz8kfxnaKCr2p5dNuCUJ8PBnvC8sz54ivHq7bWJ7D1l,https://www.facebook.com/TampicoGob/posts/pfbid0CAbo62S2YzLAqp4KAa7hmsxz8kfxnaKCr2p5dNuCUJ8PBnvC8sz54ivHq7bWJ7D1l?comment_id=886275331114682,2026-03-22T00:51:47+00:00,2026-03-24,Enhorabuena 👍,,10.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,2,2,saved,,,42,True,8,1,25,5,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122196918896546197,1833214684034757,122196918896546197,comment,https://www.facebook.com/TampicoGob/posts/pfbid0CAbo62S2YzLAqp4KAa7hmsxz8kfxnaKCr2p5dNuCUJ8PBnvC8sz54ivHq7bWJ7D1l,https://www.facebook.com/TampicoGob/posts/pfbid0CAbo62S2YzLAqp4KAa7hmsxz8kfxnaKCr2p5dNuCUJ8PBnvC8sz54ivHq7bWJ7D1l?comment_id=1833214684034757,2026-03-22T00:07:54+00:00,2026-03-24,Exeñente,,10.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,3,3,saved,,,42,True,8,1,25,5,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122196918896546197,938475625332525,122196918896546197,comment,https://www.facebook.com/TampicoGob/posts/pfbid0CAbo62S2YzLAqp4KAa7hmsxz8kfxnaKCr2p5dNuCUJ8PBnvC8sz54ivHq7bWJ7D1l,https://www.facebook.com/TampicoGob/posts/pfbid0CAbo62S2YzLAqp4KAa7hmsxz8kfxnaKCr2p5dNuCUJ8PBnvC8sz54ivHq7bWJ7D1l?comment_id=938475625332525,2026-03-21T23:30:04+00:00,2026-03-24,Excelente trabajo 👌,,10.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,4,4,saved,,,42,True,8,1,25,5,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122196918896546197,925653066735154,122196918896546197,comment,https://www.facebook.com/TampicoGob/posts/pfbid0CAbo62S2YzLAqp4KAa7hmsxz8kfxnaKCr2p5dNuCUJ8PBnvC8sz54ivHq7bWJ7D1l,https://www.facebook.com/TampicoGob/posts/pfbid0CAbo62S2YzLAqp4KAa7hmsxz8kfxnaKCr2p5dNuCUJ8PBnvC8sz54ivHq7bWJ7D1l?comment_id=925653066735154,2026-03-21T23:16:29+00:00,2026-03-24,Excelente programa muy bien Secretaría de Bienestar Social Tampico  Mónica Villarreal,,10.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,5,5,saved,,,42,True,8,1,25,5,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122197709816562112,1311257737521291,122197709816562112,comment,https://www.facebook.com/servpublicostampico/posts/pfbid0YgSjJrdVJL4ms6Rj7nYGDEyE63ihN2YsRu6ZP8C6eZqhNceyoDvz7VDCn8WM7x3Ll,https://www.facebook.com/servpublicostampico/posts/pfbid0YgSjJrdVJL4ms6Rj7nYGDEyE63ihN2YsRu6ZP8C6eZqhNceyoDvz7VDCn8WM7x3Ll?comment_id=1311257737521291,2026-03-21T16:17:35+00:00,2026-03-24,Pues solo ciertos lugares,"Embellecer Tampico es tarea de todos los días. 🌉 El mantenimiento integral que impulsa la Presidenta Mónica Villarreal Anaya no se detiene; hoy, las cuadrillas trabajan en la renovación de guarniciones y barandales en puntos clave de la ciudad. 
+
+Detalles que no solo mejoran la imagen urbana, sino que refuerzan nuestro sentido de pertenencia. 
+
+¡Seguimos trabajando por un Tampico de altura! ✅🔝
+
+@monicavtampico 
+Mónica Villarreal 
+@tampicogob 
+Tampico Gob",22.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,6,1,saved,,,42,True,7,2,25,5,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122197709816562112,785659924600000,122197709816562112,comment,https://www.facebook.com/servpublicostampico/posts/pfbid0YgSjJrdVJL4ms6Rj7nYGDEyE63ihN2YsRu6ZP8C6eZqhNceyoDvz7VDCn8WM7x3Ll,https://www.facebook.com/servpublicostampico/posts/pfbid0YgSjJrdVJL4ms6Rj7nYGDEyE63ihN2YsRu6ZP8C6eZqhNceyoDvz7VDCn8WM7x3Ll?comment_id=785659924600000,2026-03-21T05:34:22+00:00,2026-03-24,Muy bien 👍,"Embellecer Tampico es tarea de todos los días. 🌉 El mantenimiento integral que impulsa la Presidenta Mónica Villarreal Anaya no se detiene; hoy, las cuadrillas trabajan en la renovación de guarniciones y barandales en puntos clave de la ciudad. 
+
+Detalles que no solo mejoran la imagen urbana, sino que refuerzan nuestro sentido de pertenencia. 
+
+¡Seguimos trabajando por un Tampico de altura! ✅🔝
+
+@monicavtampico 
+Mónica Villarreal 
+@tampicogob 
+Tampico Gob",22.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,7,2,saved,,,42,True,7,2,25,5,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122197709816562112,1263730125709645,122197709816562112,comment,https://www.facebook.com/servpublicostampico/posts/pfbid0YgSjJrdVJL4ms6Rj7nYGDEyE63ihN2YsRu6ZP8C6eZqhNceyoDvz7VDCn8WM7x3Ll,https://www.facebook.com/servpublicostampico/posts/pfbid0YgSjJrdVJL4ms6Rj7nYGDEyE63ihN2YsRu6ZP8C6eZqhNceyoDvz7VDCn8WM7x3Ll?comment_id=1263730125709645,2026-03-21T00:14:39+00:00,2026-03-24,"Me parece muy buen trabajo! Ojalá y también pinten las lineas que separan los carriles en las avenidas!
+En Av Monterrey a la altura de la Colonia López Portillo casi llegando al límite con CD Madero la avenida no tiene marcadas las lineas de los carriles para ubicarse al conducir","Embellecer Tampico es tarea de todos los días. 🌉 El mantenimiento integral que impulsa la Presidenta Mónica Villarreal Anaya no se detiene; hoy, las cuadrillas trabajan en la renovación de guarniciones y barandales en puntos clave de la ciudad. 
+
+Detalles que no solo mejoran la imagen urbana, sino que refuerzan nuestro sentido de pertenencia. 
+
+¡Seguimos trabajando por un Tampico de altura! ✅🔝
+
+@monicavtampico 
+Mónica Villarreal 
+@tampicogob 
+Tampico Gob",22.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,8,3,saved,,,42,True,7,2,25,5,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122197709816562112,3358813487629353,122197709816562112,comment,https://www.facebook.com/servpublicostampico/posts/pfbid0YgSjJrdVJL4ms6Rj7nYGDEyE63ihN2YsRu6ZP8C6eZqhNceyoDvz7VDCn8WM7x3Ll,https://www.facebook.com/servpublicostampico/posts/pfbid0YgSjJrdVJL4ms6Rj7nYGDEyE63ihN2YsRu6ZP8C6eZqhNceyoDvz7VDCn8WM7x3Ll?comment_id=3358813487629353,2026-03-20T21:57:13+00:00,2026-03-24,son echos que a lo largo y ancho de Tampico zona sur oriente poniente nuestra presidenta lic Mónica Villarreal  viene luciendo avenias puentes calles parkes áreas verdes dándoles un florido primaveral  recibiendo con entusiasmó la primavera  saludos c precidenta y su equipo de trabajo,"Embellecer Tampico es tarea de todos los días. 🌉 El mantenimiento integral que impulsa la Presidenta Mónica Villarreal Anaya no se detiene; hoy, las cuadrillas trabajan en la renovación de guarniciones y barandales en puntos clave de la ciudad. 
+
+Detalles que no solo mejoran la imagen urbana, sino que refuerzan nuestro sentido de pertenencia. 
+
+¡Seguimos trabajando por un Tampico de altura! ✅🔝
+
+@monicavtampico 
+Mónica Villarreal 
+@tampicogob 
+Tampico Gob",22.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,9,4,saved,,,42,True,7,2,25,5,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122197709816562112,1431547608458231,122197709816562112,comment,https://www.facebook.com/servpublicostampico/posts/pfbid0YgSjJrdVJL4ms6Rj7nYGDEyE63ihN2YsRu6ZP8C6eZqhNceyoDvz7VDCn8WM7x3Ll,https://www.facebook.com/servpublicostampico/posts/pfbid0YgSjJrdVJL4ms6Rj7nYGDEyE63ihN2YsRu6ZP8C6eZqhNceyoDvz7VDCn8WM7x3Ll?comment_id=1431547608458231,2026-03-20T21:26:28+00:00,2026-03-24,Hasta q se acuerdan de los puentes,"Embellecer Tampico es tarea de todos los días. 🌉 El mantenimiento integral que impulsa la Presidenta Mónica Villarreal Anaya no se detiene; hoy, las cuadrillas trabajan en la renovación de guarniciones y barandales en puntos clave de la ciudad. 
+
+Detalles que no solo mejoran la imagen urbana, sino que refuerzan nuestro sentido de pertenencia. 
+
+¡Seguimos trabajando por un Tampico de altura! ✅🔝
+
+@monicavtampico 
+Mónica Villarreal 
+@tampicogob 
+Tampico Gob",22.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,10,5,saved,,,42,True,7,2,25,5,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122197594544562112,25989741254050888,122197594544562112,comment,https://www.facebook.com/servpublicostampico/posts/pfbid02root6iZfHN3Php5qAvjzzpEBquyiaUQQDEBoPsFhwgFGCuo5gVJfPUEFhKS4zY3Vl,https://www.facebook.com/servpublicostampico/posts/pfbid02root6iZfHN3Php5qAvjzzpEBquyiaUQQDEBoPsFhwgFGCuo5gVJfPUEFhKS4zY3Vl?comment_id=25989741254050888,2026-03-20T01:16:35+00:00,2026-03-24,Buen trabajo,"⚠️ ATENTO AVISO ⚠️
+
+💨🦟🪰 FUMIGACIÓN POR LAS NOCHES EN TU COLONIA‼️
+
+@monicavtampico 
+Mónica Villarreal 
+Tampico Gob  
+@tampicogob 
+Dirección de Salud Tampico   
+#sincriaderosméxicoprotegesusaludyelmundial 
+#PromociónDeLaSaludTampico
+#DistritodeSaludParaElBienestarIITampico",2.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,11,1,saved,,,42,True,5,4,25,1,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122197577768562112,1300510861922760,122197577768562112,comment,https://www.facebook.com/servpublicostampico/posts/pfbid02ZhR9zJvj2STmjovm33R4NESqAcFz3hr2UfW1UQQAeonZkwt9X4smR36FAQMd75ePl,https://www.facebook.com/servpublicostampico/posts/pfbid02ZhR9zJvj2STmjovm33R4NESqAcFz3hr2UfW1UQQAeonZkwt9X4smR36FAQMd75ePl?comment_id=1300510861922760,2026-03-21T04:27:46+00:00,2026-03-24,falta pintar los arbotantes de las luminarias,"¡Acción diaria por un Tampico verde! 🚜💦🌴
+
+La transformación de nuestra ciudad también se nota en sus jardines. Por indicación de nuestra Presidenta Municipal, la Lic. Mónica Villarreal Anaya, reforzamos el riego y mantenimiento de las áreas verdes en toda la ciudad. 🌴✨
+
+💧 Agua para nuestras plantas.
+🌱 Vida para nuestros camellones.
+🌹 Dando color a cada rincón.
+
+¡Un Tampico verde es un Tampico lleno de bienestar! 🏘️🤝
+
+@monicavtampico 
+Mónica Villarreal 
+@tampicogob 
+Tampico Gob",5.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,12,1,saved,,,42,True,4,5,25,2,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122197577768562112,1897747574189203,122197577768562112,comment,https://www.facebook.com/servpublicostampico/posts/pfbid02ZhR9zJvj2STmjovm33R4NESqAcFz3hr2UfW1UQQAeonZkwt9X4smR36FAQMd75ePl,https://www.facebook.com/servpublicostampico/posts/pfbid02ZhR9zJvj2STmjovm33R4NESqAcFz3hr2UfW1UQQAeonZkwt9X4smR36FAQMd75ePl?comment_id=1897747574189203,2026-03-19T22:38:08+00:00,2026-03-24,Excelente !!!!!,"¡Acción diaria por un Tampico verde! 🚜💦🌴
+
+La transformación de nuestra ciudad también se nota en sus jardines. Por indicación de nuestra Presidenta Municipal, la Lic. Mónica Villarreal Anaya, reforzamos el riego y mantenimiento de las áreas verdes en toda la ciudad. 🌴✨
+
+💧 Agua para nuestras plantas.
+🌱 Vida para nuestros camellones.
+🌹 Dando color a cada rincón.
+
+¡Un Tampico verde es un Tampico lleno de bienestar! 🏘️🤝
+
+@monicavtampico 
+Mónica Villarreal 
+@tampicogob 
+Tampico Gob",5.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,13,2,saved,,,42,True,4,5,25,2,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122196264908546197,1248802430162524,122196264908546197,comment,https://www.facebook.com/TampicoGob/posts/pfbid031jnvjyGiY5QoVTBRNRPt2cw3Y6RPrfgEwbxVSdbaVTfqjaRXwzAVkqK6DDdUoMJ8l,https://www.facebook.com/TampicoGob/posts/pfbid031jnvjyGiY5QoVTBRNRPt2cw3Y6RPrfgEwbxVSdbaVTfqjaRXwzAVkqK6DDdUoMJ8l?comment_id=1248802430162524,2026-03-17T00:10:22+00:00,2026-03-17,Tampico te cuida,"Desde tempranas horas y por instrucciones de nuestra Presidenta Municipal,Mónica Villarreal, personal de la Dirección de Protección Civil Tampico, Bomberos, Servicios Públicos y Tránsito y Vialidad se encuentra atendiendo las diferentes solicitudes derivadas del evento meteorológico de “norte explosivo”. 🌬️⚠️
+
+Nuestro equipo permanece desplegado en distintos puntos de la ciudad trabajando para salvaguardar la seguridad de la ciudadanía.
+
+Invitamos a la población a reportar cualquier situación de riesgo o emergencia a los teléfonos 833 305 2624, 833 305 2625 o al 911.  📞",26.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,14,1,saved,,,42,True,1,8,25,10,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122196264908546197,1468549694913242,122196264908546197,comment,https://www.facebook.com/TampicoGob/posts/pfbid031jnvjyGiY5QoVTBRNRPt2cw3Y6RPrfgEwbxVSdbaVTfqjaRXwzAVkqK6DDdUoMJ8l,https://www.facebook.com/TampicoGob/posts/pfbid031jnvjyGiY5QoVTBRNRPt2cw3Y6RPrfgEwbxVSdbaVTfqjaRXwzAVkqK6DDdUoMJ8l?comment_id=1468549694913242,2026-03-16T20:26:48+00:00,2026-03-17,Que gran equipo de trabajo 👏🏻👏🏻👏🏻,"Desde tempranas horas y por instrucciones de nuestra Presidenta Municipal,Mónica Villarreal, personal de la Dirección de Protección Civil Tampico, Bomberos, Servicios Públicos y Tránsito y Vialidad se encuentra atendiendo las diferentes solicitudes derivadas del evento meteorológico de “norte explosivo”. 🌬️⚠️
+
+Nuestro equipo permanece desplegado en distintos puntos de la ciudad trabajando para salvaguardar la seguridad de la ciudadanía.
+
+Invitamos a la población a reportar cualquier situación de riesgo o emergencia a los teléfonos 833 305 2624, 833 305 2625 o al 911.  📞",26.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,15,2,saved,,,42,True,1,8,25,10,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122196264908546197,1437264890563816,122196264908546197,comment,https://www.facebook.com/TampicoGob/posts/pfbid031jnvjyGiY5QoVTBRNRPt2cw3Y6RPrfgEwbxVSdbaVTfqjaRXwzAVkqK6DDdUoMJ8l,https://www.facebook.com/TampicoGob/posts/pfbid031jnvjyGiY5QoVTBRNRPt2cw3Y6RPrfgEwbxVSdbaVTfqjaRXwzAVkqK6DDdUoMJ8l?comment_id=1437264890563816,2026-03-16T19:26:06+00:00,2026-03-17,"Excelente trabajo de los Bomberos de Tampico y Protección Civil, siempre atentos, siempre al pendiente de la ciudadanía✨🔝💯","Desde tempranas horas y por instrucciones de nuestra Presidenta Municipal,Mónica Villarreal, personal de la Dirección de Protección Civil Tampico, Bomberos, Servicios Públicos y Tránsito y Vialidad se encuentra atendiendo las diferentes solicitudes derivadas del evento meteorológico de “norte explosivo”. 🌬️⚠️
+
+Nuestro equipo permanece desplegado en distintos puntos de la ciudad trabajando para salvaguardar la seguridad de la ciudadanía.
+
+Invitamos a la población a reportar cualquier situación de riesgo o emergencia a los teléfonos 833 305 2624, 833 305 2625 o al 911.  📞",26.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,16,3,saved,,,42,True,1,8,25,10,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122196264908546197,1467169521462853,122196264908546197,comment,https://www.facebook.com/TampicoGob/posts/pfbid031jnvjyGiY5QoVTBRNRPt2cw3Y6RPrfgEwbxVSdbaVTfqjaRXwzAVkqK6DDdUoMJ8l,https://www.facebook.com/TampicoGob/posts/pfbid031jnvjyGiY5QoVTBRNRPt2cw3Y6RPrfgEwbxVSdbaVTfqjaRXwzAVkqK6DDdUoMJ8l?comment_id=1467169521462853,2026-03-16T18:36:58+00:00,2026-03-17,Blanca Martinez,"Desde tempranas horas y por instrucciones de nuestra Presidenta Municipal,Mónica Villarreal, personal de la Dirección de Protección Civil Tampico, Bomberos, Servicios Públicos y Tránsito y Vialidad se encuentra atendiendo las diferentes solicitudes derivadas del evento meteorológico de “norte explosivo”. 🌬️⚠️
+
+Nuestro equipo permanece desplegado en distintos puntos de la ciudad trabajando para salvaguardar la seguridad de la ciudadanía.
+
+Invitamos a la población a reportar cualquier situación de riesgo o emergencia a los teléfonos 833 305 2624, 833 305 2625 o al 911.  📞",26.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,17,4,saved,,,42,True,1,8,25,10,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122196264908546197,1251837137128071,122196264908546197,comment,https://www.facebook.com/TampicoGob/posts/pfbid031jnvjyGiY5QoVTBRNRPt2cw3Y6RPrfgEwbxVSdbaVTfqjaRXwzAVkqK6DDdUoMJ8l,https://www.facebook.com/TampicoGob/posts/pfbid031jnvjyGiY5QoVTBRNRPt2cw3Y6RPrfgEwbxVSdbaVTfqjaRXwzAVkqK6DDdUoMJ8l?comment_id=1251837137128071,2026-03-16T17:54:32+00:00,2026-03-17,Gracias Excelente trabajo proteccion civil a atentos a cualquier situación de riesgo,"Desde tempranas horas y por instrucciones de nuestra Presidenta Municipal,Mónica Villarreal, personal de la Dirección de Protección Civil Tampico, Bomberos, Servicios Públicos y Tránsito y Vialidad se encuentra atendiendo las diferentes solicitudes derivadas del evento meteorológico de “norte explosivo”. 🌬️⚠️
+
+Nuestro equipo permanece desplegado en distintos puntos de la ciudad trabajando para salvaguardar la seguridad de la ciudadanía.
+
+Invitamos a la población a reportar cualquier situación de riesgo o emergencia a los teléfonos 833 305 2624, 833 305 2625 o al 911.  📞",26.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,18,5,saved,,,42,True,1,8,25,10,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122196264908546197,2242091609928953,122196264908546197,comment,https://www.facebook.com/TampicoGob/posts/pfbid031jnvjyGiY5QoVTBRNRPt2cw3Y6RPrfgEwbxVSdbaVTfqjaRXwzAVkqK6DDdUoMJ8l,https://www.facebook.com/TampicoGob/posts/pfbid031jnvjyGiY5QoVTBRNRPt2cw3Y6RPrfgEwbxVSdbaVTfqjaRXwzAVkqK6DDdUoMJ8l?comment_id=2242091609928953,2026-03-16T17:32:10+00:00,2026-03-17,Protección Civil Atentos a cualquier situación de riesgo en nuestra ciudad! Graciasss 🙏🏻🙏🏻🙏🏻👍🏻,"Desde tempranas horas y por instrucciones de nuestra Presidenta Municipal,Mónica Villarreal, personal de la Dirección de Protección Civil Tampico, Bomberos, Servicios Públicos y Tránsito y Vialidad se encuentra atendiendo las diferentes solicitudes derivadas del evento meteorológico de “norte explosivo”. 🌬️⚠️
+
+Nuestro equipo permanece desplegado en distintos puntos de la ciudad trabajando para salvaguardar la seguridad de la ciudadanía.
+
+Invitamos a la población a reportar cualquier situación de riesgo o emergencia a los teléfonos 833 305 2624, 833 305 2625 o al 911.  📞",26.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,19,6,saved,,,42,True,1,8,25,10,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122196264908546197,964130965959844,122196264908546197,comment,https://www.facebook.com/TampicoGob/posts/pfbid031jnvjyGiY5QoVTBRNRPt2cw3Y6RPrfgEwbxVSdbaVTfqjaRXwzAVkqK6DDdUoMJ8l,https://www.facebook.com/TampicoGob/posts/pfbid031jnvjyGiY5QoVTBRNRPt2cw3Y6RPrfgEwbxVSdbaVTfqjaRXwzAVkqK6DDdUoMJ8l?comment_id=964130965959844,2026-03-16T17:16:52+00:00,2026-03-17,Si los ví aquí en la Petro.....muy bien,"Desde tempranas horas y por instrucciones de nuestra Presidenta Municipal,Mónica Villarreal, personal de la Dirección de Protección Civil Tampico, Bomberos, Servicios Públicos y Tránsito y Vialidad se encuentra atendiendo las diferentes solicitudes derivadas del evento meteorológico de “norte explosivo”. 🌬️⚠️
+
+Nuestro equipo permanece desplegado en distintos puntos de la ciudad trabajando para salvaguardar la seguridad de la ciudadanía.
+
+Invitamos a la población a reportar cualquier situación de riesgo o emergencia a los teléfonos 833 305 2624, 833 305 2625 o al 911.  📞",26.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,20,7,saved,,,42,True,1,8,25,10,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122196264908546197,959921323363671,122196264908546197,comment,https://www.facebook.com/TampicoGob/posts/pfbid031jnvjyGiY5QoVTBRNRPt2cw3Y6RPrfgEwbxVSdbaVTfqjaRXwzAVkqK6DDdUoMJ8l,https://www.facebook.com/TampicoGob/posts/pfbid031jnvjyGiY5QoVTBRNRPt2cw3Y6RPrfgEwbxVSdbaVTfqjaRXwzAVkqK6DDdUoMJ8l?comment_id=959921323363671,2026-03-16T16:45:20+00:00,2026-03-17,"Si detectas alguna situación de riesgo, repórtala a los teléfonos:
+833 305 2624
+833 305 2625 o al 911.
+📣📣📣📣📣","Desde tempranas horas y por instrucciones de nuestra Presidenta Municipal,Mónica Villarreal, personal de la Dirección de Protección Civil Tampico, Bomberos, Servicios Públicos y Tránsito y Vialidad se encuentra atendiendo las diferentes solicitudes derivadas del evento meteorológico de “norte explosivo”. 🌬️⚠️
+
+Nuestro equipo permanece desplegado en distintos puntos de la ciudad trabajando para salvaguardar la seguridad de la ciudadanía.
+
+Invitamos a la población a reportar cualquier situación de riesgo o emergencia a los teléfonos 833 305 2624, 833 305 2625 o al 911.  📞",26.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,21,8,saved,,,42,True,1,8,25,10,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122196264908546197,1480334033754194,122196264908546197,comment,https://www.facebook.com/TampicoGob/posts/pfbid031jnvjyGiY5QoVTBRNRPt2cw3Y6RPrfgEwbxVSdbaVTfqjaRXwzAVkqK6DDdUoMJ8l,https://www.facebook.com/TampicoGob/posts/pfbid031jnvjyGiY5QoVTBRNRPt2cw3Y6RPrfgEwbxVSdbaVTfqjaRXwzAVkqK6DDdUoMJ8l?comment_id=1480334033754194,2026-03-16T16:41:12+00:00,2026-03-17,Gracias!! ✅️✅️,"Desde tempranas horas y por instrucciones de nuestra Presidenta Municipal,Mónica Villarreal, personal de la Dirección de Protección Civil Tampico, Bomberos, Servicios Públicos y Tránsito y Vialidad se encuentra atendiendo las diferentes solicitudes derivadas del evento meteorológico de “norte explosivo”. 🌬️⚠️
+
+Nuestro equipo permanece desplegado en distintos puntos de la ciudad trabajando para salvaguardar la seguridad de la ciudadanía.
+
+Invitamos a la población a reportar cualquier situación de riesgo o emergencia a los teléfonos 833 305 2624, 833 305 2625 o al 911.  📞",26.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,22,9,saved,,,42,True,1,8,25,10,False,,,False
+fb_w12_backfill_fix,2026-03-16_semana_16marzo_22marzo_26,facebook,institutional_tampico,474462132406835,GobiernoTampico,122196264908546197,1414231719952664,122196264908546197,comment,https://www.facebook.com/TampicoGob/posts/pfbid031jnvjyGiY5QoVTBRNRPt2cw3Y6RPrfgEwbxVSdbaVTfqjaRXwzAVkqK6DDdUoMJ8l,https://www.facebook.com/TampicoGob/posts/pfbid031jnvjyGiY5QoVTBRNRPt2cw3Y6RPrfgEwbxVSdbaVTfqjaRXwzAVkqK6DDdUoMJ8l?comment_id=1414231719952664,2026-03-16T16:29:08+00:00,2026-03-17,Majo Aguirre,"Desde tempranas horas y por instrucciones de nuestra Presidenta Municipal,Mónica Villarreal, personal de la Dirección de Protección Civil Tampico, Bomberos, Servicios Públicos y Tránsito y Vialidad se encuentra atendiendo las diferentes solicitudes derivadas del evento meteorológico de “norte explosivo”. 🌬️⚠️
+
+Nuestro equipo permanece desplegado en distintos puntos de la ciudad trabajando para salvaguardar la seguridad de la ciudadanía.
+
+Invitamos a la población a reportar cualquier situación de riesgo o emergencia a los teléfonos 833 305 2624, 833 305 2625 o al 911.  📞",26.0,comment_saved_under_cap,reverse_chronological_selected_posts_until_page_cap,100,25,23,10,saved,,,42,True,1,8,25,10,False,,,False

@@ -1,0 +1,22 @@
+{
+  "article_text": "El cumpleaños del perro / La creación artística\nPero, ¿qué hace a una obra de arte: el hombre, o es la naturaleza en sí misma ya una obra de arte? Aún más: si la acción filosófica es meramente del raciocinio, ¿no hay belleza en la naturaleza sino hasta que le sea conferida por el hombre?\nY es que el prurito de la obra artística es la belleza. De lo contrario, estaríamos atendiendo a lo natural, lo directamente suministrado por la naturaleza (agua, bosques, montañas, etc.).\nLa obra de arte debe justificarse en términos espirituales y mantener un principio de discontinuidad para poder permitir que exista la ruptura y, paradójicamente, la continuidad (lo que Octavio Paz denominaba la tradición).\nSe crea con lo que se vive, se ve, se siente; con lo que nos duele y nos alegra. Se crea porque nos molesta el hecho de ser mortales y es, precisamente, la creación artística una de las respuestas que tenemos para trascender…",
+  "article_text_length": 927,
+  "article_title": "El cumpleaños del perro / La creación artística - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/analisis/el-cumpleanos-del-perro-la-creacion-artistica-29242877",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:55:12Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

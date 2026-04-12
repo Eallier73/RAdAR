@@ -1,0 +1,23 @@
+{
+  "article_text": "El sector público como privado establecido en Tampico y la región sur de Tamaulipas ofertó más de mil 300 vacantes dirigidas principalmente al género femenino, como parte de la Feria del Empleo Nacional en el marco de la conmemoración del Día Internacional de la Mujer, organizado por el Servicio Nacional (SNE) en el Centro de Convenciones y Exposiciones porteño.\nEsta promoción de lugares disponibles vino por parte de 75 empresas enfocadas en el ramo comercial, industrial, servicios y hasta del ámbito gubernamental, con opciones de involucrarse en instituciones de nivel medio superior como en corporaciones de seguridad pública. La asistencia, calculada en cerca de 2 mil e incluyendo a hombres, fluyó desde el arranque hasta la parte final de la jornada.\n“Hacemos un esfuerzo para acercar estos puestos de trabajo a los buscadores y tengan la oportunidad de tener un empleo digno y seguro, fortaleciendo la inclusión laboral con más oportunidades para las mujeres, para los jóvenes y con sueldos justos”, declaró Emanuel Reséndez Gómez, titular de la oficina en la entidad.\nEl mismo forma parte de un programa de incentivar la cercanía de féminas como otros sectores de la población en el noreste del país con las compañías y acrecentar la fuerza laboral. La entidad cuenta con alrededor de 698 mil afiliados al Instituto Mexicano del Seguro Social (IMSS), un número que informó el secretario de Trabajo, Gerardo Illoldi Reyes, ha logrado mantenerse.\n“Entre la volatilidad del mercado, las cuestiones geopolíticas y la automatización como la implementación de la inteligencia artificial, factores que aminoran la creación de nuevas fuentes, Tamaulipas ha tenido un buen comportamiento y logra contener todas estas situaciones”, mencionó el funcionario estatal.\nAdemás de Tampico, esta Feria enfocada a la mujer se efectuará en otras regiones como Nuevo Laredo, Matamoros y Reynosa. La propuesta forma parte de una iniciativa nacional emprendida por el Servicio del Empleo a desarrollarse durante este mes y en otras sedes del país.",
+  "article_text_length": 2038,
+  "article_title": "Ofrecen mil 300 vacantes en Feria del Empleo para la mujer en Tampico - Milenio",
+  "article_url_resolved": "https://www.milenio.com/comunidad/feria-mujer-tampico-ofrecen-mil-300-vacantes",
+  "attempted_methods": [
+    "trafilatura",
+    "cloudscraper"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "cloudscraper",
+  "fallback_used": true,
+  "medio": "site:milenio.com",
+  "playwright_used": false,
+  "query": "\"tampico\" site:milenio.com",
+  "query_index": 6,
+  "retrieved_at": "2026-04-05T17:42:08Z",
+  "source_domain": "www.milenio.com",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

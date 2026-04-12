@@ -1,0 +1,22 @@
+{
+  "article_text": "Locallunes, 30 de marzo de 2026\nAbren parcialmente la autopista Mante–Tula en Tamaulipas tras más de 15 años de retraso\nEl proyecto fue reactivado tras resolverse conflictos legales y administrativos, permitiendo mejorar la conectividad entre el sur y el altiplano tamaulipeco\nPaulo Monsiváis",
+  "article_text_length": 292,
+  "article_title": "Abren parcialmente la autopista Mante–Tula en Tamaulipas tras más de 15 años de retraso - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/local/autopista-mante-tula-inicia-operaciones-y-mejora-la-movilidad-en-tamaulipas-29257318",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:54:50Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

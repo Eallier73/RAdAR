@@ -1,0 +1,22 @@
+{
+  "article_text": "Que los empresarios del sector gasolinero llegaron al Palacio Nacional para renovar la estrategia sobre el precio del combustible. Destaca que la IP tamaulipeca estuvo bien representada con la presencia de José Ángel García Elizondo, director de Grupo Garel. El tampiqueño estuvo muy cercano a la presidenta Claudia Sheinbaum Pardo en Palacio Nacional... no cualquiera.\nQue la alcaldesa de Tampico, Mónica Villarreal Anaya, viajó a Ciudad Victoria para una gira de trabajo, en la cual tendrá reuniones con Raúl Quiroga, secretario de Recursos Hidráulicos, y con Antonio Varela Flores, titular de Desarrollo Rural, Pesca y Acuacultura, con el fin de gestionar obras y beneficios para la ciudad.\nQue en la zona sur del estado se han observado operativos por parte de las autoridades de seguridad pública, desde la Fiscalía General de Justicia hasta elementos federales como la Secretaría de Marina, lo cual tiene que ver con cateos que se realizan en municipios de la zona conurbada.\nQue Marcelo Olán trae muy vigiladas a todas las oficinas fiscales de Tamaulipas, pues no quiere más quejas por malas atenciones o servicios. Incluso ha ido directo con los titulares para señalarles sus fallas y pedir que las corrijan o, en su defecto, si reinciden, se van. En Burgos, Cruillas y Casas despidió a los ex encargados por no alinearse; por ello, en las restantes oficinas los reclamos han bajado al mínimo, no vaya a ser que los corran.\nQue Gloria Garza, aspirante a dirigir el PAN en Tamaulipas, y el diputado federal César Verástegui estarán hoy en la charla que ofrecerá el exmagistrado estatal Andrés González en el Comité Municipal de Ciudad Madero. Anoche confirmaron su presencia y acuden en un momento tenso para el partido, sin definirse aún la renovación de la dirigencia estatal.\nQue quien se puso muy gallito fue el regidor tampiqueño Juan Manuel Pizaña Martínez, ya que, como consejero de Morena, comentó en un chat que eran traidores a la patria los legisladores federales que votaron en contra de la reforma electoral de Claudia Sheinbaum. El edil mantiene su participación en temas nacionales, sobre todo en lo relacionado con la 4T.",
+  "article_text_length": 2144,
+  "article_title": "La Grilla - Milenio",
+  "article_url_resolved": "https://www.milenio.com/opinion/editoriales/se-dice-en-la-grilla-tamaulipas/la-grilla_1096",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:milenio.com",
+  "playwright_used": false,
+  "query": "\"Monica Villarreal\" site:milenio.com",
+  "query_index": 4,
+  "retrieved_at": "2026-04-05T15:49:11Z",
+  "source_domain": "www.milenio.com",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"Monica Villarreal\""
+}

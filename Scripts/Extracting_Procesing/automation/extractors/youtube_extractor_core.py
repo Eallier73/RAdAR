@@ -64,10 +64,10 @@ DEFAULT_LOG_LEVEL = "INFO"
 DEFAULT_RUN_ID = "youtube_extract"
 DEFAULT_API_ENV = "YOUTUBE_API_KEY"
 DEFAULT_CANONICAL_QUERIES = [
-    "MonicaVTampico",
-    "TampicoGob",
-    '"Monica Villarreal Tampico"',
-    '"Gobierno de Tampico"',
+    "presidenta municipal de Tampico",
+    "Presidenta municipal de Tampico",
+    "Gobierno de Tampico",
+    "gobierno de Tampico",
 ]
 
 COMMENTS_FILENAME_PREFIX = "youtube_comentarios"
@@ -815,7 +815,6 @@ def search_videos(
             "part": "id,snippet",
             "maxResults": min(50, remaining),
             "type": "video",
-            "order": "date",
             "publishedAfter": rfc3339(config.search_start_datetime),
             "publishedBefore": rfc3339(config.search_end_datetime),
         }
@@ -833,6 +832,8 @@ def search_videos(
             if is_auth_or_quota_error(status, message, reasons):
                 raise ApiAuthenticationError(message) from exc
             raise ApiExecutionError(message) from exc
+        except Exception as exc:
+            raise ApiExecutionError(str(exc)) from exc
 
         for item in response.get("items", []):
             if item.get("id", {}).get("kind") != "youtube#video":
@@ -886,6 +887,14 @@ def get_video_details(
             if is_auth_or_quota_error(status, message, reasons):
                 raise ApiAuthenticationError(message) from exc
             raise ApiExecutionError(message) from exc
+        except Exception as exc:
+            logger.warning(
+                "Error recuperable obteniendo detalles de videos | lote_desde=%s lote_hasta=%s mensaje=%s",
+                index,
+                index + len(batch),
+                str(exc),
+            )
+            continue
         for item in response.get("items", []):
             snippet = item.get("snippet", {})
             details[item.get("id", "")] = {
@@ -934,7 +943,6 @@ def get_video_comments(
             "part": "snippet",
             "videoId": video_id,
             "maxResults": min(100, remaining) if remaining is not None else 100,
-            "textFormat": "plainText",
         }
         if next_page_token:
             request_kwargs["pageToken"] = next_page_token
@@ -956,6 +964,17 @@ def get_video_comments(
                 fatal=False,
                 http_status=status,
                 http_reasons=list(reasons),
+            )
+        except Exception as exc:
+            return comments, ErrorRecord(
+                stage="get_video_comments",
+                scope="video",
+                message=str(exc),
+                timestamp=now_utc_text(),
+                query_index=query_index,
+                query=query,
+                video_id=video_id,
+                fatal=False,
             )
 
         for item in response.get("items", []):
@@ -1151,6 +1170,7 @@ def extract_query_batch(
                 error_message=video_error.message if video_error else "",
             )
         )
+        time.sleep(0.5)
 
     status = "success"
     if query_errors and videos_found > 0:
@@ -1596,6 +1616,10 @@ def persist_outputs(
                 timestamp=now_utc_text(),
             )
         )
+    elif config.publish_canonical and config.overwrite:
+        stale_errors_path = config.week_dir / ERRORS_FILENAME
+        if stale_errors_path.exists():
+            stale_errors_path.unlink()
 
     log_path = config.run_dir / LOG_FILENAME
     if log_path.exists():
@@ -1656,6 +1680,8 @@ def persist_outputs(
         write_json_file(summary_path, summary)
         write_json_file(metadata_path, metadata)
         write_json_file(manifest_path, manifest_payload)
+        shutil.copy2(summary_path, config.week_dir / SUMMARY_FILENAME)
+        shutil.copy2(metadata_path, config.week_dir / METADATA_FILENAME)
 
     return summary, metadata, manifest_payload, {key: str(value) for key, value in artifact_paths.items()}
 

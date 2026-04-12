@@ -1,0 +1,5 @@
+2026-04-05 09:46:28 | INFO | radar.twitter_extractor | Inicio de corrida | run_id=twitter_w10_backfill week_name=2026-03-02_semana_02marzo_08marzo_26 output_root=/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter week_name_mode=canonical_monday_sunday
+2026-04-05 09:46:28 | INFO | radar.twitter_extractor | Parámetros efectivos | since=2026-03-02 until=2026-03-08 total_queries=6 max_scrolls=6 max_tweets_per_query=100 include_replies=False headless=True
+2026-04-05 09:46:28 | INFO | radar.twitter_extractor | Archivo de sesión | session_state_file=/home/emilio/Documentos/RAdAR/Scripts/state/x_state.json
+2026-04-05 09:46:29 | ERROR | radar.twitter_extractor | Error fatal de plataforma/navegación: No se pudo inicializar Playwright o abrir Chromium.
+2026-04-05 09:46:29 | INFO | radar.twitter_extractor | Artefactos canónicos publicados | total=8

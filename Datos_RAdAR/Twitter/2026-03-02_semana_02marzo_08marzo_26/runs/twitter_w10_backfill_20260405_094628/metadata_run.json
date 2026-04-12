@@ -1,0 +1,169 @@
+{
+  "run_id": "twitter_w10_backfill",
+  "run_timestamp": "20260405_094628",
+  "script_name": "twitter_extractor.py",
+  "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/twitter_extractor.py",
+  "script_version": "2.0.0",
+  "entrypoint_alias": "canonical_wrapper",
+  "helper_module_path": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_extractor_core.py",
+  "week_name": "2026-03-02_semana_02marzo_08marzo_26",
+  "week_name_mode": "canonical_monday_sunday",
+  "search_window": {
+    "since": "2026-03-02",
+    "until": "2026-03-08",
+    "naming_start_date": "2026-03-02",
+    "naming_end_date": "2026-03-08"
+  },
+  "environment": {
+    "cwd": "/home/emilio/Documentos/RAdAR",
+    "user": "emilio",
+    "hostname": "ThinkPad-T14-Gen-4-Emilio",
+    "platform": "Linux-6.14.0-37-generic-x86_64-with-glibc2.39",
+    "python_version": "3.11.15"
+  },
+  "config": {
+    "script_name": "twitter_extractor.py",
+    "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/twitter_extractor.py",
+    "helper_module_path": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_extractor_core.py",
+    "entrypoint_alias": "canonical_wrapper",
+    "script_version": "2.0.0",
+    "since": "2026-03-02",
+    "until": "2026-03-08",
+    "week_name_mode": "canonical_monday_sunday",
+    "week_partition": {
+      "start_date": "2026-03-02",
+      "end_date": "2026-03-08",
+      "week_name": "2026-03-02_semana_02marzo_08marzo_26",
+      "naming_start_date": "2026-03-02",
+      "naming_end_date": "2026-03-08"
+    },
+    "output_root_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter",
+    "week_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-02_semana_02marzo_08marzo_26",
+    "run_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-02_semana_02marzo_08marzo_26/runs/twitter_w10_backfill_20260405_094628",
+    "session_state_file": "/home/emilio/Documentos/RAdAR/Scripts/state/x_state.json",
+    "run_id": "twitter_w10_backfill",
+    "run_timestamp": "20260405_094628",
+    "queries": [
+      {
+        "query_index": 1,
+        "query": "to:MonicaVTampico",
+        "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt"
+      },
+      {
+        "query_index": 2,
+        "query": "from:MonicaVTampico",
+        "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt"
+      },
+      {
+        "query_index": 3,
+        "query": "to:TampicoGob",
+        "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt"
+      },
+      {
+        "query_index": 4,
+        "query": "from:TampicoGob",
+        "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt"
+      },
+      {
+        "query_index": 5,
+        "query": "@TampicoGob",
+        "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt"
+      },
+      {
+        "query_index": 6,
+        "query": "@MonicaVTampico",
+        "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt"
+      }
+    ],
+    "queries_source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt",
+    "log_level": "INFO",
+    "overwrite": true,
+    "publish_canonical": true,
+    "max_scrolls": 6,
+    "max_tweets_per_query": 100,
+    "max_replies_per_tweet": 25,
+    "include_replies": false,
+    "headless": true,
+    "pause_seconds": 1.0,
+    "dry_run": false,
+    "config_file": null
+  },
+  "execution": {
+    "status": "failed",
+    "exit_code": 3,
+    "started_at": "2026-04-05T15:46:29Z",
+    "finished_at": "2026-04-05T15:46:29Z",
+    "duration_seconds": 0.0,
+    "dry_run": false,
+    "skipped_existing_outputs": false
+  },
+  "counts": {
+    "queries": 6,
+    "queries_failed": 0,
+    "tweets_detected": 0,
+    "tweets_saved": 0,
+    "replies_saved": 0,
+    "items_failed": 1,
+    "text_expansion_attempted": 0,
+    "text_expansion_succeeded": 0,
+    "selector_warnings": 0
+  },
+  "session": {
+    "session_state_file": "/home/emilio/Documentos/RAdAR/Scripts/state/x_state.json",
+    "used": "/home/emilio/Documentos/RAdAR/Scripts/state/x_state.json",
+    "validated": false
+  },
+  "playwright": {
+    "required": true,
+    "available": true,
+    "headless": true,
+    "used": false
+  },
+  "dependencies": {
+    "playwright": true
+  },
+  "artifact_paths": {
+    "main_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-02_semana_02marzo_08marzo_26/runs/twitter_w10_backfill_20260405_094628/twitter_data_2026-03-02_semana_02marzo_08marzo_26.csv",
+    "raw_jsonl": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-02_semana_02marzo_08marzo_26/runs/twitter_w10_backfill_20260405_094628/tweets_raw.jsonl",
+    "queries_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-02_semana_02marzo_08marzo_26/runs/twitter_w10_backfill_20260405_094628/queries_summary.csv",
+    "parametros_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-02_semana_02marzo_08marzo_26/runs/twitter_w10_backfill_20260405_094628/parametros_run.json",
+    "summary_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-02_semana_02marzo_08marzo_26/runs/twitter_w10_backfill_20260405_094628/summary.json",
+    "errors_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-02_semana_02marzo_08marzo_26/runs/twitter_w10_backfill_20260405_094628/errores_detectados.json",
+    "run_log": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-02_semana_02marzo_08marzo_26/runs/twitter_w10_backfill_20260405_094628/run.log",
+    "metadata_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-02_semana_02marzo_08marzo_26/runs/twitter_w10_backfill_20260405_094628/metadata_run.json",
+    "manifest_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-02_semana_02marzo_08marzo_26/runs/twitter_w10_backfill_20260405_094628/manifest.json"
+  },
+  "errors": [
+    {
+      "stage": "run_extraction",
+      "scope": "run",
+      "message": "No se pudo inicializar Playwright o abrir Chromium.",
+      "timestamp": "2026-04-05T15:46:29Z",
+      "fatal": true,
+      "error_type": "fatal:PlatformRuntimeError",
+      "query_index": null,
+      "query": null,
+      "tweet_url": null,
+      "details": {}
+    }
+  ],
+  "notes": [
+    "La corrida falló antes de completar la extracción.",
+    "Revisar errores_detectados.json, metadata_run.json y run.log para diagnóstico."
+  ],
+  "selector_health": {
+    "queries_probed": 0,
+    "queries_with_warning": 0,
+    "articles_seen": 0,
+    "articles_sampled": 0,
+    "tweet_text_found": 0,
+    "user_name_found": 0,
+    "time_found": 0,
+    "warnings": []
+  },
+  "navigation_strategy": {
+    "search_mode": "x_live_search",
+    "text_expansion": "show_more_click",
+    "reply_strategy": "tweet_detail_page"
+  }
+}

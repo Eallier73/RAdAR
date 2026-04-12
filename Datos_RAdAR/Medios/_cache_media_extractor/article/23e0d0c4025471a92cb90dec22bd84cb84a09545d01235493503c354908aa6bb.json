@@ -1,0 +1,22 @@
+{
+  "article_text": "Recorrido de los 7 bares en SLP: más asistentes, cerveza agotada y hasta una clausura\nEl recorrido informal atrae a decenas: El saldo, cerveza agitada y una cantina clausurada\nMiguel Ángel Mora\nCon una de las más tradicionales cantinas clausurada y la cerveza agotada en el resto de los negocios similares, acabó el recorrido conocido como la \"visita a los siete bares\".\n▶️ Únete a nuestro canal de WhatsApp y recibe la información más relevante al momento\nHoy ya se organizan otras \"visitas\" a bares, cervecerías y alguno que otro restaurante, que nada tienen que ver con los negocios clásicos, tradicionales.",
+  "article_text_length": 610,
+  "article_title": "Recorrido de los 7 bares en SLP: más asistentes, cerveza agotada y hasta una clausura - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldesanluis/local/recorrido-de-los-7-bares-en-slp-mas-asistentes-cerveza-agotada-y-hasta-una-clausura-29313551",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:55:08Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

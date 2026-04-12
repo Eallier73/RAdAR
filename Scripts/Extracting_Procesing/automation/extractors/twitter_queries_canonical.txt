@@ -1,8 +1,12 @@
 # Queries canónicas base para el extractor de X/Twitter en el caso Tampico.
 # Este archivo puede reemplazarse por --queries-file sin tocar la lógica.
+# Formato contractual: una query por línea; líneas con # se ignoran.
 to:MonicaVTampico
 from:MonicaVTampico
 to:TampicoGob
 from:TampicoGob
 @TampicoGob
 @MonicaVTampico
+monica villarreal
+gobierno de tampico
+tampico

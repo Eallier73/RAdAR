@@ -1,0 +1,22 @@
+{
+  "article_text": "Análisismartes, 24 de marzo de 2026\nEconomía para todos / Dualismo mexicano\nParadójicamente, esto ocurre mientras la tasa de desocupación se mantiene en niveles históricos de 2.5% a 2.7%, lo que sugiere que la pérdida de empleo formal no se traduce en desempleo abierto, sino en ocupaciones informales.\nRegeneración 19\nÚLTIMAS COLUMNAS\nMás Noticias\nCOLUMNAS\nCARTONES\nLOÚLTIMO\nNewsletter\n¿Te quedas fuera de la conversación? Mandamos a tu correo el mejor resumen informativo.",
+  "article_text_length": 474,
+  "article_title": "Economía para todos / Dualismo mexicano - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/analisis/economia-para-todos-dualismo-mexicano-29133634",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:53:04Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "name": "facebook_institutional_raw_2026-03-02_semana_02marzo_08marzo_26.csv",
+    "artifact_type": "dataset",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-02_semana_02marzo_08marzo_26/runs/fb_w10_backfill_fix_20260411_053834/facebook_institutional_raw_2026-03-02_semana_02marzo_08marzo_26.csv",
+    "description": "Extraccion cruda institucional de Facebook con posts padre y comentarios.",
+    "timestamp": "2026-04-11T11:44:40+00:00",
+    "size_bytes": 82419
+  },
+  {
+    "name": "posts_selected.csv",
+    "artifact_type": "dataset",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-02_semana_02marzo_08marzo_26/runs/fb_w10_backfill_fix_20260411_053834/posts_selected.csv",
+    "description": "Posts seleccionados para comentario bajo logica muestral.",
+    "timestamp": "2026-04-11T11:44:40+00:00",
+    "size_bytes": 17689
+  },
+  {
+    "name": "comments_selected.csv",
+    "artifact_type": "dataset",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-02_semana_02marzo_08marzo_26/runs/fb_w10_backfill_fix_20260411_053834/comments_selected.csv",
+    "description": "Comentarios materializados para el corpus institucional.",
+    "timestamp": "2026-04-11T11:44:40+00:00",
+    "size_bytes": 65269
+  },
+  {
+    "name": "selection_audit.csv",
+    "artifact_type": "audit",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-02_semana_02marzo_08marzo_26/runs/fb_w10_backfill_fix_20260411_053834/selection_audit.csv",
+    "description": "Auditoria de seleccion de posts y decisiones muestrales.",
+    "timestamp": "2026-04-11T11:44:40+00:00",
+    "size_bytes": 22125
+  },
+  {
+    "name": "summary.json",
+    "artifact_type": "summary",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-02_semana_02marzo_08marzo_26/runs/fb_w10_backfill_fix_20260411_053834/summary.json",
+    "description": "Resumen operativo y de costo de la corrida.",
+    "timestamp": "2026-04-11T11:44:40+00:00",
+    "size_bytes": 2163
+  },
+  {
+    "name": "parametros_run.json",
+    "artifact_type": "parameters",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-02_semana_02marzo_08marzo_26/runs/fb_w10_backfill_fix_20260411_053834/parametros_run.json",
+    "description": "Parametros efectivos de la corrida.",
+    "timestamp": "2026-04-11T11:44:40+00:00",
+    "size_bytes": 2300
+  },
+  {
+    "name": "metadata_run.json",
+    "artifact_type": "metadata",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-02_semana_02marzo_08marzo_26/runs/fb_w10_backfill_fix_20260411_053834/metadata_run.json",
+    "description": "Metadata completa y trazabilidad de la corrida.",
+    "timestamp": "2026-04-11T11:44:40+00:00",
+    "size_bytes": 7539
+  },
+  {
+    "name": "run.log",
+    "artifact_type": "log",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-02_semana_02marzo_08marzo_26/runs/fb_w10_backfill_fix_20260411_053834/run.log",
+    "description": "Log operativo de la corrida.",
+    "timestamp": "2026-04-11T11:44:40+00:00",
+    "size_bytes": 8888
+  },
+  {
+    "name": "manifest.json",
+    "artifact_type": "manifest",
+    "path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-02_semana_02marzo_08marzo_26/runs/fb_w10_backfill_fix_20260411_053834/manifest.json",
+    "description": "Inventario de artefactos de la corrida.",
+    "timestamp": "2026-04-11T11:44:40+00:00",
+    "size_bytes": 3111
+  }
+]

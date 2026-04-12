@@ -1,0 +1,22 @@
+{
+  "article_text": "Aparatoso choque en Tampico deja 10 lesionados; microbús se estrella en negocio\nAutoridades cerraron parcialmente la circulación mientras realizaban maniobras de auxilio y el retiro de las unidades involucradas\nJuan Hernández\nEl fuerte choque causó alarma entre vecinos y transeúntes de la zona, quienes de inmediato solicitaron la presencia de los servicios de emergencia.\nCierran circulación por labores de auxilio y retiro de unidades\nAl sitio acudieron técnicos en urgencias médicas, quienes brindaron atención prehospitalaria a por lo menos 10 personas lesionadas.\nAlgunos de los afectados fueron valorados en el lugar, mientras que otros podrían haber sido trasladados a hospitales cercanos para una mejor atención.\nAutoridades investigan causas del accidente en Tampico\nLas autoridades exhortaron a los automovilistas a manejar con precaución y respetar los señalamientos viales para evitar este tipo de incidentes.",
+  "article_text_length": 922,
+  "article_title": "Aparatoso choque en Tampico deja 10 lesionados; microbús se estrella en negocio - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/policiaca/aparatoso-choque-en-tampico-deja-10-lesionados-microbus-se-estrella-en-negocio-29304494",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:54:54Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

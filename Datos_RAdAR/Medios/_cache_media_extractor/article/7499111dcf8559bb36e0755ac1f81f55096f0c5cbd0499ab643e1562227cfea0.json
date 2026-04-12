@@ -1,0 +1,23 @@
+{
+  "article_text": "En lo que va de la administración se han atendido 40 árboles con alguna clase de riesgo, aseguró Bomberos, pero hay tres que son considerados de alto riesgo por su gran tamaño.\nÁrbol cae sobre vehículos y una vivienda\nUn árbol viejo cayó sobre dos camionetas y una casa, el cual se vino abajo por el norte de este jueves, además del deterioro del mismo por el paso de los años.\n“Me han reportado durante lo que es toda la administración han sido 40 árboles, que están dentro de un domicilio y que anteriormente no daban mantenimiento, no los cortaban por valor sentimental que le había puesto algún familiar, es lo que hacen muchas veces que crezca mucho el árbol y que después sea un riesgo para los propietarios”, declaró Héctor Guzmán Curiel, comandante de Bomberos de Tampico.\nDetectan otro árbol de gran tamaño en riesgo\nSin embargo, sobre la avenida Faja de Oro, en la misma zona donde el enorme árbol cayó sobre dos autos y una casa, hay otro de gran tamaño que también está en riesgo porque está en medio del camellón.\nPero, hay algunos árboles en la ciudad que sí son de riesgo alto por su gran tamaño, uno de ellos en la bajada rumbo a un club deportivo que se encuentra en la cercanías de la laguna del Chairel.\n“Ahorita nosotros tenemos aproximadamente como tres o cuatro, están ubicados en varios puntos de Tampico, pero uno es el que está en Dorley, en la bajada Dorsey Leroy, rumbo al Regatas Corona, uno que está muy grande ahí en la punta de este, ese es uno de los que tenemos ahí pero, estamos trabajando en eso”, expuso.\nIndicó que a veces los vecinos no quieren que los corten porque son muy antiguos, mientras que otros al estar en terrenos particulares no permiten cortarlos.\nRealizarán revisión de árboles en la ciudad\nExplicó que después del incidente, tras la caída del árbol que mantuvo el cierre de la avenida Faja de Oro por algunas horas, van a hacer una revisión de los árboles que se encuentran en la ciudad para conocer su estatus.\n“Lo importante también es que tenga el mantenimiento por parte de Parques y Jardines, que se haga la revisión si te das cuenta, es un árbol que ya está muy viejo, que ya está muy seco por la parte de abajo pero aquí, quién sabe más de esto, bueno, pues, es un especialista”, manifestó.\nSJHN",
+  "article_text_length": 2255,
+  "article_title": "Más de 40 árboles son un peligro en Tamaulipas - Milenio",
+  "article_url_resolved": "https://www.milenio.com/comunidad/bomberos-atendido-40-arboles-riesgo-tampico",
+  "attempted_methods": [
+    "trafilatura",
+    "cloudscraper"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "cloudscraper",
+  "fallback_used": true,
+  "medio": "site:milenio.com",
+  "playwright_used": false,
+  "query": "\"tampico\" site:milenio.com",
+  "query_index": 6,
+  "retrieved_at": "2026-04-05T17:41:27Z",
+  "source_domain": "www.milenio.com",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

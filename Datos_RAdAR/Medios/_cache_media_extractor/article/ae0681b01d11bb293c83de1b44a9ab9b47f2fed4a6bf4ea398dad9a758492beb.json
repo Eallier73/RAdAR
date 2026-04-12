@@ -1,0 +1,22 @@
+{
+  "article_text": "Hablemos de tecnología / Un pelo de gato\n“El Diablo se balance entre las letras pequeñas del contrato”\nLuis Guzmán\nUna acusación grave, pero difícil de refutar cuando se analizan los modelos de negocio basados en maximizar el tiempo de permanencia.\nLas cifras ayudan a dimensionar el problema. BBC reporta que este fallo podría sentar un precedente para decenas de casos similares en Estados Unidos.\nwww.facebook.com/soylalodelatorre\ntecnologia@lalodelatorre.com",
+  "article_text_length": 462,
+  "article_title": "Hablemos de tecnología / Un pelo de gato - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/analisis/hablemos-de-tecnologia-un-pelo-de-gato-29208643",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:52:53Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

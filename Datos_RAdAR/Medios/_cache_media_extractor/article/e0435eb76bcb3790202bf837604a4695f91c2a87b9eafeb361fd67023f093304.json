@@ -1,0 +1,23 @@
+{
+  "article_text": "La Asociación Mexicana de Proveedores de Estaciones de Servicio (Ampes) eligió a Tampico como la nueva sede de su Expogas, una convención donde reúne a empresarios involucrados en el ramo gasolinero nacional, siendo la primera ocasión que consideran a Tamaulipas para este encuentro.\nConvención reunirá a empresarios del sector gasolinero\nSiendo parte de una gira que comenzó en febrero pasado en Veracruz y se prolongará durante el resto del año en Guadalajara, Monterrey y la Ciudad de México, el organismo que agrupa a propietarios de puntos de venta de combustibles en territorio nacional efectuará la reunión donde plantearán las necesidades y retos de la industria hacia los próximos meses.\nSerá el próximo 16 de abril cuando los corporativos así como las marcas más importantes se encuentren en el Centro de Convenciones y Exposiciones. Durante la jornada no solo habrá oportunidad de concretar negocios, también habrá conferencias y talleres relacionados con la actualidad y los retos por afrontar, indicó Ricardo Quiroz, presidente de la asociación.\nConferencias y proveedores\nEl evento contempla alrededor de 500 asistentes, contando con espacios dedicados a las charlas y conferencias magistrales, aunado a los pabellones que contará con 80 afiliados proveedores del equipo y los insumos requeridos por cada estación de servicio.\nDentro de los temas a abordar en esta agenda para el 2026 es acelerar los permisos para la operación de puntos de despacho, situación pendiente de solucionar por la Comisión Nacional de Energía (CNE), aunado a las nuevas regulaciones y la modernización de estos negocios a fin de ser sustentables con el medio ambiente.\nCabe señalar que el mercado actual se integra por casi 15 mil gasolineras, comercializando energéticos de la franquicia Pemex y marcas privadas mexicanas como extranjeras.\nTampico suma más congresos y convenciones\nEl sur de Tamaulipas suma con ello una nueva convención del sector privado para este año. En el programa se espera la realización de 30 congresos, siendo el más importante el Tianguis Turístico de Pueblos Mágicos, a celebrarse en noviembre.\nSJHN",
+  "article_text_length": 2120,
+  "article_title": "Tampico será sede de congreso gasolinero en abril - Milenio",
+  "article_url_resolved": "https://www.milenio.com/negocios/tampico-sera-sede-de-expogas-2026-cuando-y-donde",
+  "attempted_methods": [
+    "trafilatura",
+    "cloudscraper"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "cloudscraper",
+  "fallback_used": true,
+  "medio": "site:milenio.com",
+  "playwright_used": false,
+  "query": "\"tampico\" site:milenio.com",
+  "query_index": 6,
+  "retrieved_at": "2026-04-05T17:41:46Z",
+  "source_domain": "www.milenio.com",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

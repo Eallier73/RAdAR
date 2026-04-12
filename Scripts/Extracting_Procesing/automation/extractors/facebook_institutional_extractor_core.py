@@ -68,7 +68,8 @@ DEFAULT_MAX_POSTS_PER_PAGE_PER_WEEK = 8
 DEFAULT_MAX_COMMENTS_PER_POST = 25
 DEFAULT_DISCOVERY_MULTIPLIER = 3
 DEFAULT_MIN_DISCOVERY_POSTS = 15
-DEFAULT_ACTOR_POSTS = "scraper_one/facebook-posts-scraper"
+DEFAULT_DISCOVERY_RESULTS_PER_PAGE = 100
+DEFAULT_ACTOR_POSTS = "apify/facebook-posts-scraper"
 DEFAULT_ACTOR_COMMENTS = "apify/facebook-comments-scraper"
 DEFAULT_APIFY_TOKEN_ENV = "APIFY_TOKEN"
 DEFAULT_MEMORY_MB = 2048
@@ -85,14 +86,14 @@ MANIFEST_FILENAME = "manifest.json"
 ERRORS_FILENAME = "errores_detectados.json"
 LOG_FILENAME = "run.log"
 
-CANONICAL_PAGE_IDS = {
-    "964877296876825": "MonicaVillarreal",
-    "474462132406835": "GobiernoTampico",
+CANONICAL_PAGES = {
+    "964877296876825": {"label": "MonicaVillarreal", "handle": "monicavtampico"},
+    "474462132406835": {"label": "GobiernoTampico", "handle": "TampicoGob"},
 }
 
 SAMPLING_MODE = "two_level_sampling_posts_then_comments_with_weekly_page_cap"
 POST_SELECTION_RULE = "temporal_even_spacing_by_created_time_with_seed_tiebreak"
-COMMENT_PROCESSING_RULE = "descending_estimated_comment_count_until_page_cap"
+COMMENT_PROCESSING_RULE = "reverse_chronological_selected_posts_until_page_cap"
 
 ABSORBED_COMMENTS_LOGIC = [
     "extraer_texto_post_desde_item: recuperacion multi-campo de texto del post desde items del actor.",
@@ -210,6 +211,7 @@ class WeekPartition:
 class PageTarget:
     page_id: str
     page_label: str
+    page_handle: str
     page_url: str
     enabled: bool = True
     source: str = "canonical"
@@ -482,7 +484,7 @@ def resolve_week_partition(since: date, until: date, mode: str) -> WeekPartition
         raise ConfigurationError(f"Modo de nombre semanal no soportado: {mode}")
 
     label = f"semana_{format_spanish_date(naming_start)}_{format_spanish_date(naming_end)}_{naming_end:%y}"
-    week_name = f"{naming_end.isoformat()}_{label}"
+    week_name = f"{naming_start.isoformat()}_{label}"
     return WeekPartition(
         start_date=since,
         end_date=until,
@@ -534,7 +536,8 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--weekly-comment-cap-per-page", type=int, default=None, help="Cap semanal de comentarios por pagina.")
     parser.add_argument("--max-posts-per-page-per-week", type=int, default=None, help="Maximo de posts candidatos a comments por pagina y semana.")
     parser.add_argument("--max-comments-per-post", type=int, default=None, help="Maximo de comentarios a recuperar por post.")
-    parser.add_argument("--include-replies", action="store_true", default=None, help="Incluye replies si el actor los devuelve. Desactivado por defecto por costo.")
+    parser.add_argument("--discovery-results-per-page", type=int, default=None, help="Profundidad de descubrimiento del actor de posts por pagina. Equivale al maximo de posts del extractor historico.")
+    parser.add_argument("--include-replies", action="store_true", default=None, help="Incluye replies si el actor los devuelve. En la configuración canónica quedan activados para preservar comparabilidad histórica.")
     parser.add_argument("--dry-run", action="store_true", default=None, help="No llama a Apify; solo materializa artefactos vacios y metadata.")
     parser.add_argument("--apify-token-env", default=None, help="Nombre de la variable de entorno que contiene el token de Apify.")
     parser.add_argument("--actor-name-posts", default=None, help="Nombre del actor de Apify para descubrir posts.")
@@ -545,13 +548,51 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     return parser.parse_args(argv)
 
 
+def normalize_target_handle(raw_value: str) -> str:
+    value = str(raw_value or "").strip()
+    if not value:
+        return ""
+    if "facebook.com" in value.lower():
+        parsed = urlparse(value if "://" in value else f"https://{value.lstrip('/')}")
+        path = (parsed.path or "").strip("/")
+        if not path:
+            return ""
+        return path.split("/")[0].lower()
+    return value.removeprefix("@").strip("/").lower()
+
+
 def normalize_page_id(raw_value: str) -> str:
     digits = "".join(ch for ch in str(raw_value).strip() if ch.isdigit())
     return digits
 
 
-def default_page_url(page_id: str) -> str:
+def default_page_url(page_id: str, page_handle: str = "") -> str:
+    if page_handle:
+        return f"https://www.facebook.com/{page_handle}"
     return f"https://www.facebook.com/profile.php?id={page_id}"
+
+
+def extract_handle_from_facebook_url(url: str) -> str:
+    raw = str(url or "").strip()
+    if not raw:
+        return ""
+    if "://" not in raw:
+        raw = f"https://{raw.lstrip('/')}"
+    try:
+        parsed = urlparse(raw)
+    except Exception:
+        return ""
+    path = (parsed.path or "").strip("/")
+    if not path:
+        return ""
+    head = path.split("/")[0].strip()
+    if not head or head.lower() in {"profile.php", "story.php", "photo.php", "watch"}:
+        return ""
+    return head.lower()
+
+
+def raw_facebook_url(url: str) -> str:
+    return str(url or "").strip()
 
 
 def load_pages_from_csv(path: Path) -> list[PageTarget]:
@@ -569,12 +610,20 @@ def load_pages_from_csv(path: Path) -> list[PageTarget]:
                 continue
             enabled_raw = str(row.get("enabled", "true")).strip().lower()
             enabled = enabled_raw not in {"0", "false", "no", "off"}
-            page_label = str(row.get("page_label", "")).strip() or CANONICAL_PAGE_IDS.get(page_id, page_id)
-            page_url = str(row.get("page_url", "")).strip() or default_page_url(page_id)
+            default_meta = CANONICAL_PAGES.get(page_id, {})
+            page_label = str(row.get("page_label", "")).strip() or str(default_meta.get("label") or page_id)
+            page_handle = normalize_target_handle(
+                str(row.get("page_handle", "")).strip() or str(default_meta.get("handle") or "")
+            )
+            page_url_raw = str(row.get("page_url", "")).strip()
+            page_url = page_url_raw or default_page_url(page_id, page_handle)
+            if not page_handle:
+                page_handle = extract_handle_from_facebook_url(page_url)
             pages.append(
                 PageTarget(
                     page_id=page_id,
                     page_label=page_label,
+                    page_handle=page_handle,
                     page_url=page_url,
                     enabled=enabled,
                     source=str(path),
@@ -597,12 +646,20 @@ def load_pages_from_json(path: Path) -> list[PageTarget]:
         if not page_id:
             continue
         enabled = bool(item.get("enabled", True))
-        page_label = str(item.get("page_label", "")).strip() or CANONICAL_PAGE_IDS.get(page_id, page_id)
-        page_url = str(item.get("page_url", "")).strip() or default_page_url(page_id)
+        default_meta = CANONICAL_PAGES.get(page_id, {})
+        page_label = str(item.get("page_label", "")).strip() or str(default_meta.get("label") or page_id)
+        page_handle = normalize_target_handle(
+            str(item.get("page_handle", "")).strip() or str(default_meta.get("handle") or "")
+        )
+        page_url_raw = str(item.get("page_url", "")).strip()
+        page_url = page_url_raw or default_page_url(page_id, page_handle)
+        if not page_handle:
+            page_handle = extract_handle_from_facebook_url(page_url)
         pages.append(
             PageTarget(
                 page_id=page_id,
                 page_label=page_label,
+                page_handle=page_handle,
                 page_url=page_url,
                 enabled=enabled,
                 source=str(path),
@@ -624,8 +681,13 @@ def load_pages_from_file(path: Path) -> list[PageTarget]:
 def load_default_pages() -> tuple[list[PageTarget], str]:
     if not DEFAULT_PAGES_FILE.exists():
         pages = [
-            PageTarget(page_id=page_id, page_label=label, page_url=default_page_url(page_id))
-            for page_id, label in CANONICAL_PAGE_IDS.items()
+            PageTarget(
+                page_id=page_id,
+                page_label=str(meta["label"]),
+                page_handle=normalize_target_handle(str(meta["handle"])),
+                page_url=default_page_url(page_id, normalize_target_handle(str(meta["handle"]))),
+            )
+            for page_id, meta in CANONICAL_PAGES.items()
         ]
         return pages, "embedded_default"
     return load_pages_from_file(DEFAULT_PAGES_FILE), str(DEFAULT_PAGES_FILE)
@@ -657,7 +719,7 @@ def resolve_pages(merged: dict[str, Any]) -> tuple[list[PageTarget], str]:
     if not active_pages:
         raise ConfigurationError("La seleccion final de paginas institucionales quedo vacia.")
 
-    invalid_enabled = [page.page_id for page in active_pages if page.page_id not in CANONICAL_PAGE_IDS]
+    invalid_enabled = [page.page_id for page in active_pages if page.page_id not in CANONICAL_PAGES]
     if invalid_enabled:
         raise ConfigurationError(
             "Este componente esta restringido a Facebook institucional de Tampico. "
@@ -714,6 +776,11 @@ def resolve_config(
         if merged.get("max_comments_per_post") is not None
         else DEFAULT_MAX_COMMENTS_PER_POST
     )
+    discovery_results_per_page = int(
+        merged.get("discovery_results_per_page")
+        if merged.get("discovery_results_per_page") is not None
+        else DEFAULT_DISCOVERY_RESULTS_PER_PAGE
+    )
     memory_mb = int(merged.get("memory_mb") if merged.get("memory_mb") is not None else DEFAULT_MEMORY_MB)
     timeout_seconds = int(
         merged.get("timeout_seconds") if merged.get("timeout_seconds") is not None else DEFAULT_TIMEOUT_SECONDS
@@ -724,17 +791,20 @@ def resolve_config(
         "weekly_comment_cap_per_page": weekly_cap,
         "max_posts_per_page_per_week": max_posts,
         "max_comments_per_post": max_comments,
+        "discovery_results_per_page": discovery_results_per_page,
         "memory_mb": memory_mb,
         "timeout_seconds": timeout_seconds,
     }.items():
         if value <= 0:
             raise ConfigurationError(f"{field_name} debe ser mayor que 0.")
+    if discovery_results_per_page > 100:
+        raise ConfigurationError(
+            "discovery_results_per_page no puede exceder 100 porque "
+            "la ruta canonica conserva ese tope operativo por comparabilidad "
+            "historica y costo controlado."
+        )
 
-    discovery_results_per_page = max(
-        DEFAULT_MIN_DISCOVERY_POSTS,
-        max_posts,
-        max_posts * DEFAULT_DISCOVERY_MULTIPLIER,
-    )
+    discovery_results_per_page = max(discovery_results_per_page, max_posts)
 
     config_file = merged.get("config_file")
     config_file_path = Path(str(config_file)).resolve() if config_file else None
@@ -766,7 +836,11 @@ def resolve_config(
         max_posts_per_page_per_week=max_posts,
         max_comments_per_post=max_comments,
         discovery_results_per_page=discovery_results_per_page,
-        include_replies=bool(merged.get("include_replies", False)),
+        include_replies=(
+            bool(merged.get("include_replies"))
+            if merged.get("include_replies") is not None
+            else True
+        ),
         log_level=str(merged.get("log_level") or DEFAULT_LOG_LEVEL).upper(),
         overwrite=bool(merged.get("overwrite", False)),
         publish_canonical=bool(merged.get("publish_canonical", False)),
@@ -889,20 +963,32 @@ def parse_datetime_from_item(item: dict[str, Any], keys: Sequence[str]) -> datet
 def date_in_range(value: datetime | None, since: date, until: date) -> bool:
     if value is None:
         return False
-    current = value.astimezone(timezone.utc).date()
+    current = value.date()
     return since <= current <= until
 
 
-def extract_text_from_post_item(item: dict[str, Any]) -> str:
+def extract_text_from_posts_actor_item(item: dict[str, Any]) -> str:
     candidates: list[Any] = [
         item.get("text"),
+        item.get("postText"),
+        item.get("message"),
+        item.get("content"),
+    ]
+    for candidate in candidates:
+        text = str(candidate).strip() if isinstance(candidate, str) else ""
+        if text:
+            return text
+    return ""
+
+
+def extract_text_from_comment_actor_item(item: dict[str, Any]) -> str:
+    candidates: list[Any] = [
         item.get("postText"),
         item.get("postMessage"),
         item.get("postDescription"),
         item.get("postContent"),
         item.get("postCaption"),
         item.get("message"),
-        item.get("content"),
         item.get("description"),
     ]
     post_obj = item.get("post")
@@ -915,8 +1001,8 @@ def extract_text_from_post_item(item: dict[str, Any]) -> str:
             ]
         )
     for candidate in candidates:
-        text = normalize_text(candidate if isinstance(candidate, str) else "")
-        if len(text) >= 3:
+        text = str(candidate).strip() if isinstance(candidate, str) else ""
+        if len(text) >= 5:
             return text
     return ""
 
@@ -930,35 +1016,25 @@ def parse_intish(value: Any) -> int | None:
         return None
 
 
-def normalize_facebook_url(url: str) -> str:
-    raw = normalize_text(url)
-    if not raw:
-        return ""
-    parsed = urlparse(raw)
-    if not parsed.scheme:
-        raw = f"https://{raw.lstrip('/')}"
-        parsed = urlparse(raw)
-    netloc = parsed.netloc.lower()
-    if netloc.startswith("www."):
-        netloc = netloc[4:]
-    if netloc.startswith("m."):
-        netloc = netloc[2:]
-    kept_query: dict[str, str] = {}
-    query = parse_qs(parsed.query)
-    path = parsed.path.rstrip("/")
-    if path.lower() == "/story.php":
-        for key in ("story_fbid", "id"):
-            if key in query and query[key]:
-                kept_query[key] = query[key][0]
-    if path.lower() == "/photo.php":
-        if "fbid" in query and query["fbid"]:
-            kept_query["fbid"] = query["fbid"][0]
-    if path.lower() == "/watch":
-        if "v" in query and query["v"]:
-            kept_query["v"] = query["v"][0]
-    query_parts = "&".join(f"{key}={value}" for key, value in kept_query.items())
-    base = f"https://{netloc}{path}"
-    return f"{base}?{query_parts}" if query_parts else base
+def candidate_belongs_to_target(post_url: str, page_url: str, page: PageTarget) -> bool:
+    if not page.page_handle:
+        return True
+
+    target_handle = normalize_target_handle(page.page_handle)
+    if not target_handle:
+        return True
+
+    candidates = {
+        extract_handle_from_facebook_url(page_url),
+        extract_handle_from_facebook_url(post_url),
+    }
+    if target_handle in candidates:
+        return True
+
+    page_url_l = page_url.lower()
+    post_url_l = post_url.lower()
+    token = f"/{target_handle}/"
+    return token in page_url_l or token in post_url_l
 
 
 def derive_post_id(item: dict[str, Any], post_url: str) -> str:
@@ -1097,7 +1173,7 @@ def build_apify_client(config: ResolvedConfig) -> Any:
 
 
 def normalize_candidate_post(item: dict[str, Any], page: PageTarget) -> CandidatePost | None:
-    post_url = normalize_facebook_url(
+    post_url = raw_facebook_url(
         str(
             item.get("url")
             or item.get("postUrl")
@@ -1111,10 +1187,19 @@ def normalize_candidate_post(item: dict[str, Any], page: PageTarget) -> Candidat
 
     created_dt = parse_datetime_from_item(
         item,
-        keys=("date", "timestamp", "postDate", "postTimestamp", "createdTime"),
+        keys=("date", "timestamp", "postDate", "postTimestamp", "createdTime", "createdAt", "publishedAt"),
     )
-    post_text = extract_text_from_post_item(item)
+    post_text = extract_text_from_posts_actor_item(item)
     author = item.get("author") if isinstance(item.get("author"), dict) else {}
+    page_url = raw_facebook_url(
+        str(
+            item.get("pageUrl")
+            or item.get("authorProfileUrl")
+            or author.get("profileUrl")
+            or author.get("url")
+            or page.page_url
+        )
+    )
     author_name = normalize_text(
         str(item.get("authorName") or author.get("name") or item.get("pageName") or page.page_label)
     )
@@ -1127,7 +1212,7 @@ def normalize_candidate_post(item: dict[str, Any], page: PageTarget) -> Candidat
     return CandidatePost(
         page_id=page.page_id,
         page_label=page.page_label,
-        page_url=page.page_url,
+        page_url=page_url,
         post_id=post_id,
         post_url=post_url,
         created_time=created_time,
@@ -1147,14 +1232,22 @@ def discover_candidate_posts(
     logger: logging.Logger,
 ) -> tuple[list[CandidatePost], float]:
     run_input = {
-        "pageUrls": [page.page_url],
+        "startUrls": [{"url": page.page_url}],
         "resultsLimit": config.discovery_results_per_page,
+        "captionText": True,
+        # Align the automation path with the historical extractor that
+        # successfully backfilled weekly windows by pushing the date filter
+        # down to the actor instead of discovering only recent posts locally.
+        "onlyPostsNewerThan": config.since.isoformat(),
+        "onlyPostsOlderThan": config.until.isoformat(),
     }
     logger.info(
-        "Descubriendo posts candidatos | page_id=%s page_label=%s results_limit=%s",
+        "Descubriendo posts candidatos | page_id=%s page_label=%s results_limit=%s since=%s until=%s",
         page.page_id,
         page.page_label,
         config.discovery_results_per_page,
+        config.since,
+        config.until,
     )
     items, run_meta = call_actor(client, config.actor_name_posts, run_input, config)
     logger.info(
@@ -1170,9 +1263,11 @@ def discover_candidate_posts(
         post = normalize_candidate_post(item, page)
         if post is None:
             continue
+        if not candidate_belongs_to_target(post.post_url, post.page_url, page):
+            continue
         if not date_in_range(post.created_dt, config.since, config.until):
             continue
-        dedupe_key = post.post_id or post.post_url
+        dedupe_key = post.post_url
         existing = deduped.get(dedupe_key)
         if existing is None:
             deduped[dedupe_key] = post
@@ -1225,9 +1320,8 @@ def build_processing_queue(selected_posts: list[CandidatePost]) -> list[Candidat
     return sorted(
         selected_posts,
         key=lambda post: (
-            -(post.comment_count_post or -1),
-            post.created_dt or datetime.min.replace(tzinfo=timezone.utc),
-            post.post_id,
+            -(post.created_dt.timestamp()) if post.created_dt else float("inf"),
+            stable_seed_tiebreak(post.selection_rank or 0, post.post_id or post.post_url),
         ),
     )
 
@@ -1239,7 +1333,7 @@ def enrich_post_from_comment_items(post: CandidatePost, items: Iterable[dict[str
     enriched = False
 
     for item in items:
-        candidate_text = extract_text_from_post_item(item)
+        candidate_text = extract_text_from_comment_actor_item(item)
         if len(candidate_text) > len(best_text):
             best_text = candidate_text
             enriched = True
@@ -1274,7 +1368,14 @@ def enrich_post_from_comment_items(post: CandidatePost, items: Iterable[dict[str
 
 
 def normalize_comment_text(item: dict[str, Any]) -> str:
-    return normalize_text(str(item.get("text") or item.get("commentText") or item.get("body") or ""))
+    return str(item.get("text") or item.get("commentText") or item.get("body") or "").strip()
+
+
+def comment_in_historical_range(value: datetime | None, since: date) -> bool:
+    if value is None:
+        return False
+    current = value.date()
+    return current >= since
 
 
 def extract_comments_for_post(
@@ -1344,17 +1445,17 @@ def extract_comments_for_post(
             continue
 
         text = normalize_comment_text(item)
-        if not text:
+        if len(text) < 5:
             continue
 
         created_dt = parse_datetime_from_item(item, keys=("date", "timestamp", "commentDate", "createdTime"))
-        if not date_in_range(created_dt, config.since, config.until):
+        if not comment_in_historical_range(created_dt, config.since):
             continue
 
-        comment_url = normalize_facebook_url(str(item.get("url") or item.get("commentUrl") or ""))
+        comment_url = raw_facebook_url(str(item.get("url") or item.get("commentUrl") or ""))
         created_time = created_dt.isoformat() if created_dt else ""
         comment_id = derive_comment_id(item, comment_url, post.post_id, text, created_time)
-        dedupe_key = comment_id or comment_url or text[:120]
+        dedupe_key = f"{post.post_url}|{text[:150]}"
         if dedupe_key in seen:
             continue
         seen.add(dedupe_key)
@@ -1728,7 +1829,9 @@ def build_notes(config: ResolvedConfig, *, status: str, dry_run: bool) -> list[s
         "Se descarto enriquecimiento adicional por scraping de URL del post para no romper costo ni control operacional.",
     ]
     if config.include_replies:
-        notes.append("Replies habilitados explicitamente por CLI; esto puede elevar costo y volumen.")
+        notes.append("Replies incluidos para preservar comparabilidad con el extractor histórico de comentarios.")
+    else:
+        notes.append("Replies deshabilitados por configuracion; esto reduce comparabilidad frente al extractor historico.")
     if dry_run:
         notes.append("Dry-run activo: no se ejecutaron actores de Apify.")
     if status != "success":
@@ -1758,6 +1861,16 @@ def build_summary(
         sum(result.posts_actor_usage_usd + result.comments_actor_usage_usd for result in page_results),
         6,
     )
+    pages_without_candidate_posts = [
+        {"page_id": result.page.page_id, "page_label": result.page.page_label, "page_handle": result.page.page_handle}
+        for result in page_results
+        if result.total_candidate_posts_detected == 0
+    ]
+    pages_without_comments_saved = [
+        {"page_id": result.page.page_id, "page_label": result.page.page_label, "page_handle": result.page.page_handle}
+        for result in page_results
+        if result.total_comments_saved == 0
+    ]
     return {
         "run_id": config.run_id,
         "status": status,
@@ -1767,6 +1880,7 @@ def build_summary(
         "output_dir": str(output_dir),
         "institutional_pages_targeted": [page.page_label for page in config.pages],
         "page_ids_targeted": [page.page_id for page in config.pages],
+        "page_handles_targeted": [page.page_handle for page in config.pages],
         "seed": config.seed,
         "weekly_comment_caps": {page.page_id: config.weekly_comment_cap_per_page for page in config.pages},
         "total_candidate_posts_detected": total_candidate_posts,
@@ -1776,6 +1890,8 @@ def build_summary(
         "total_comments_skipped_by_cap": total_comments_skipped,
         "total_posts_enriched": total_posts_enriched,
         "total_items_failed": total_items_failed,
+        "pages_without_candidate_posts": pages_without_candidate_posts,
+        "pages_without_comments_saved": pages_without_comments_saved,
         "sampling_mode": SAMPLING_MODE,
         "started_at": started_at,
         "finished_at": finished_at,
@@ -1835,6 +1951,7 @@ def build_metadata(
         "page_level_counts": {
             result.page.page_id: {
                 "page_label": result.page.page_label,
+                "page_handle": result.page.page_handle,
                 "candidate_posts_detected": result.total_candidate_posts_detected,
                 "posts_selected": result.total_posts_selected,
                 "comments_attempted": result.total_comments_attempted,
@@ -1871,14 +1988,21 @@ def publish_canonical_artifacts(
         "posts_csv": config.week_dir / POSTS_FILENAME,
         "comments_csv": config.week_dir / COMMENTS_FILENAME,
         "audit_csv": config.week_dir / AUDIT_FILENAME,
+        "summary_json": config.week_dir / SUMMARY_FILENAME,
+        "metadata_json": config.week_dir / METADATA_FILENAME,
+        "parametros_json": config.week_dir / PARAMS_FILENAME,
+        "manifest_json": config.week_dir / MANIFEST_FILENAME,
+        "errors_json": config.week_dir / ERRORS_FILENAME,
+        "run_log": config.week_dir / LOG_FILENAME,
     }
-    for key, target_path in targets.items():
-        if key not in artifact_paths:
+    for key, source_path in artifact_paths.items():
+        target_path = targets.get(key)
+        if target_path is None:
             continue
         ensure_publish_target(target_path, config.overwrite)
-        shutil.copy2(artifact_paths[key], target_path)
+        shutil.copy2(source_path, target_path)
         published[key] = str(target_path)
-        logger.info("Artefacto canonico publicado | source=%s target=%s", artifact_paths[key], target_path)
+        logger.info("Artefacto canonico publicado | source=%s target=%s", source_path, target_path)
     return published
 
 
@@ -1994,6 +2118,15 @@ def persist_outputs(
         write_json_file(errors_path, [serialize_for_json(error) for error in errors])
         artifact_paths["errors_json"] = errors_path
         add_artifact_record(artifact_records, errors_path, "errors", "Errores recuperables registrados durante la corrida.")
+    elif config.publish_canonical and config.overwrite:
+        stale_errors_path = config.week_dir / ERRORS_FILENAME
+        if stale_errors_path.exists():
+            stale_errors_path.unlink()
+
+    log_path = config.run_dir / LOG_FILENAME
+    if log_path.exists():
+        artifact_paths["run_log"] = log_path
+        add_artifact_record(artifact_records, log_path, "log", "Log operativo de la corrida.")
 
     manifest_path = config.run_dir / MANIFEST_FILENAME
     manifest_payload = [serialize_for_json(record) for record in artifact_records]
@@ -2009,6 +2142,8 @@ def persist_outputs(
         metadata["published_canonical_paths"] = published_paths
         write_json_file(summary_path, summary)
         write_json_file(metadata_path, metadata)
+        shutil.copy2(summary_path, config.week_dir / SUMMARY_FILENAME)
+        shutil.copy2(metadata_path, config.week_dir / METADATA_FILENAME)
 
     return summary, metadata, manifest_payload, {key: str(value) for key, value in artifact_paths.items()}
 
@@ -2040,6 +2175,7 @@ def write_failure_artifacts(
         "output_dir": str(config.run_dir),
         "institutional_pages_targeted": [page.page_label for page in config.pages],
         "page_ids_targeted": [page.page_id for page in config.pages],
+        "page_handles_targeted": [page.page_handle for page in config.pages],
         "seed": config.seed,
         "weekly_comment_caps": {page.page_id: config.weekly_comment_cap_per_page for page in config.pages},
         "total_candidate_posts_detected": 0,
@@ -2159,7 +2295,7 @@ def run_extraction(config: ResolvedConfig, logger: logging.Logger) -> RunExecuti
     )
     logger.info(
         "Paginas institucionales objetivo | pages=%s",
-        ", ".join(f"{page.page_label}:{page.page_id}" for page in config.pages),
+        ", ".join(f"{page.page_label}:{page.page_id}:{page.page_handle or 'sin_handle'}" for page in config.pages),
     )
 
     if config.dry_run:
@@ -2171,7 +2307,14 @@ def run_extraction(config: ResolvedConfig, logger: logging.Logger) -> RunExecuti
     started_perf = time.perf_counter()
     page_results: list[PageExecutionResult] = []
     for index, page in enumerate(config.pages, start=1):
-        logger.info("Procesando pagina %s/%s | page_id=%s page_label=%s", index, len(config.pages), page.page_id, page.page_label)
+        logger.info(
+            "Procesando pagina %s/%s | page_id=%s page_label=%s page_handle=%s",
+            index,
+            len(config.pages),
+            page.page_id,
+            page.page_label,
+            page.page_handle or "",
+        )
         page_result = extract_page_batch(client, page, config, logger)
         page_results.append(page_result)
 

@@ -1,0 +1,22 @@
+{
+  "article_text": "Atlético La Paz vs Jaiba Brava: lo que debes saber previo al juego clave de la Jornada 12\nEl Tampico-Madero visita el Estadio Guaycura, la casa del equipo que se llevó su franquicia en 2022\nGustavo Corona\nAunque la clasificación no parece estar demasiado lejos, la realidad es que al día de hoy no son invitados a la liguilla.\nAtlético La Paz: un rival que solo ha perdido un juego\nEstando a solo dos puntos del primer lugar, los de Baja California Sur están teniendo uno de sus mejores torneos bajo las órdenes de su entrenador Hugo Castillo.",
+  "article_text_length": 543,
+  "article_title": "Atlético La Paz vs Jaiba Brava: lo que debes saber previo al juego clave de la Jornada 12 - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/deportes/atletico-la-paz-vs-jaiba-brava-lo-que-debes-saber-previo-al-juego-clave-de-la-jornada-12-29130468",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:52:40Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

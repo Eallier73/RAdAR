@@ -1,0 +1,22 @@
+{
+  "article_text": "Que este lunes todos los caminos llevan a Ciudad Victoria, sede del mensaje por el cuarto Informe de Gobierno de Américo Villarreal Anaya. Se espera que todo el sistema estatal y los municipios acudan a dicho evento, en el cual se podrán destacar los avances del actual gobierno tamaulipeco.\nQue en Tampico los regidores están en una competencia constante, ya que buscan reelegirse. La problemática se centra entre los ediles morenistas, aunque hay quienes resultan más insistentes para llamar la atención de la alcaldesa Mónica Villarreal; uno de ellos es Gregorio Pego, de quien se dice tiene ventaja por ser un especialista en aplaudir.\nQue en las encuestas que se están llevando a cabo en la zona destacan perfiles femeninos como el de la alcaldesa de Tampico, Mónica Villarreal, y la diputada Úrsula Salazar, todo con miras a 2027; sin embargo, en estos tiempos de mujeres también ha destacado Fernando Manzur, actual jefe de la Oficina Fiscal de Tampico, quien parece estar realizando bien su labor.\nQue recientemente el diputado panista Pepe Schekaibán habló sobre la necesidad de fortalecer los requisitos para los aspirantes a los Registros Civiles en el estado, ya que han pasado más de 85 años sin modificaciones a la Ley Reglamentaria de las oficinas del Registro Civil en Tamaulipas.\nQue el diputado federal Chucho Nader ha mantenido reuniones con líderes de diversos sectores, desde mercados y comercios hasta empresarios y asociaciones. Ha estado muy activo y ha visitado zonas donde se debate la política local. Se nota que se acercan tiempos electorales.\nQue en tiempos electorales hay cuatro candidatos a la dirigencia de Somos MX en Tamaulipas. Los más fuertes son Joaquín Hernández Correa, como presidente, y Odette Tobías, como secretaria general. La contienda está reñida, pero en los próximos días habrá resultados.\nQue en algunos municipios de Tamaulipas el Movimiento del Sombrero, surgido en Michoacán, se está movilizando para tener representación. Para ello, están sumando perfiles inconformes de diversos partidos políticos, como PAN, Morena, PT, Verde e incluso Movimiento Ciudadano. Buscan atraer también a empresarios.",
+  "article_text_length": 2150,
+  "article_title": "La Grilla - Milenio",
+  "article_url_resolved": "https://www.milenio.com/opinion/editoriales/se-dice-en-la-grilla-tamaulipas/la-grilla_1107",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:milenio.com",
+  "playwright_used": false,
+  "query": "\"Monica Villarreal\" site:milenio.com",
+  "query_index": 4,
+  "retrieved_at": "2026-04-05T15:53:52Z",
+  "source_domain": "www.milenio.com",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"Monica Villarreal\""
+}

@@ -1,0 +1,5 @@
+﻿query_index,query,status,videos_found,videos_with_comments,comments_extracted,video_errors,query_errors,duration_seconds
+1,presidenta municipal de Tampico,success,6,4,216,0,0,4.695
+2,Presidenta municipal de Tampico,success,6,4,216,0,0,4.114
+3,Gobierno de Tampico,success,25,16,428,0,0,16.971
+4,gobierno de Tampico,success,24,15,423,0,0,17.715

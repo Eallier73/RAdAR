@@ -1,0 +1,40 @@
+{
+  "api_key_source": "env:YOUTUBE_API_KEY",
+  "duration_seconds": 49.99,
+  "end_date": "2026-03-15",
+  "finished_at": "2026-04-05T17:40:49Z",
+  "notes": [
+    "Extractor puro de YouTube: busqueda por query/rango, metadata de video y comentarios top-level.",
+    "No se extraen replies por defecto ni se implementan en esta version.",
+    "No se realiza NLP, deduplicacion de negocio, consolidacion maestra ni modelado.",
+    "La disponibilidad final depende de la API de YouTube y sus limites de cuota.",
+    "El nombre semanal usa exactamente start_date y end_date, sin alineacion automatica a lunes-domingo."
+  ],
+  "output_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26/runs/yt_w11_rerun_20260405_113959",
+  "published_canonical_paths": {
+    "comments_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26/youtube_comentarios_2026-03-09_semana_09marzo_15marzo_26.csv",
+    "manifest_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26/manifest.json",
+    "metadata_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26/metadata_run.json",
+    "parametros_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26/parametros_run.json",
+    "queries_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26/queries_summary.csv",
+    "summary_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26/summary.json",
+    "videos_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26/videos_encontrados.csv"
+  },
+  "queries_failed": 0,
+  "queries_processed": 4,
+  "run_id": "yt_w11_rerun",
+  "script_name": "youtube_extractor.py",
+  "script_version": "2.0.0",
+  "search_end_datetime": "2026-03-15T23:59:59",
+  "search_start_datetime": "2026-03-09T00:00:00",
+  "start_date": "2026-03-09",
+  "started_at": "2026-04-05T17:39:59Z",
+  "status": "success",
+  "total_comments_extracted": 2666,
+  "total_queries": 4,
+  "total_videos_found": 68,
+  "total_videos_with_comments": 32,
+  "week_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-09_semana_09marzo_15marzo_26",
+  "week_name": "2026-03-09_semana_09marzo_15marzo_26",
+  "week_name_mode": "exact_range"
+}

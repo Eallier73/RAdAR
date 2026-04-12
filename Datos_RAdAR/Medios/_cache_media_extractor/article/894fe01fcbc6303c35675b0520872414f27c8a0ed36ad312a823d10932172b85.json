@@ -1,0 +1,22 @@
+{
+  "article_text": "Tampico reemplaza carretas con caballos; entregan motocicletas de carga a recicladores\nEl programa busca mejorar las condiciones laborales de los recicladores y fortalecer las acciones de bienestar animal en la ciudad\nMario Cruces\nMotocicletas sustituyen carretas tiradas por equinos\nPrograma busca bienestar animal y mejores condiciones laborales\nLa alcaldesa destacó que los recicladores desempeñan un papel importante en la vida cotidiana de la ciudad, ya que su labor contribuye a mantener limpios los espacios públicos y fortalecer las acciones de reciclaje.\nComo parte del programa, explicó que uno de los requisitos para participar es que los equinos entregados se encuentren en buenas condiciones de salud.\nPosteriormente, los animales son canalizados a la asociación civil Héroes de Cuatro Patas, donde reciben atención y resguardo en el Santuario Sendero de la Libertad.",
+  "article_text_length": 880,
+  "article_title": "Tampico reemplaza carretas con caballos; entregan motocicletas de carga a recicladores - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/local/tampico-reemplaza-carretas-con-caballos-entregan-motocicletas-de-carga-a-recicladores-28935940",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"Monica Villarreal\" site:oem.com.mx",
+  "query_index": 1,
+  "retrieved_at": "2026-04-05T15:47:27Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"Monica Villarreal\""
+}

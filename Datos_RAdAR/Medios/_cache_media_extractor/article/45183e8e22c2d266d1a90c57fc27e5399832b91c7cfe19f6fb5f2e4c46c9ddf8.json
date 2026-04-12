@@ -1,0 +1,22 @@
+{
+  "article_text": "Con una formación en economía a nivel doctoral, maestría y licenciatura, pretendo mediante la colaboración en la columna de “El Pulso de la Economía” proporcionar un espacio que busca ser guía confiable y accesible sobre las situaciones económicas que prevalecen en la actualidad de una manera clara y sencilla, de tal forma que nos permita entender el mundo que nos rodea, fomentando con ello una ciudadanía informada, crítica y participativa.",
+  "article_text_length": 444,
+  "article_title": "COLUMNAS DE MI AUTORÍA - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/analisis/autor/jorge-perez-4612",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:50:40Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

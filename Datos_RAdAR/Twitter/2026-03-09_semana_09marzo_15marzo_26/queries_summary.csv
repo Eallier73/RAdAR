@@ -1,0 +1,10 @@
+query_index,query,status,tweets_detected,tweets_saved,replies_saved,items_failed,scrolls_executed,selector_warning,duration_seconds
+1,to:MonicaVTampico,success,9,1,0,0,9,,22.514
+2,from:MonicaVTampico,success,0,0,0,0,8,,11.634
+3,to:TampicoGob,success,9,1,0,0,9,,21.663
+4,from:TampicoGob,success,0,0,0,0,8,,11.156
+5,@TampicoGob,success,45,5,0,0,9,,58.974
+6,@MonicaVTampico,success,77,16,3,0,10,,171.972
+7,monica villarreal,success,81,20,4,0,10,,203.819
+8,gobierno de tampico,success,0,0,0,0,8,,11.164
+9,tampico,success,0,0,0,0,8,,11.199

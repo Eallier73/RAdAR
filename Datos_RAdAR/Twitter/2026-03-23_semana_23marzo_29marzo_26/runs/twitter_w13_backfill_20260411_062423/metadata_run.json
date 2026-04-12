@@ -1,0 +1,226 @@
+{
+  "run_id": "twitter_w13_backfill",
+  "run_timestamp": "20260411_062423",
+  "script_name": "twitter_extractor.py",
+  "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/twitter_extractor.py",
+  "script_version": "2.0.0",
+  "entrypoint_alias": "canonical_wrapper",
+  "helper_module_path": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_extractor_core.py",
+  "week_name": "2026-03-23_semana_23marzo_29marzo_26",
+  "week_name_mode": "canonical_monday_sunday",
+  "search_window": {
+    "since": "2026-03-23",
+    "until": "2026-03-29",
+    "naming_start_date": "2026-03-23",
+    "naming_end_date": "2026-03-29"
+  },
+  "environment": {
+    "cwd": "/home/emilio/Documentos/RAdAR",
+    "user": "emilio",
+    "hostname": "ThinkPad-T14-Gen-4-Emilio",
+    "platform": "Linux-6.14.0-37-generic-x86_64-with-glibc2.39",
+    "python_version": "3.12.3"
+  },
+  "config": {
+    "script_name": "twitter_extractor.py",
+    "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/twitter_extractor.py",
+    "helper_module_path": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_extractor_core.py",
+    "entrypoint_alias": "canonical_wrapper",
+    "script_version": "2.0.0",
+    "since": "2026-03-23",
+    "until": "2026-03-29",
+    "week_name_mode": "canonical_monday_sunday",
+    "week_partition": {
+      "start_date": "2026-03-23",
+      "end_date": "2026-03-29",
+      "week_name": "2026-03-23_semana_23marzo_29marzo_26",
+      "naming_start_date": "2026-03-23",
+      "naming_end_date": "2026-03-29"
+    },
+    "output_root_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter",
+    "week_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-23_semana_23marzo_29marzo_26",
+    "run_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-23_semana_23marzo_29marzo_26/runs/twitter_w13_backfill_20260411_062423",
+    "session_state_file": "/home/emilio/Documentos/RAdAR/Scripts/state/x_state.json",
+    "run_id": "twitter_w13_backfill",
+    "run_timestamp": "20260411_062423",
+    "queries": [
+      {
+        "query_index": 1,
+        "query": "to:MonicaVTampico",
+        "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt"
+      },
+      {
+        "query_index": 2,
+        "query": "from:MonicaVTampico",
+        "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt"
+      },
+      {
+        "query_index": 3,
+        "query": "to:TampicoGob",
+        "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt"
+      },
+      {
+        "query_index": 4,
+        "query": "from:TampicoGob",
+        "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt"
+      },
+      {
+        "query_index": 5,
+        "query": "@TampicoGob",
+        "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt"
+      },
+      {
+        "query_index": 6,
+        "query": "@MonicaVTampico",
+        "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt"
+      },
+      {
+        "query_index": 7,
+        "query": "monica villarreal",
+        "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt"
+      },
+      {
+        "query_index": 8,
+        "query": "gobierno de tampico",
+        "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt"
+      },
+      {
+        "query_index": 9,
+        "query": "tampico",
+        "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt"
+      }
+    ],
+    "queries_source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/twitter_queries_canonical.txt",
+    "log_level": "INFO",
+    "overwrite": true,
+    "publish_canonical": true,
+    "max_scrolls": 6,
+    "max_tweets_per_query": 100,
+    "max_replies_per_tweet": 25,
+    "include_replies": false,
+    "headless": true,
+    "pause_seconds": 1.0,
+    "dry_run": false,
+    "config_file": null
+  },
+  "execution": {
+    "status": "partial_success",
+    "exit_code": 1,
+    "started_at": "2026-04-11T12:24:23Z",
+    "finished_at": "2026-04-11T12:26:07Z",
+    "duration_seconds": 103.638,
+    "dry_run": false,
+    "skipped_existing_outputs": false
+  },
+  "counts": {
+    "queries": 9,
+    "queries_failed": 0,
+    "tweets_detected": 237,
+    "tweets_saved": 79,
+    "replies_saved": 0,
+    "items_failed": 3,
+    "text_expansion_attempted": 0,
+    "text_expansion_succeeded": 0,
+    "selector_warnings": 0
+  },
+  "session": {
+    "session_state_file": "/home/emilio/Documentos/RAdAR/Scripts/state/x_state.json",
+    "used": "/home/emilio/Documentos/RAdAR/Scripts/state/x_state.json",
+    "validated": true
+  },
+  "playwright": {
+    "required": true,
+    "available": true,
+    "headless": true,
+    "used": true
+  },
+  "dependencies": {
+    "playwright": true
+  },
+  "artifact_paths": {
+    "main_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-23_semana_23marzo_29marzo_26/runs/twitter_w13_backfill_20260411_062423/twitter_data_2026-03-23_semana_23marzo_29marzo_26.csv",
+    "raw_jsonl": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-23_semana_23marzo_29marzo_26/runs/twitter_w13_backfill_20260411_062423/tweets_raw.jsonl",
+    "queries_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-23_semana_23marzo_29marzo_26/runs/twitter_w13_backfill_20260411_062423/queries_summary.csv",
+    "parametros_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-23_semana_23marzo_29marzo_26/runs/twitter_w13_backfill_20260411_062423/parametros_run.json",
+    "summary_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-23_semana_23marzo_29marzo_26/runs/twitter_w13_backfill_20260411_062423/summary.json",
+    "errors_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-23_semana_23marzo_29marzo_26/runs/twitter_w13_backfill_20260411_062423/errores_detectados.json",
+    "run_log": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-23_semana_23marzo_29marzo_26/runs/twitter_w13_backfill_20260411_062423/run.log",
+    "metadata_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-23_semana_23marzo_29marzo_26/runs/twitter_w13_backfill_20260411_062423/metadata_run.json",
+    "manifest_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-23_semana_23marzo_29marzo_26/runs/twitter_w13_backfill_20260411_062423/manifest.json"
+  },
+  "errors": [
+    {
+      "stage": "extract_tweet_card",
+      "scope": "tweet",
+      "message": "No se pudo extraer texto ni URL del tweet visible.",
+      "timestamp": "2026-04-11T12:26:03Z",
+      "fatal": false,
+      "error_type": "tweet_parse_empty",
+      "query_index": 9,
+      "query": "tampico",
+      "tweet_url": null,
+      "details": {}
+    },
+    {
+      "stage": "extract_tweet_card",
+      "scope": "tweet",
+      "message": "No se pudo extraer texto ni URL del tweet visible.",
+      "timestamp": "2026-04-11T12:26:03Z",
+      "fatal": false,
+      "error_type": "tweet_parse_empty",
+      "query_index": 9,
+      "query": "tampico",
+      "tweet_url": null,
+      "details": {}
+    },
+    {
+      "stage": "extract_tweet_card",
+      "scope": "tweet",
+      "message": "No se pudo extraer texto ni URL del tweet visible.",
+      "timestamp": "2026-04-11T12:26:03Z",
+      "fatal": false,
+      "error_type": "tweet_parse_empty",
+      "query_index": 9,
+      "query": "tampico",
+      "tweet_url": null,
+      "details": {}
+    }
+  ],
+  "notes": [
+    "Extractor puro de X/Twitter: búsqueda live, sesión persistida, extracción de tweets y replies opcionales.",
+    "No realiza NLP, clasificación, scoring político, consolidación multi-fuente ni modelado.",
+    "Las queries canónicas son específicas al caso Tampico y no incluyen la query ambigua 'presidenta municipal'.",
+    "El nombre semanal se alinea a lunes-domingo; la búsqueda real mantiene since y until exactos.",
+    "La sesión persistida de X/Twitter se validó correctamente antes de extraer.",
+    "La extracción de replies quedó deshabilitada por configuración.",
+    "Playwright quedó configurado en modo headless.",
+    "Playwright se utilizó efectivamente durante la corrida.",
+    "Expansión de texto visible: 0/0 éxitos sobre intentos detectados.",
+    "La corrida terminó con errores recuperables; revisar errores_detectados.json."
+  ],
+  "selector_health": {
+    "queries_probed": 9,
+    "queries_with_warning": 0,
+    "articles_seen": 30,
+    "articles_sampled": 24,
+    "tweet_text_found": 23,
+    "user_name_found": 24,
+    "time_found": 24,
+    "warnings": []
+  },
+  "navigation_strategy": {
+    "search_mode": "x_live_search",
+    "text_expansion": "disabled_for_historical_parity",
+    "reply_strategy": "tweet_detail_page"
+  },
+  "published_canonical_paths": {
+    "main_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-23_semana_23marzo_29marzo_26/twitter_data_2026-03-23_semana_23marzo_29marzo_26.csv",
+    "raw_jsonl": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-23_semana_23marzo_29marzo_26/tweets_raw.jsonl",
+    "queries_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-23_semana_23marzo_29marzo_26/queries_summary.csv",
+    "parametros_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-23_semana_23marzo_29marzo_26/parametros_run.json",
+    "summary_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-23_semana_23marzo_29marzo_26/summary.json",
+    "errors_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-23_semana_23marzo_29marzo_26/errores_detectados.json",
+    "metadata_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-23_semana_23marzo_29marzo_26/metadata_run.json",
+    "manifest_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-23_semana_23marzo_29marzo_26/manifest.json"
+  }
+}

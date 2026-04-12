@@ -1,0 +1,22 @@
+{
+  "article_text": "2TURISMOViernes Santo histórico en Ciudad Madero: Playa Miramar se consolida como el destino favorito del noreste\nCULTURASemana Santa 2026: cuáles son los días en los que no se come carne y el significado la tradición católica\nLOCALAnte restos de marea negra, activan protocolos de atención y limpieza en Santuario de Rancho Nuevo",
+  "article_text_length": 330,
+  "article_title": "Clasificación - El Sol de Tampico | Noticias Locales, Policiacas, sobre México, Tamaulipas y el Mundo - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/tags/clasificacion/moda?page=61",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:48:14Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

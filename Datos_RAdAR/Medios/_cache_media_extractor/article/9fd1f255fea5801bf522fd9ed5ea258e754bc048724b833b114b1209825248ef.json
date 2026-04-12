@@ -1,0 +1,22 @@
+{
+  "article_text": "¿Cerró Cruz Roja en Tampico? En las instalaciones dejaron de ofrecer el servicio médico\nMientras que en la frontera las corporaciones continúan operando, la zona sur está en crisis debido a dificultades financieras\nMario Cruces\nDebido a problemas económicos, la Cruz Roja de Tampico suspendió el servicio médico así como los trabajos del área administrativa.\nEn Ciudad Victoria no hay servicio desde el viernes\nCruz Roja de Matamoros y Reynosa se mantienen en operación\nA través de un posicionamiento público dirigido a medios de comunicación y a la comunidad, la Cruz Roja Mexicana Delegación Matamoros informó que sus operaciones se mantienen activas y en crecimiento.\nEl presidente del consejo de la institución en la ciudad, Mario Ramírez, destacó que la delegación continúa trabajando con responsabilidad y compromiso para atender a quienes más lo necesitan.\n“En Matamoros seguimos trabajando con responsabilidad, compromiso y visión de crecimiento, conscientes de la gran misión que representa servir a quienes más lo necesitan”, señaló en el comunicado.\nDe acuerdo con el documento, la delegación mantiene firme su labor humanitaria y ha reforzado su capacidad operativa, así como su cercanía con la ciudadanía y su vocación de servicio.\nMientras que personal de la Cruz Roja en Reynosa afirmó que la corporación opera con regularidad, situación que ya no ocurre en Tampico.",
+  "article_text_length": 1381,
+  "article_title": "¿Cerró Cruz Roja en Tampico? En las instalaciones dejaron de ofrecer el servicio médico - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/local/cerro-cruz-roja-en-tampico-en-las-instalaciones-dejaron-de-ofrecer-el-servicio-medico-28968922",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:48:39Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

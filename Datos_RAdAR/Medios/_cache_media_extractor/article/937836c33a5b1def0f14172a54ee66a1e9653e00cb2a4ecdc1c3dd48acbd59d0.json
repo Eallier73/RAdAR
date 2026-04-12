@@ -1,0 +1,23 @@
+{
+  "article_text": "Las estructuras morenistas andan activas y sus personajes muy puestos para las decisiones que puedan venir rumbo a la elección del 2027. La determinación del CEN de hace días es un banderazo a fortalecer la base popular, con la indicación de cuidar formas, aunque algunos parece importarles muy poco.\nEs cuestión de ver Tampico, caso muy particular pues mientras el gobernador Américo Villarreal Anaya fue claro hacia los “adelantados”, esperar tiempos del INE y el Ietam, esa fila de aspirantes a posiciones vía las urnas realizan eventos diversos dirigidos a fortalecer sus respectivos grupos, sin embargo, se encontraron con un pequeño detalle.\nEl más significativo es el activismo de Jorge Méndez Guillén. El ex funcionario de seguridad poblano mantiene su presencia en colonias porteñas pero, resaltan las quejas de la afiliación guinda, es utilizar la estructura perteneciente al ayuntamiento porteño.\nMientras Úrsula Salazar, Lucero Deosdady Martínez, Juan Manuel Pizaña y varios hacen su propia lucha, al hijo de la priista Paloma Guillén le acomodan las simpatías. Quien haya tomado esa decisión manda un mensaje equivocado y, si nos vamos más allá, contradicen al propio gobernador. ¿Hay ganas de ponerse en su contra?\nSi esos yerros siguen le seguirán alimentando a los contrarios sus intenciones. Ahí está Chucho Nader viendo desde lejos esos traspiés, esperando el momento de reactivar su nombre pues, dicho sea de paso, de la conversación jamás se ha ido.\n“Quién haga política para un grupo menor, no es políticamente correcto”, dijo Jorge “Tico” García en un evento esta semana en Ciudad Victoria, acompañado de regidores de Morena, Verde y Movimiento Ciudadano. El empresario quiere de nuevo pelear por una candidatura a la alcaldía de la capital.\nEn tanto, otros ediles fortalecen su agenda. Erasmo González (de visita ayer al senado recibido por Olga Sosa) tiene etiquetado 620 millones de pesos, entre recursos propios y una bolsa entregada por el gobernador, destinado a modernización de habilidades, un parque lineal la colonia Adriana González y el drenaje en sectores cercanos a Playa Miramar de Ciudad Madero.\nSobre Altamira esta semana el sector privado tendrá varias reuniones con el alcalde Armando Martínez. Hay proyectos de parques fotovoltaicos en puerta, añadiendo franquicias dentro del modelo de club de precios, como es las Tiendas “Tres B”, alistándose para aterrizar una sucursal en el municipio, aunado a otro negocio de giro comercial.",
+  "article_text_length": 2473,
+  "article_title": "La fila de Morena en Tampico que se andan saltando - Milenio",
+  "article_url_resolved": "https://www.milenio.com/opinion/victor-hugo-duran/sin-codigo/la-fila-de-morena-en-tampico-que-se-andan-saltando",
+  "attempted_methods": [
+    "trafilatura",
+    "cloudscraper"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "cloudscraper",
+  "fallback_used": true,
+  "medio": "site:milenio.com",
+  "playwright_used": false,
+  "query": "\"tampico\" site:milenio.com",
+  "query_index": 6,
+  "retrieved_at": "2026-04-05T17:41:36Z",
+  "source_domain": "www.milenio.com",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

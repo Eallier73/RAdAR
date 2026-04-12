@@ -1,0 +1,22 @@
+{
+  "article_text": "Vivencias / Los cuidadores\nCuidar también cansa (y casi nadie lo dice)\nY sí, cuidar también cansa.\nCansa física, emocional y económicamente. Cansa porque no hay horarios. Porque no hay descansos formales. Porque no hay reconocimiento real. Y porque, aunque se haga con amor, el amor no sustituye la necesidad de apoyo.\nPor eso, hablar de cuidados sin hablar de las cuidadoras -y los cuidadores- es quedarnos a la mitad.",
+  "article_text_length": 419,
+  "article_title": "Vivencias / Los cuidadores - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/analisis/los-cuidadores-29102068",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:50:03Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

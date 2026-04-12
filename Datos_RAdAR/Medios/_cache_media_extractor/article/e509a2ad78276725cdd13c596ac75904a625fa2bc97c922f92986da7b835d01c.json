@@ -1,0 +1,23 @@
+{
+  "article_text": "A pocos días del inicio de las vacaciones de Semana Santa 2026, el sector hotelero del sur de Tamaulipas espera un importante incremento en las reservaciones, impulsado por la llegada de turistas nacionales que buscan disfrutar de los atractivos de la región.\nEn Tampico existen diversos espacios culturales que forman parte de la oferta turística. Entre ellos destacan museos que permiten conocer la historia, la cultura y el desarrollo de la zona.\nAdemás, algunas remodelaciones y nuevos espacios culturales buscan fortalecer la experiencia para visitantes y familias locales.\nMuseo de la Ciudad Tampico\nEl Museo de la Ciudad Tampico resguarda parte de la historia de la ciudad, desde sus raíces indígenas hasta su consolidación como uno de los principales puertos del Golfo de México.\nHorario:\n- Martes a domingo, de 10:00 a 18:00 horas.\nCosto:\n- Adultos: $120\n- Niños, estudiantes, personas con discapacidad y adultos mayores: $70\n- Adulto foráneo: $40\nUbicación:\nCalle 20 de Noviembre esquina con Díaz Mirón, Centro Histórico.\nBarco Museo del Niño\nEl Centro Cultural para las Infancias, Barco es un espacio interactivo pensado para el aprendizaje y la diversión de los menores, instalado en el antiguo Palacio Penal de Andonegui.\nHorario:\n- Martes a domingo, de 10:00 a 18:00 horas.\nCosto:\n- Adultos: $40\n- Niños de 3 a 12 años: $20\n- Adultos mayores: $15\n- Estacionamiento: $20\nUbicación:\nAvenida Emilio Portes Gil 2302, colonia Obrera.\nMuseo de la Cultura Huasteca\nEl Museo de la Cultura Huasteca exhibe cerca de 2 mil piezas arqueológicas que muestran la evolución de las culturas prehispánicas de la región huasteca.\nSe encuentra dentro del Espacio Cultural Metropolitano.\nHorario:\n- Martes a domingo, de 10:00 a 17:30 horas.\nCosto:\n- Entrada general: $80\n- Entrada gratuita los domingos.\nUbicación:\nBulevar Adolfo López Mateos s/n, colonia Obrera.\nMuseo del Automóvil de Tampico\nEl Museo del Automóvil y Transporte de Tampico (Matt) alberga una colección de 115 vehículos históricos que han marcado distintas etapas en la evolución del transporte.\nHorario:\n- Martes a domingo, de 10:00 a 18:00 horas.\nCosto:\n- Adultos: $80\n- Niños de 4 a 12 años: $20\nUbicación:\nDiagonal Sur-Norte No. 418, colonia Los Pinos, entre avenida Universidad y prolongación Agua Dulce.\nVisitar estos museos es una alternativa para quienes buscan actividades culturales durante su estancia en Tampico, especialmente en temporadas de alta afluencia turística como Semana Santa. ¿Cuál te interesa visitar próximamente? Sin duda, son una gran alternativa para disfrutar en familia.",
+  "article_text_length": 2563,
+  "article_title": "¿De vacaciones en el sur de Tamaulipas? Estos son los MUSEOS que puedes visitar en Tampico - Milenio",
+  "article_url_resolved": "https://www.milenio.com/estilo/museos-en-tampico-horarios-ubicaciones-y-costos",
+  "attempted_methods": [
+    "trafilatura",
+    "cloudscraper"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "cloudscraper",
+  "fallback_used": true,
+  "medio": "site:milenio.com",
+  "playwright_used": false,
+  "query": "\"tampico\" site:milenio.com",
+  "query_index": 6,
+  "retrieved_at": "2026-04-05T17:41:33Z",
+  "source_domain": "www.milenio.com",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

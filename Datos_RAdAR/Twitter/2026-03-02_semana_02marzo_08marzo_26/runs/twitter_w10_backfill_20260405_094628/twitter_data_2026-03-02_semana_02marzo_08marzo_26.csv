@@ -1,0 +1,1 @@
+run_id,week_name,source_platform,query,query_index,tweet_url,tweet_id,tweet_text,tweet_author,tweet_published_at,reply_count,retweet_count,like_count,view_count,conversation_id,is_reply,parent_tweet_url,extraction_method,retrieved_at,status_extraccion,error_type,error_detail,session_state_file,headless,text_expansion_attempted,text_expanded

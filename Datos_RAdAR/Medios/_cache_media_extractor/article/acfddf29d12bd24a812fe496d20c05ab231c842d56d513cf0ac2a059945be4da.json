@@ -1,0 +1,22 @@
+{
+  "article_text": "¡Revive la Jaiba Brava! Tampico-Madero vence a Dorados y por fin gana en casa\nTampico-Madero aprovechó la superioridad numérica y derrotó a Dorados para llegar a 11 unidades\nHéctor Rivera\nCon tantos de Misael Pedroza de penal y Joel Martínez, el conjunto celeste derrotó por 2 goles a 0 a Dorados.\nPedroza, que falló varias, tuvo finalmente la justa recompensa en el gol que anotó, aunque luce muy solo al frente.\nMás cambios durante el encuentro Jaiba Brava vs Dorados\nEl “Chima” Ruiz echó toda la carne al asador con el ingreso de Joel Martínez y Luciano Bocco y, posteriormente al 75’, de Francisco “Pantera” Martínez.",
+  "article_text_length": 621,
+  "article_title": "¡Revive la Jaiba Brava! Tampico-Madero vence a Dorados y por fin gana en casa - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/deportes/revive-la-jaiba-brava-tampico-madero-vence-a-dorados-y-por-fin-gana-en-casa-28858792",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:44:17Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

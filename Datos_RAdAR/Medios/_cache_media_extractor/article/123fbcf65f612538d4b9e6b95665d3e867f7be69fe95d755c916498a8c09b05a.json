@@ -1,0 +1,22 @@
+{
+  "article_text": "Tampico se reinventa: lanza 10 rutas turísticas para conquistar visitantes\nLa estrategia incluye recorridos gastronómicos, históricos y naturales para diversificar la experiencia del visitante\nYadira Hernández\nDe la gastronomía a la historia: recorridos que muestran la identidad de Tampico\nCapacitan a guías turísticos para brindar atención segura a visitantes\n“Los guías turísticos somos los primeros en atender cualquier situación, por eso es importante estar preparados para brindar una atención segura y de calidad a los visitantes”, señaló.\nIndicó que estas propuestas serán difundidas próximamente como parte del operativo turístico, a fin de que quienes arriben a la ciudad cuenten con diversas alternativas para disfrutar su estancia.",
+  "article_text_length": 743,
+  "article_title": "Tampico se reinventa: lanza 10 rutas turísticas para conquistar visitantes - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/turismo/tampico-se-reinventa-lanza-10-rutas-turisticas-para-conquistar-visitantes-29099633",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"gobierno de tampico\" site:oem.com.mx",
+  "query_index": 2,
+  "retrieved_at": "2026-04-05T15:49:49Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"gobierno de tampico\""
+}

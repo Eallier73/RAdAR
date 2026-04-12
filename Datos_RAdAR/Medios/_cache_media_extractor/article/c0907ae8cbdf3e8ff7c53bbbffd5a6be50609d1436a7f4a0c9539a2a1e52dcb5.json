@@ -1,0 +1,22 @@
+{
+  "article_text": "Sospechas de gusano barrenador en humanos y mascotas en el norte de Veracruz alertan al sector salud\nHasta el momento hay tres posibles casos de miasis en persona y se ha confirmado la presencia del gusano barrenador en un perro\nPaulo Monsiváis\nSe ha confirmado la existencia de situaciones de gusano barrenador en el estado, lo que ha llevado a considerar cualquier herida con proceso de infección como un caso sospechoso, activando protocolos de investigación y atención.\nLlaman a extremar precauciones a personas que viven en la zona rural\nMencionó que las autoridades han estado al pendiente de estas situaciones, realizando capacitaciones al respecto para estar preparados ante cualquier eventualidad.",
+  "article_text_length": 706,
+  "article_title": "Sospechas de gusano barrenador en humanos y mascotas en el norte de Veracruz alertan al sector salud - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/ciencia-y-salud/sospechas-de-gusano-barrenador-en-humanos-y-mascotas-en-el-norte-de-veracruz-alertan-al-sector-salud-29161040",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:52:17Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

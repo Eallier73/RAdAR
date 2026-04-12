@@ -1,0 +1,22 @@
+{
+  "article_text": "Café Cultura / El derecho a la tierra\nAlguien ha dicho que la comida rápida es popular porque es conveniente, es barata y sabe bien. Pero el verdadero costo de ingerir comida rápida nunca aparece en el menú.\nÉl es mazorca de maíz en el tiempo.\nÉl es el silencio de una nube.\nÉl es el corazón de la tierra labrada.\nÉl es la historia que quiero repetir.\n*La Grieta de la Tierra.\nOliva Castillejos Dehesa\namparo.gberumen@gmail.com",
+  "article_text_length": 427,
+  "article_title": "Café Cultura / El derecho a la tierra - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/analisis/el-derecho-a-la-tierra-29100985",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:50:54Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

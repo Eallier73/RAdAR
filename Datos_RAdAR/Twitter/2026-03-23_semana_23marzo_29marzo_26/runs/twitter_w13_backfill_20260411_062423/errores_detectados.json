@@ -1,0 +1,38 @@
+[
+  {
+    "stage": "extract_tweet_card",
+    "scope": "tweet",
+    "message": "No se pudo extraer texto ni URL del tweet visible.",
+    "timestamp": "2026-04-11T12:26:03Z",
+    "fatal": false,
+    "error_type": "tweet_parse_empty",
+    "query_index": 9,
+    "query": "tampico",
+    "tweet_url": null,
+    "details": {}
+  },
+  {
+    "stage": "extract_tweet_card",
+    "scope": "tweet",
+    "message": "No se pudo extraer texto ni URL del tweet visible.",
+    "timestamp": "2026-04-11T12:26:03Z",
+    "fatal": false,
+    "error_type": "tweet_parse_empty",
+    "query_index": 9,
+    "query": "tampico",
+    "tweet_url": null,
+    "details": {}
+  },
+  {
+    "stage": "extract_tweet_card",
+    "scope": "tweet",
+    "message": "No se pudo extraer texto ni URL del tweet visible.",
+    "timestamp": "2026-04-11T12:26:03Z",
+    "fatal": false,
+    "error_type": "tweet_parse_empty",
+    "query_index": 9,
+    "query": "tampico",
+    "tweet_url": null,
+    "details": {}
+  }
+]

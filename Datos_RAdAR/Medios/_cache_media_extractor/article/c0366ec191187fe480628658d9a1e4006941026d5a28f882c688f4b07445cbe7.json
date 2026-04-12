@@ -1,0 +1,22 @@
+{
+  "article_text": "Con el propósito de ampliar la oferta turística de la ciudad durante el periodo vacacional de Semana Santa, el Ayuntamiento de Tampico a través de la secretaría de turismo y en coordinación con otras dependencias, implementó diez rutas turísticas mediante las cuales se ofrece al visitante contenido temático de acuerdo a sus gustos e intereses.\nLa presidenta municipal, Mónica Villarreal Anaya, destacó que mediante este modelo conceptual, se busca ofrecer al turismo la oportunidad de contar con alternativas que se adapten a sus preferencias y que permitan descubrir la riqueza cultural, histórica, gastronómica y natural del municipio.\n“En Tampico hemos diseñado experiencias únicas que permiten a quienes nos visitan conocer nuestra identidad desde distintas perspectivas. Cada ruta representa una oportunidad para enamorarse de nuestra historia, de nuestros sabores y de nuestra gente”, expresó.\nEn ese sentido, puntualizó que la creación de estas rutas responde a una estrategia integral para diversificar la oferta turística del municipio, ordenando los principales atractivos en recorridos temáticos que facilitan su promoción y disfrute, al tiempo que impulsan la permanencia del visitante y fortalecen la derrama económica local.\n- Mónica Villarreal enlistó que estos conceptos turísticos comprenden: la Ruta de la Jaiba; la Ruta de las Cantinas; la de los Museos; del Auge Petrolero; del Tranvía Turístico; de la Laguna del Carpintero; la Ruta de Avistamiento de Aves; la Nocturna Juanchos; la del Centro Histórico; y la Ruta de Turismo Religioso.\nApuntó que para fortalecer la experiencia de quienes eligen alguna de estas rutas, se han dispuesto módulos de información turística en puntos estratégicos, donde los visitantes pueden orientarse, resolver dudas y planificar mejor sus recorridos.\nExplicó que estos se localizan en la Plaza Hijas de Tampico, Plaza de Armas, Plaza de la Libertad, Laguna del Carpintero, Central de Autobuses, Oficinas de Turismo y el Parque Fray Andrés de Olmos, donde personal capacitado de la Secretaría de Turismo ofrece atención, recomendaciones y acompañamiento a los turistas.\nFinalmente, Mónica Villarreal Anaya reiteró la invitación a conocer Tampico durante todo el año, destacando que la ciudad se consolida como uno de los destinos turísticos más atractivos y seguros del Golfo de México.",
+  "article_text_length": 2341,
+  "article_title": "Tampico promueve experiencias turísticas con contenido temático para los visitantes - Milenio",
+  "article_url_resolved": "https://www.milenio.com/comunidad/tampico-promueve-experiencias-turisticas-contenido-tematico",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:milenio.com",
+  "playwright_used": false,
+  "query": "\"Monica Villarreal\" site:milenio.com",
+  "query_index": 4,
+  "retrieved_at": "2026-04-05T15:55:51Z",
+  "source_domain": "www.milenio.com",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"Monica Villarreal\""
+}

@@ -74,6 +74,7 @@ DEFAULT_PAUSE_SECONDS = 1.0
 DEFAULT_NAV_TIMEOUT_MS = 90000
 DEFAULT_NAV_RETRIES = 3
 DEFAULT_VIEWPORT = {"width": 1280, "height": 900}
+SELECTOR_PROBE_SAMPLE_SIZE = 5
 DEFAULT_USER_AGENT = (
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
@@ -96,6 +97,9 @@ DEFAULT_CANONICAL_QUERIES = [
     "from:TampicoGob",
     "@TampicoGob",
     "@MonicaVTampico",
+    "monica villarreal",
+    "gobierno de tampico",
+    "tampico",
 ]
 
 DATA_COLUMNS = [
@@ -136,6 +140,7 @@ QUERY_SUMMARY_COLUMNS = [
     "replies_saved",
     "items_failed",
     "scrolls_executed",
+    "selector_warning",
     "duration_seconds",
 ]
 
@@ -241,6 +246,16 @@ class ErrorRecord:
 
 
 @dataclass(slots=True)
+class SelectorProbeResult:
+    articles_seen: int
+    articles_sampled: int
+    tweet_text_found: int
+    user_name_found: int
+    time_found: int
+    warning: str = ""
+
+
+@dataclass(slots=True)
 class TweetExtractionRecord:
     run_id: str
     week_name: str
@@ -282,6 +297,7 @@ class QueryExecutionResult:
     duration_seconds: float
     rows: list[TweetExtractionRecord] = field(default_factory=list)
     errors: list[ErrorRecord] = field(default_factory=list)
+    selector_probe: SelectorProbeResult | None = None
 
 
 @dataclass(slots=True)
@@ -700,14 +716,11 @@ def safe_json_load(path: Path) -> Any:
 def parse_metric_value(raw_value: str | None) -> int | None:
     if not raw_value:
         return None
-    normalized = raw_value.replace(",", "").strip().upper()
-    match = re.search(r"(\d+(?:\.\d+)?)([KMB])?", normalized)
+    normalized = raw_value.replace(",", "").strip()
+    match = re.search(r"(\d+)", normalized)
     if not match:
         return None
-    base_value = float(match.group(1))
-    suffix = match.group(2)
-    multiplier = {"K": 1_000, "M": 1_000_000, "B": 1_000_000_000}.get(suffix, 1)
-    return int(base_value * multiplier)
+    return int(match.group(1))
 
 
 def extract_tweet_id(tweet_url: str) -> str:
@@ -739,7 +752,10 @@ def detect_login_required(page_url: str) -> bool:
 
 
 def build_query_search_string(query: str, since: date, until: date) -> str:
-    return f"{query} since:{since.isoformat()} until:{until.isoformat()}"
+    normalized = query.strip()
+    if " " in normalized and not (normalized.startswith('"') and normalized.endswith('"')):
+        normalized = f'"{normalized}"'
+    return f"{normalized} since:{since.isoformat()} until:{until.isoformat()}"
 
 
 async def load_session_state(config: ResolvedConfig) -> None:
@@ -765,9 +781,6 @@ async def build_browser_context(config: ResolvedConfig, logger: logging.Logger) 
         context = await browser.new_context(
             storage_state=str(config.session_state_file),
             viewport=DEFAULT_VIEWPORT,
-            user_agent=DEFAULT_USER_AGENT,
-            locale="es-MX",
-            timezone_id="America/Mexico_City",
         )
         context.set_default_timeout(DEFAULT_NAV_TIMEOUT_MS)
         context.set_default_navigation_timeout(DEFAULT_NAV_TIMEOUT_MS)
@@ -813,23 +826,7 @@ async def validate_session(page: Page, logger: logging.Logger) -> None:
 
 
 async def expand_tweet_text(page: Page, article: Any) -> tuple[bool, bool]:
-    attempted = False
-    selectors = [
-        'text=/^(Show more|Mostrar más)$/i',
-        'text=/^(Read more|Leer más)$/i',
-    ]
-    for selector in selectors:
-        try:
-            locator = article.locator(selector)
-            if await locator.count():
-                attempted = True
-                await locator.first.click(timeout=1500)
-                await page.wait_for_timeout(250)
-                return attempted, True
-        except Exception:
-            attempted = True
-            continue
-    return attempted, False
+    return False, False
 
 
 async def extract_tweet_text(page: Page, article: Any) -> tuple[str, bool, bool]:
@@ -838,14 +835,7 @@ async def extract_tweet_text(page: Page, article: Any) -> tuple[str, bool, bool]
     if not await text_locator.count():
         return "", attempted, expanded
 
-    try:
-        text_parts = await text_locator.evaluate_all(
-            """nodes => nodes
-            .map(node => (node.textContent || '').replace(/\\s+/g, ' ').trim())
-            .filter(Boolean)"""
-        )
-    except Exception:
-        text_parts = [clean_text(item) for item in await text_locator.all_inner_texts()]
+    text_parts = [clean_text(item) for item in await text_locator.all_inner_texts()]
 
     unique_parts: list[str] = []
     seen: set[str] = set()
@@ -854,15 +844,15 @@ async def extract_tweet_text(page: Page, article: Any) -> tuple[str, bool, bool]
         if cleaned and cleaned not in seen:
             seen.add(cleaned)
             unique_parts.append(cleaned)
-    return " ".join(unique_parts).strip(), attempted, expanded
+    return " | ".join(unique_parts).strip(), attempted, expanded
 
 
 async def extract_engagement_metrics(article: Any) -> dict[str, int | None]:
     metrics = {
-        "reply_count": None,
-        "retweet_count": None,
-        "like_count": None,
-        "view_count": None,
+        "reply_count": 0,
+        "retweet_count": 0,
+        "like_count": 0,
+        "view_count": 0,
     }
     selectors = {
         "reply_count": '[data-testid="reply"]',
@@ -874,22 +864,54 @@ async def extract_engagement_metrics(article: Any) -> dict[str, int | None]:
             locator = article.locator(selector)
             if await locator.count():
                 aria_label = await locator.first.get_attribute("aria-label")
-                if not aria_label:
-                    aria_label = clean_text(await locator.first.inner_text())
-                metrics[field] = parse_metric_value(aria_label)
+                parsed_value = parse_metric_value(aria_label)
+                if parsed_value is not None:
+                    metrics[field] = parsed_value
         except Exception:
             continue
-
-    try:
-        analytics_locator = article.locator('a[href*="/analytics"]')
-        if await analytics_locator.count():
-            analytics_text = await analytics_locator.first.get_attribute("aria-label")
-            if not analytics_text:
-                analytics_text = clean_text(await analytics_locator.first.inner_text())
-            metrics["view_count"] = parse_metric_value(analytics_text)
-    except Exception:
-        pass
     return metrics
+
+
+async def probe_search_result_selectors(page: Page) -> SelectorProbeResult:
+    articles = page.locator('article[data-testid="tweet"]')
+    articles_seen = await articles.count()
+    articles_sampled = min(articles_seen, SELECTOR_PROBE_SAMPLE_SIZE)
+    tweet_text_found = 0
+    user_name_found = 0
+    time_found = 0
+
+    for index in range(articles_sampled):
+        article = articles.nth(index)
+        if await article.locator('[data-testid="tweetText"]').count():
+            tweet_text_found += 1
+        if await article.locator('[data-testid="User-Name"]').count():
+            user_name_found += 1
+        if await article.locator("time").count():
+            time_found += 1
+
+    warning = ""
+    if articles_sampled > 0:
+        missing: list[str] = []
+        if tweet_text_found == 0:
+            missing.append("tweetText")
+        if user_name_found == 0:
+            missing.append("User-Name")
+        if time_found == 0:
+            missing.append("time")
+        if missing:
+            warning = (
+                "Posible cambio de DOM en X/Twitter: "
+                f"selectores críticos ausentes en la muestra inicial ({', '.join(missing)})."
+            )
+
+    return SelectorProbeResult(
+        articles_seen=articles_seen,
+        articles_sampled=articles_sampled,
+        tweet_text_found=tweet_text_found,
+        user_name_found=user_name_found,
+        time_found=time_found,
+        warning=warning,
+    )
 
 
 async def extract_tweet_card(
@@ -992,7 +1014,7 @@ async def extract_tweet_card(
 
 
 async def goto_search(page: Page, query: str, logger: logging.Logger) -> str:
-    query_encoded = quote(query.strip(), safe=":@()")
+    query_encoded = quote(query.strip(), safe=":")
     url = f"https://x.com/search?q={query_encoded}&src=typed_query&f=live"
     last_error: Exception | None = None
     for attempt in range(1, DEFAULT_NAV_RETRIES + 1):
@@ -1054,8 +1076,21 @@ def build_dedupe_key(record: TweetExtractionRecord) -> tuple[str, str, str]:
     return (
         record.tweet_url or "",
         record.tweet_published_at or "",
-        record.tweet_text[:120],
+        record.tweet_text[:80],
     )
+
+
+def materialize_final_rows(query_results: Sequence[QueryExecutionResult]) -> list[TweetExtractionRecord]:
+    rows = [record for result in query_results for record in result.rows]
+    unique_rows: list[TweetExtractionRecord] = []
+    seen_urls: set[str] = set()
+    for record in rows:
+        if record.tweet_url:
+            if record.tweet_url in seen_urls:
+                continue
+            seen_urls.add(record.tweet_url)
+        unique_rows.append(record)
+    return unique_rows
 
 
 async def extract_replies(
@@ -1146,6 +1181,7 @@ async def search_query(
     started = time.perf_counter()
     errors: list[ErrorRecord] = []
     rows: list[TweetExtractionRecord] = []
+    selector_probe: SelectorProbeResult | None = None
     seen: set[tuple[str, str, str]] = set()
     processed_reply_urls: set[str] = set()
     stagnation_count = 0
@@ -1171,6 +1207,28 @@ async def search_query(
         )
         errors.extend(visible_errors)
         tweets_detected += len(visible_records)
+        if selector_probe is None:
+            selector_probe = await probe_search_result_selectors(page)
+            if selector_probe.warning:
+                errors.append(
+                    ErrorRecord(
+                        stage="selector_probe",
+                        scope="query",
+                        message=selector_probe.warning,
+                        timestamp=now_utc_text(),
+                        fatal=False,
+                        error_type="selector_probe_warning",
+                        query_index=query_spec.query_index,
+                        query=query_spec.query,
+                        details=serialize_for_json(selector_probe),
+                    )
+                )
+                logger.warning(
+                    "Alerta de selectores | query_index=%s query=%s details=%s",
+                    query_spec.query_index,
+                    query_spec.query,
+                    serialize_for_json(selector_probe),
+                )
 
         visible_dates: list[date] = []
         for record in visible_records:
@@ -1284,11 +1342,12 @@ async def search_query(
         duration_seconds=round(time.perf_counter() - started, 3),
         rows=rows,
         errors=errors,
+        selector_probe=selector_probe,
     )
 
 
 def build_dataframe(query_results: Sequence[QueryExecutionResult]) -> pd.DataFrame:
-    rows = [serialize_for_json(record) for result in query_results for record in result.rows]
+    rows = [serialize_for_json(record) for record in materialize_final_rows(query_results)]
     dataframe = pd.DataFrame(rows)
     if dataframe.empty:
         return pd.DataFrame(columns=DATA_COLUMNS)
@@ -1311,6 +1370,7 @@ def build_queries_summary_dataframe(query_results: Sequence[QueryExecutionResult
                 "replies_saved": result.replies_saved,
                 "items_failed": result.items_failed,
                 "scrolls_executed": result.scrolls_executed,
+                "selector_warning": result.selector_probe.warning if result.selector_probe else "",
                 "duration_seconds": result.duration_seconds,
             }
         )
@@ -1336,7 +1396,48 @@ def determine_run_status(query_results: Sequence[QueryExecutionResult], errors: 
     return "failed"
 
 
-def build_notes(config: ResolvedConfig, run_status: str, session_state_validated: bool, playwright_used: bool) -> list[str]:
+def summarize_selector_health(query_results: Sequence[QueryExecutionResult]) -> dict[str, Any]:
+    probes = [result.selector_probe for result in query_results if result.selector_probe is not None]
+    warnings = [
+        {
+            "query_index": result.query_spec.query_index,
+            "query": result.query_spec.query,
+            "warning": result.selector_probe.warning,
+            "probe": serialize_for_json(result.selector_probe),
+        }
+        for result in query_results
+        if result.selector_probe is not None and result.selector_probe.warning
+    ]
+    return {
+        "queries_probed": len(probes),
+        "queries_with_warning": len(warnings),
+        "articles_seen": sum(probe.articles_seen for probe in probes),
+        "articles_sampled": sum(probe.articles_sampled for probe in probes),
+        "tweet_text_found": sum(probe.tweet_text_found for probe in probes),
+        "user_name_found": sum(probe.user_name_found for probe in probes),
+        "time_found": sum(probe.time_found for probe in probes),
+        "warnings": warnings,
+    }
+
+
+def summarize_text_expansion(query_results: Sequence[QueryExecutionResult]) -> dict[str, int]:
+    rows = materialize_final_rows(query_results)
+    return {
+        "attempted": sum(1 for row in rows if row.text_expansion_attempted),
+        "expanded": sum(1 for row in rows if row.text_expanded),
+    }
+
+
+def build_notes(
+    config: ResolvedConfig,
+    run_status: str,
+    session_state_validated: bool,
+    playwright_used: bool,
+    *,
+    selector_warning_count: int,
+    text_expansion_attempted: int,
+    text_expansion_succeeded: int,
+) -> list[str]:
     notes = [
         "Extractor puro de X/Twitter: búsqueda live, sesión persistida, extracción de tweets y replies opcionales.",
         "No realiza NLP, clasificación, scoring político, consolidación multi-fuente ni modelado.",
@@ -1348,8 +1449,10 @@ def build_notes(config: ResolvedConfig, run_status: str, session_state_validated
         notes.append("El nombre semanal se alinea a lunes-domingo; la búsqueda real mantiene since y until exactos.")
     if session_state_validated:
         notes.append("La sesión persistida de X/Twitter se validó correctamente antes de extraer.")
-    else:
+    elif config.dry_run:
         notes.append("La validación de sesión no se ejecutó porque la corrida fue dry-run.")
+    else:
+        notes.append("La validación de sesión no pudo completarse; revisar errores_detectados.json y run.log.")
     if config.include_replies:
         notes.append("La extracción de replies quedó habilitada y limitada por max_replies_per_tweet.")
     else:
@@ -1360,6 +1463,14 @@ def build_notes(config: ResolvedConfig, run_status: str, session_state_validated
         notes.append("Playwright quedó configurado en modo visible para debugging.")
     if playwright_used:
         notes.append("Playwright se utilizó efectivamente durante la corrida.")
+    notes.append(
+        "Expansión de texto visible: "
+        f"{text_expansion_succeeded}/{text_expansion_attempted} éxitos sobre intentos detectados."
+    )
+    if selector_warning_count:
+        notes.append(
+            f"Se detectaron {selector_warning_count} alertas de selectores/DOM; revisar queries_summary.csv y metadata_run.json."
+        )
     if run_status == "partial_success":
         notes.append("La corrida terminó con errores recuperables; revisar errores_detectados.json.")
     if run_status == "failed":
@@ -1379,10 +1490,13 @@ def build_summary(
     config: ResolvedConfig,
     result: RunExecutionResult,
 ) -> dict[str, Any]:
-    total_tweets_saved = sum(item.tweets_saved for item in result.query_results)
-    total_replies_saved = sum(item.replies_saved for item in result.query_results)
+    final_rows = materialize_final_rows(result.query_results)
+    total_tweets_saved = sum(1 for row in final_rows if not row.is_reply)
+    total_replies_saved = sum(1 for row in final_rows if row.is_reply)
     query_error_count = sum(len(item.errors) for item in result.query_results)
     run_level_error_count = max(0, len(result.errors) - query_error_count)
+    selector_health = summarize_selector_health(result.query_results)
+    text_expansion = summarize_text_expansion(result.query_results)
     return {
         "run_id": config.run_id,
         "status": result.status,
@@ -1397,6 +1511,9 @@ def build_summary(
         "total_tweets_saved": total_tweets_saved,
         "total_replies_saved": total_replies_saved,
         "total_items_failed": sum(item.items_failed for item in result.query_results) + run_level_error_count,
+        "text_expansion_attempted": text_expansion["attempted"],
+        "text_expansion_succeeded": text_expansion["expanded"],
+        "selector_warnings": selector_health["queries_with_warning"],
         "session_state_used": str(config.session_state_file),
         "session_state_validated": result.session_state_validated,
         "headless": config.headless,
@@ -1415,8 +1532,11 @@ def build_metadata(
     result: RunExecutionResult,
     artifact_paths: dict[str, Path],
 ) -> dict[str, Any]:
+    final_rows = materialize_final_rows(result.query_results)
     query_error_count = sum(len(item.errors) for item in result.query_results)
     run_level_error_count = max(0, len(result.errors) - query_error_count)
+    selector_health = summarize_selector_health(result.query_results)
+    text_expansion = summarize_text_expansion(result.query_results)
     return {
         "run_id": config.run_id,
         "run_timestamp": config.run_timestamp,
@@ -1454,9 +1574,12 @@ def build_metadata(
             "queries": len(config.queries),
             "queries_failed": sum(1 for item in result.query_results if item.status == "failed"),
             "tweets_detected": sum(item.tweets_detected for item in result.query_results),
-            "tweets_saved": sum(item.tweets_saved for item in result.query_results),
-            "replies_saved": sum(item.replies_saved for item in result.query_results),
+            "tweets_saved": sum(1 for row in final_rows if not row.is_reply),
+            "replies_saved": sum(1 for row in final_rows if row.is_reply),
             "items_failed": sum(item.items_failed for item in result.query_results) + run_level_error_count,
+            "text_expansion_attempted": text_expansion["attempted"],
+            "text_expansion_succeeded": text_expansion["expanded"],
+            "selector_warnings": selector_health["queries_with_warning"],
         },
         "session": {
             "session_state_file": str(config.session_state_file),
@@ -1475,9 +1598,10 @@ def build_metadata(
         "artifact_paths": {key: str(path) for key, path in artifact_paths.items()},
         "errors": serialize_for_json(result.errors),
         "notes": list(result.notes),
+        "selector_health": selector_health,
         "navigation_strategy": {
             "search_mode": "x_live_search",
-            "text_expansion": "show_more_click",
+            "text_expansion": "disabled_for_historical_parity",
             "reply_strategy": "tweet_detail_page",
         },
     }
@@ -1563,6 +1687,10 @@ def persist_outputs(
         errors_path.write_text(json.dumps(serialize_for_json(result.errors), indent=2, ensure_ascii=False), encoding="utf-8")
         artifact_paths["errors_json"] = errors_path
         add_artifact_record(artifact_records, errors_path, "errors", "Errores detectados durante la corrida.")
+    elif config.publish_canonical and config.overwrite:
+        stale_errors_path = config.week_dir / ERRORS_FILENAME
+        if stale_errors_path.exists():
+            stale_errors_path.unlink()
 
     log_path = config.run_dir / LOG_FILENAME
     if log_path.exists():
@@ -1595,6 +1723,12 @@ def persist_outputs(
 
     published = publish_canonical_artifacts(config, artifact_paths)
     if published:
+        summary_payload["published_canonical_paths"] = published
+        metadata_payload["published_canonical_paths"] = published
+        summary_path.write_text(json.dumps(summary_payload, indent=2, ensure_ascii=False), encoding="utf-8")
+        metadata_path.write_text(json.dumps(metadata_payload, indent=2, ensure_ascii=False), encoding="utf-8")
+        shutil.copy2(summary_path, Path(published["summary_json"]))
+        shutil.copy2(metadata_path, Path(published["metadata_json"]))
         logger.info("Artefactos canónicos publicados | total=%s", len(published))
 
     return artifact_paths, artifact_records
@@ -1609,6 +1743,9 @@ def build_dry_run_result(config: ResolvedConfig, logger: logging.Logger) -> RunE
         run_status="success",
         session_state_validated=False,
         playwright_used=False,
+        selector_warning_count=0,
+        text_expansion_attempted=0,
+        text_expansion_succeeded=0,
     )
     result = RunExecutionResult(
         status="success",
@@ -1733,11 +1870,16 @@ async def run_extraction(config: ResolvedConfig, logger: logging.Logger) -> RunE
 
         errors = flatten_errors(query_results)
         run_status = determine_run_status(query_results, errors)
+        selector_health = summarize_selector_health(query_results)
+        text_expansion = summarize_text_expansion(query_results)
         notes = build_notes(
             config,
             run_status=run_status,
             session_state_validated=session_state_validated,
             playwright_used=True,
+            selector_warning_count=int(selector_health["queries_with_warning"]),
+            text_expansion_attempted=text_expansion["attempted"],
+            text_expansion_succeeded=text_expansion["expanded"],
         )
         result = RunExecutionResult(
             status=run_status,

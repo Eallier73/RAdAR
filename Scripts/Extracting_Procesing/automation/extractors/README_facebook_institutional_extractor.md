@@ -5,16 +5,23 @@
 Materializar datos fuente de Facebook institucional de Tampico bajo un
 estándar reproducible, trazable y compatible con el resto del sistema Radar.
 
-La base canónica histórica fue `03_facebook_extractor_apify_Tampico.py`; la
-implementación profesional ahora vive en:
+La base canónica histórica fue `03_facebook_extractor_apify_Tampico.py`.
+La ruta operativa vigente para CLI y automatización es:
 
-- `automation/extractors/facebook_institutional_extractor.py`
-- `automation/extractors/facebook_institutional_extractor_core.py`
+- `Scripts/Extracting_Procesing/facebook_institutional_extractor.py`
 
-Se deja compatibilidad temporal con:
+La implementación real vive en:
+
+- `Scripts/Extracting_Procesing/automation/extractors/facebook_institutional_extractor_core.py`
+
+Compatibilidad conservada:
 
 - `Scripts/Extracting_Procesing/03_facebook_extractor_apify_Tampico.py`
-- `Scripts/Extracting_Procesing/facebook_institutional_extractor.py`
+
+Scripts archivados fuera de la ruta operativa:
+
+- `Scripts/Extracting_Procesing/legacy/facebook/Facebook_Post_Extractor_Apify_Tampico.py`
+- `Scripts/Extracting_Procesing/legacy/facebook/Facebook_Extractor_Comments_Apify_Tampico.py`
 
 ## Alcance
 
@@ -22,8 +29,8 @@ Este componente es solo para Facebook institucional de Tampico.
 
 Páginas canónicas activas:
 
-- `964877296876825` -> `MonicaVillarreal`
-- `474462132406835` -> `GobiernoTampico`
+- `964877296876825` -> `MonicaVillarreal` -> `monicavtampico`
+- `474462132406835` -> `GobiernoTampico` -> `TampicoGob`
 
 No está diseñado para medios ni para ampliar universo por defecto.
 
@@ -62,13 +69,22 @@ Estrategia operativa:
 
 1. descubrir posts candidatos por página y rango;
 2. seleccionar posts con cobertura temporal mediante espaciado temporal;
-3. ordenar los posts seleccionados por potencial de comentarios para eficiencia;
+3. procesar los posts seleccionados en orden cronológico inverso hasta llenar el cap semanal por página;
 4. pedir comentarios por post con `max_comments_per_post`;
 5. detener ampliación cuando la página alcanza su cap semanal.
 
+Paridad histórica relevante:
+
+- el universo objetivo sigue siendo el mismo: las dos páginas institucionales del caso Tampico;
+- la identidad de target se valida por handles históricos (`monicavtampico`, `TampicoGob`) aunque se conserve `page_id` estable para trazabilidad;
+- las URLs canónicas de descubrimiento vuelven a usar handles, igual que el extractor histórico de posts;
+- el extractor conserva replies activados en la configuración canónica para mantener comparabilidad con `legacy/facebook/Facebook_Extractor_Comments_Apify_Tampico.py`;
+- el descubrimiento de posts por página conserva un universo amplio antes del sampling, en el mismo orden de magnitud que el extractor histórico de posts.
+- la ruta canónica mantiene `discovery_results_per_page <= 100` por página para preservar comparabilidad histórica, costo controlado y un universo de discovery consistente con el sampling semanal.
+
 ## Lógica absorbida desde el script de comments
 
-Se absorbió de `Facebook_Extractor_Comments_Apify_Tampico.py`:
+Se absorbió de `legacy/facebook/Facebook_Extractor_Comments_Apify_Tampico.py`:
 
 - recuperación multi-campo del texto del post padre desde items del actor;
 - priorización del texto de post más informativo;
@@ -98,6 +114,8 @@ CLI mínima recomendada:
 - `--weekly-comment-cap-per-page`
 - `--max-posts-per-page-per-week`
 - `--max-comments-per-post`
+- `--discovery-results-per-page`
+- `--include-replies`
 - `--apify-token-env`
 - `--actor-name-posts`
 - `--actor-name-comments`
@@ -161,7 +179,18 @@ Cada corrida genera:
 ```
 
 Opcionalmente, si se usa `--publish-canonical`, publica copias canónicas en
-`<output_dir>/<week_name>/`.
+`<output_dir>/<week_name>/` de:
+
+- `facebook_institutional_raw_<week_name>.csv`
+- `posts_selected.csv`
+- `comments_selected.csv`
+- `selection_audit.csv`
+- `summary.json`
+- `metadata_run.json`
+- `parametros_run.json`
+- `manifest.json`
+- `errores_detectados.json` si aplica
+- `run.log`
 
 ## Política de errores
 

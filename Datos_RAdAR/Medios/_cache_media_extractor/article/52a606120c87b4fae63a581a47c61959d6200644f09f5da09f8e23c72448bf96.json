@@ -1,0 +1,22 @@
+{
+  "article_text": "Añoranzas / Benemérito de las Américas\n¿Por qué no había escuela rural en el distrito de Ixtlán? ¿Por qué las veinte familias que vivían en su pequeño poblado estaban sumidos en la miseria? ¿Por qué no sabía leer ni escribir?\nUn buen día tomó una decisión que cambió radicalmente su vida. Descalzo y casi corriendo se fue a la Capital a buscar a su hermana María Josefa, que trabajaba de cocinera con la familia Maza.\n-Ayúdame Chepa, quiero aprender a hablar “castilla”, quiero saber números, quiero aprender...\n-No te apures Benito, le voy a pedir al Señor Obispo que te meta al seminario para que seas cura, no hay de otra -contestó su hermana con ternura- Pero tienes que estudiar harto.\nHoy en día, y como están las cosas en nuestro país, ¡qué ganas de gritar con todas nuestras fuerzas: ¡Juárez, Juárez, Juárez!",
+  "article_text_length": 816,
+  "article_title": "Añoranzas / Benemérito de las Américas - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/analisis/benemerito-de-las-americas-29101178",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:50:57Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

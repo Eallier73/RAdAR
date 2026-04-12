@@ -1,0 +1,22 @@
+{
+  "article_text": "La Procuraduría Federal del Consumidor delegación Golfo Norte exhorta a tiendas de autoservicio, misceláneas y diversos establecimientos dejen de comercializar tortillas en hieleras o en motocicleta en la vía pública ya que es una actividad riesgosa para la salud.\n¿Porqué vender tortillas en hieleras o motos es riesgoso para la salud?\nEl riesgo principal de vender tortillas en estas modalidades es la exposición del producto al calor, y que no exista garantía de que se estén vendiendo kilos completos del producto, por lo que se emprendió ya el proceso de sanción a cuatro tiendas de autoservicio.\nComerciantes podrían ser sancionados por irregularidades\nEl delegado de la PROFECO Manuel Leal Villarreal, señaló que al comercializar la tortilla de las formas antes mencionadas se viola la norma 187 que habla de la higiene y conservación del producto, así como la 051 que establece el correcto etiquetado y pesaje correcto, por lo que comerciante que sea denunciado por alguna irregularidad podría ser sancionado con una multa que puede llegar a 4 millones de pesos.\nBuscan reducir el costo del kilo de tortillas\nRecalcó que estás acciones están enfocadas a cuidar la salud de la población, su economía para que reciba el producto por el que paga y a los tortillería, para que no se reduzca sus niveles de venta, ya que la presidenta lo que está buscando es que los empresarios de la masa y la tortilla disminuyan el costo del kilo de tortilla y la masa.\nJETL",
+  "article_text_length": 1463,
+  "article_title": "Multarán hasta por 4 mdp por vender tortillas en hieleras o motos en Tamaulipas - Milenio",
+  "article_url_resolved": "https://www.milenio.com/negocios/multaran-vender-tortillas-hieleras-motos-tamaulipas",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:milenio.com",
+  "playwright_used": false,
+  "query": "\"tampico\" site:milenio.com",
+  "query_index": 6,
+  "retrieved_at": "2026-04-05T15:46:53Z",
+  "source_domain": "www.milenio.com",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

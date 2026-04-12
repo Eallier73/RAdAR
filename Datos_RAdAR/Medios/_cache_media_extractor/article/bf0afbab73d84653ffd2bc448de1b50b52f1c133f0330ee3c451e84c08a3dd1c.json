@@ -1,0 +1,23 @@
+{
+  "article_text": "La delegación de la Cruz Roja Mexicana en Tamaulipas informó la suspensión temporal de actividades en Tampico debido a situaciones financieras que atraviesa la institución.\nA través de un comunicado, el organismo de atención de emergencias indicó a sus trabajadores que a partir de este sábado 14 de marzo no es necesario presentarse a las instalaciones.\nMencionaron que reanudarán los servicios médicos hasta nuevo aviso y que esta decisión busca cuidar la continuidad de sus operaciones y el bienestar de la corporación.\nSuspension también en Ciudad Victoria\nApenas el pasado viernes la institución informó sobre la suspensión temporal en Ciudad Victoria, también relacionado con la carencia de recursos económicos.\nPor otro lado, la delegación en Ciudad Madero, que opera de manera independiente, continúa en funcionamiento de manera normal en la región.",
+  "article_text_length": 857,
+  "article_title": "¡Es oficial! Cruz Roja de Tampico anuncia suspensión de actividades hasta nuevo aviso - Milenio",
+  "article_url_resolved": "https://www.milenio.com/comunidad/cruz-roja-tampico-anuncia-suspension-actividades-temporalmente",
+  "attempted_methods": [
+    "trafilatura",
+    "cloudscraper"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "cloudscraper",
+  "fallback_used": true,
+  "medio": "site:milenio.com",
+  "playwright_used": false,
+  "query": "\"tampico\" site:milenio.com",
+  "query_index": 6,
+  "retrieved_at": "2026-04-05T17:41:59Z",
+  "source_domain": "www.milenio.com",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

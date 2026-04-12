@@ -1,0 +1,22 @@
+{
+  "article_text": "-\nCruz Roja Tampico suspende servicios por crisis; solo quedan 5 ambulancias\n-\nMónica Villarreal, informó que se encuentra en pláticas con expresidentes del Consejo de Administración para reactivar la delegación. Mientras tanto, el gobierno municipal ha desplegado un plan de emergencia que cuenta únicamente con cinco unidades.\n- México /",
+  "article_text_length": 339,
+  "article_title": "Cruz Roja Tampico suspende servicios médicos por crisis - Milenio",
+  "article_url_resolved": "https://www.milenio.com/videos/estados/cruz-roja-tampico-suspende-servicios-crisis-quedan-5-ambulancias",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:milenio.com",
+  "playwright_used": false,
+  "query": "\"Monica Villarreal\" site:milenio.com",
+  "query_index": 4,
+  "retrieved_at": "2026-04-05T15:53:40Z",
+  "source_domain": "www.milenio.com",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"Monica Villarreal\""
+}

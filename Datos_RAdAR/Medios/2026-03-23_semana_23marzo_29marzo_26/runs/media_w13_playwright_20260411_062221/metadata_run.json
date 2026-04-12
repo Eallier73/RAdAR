@@ -1,0 +1,215 @@
+{
+  "artifact_paths": {
+    "articles_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/runs/media_w13_playwright_20260411_062221/media_articles_2026-03-23_semana_23marzo_29marzo_26.csv",
+    "download_summary_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/runs/media_w13_playwright_20260411_062221/descarga_articulos_summary.csv",
+    "manifest_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/runs/media_w13_playwright_20260411_062221/manifest.json",
+    "metadata_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/runs/media_w13_playwright_20260411_062221/metadata_run.json",
+    "parametros_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/runs/media_w13_playwright_20260411_062221/parametros_run.json",
+    "queries_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/runs/media_w13_playwright_20260411_062221/queries_summary.csv",
+    "rss_raw_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/runs/media_w13_playwright_20260411_062221/rss_items_raw.csv",
+    "run_log": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/runs/media_w13_playwright_20260411_062221/run.log",
+    "summary_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/runs/media_w13_playwright_20260411_062221/summary.json",
+    "urls_resolved_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/runs/media_w13_playwright_20260411_062221/urls_resueltas.csv"
+  },
+  "cache": {
+    "article_hits": 0,
+    "article_writes": 0,
+    "rss_hits": 0,
+    "rss_writes": 0,
+    "url_hits": 0,
+    "url_writes": 0
+  },
+  "config": {
+    "before": "2026-03-29",
+    "cache_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/_cache_media_extractor",
+    "config_file": null,
+    "dry_run": false,
+    "entrypoint_alias": "canonical_wrapper",
+    "helper_module_path": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/media_extractor_core.py",
+    "ignore_cache": true,
+    "log_level": "INFO",
+    "max_articles_per_week": 30,
+    "max_results_per_query": 20,
+    "medios": [
+      "site:oem.com.mx",
+      "site:milenio.com"
+    ],
+    "modo_queries": "combinado",
+    "omitir_semanas_existentes": false,
+    "output_root_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios",
+    "overwrite": true,
+    "pausa": 2.0,
+    "pausa_entre_queries": 3.0,
+    "publish_canonical": true,
+    "queries": [
+      {
+        "medio": "site:oem.com.mx",
+        "mode": "combinado",
+        "query": "\"Monica Villarreal\" site:oem.com.mx",
+        "query_index": 1,
+        "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/media_queries_canonical.csv",
+        "termino": "\"Monica Villarreal\""
+      },
+      {
+        "medio": "site:oem.com.mx",
+        "mode": "combinado",
+        "query": "\"gobierno de tampico\" site:oem.com.mx",
+        "query_index": 2,
+        "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/media_queries_canonical.csv",
+        "termino": "\"gobierno de tampico\""
+      },
+      {
+        "medio": "site:oem.com.mx",
+        "mode": "combinado",
+        "query": "\"tampico\" site:oem.com.mx",
+        "query_index": 3,
+        "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/media_queries_canonical.csv",
+        "termino": "\"tampico\""
+      },
+      {
+        "medio": "site:milenio.com",
+        "mode": "combinado",
+        "query": "\"Monica Villarreal\" site:milenio.com",
+        "query_index": 4,
+        "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/media_queries_canonical.csv",
+        "termino": "\"Monica Villarreal\""
+      },
+      {
+        "medio": "site:milenio.com",
+        "mode": "combinado",
+        "query": "\"gobierno de tampico\" site:milenio.com",
+        "query_index": 5,
+        "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/media_queries_canonical.csv",
+        "termino": "\"gobierno de tampico\""
+      },
+      {
+        "medio": "site:milenio.com",
+        "mode": "combinado",
+        "query": "\"tampico\" site:milenio.com",
+        "query_index": 6,
+        "source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/media_queries_canonical.csv",
+        "termino": "\"tampico\""
+      }
+    ],
+    "queries_source": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/media_queries_canonical.csv",
+    "run_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/runs/media_w13_playwright_20260411_062221",
+    "run_id": "media_w13_playwright",
+    "run_timestamp": "20260411_062221",
+    "script_name": "media_extractor.py",
+    "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/media_extractor.py",
+    "script_version": "2.0.0",
+    "since": "2026-03-23",
+    "terminos": [
+      "\"Monica Villarreal\"",
+      "\"gobierno de tampico\"",
+      "\"tampico\""
+    ],
+    "use_playwright": true,
+    "week_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26",
+    "week_name_mode": "canonical_monday_sunday",
+    "week_partition": {
+      "end_date": "2026-03-29",
+      "naming_end_date": "2026-03-29",
+      "naming_start_date": "2026-03-23",
+      "start_date": "2026-03-23",
+      "week_name": "2026-03-23_semana_23marzo_29marzo_26"
+    }
+  },
+  "counts": {
+    "articles_attempted": 30,
+    "articles_downloaded_ok": 30,
+    "articles_failed": 0,
+    "articles_fallback_used": 5,
+    "articles_playwright_used": 0,
+    "queries": 6,
+    "queries_failed": 0,
+    "rss_items_detected": 30,
+    "urls_resolved_ok": 30
+  },
+  "dependencies": {
+    "cloudscraper": true,
+    "googlenewsdecoder": true,
+    "playwright": true,
+    "trafilatura": true
+  },
+  "entrypoint_alias": "canonical_wrapper",
+  "environment": {
+    "cwd": "/home/emilio/Documentos/RAdAR",
+    "hostname": "ThinkPad-T14-Gen-4-Emilio",
+    "platform": "Linux-6.14.0-37-generic-x86_64-with-glibc2.39",
+    "python_version": "3.12.3",
+    "user": "emilio"
+  },
+  "errors": [],
+  "execution": {
+    "dry_run": false,
+    "duration_seconds": 114.696,
+    "exit_code": 0,
+    "finished_at": "2026-04-11T12:24:17Z",
+    "skipped_existing_outputs": false,
+    "started_at": "2026-04-11T12:22:22Z",
+    "status": "success"
+  },
+  "extraction_strategy": {
+    "article_download_methods": [
+      "trafilatura",
+      "cloudscraper",
+      "requests",
+      "playwright"
+    ],
+    "rss_source": "google_news_rss",
+    "url_resolution_methods": [
+      "base64_direct",
+      "google_batchexecute",
+      "gnewsdecoder",
+      "http_redirect"
+    ]
+  },
+  "helper_module_path": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/automation/extractors/media_extractor_core.py",
+  "notes": [
+    "Extractor puro de medios: RSS Google News, resolución de URLs y descarga de artículos.",
+    "No realiza clasificación, NLP, consolidación multi-fuente ni modelado.",
+    "El texto persistido es material fuente o semi-estructurado para preprocessing posterior.",
+    "La disponibilidad final depende del feed RSS, la resolubilidad de Google News y la accesibilidad de los sitios.",
+    "El nombre semanal se alinea a lunes-domingo, pero la búsqueda usa exactamente since y before.",
+    "Playwright quedó habilitado como fallback controlado; su uso real se registra por artículo y en metadata.",
+    "Uso agregado de Playwright: 0/30 artículos (0.00%).",
+    "Fallbacks múltiples activados en 5/30 artículos (16.67%)."
+  ],
+  "playwright": {
+    "articles_fallback_used": 5,
+    "articles_fallback_used_pct": 16.67,
+    "articles_playwright_used": 0,
+    "articles_playwright_used_pct": 0.0,
+    "enabled": true,
+    "initialized": true,
+    "priority_domains": [
+      "noticiasdetampico.mx"
+    ],
+    "used": false
+  },
+  "published_canonical_paths": {
+    "articles_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/media_articles_2026-03-23_semana_23marzo_29marzo_26.csv",
+    "download_summary_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/descarga_articulos_summary.csv",
+    "manifest_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/manifest.json",
+    "metadata_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/metadata_run.json",
+    "parametros_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/parametros_run.json",
+    "queries_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/queries_summary.csv",
+    "rss_raw_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/rss_items_raw.csv",
+    "summary_json": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/summary.json",
+    "urls_resolved_csv": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-23_semana_23marzo_29marzo_26/urls_resueltas.csv"
+  },
+  "run_id": "media_w13_playwright",
+  "run_timestamp": "20260411_062221",
+  "script_name": "media_extractor.py",
+  "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/media_extractor.py",
+  "script_version": "2.0.0",
+  "search_window": {
+    "before": "2026-03-29",
+    "naming_end_date": "2026-03-29",
+    "naming_start_date": "2026-03-23",
+    "since": "2026-03-23"
+  },
+  "week_name": "2026-03-23_semana_23marzo_29marzo_26",
+  "week_name_mode": "canonical_monday_sunday"
+}

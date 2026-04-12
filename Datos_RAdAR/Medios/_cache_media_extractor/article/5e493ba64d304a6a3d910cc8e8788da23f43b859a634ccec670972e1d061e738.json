@@ -1,0 +1,23 @@
+{
+  "article_text": "La Cruz Roja Mexicana anunció el cierre temporal de servicios en varias delegaciones de Tamaulipas como parte de un proceso de reorganización administrativa y financiera.\nLa medida busca restablecer la operación y garantizar la continuidad futura de los servicios humanitarios, luego de detectarse problemas financieros y administrativos en la delegación estatal.\n¿Qué instalaciones suspendieron servicios?\nDe acuerdo con el posicionamiento institucional, el cierre temporal se aplica en la Delegación Estatal con sede en Ciudad Victoria y en varias de sus bases operativas, que dependen de esa estructura.\nLas instalaciones donde se suspendieron los servicios son:\n- Delegación Estatal en Ciudad Victoria\n- Base de Aldama\n- Base de Altamira\n- Base de Llera\n- Base de Miguel Alemán\n- Base de Soto la Marina\n- Base de Tula\n- Base de Xicoténcatl\n- Base de Tampico\nEstas unidades forman parte de la estructura operativa de la delegación estatal, por lo que la suspensión responde a una decisión administrativa centralizada.\n¿Por qué se tomó la decisión?\nLa institución explicó que la medida deriva de tres factores principales detectados durante evaluaciones recientes:\n1. Caída en donativos y aportaciones\nEn los últimos meses se registró una disminución considerable en los ingresos provenientes de donativos y apoyos sociales, lo que afectó la capacidad operativa de la delegación en el estado.\n2. Irregularidades administrativas detectadas en auditorías\nLa sede nacional realizó evaluaciones institucionales y revisiones financieras correspondientes a 2024 y 2025, además de diagnósticos aplicados en 2025 y enero de 2026.\nDurante la revisión realizada en febrero de 2026 se detectaron inconsistencias en la gestión administrativa y operativa, por lo que se inició una revisión contable más profunda y se determinó remover a quien encabezaba la delegación estatal.\n3. Problemas financieros que afectaron la operación\nLas auditorías también identificaron una situación financiera compleja, que impedía cumplir con compromisos básicos de operación, entre ellos:\n- Pago de salarios al personal\n- Adeudos con proveedores de insumos médicos\n- Compra de combustible para ambulancias\n- Mantenimiento y refacciones de las unidades\n- Una medida temporal para reestructurar la delegación\nLa Cruz Roja subrayó que la suspensión de servicios es temporal y forma parte de un proceso para ordenar y fortalecer la operación administrativa y financiera de la delegación en Tamaulipas.\nEl objetivo, indicó la institución, es restablecer condiciones adecuadas de funcionamiento y asegurar la continuidad de los servicios humanitarios, como la atención prehospitalaria, la gestión de riesgos y la respuesta ante emergencias.\n¿Qué pasa con el personal y voluntarios?\nLa institución también aclaró que no se están rescindiendo contratos laborales, la salida de algunos trabajadores ha sido voluntaria, debido a la limitación de recursos, y el voluntariado continuará siendo parte fundamental de las actividades de la organización.\nEl llamado a la sociedad\nFinalmente, la Cruz Roja reiteró que su operación depende en gran medida de la solidaridad social y los donativos, por lo que el apoyo de la ciudadanía será clave para recuperar su capacidad de respuesta en el estado y continuar brindando asistencia humanitaria a la población.",
+  "article_text_length": 3313,
+  "article_title": "¿Cuáles son las bases de la Cruz Roja que cerraron en Tamaulipas? Estas instalaciones suspendieron servicio - Milenio",
+  "article_url_resolved": "https://www.milenio.com/comunidad/que-instalaciones-de-la-cruz-roja-cerraron-en-tamaulipas",
+  "attempted_methods": [
+    "trafilatura",
+    "cloudscraper"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "cloudscraper",
+  "fallback_used": true,
+  "medio": "site:milenio.com",
+  "playwright_used": false,
+  "query": "\"tampico\" site:milenio.com",
+  "query_index": 6,
+  "retrieved_at": "2026-04-05T17:41:20Z",
+  "source_domain": "www.milenio.com",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

@@ -1,0 +1,22 @@
+{
+  "article_text": "6 de mayo de 2024Yahir Saldivar, el tamaulipeco de las cumbias bélicas, firma con importante disquera\n6 de mayo de 2024'El campo ya no aguanta más': productores de sorgo de Tamaulipas hacen llamado a AMLO\n6 de mayo de 2024Muere paciente por tétanos en Tamaulipas; Secretaría de Salud llama a aplicarse la vacuna\n2TURISMOViernes Santo histórico en Ciudad Madero: Playa Miramar se consolida como el destino favorito del noreste\nMUNDO¿Quién es José María Balcázar? El presidente interino de Perú marcado por sus polémicas declaraciones",
+  "article_text_length": 532,
+  "article_title": "Alarmante incremento de casos de influenza en Tamaulipas - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/tags/temas/tamaulipas/app.json?page=481",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"Monica Villarreal\" site:oem.com.mx",
+  "query_index": 1,
+  "retrieved_at": "2026-04-05T15:54:06Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"Monica Villarreal\""
+}

@@ -1,0 +1,22 @@
+{
+  "article_text": "¡Niñas y niños a la cancha! Presentan la Escuela Filial de Futbol Club León Tampico\nEl equipo se encuentra enfocado en alistarse para el Torneo Internacional que se disputará en León, Guanajuato\nJesus Gustavo Corona Ramirez / El Sol de Tampico\nAsí se integra la nueva filial de Club León en Tampico\nEl cuerpo técnico está integrado de la siguiente manera:\nOmar Ruiz recordó los momentos que vivieron antes de ser parte oficial del conjunto esmeralda, pero sostuvo que el cambio representa un avance para su escuadra.\nLeón Tampico dará herramientas de desarrollo a sus jugadores\nPara complementar el desarrollo de las y los jóvenes que integran e integren está escuela, brindaran herramientas que aporten en su crecimiento personal y deportivo.\n“Además de nuestros entrenadores, vamos a incluir nutrición, psicología en el deporte, rehabilitación física en dado caso de que el niño lo necesite, tendremos fisioterapeutas dentro de la escuela, todo de una forma ordenada”, destacó.",
+  "article_text_length": 979,
+  "article_title": "¡Niñas y niños a la cancha! Presentan la Escuela Filial de Futbol Club León Tampico - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/deportes/ninas-y-ninos-a-la-cancha-presentan-la-escuela-filial-de-futbol-club-leon-tampico-29151895",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:52:36Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

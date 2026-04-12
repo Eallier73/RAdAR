@@ -1,0 +1,22 @@
+{
+  "article_text": "Gossipmartes, 31 de marzo de 2026\nEstudiante de Tampico Alto gana primer lugar internacional en Science Expo Belgium 2026 con proyecto ambiental\nMás de 400 proyectos de distintos países compitieron en la feria científica realizada en Bruselas\nAlfredo Márquez\nOrgullo de La Ribera y Tampico Alto en escenario global\nBajo la asesoría de la Dulce Vallejo Rendón, el equipo presentó el proyecto “ECODOTS: puntos cuánticos para la detección de metales pesados en agua”, una alternativa sostenible a los nanomateriales tradicionales.",
+  "article_text_length": 527,
+  "article_title": "Estudiante de Tampico Alto gana primer lugar internacional en Science Expo Belgium 2026 con proyecto ambiental - El Sol de México",
+  "article_url_resolved": "https://oem.com.mx/elsoldetampico/gossip/estudiante-de-tampico-alto-gana-primer-lugar-internacional-en-science-expo-belgium-2026-con-proyecto-ambiental-29266650",
+  "attempted_methods": [
+    "trafilatura"
+  ],
+  "cache_hit_article": false,
+  "error_detail": "",
+  "error_type": "",
+  "extraction_method": "trafilatura",
+  "fallback_used": false,
+  "medio": "site:oem.com.mx",
+  "playwright_used": false,
+  "query": "\"tampico\" site:oem.com.mx",
+  "query_index": 3,
+  "retrieved_at": "2026-04-05T15:54:43Z",
+  "source_domain": "oem.com.mx",
+  "status_descarga": "downloaded_ok",
+  "termino": "\"tampico\""
+}

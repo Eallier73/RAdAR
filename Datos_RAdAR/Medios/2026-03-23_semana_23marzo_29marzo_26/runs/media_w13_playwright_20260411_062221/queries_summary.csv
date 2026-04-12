@@ -1,0 +1,5 @@
+﻿query_index,query,medio,termino,status,rss_items_detected,urls_resolved_ok,articles_attempted,articles_downloaded_ok,articles_downloaded_empty,articles_failed,duration_seconds
+1,"""Monica Villarreal"" site:oem.com.mx",site:oem.com.mx,"""Monica Villarreal""",success,2,2,2,2,0,0,6.608
+2,"""gobierno de tampico"" site:oem.com.mx",site:oem.com.mx,"""gobierno de tampico""",success,3,3,3,3,0,0,10.907
+3,"""tampico"" site:oem.com.mx",site:oem.com.mx,"""tampico""",success,20,20,20,20,0,0,63.877
+4,"""Monica Villarreal"" site:milenio.com",site:milenio.com,"""Monica Villarreal""",success,5,5,5,5,0,0,21.243

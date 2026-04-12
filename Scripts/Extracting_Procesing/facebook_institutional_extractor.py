@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Wrapper canónico del extractor institucional de Facebook para Radar.
+Entrypoint público recomendado del extractor institucional de Facebook.
 
-La implementación real de automatización vive en
-`automation/extractors/facebook_institutional_extractor.py`. Este archivo deja
-un nombre estable para CLI, runners y futuros orquestadores.
+La implementación real vive en
+`automation/extractors/facebook_institutional_extractor_core.py`.
+Este archivo es la ruta CLI que debe usarse en operación normal.
 """
 
 from __future__ import annotations
