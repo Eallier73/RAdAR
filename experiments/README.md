@@ -11,7 +11,8 @@ Subarboles:
 
 - `prompts/`: prompts de agente y material de direccion experimental
 - `research/`: planes, bitacoras, cierres y notas metodologicas
-- `audit/`: grid experimental, tablas maestras, inventarios y auditorias
+- `audit/`: grid experimental, tablas maestras, inventarios y auditorias vigentes
+  - `audit/backups/`: backups historicos de grid (archivos `.backup_*.xlsx`)
 - `runs/`: corridas experimentales ya ejecutadas
 
 Lo que si vive aqui:
