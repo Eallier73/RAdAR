@@ -80,9 +80,10 @@ La migracion controlada ya retiro esas capas puente. Cualquier automatizacion nu
 
 ## Convencion de nombres
 
-- carpetas nuevas en minusculas, `snake_case` y ASCII
-- nombres historicos de archivos se conservan cuando cambiarlo arriesga compatibilidad
-- la normalizacion fuerte se aplica en la arquitectura, no por renombre masivo caprichoso de cada script legado
+- carpetas y archivos en minusculas, `snake_case` y ASCII (sin acentos, sin espacios, sin mayusculas)
+- esta convencion aplica estrictamente a todo lo que vive en `src/`, `data/`, `artifacts/`, `experiments/` y `docs/`
+- en `legacy/` los nombres historicos se conservan como evidencia
+- la normalizacion completa de nombres activos se ejecuto en Fase 3 (ver `docs/architecture/repository_governance.md`)
 
 ## Politica de crecimiento
 

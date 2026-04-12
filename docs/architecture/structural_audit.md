@@ -45,7 +45,7 @@ Auditoria estructural del repositorio previa a la reestructuracion arquitectonic
 
 ## Ambiguedades y decisiones conservadoras
 
-1. `Scripts/Extracting_Procesing` no se borro: se separo por responsabilidad y se dejo compatibilidad via aliases.
+1. `Scripts/Extracting_Procesing` no se borro: se separo por responsabilidad entre `src/extraction/runners/`, `src/preprocessing/` y `legacy/code/extraction_variants/`.
 2. `Datos_RAdAR` no se rediseño por fuente porque el flujo real vigente seguia siendo semanal plano; se encapsulo como `data/raw/radar_weekly_flat/`.
-3. Los nombres de varios archivos historicos se preservaron para no romper llamadas existentes; la normalizacion fuerte se aplico sobre carpetas canonicas.
-4. Se mantuvieron aliases de raiz para evitar una rotura brusca de automatizaciones y referencias absolutas ya existentes.
+3. Los nombres de varios archivos historicos se preservaron para no romper llamadas existentes; la normalizacion fuerte se aplico sobre carpetas canonicas. En Fase 3 se completó la normalización de nombres activos en `src/`.
+4. Los aliases de raiz fueron retirados en Fase 2. Desde entonces, el arbol canónico no contiene aliases transicionales.

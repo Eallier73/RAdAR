@@ -58,9 +58,9 @@ Estas rutas ya no existen como aliases versionados. Se retiran para forzar el us
 
 ## Pendientes abiertos
 
-1. Evaluar renombre de algunos scripts historicos con caracteres no ASCII si deja de haber dependencias externas.
-2. Definir una politica explicita de que artefactos deben versionarse y cuales no.
-3. Revisar si ciertos snapshots experimentales deben conservar rutas historicas como evidencia o actualizarse de forma sistematica.
+1. ~~Evaluar renombre de algunos scripts historicos con caracteres no ASCII si deja de haber dependencias externas.~~ Cerrado en Fase 3: los scripts activos de `src/` con nombres no conformes fueron renombrados a ASCII snake_case.
+2. ~~Definir una politica explicita de que artefactos deben versionarse y cuales no.~~ Cerrado en Fase 3: ver `docs/architecture/repository_governance.md`.
+3. Revisar si ciertos snapshots experimentales deben conservar rutas historicas como evidencia o actualizarse de forma sistematica. (Decision: se conservan como evidencia en `experiments/audit/`; los backups se movieron a `experiments/audit/backups/`.)
 
 ## Tabla completa de migracion
 
