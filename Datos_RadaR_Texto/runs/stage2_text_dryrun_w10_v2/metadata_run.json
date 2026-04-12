@@ -1,0 +1,33 @@
+{
+  "run_id": "stage2_text_dryrun_w10_v2",
+  "started_at_utc": "2026-04-12T11:07:05+00:00",
+  "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Extracting_Procesing/run_stage2_text_preprocessing.py",
+  "datos_radar_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR",
+  "datos_texto_dir": "/home/emilio/Documentos/RAdAR/Datos_RadaR_Texto",
+  "legacy_weekly_archive_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Juntos",
+  "artifacts_dir": "/home/emilio/Documentos/RAdAR/Datos_RadaR_Texto/runs/stage2_text_dryrun_w10_v2",
+  "sources": [
+    "facebook",
+    "twitter",
+    "youtube",
+    "medios"
+  ],
+  "weeks_filter": [
+    "26_10"
+  ],
+  "output_mode": "archive",
+  "dry_run": true,
+  "words_per_line": 30,
+  "stage_scope": "csv_canonico_por_fuente_y_semana_a_txt_limpio_por_fuente_y_semana",
+  "non_scope": "no_nlp_no_sentimiento_no_temas_no_embeddings_no_features",
+  "decisiones_metodologicas": [
+    "La etapa 2 vigente solo consume Datos_RAdAR/<Fuente>/<semana>; Datos_RAdAR/Juntos queda como legado archivado.",
+    "Facebook se construye desde facebook_institutional_raw_<semana>.csv usando la columna text para incorporar posts y comentarios sin duplicar post_text.",
+    "Medios combina article_title + article_text antes de limpiar.",
+    "La reconstrucción final se hace sobre el flujo concatenado completo con 30 palabras por línea por default."
+  ],
+  "finished_at_utc": "2026-04-12T11:07:05+00:00",
+  "selected_pairs": 4,
+  "result_exit_code": 0,
+  "run_status": "completed"
+}

@@ -1,0 +1,19 @@
+{
+  "datos_radar_dir": "/home/emilio/Documentos/RAdAR/Datos_RAdAR",
+  "datos_texto_dir": "/home/emilio/Documentos/RAdAR/Datos_RadaR_Texto",
+  "sources": [
+    "facebook",
+    "twitter",
+    "youtube",
+    "medios"
+  ],
+  "weeks": [
+    "26_10"
+  ],
+  "words_per_line": 30,
+  "output_mode": "archive",
+  "run_id": "stage2_text_dryrun_w10",
+  "dry_run": true,
+  "skip_missing": false,
+  "save_audit": true
+}

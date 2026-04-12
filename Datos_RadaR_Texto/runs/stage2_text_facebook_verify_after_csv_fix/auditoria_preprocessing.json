@@ -1,0 +1,122 @@
+[
+  {
+    "source": "facebook",
+    "week_name": "2026-03-09_semana_09marzo_15marzo_26",
+    "iso_token": "26_11",
+    "input_folder": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-09_semana_09marzo_15marzo_26",
+    "output_folder": "/home/emilio/Documentos/RAdAR/Datos_RadaR_Texto/Facebook_Semana_Texto",
+    "source_csv_path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-09_semana_09marzo_15marzo_26/facebook_institutional_raw_2026-03-09_semana_09marzo_15marzo_26.csv",
+    "generated_txt_name": "26_11_facebook.txt",
+    "generated_txt_path": "/home/emilio/Documentos/RAdAR/Datos_RadaR_Texto/Facebook_Semana_Texto/26_11_facebook.txt",
+    "text_columns_used": [
+      "text"
+    ],
+    "csv_rows_read": 81,
+    "useful_rows": 73,
+    "empty_rows_discarded": 8,
+    "duplicates_removed": 9,
+    "total_words_final": 1202,
+    "total_lines_txt": 41,
+    "words_per_line": 30,
+    "canonical_csv_criteria": "exact_weekly_canonical_filename",
+    "status": "success_dry_run",
+    "warning_messages": [
+      "El TXT destino ya existe y en archive se mantendría intacto."
+    ],
+    "error_message": "",
+    "record_types_included": [
+      "comment",
+      "post_parent"
+    ]
+  },
+  {
+    "source": "facebook",
+    "week_name": "2026-03-16_semana_16marzo_22marzo_26",
+    "iso_token": "26_12",
+    "input_folder": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-16_semana_16marzo_22marzo_26",
+    "output_folder": "/home/emilio/Documentos/RAdAR/Datos_RadaR_Texto/Facebook_Semana_Texto",
+    "source_csv_path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-16_semana_16marzo_22marzo_26/facebook_institutional_raw_2026-03-16_semana_16marzo_22marzo_26.csv",
+    "generated_txt_name": "26_12_facebook.txt",
+    "generated_txt_path": "/home/emilio/Documentos/RAdAR/Datos_RadaR_Texto/Facebook_Semana_Texto/26_12_facebook.txt",
+    "text_columns_used": [
+      "text"
+    ],
+    "csv_rows_read": 86,
+    "useful_rows": 79,
+    "empty_rows_discarded": 7,
+    "duplicates_removed": 7,
+    "total_words_final": 1543,
+    "total_lines_txt": 52,
+    "words_per_line": 30,
+    "canonical_csv_criteria": "exact_weekly_canonical_filename",
+    "status": "success_dry_run",
+    "warning_messages": [
+      "El TXT destino ya existe y en archive se mantendría intacto."
+    ],
+    "error_message": "",
+    "record_types_included": [
+      "comment",
+      "post_parent"
+    ]
+  },
+  {
+    "source": "facebook",
+    "week_name": "2026-03-23_semana_23marzo_29marzo_26",
+    "iso_token": "26_13",
+    "input_folder": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-23_semana_23marzo_29marzo_26",
+    "output_folder": "/home/emilio/Documentos/RAdAR/Datos_RadaR_Texto/Facebook_Semana_Texto",
+    "source_csv_path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-23_semana_23marzo_29marzo_26/facebook_institutional_raw_2026-03-23_semana_23marzo_29marzo_26.csv",
+    "generated_txt_name": "26_13_facebook.txt",
+    "generated_txt_path": "/home/emilio/Documentos/RAdAR/Datos_RadaR_Texto/Facebook_Semana_Texto/26_13_facebook.txt",
+    "text_columns_used": [
+      "text"
+    ],
+    "csv_rows_read": 86,
+    "useful_rows": 75,
+    "empty_rows_discarded": 11,
+    "duplicates_removed": 12,
+    "total_words_final": 1069,
+    "total_lines_txt": 36,
+    "words_per_line": 30,
+    "canonical_csv_criteria": "exact_weekly_canonical_filename",
+    "status": "success_dry_run",
+    "warning_messages": [
+      "El TXT destino ya existe y en archive se mantendría intacto."
+    ],
+    "error_message": "",
+    "record_types_included": [
+      "comment",
+      "post_parent"
+    ]
+  },
+  {
+    "source": "facebook",
+    "week_name": "2026-03-30_semana_30marzo_05abril_26",
+    "iso_token": "26_14",
+    "input_folder": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-30_semana_30marzo_05abril_26",
+    "output_folder": "/home/emilio/Documentos/RAdAR/Datos_RadaR_Texto/Facebook_Semana_Texto",
+    "source_csv_path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-30_semana_30marzo_05abril_26/facebook_institutional_raw_2026-03-30_semana_30marzo_05abril_26.csv",
+    "generated_txt_name": "26_14_facebook.txt",
+    "generated_txt_path": "/home/emilio/Documentos/RAdAR/Datos_RadaR_Texto/Facebook_Semana_Texto/26_14_facebook.txt",
+    "text_columns_used": [
+      "text"
+    ],
+    "csv_rows_read": 104,
+    "useful_rows": 100,
+    "empty_rows_discarded": 4,
+    "duplicates_removed": 8,
+    "total_words_final": 1633,
+    "total_lines_txt": 55,
+    "words_per_line": 30,
+    "canonical_csv_criteria": "exact_weekly_canonical_filename",
+    "status": "success_dry_run",
+    "warning_messages": [
+      "El TXT destino ya existe y en archive se mantendría intacto."
+    ],
+    "error_message": "",
+    "record_types_included": [
+      "comment",
+      "post_parent"
+    ]
+  }
+]

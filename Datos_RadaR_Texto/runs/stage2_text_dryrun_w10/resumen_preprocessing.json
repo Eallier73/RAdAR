@@ -1,0 +1,40 @@
+{
+  "total_pairs": 4,
+  "success": 0,
+  "skipped": 4,
+  "errors": 0,
+  "sources": {
+    "facebook": {
+      "total_pairs": 1,
+      "success": 0,
+      "skipped": 1,
+      "errors": 0,
+      "total_words": 946,
+      "total_lines": 32
+    },
+    "twitter": {
+      "total_pairs": 1,
+      "success": 0,
+      "skipped": 1,
+      "errors": 0,
+      "total_words": 645,
+      "total_lines": 22
+    },
+    "youtube": {
+      "total_pairs": 1,
+      "success": 0,
+      "skipped": 1,
+      "errors": 0,
+      "total_words": 62715,
+      "total_lines": 2091
+    },
+    "medios": {
+      "total_pairs": 1,
+      "success": 0,
+      "skipped": 1,
+      "errors": 0,
+      "total_words": 69996,
+      "total_lines": 2334
+    }
+  }
+}

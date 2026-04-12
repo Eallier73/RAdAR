@@ -1,0 +1,16 @@
+{
+  "total_pairs": 4,
+  "success": 4,
+  "skipped": 0,
+  "errors": 0,
+  "sources": {
+    "facebook": {
+      "total_pairs": 4,
+      "success": 4,
+      "skipped": 0,
+      "errors": 0,
+      "total_words": 5447,
+      "total_lines": 184
+    }
+  }
+}

@@ -1,0 +1,114 @@
+[
+  {
+    "source": "facebook",
+    "week_name": "2026-03-02_semana_02marzo_08marzo_26",
+    "iso_token": "26_10",
+    "input_folder": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-02_semana_02marzo_08marzo_26",
+    "output_folder": "/home/emilio/Documentos/RAdAR/Datos_RadaR_Texto/Facebook_Semana_Texto",
+    "source_csv_path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Facebook/2026-03-02_semana_02marzo_08marzo_26/facebook_institutional_raw_2026-03-02_semana_02marzo_08marzo_26.csv",
+    "generated_txt_name": "26_10_facebook.txt",
+    "generated_txt_path": "/home/emilio/Documentos/RAdAR/Datos_RadaR_Texto/Facebook_Semana_Texto/26_10_facebook.txt",
+    "text_columns_used": [
+      "text"
+    ],
+    "csv_rows_read": 77,
+    "useful_rows": 66,
+    "empty_rows_discarded": 11,
+    "duplicates_removed": 11,
+    "total_words_final": 946,
+    "total_lines_txt": 32,
+    "words_per_line": 30,
+    "canonical_csv_criteria": "exact_weekly_canonical_filename",
+    "status": "success_dry_run",
+    "warning_messages": [
+      "El TXT destino ya existe y en archive se mantendría intacto."
+    ],
+    "error_message": "",
+    "record_types_included": [
+      "comment",
+      "post_parent"
+    ]
+  },
+  {
+    "source": "twitter",
+    "week_name": "2026-03-02_semana_02marzo_08marzo_26",
+    "iso_token": "26_10",
+    "input_folder": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-02_semana_02marzo_08marzo_26",
+    "output_folder": "/home/emilio/Documentos/RAdAR/Datos_RadaR_Texto/Twitter_Semana_Texto",
+    "source_csv_path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Twitter/2026-03-02_semana_02marzo_08marzo_26/twitter_data_2026-03-02_semana_02marzo_08marzo_26.csv",
+    "generated_txt_name": "26_10_twitter.txt",
+    "generated_txt_path": "/home/emilio/Documentos/RAdAR/Datos_RadaR_Texto/Twitter_Semana_Texto/26_10_twitter.txt",
+    "text_columns_used": [
+      "tweet_text"
+    ],
+    "csv_rows_read": 38,
+    "useful_rows": 36,
+    "empty_rows_discarded": 2,
+    "duplicates_removed": 10,
+    "total_words_final": 645,
+    "total_lines_txt": 22,
+    "words_per_line": 30,
+    "canonical_csv_criteria": "exact_weekly_canonical_filename",
+    "status": "success_dry_run",
+    "warning_messages": [
+      "El TXT destino ya existe y en archive se mantendría intacto."
+    ],
+    "error_message": "",
+    "record_types_included": []
+  },
+  {
+    "source": "youtube",
+    "week_name": "2026-03-02_semana_02marzo_08marzo_26",
+    "iso_token": "26_10",
+    "input_folder": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-02_semana_02marzo_08marzo_26",
+    "output_folder": "/home/emilio/Documentos/RAdAR/Datos_RadaR_Texto/Youtube_Semana_Texto",
+    "source_csv_path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/YouTube/2026-03-02_semana_02marzo_08marzo_26/youtube_comentarios_2026-03-02_semana_02marzo_08marzo_26.csv",
+    "generated_txt_name": "26_10_youtube.txt",
+    "generated_txt_path": "/home/emilio/Documentos/RAdAR/Datos_RadaR_Texto/Youtube_Semana_Texto/26_10_youtube.txt",
+    "text_columns_used": [
+      "comment_text"
+    ],
+    "csv_rows_read": 5568,
+    "useful_rows": 5452,
+    "empty_rows_discarded": 116,
+    "duplicates_removed": 2755,
+    "total_words_final": 62715,
+    "total_lines_txt": 2091,
+    "words_per_line": 30,
+    "canonical_csv_criteria": "exact_weekly_canonical_filename",
+    "status": "success_dry_run",
+    "warning_messages": [
+      "El TXT destino ya existe y en archive se mantendría intacto."
+    ],
+    "error_message": "",
+    "record_types_included": []
+  },
+  {
+    "source": "medios",
+    "week_name": "2026-03-02_semana_02marzo_08marzo_26",
+    "iso_token": "26_10",
+    "input_folder": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-02_semana_02marzo_08marzo_26",
+    "output_folder": "/home/emilio/Documentos/RAdAR/Datos_RadaR_Texto/Medios_Semana_Texto",
+    "source_csv_path": "/home/emilio/Documentos/RAdAR/Datos_RAdAR/Medios/2026-03-02_semana_02marzo_08marzo_26/media_articles_2026-03-02_semana_02marzo_08marzo_26.csv",
+    "generated_txt_name": "26_10_medios.txt",
+    "generated_txt_path": "/home/emilio/Documentos/RAdAR/Datos_RadaR_Texto/Medios_Semana_Texto/26_10_medios.txt",
+    "text_columns_used": [
+      "article_title",
+      "article_text"
+    ],
+    "csv_rows_read": 200,
+    "useful_rows": 200,
+    "empty_rows_discarded": 0,
+    "duplicates_removed": 0,
+    "total_words_final": 69996,
+    "total_lines_txt": 2334,
+    "words_per_line": 30,
+    "canonical_csv_criteria": "exact_weekly_canonical_filename",
+    "status": "success_dry_run",
+    "warning_messages": [
+      "El TXT destino ya existe y en archive se mantendría intacto."
+    ],
+    "error_message": "",
+    "record_types_included": []
+  }
+]
