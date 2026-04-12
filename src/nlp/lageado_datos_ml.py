@@ -10,12 +10,12 @@ Comportamiento:
 - Renombra hojas `ML_Ready_*` a `ML_Lagged_*`.
 
 Ejemplos:
-    python3 src/nlp/Lageado_Datos_ML.py
-    python3 src/nlp/Lageado_Datos_ML.py \
+    python3 src/nlp/lageado_datos_ml.py
+    python3 src/nlp/lageado_datos_ml.py \
         --input data/processed/modeling/datos_ML_3.xlsx \
         --output data/processed/modeling/datos_ML_4.xlsx \
         --lag-weeks 4
-    python3 src/nlp/Lageado_Datos_ML.py \
+    python3 src/nlp/lageado_datos_ml.py \
         --input data/processed/modeling/datos_ML_3.xlsx \
         --output data/processed/modeling/datos_ML_4.xlsx \
         --lags 1 2 3 4
