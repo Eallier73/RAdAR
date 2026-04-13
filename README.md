@@ -1,46 +1,47 @@
 # RAdAR
 
-Reestructuracion arquitectonica conservadora del repositorio para separar de forma explicita:
+Repositorio estructurado como base canónica pre-automatización del proyecto RAdAR.
 
-- `src/`: codigo fuente activo
-- `data/`: datos canonicos
-- `artifacts/`: runtime, estado, logs y cache
-- `experiments/`: investigacion, prompts, auditoria experimental y runs historicos
-- `docs/`: arquitectura, metodologia, operacion y migracion
-- `legacy/`: codigo y datos historicos fuera del flujo canonico
+Este repositorio no debe leerse como un sistema final con orquestación end-to-end ya cerrada.
+Sí debe leerse como una arquitectura fuente profesional sobre la cual todavía se puede construir la automatización integral sin volver a mezclar código, datos, runtime, documentación, experimentación y legado.
 
-Lo que si vive aqui:
+## Taxonomía oficial de raíz
 
-- pipeline activo de extraccion, preprocesamiento, NLP y modelado
-- datos canonicos del Radar
-- artefactos tecnicos necesarios para correr y auditar el sistema
-- documentacion de arquitectura y migracion
+- `src/`: código activo canónico
+- `data/`: datos canónicos
+- `artifacts/`: runtime técnico, estado, logs y cache
+- `docs/`: gobierno, arquitectura, operación y migración
+- `experiments/`: investigación, prompts, auditoría experimental y runs históricos
+- `legacy/`: código y datos históricos fuera del flujo canónico
 
-Lo que no debe vivir mezclado en la raiz:
+## Estado real del repo
 
-- scripts nuevos sueltos
-- reportes runtime dentro de `src/`
-- cache o estado mezclado con datos canonicos
-- piezas operativas nuevas dentro de `experiments/`
+Implementado hoy:
 
-Estructura canonica:
+- extracción activa por fuente
+- preprocesamiento y normalización de insumos
+- capa NLP activa
+- núcleo de modelado reutilizable en `src/modeling/`
+- tracking y reporting de experimentos
+- datos, artifacts y documentación con separación explícita
 
-- [src/README.md](src/README.md)
-- [data/README.md](data/README.md)
-- [artifacts/README.md](artifacts/README.md)
-- [experiments/README.md](experiments/README.md)
-- [docs/README.md](docs/README.md)
-- [legacy/README.md](legacy/README.md)
+Reservado para una fase posterior:
 
-Estado de migracion:
+- automatización integral
+- orquestación end-to-end
+- scheduling
+- integración operativa completa
+- wrappers operativos finales
 
-- los aliases historicos de raiz ya fueron retirados
-- las rutas viejas ya no forman parte del arbol versionado
-- cualquier referencia nueva debe usar solo rutas canonicas
+`src/operations/` existe como namespace reservado para esa fase posterior.
+No representa una capa operativa final ya implementada.
 
-Documentacion clave:
+## Documentación autoritativa
 
-- [docs/architecture/structural_audit.md](docs/architecture/structural_audit.md)
+- [docs/architecture/repository_governance.md](docs/architecture/repository_governance.md)
 - [docs/architecture/repository_architecture.md](docs/architecture/repository_architecture.md)
+- [docs/architecture/structural_audit.md](docs/architecture/structural_audit.md)
 - [docs/migration/repository_restructure_migration.md](docs/migration/repository_restructure_migration.md)
-- [docs/migration/path_migration_table.csv](docs/migration/path_migration_table.csv)
+
+Los documentos en `experiments/` preservan evidencia metodológica e histórica.
+La verdad arquitectónica vigente vive en `docs/`.

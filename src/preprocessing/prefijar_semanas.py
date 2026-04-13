@@ -26,6 +26,8 @@ MONTHS = {
     "diciembre": 12,
 }
 
+REPO_ROOT = Path(__file__).resolve().parents[2]
+PREPROCESSING_LOGS_DIR = REPO_ROOT / "artifacts" / "logs" / "preprocessing"
 
 _DM_RE = re.compile(r"^(?P<day>\d{2})(?P<month>[a-zA-ZáéíóúñÑ]+)$")
 _DATE_PREFIX_RE = re.compile(r"^\d{4}-\d{2}-\d{2}_")
@@ -137,9 +139,10 @@ def build_plan(root: Path) -> tuple[list[Rename], list[str]]:
     return renames, warnings
 
 
-def write_log(root: Path, renames: list[Rename]) -> Path:
+def write_log(renames: list[Rename]) -> Path:
     ts = dt.datetime.now().strftime("%Y%m%d_%H%M%S")
-    log_path = root / f"rename_semana_prefix_log_{ts}.csv"
+    PREPROCESSING_LOGS_DIR.mkdir(parents=True, exist_ok=True)
+    log_path = PREPROCESSING_LOGS_DIR / f"rename_semana_prefix_log_{ts}.csv"
     with log_path.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["old_name", "new_name", "start_date"])
@@ -159,7 +162,7 @@ def main() -> int:
     p.add_argument(
         "path",
         nargs="?",
-        default="data/raw/radar_weekly_flat",
+        default=str(REPO_ROOT / "data" / "raw" / "radar_weekly_flat"),
         help="Directorio donde están las carpetas semanales (default: data/raw/radar_weekly_flat)",
     )
     p.add_argument("--apply", action="store_true", help="Ejecuta los renombres (sin esto solo hace dry-run).")
@@ -185,7 +188,7 @@ def main() -> int:
         print("\nDry-run: no se aplicaron cambios. Usa --apply para renombrar.")
         return 0
 
-    log_path = write_log(root, renames)
+    log_path = write_log(renames)
     apply_renames(root, renames)
     print(f"\nOK: renombradas {len(renames)} carpetas. Log: {str(log_path)}")
     return 0

@@ -3,7 +3,7 @@
 Compatibilidad canónica para el logger experimental.
 
 La implementación viva y mantenida del tracker de experimentos está en:
-`src/modeling/experiment_logger.py`.
+`src/modeling/tracking/experiment_logger.py`.
 
 Este wrapper evita la deriva entre dos copias del mismo logger y mantiene
 compatibilidad con scripts de NLP que importan `experiment_logger` desde este
@@ -18,7 +18,7 @@ from pathlib import Path
 
 
 CANONICAL_LOGGER_PATH = (
-    Path(__file__).resolve().parents[1] / "modeling" / "experiment_logger.py"
+    Path(__file__).resolve().parents[1] / "modeling" / "tracking" / "experiment_logger.py"
 )
 
 spec = importlib.util.spec_from_file_location(

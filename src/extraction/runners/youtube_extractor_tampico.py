@@ -2,10 +2,8 @@
 Extractor automatizado de YouTube - Compatible con estructura de semanas
 ========================================================================
 
-Este script extrae comentarios de YouTube y los guarda en la estructura:
-/home/emilio/Documentos/Radar_Politico/Datos/semana_24noviembre_01diciembre_25/
-
-Fechas configurables dentro del script.
+Este script extrae comentarios de YouTube y los guarda en
+`data/raw/radar_weekly_flat/<semana_canonica>/`.
 """
 
 import os
@@ -14,6 +12,7 @@ import pandas as pd
 from datetime import datetime, timedelta
 import time
 import sys
+from pathlib import Path
 
 # =========================
 # CONFIGURACIÓN DEL RANGO
@@ -31,7 +30,8 @@ SEARCH_QUERIES = [
     "gobierno de Tampico",
 ]
 
-OUTPUT_BASE_DIR = "/home/emilio/Documentos/RAdAR/data/raw/radar_weekly_flat"
+REPO_ROOT = Path(__file__).resolve().parents[3]
+OUTPUT_BASE_DIR = REPO_ROOT / "data" / "raw" / "radar_weekly_flat"
 
 def convertir_fecha_a_espanol(fecha):
     """Convierte fecha a formato español DDmes_AA (ejemplo: 08octubre_24)"""
@@ -47,18 +47,10 @@ def convertir_fecha_a_espanol(fecha):
     return f"{dia}{mes}_{anio}"
 
 def calcular_nombre_semana(fecha_inicio, fecha_fin):
-    """Calcula el nombre de la carpeta de semana usando las fechas exactas
-    Formato: semana_08octubre_24_14octubre_24
-    """
-    # Usar las fechas exactas sin ajustar al lunes
-    fecha_inicio_real = fecha_inicio
-    fecha_fin_real = fecha_fin
-
-    # Convertir a formato español (ya incluye el año)
-    fecha_inicio_esp = convertir_fecha_a_espanol(fecha_inicio_real)
-    fecha_fin_esp = convertir_fecha_a_espanol(fecha_fin_real)
-
-    return f"semana_{fecha_inicio_esp}_{fecha_fin_esp}"
+    """Calcula el nombre canónico de la carpeta semanal."""
+    fecha_inicio_esp = convertir_fecha_a_espanol(fecha_inicio)
+    fecha_fin_esp = convertir_fecha_a_espanol(fecha_fin)
+    return f"{fecha_inicio.strftime('%Y-%m-%d')}_semana_{fecha_inicio_esp}_{fecha_fin_esp}"
 
 def setup_youtube_api():
     """Set up and return a YouTube API client."""
@@ -190,11 +182,11 @@ def main():
     nombre_semana = calcular_nombre_semana(start_date, end_date)
 
     # Crear directorio en la estructura correcta
-    output_dir = os.path.join(OUTPUT_BASE_DIR, nombre_semana)
+    output_dir = OUTPUT_BASE_DIR / nombre_semana
 
     # Crear el directorio si no existe
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
+    if not output_dir.exists():
+        output_dir.mkdir(parents=True, exist_ok=True)
         print(f"📁 Carpeta creada: {output_dir}")
     else:
         print(f"📁 Usando carpeta existente: {output_dir}")
@@ -277,8 +269,8 @@ def main():
         print("⚠️  Sin comentarios, se generará CSV vacío con columnas.")
         comments_df = pd.DataFrame(columns=columnas_base)
 
-    filename = f"youtube_comentarios_{nombre_semana}.csv"
-    filepath = os.path.join(output_dir, filename)
+    filename = f"{nombre_semana}_youtube.csv"
+    filepath = output_dir / filename
 
     try:
         comments_df.to_csv(filepath, index=False, encoding='utf-8-sig')

@@ -2,32 +2,23 @@
 
 Estatus: `runtime`
 
-Proposito:
+`artifacts/` absorbe todo lo efímero o técnico que no debe contaminar `src/` ni `data/`.
 
-- centralizar artefactos tecnicos generados por ejecucion
-- separar runtime del codigo y del dato canonico
+## Subárboles
 
-Subarboles:
+- `logs/`: logs, reportes técnicos y trazabilidad operativa
+- `cache/`: cache regenerable
+- `runs/`: workdirs y salidas técnicas auxiliares
+- `state/`: sesiones, cursores y snapshots operativos
 
-- `runs/`: salidas tecnicas de corridas operativas o auxiliares
-- `logs/`: logs, reportes y trazabilidad generada
-- `cache/`: cache descartable o regenerable
-- `state/`: estado operativo persistente como tokens, snapshots o cursores
+## Política de versionado
 
-Lo que si vive aqui:
+- sí se versionan `README.md`, `.gitkeep` y archivos `*.example.*`
+- no se versionan sesiones reales, logs generados, caches vivos ni workdirs de extracción
 
-- archivos generados en runtime
-- reportes temporales o tecnicos
-- estado requerido para reanudar automatizaciones
+Ejemplos:
 
-Lo que no debe vivir aqui:
-
-- codigo fuente
-- datasets canonicos
-- documentacion metodologica
-
-Relacion con otras carpetas:
-
-- `src/` escribe aqui todo lo efimero
-- `data/` permanece limpio de runtime
-- `experiments/` conserva evidencia metodologica, no estado tecnico operativo
+- `artifacts/state/x_state.json`: no versionado
+- `artifacts/state/x_state.example.json`: sí versionado
+- `artifacts/logs/preprocessing/*.csv`: no versionado
+- `artifacts/runs/extraction/facebook/*`: no versionado

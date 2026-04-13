@@ -19,9 +19,9 @@ from openpyxl.styles import Font, PatternFill
 from openpyxl.utils import get_column_letter
 
 
-BASE_DIR = Path("/home/emilio/Documentos/RAdAR")
+BASE_DIR = Path(__file__).resolve().parents[2]
 ENCUESTAS_PATH = (
-    BASE_DIR / "data" / "external" / "surveys" / "Aprobacion_Encuestas_Monica_Villarreal_Oct24_Marzo26.xlsx"
+    BASE_DIR / "data" / "external" / "surveys" / "aprobacion_encuestas_monica_villarreal_oct24_marzo26.xlsx"
 )
 SENTIMIENTO_PATH = (
     BASE_DIR / "data" / "processed" / "modeling" / "aceptacion_digital_redes_medios_sentimiento_semanal.xlsx"

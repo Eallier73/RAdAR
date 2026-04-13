@@ -28,6 +28,10 @@ MONTHS_ES = {
     12: "diciembre",
 }
 
+REPO_ROOT = Path(__file__).resolve().parents[2]
+RAW_WEEKLY_ROOT = REPO_ROOT / "data" / "raw" / "radar_weekly_flat"
+PREPROCESSING_LOGS_DIR = REPO_ROOT / "artifacts" / "logs" / "preprocessing"
+
 
 @dataclass(frozen=True)
 class MoveOp:
@@ -157,6 +161,19 @@ def resolve_week_folder(dest_root: Path, *, end_index: dict[dt.date, Path], end:
     return dest_root / folder_name_for_range(start, end)
 
 
+def with_dup_suffix(path: Path) -> Path:
+    if not path.exists():
+        return path
+    suffixes = "".join(path.suffixes)
+    stem = path.name[: -len(suffixes)] if suffixes else path.name
+    i = 1
+    while True:
+        candidate = path.with_name(f"{stem}_dup{i}{suffixes}")
+        if not candidate.exists():
+            return candidate
+        i += 1
+
+
 def build_ops(src_root: Path, dest_root: Path, *, max_span_days: int) -> tuple[list[MoveOp], list[str]]:
     ops: list[MoveOp] = []
     warnings: list[str] = []
@@ -174,15 +191,17 @@ def build_ops(src_root: Path, dest_root: Path, *, max_span_days: int) -> tuple[l
             continue
 
         dest_dir = resolve_week_folder(dest_root, end_index=end_index, end=end)
-        dest = dest_dir / src.name
+        canonical_name = f"{dest_dir.name}_facebook{src.suffix.lower()}"
+        dest = with_dup_suffix(dest_dir / canonical_name)
         ops.append(MoveOp(src=src, dest_dir=dest_dir, dest=dest, start=start, end=end))
 
     return ops, warnings
 
 
-def write_log(dest_root: Path, ops: list[MoveOp]) -> Path:
+def write_log(ops: list[MoveOp]) -> Path:
     ts = dt.datetime.now().strftime("%Y%m%d_%H%M%S")
-    log_path = dest_root / f"move_facebook_log_{ts}.csv"
+    PREPROCESSING_LOGS_DIR.mkdir(parents=True, exist_ok=True)
+    log_path = PREPROCESSING_LOGS_DIR / f"move_facebook_log_{ts}.csv"
     with log_path.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["src", "dest", "week_folder", "start", "end"])
@@ -209,13 +228,13 @@ def main() -> int:
     )
     p.add_argument(
         "--src",
-        default="/home/emilio/Documentos/Datos_Radar/Facebook",
-        help="Directorio origen (default: /home/emilio/Documentos/Datos_Radar/Facebook)",
+        required=True,
+        help="Directorio origen con los CSV mensuales externos de Facebook.",
     )
     p.add_argument(
         "--dest",
-        default="/home/emilio/Documentos/RAdAR/data/raw/radar_weekly_flat",
-        help="Directorio destino (default: /home/emilio/Documentos/RAdAR/data/raw/radar_weekly_flat)",
+        default=str(RAW_WEEKLY_ROOT),
+        help=f"Directorio destino dentro del repo. Default: {RAW_WEEKLY_ROOT}",
     )
     p.add_argument(
         "--max-span-days",
@@ -251,7 +270,7 @@ def main() -> int:
         print("\nDry-run: no se aplicaron cambios. Usa --apply para mover/sobreescribir.")
         return 0
 
-    log_path = write_log(dest_root, ops)
+    log_path = write_log(ops)
     apply_ops(ops)
     print(f"\nOK: movidos {len(ops)} archivos. Log: {str(log_path)}")
     return 0

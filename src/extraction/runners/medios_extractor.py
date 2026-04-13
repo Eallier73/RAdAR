@@ -69,7 +69,9 @@ DOMINIOS_PLAYWRIGHT_PRIORITARIO = [
 
 # --- General ---
 OMITIR_SEMANAS_EXISTENTES = True
-CARPETA_BASE_SEMANAL = "/home/emilio/Documentos/Datos_Radar/Medios"
+REPO_ROOT = Path(__file__).resolve().parents[3]
+CARPETA_BASE_SEMANAL = REPO_ROOT / "data" / "raw" / "radar_weekly_flat"
+CACHE_BASE_DIR = REPO_ROOT / "artifacts" / "cache" / "extraction" / "medios_rss"
 NOMBRE_ARCHIVO_BASE = "noticias_tampico"
 PAUSA = 2.0            # segundos entre requests de trafilatura
 PAUSA_ENTRE_QUERIES = 3.0   # segundos entre queries RSS (para no ser bloqueado)
@@ -310,7 +312,7 @@ def _dominio_requiere_playwright(url):
 # CACHE LOCAL
 # ============================================================
 def _ruta_cache_rss():
-    return Path(CARPETA_BASE_SEMANAL) / NOMBRE_CARPETA_CACHE_RSS
+    return CACHE_BASE_DIR / NOMBRE_CARPETA_CACHE_RSS
 
 
 def _hash_cache(texto):
@@ -913,22 +915,20 @@ def iterar_semanas(fecha_inicio, fecha_fin):
 
 def nombre_carpeta_semana(fecha_inicio, fecha_fin):
     meses = {
-        1: "ene", 2: "feb", 3: "mar", 4: "abr", 5: "may", 6: "jun",
-        7: "jul", 8: "ago", 9: "sep", 10: "oct", 11: "nov", 12: "dic",
+        1: "enero", 2: "febrero", 3: "marzo", 4: "abril", 5: "mayo", 6: "junio",
+        7: "julio", 8: "agosto", 9: "septiembre", 10: "octubre", 11: "noviembre", 12: "diciembre",
     }
     ini = f"{fecha_inicio.day:02d}{meses[fecha_inicio.month]}"
     fin = f"{fecha_fin.day:02d}{meses[fecha_fin.month]}"
-    return f"semana_{ini}_{fin}_{fecha_fin.strftime('%y')}"
+    return f"{fecha_inicio.isoformat()}_semana_{ini}_{fin}_{fecha_fin.strftime('%y')}"
 
 
 def rutas_salida_semana(fecha_inicio_semana, fecha_fin_semana):
-    fecha_inicio = fecha_inicio_semana.strftime("%Y-%m-%d")
-    fecha_fin = fecha_fin_semana.strftime("%Y-%m-%d")
     carpeta_semana = Path(CARPETA_BASE_SEMANAL) / nombre_carpeta_semana(
         fecha_inicio_semana, fecha_fin_semana
     )
-    archivo_salida = carpeta_semana / f"{NOMBRE_ARCHIVO_BASE}_{fecha_inicio}_{fecha_fin}.csv"
-    archivo_txt = carpeta_semana / f"{NOMBRE_ARCHIVO_BASE}_{fecha_inicio}_{fecha_fin}.txt"
+    archivo_salida = carpeta_semana / f"{carpeta_semana.name}_medios.csv"
+    archivo_txt = carpeta_semana / f"{carpeta_semana.name}_medios.txt"
     return carpeta_semana, archivo_salida, archivo_txt
 
 
@@ -992,7 +992,7 @@ def parse_args():
     parser.add_argument(
         "-o",
         "--output-dir",
-        default=CARPETA_BASE_SEMANAL,
+        default=str(CARPETA_BASE_SEMANAL),
         help="Carpeta base donde se guardan las semanas.",
     )
     parser.add_argument(
@@ -1141,7 +1141,7 @@ def main():
     FECHA_FIN_EXACTA = args.fecha_fin
     MODO_QUERIES = args.modo_queries
     OMITIR_SEMANAS_EXISTENTES = args.omitir_semanas_existentes
-    CARPETA_BASE_SEMANAL = args.output_dir
+    CARPETA_BASE_SEMANAL = Path(args.output_dir).expanduser().resolve()
     NOMBRE_ARCHIVO_BASE = args.nombre_archivo_base
     PAUSA = args.pausa
     PAUSA_ENTRE_QUERIES = args.pausa_entre_queries
@@ -1196,9 +1196,9 @@ def main():
         print(f"SEMANA {idx}/{len(semanas)}: {inicio} -> {fin}")
         print("#" * 60)
 
-        carpeta_semana, archivo_salida, _ = rutas_salida_semana(inicio, fin)
-        if OMITIR_SEMANAS_EXISTENTES and archivo_salida.exists():
-            print(f"↷ Semana omitida (ya existe CSV): {archivo_salida}")
+        carpeta_semana, archivo_salida, archivo_txt = rutas_salida_semana(inicio, fin)
+        if OMITIR_SEMANAS_EXISTENTES and archivo_txt.exists():
+            print(f"↷ Semana omitida (ya existe TXT canónico): {archivo_txt}")
             continue
 
         try:

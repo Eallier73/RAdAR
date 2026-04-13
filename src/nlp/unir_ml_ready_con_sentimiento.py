@@ -4,7 +4,7 @@ Fusiona el dataset semanal listo para ML con las variables semanales de
 sentimiento digital calculadas por semana ISO.
 
 Salida:
-    /home/emilio/Documentos/RAdAR/data/processed/modeling/datos_ML_0.xlsx
+    data/processed/modeling/datos_ml_0.xlsx
 """
 
 from __future__ import annotations
@@ -16,12 +16,12 @@ from openpyxl.styles import Font, PatternFill
 from openpyxl.utils import get_column_letter
 
 
-BASE_DIR = Path("/home/emilio/Documentos/RAdAR")
-ML_INPUT_PATH = BASE_DIR / "data" / "processed" / "modeling" / "ML_Ready_Monica_Villarreal_Encuestas_PMI (1).xlsx"
+BASE_DIR = Path(__file__).resolve().parents[2]
+ML_INPUT_PATH = BASE_DIR / "data" / "processed" / "modeling" / "ml_ready_monica_villarreal_encuestas_pmi_1.xlsx"
 SENT_INPUT_PATH = (
     BASE_DIR / "data" / "processed" / "modeling" / "aceptacion_digital_redes_medios_sentimiento_semanal.xlsx"
 )
-OUTPUT_PATH = BASE_DIR / "data" / "processed" / "modeling" / "datos_ML_0.xlsx"
+OUTPUT_PATH = BASE_DIR / "data" / "processed" / "modeling" / "datos_ml_0.xlsx"
 
 TRAIN_SHEET = "ML_Ready_Train"
 ALL_WEEKS_SHEET = "ML_Ready_AllWeeks"

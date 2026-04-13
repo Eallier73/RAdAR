@@ -15,10 +15,10 @@ diccionario de sentimiento, NO se cuenta a sí misma como indicador de
 sentimiento en su propio chunk.
 
 Uso:
-    python diccionario_temas_pmi.py <nombre_archivo> <carpeta_salida>
+    python -m src.nlp.diccionario_temas_pmi_confianza <nombre_archivo> <carpeta_salida>
 
 Ejemplo:
-    python diccionario_temas_pmi.py pmi_corpus_limpio /home/emilio/Documentos/RAdAR/Resultados
+    python -m src.nlp.diccionario_temas_pmi_confianza pmi_confianza_resultados data/reference/dictionaries_nlp/produccion_diccionarios
 """
 
 import re
@@ -27,13 +27,14 @@ import os
 import math
 import unicodedata
 from collections import defaultdict
+from pathlib import Path
 from openpyxl import Workbook, load_workbook
 from openpyxl.styles import Font, PatternFill, Alignment
 
 # ============================================================
 # ARGUMENTOS
 # ============================================================
-BASE = "/home/emilio/Documentos/RAdAR/data/reference/dictionaries_nlp"
+BASE = str(Path(__file__).resolve().parents[2] / "data" / "reference" / "dictionaries_nlp")
 
 if len(sys.argv) >= 3:
     nombre_archivo = sys.argv[1]
@@ -54,11 +55,11 @@ OUTPUT_PATH = os.path.join(carpeta_salida, nombre_archivo)
 # ============================================================
 # RUTAS DE ENTRADA
 # ============================================================
-CORPUS_PATH     = f"{BASE}/Corpus_Diccionario/corpus_radar_texto_completo.txt"
+CORPUS_PATH     = f"{BASE}/corpus_diccionario/corpus_radar_texto_completo.txt"
 STOPLIST_PATH   = f"{BASE}/stop_list_espanol_limpia.txt"
 DICT_POS_PATH   = f"{BASE}/diccionario_palabras_positivas.txt"
 DICT_NEG_PATH   = f"{BASE}/diccionario_palabras_negativas.txt"
-CATEGORIAS_PATH = f"{BASE}/categorías_subcategorias_palabras.xlsx"
+CATEGORIAS_PATH = f"{BASE}/categorias_subcategorias_palabras.xlsx"
 
 VENTANAS = [5, 10]
 

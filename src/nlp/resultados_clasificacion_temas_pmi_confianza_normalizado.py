@@ -18,12 +18,12 @@ Preserva la dirección (signo), el orden relativo, y comprime
 los picos extremos sin perder información.
 
 Uso:
-    python normalizar_consolidado.py --input <entrada.xlsx> --output <salida.xlsx>
+    python -m src.nlp.resultados_clasificacion_temas_pmi_confianza_normalizado --input <entrada.xlsx> --output <salida.xlsx>
 
 Ejemplo:
-    python normalizar_consolidado.py \
-        --input /home/emilio/Documentos/RAdAR/data/reference/dictionaries_nlp/Resultados_Clasificacio_Temas/consolidado.xlsx \
-        --output /home/emilio/Documentos/RAdAR/data/reference/dictionaries_nlp/Resultados_Clasificacio_Temas/consolidado_norm.xlsx
+    python -m src.nlp.resultados_clasificacion_temas_pmi_confianza_normalizado \
+        --input data/reference/dictionaries_nlp/resultados_clasificacion_temas/consolidado.xlsx \
+        --output data/reference/dictionaries_nlp/resultados_clasificacion_temas/consolidado_norm.xlsx
 
 Parámetros opcionales:
     --base    Base del logaritmo (default: 2). Mayor base = menos compresión.
@@ -34,6 +34,7 @@ import sys
 import os
 import math
 import argparse
+from pathlib import Path
 from openpyxl import load_workbook, Workbook
 from openpyxl.utils import get_column_letter
 from openpyxl.styles import Font, PatternFill, Alignment
@@ -45,8 +46,9 @@ from openpyxl.styles import Font, PatternFill, Alignment
 LOG_BASE_DEFAULT = 2
 
 # Rutas por defecto
-INPUT_DEFAULT  = "/home/emilio/Documentos/RAdAR/data/reference/dictionaries_nlp/Resultados_Clasificacio_Temas/consolidado.xlsx"
-OUTPUT_DEFAULT = "/home/emilio/Documentos/RAdAR/data/reference/dictionaries_nlp/Resultados_Clasificacio_Temas/consolidado_norm.xlsx"
+ROOT_DIR = Path(__file__).resolve().parents[2]
+INPUT_DEFAULT = str(ROOT_DIR / "data" / "reference" / "dictionaries_nlp" / "resultados_clasificacion_temas" / "consolidado.xlsx")
+OUTPUT_DEFAULT = str(ROOT_DIR / "data" / "reference" / "dictionaries_nlp" / "resultados_clasificacion_temas" / "consolidado_norm.xlsx")
 
 # ============================================================
 # ARGUMENTOS

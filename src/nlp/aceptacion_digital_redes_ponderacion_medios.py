@@ -28,9 +28,9 @@ from openpyxl.utils import get_column_letter
 # =============================================================================
 # CONFIGURACION
 # =============================================================================
-BASE_DIR = Path("/home/emilio/Documentos/RAdAR")
+BASE_DIR = Path(__file__).resolve().parents[2]
 TEXTOS_DIR = BASE_DIR / "data" / "text" / "radar_weekly_flat"
-DICT_DIR = BASE_DIR / "data" / "reference" / "dictionaries_nlp" / "Diccionarios_Polaridad"
+DICT_DIR = BASE_DIR / "data" / "reference" / "dictionaries_nlp" / "diccionarios_polaridad"
 OUTPUT_PATH = (
     BASE_DIR
     / "data"
@@ -40,10 +40,10 @@ OUTPUT_PATH = (
 )
 
 FUENTES = {
-    "facebook": TEXTOS_DIR / "Facebook_Semana_Texto",
-    "twitter": TEXTOS_DIR / "Twitter_Semana_Texto",
-    "youtube": TEXTOS_DIR / "Youtube_Semana_Texto",
-    "medios": TEXTOS_DIR / "Medios_Semana_Texto",
+    "facebook": TEXTOS_DIR / "facebook_semana_texto",
+    "twitter": TEXTOS_DIR / "twitter_semana_texto",
+    "youtube": TEXTOS_DIR / "youtube_semana_texto",
+    "medios": TEXTOS_DIR / "medios_semana_texto",
 }
 
 STOPLIST_PATH = DICT_DIR / "stop_list_espanol_limpia.txt"

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""
+r"""
 ╔═══════════════════════════════════════════════════════════════════════════╗
 ║                                                                           ║
 ║   📘 FACEBOOK: URLs (SERPER) + COMENTARIOS (APIFY)                       ║
@@ -51,6 +51,7 @@ import sys
 import time
 from dataclasses import dataclass
 from datetime import datetime
+from pathlib import Path
 from typing import List, Optional, Set
 from urllib.parse import parse_qs, unquote, urlencode, urlparse, urlunparse
 
@@ -70,7 +71,8 @@ PAUSA_ENTRE_REQUESTS = 1.0
 ACTOR_COMMENTS = "apify/facebook-comments-scraper"
 
 DEFAULT_PAGES = ["TampicoGob", "monicavtampico"]
-DEFAULT_OUTPUT_BASE_DIR = "/home/emilio/Documentos/Datos_Radar/Facebook"
+REPO_ROOT = Path(__file__).resolve().parents[3]
+DEFAULT_OUTPUT_BASE_DIR = REPO_ROOT / "artifacts" / "runs" / "extraction" / "facebook"
 
 POST_PATH_MARKERS = (
     "/posts/", "/permalink/", "/photos/", "/videos/",
@@ -79,6 +81,21 @@ POST_PATH_MARKERS = (
 MEDIA_PATH_MARKERS = ("/photos/", "/videos/", "/reel/", "/reels/", "/watch/")
 PHOTO_MAX_RATIO = 0.20
 DEFAULT_STRATIFIED_RATIOS = {"post": 0.4, "photo": 0.3, "video": 0.3}
+
+MONTHS_ES = {
+    1: "enero",
+    2: "febrero",
+    3: "marzo",
+    4: "abril",
+    5: "mayo",
+    6: "junio",
+    7: "julio",
+    8: "agosto",
+    9: "septiembre",
+    10: "octubre",
+    11: "noviembre",
+    12: "diciembre",
+}
 
 
 # ============================================================================
@@ -158,6 +175,16 @@ def contar_urls_por_tipo(urls: List[str]) -> dict[str, int]:
     for url in urls:
         conteo[clasificar_url_sampling(url)] += 1
     return conteo
+
+
+def _fecha_a_espanol_iso(fecha: datetime) -> str:
+    return f"{fecha.day:02d}{MONTHS_ES[fecha.month]}_{fecha.strftime('%y')}"
+
+
+def build_week_folder_name(since: str, before: str) -> str:
+    start = datetime.strptime(since, "%Y-%m-%d")
+    end = datetime.strptime(before, "%Y-%m-%d")
+    return f"{start.strftime('%Y-%m-%d')}_semana_{_fecha_a_espanol_iso(start)}_{_fecha_a_espanol_iso(end)}"
 
 
 def _sample_hybrid(urls: List[str], sample_size: int, seed: int, min_per_stratum: int = 0) -> List[str]:
@@ -813,7 +840,7 @@ Ejemplos:
     parser.add_argument("--token", default=None,
                         help="Apify API token (o variable APIFY_TOKEN)")
     parser.add_argument("--output-dir", default=DEFAULT_OUTPUT_BASE_DIR,
-                        help=f"Directorio base de salida (default: {DEFAULT_OUTPUT_BASE_DIR})")
+                        help=f"Directorio base para artefactos intermedios de extracción (default: {DEFAULT_OUTPUT_BASE_DIR})")
     parser.add_argument("--no-prompt", action="store_true",
                         help="No abrir configuración interactiva al inicio")
 
@@ -846,8 +873,9 @@ def main():
     client = ApifyClient(token) if token else None
 
     # Output dir con carpeta semanal
-    output_dir = os.path.join(args.output_dir, f"semana_{args.since}_{args.before}")
-    os.makedirs(output_dir, exist_ok=True)
+    output_dir = Path(args.output_dir).expanduser().resolve() / build_week_folder_name(args.since, args.before)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_dir_str = str(output_dir)
 
     urls_csv = args.input_csv
 
@@ -858,7 +886,7 @@ def main():
             since=args.since,
             before=args.before,
             max_pages=args.max_google_pages,
-            output_dir=output_dir,
+            output_dir=output_dir_str,
         )
 
     # ── FASE 2: Comentarios vía Apify ──
@@ -906,7 +934,7 @@ def main():
             urls=urls,
             max_comments=args.max_comments,
             since=args.since,
-            output_dir=output_dir,
+            output_dir=output_dir_str,
             input_csv=urls_csv,
             batch_size=args.batch_size,
         )

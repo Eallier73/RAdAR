@@ -9,20 +9,20 @@ Para cada corpus (Facebook, Twitter, Medios, Youtube):
   - Top 30 palabras más frecuentes por categoría con su delta
 
 Uso:
-    python clasificar_temas_pmi.py --dict_v5 <ruta> --dict_v10 <ruta> --output <carpeta> --nombre <prefijo>
+    python -m src.nlp.clasificacion_temas --dict_v5 <ruta> --dict_v10 <ruta> --output <carpeta> --nombre <prefijo>
 
 Ejemplo:
-    python clasificar_temas_pmi.py \
-        --dict_v5 /home/emilio/Documentos/RAdAR/data/reference/dictionaries_nlp/Produccion_Diccionarios/diccionario_pmi_v5.xlsx \
-        --dict_v10 /home/emilio/Documentos/RAdAR/data/reference/dictionaries_nlp/Produccion_Diccionarios/diccionario_pmi_v10.xlsx \
-        --output /home/emilio/Documentos/RAdAR/Resultados \
+    python -m src.nlp.clasificacion_temas \
+        --dict_v5 data/reference/dictionaries_nlp/produccion_diccionarios/diccionario_pmi_v5.xlsx \
+        --dict_v10 data/reference/dictionaries_nlp/produccion_diccionarios/diccionario_pmi_v10.xlsx \
+        --output data/reference/dictionaries_nlp/resultados_clasificacion_temas/resultados_pmi_1 \
         --nombre pmi_run1
 
     Genera:
-        /home/emilio/Documentos/RAdAR/Resultados/pmi_run1_Facebook.xlsx
-        /home/emilio/Documentos/RAdAR/Resultados/pmi_run1_Twitter.xlsx
-        /home/emilio/Documentos/RAdAR/Resultados/pmi_run1_Medios.xlsx
-        /home/emilio/Documentos/RAdAR/Resultados/pmi_run1_Youtube.xlsx
+        data/reference/dictionaries_nlp/resultados_clasificacion_temas/resultados_pmi_1/pmi_run1_facebook.xlsx
+        data/reference/dictionaries_nlp/resultados_clasificacion_temas/resultados_pmi_1/pmi_run1_twitter.xlsx
+        data/reference/dictionaries_nlp/resultados_clasificacion_temas/resultados_pmi_1/pmi_run1_medios.xlsx
+        data/reference/dictionaries_nlp/resultados_clasificacion_temas/resultados_pmi_1/pmi_run1_youtube.xlsx
 
 Si no se pasan argumentos, usa valores por defecto.
 """
@@ -33,6 +33,7 @@ import sys
 import argparse
 import unicodedata
 from collections import defaultdict, Counter
+from pathlib import Path
 from openpyxl import Workbook, load_workbook
 from openpyxl.utils import get_column_letter
 from openpyxl.styles import Font, PatternFill, Alignment
@@ -40,20 +41,22 @@ from openpyxl.styles import Font, PatternFill, Alignment
 # ============================================================
 # ARGUMENTOS
 # ============================================================
+ROOT_DIR = Path(__file__).resolve().parents[2]
+
 parser = argparse.ArgumentParser(description='Clasificación temática PMI')
 parser.add_argument('--dict_v5', type=str,
-    default='/home/emilio/Documentos/RAdAR/data/reference/dictionaries_nlp/Produccion_Diccionarios/diccionario_pmi_v5.xlsx',
+    default=str(ROOT_DIR / 'data' / 'reference' / 'dictionaries_nlp' / 'produccion_diccionarios' / 'diccionario_pmi_v5.xlsx'),
     help='Ruta al diccionario PMI ventana 5')
 parser.add_argument('--dict_v10', type=str,
-    default='/home/emilio/Documentos/RAdAR/data/reference/dictionaries_nlp/Produccion_Diccionarios/diccionario_pmi_v10.xlsx',
+    default=str(ROOT_DIR / 'data' / 'reference' / 'dictionaries_nlp' / 'produccion_diccionarios' / 'diccionario_pmi_v10.xlsx'),
     help='Ruta al diccionario PMI ventana 10')
 parser.add_argument('--output', type=str,
-    default='/home/emilio/Documentos/RAdAR/data/reference/dictionaries_nlp/Resultados_Clasificacio_Temas/resultados_pmi_1',
+    default=str(ROOT_DIR / 'data' / 'reference' / 'dictionaries_nlp' / 'resultados_clasificacion_temas' / 'resultados_pmi_1'),
     help='Carpeta de salida')
 parser.add_argument('--nombre', type=str, default='',
     help='Prefijo para los archivos de salida (ej: pmi_run1)')
 parser.add_argument('--datos', type=str,
-    default='/home/emilio/Documentos/RAdAR/data/text/radar_weekly_flat',
+    default=str(ROOT_DIR / 'data' / 'text' / 'radar_weekly_flat'),
     help='Carpeta base de los corpus')
 
 args = parser.parse_args()
@@ -68,10 +71,10 @@ OUTPUT_DIR = args.output
 PREFIJO = args.nombre + '_' if args.nombre else ''
 
 CORPUS_DIRS = {
-    'Facebook': os.path.join(BASE_DATOS, 'Facebook_Semana_Texto'),
-    'Twitter': os.path.join(BASE_DATOS, 'Twitter_Semana_Texto'),
-    'Medios': os.path.join(BASE_DATOS, 'Medios_Semana_Texto'),
-    'Youtube': os.path.join(BASE_DATOS, 'Youtube_Semana_Texto'),
+    'facebook': os.path.join(BASE_DATOS, 'facebook_semana_texto'),
+    'twitter': os.path.join(BASE_DATOS, 'twitter_semana_texto'),
+    'medios': os.path.join(BASE_DATOS, 'medios_semana_texto'),
+    'youtube': os.path.join(BASE_DATOS, 'youtube_semana_texto'),
 }
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)

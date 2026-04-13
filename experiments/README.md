@@ -2,37 +2,23 @@
 
 Estatus: `experimental`
 
-Proposito:
+`experiments/` conserva evidencia metodológica, prompts, auditoría experimental y runs históricos.
+No es una segunda capa de código fuente.
 
-- concentrar investigacion, prompts, auditorias experimentales y runs historicos de modelado
-- dejar atras el antiguo cajon de sastre `Experimentos/`
+## Subárboles
 
-Subarboles:
+- `prompts/`: instrucciones y dirección experimental
+- `research/`: bitácoras, planes y cierres metodológicos
+- `audit/`: tablas maestras, inventarios y auditoría experimental vigente
+- `audit/backups/`: backups físicos de workbooks y tablas
+- `runs/`: evidencia histórica de corridas ejecutadas
 
-- `prompts/`: prompts de agente y material de direccion experimental
-- `research/`: planes, bitacoras, cierres y notas metodologicas
-- `audit/`: grid experimental, tablas maestras, inventarios y auditorias vigentes
-  - `audit/backups/`: backups historicos de grid (archivos `.backup_*.xlsx`)
-- `runs/`: corridas experimentales ya ejecutadas
+## Reglas duras
 
-Lo que si vive aqui:
+- no entra código activo nuevo
+- no entran datos canónicos operativos
+- no entran cache, tokens ni estado técnico transversal
+- `runs/` es inmutable como evidencia: los IDs históricos pueden conservar mayúsculas y convenciones previas
+- documentos históricos dentro de `research/` y `prompts/` pueden citar rutas antiguas o scripts viejos como evidencia; eso no gobierna la arquitectura vigente
 
-- evidencia metodologica y trazabilidad experimental
-- insumos documentales para decisiones de modelado
-- runs historicos de experimentacion
-
-Lo que no debe vivir aqui:
-
-- codigo fuente activo
-- datasets canonicos operativos
-- cache o estado tecnico transversal
-
-Relacion con otras carpetas:
-
-- `src/modeling` consume y actualiza varios artefactos de `experiments/audit` y `experiments/runs`
-- `docs/` fija la arquitectura canonica; `experiments/` documenta exploracion y validacion
-
-Estado:
-
-- el alias historico `Experimentos/` ya fue retirado
-- toda referencia vigente debe usar `experiments/`
+La arquitectura vigente se gobierna desde `docs/`, no desde `experiments/`.

@@ -1,36 +1,34 @@
 # data
 
-Estatus: `canonica_vigente`
+Estatus: `datos_canonicos`
 
-Proposito:
+`data/` contiene únicamente datos canónicos o declarados como tales.
 
-- separar claramente el dato canonico del runtime tecnico
-- distinguir insumo bruto, texto canonico, datasets procesados, referencias y externos
+## Subárboles
 
-Subarboles canonicos:
-
-- `raw/`: extraccion estructurada bruta o semi-bruta del Radar
-- `text/`: corpus textual canonico por fuente y semana
-- `processed/`: datasets listos para modelado y derivados estructurados
+- `raw/`: adquisición estructurada bruta o semi-bruta
+- `text/`: corpus textual canónico por fuente y semana
+- `processed/`: datasets listos para modelado y derivados reproducibles
 - `reference/`: diccionarios y recursos de referencia
-- `external/`: insumos externos como encuestas
+- `external/`: insumos externos versionados
 
-Lo que si vive aqui:
+## Regla de frontera
 
-- insumos y salidas de datos reproducibles
-- datasets canonicos que alimentan pipelines
-- referencias y diccionarios versionables
+- logs, estado, cache y reportes de ejecución no viven aquí
+- si un archivo es efímero o técnico, va a `artifacts/`
+- si un archivo es histórico y ya no es canónico, va a `legacy/`
 
-Lo que no debe vivir aqui:
+## Naming semanal canónico
 
-- logs
-- cache
-- estado de autenticacion
-- reportes de corrida
-- experimentos metodologicos
+La unidad semanal vigente usa el patrón:
 
-Relacion con otras carpetas:
+`<yyyy-mm-dd>_semana_<tramo_inicio>_<tramo_fin>_<yy>`
 
-- `src/` consume y produce datos canonicos aqui
-- `artifacts/` guarda lo efimero que no debe contaminar `data/`
-- `legacy/data/` encapsula materiales historicos fuera del flujo canonico
+Dentro de cada carpeta semanal, los nombres canónicos por fuente son:
+
+- `<semana>_facebook.csv`
+- `<semana>_twitter.csv`
+- `<semana>_youtube.csv`
+- `<semana>_medios.txt`
+
+`<semana>_medios.csv` puede existir como captura estructurada auxiliar cuando el extractor de medios la genera de forma reproducible.

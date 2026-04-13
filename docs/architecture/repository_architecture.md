@@ -1,93 +1,65 @@
 # Repository Architecture
 
-## Criterio rector
+Arquitectura vigente del repositorio RAdAR entendida como base canónica pre-automatización.
 
-La arquitectura canonica del repo se organiza por responsabilidad y por estado de vida:
-
-- codigo activo
-- datos canonicos
-- runtime tecnico
-- experimentacion
-- documentacion
-- legacy
-
-## Estructura canonica
+## 1. Estructura de raíz
 
 ```text
 RAdAR/
 ├── src/
 │   ├── extraction/
-│   │   └── runners/
 │   ├── preprocessing/
 │   ├── nlp/
 │   ├── modeling/
-│   └── shared/
+│   ├── shared/
+│   └── operations/
 ├── data/
-│   ├── raw/
-│   │   └── radar_weekly_flat/
-│   ├── text/
-│   │   └── radar_weekly_flat/
-│   ├── processed/
-│   │   └── modeling/
-│   ├── reference/
-│   │   └── dictionaries_nlp/
-│   └── external/
-│       └── surveys/
 ├── artifacts/
-│   ├── runs/
-│   ├── logs/
-│   ├── cache/
-│   └── state/
-├── experiments/
-│   ├── prompts/
-│   ├── research/
-│   ├── audit/
-│   └── runs/
 ├── docs/
-│   ├── architecture/
-│   ├── operations/
-│   └── migration/
+├── experiments/
 └── legacy/
-    ├── code/
-    │   └── extraction_variants/
-    └── data/
-        └── pppp/
 ```
 
-## Donde va cada cosa nueva
+## 2. Arquitectura actual vigente
 
-- nuevo codigo activo: `src/`
-- nuevo dataset canonico: `data/`
-- nuevo log, estado o cache: `artifacts/`
-- nueva bitacora, plan o auditoria metodologica: `experiments/`
-- nueva documentacion de arquitectura u operacion: `docs/`
-- codigo o dato jubilado pero valioso: `legacy/`
+| Capa | Estado | Notas |
+| --- | --- | --- |
+| extracción | implementada | runners por fuente; Facebook deja artefactos intermedios en `artifacts/` |
+| preprocessing | implementada | completa semanas, mueve insumos y normaliza outputs |
+| NLP | implementada | sentimiento, diccionarios, clasificación y ensamblado de variables |
+| modeling | implementada | núcleo reusable con `core/`, `runners/`, `reporting/`, `tracking/` |
+| shared | implementada | utilitarios transversales mínimos |
+| docs/data/artifacts/experiments/legacy | implementados | capas ya separadas y gobernadas |
 
-## Rutas historicas retiradas
+## 3. Arquitectura futura o reservada
 
-- `Scripts/`
-- `Datos_RAdAR/`
-- `Datos_RadaR_Texto/`
-- `Experimentos/`
-- `Datos_Modelo_ML/`
-- `Diccionarios_NLP/`
-- `Encuestas/`
+| Capa | Estado | Notas |
+| --- | --- | --- |
+| `src/operations/` | reservada | namespace para futura automatización integral |
+| orquestación end-to-end | no implementada | no existe capa final de scheduling o pipeline completo |
+| wrappers operativos finales | no implementados | el repo aún no expone una fachada única de operación |
 
-Esas rutas ya no son canonicas ni siguen vivas en el arbol actual.
+## 4. `src/modeling/` como núcleo técnico
 
-La migracion controlada ya retiro esas capas puente. Cualquier automatizacion nueva debe apuntar directamente a `src/`, `data/`, `artifacts/`, `experiments/`, `docs/` o `legacy/`.
+`src/modeling/` es hoy la capa más madura del repo.
+Su estructura física vigente es:
 
-## Convencion de nombres
+```text
+src/modeling/
+├── core/
+├── runners/
+├── reporting/
+└── tracking/
+```
 
-- carpetas y archivos en minusculas, `snake_case` y ASCII (sin acentos, sin espacios, sin mayusculas)
-- esta convencion aplica estrictamente a todo lo que vive en `src/`, `data/`, `artifacts/`, `experiments/` y `docs/`
-- en `legacy/` los nombres historicos se conservan como evidencia
-- la normalizacion completa de nombres activos se ejecuto en Fase 3 (ver `docs/architecture/repository_governance.md`)
+Esto separa:
 
-## Politica de crecimiento
+- lógica reusable
+- entrypoints por familia
+- construcción de tablas y reportes
+- tracking experimental
 
-1. No agregar scripts nuevos en la raiz.
-2. No mezclar runtime con `data/`.
-3. No mezclar operacion vigente con `experiments/`.
-4. No rescatar carpetas deprecated como base estructural.
-5. Toda nueva ruta estructural debe poder clasificarse como una de estas: `canonica_vigente`, `operativa_vigente`, `experimental`, `runtime`, `legacy`, `documental`.
+## 5. `src/operations/`
+
+La carpeta existe, pero no debe interpretarse como capa operativa implementada.
+Su función actual es reservar el namespace y evitar que la futura automatización vuelva a nacer desordenada en la raíz o dentro de `experiments/`.

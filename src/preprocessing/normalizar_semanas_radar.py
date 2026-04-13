@@ -31,6 +31,8 @@ EXPECTED_EXTENSIONS = {
     "youtube": ".csv",
 }
 
+REPO_ROOT = Path(__file__).resolve().parents[2]
+
 
 @dataclass(frozen=True)
 class RenameOp:
@@ -48,12 +50,12 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--root",
-        default="/home/emilio/Documentos/RAdAR/data/raw/radar_weekly_flat",
+        default=str(REPO_ROOT / "data" / "raw" / "radar_weekly_flat"),
         help="Directorio raíz con carpetas semanales.",
     )
     parser.add_argument(
         "--report",
-        default="/home/emilio/Documentos/RAdAR/artifacts/logs/preprocessing/reporte_semanas_incompletas.txt",
+        default=str(REPO_ROOT / "artifacts" / "logs" / "preprocessing" / "reporte_semanas_incompletas.txt"),
         help="Ruta del reporte de semanas incompletas.",
     )
     parser.add_argument(

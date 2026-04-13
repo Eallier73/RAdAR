@@ -7,14 +7,15 @@ import shutil
 import string
 from pathlib import Path
 
-SOURCE_BASE = Path("/home/emilio/Documentos/RAdAR/data/raw/radar_weekly_flat")
-TARGET_BASE = Path("/home/emilio/Documentos/RAdAR/data/text/radar_weekly_flat")
+REPO_ROOT = Path(__file__).resolve().parents[2]
+SOURCE_BASE = REPO_ROOT / "data" / "raw" / "radar_weekly_flat"
+TARGET_BASE = REPO_ROOT / "data" / "text" / "radar_weekly_flat"
 
 TARGET_DIRS = {
-    "facebook": TARGET_BASE / "Facebook_Semana_Texto",
-    "twitter": TARGET_BASE / "Twitter_Semana_Texto",
-    "youtube": TARGET_BASE / "Youtube_Semana_Texto",
-    "medios": TARGET_BASE / "Medios_Semana_Texto",
+    "facebook": TARGET_BASE / "facebook_semana_texto",
+    "twitter": TARGET_BASE / "twitter_semana_texto",
+    "youtube": TARGET_BASE / "youtube_semana_texto",
+    "medios": TARGET_BASE / "medios_semana_texto",
 }
 
 ACCENT_REPLACEMENTS = {

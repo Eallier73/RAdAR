@@ -21,6 +21,7 @@ import sys
 import argparse
 import unicodedata
 from collections import defaultdict, Counter
+from pathlib import Path
 from openpyxl import Workbook, load_workbook
 from openpyxl.utils import get_column_letter
 from openpyxl.styles import Font, PatternFill, Alignment
@@ -28,20 +29,22 @@ from openpyxl.styles import Font, PatternFill, Alignment
 # ============================================================
 # ARGUMENTOS
 # ============================================================
+ROOT_DIR = Path(__file__).resolve().parents[2]
+
 parser = argparse.ArgumentParser(description='Clasificación temática PMI')
 parser.add_argument('--dict_v5', type=str,
-    default='/home/emilio/Documentos/RAdAR/data/reference/dictionaries_nlp/Produccion_Diccionarios/diccionario_pmi_v5.xlsx',
+    default=str(ROOT_DIR / 'data' / 'reference' / 'dictionaries_nlp' / 'produccion_diccionarios' / 'diccionario_pmi_v5.xlsx'),
     help='Ruta al diccionario PMI ventana 5')
 parser.add_argument('--dict_v10', type=str,
-    default='/home/emilio/Documentos/RAdAR/data/reference/dictionaries_nlp/Produccion_Diccionarios/diccionario_pmi_v10.xlsx',
+    default=str(ROOT_DIR / 'data' / 'reference' / 'dictionaries_nlp' / 'produccion_diccionarios' / 'diccionario_pmi_v10.xlsx'),
     help='Ruta al diccionario PMI ventana 10')
 parser.add_argument('--output', type=str,
-    default='/home/emilio/Documentos/RAdAR/data/reference/dictionaries_nlp/Resultados_Clasificacio_Temas/resultados_pmi_1',
+    default=str(ROOT_DIR / 'data' / 'reference' / 'dictionaries_nlp' / 'resultados_clasificacion_temas' / 'resultados_pmi_1'),
     help='Carpeta de salida')
 parser.add_argument('--nombre', type=str, default='',
     help='Prefijo para los archivos de salida (ej: pmi_run1)')
 parser.add_argument('--datos', type=str,
-    default='/home/emilio/Documentos/RAdAR/data/text/radar_weekly_flat',
+    default=str(ROOT_DIR / 'data' / 'text' / 'radar_weekly_flat'),
     help='Carpeta base de los corpus')
 
 args = parser.parse_args()
@@ -57,9 +60,9 @@ PREFIJO = args.nombre + '_' if args.nombre else ''
 
 # Sin Facebook — excluido por sesgo institucional
 CORPUS_DIRS = {
-    'Twitter': os.path.join(BASE_DATOS, 'Twitter_Semana_Texto'),
-    'Medios': os.path.join(BASE_DATOS, 'Medios_Semana_Texto'),
-    'Youtube': os.path.join(BASE_DATOS, 'Youtube_Semana_Texto'),
+    'twitter': os.path.join(BASE_DATOS, 'twitter_semana_texto'),
+    'medios': os.path.join(BASE_DATOS, 'medios_semana_texto'),
+    'youtube': os.path.join(BASE_DATOS, 'youtube_semana_texto'),
 }
 
 # Factor de normalización: scores por cada N tokens
@@ -490,7 +493,7 @@ for vname in ['V5', 'V10']:
 
     print(f"  {vname}: {len(semanas_sorted)} semanas consolidadas")
 
-con_path = os.path.join(OUTPUT_DIR, f"{PREFIJO}Consolidado.xlsx")
+con_path = os.path.join(OUTPUT_DIR, f"{PREFIJO}consolidado.xlsx")
 wb_con.save(con_path)
 print(f"\n  Guardado: {con_path}")
 

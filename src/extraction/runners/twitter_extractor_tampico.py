@@ -26,9 +26,11 @@ from urllib.parse import quote
 from playwright.async_api import async_playwright
 
 # =========================
-# CONFIGURACIÓN CDMX
+# CONFIGURACIÓN
 # =========================
-RAW_WEEKLY_DIR = "/home/emilio/Documentos/RAdAR/data/raw/radar_weekly_flat"
+REPO_ROOT = Path(__file__).resolve().parents[3]
+RAW_WEEKLY_DIR = REPO_ROOT / "data" / "raw" / "radar_weekly_flat"
+STATE_PATH = REPO_ROOT / "artifacts" / "state" / "x_state.json"
 CONFIG_START_DATE_STR = "2026-03-03"
 CONFIG_END_DATE_STR = "2026-03-09"
 
@@ -68,17 +70,16 @@ class TwitterExtractorIAD:
         self.nombre_semana = self.calcular_nombre_semana()
 
         # Paths del sistema
-        scripts_dir = Path(__file__).resolve().parent.parent
-        self.state_path = scripts_dir / "state" / "x_state.json"
+        self.state_path = STATE_PATH
 
         # Directorio de salida canónico por semana.
-        self.output_dir = Path(RAW_WEEKLY_DIR) / self.nombre_semana
+        self.output_dir = RAW_WEEKLY_DIR / self.nombre_semana
 
         # Crear directorio si no existe (normalmente ya debe existir por el main)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
         # Archivo de salida
-        self.output_csv = self.output_dir / f"twitter_data_{self.nombre_semana}.csv"
+        self.output_csv = self.output_dir / f"{self.nombre_semana}_twitter.csv"
 
         # Configuraciones
         self.max_tweets = 3000
@@ -117,7 +118,7 @@ class TwitterExtractorIAD:
         """Calcula el nombre de la carpeta de semana"""
         fecha_inicio_esp = self.convertir_fecha_a_espanol(self.fecha_inicio)
         fecha_fin_esp = self.convertir_fecha_a_espanol(self.fecha_fin)
-        return f"semana_{fecha_inicio_esp}_{fecha_fin_esp}"
+        return f"{self.fecha_inicio.strftime('%Y-%m-%d')}_semana_{fecha_inicio_esp}_{fecha_fin_esp}"
 
     def clean_text(self, text: str) -> str:
         """Limpiar texto eliminando espacios extras"""

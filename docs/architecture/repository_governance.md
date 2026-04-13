@@ -1,179 +1,172 @@
 # Repository Governance
 
 Documento autoritativo de gobierno del repositorio RAdAR.
-Fecha de vigencia: 2026-04-12 (Fase 3 — estandarizacion integral)
+Vigente para la rama `feature/restructuracion-arquitectonica-repo`.
 
-## 1. Taxonomia oficial: las 6 capas
+## 1. Premisa metodológica
 
-| Capa | Ruta | Contenido canonico | Estado |
-| --- | --- | --- | --- |
-| **codigo activo** | `src/` | extractores, preprocessors, NLP, modelado, utilitarios compartidos | `canonica_vigente` |
-| **datos canonicos** | `data/` | insumos brutos, corpus textual, datasets procesados, referencias, externos | `canonica_vigente` |
-| **runtime tecnico** | `artifacts/` | logs, runs, cache, estado de automatizacion | `runtime` |
-| **investigacion** | `experiments/` | prompts, bitacoras, auditorias, runs experimentales | `experimental` |
-| **documentacion** | `docs/` | arquitectura, migracion, operacion | `documental` |
-| **historico** | `legacy/` | codigo y datos fuera del flujo canonico pero preservados | `legacy` |
+Esta rama no se audita como si fuera un sistema final automatizado.
+Se audita como arquitectura base previa a la automatización integral.
 
-Cada archivo del repositorio pertenece exactamente a una de estas 6 capas.
-No existen capas intermedias, aliases ni rutas transicionales.
+Por lo tanto:
 
-## 2. Criterios de canonicidad
+- sí se exige limpieza estructural, fronteras duras y verdad documental
+- no se exige una capa completa de orquestación end-to-end ya implementada
+- `src/operations/` puede existir solo como capa reservada, pero debe decirlo explícitamente
 
-Un script o modulo es **codigo activo canonico** si cumple todos los siguientes criterios:
+## 2. Estado real: implementado vs reservado
 
-1. Resuelve una responsabilidad real y actual del pipeline.
-2. Es reproducible: sus inputs y outputs estan bien definidos.
-3. No duplica funcionalidad ya cubierta por otro modulo activo.
-4. Su nombre cumple la convencion (ver seccion 3).
-5. Vive en `src/` bajo el subarbol correspondiente a su responsabilidad.
-6. No depende de rutas absolutas hardcodeadas de entornos personales.
+### Implementado hoy
 
-Un dataset es **dato canonico** si:
-1. Es insumo del pipeline activo o resultado reproducible de el.
-2. No es efimero (no se descarta entre runs).
-3. Vive en `data/` bajo el subarbol que corresponde a su tipo.
+- extracción activa por fuente
+- preprocessing y normalización de insumos
+- NLP activo
+- modelado reusable
+- tracking y reporting experimental
+- separación entre datos, artifacts, documentación, experimentación y legacy
 
-## 3. Convencion de nombres
+### Reservado o posterior
 
-### Regla
+- automatización integral
+- orquestación end-to-end
+- scheduling
+- integración operativa completa
+- wrappers operativos finales
 
-- **Minusculas**: sin mayusculas en ninguna posicion.
-- **ASCII**: sin acentos (a no ser que el contenido del dato lo requiera), sin caracteres especiales.
-- **Snake case**: palabras separadas por guion bajo (`_`), no guion medio (`-`) ni espacio.
-- **Sin abreviaturas ambiguas**: preferir nombres descriptivos sobre siglas opacas.
+Decisión vigente sobre `src/operations/`:
 
-### Ejemplos
+- opción A: capa reservada para futura automatización integral
 
-| Malo | Bueno | Motivo |
+## 3. Taxonomía oficial
+
+Cada archivo del repositorio debe pertenecer a una sola categoría:
+
+| Categoría | Ruta raíz | Contenido permitido |
 | --- | --- | --- |
-| `Modelo_Radar_1.py` | `modelo_radar_1.py` | mayusculas prohibidas |
-| `aceptación_digital.py` | `aceptacion_digital.py` | acento prohibido |
-| `Lageado_Datos_ML.py` | `lageado_datos_ml.py` | mayusculas prohibidas |
-| `scripts procesamiento.py` | `scripts_procesamiento.py` | espacio prohibido |
-| `procesar-datos.py` | `procesar_datos.py` | guion medio no permitido |
-| `tmp_v2_final_BUENO.py` | `procesar_encuestas_v2.py` | nombre descriptivo y sin ruido |
+| código activo canónico | `src/` | módulos y scripts vigentes |
+| datos canónicos | `data/` | insumos y datasets reproducibles |
+| runtime técnico | `artifacts/` | logs, cache, estado, workdirs |
+| documentación estructural u operativa | `docs/` | gobierno, arquitectura, operación, migración |
+| experimentación / investigación / prompts / auditoría experimental | `experiments/` | evidencia metodológica y runs históricos |
+| legado | `legacy/` | material histórico fuera del flujo canónico |
 
-### Alcance
+Si un archivo no cabe inequívocamente en una sola de estas categorías, está mal ubicado.
 
-Esta convencion aplica a todo lo que vive en `src/`, `data/`, `artifacts/`, `experiments/` y `docs/`.
-En `legacy/` los nombres historicos se conservan como evidencia; no se normalizan.
+## 4. Fronteras duras por carpeta
 
-## 4. Reglas de promocion
+### `src/`
 
-Para que un script pase de `experiments/` o `legacy/` a `src/`:
+- solo código activo
+- sin logs, cache, sesiones, datasets ni archivos de auditoría tabular
 
-1. **Responsabilidad clara**: debe resolver una tarea concreta del pipeline activo.
-2. **Sin duplicar**: confirmar que no existe ya un modulo en `src/` con esa funcion.
-3. **Nombre conforme**: renombrar a snake_case ASCII antes de mover.
-4. **Imports saneados**: eliminar rutas absolutas personales y referencias a estructuras viejas.
-5. **Documentado**: agregar docstring y comentarios suficientes.
-6. **Registrado**: crear entrada en `docs/migration/path_migration_table.csv` con `status: moved`.
+### `data/`
 
-## 5. Reglas de deprecacion
+- solo datos canónicos o declarados como tales
+- sin estado técnico, logs ni workdirs
 
-Para mover una pieza de `src/` o `data/` a `legacy/`:
+### `artifacts/`
 
-1. **Confirmar que no es referenciada** por ningun modulo activo (grep en `src/`).
-2. **Mover con `git mv`**, no copiar.
-3. **Registrar en tabla de migracion**: `docs/migration/path_migration_table.csv` con `status: deprecated`.
-4. **Actualizar READMEs** de origen y de `legacy/` si aplica.
-5. No se borran archivos historicos con valor documental; se mueven a `legacy/`.
+- solo runtime técnico
+- se versionan únicamente plantillas, ejemplos y marcadores mínimos
 
-## 6. Politica de artefactos pesados
+### `docs/`
 
-### Que va en artifacts/
+- documentación gobernante
+- no investigación metodológica experimental
 
-- logs de corridas (`.log`, `.txt` de ejecucion)
-- salidas tecnicas temporales (JSONs de metricas, CSVs de predicciones)
-- estado de autenticacion (tokens, cursores)
-- cache regenerable
+### `experiments/`
 
-### Que no se versiona
+- evidencia experimental
+- no código fuente activo
+- no runtime transversal
 
-Los siguientes tipos de archivos **no deben aparecer en el indice git** (agregar a `.gitignore` si es necesario):
+### `legacy/`
 
-- `__pycache__/` y `.pyc`
-- archivos `.env` o de credenciales
-- modelos entrenados pesados (`.pkl`, `.joblib`, `.h5` > 50 MB)
-- cache de APIs externas
+- histórico preservado
+- no nuevas implementaciones
 
-### Que va en experiments/audit/
+## 5. Reglas específicas de `src/`
 
-- grids de experimentos versionados activos (`.xlsx`, `.csv`)
-- backups de grid: en `experiments/audit/backups/`
-- inventarios de columnas y constructos canonicos
-- tablas maestras de resultados
+| Ruta | Rol vigente |
+| --- | --- |
+| `src/extraction/` | adquisición por fuente |
+| `src/preprocessing/` | promoción y normalización |
+| `src/nlp/` | variables textuales, diccionarios y clasificación |
+| `src/modeling/` | núcleo técnico vigente de modelado |
+| `src/shared/` | utilitarios transversales mínimos |
+| `src/operations/` | reservado, no implementado |
 
-## 7. Politica de documentacion
+### Regla para `src/operations/`
 
-| Tipo | Ubicacion | Ejemplos |
-| --- | --- | --- |
-| Documentacion estructural | `docs/architecture/`, `docs/migration/`, `docs/operations/` | arquitectura, governance, tabla de migracion |
-| Documentacion experimental | `experiments/research/` | bitacoras, planes, cierres de experimentos |
-| Documentacion de modulo | dentro del propio `.py` (docstring) o `README.md` del subarbol | README de `src/modeling/`, docstrings de funciones |
+- la carpeta existe para reservar el namespace
+- no debe presentarse como pipeline operativo final
+- cualquier futura población de esta capa obliga a actualizar este documento
 
-No mezclar: un plan metodologico no va en `docs/`; una decision de arquitectura no va en `experiments/`.
+## 6. Naming canónico
 
-## 8. Politica de compatibilidad
+### Regla general
 
-**No se permiten aliases transitorios sin fecha de retiro declarada.**
+Para todo lo activo y gobernante:
 
-- Si se crea un alias o wrapper de compatibilidad, debe tener:
-  1. Un comentario en el codigo con la fecha de retiro prevista.
-  2. Una entrada en `docs/migration/repository_restructure_migration.md` declarando el alias.
-- Los aliases de raiz (`Scripts/`, `Experimentos/`, etc.) fueron retirados en Fase 2 y no deben reaparecer.
-- Cualquier automatizacion nueva debe apuntar directamente a rutas canonicas.
+- minúsculas
+- ASCII
+- snake_case
+- sin acentos
+- sin espacios
+- sin nombres ambiguos
 
-## 9. Rutas permitidas y prohibidas
+### Excepciones explícitas y acotadas
 
-### Permitidas
+Estas excepciones son válidas solo porque representan convenciones técnicas o evidencia histórica:
 
-```
-src/extraction/runners/
-src/preprocessing/
-src/nlp/
-src/modeling/
-src/shared/
-data/raw/
-data/text/
-data/processed/
-data/reference/
-data/external/
-artifacts/runs/
-artifacts/logs/
-artifacts/cache/
-artifacts/state/
-experiments/prompts/
-experiments/research/
-experiments/audit/
-experiments/audit/backups/
-experiments/runs/
-docs/architecture/
-docs/migration/
-docs/operations/
-legacy/code/
-legacy/data/
-```
+- `README.md`
+- tokens ISO `yyyy-mm-dd` dentro de nombres semanales canónicos
+- IDs de corrida en `experiments/runs/`
+- nombres históricos preservados dentro de `legacy/`
+- documentos o evidencias históricas ya existentes dentro de `experiments/`
 
-### Prohibidas (no deben aparecer como rutas activas)
+Fuera de esas excepciones, la regla general es obligatoria.
 
-```
-Scripts/
-Experimentos/
-Datos_RAdAR/
-Datos_RadaR_Texto/
-Datos_Modelo_ML/
-Diccionarios_NLP/
-Encuestas/
-```
+## 7. Política de runtime
 
-Estas rutas estan extintas desde Fase 2 de la reestructuracion. Su aparicion en imports o paths hardcodeados es un defecto que debe corregirse.
+### Va en `artifacts/`
 
-### Zona gris: rutas absolutas personales en codigo
+- `artifacts/logs/preprocessing/*.csv`
+- caches de extracción
+- sesiones autenticadas
+- workdirs intermedios de extracción
 
-Los extractores y scripts de preprocessing usan rutas absolutas del tipo `/home/emilio/Documentos/Datos_Radar/...` como defaults de CLI.
-Esto es aceptable **solo si**:
-- La ruta es un argumento CLI con default explicito (no hardcode obligatorio).
-- El script puede ejecutarse con ruta diferente via argumento.
+### No va en git
 
-Si una ruta personal es obligatoria (sin alternativa), debe corregirse en una siguiente fase.
+- `artifacts/state/x_state.json`
+- logs generados por ejecución
+- workdirs vivos de extracción
+- caches regenerables
+
+## 8. Política de datos
+
+`data/raw/radar_weekly_flat/` es el raw semanal canónico.
+
+Los nombres de archivo canónicos por fuente son:
+
+- `<semana>_facebook.csv`
+- `<semana>_twitter.csv`
+- `<semana>_youtube.csv`
+- `<semana>_medios.txt`
+
+`facebook_extractor_apify_tampico.py` no escribe dato canónico final.
+Produce artefactos intermedios en `artifacts/runs/extraction/facebook/`.
+La promoción a CSV canónico de Facebook se hace después en preprocessing.
+
+## 9. Política de `experiments/`
+
+- `prompts/`, `research/`, `audit/` y `runs/` son válidos
+- `audit/backups/` es la única zona permitida para backups físicos
+- `runs/` es evidencia, no runtime técnico reutilizable
+- rutas viejas o nombres históricos dentro de documentos experimentales no gobiernan la arquitectura actual
+
+## 10. Compatibilidad y migración
+
+- no se permiten aliases de raíz activos como `Scripts/`, `Experimentos/`, `Datos_RAdAR/` o `Datos_RadaR_Texto/`
+- `src/nlp/experiment_logger.py` es un wrapper explícito y documentado; no un duplicado silencioso
+- `docs/migration/path_migration_table.csv` debe leerse como ledger histórico de la migración desde la estructura previa, no como especificación exhaustiva del naming final vigente

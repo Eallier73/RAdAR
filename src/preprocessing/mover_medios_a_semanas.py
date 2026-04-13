@@ -13,6 +13,10 @@ from pathlib import Path
 WEEK_DIR_RE = re.compile(r"^(?P<start>\d{4}-\d{2}-\d{2})_semana_")
 DATE_RANGE_RE = re.compile(r"_(\d{4}-\d{2}-\d{2})_(\d{4}-\d{2}-\d{2})(?P<ext>\.[^./]+)$")
 
+REPO_ROOT = Path(__file__).resolve().parents[2]
+RAW_WEEKLY_ROOT = REPO_ROOT / "data" / "raw" / "radar_weekly_flat"
+PREPROCESSING_LOGS_DIR = REPO_ROOT / "artifacts" / "logs" / "preprocessing"
+
 
 @dataclass(frozen=True)
 class WeekFolder:
@@ -89,13 +93,13 @@ def main() -> int:
     )
     p.add_argument(
         "--src",
-        default="/home/emilio/Documentos/Datos_Radar/Medios",
-        help="Directorio origen (default: /home/emilio/Documentos/Datos_Radar/Medios)",
+        required=True,
+        help="Directorio origen con los TXT externos de medios.",
     )
     p.add_argument(
         "--dest",
-        default="/home/emilio/Documentos/RAdAR/data/raw/radar_weekly_flat",
-        help="Directorio destino con carpetas semanales (default: /home/emilio/Documentos/RAdAR/data/raw/radar_weekly_flat)",
+        default=str(RAW_WEEKLY_ROOT),
+        help=f"Directorio destino con carpetas semanales. Default: {RAW_WEEKLY_ROOT}",
     )
     p.add_argument(
         "--skip-cache",
@@ -153,7 +157,8 @@ def main() -> int:
             skipped.append((src, "skip_no_week_folder"))
             continue
 
-        dest = with_dup_suffix(dest_dir / src.name)
+        canonical_name = f"{dest_dir.name}_medios{src.suffix.lower()}"
+        dest = with_dup_suffix(dest_dir / canonical_name)
         ops.append((src, dest, start, end, dest_dir.name))
 
     if not ops:
@@ -167,7 +172,8 @@ def main() -> int:
         print(f"  ... +{len(ops) - 20} más")
 
     ts = dt.datetime.now().strftime("%Y%m%d_%H%M%S")
-    log_path = dest_root / f"move_medios_log_{ts}.csv"
+    PREPROCESSING_LOGS_DIR.mkdir(parents=True, exist_ok=True)
+    log_path = PREPROCESSING_LOGS_DIR / f"move_medios_log_{ts}.csv"
     with log_path.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["src", "dest", "week_folder", "start", "end", "action"])

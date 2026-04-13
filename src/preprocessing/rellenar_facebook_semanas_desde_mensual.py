@@ -21,6 +21,10 @@ DEFAULT_STRATIFIED_RATIOS: dict[WeekStratum, float] = {"post": 0.4, "photo": 0.3
 
 WEEK_DIR_RE = re.compile(r"^(?P<start>\d{4}-\d{2}-\d{2})_semana_")
 
+REPO_ROOT = Path(__file__).resolve().parents[2]
+RAW_WEEKLY_ROOT = REPO_ROOT / "data" / "raw" / "radar_weekly_flat"
+PREPROCESSING_LOGS_DIR = REPO_ROOT / "artifacts" / "logs" / "preprocessing"
+
 
 @dataclass
 class PostGroup:
@@ -241,15 +245,13 @@ def aplicar_sampling_posts(
 
 def has_facebook_file(week_dir: Path) -> bool:
     for f in week_dir.iterdir():
-        if f.is_file() and f.name.lower().startswith("facebook_"):
+        if f.is_file() and f.name.lower().endswith("_facebook.csv"):
             return True
     return False
 
 
 def output_path_for_week(week_dir: Path) -> Path:
-    # Keep consistent naming with earlier renames: Facebook_<semana_part>.csv
-    semana_part = week_dir.name.split("_", 1)[1] if "_" in week_dir.name else week_dir.name
-    return week_dir / f"Facebook_{semana_part}.csv"
+    return week_dir / f"{week_dir.name}_facebook.csv"
 
 
 def load_source_groups(src_dir: Path, *, tz: ZoneInfo) -> tuple[list[str], dict[str, PostGroup]]:
@@ -351,13 +353,13 @@ def main() -> int:
     )
     p.add_argument(
         "--src",
-        default="/home/emilio/Documentos/Lab/tampico_env/Proyectos/IPSEL_Tampico/Ml_Monica_Villarreal/Datos/Facebook_Instituional",
-        help="Directorio con MV_Datos_Mensual_*.csv",
+        required=True,
+        help="Directorio externo con MV_Datos_Mensual_*.csv.",
     )
     p.add_argument(
         "--dest",
-        default="/home/emilio/Documentos/RAdAR/data/raw/radar_weekly_flat",
-        help="Directorio con carpetas semanales YYYY-MM-DD_semana_*",
+        default=str(RAW_WEEKLY_ROOT),
+        help=f"Directorio canonico con carpetas semanales. Default: {RAW_WEEKLY_ROOT}",
     )
     p.add_argument(
         "--timezone",
@@ -424,7 +426,8 @@ def main() -> int:
     skipped_no_data = 0
 
     ts = dt.datetime.now().strftime("%Y%m%d_%H%M%S")
-    log_path = dest_root / f"fill_facebook_weekly_from_monthly_{ts}.csv"
+    PREPROCESSING_LOGS_DIR.mkdir(parents=True, exist_ok=True)
+    log_path = PREPROCESSING_LOGS_DIR / f"fill_facebook_weekly_from_monthly_{ts}.csv"
     with log_path.open("w", newline="", encoding="utf-8") as log_fp:
         log_w = csv.writer(log_fp)
         log_w.writerow(

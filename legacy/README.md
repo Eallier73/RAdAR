@@ -2,28 +2,16 @@
 
 Estatus: `legacy`
 
-Proposito:
+`legacy/` concentra material histórico preservado por valor de consulta, no por vigencia.
 
-- encapsular codigo y datos historicos que siguen teniendo valor de consulta
-- sacarlos del flujo canonico sin borrarlos
+## Contenido actual típico
 
-Lo que si vive aqui:
+- variantes históricas de extractores
+- prototipos de modelado retirados del flujo activo
+- datasets o salidas ya fuera del flujo canónico
 
-- variantes historicas de extractores
-- datos archivados o proyectos paralelos ya fuera de la arquitectura destino
+## Regla
 
-Lo que no debe vivir aqui:
-
-- nuevas implementaciones
-- codigo activo canonico
-- datos operativos vigentes
-
-Relacion con otras carpetas:
-
-- `src/` contiene el flujo activo
-- `legacy/` conserva referencias historicas y compatibilidad documental
-
-Regla de gobierno:
-
-- si algo nuevo nace hoy, no entra a `legacy/`
-- si algo se mueve aqui, debe quedar claro por que ya no es canonico
+- nada nuevo nace aquí
+- si algo se mueve aquí, debe quedar claro por qué dejó de ser canónico
+- los nombres históricos pueden conservarse aquí sin normalización adicional
