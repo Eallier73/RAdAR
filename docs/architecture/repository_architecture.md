@@ -25,7 +25,7 @@ RAdAR/
 | Capa | Estado | Notas |
 | --- | --- | --- |
 | extracción | implementada | runners por fuente; Facebook deja artefactos intermedios en `artifacts/` |
-| preprocessing | implementada | completa semanas, mueve insumos y normaliza outputs |
+| preprocessing | implementada | expone CLIs activas y un wrapper parcial de stage; no es una capa final de operación |
 | NLP | implementada | sentimiento, diccionarios, clasificación y ensamblado de variables |
 | modeling | implementada | núcleo reusable con `core/`, `runners/`, `reporting/`, `tracking/` |
 | shared | implementada | utilitarios transversales mínimos |

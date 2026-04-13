@@ -102,10 +102,9 @@ def main() -> int:
         help=f"Directorio destino con carpetas semanales. Default: {RAW_WEEKLY_ROOT}",
     )
     p.add_argument(
-        "--skip-cache",
+        "--include-cache",
         action="store_true",
-        default=True,
-        help="Omite archivos dentro de _cache_rss (default: true).",
+        help="Incluye archivos dentro de _cache_rss. Por default se omiten.",
     )
     p.add_argument(
         "--extensions",
@@ -115,10 +114,9 @@ def main() -> int:
     )
     p.add_argument("--apply", action="store_true", help="Aplica los movimientos (sin esto solo dry-run).")
     p.add_argument(
-        "--cleanup-empty-dirs",
+        "--keep-empty-dirs",
         action="store_true",
-        default=True,
-        help="Borra carpetas semana_* vacías al final (default: true).",
+        help="Conserva carpetas semana_* vacías. Por default se eliminan.",
     )
     args = p.parse_args()
 
@@ -140,7 +138,7 @@ def main() -> int:
     for src in sorted(src_root.rglob("*")):
         if not src.is_file():
             continue
-        if args.skip_cache and "_cache_rss" in src.parts:
+        if not args.include_cache and "_cache_rss" in src.parts:
             skipped.append((src, "skip_cache"))
             continue
         if src.suffix.lower() not in allowed_exts:
@@ -193,7 +191,7 @@ def main() -> int:
         moved += 1
 
     removed_dirs = 0
-    if args.cleanup_empty_dirs:
+    if not args.keep_empty_dirs:
         for d in sorted(src_root.iterdir()):
             if not d.is_dir() or not d.name.startswith("semana_"):
                 continue
@@ -204,7 +202,7 @@ def main() -> int:
             removed_dirs += 1
 
     print(f"\nOK: movidos {moved} archivos. Log: {str(log_path)}")
-    if args.cleanup_empty_dirs:
+    if not args.keep_empty_dirs:
         print(f"Carpetas semana_* eliminadas (vacías): {removed_dirs}")
     return 0
 
