@@ -48,6 +48,12 @@ El wrapper expone automatización parcial de esta capa y no debe confundirse con
 - normalizar naming de carpetas y archivos semanales
 - promover `data/raw/` hacia `data/text/`
 
+## Nota específica sobre medios
+
+- el `.txt` semanal de medios ya llega limpiado y segmentado desde `src/extraction/runners/medios_extractor.py`
+- `promover_raw_a_texto.py` no rehace esa limpieza para medios; copia el primer `*_medios.txt` encontrado hacia `data/text/`
+- por lo tanto, en medios la transformación semántica relevante ocurre en extracción y la promoción a texto actúa como réplica del corpus canónico ya producido
+
 ## Reglas de frontera
 
 - los datos canónicos resultantes viven en `data/raw/` o `data/text/`

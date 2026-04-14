@@ -19,8 +19,8 @@ from pathlib import Path
 # =========================
 # Usa formato YYYY-MM-DD. Si ambos quedan como None, se usan los últimos 15 días
 # (incluyendo hoy). Configuración actual: 24/11/2025 al 01/12/2025.
-CONFIG_START_DATE_STR = "2026-03-03"
-CONFIG_END_DATE_STR = "2026-03-09"
+CONFIG_START_DATE_STR = "2026-03-17"
+CONFIG_END_DATE_STR = "2026-03-23"
 DEFAULT_RANGE_DAYS = 15
 
 SEARCH_QUERIES = [

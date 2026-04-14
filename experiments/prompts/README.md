@@ -46,6 +46,12 @@ Estructura:
   Prompts operativos de construccion de tabla E10 y de la primera corrida canonica de meta-seleccion/gating.
 - `20_saneamiento_canonico/`
   Prompt de saneamiento documental-metodologico integral para alinear plan, bitacora, inventario, tabla maestra y README(s).
+- `31_reestructuracion_arquitectonica_repo/`
+  Prompt de reestructuracion arquitectonica seria y conservadora del repositorio RAdAR en worktree separado.
+- `32_estandarizacion_integral_repo/`
+  Prompt de estandarizacion integral y estricta del repo: naming canonico, fronteras de capas, gobierno arquitectonico.
+- `33_endurecimiento_preprocesamiento/`
+  Prompt de endurecimiento estructural de promover_raw_a_texto.py: logging, auditoria, validaciones, no regresion canonica.
 
 Convencion de nombres:
 
@@ -89,3 +95,6 @@ Mapa actual:
 - `19_familia_gating_contextual/01_construccion_tabla_operativa_e10.md`
 - `19_familia_gating_contextual/02_modelado_operativo_e10_v1_clean.md`
 - `20_saneamiento_canonico/01_saneamiento_canonico_integral.md`
+- `31_reestructuracion_arquitectonica_repo/01_reestructuracion_arquitectonica_seria_repo_radar.md`
+- `32_estandarizacion_integral_repo/01_estandarizacion_integral_estricta_repo_radar.md`
+- `33_endurecimiento_preprocesamiento/01_endurecimiento_estructural_promover_raw_a_texto.md`
