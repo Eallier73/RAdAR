@@ -60,6 +60,7 @@ def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
     artifacts: list[str] = []
     inputs = {
         "week_folder": str(RAW_WEEKLY_ROOT / context.week.folder_name),
+        "selection_window": context.selection_window_payload(),
         "sources": context.sources_effective,
     }
 

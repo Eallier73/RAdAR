@@ -15,7 +15,13 @@ from .config import (
     SUCCESS_LIKE_STAGE_STATUSES,
 )
 from .contracts import STAGE_CONTRACTS, StageResult, validate_stage_name
-from .run_context import RadarRunContext, build_repo_context_snapshot, now_text, resolve_week_window
+from .run_context import (
+    RadarRunContext,
+    build_repo_context_snapshot,
+    now_text,
+    resolve_operational_window,
+    resolve_week_window,
+)
 from .state_store import OperationStateStore
 from .stages import (
     run_export_stage,
@@ -40,6 +46,8 @@ STAGE_RUNNERS = {
 @dataclass
 class PipelineRequest:
     week: str | None
+    date_from: str | None
+    date_to: str | None
     mode: str
     from_stage: str | None
     to_stage: str | None
@@ -73,6 +81,18 @@ class RadarPipelineOrchestrator:
             context.sources_requested = request.sources or context.sources_requested
             context.sources_effective = request.sources or context.sources_effective
             context.repo_context = build_repo_context_snapshot()
+            if request.date_from or request.date_to or request.week:
+                resolved_week, selected_start, selected_end = resolve_operational_window(
+                    request.week or context.week.requested_value,
+                    request.date_from,
+                    request.date_to,
+                )
+                if resolved_week.slug != context.week.slug:
+                    raise ValueError(
+                        "La reanudación solo permite conservar la misma semana canónica del run original."
+                    )
+                context.metadata["selection_start_date"] = selected_start.isoformat()
+                context.metadata["selection_end_date"] = selected_end.isoformat()
             if request.from_stage:
                 context.from_stage = request.from_stage
                 self._reset_stages_from(context, request.from_stage)
@@ -83,7 +103,11 @@ class RadarPipelineOrchestrator:
                 context.to_stage = request.to_stage
             stages_planned = self._build_stage_plan(context.from_stage, context.to_stage)
         else:
-            week = resolve_week_window(request.week or "")
+            week, selected_start, selected_end = resolve_operational_window(
+                request.week,
+                request.date_from,
+                request.date_to,
+            )
             from_stage = request.from_stage or STAGE_NAMES[0]
             to_stage = request.to_stage or STAGE_NAMES[-1]
             stages_planned = self._build_stage_plan(from_stage, to_stage)
@@ -105,6 +129,8 @@ class RadarPipelineOrchestrator:
                 sources_effective=request.sources or list(DEFAULT_SOURCES),
                 repo_context=build_repo_context_snapshot(),
             )
+            context.metadata["selection_start_date"] = selected_start.isoformat()
+            context.metadata["selection_end_date"] = selected_end.isoformat()
             self._initialize_stage_states(context, stages_planned)
 
         context.metadata["model_runner"] = request.model_runner
@@ -159,7 +185,10 @@ class RadarPipelineOrchestrator:
         if request.mode not in ALLOWED_MODES:
             raise ValueError(f"Modo no soportado: {request.mode}. Usa {ALLOWED_MODES}.")
         if not request.resume_run_id and not request.week:
-            raise ValueError("Debes indicar --week cuando no usas --resume-run-id.")
+            if not (request.date_from and request.date_to):
+                raise ValueError("Debes indicar --week o un rango --date-from/--date-to cuando no usas --resume-run-id.")
+        if (request.date_from and not request.date_to) or (request.date_to and not request.date_from):
+            raise ValueError("Debes proporcionar --date-from y --date-to juntos.")
         if request.mode == "controlled":
             if request.model_runner != DEFAULT_MODEL_RUNNER:
                 raise ValueError(

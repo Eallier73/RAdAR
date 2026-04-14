@@ -19,8 +19,8 @@ def _safe_csv_rows(path: Path) -> int | None:
 
 
 def _build_commands(context: RadarRunContext) -> dict[str, list[str]]:
-    start = context.week.start_date.isoformat()
-    end = context.week.end_date.isoformat()
+    start = context.selected_start_date.isoformat()
+    end = context.selected_end_date.isoformat()
     return {
         "facebook": [
             sys.executable,
@@ -99,6 +99,7 @@ def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
     commands = _build_commands(context)
     inputs = {
         "week": context.week.to_dict(),
+        "selection_window": context.selection_window_payload(),
         "sources": context.sources_effective,
     }
     outputs: dict[str, Any] = {"sources": {}}

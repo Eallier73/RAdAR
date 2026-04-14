@@ -50,7 +50,7 @@ PUBLISHED_POWERBI_DIRNAME = "powerbi"
 PUBLISHED_REPORT_INPUTS_DIRNAME = "report_inputs"
 PUBLISHED_EXPERIMENTAL_DIRNAME = "experimental"
 
-DEFAULT_MODEL_RUNNER = "src.modeling.runners.run_e1_ridge_clean"
+DEFAULT_MODEL_RUNNER = "src.modeling.runners.run_e10_meta_selector"
 DEFAULT_MODEL_DATASET = PROCESSED_MODELING_ROOT / "datos_ml_master_indice_aceptacion_digital.xlsx"
 
 DEFAULT_EXPORT_FILES = {

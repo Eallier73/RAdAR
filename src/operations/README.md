@@ -15,6 +15,7 @@ Su función es coordinar el pipeline canónico de punta a punta sin reescribir l
 - deja manifiesto maestro, resumen, logs por etapa y JSON de estado por etapa
 - publica salidas estables bajo `artifacts/operations/.../published/`
 - expone una GUI mínima de control con `python -m src.operations.gui_radar_pipeline`
+- permite acotar ventanas operativas con `--date-from` y `--date-to` dentro de una semana canónica
 
 ## Qué no hace
 
@@ -91,6 +92,12 @@ GUI mínima:
 python -m src.operations.gui_radar_pipeline
 ```
 
+Corrida acotada por fechas y fuentes:
+
+```bash
+python -m src.operations.run_radar_pipeline --week 2026-W14 --date-from 2026-04-01 --date-to 2026-04-03 --from-stage extraction --to-stage nlp --sources twitter youtube
+```
+
 ## Artefactos de corrida
 
 Cada run deja una carpeta bajo:
@@ -133,5 +140,6 @@ Cuando llega a modelado, invoca runners canónicos de `src/modeling/runners/` y 
 
 - el scheduler externo todavía no forma parte de esta capa
 - la GUI es mínima: sirve para disparar/reanudar corridas y ver stdout, no para monitoreo multiusuario
+- la GUI ahora organiza presets por capa (`Extractors`, `Preprocessing`, `NLP`, `Modeling`, `Export`, `Reporting`), pero sigue siendo un launcher local, no una consola multiusuario
 - la etapa de reporte queda como `stubbed` en `controlled` y como `skipped` explícito en `experimental`
 - la capa NLP activa todavía no recompone por sí sola `datos_ml_master_indice_aceptacion_digital.xlsx`; si existe, el orquestador lo reutiliza y lo deja explícito

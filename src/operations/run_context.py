@@ -73,6 +73,41 @@ def resolve_week_window(value: str) -> WeekWindow:
     )
 
 
+def resolve_operational_window(
+    week_value: str | None,
+    date_from_value: str | None,
+    date_to_value: str | None,
+) -> tuple[WeekWindow, date, date]:
+    week = resolve_week_window(week_value) if week_value else None
+
+    if date_from_value or date_to_value:
+        if not date_from_value or not date_to_value:
+            raise ValueError("Debes proporcionar --date-from y --date-to juntos.")
+        try:
+            selected_start = date.fromisoformat(date_from_value)
+            selected_end = date.fromisoformat(date_to_value)
+        except ValueError as exc:
+            raise ValueError("Las fechas deben usar el formato YYYY-MM-DD.") from exc
+        if selected_end < selected_start:
+            raise ValueError("--date-to no puede ser anterior a --date-from.")
+
+        inferred_week = week or resolve_week_window(selected_start.isoformat())
+        end_week = resolve_week_window(selected_end.isoformat())
+        if end_week.slug != inferred_week.slug:
+            raise ValueError(
+                "El orquestador operativo corre una sola semana canónica por corrida. "
+                "El rango indicado cruza más de una semana ISO."
+            )
+        if week and (selected_start < week.start_date or selected_end > week.end_date):
+            raise ValueError("El rango de fechas debe quedar dentro de la semana indicada en --week.")
+        return inferred_week, selected_start, selected_end
+
+    if week:
+        return week, week.start_date, week.end_date
+
+    raise ValueError("Debes indicar --week o bien --date-from/--date-to.")
+
+
 def _run_git_command(*args: str) -> str:
     completed = subprocess.run(
         ["git", "-C", str(ROOT_DIR), *args],
@@ -149,6 +184,26 @@ class RadarRunContext:
 
     def record_note(self, note: str) -> None:
         self.notes.append(note)
+
+    @property
+    def selected_start_date(self) -> date:
+        value = self.metadata.get("selection_start_date")
+        return date.fromisoformat(value) if value else self.week.start_date
+
+    @property
+    def selected_end_date(self) -> date:
+        value = self.metadata.get("selection_end_date")
+        return date.fromisoformat(value) if value else self.week.end_date
+
+    def selection_window_payload(self) -> dict[str, str]:
+        return {
+            "week_requested": self.week.requested_value,
+            "week_slug": self.week.slug,
+            "week_start": self.week.start_date.isoformat(),
+            "week_end": self.week.end_date.isoformat(),
+            "selected_start": self.selected_start_date.isoformat(),
+            "selected_end": self.selected_end_date.isoformat(),
+        }
 
     def _append_log(self, log_path: Path, text: str) -> None:
         self.ensure_directories()
@@ -247,6 +302,7 @@ class RadarRunContext:
             "week_start": self.week.start_date.isoformat(),
             "week_end": self.week.end_date.isoformat(),
             "week_folder_name": self.week.folder_name,
+            "selection_window": self.selection_window_payload(),
             "mode": self.mode,
             "started_at": self.started_at,
             "finished_at": self.finished_at,
@@ -301,6 +357,7 @@ class RadarRunContext:
         return {
             "run_id": self.run_id,
             "week": self.week.slug,
+            "selection_window": self.selection_window_payload(),
             "status_global": self.status,
             "dry_run": self.dry_run,
             "started_at": self.started_at,
@@ -328,6 +385,7 @@ class RadarRunContext:
         return {
             "run_id": self.run_id,
             "week": self.week.to_dict(),
+            "selection_window": self.selection_window_payload(),
             "mode": self.mode,
             "started_at": self.started_at,
             "finished_at": self.finished_at,
@@ -359,6 +417,11 @@ class RadarRunContext:
             end_date=date.fromisoformat(week_payload["end_date"]),
             folder_name=week_payload["folder_name"],
         )
+        selection_payload = payload.get("selection_window", {})
+        metadata = dict(payload.get("metadata", {}))
+        if selection_payload:
+            metadata.setdefault("selection_start_date", selection_payload.get("selected_start"))
+            metadata.setdefault("selection_end_date", selection_payload.get("selected_end"))
         return cls(
             run_id=payload["run_id"],
             week=week,
@@ -379,5 +442,5 @@ class RadarRunContext:
             published_outputs=dict(payload.get("published_outputs", {})),
             repo_context=dict(payload.get("repo_context", {})),
             notes=list(payload.get("notes", [])),
-            metadata=dict(payload.get("metadata", {})),
+            metadata=metadata,
         )

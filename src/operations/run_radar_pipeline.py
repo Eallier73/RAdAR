@@ -28,6 +28,8 @@ def parse_args() -> argparse.Namespace:
         "--week",
         help="Semana objetivo. Usa YYYY-Www o la fecha de inicio canónica YYYY-MM-DD.",
     )
+    parser.add_argument("--date-from", help="Fecha inicial de operación dentro de la semana objetivo. Formato YYYY-MM-DD.")
+    parser.add_argument("--date-to", help="Fecha final de operación dentro de la semana objetivo. Formato YYYY-MM-DD.")
     parser.add_argument(
         "--mode",
         choices=ALLOWED_MODES,
@@ -84,6 +86,8 @@ def main() -> int:
     orchestrator = RadarPipelineOrchestrator()
     request = PipelineRequest(
         week=args.week,
+        date_from=args.date_from,
+        date_to=args.date_to,
         mode=args.mode,
         from_stage=args.from_stage,
         to_stage=args.to_stage,

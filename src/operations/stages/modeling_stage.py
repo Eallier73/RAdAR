@@ -10,6 +10,11 @@ from ..contracts import StageContract, StageResult
 from ..run_context import RadarRunContext, now_text
 
 
+DATASET_OPTIONAL_RUNNERS = {
+    "src.modeling.runners.run_e10_meta_selector",
+}
+
+
 def _discover_new_run_dir(prefix: str, before: set[Path], after: set[Path]) -> Path | None:
     new_candidates = sorted(after - before)
     if new_candidates:
@@ -61,14 +66,15 @@ def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
         model_runner,
         "--run-id",
         model_run_id,
-        "--dataset-path",
-        str(dataset_path),
         "--workbook",
         str(EXPERIMENTS_WORKBOOK),
         "--runs-dir",
         str(EXPERIMENTS_RUNS_DIR),
-        *extra_model_args,
     ]
+
+    if model_runner not in DATASET_OPTIONAL_RUNNERS:
+        command.extend(["--dataset-path", str(dataset_path)])
+    command.extend(extra_model_args)
 
     if context.dry_run:
         commands.append(context.run_command("modeling", "run_model", command, check=False))

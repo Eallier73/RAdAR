@@ -52,14 +52,29 @@ def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
     outputs: dict[str, Any] = {}
     artifacts: list[str] = []
     inputs = {
+        "selection_window": context.selection_window_payload(),
+        "sources": list(context.sources_effective),
         "text_inputs": {
             source: str(TEXT_WEEKLY_ROOT / f"{source}_semana_texto" / f"{context.week.start_date.isoformat()}_{source}.txt")
             for source in context.sources_effective
         }
     }
 
+    sentimiento_command = [
+        sys.executable,
+        "-m",
+        "src.nlp.aceptacion_digital_redes_ponderacion_medios",
+        "--sources",
+        *context.sources_effective,
+        "--week",
+        context.week.slug,
+        "--date-from",
+        context.selected_start_date.isoformat(),
+        "--date-to",
+        context.selected_end_date.isoformat(),
+    ]
     command_specs = [
-        ("sentimiento_semanal", [sys.executable, "-m", "src.nlp.aceptacion_digital_redes_ponderacion_medios"]),
+        ("sentimiento_semanal", sentimiento_command),
         ("encuestas_sentimiento", [sys.executable, "-m", "src.nlp.unificar_encuestas_sentimiento"]),
         ("dataset_ml_0", [sys.executable, "-m", "src.nlp.unir_ml_ready_con_sentimiento"]),
     ]

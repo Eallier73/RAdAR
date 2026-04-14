@@ -16,9 +16,10 @@ Salida:
 
 from __future__ import annotations
 
+import argparse
 import re
 import unicodedata
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 
 import pandas as pd
@@ -46,6 +47,7 @@ FUENTES = {
     "youtube": TEXTOS_DIR / "youtube_semana_texto",
     "medios": TEXTOS_DIR / "medios_semana_texto",
 }
+ALL_SOURCES = tuple(FUENTES.keys())
 
 STOPLIST_PATH = DICT_DIR / "stop_list_espanol_limpia.txt"
 DICT_POS_PATH = DICT_DIR / "diccionario_palabras_positivas.txt"
@@ -62,10 +64,22 @@ F_YOUTUBE = 1.00  # Escenario moderado del script original
 
 ARCHIVO_RE = re.compile(r"^(?P<anio>\d{2})_(?P<semana>\d{2})_(?P<fuente>[a-z]+)\.txt$")
 ARCHIVO_CANONICO_RE = re.compile(r"^(?P<start>\d{4}-\d{2}-\d{2})_(?P<fuente>[a-z]+)\.txt$")
+PERIODO_ISO_RE = re.compile(r"^(?P<anio>\d{4})-W(?P<semana>\d{2})$")
 TOKEN_RE = re.compile(r"[a-z]+")
 
 HOJA_EXCEL = "sentimiento_semanal"
 COLUMNAS_SENTIMIENTO = [
+    "sentimiento_facebook",
+    "sentimiento_twitter",
+    "sentimiento_youtube",
+    "sentimiento_redes_ponderado",
+    "sentimiento_medios",
+    "promedio_redes_medios",
+]
+COLUMNAS_PRINCIPALES = [
+    "anio_iso",
+    "semana_iso",
+    "periodo_iso",
     "sentimiento_facebook",
     "sentimiento_twitter",
     "sentimiento_youtube",
@@ -110,6 +124,71 @@ def calcular_pesos_redes() -> dict[str, float]:
         "twitter": n_twitter / total,
         "youtube": n_youtube / total,
     }
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description=(
+            "Calcula sentimiento semanal canónico. "
+            "Sin flags recompone todo; con filtros actualiza incrementalmente semanas/fuentes objetivo."
+        )
+    )
+    parser.add_argument(
+        "--sources",
+        nargs="+",
+        choices=ALL_SOURCES,
+        default=list(ALL_SOURCES),
+        help="Fuentes a recalcular. Default: todas.",
+    )
+    parser.add_argument(
+        "--week",
+        dest="weeks",
+        action="append",
+        default=[],
+        help="Periodo ISO objetivo YYYY-Www. Repite el flag para varios periodos.",
+    )
+    parser.add_argument("--date-from", help="Fecha inicial para seleccionar semanas objetivo. Formato YYYY-MM-DD.")
+    parser.add_argument("--date-to", help="Fecha final para seleccionar semanas objetivo. Formato YYYY-MM-DD.")
+    parser.add_argument(
+        "--full-refresh",
+        action="store_true",
+        help="Fuerza recomposición completa e ignora merge incremental.",
+    )
+    return parser.parse_args()
+
+
+def parse_periodo_iso(value: str) -> tuple[int, int]:
+    match = PERIODO_ISO_RE.match(value.strip())
+    if not match:
+        raise ValueError(f"Periodo ISO inválido: {value}. Usa YYYY-Www.")
+    return int(match.group("anio")), int(match.group("semana"))
+
+
+def construir_periodos_objetivo(
+    weeks: list[str],
+    date_from_value: str | None,
+    date_to_value: str | None,
+) -> set[tuple[int, int]]:
+    periodos = {parse_periodo_iso(value) for value in weeks}
+
+    if date_from_value or date_to_value:
+        if not date_from_value or not date_to_value:
+            raise ValueError("Debes proporcionar --date-from y --date-to juntos.")
+        try:
+            start_date = date.fromisoformat(date_from_value)
+            end_date = date.fromisoformat(date_to_value)
+        except ValueError as exc:
+            raise ValueError("Las fechas deben usar el formato YYYY-MM-DD.") from exc
+        if end_date < start_date:
+            raise ValueError("--date-to no puede ser anterior a --date-from.")
+
+        cursor = start_date
+        while cursor <= end_date:
+            anio_iso, semana_iso, _ = cursor.isocalendar()
+            periodos.add((anio_iso, semana_iso))
+            cursor += timedelta(days=1)
+
+    return periodos
 
 
 def extraer_periodo_iso(path: Path, fuente_esperada: str) -> tuple[tuple[int, int], int]:
@@ -250,6 +329,60 @@ def construir_fila(
     return fila
 
 
+def normalizar_dataframe(dataframe: pd.DataFrame) -> pd.DataFrame:
+    if dataframe.empty:
+        return pd.DataFrame(columns=COLUMNAS_PRINCIPALES)
+    normalizado = dataframe.copy()
+    for columna in COLUMNAS_PRINCIPALES:
+        if columna not in normalizado.columns:
+            normalizado[columna] = pd.NA
+    return normalizado[COLUMNAS_PRINCIPALES]
+
+
+def recalcular_metricas_fila(fila: pd.Series, pesos_redes: dict[str, float]) -> pd.Series:
+    sentimiento_redes = promedio_ponderado(
+        {
+            "facebook": fila.get("sentimiento_facebook"),
+            "twitter": fila.get("sentimiento_twitter"),
+            "youtube": fila.get("sentimiento_youtube"),
+        },
+        pesos_redes,
+    )
+    fila["sentimiento_redes_ponderado"] = sentimiento_redes
+    fila["promedio_redes_medios"] = promedio_simple(
+        sentimiento_redes,
+        fila.get("sentimiento_medios"),
+    )
+    return fila
+
+
+def fusionar_actualizacion_parcial(
+    existing_df: pd.DataFrame,
+    partial_df: pd.DataFrame,
+    fuentes_actualizadas: set[str],
+    pesos_redes: dict[str, float],
+) -> pd.DataFrame:
+    base = normalizar_dataframe(existing_df).set_index("periodo_iso", drop=False)
+    partial = normalizar_dataframe(partial_df).set_index("periodo_iso", drop=False)
+
+    for periodo_iso, row in partial.iterrows():
+        if periodo_iso not in base.index:
+            base.loc[periodo_iso, COLUMNAS_PRINCIPALES] = row.reindex(COLUMNAS_PRINCIPALES)
+        else:
+            base.loc[periodo_iso, "anio_iso"] = row["anio_iso"]
+            base.loc[periodo_iso, "semana_iso"] = row["semana_iso"]
+            base.loc[periodo_iso, "periodo_iso"] = row["periodo_iso"]
+            for fuente in fuentes_actualizadas:
+                base.loc[periodo_iso, f"sentimiento_{fuente}"] = row[f"sentimiento_{fuente}"]
+        base.loc[periodo_iso] = recalcular_metricas_fila(base.loc[periodo_iso], pesos_redes)
+
+    return (
+        normalizar_dataframe(base.reset_index(drop=True))
+        .sort_values(["anio_iso", "semana_iso"])
+        .reset_index(drop=True)
+    )
+
+
 def ajustar_hoja_excel(writer: pd.ExcelWriter, dataframe: pd.DataFrame) -> None:
     hoja = writer.sheets[HOJA_EXCEL]
     hoja.freeze_panes = "A2"
@@ -289,6 +422,7 @@ def guardar_excel(dataframe: pd.DataFrame, output_path: Path) -> None:
 # EJECUCION
 # =============================================================================
 def main() -> None:
+    args = parse_args()
     print("=" * 72)
     print("SENTIMIENTO SEMANAL DE REDES Y MEDIOS")
     print("=" * 72)
@@ -309,6 +443,9 @@ def main() -> None:
     print(f"  YouTube:  {pesos_redes['youtube']:.4f}")
     print(f"  f_youtube usado: {F_YOUTUBE:.2f}")
 
+    fuentes_seleccionadas = tuple(args.sources)
+    periodos_objetivo = construir_periodos_objetivo(args.weeks, args.date_from, args.date_to)
+
     archivos_por_fuente = {
         fuente: indexar_archivos(directorio, fuente)
         for fuente, directorio in FUENTES.items()
@@ -317,13 +454,16 @@ def main() -> None:
     for fuente, archivos in archivos_por_fuente.items():
         print(f"  {fuente.title():<8}: {len(archivos):>3} archivos")
 
-    periodos = sorted(
-        {
-            periodo
-            for archivos in archivos_por_fuente.values()
-            for periodo in archivos
-        }
-    )
+    if periodos_objetivo:
+        periodos = sorted(periodos_objetivo)
+    else:
+        periodos = sorted(
+            {
+                periodo
+                for archivos in archivos_por_fuente.values()
+                for periodo in archivos
+            }
+        )
 
     filas = []
     for anio_iso, semana_iso in periodos:
@@ -332,6 +472,9 @@ def main() -> None:
         faltantes = []
 
         for fuente, archivos in archivos_por_fuente.items():
+            if fuente not in fuentes_seleccionadas:
+                analisis_por_fuente[fuente] = None
+                continue
             path = archivos.get(periodo)
             if path is None:
                 analisis_por_fuente[fuente] = None
@@ -348,24 +491,33 @@ def main() -> None:
         filas.append(construir_fila(periodo, analisis_por_fuente, pesos_redes))
 
     dataframe = pd.DataFrame(filas).sort_values(["anio_iso", "semana_iso"]).reset_index(drop=True)
+    dataframe = normalizar_dataframe(dataframe)
 
-    columnas_principales = [
-        "anio_iso",
-        "semana_iso",
-        "periodo_iso",
-        "sentimiento_facebook",
-        "sentimiento_twitter",
-        "sentimiento_youtube",
-        "sentimiento_redes_ponderado",
-        "sentimiento_medios",
-        "promedio_redes_medios",
-    ]
-    dataframe = dataframe[columnas_principales]
+    full_refresh = args.full_refresh or (not periodos_objetivo and set(fuentes_seleccionadas) == set(ALL_SOURCES))
+    if full_refresh:
+        print("\nModo de ejecución: recomposición completa")
+        final_df = dataframe
+    else:
+        print("\nModo de ejecución: actualización incremental")
+        if OUTPUT_PATH.exists():
+            existing_df = pd.read_excel(OUTPUT_PATH, sheet_name=HOJA_EXCEL)
+        else:
+            existing_df = pd.DataFrame(columns=COLUMNAS_PRINCIPALES)
+        final_df = fusionar_actualizacion_parcial(
+            existing_df,
+            dataframe,
+            set(fuentes_seleccionadas),
+            pesos_redes,
+        )
+        print(f"  Fuentes actualizadas: {', '.join(fuentes_seleccionadas)}")
+        if periodos_objetivo:
+            print(f"  Semanas objetivo: {len(periodos_objetivo):,}")
 
-    guardar_excel(dataframe, OUTPUT_PATH)
+    guardar_excel(final_df, OUTPUT_PATH)
 
     print("\nResumen:")
-    print(f"  Semanas procesadas: {len(dataframe):,}")
+    print(f"  Semanas calculadas en esta ejecución: {len(dataframe):,}")
+    print(f"  Semanas totales en salida: {len(final_df):,}")
     print(f"  Archivo generado: {OUTPUT_PATH}")
     print("=" * 72)
 
