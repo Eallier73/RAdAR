@@ -6,6 +6,7 @@ Este script extrae comentarios de YouTube y los guarda en
 `data/raw/radar_weekly_flat/<semana_canonica>/`.
 """
 
+import argparse
 import os
 import googleapiclient.discovery
 import pandas as pd
@@ -48,9 +49,35 @@ def convertir_fecha_a_espanol(fecha):
 
 def calcular_nombre_semana(fecha_inicio, fecha_fin):
     """Calcula el nombre canónico de la carpeta semanal."""
-    fecha_inicio_esp = convertir_fecha_a_espanol(fecha_inicio)
-    fecha_fin_esp = convertir_fecha_a_espanol(fecha_fin)
-    return f"{fecha_inicio.strftime('%Y-%m-%d')}_semana_{fecha_inicio_esp}_{fecha_fin_esp}"
+    meses = {
+        1: 'enero', 2: 'febrero', 3: 'marzo', 4: 'abril',
+        5: 'mayo', 6: 'junio', 7: 'julio', 8: 'agosto',
+        9: 'septiembre', 10: 'octubre', 11: 'noviembre', 12: 'diciembre'
+    }
+    inicio = f"{fecha_inicio.day:02d}{meses[fecha_inicio.month]}"
+    fin = f"{fecha_fin.day:02d}{meses[fecha_fin.month]}"
+    yy = fecha_fin.strftime('%y')
+    return f"{fecha_inicio.strftime('%Y-%m-%d')}_semana_{inicio}_{fin}_{yy}"
+
+def valid_date(value):
+    try:
+        datetime.strptime(value, "%Y-%m-%d")
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError(f"Fecha inválida '{value}'. Usa YYYY-MM-DD.") from exc
+    return value
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Extractor automatizado de YouTube sobre la estructura semanal canónica."
+    )
+    parser.add_argument("--since", type=valid_date, default=CONFIG_START_DATE_STR, help="Fecha inicio YYYY-MM-DD.")
+    parser.add_argument("--before", type=valid_date, default=CONFIG_END_DATE_STR, help="Fecha fin YYYY-MM-DD.")
+    parser.add_argument(
+        "--output-dir",
+        default=str(OUTPUT_BASE_DIR),
+        help=f"Directorio base de salida. Default: {OUTPUT_BASE_DIR}",
+    )
+    return parser.parse_args()
 
 def setup_youtube_api():
     """Set up and return a YouTube API client."""
@@ -152,16 +179,16 @@ def get_video_details(youtube, video_ids):
 
     return video_details
 
-def resolver_rango_fechas():
+def resolver_rango_fechas(start_date_str=None, end_date_str=None):
     """Resuelve el rango de fechas desde configuración o por defecto."""
-    if (CONFIG_START_DATE_STR and not CONFIG_END_DATE_STR) or (CONFIG_END_DATE_STR and not CONFIG_START_DATE_STR):
+    if (start_date_str and not end_date_str) or (end_date_str and not start_date_str):
         print("❌ Configuración de fechas incompleta. Define ambas fechas o ninguna.")
         sys.exit(1)
 
-    if CONFIG_START_DATE_STR and CONFIG_END_DATE_STR:
+    if start_date_str and end_date_str:
         try:
-            start_date = datetime.strptime(CONFIG_START_DATE_STR, "%Y-%m-%d")
-            end_date = datetime.strptime(CONFIG_END_DATE_STR, "%Y-%m-%d")
+            start_date = datetime.strptime(start_date_str, "%Y-%m-%d")
+            end_date = datetime.strptime(end_date_str, "%Y-%m-%d")
         except ValueError:
             print("❌ Formato de fecha inválido en la configuración. Usar YYYY-MM-DD")
             sys.exit(1)
@@ -170,10 +197,14 @@ def resolver_rango_fechas():
         start_date = end_date - timedelta(days=DEFAULT_RANGE_DAYS)
 
     end_date = end_date.replace(hour=23, minute=59, second=59)
+    if start_date > end_date:
+        print("❌ since no puede ser mayor que before.")
+        sys.exit(1)
     return start_date, end_date
 
 def main():
-    start_date, end_date = resolver_rango_fechas()
+    args = parse_args()
+    start_date, end_date = resolver_rango_fechas(args.since, args.before)
 
     print("🚀 Iniciando extracción de YouTube...")
     print(f"📅 Período: {start_date.strftime('%d/%m/%Y')} - {end_date.strftime('%d/%m/%Y')}")
@@ -182,7 +213,7 @@ def main():
     nombre_semana = calcular_nombre_semana(start_date, end_date)
 
     # Crear directorio en la estructura correcta
-    output_dir = OUTPUT_BASE_DIR / nombre_semana
+    output_dir = Path(args.output_dir).expanduser().resolve() / nombre_semana
 
     # Crear el directorio si no existe
     if not output_dir.exists():

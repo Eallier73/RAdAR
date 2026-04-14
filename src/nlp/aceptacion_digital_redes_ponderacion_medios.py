@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import re
 import unicodedata
+from datetime import date
 from pathlib import Path
 
 import pandas as pd
@@ -60,6 +61,7 @@ F_TWITTER = 1.25
 F_YOUTUBE = 1.00  # Escenario moderado del script original
 
 ARCHIVO_RE = re.compile(r"^(?P<anio>\d{2})_(?P<semana>\d{2})_(?P<fuente>[a-z]+)\.txt$")
+ARCHIVO_CANONICO_RE = re.compile(r"^(?P<start>\d{4}-\d{2}-\d{2})_(?P<fuente>[a-z]+)\.txt$")
 TOKEN_RE = re.compile(r"[a-z]+")
 
 HOJA_EXCEL = "sentimiento_semanal"
@@ -110,8 +112,20 @@ def calcular_pesos_redes() -> dict[str, float]:
     }
 
 
-def extraer_periodo_iso(path: Path, fuente_esperada: str) -> tuple[int, int]:
+def extraer_periodo_iso(path: Path, fuente_esperada: str) -> tuple[tuple[int, int], int]:
     match = ARCHIVO_RE.match(path.name)
+    if match:
+        fuente = match.group("fuente")
+        if fuente != fuente_esperada:
+            raise ValueError(
+                f"Se esperaba fuente '{fuente_esperada}' pero el archivo es '{path.name}'"
+            )
+
+        anio_iso = 2000 + int(match.group("anio"))
+        semana_iso = int(match.group("semana"))
+        return (anio_iso, semana_iso), 1
+
+    match = ARCHIVO_CANONICO_RE.match(path.name)
     if not match:
         raise ValueError(f"Nombre de archivo no valido: {path.name}")
 
@@ -121,24 +135,30 @@ def extraer_periodo_iso(path: Path, fuente_esperada: str) -> tuple[int, int]:
             f"Se esperaba fuente '{fuente_esperada}' pero el archivo es '{path.name}'"
         )
 
-    anio_iso = 2000 + int(match.group("anio"))
-    semana_iso = int(match.group("semana"))
-    return anio_iso, semana_iso
+    inicio_semana = date.fromisoformat(match.group("start"))
+    anio_iso, semana_iso, _ = inicio_semana.isocalendar()
+    return (anio_iso, semana_iso), 2
 
 
 def indexar_archivos(directorio: Path, fuente: str) -> dict[tuple[int, int], Path]:
     if not directorio.exists():
         raise FileNotFoundError(f"No existe el directorio: {directorio}")
 
-    archivos = {}
+    archivos: dict[tuple[int, int], tuple[int, Path]] = {}
     for path in sorted(directorio.glob("*.txt")):
-        periodo = extraer_periodo_iso(path, fuente)
-        if periodo in archivos:
+        periodo, prioridad = extraer_periodo_iso(path, fuente)
+        previo = archivos.get(periodo)
+        if previo is None:
+            archivos[periodo] = (prioridad, path)
+            continue
+        if prioridad > previo[0]:
+            archivos[periodo] = (prioridad, path)
+            continue
+        if prioridad == previo[0]:
             raise ValueError(
-                f"Periodo duplicado para {fuente}: {periodo} en {path} y {archivos[periodo]}"
+                f"Periodo duplicado para {fuente}: {periodo} en {path} y {previo[1]}"
             )
-        archivos[periodo] = path
-    return archivos
+    return {periodo: payload[1] for periodo, payload in archivos.items()}
 
 
 def analizar_archivo(

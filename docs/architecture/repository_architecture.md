@@ -1,6 +1,6 @@
 # Repository Architecture
 
-Arquitectura vigente del repositorio RAdAR entendida como base canónica pre-automatización.
+Arquitectura vigente del repositorio RAdAR entendida como base canónica operable con orquestación controlada.
 
 ## 1. Estructura de raíz
 
@@ -29,15 +29,16 @@ RAdAR/
 | NLP | implementada | sentimiento, diccionarios, clasificación y ensamblado de variables |
 | modeling | implementada | núcleo reusable con `core/`, `runners/`, `reporting/`, `tracking/` |
 | shared | implementada | utilitarios transversales mínimos |
+| operations | implementada | orquestador operativo manual, trazable, reanudable y con estado persistente |
 | docs/data/artifacts/experiments/legacy | implementados | capas ya separadas y gobernadas |
 
-## 3. Arquitectura futura o reservada
+## 3. Arquitectura posterior o no cerrada
 
 | Capa | Estado | Notas |
 | --- | --- | --- |
-| `src/operations/` | reservada | namespace para futura automatización integral |
-| orquestación end-to-end | no implementada | no existe capa final de scheduling o pipeline completo |
-| wrappers operativos finales | no implementados | el repo aún no expone una fachada única de operación |
+| scheduling | no implementado | la CLI operativa todavía se dispara manualmente |
+| automatización periódica | no implementada | cron/systemd/Airflow/GitHub Actions quedan fuera de esta capa |
+| reporte final | no implementado | `report` deja un stub controlado con insumos publicados |
 
 ## 4. `src/modeling/` como núcleo técnico
 
@@ -61,5 +62,5 @@ Esto separa:
 
 ## 5. `src/operations/`
 
-La carpeta existe, pero no debe interpretarse como capa operativa implementada.
-Su función actual es reservar el namespace y evitar que la futura automatización vuelva a nacer desordenada en la raíz o dentro de `experiments/`.
+La carpeta ya implementa la capa operativa controlada del repo.
+Su función es coordinar el pipeline canónico mediante etapas explícitas, persistir estado por corrida y dejar artefactos auditables en `artifacts/operations/`.

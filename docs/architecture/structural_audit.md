@@ -22,7 +22,7 @@ Auditoría estructural estricta del repositorio RAdAR en clave pre-automatizaci�
 | `src/nlp/` | `aprueba` | prototipos y demos movidos a `legacy/`; naming activo saneado |
 | `src/modeling/` | `aprueba` | separación física entre `core/`, `runners/`, `reporting/` y `tracking/` |
 | `src/shared/` | `aprueba` | utilitarios mínimos y acotados |
-| `src/operations/` | `aprueba` | capa reservada explícitamente; no se presenta como implementada |
+| `src/operations/` | `aprueba` | capa operativa implementada con entrada única, estado persistente y reanudación |
 
 ## 3. Contradicciones resueltas
 
@@ -31,7 +31,7 @@ Auditoría estructural estricta del repositorio RAdAR en clave pre-automatizaci�
 | la documentación describía `src/modeling/` como capa plana | se reestructuró físicamente y se reescribió la documentación |
 | la documentación decía que la normalización activa ya estaba cerrada | se completó el saneamiento activo y se retiró el sobreclaim |
 | existía runtime versionado en `src/` y `data/` | `__pycache__` salió de `src/`; logs y estado quedaron bajo `artifacts/` |
-| `src/operations/` existía sin decir la verdad sobre su madurez | quedó declarado como capa reservada, opción A |
+| `src/operations/` existía sin orquestación real | quedó implementada como capa operativa controlada dentro de `src/operations/` |
 | `src/nlp/` mezclaba piezas activas con prototipos | los prototipos se movieron a `legacy/` y se documentó el wrapper de compatibilidad restante |
 | los extractores y preprocessors usaban rutas personales hardcodeadas | se migraron a rutas relativas al repo |
 | `experiments/` podía volver a leerse como cajón de sastre | se endurecieron reglas de frontera y retención |
@@ -40,11 +40,11 @@ Auditoría estructural estricta del repositorio RAdAR en clave pre-automatizaci�
 
 Marco correcto:
 
-- no es sistema final automatizado
-- sí es base canónica pre-automatización
+- no es sistema final con scheduler cerrado
+- sí es base canónica operable con orquestación manual controlada
 
 Clasificación final del repo:
 
-- **A. Base canónica pre-automatización ya cerrada**
+- **A. Base canónica operable, trazable y lista para automatización externa**
 
-La arquitectura ya quedó lo suficientemente limpia, coherente y gobernable para construir encima la automatización futura sin reabrir la mezcla estructural anterior.
+La arquitectura ya quedó lo suficientemente limpia, coherente, gobernable y operable para montar encima automatización externa sin reabrir la mezcla estructural anterior.

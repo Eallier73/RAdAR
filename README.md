@@ -1,9 +1,9 @@
 # RAdAR
 
-Repositorio estructurado como base canónica pre-automatización del proyecto RAdAR.
+Repositorio estructurado como base canónica operable del proyecto RAdAR.
 
-Este repositorio no debe leerse como un sistema final con orquestación end-to-end ya cerrada.
-Sí debe leerse como una arquitectura fuente profesional sobre la cual todavía se puede construir la automatización integral sin volver a mezclar código, datos, runtime, documentación, experimentación y legado.
+Este repositorio ya expone una capa de orquestación operativa controlada en `src/operations/`.
+Todavía no debe leerse como un sistema final con scheduling o automatización periódica cerrada.
 
 ## Taxonomía oficial de raíz
 
@@ -22,19 +22,16 @@ Implementado hoy:
 - preprocesamiento y normalización de insumos
 - capa NLP activa
 - núcleo de modelado reutilizable en `src/modeling/`
+- orquestación operativa manual y reanudable en `src/operations/`
 - tracking y reporting de experimentos
 - datos, artifacts y documentación con separación explícita
 
 Reservado para una fase posterior:
 
-- automatización integral
-- orquestación end-to-end
 - scheduling
-- integración operativa completa
-- wrappers operativos finales
-
-`src/operations/` existe como namespace reservado para esa fase posterior.
-No representa una capa operativa final ya implementada.
+- disparo automático periódico
+- integración con scheduler externo
+- generador final de reporte
 
 ## Documentación autoritativa
 

@@ -184,7 +184,10 @@ def _fecha_a_espanol_iso(fecha: datetime) -> str:
 def build_week_folder_name(since: str, before: str) -> str:
     start = datetime.strptime(since, "%Y-%m-%d")
     end = datetime.strptime(before, "%Y-%m-%d")
-    return f"{start.strftime('%Y-%m-%d')}_semana_{_fecha_a_espanol_iso(start)}_{_fecha_a_espanol_iso(end)}"
+    start_part = f"{start.day:02d}{MONTHS_ES[start.month]}"
+    end_part = f"{end.day:02d}{MONTHS_ES[end.month]}"
+    yy = f"{end.year % 100:02d}"
+    return f"{start.strftime('%Y-%m-%d')}_semana_{start_part}_{end_part}_{yy}"
 
 
 def _sample_hybrid(urls: List[str], sample_size: int, seed: int, min_per_stratum: int = 0) -> List[str]:

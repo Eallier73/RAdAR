@@ -32,6 +32,7 @@ artifacts/logs/**/*.txt
 !artifacts/logs/**/.gitkeep
 artifacts/runs/extraction/**
 !artifacts/runs/extraction/.gitkeep
+artifacts/operations/**
 artifacts/state/*.json
 !artifacts/state/*.example.json
 

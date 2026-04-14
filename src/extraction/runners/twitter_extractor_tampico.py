@@ -116,9 +116,15 @@ class TwitterExtractorIAD:
 
     def calcular_nombre_semana(self):
         """Calcula el nombre de la carpeta de semana"""
-        fecha_inicio_esp = self.convertir_fecha_a_espanol(self.fecha_inicio)
-        fecha_fin_esp = self.convertir_fecha_a_espanol(self.fecha_fin)
-        return f"{self.fecha_inicio.strftime('%Y-%m-%d')}_semana_{fecha_inicio_esp}_{fecha_fin_esp}"
+        meses = {
+            1: 'enero', 2: 'febrero', 3: 'marzo', 4: 'abril',
+            5: 'mayo', 6: 'junio', 7: 'julio', 8: 'agosto',
+            9: 'septiembre', 10: 'octubre', 11: 'noviembre', 12: 'diciembre'
+        }
+        inicio = f"{self.fecha_inicio.day:02d}{meses[self.fecha_inicio.month]}"
+        fin = f"{self.fecha_fin.day:02d}{meses[self.fecha_fin.month]}"
+        yy = self.fecha_fin.strftime('%y')
+        return f"{self.fecha_inicio.strftime('%Y-%m-%d')}_semana_{inicio}_{fin}_{yy}"
 
     def clean_text(self, text: str) -> str:
         """Limpiar texto eliminando espacios extras"""

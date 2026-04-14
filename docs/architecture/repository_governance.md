@@ -5,14 +5,13 @@ Vigente para la rama `feature/restructuracion-arquitectonica-repo`.
 
 ## 1. Premisa metodológica
 
-Esta rama no se audita como si fuera un sistema final automatizado.
-Se audita como arquitectura base previa a la automatización integral.
+Esta rama se audita como arquitectura canónica ya operable, pero todavía sin scheduler cerrado.
 
 Por lo tanto:
 
 - sí se exige limpieza estructural, fronteras duras y verdad documental
-- no se exige una capa completa de orquestación end-to-end ya implementada
-- `src/operations/` puede existir solo como capa reservada, pero debe decirlo explícitamente
+- sí se exige una capa operativa explícita, trazable y reanudable en `src/operations/`
+- no se exige todavía scheduling ni automatización periódica
 
 ## 2. Estado real: implementado vs reservado
 
@@ -22,20 +21,19 @@ Por lo tanto:
 - preprocessing y normalización de insumos
 - NLP activo
 - modelado reusable
+- orquestación operativa controlada
 - tracking y reporting experimental
 - separación entre datos, artifacts, documentación, experimentación y legacy
 
 ### Reservado o posterior
 
-- automatización integral
-- orquestación end-to-end
 - scheduling
-- integración operativa completa
-- wrappers operativos finales
+- automatización periódica
+- generador final de reporte
 
 Decisión vigente sobre `src/operations/`:
 
-- opción A: capa reservada para futura automatización integral
+- capa operativa implementada para coordinación manual controlada del pipeline
 
 ## 3. Taxonomía oficial
 
@@ -94,13 +92,13 @@ Si un archivo no cabe inequívocamente en una sola de estas categorías, está m
 | `src/nlp/` | variables textuales, diccionarios y clasificación |
 | `src/modeling/` | núcleo técnico vigente de modelado |
 | `src/shared/` | utilitarios transversales mínimos |
-| `src/operations/` | reservado, no implementado |
+| `src/operations/` | orquestación operativa controlada |
 
 ### Regla para `src/operations/`
 
-- la carpeta existe para reservar el namespace
-- no debe presentarse como pipeline operativo final
-- cualquier futura población de esta capa obliga a actualizar este documento
+- la carpeta coordina operación canónica manual, no experimentación libre
+- debe persistir estado, manifiestos, logs y JSON homogéneo por etapa
+- no mezcla scheduler con orquestador
 
 ## 6. Naming canónico
 

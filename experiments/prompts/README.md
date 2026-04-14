@@ -58,6 +58,7 @@ Convencion de nombres:
 - Prefijo numerico para mantener orden de lectura.
 - Nombres descriptivos en minusculas y ASCII.
 - Extension `.md` para que el contenido sea legible y editable facilmente.
+- La brecha `21-30` se conserva intencionalmente para no renumerar retrospectivamente referencias historicas; no es un error de orden.
 
 Mapa actual:
 
