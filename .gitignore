@@ -23,6 +23,11 @@ env/
 ENV/
 .python-version
 
+# Secrets y configuracion local (NUNCA versionar)
+.env
+.env.local
+.env.*.local
+
 # Generated lock files
 experiments/*.lock
 experiments/audit/*.lock

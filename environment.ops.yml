@@ -1,0 +1,70 @@
+# =============================================================================
+# environment.ops.yml — Entorno operativo RAdAR
+# =============================================================================
+#
+# Para: extracción, preprocesamiento, utilidades operativas, check_config.
+# NO incluye el stack de modelado (scikit-learn, xgboost, prophet, etc.).
+# El entorno de modelado vive en environment.modeling.yml.
+#
+# Entorno de referencia actual: RadaR_3_11 (Python 3.11)
+# Este archivo lo formaliza de manera canónica y versionada.
+#
+# Crear entorno:
+#   conda env create -f environment.ops.yml
+#   conda activate radar-ops-py311
+#   playwright install chromium   # requerido para twitter_extractor y medios_extractor
+#
+# Actualizar entorno existente:
+#   conda env update -n radar-ops-py311 -f environment.ops.yml --prune
+#
+# =============================================================================
+
+name: radar-ops-py311
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.11
+  - pip
+
+  # ── Datos y serialización ─────────────────────────────────────────────────
+  - pandas
+  - openpyxl      # NLP layer (clasificacion de temas, sentimiento) corre en este entorno
+
+  # ── HTTP y scraping ───────────────────────────────────────────────────────
+  - requests
+
+  # ── Pip (no disponibles en conda-forge con versiones estables) ────────────
+  - pip:
+    # Twitter/X — navegacion autenticada con Playwright
+    - playwright
+
+    # Medios — descarga de articulos y decodificacion de URLs de Google News
+    - trafilatura
+    - cloudscraper
+    - googlenewsdecoder
+
+    # Facebook — descarga de comentarios via Apify
+    - apify-client
+
+    # YouTube — YouTube Data API v3
+    - google-api-python-client
+
+# =============================================================================
+# NOTA DE ALCANCE
+# =============================================================================
+#
+# Este entorno NO incluye:
+#   - numpy / scipy / scikit-learn / statsmodels    → solo en modeling
+#   - xgboost / lightgbm / catboost                 → solo en modeling
+#   - prophet / cmdstanpy                           → solo en modeling
+#   - shap / optuna / joblib                        → solo en modeling
+#   - matplotlib / seaborn / plotly                 → solo en modeling
+#   - jupyterlab / ipykernel                        → solo en modeling
+#   - pyarrow                                       → solo en modeling
+#
+# environment.nlp.yml: NO creado.
+# NLP (src/nlp/) solo necesita pandas + openpyxl, ambos ya incluidos aquí.
+# La separación NLP no se justifica técnicamente en la fase actual.
+# =============================================================================

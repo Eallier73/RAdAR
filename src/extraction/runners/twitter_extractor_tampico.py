@@ -30,7 +30,8 @@ from playwright.async_api import async_playwright
 # =========================
 REPO_ROOT = Path(__file__).resolve().parents[3]
 RAW_WEEKLY_DIR = REPO_ROOT / "data" / "raw" / "radar_weekly_flat"
-STATE_PATH = REPO_ROOT / "artifacts" / "state" / "x_state.json"
+# Ruta canonica del state de Playwright — definida en src/shared/runtime_paths.py
+from src.shared.runtime_paths import TWITTER_STATE_PATH as STATE_PATH  # noqa: E402
 CONFIG_START_DATE_STR = "2026-03-03"
 CONFIG_END_DATE_STR = "2026-03-09"
 

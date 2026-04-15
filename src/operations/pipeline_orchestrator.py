@@ -28,12 +28,14 @@ from .stages import (
     run_extraction_stage,
     run_modeling_stage,
     run_nlp_stage,
+    run_preflight_stage,
     run_preprocessing_stage,
     run_report_stage,
 )
 
 
 STAGE_RUNNERS = {
+    "preflight": run_preflight_stage,
     "extraction": run_extraction_stage,
     "preprocessing": run_preprocessing_stage,
     "nlp": run_nlp_stage,

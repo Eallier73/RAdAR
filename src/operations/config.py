@@ -15,6 +15,7 @@ EXPERIMENTS_RUNS_DIR = ROOT_DIR / "experiments" / "runs"
 EXPERIMENTS_WORKBOOK = ROOT_DIR / "experiments" / "audit" / "grid_experimentos_radar.xlsx"
 
 STAGE_NAMES = (
+    "preflight",
     "extraction",
     "preprocessing",
     "nlp",

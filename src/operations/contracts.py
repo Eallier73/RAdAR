@@ -58,6 +58,19 @@ def validate_stage_name(stage_name: str) -> str:
 
 
 STAGE_CONTRACTS: dict[str, StageContract] = {
+    "preflight": StageContract(
+        name="preflight",
+        description=(
+            "Valida precondiciones antes de extraer: secrets por fuente, "
+            "state de Twitter/X, rutas de runtime. "
+            "Si falta algo y allow_partial=True, excluye fuentes bloqueadas y continua. "
+            "Si falta algo y allow_partial=False, detiene el pipeline."
+        ),
+        required_inputs=("sources", "fail_fast", "allow_partial"),
+        expected_outputs=("source_checks", "runtime_path_checks", "sources_effective_after_preflight"),
+        required_artifacts=("logs/preflight.log", "stages/preflight.json"),
+        partial_allowed=True,
+    ),
     "extraction": StageContract(
         name="extraction",
         description="Coordina extractores canónicos por fuente y registra resultados por origen.",

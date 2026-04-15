@@ -81,12 +81,9 @@ def parse_args():
 
 def setup_youtube_api():
     """Set up and return a YouTube API client."""
-    api_service_name = "youtube"
-    api_version = "v3"
-    api_key = "AIzaSyADmTxdJGJN9_wwahbt-qD0OtaqlEmTKEM"
-
-    return googleapiclient.discovery.build(
-        api_service_name, api_version, developerKey=api_key)
+    from src.shared.secrets import require_secret
+    api_key = require_secret("YOUTUBE_API_KEY", component="youtube_extractor")
+    return googleapiclient.discovery.build("youtube", "v3", developerKey=api_key)
 
 def search_videos(youtube, query, start_date, end_date):
     """Search for videos based on query and date range."""

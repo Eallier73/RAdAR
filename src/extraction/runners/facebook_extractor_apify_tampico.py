@@ -64,7 +64,8 @@ from apify_client import ApifyClient
 # CONFIGURACIÓN
 # ============================================================================
 
-SERPER_API_KEY       = "755d127f6d9ac1ff41a7cb9244699509c75fd70c"
+import src.shared.secrets as _secrets_loader  # noqa: F401, E402 — carga .env al importar
+SERPER_API_KEY       = os.environ.get("SERPER_API_KEY", "")
 SERPER_ENDPOINT      = "https://google.serper.dev/search"
 PAUSA_ENTRE_REQUESTS = 1.0
 
@@ -862,6 +863,12 @@ def main():
         sys.exit(1)
     if datetime.strptime(args.since, "%Y-%m-%d") > datetime.strptime(args.before, "%Y-%m-%d"):
         print("❌ --since no puede ser mayor que --before.")
+        sys.exit(1)
+
+    # Serper key (necesario para Fase 1)
+    if run_fase1 and not SERPER_API_KEY:
+        print("❌ Variable de entorno SERPER_API_KEY no configurada.")
+        print(f"   Agrega 'SERPER_API_KEY=tu_clave' en .env o exportala.")
         sys.exit(1)
 
     # Token (solo necesario para Fase 2)
