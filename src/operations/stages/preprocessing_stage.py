@@ -123,7 +123,7 @@ def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
     if "facebook" in context.sources_effective:
         if artifact_dir.exists():
             distribuir_cmd = [
-                "python",
+                sys.executable,
                 "-m",
                 "src.preprocessing",
                 "distribuir-facebook",

@@ -399,7 +399,7 @@ def find_type_files(week_dir: Path, media_type: str) -> list[Path]:
 def process_facebook(files: list[Path], output_path: Path) -> tuple[int, int]:
     """[CONGELADO] Procesa archivos CSV de Facebook y escribe corpus canónico.
 
-    Columna de texto buscada en este orden: 'texto', 'message'.
+    Columna de texto buscada en este orden: 'texto', 'text', 'message'.
     Si no existe ninguna, el archivo se omite sin error.
     Umbral de inclusión: len(cleaned.split()) >= 2
     Palabras por línea: 35 (no modificar).
@@ -410,7 +410,7 @@ def process_facebook(files: list[Path], output_path: Path) -> tuple[int, int]:
     for path in files:
         rows, fieldnames = read_dict_rows(path)
         column = None
-        for candidate in ("texto", "message"):
+        for candidate in ("texto", "text", "message"):
             if candidate in fieldnames:
                 column = candidate
                 break

@@ -68,6 +68,7 @@ DOMINIOS_PLAYWRIGHT_PRIORITARIO = [
 ]
 
 # --- General ---
+from pathlib import Path  # necesario aquí porque se usa antes del bloque de imports
 OMITIR_SEMANAS_EXISTENTES = True
 REPO_ROOT = Path(__file__).resolve().parents[3]
 CARPETA_BASE_SEMANAL = REPO_ROOT / "data" / "raw" / "radar_weekly_flat"
@@ -104,6 +105,7 @@ import requests
 import cloudscraper
 import trafilatura
 import pandas as pd
+from src.preprocessing.normalizar_semanas_canonicas import build_week_folder_name
 
 # Intentar importar googlenewsdecoder como fallback
 TIENE_GNEWS_DECODER = False
@@ -914,13 +916,10 @@ def iterar_semanas(fecha_inicio, fecha_fin):
 
 
 def nombre_carpeta_semana(fecha_inicio, fecha_fin):
-    meses = {
-        1: "enero", 2: "febrero", 3: "marzo", 4: "abril", 5: "mayo", 6: "junio",
-        7: "julio", 8: "agosto", 9: "septiembre", 10: "octubre", 11: "noviembre", 12: "diciembre",
-    }
-    ini = f"{fecha_inicio.day:02d}{meses[fecha_inicio.month]}"
-    fin = f"{fecha_fin.day:02d}{meses[fecha_fin.month]}"
-    return f"{fecha_inicio.isoformat()}_semana_{ini}_{fin}_{fecha_fin.strftime('%y')}"
+    _ = fecha_fin
+    if isinstance(fecha_inicio, datetime):
+        fecha_inicio = fecha_inicio.date()
+    return build_week_folder_name(fecha_inicio)
 
 
 def rutas_salida_semana(fecha_inicio_semana, fecha_fin_semana):

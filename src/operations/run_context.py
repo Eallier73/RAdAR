@@ -19,7 +19,10 @@ from .config import (
     ROOT_DIR,
     STAGE_NAMES,
 )
-from ..preprocessing.normalizar_semanas_canonicas import build_week_folder_name
+from ..preprocessing.normalizar_semanas_canonicas import (
+    build_week_folder_name,
+    normalize_to_iso_week_start,
+)
 
 
 ISO_WEEK_RE = re.compile(r"^(?P<year>\d{4})-W(?P<week>\d{2})$")
@@ -53,13 +56,13 @@ def resolve_week_window(value: str) -> WeekWindow:
     if match:
         year = int(match.group("year"))
         iso_week = int(match.group("week"))
-        start_date = date.fromisocalendar(year, iso_week, 2)
+        start_date = date.fromisocalendar(year, iso_week, 1)
     else:
         try:
-            start_date = date.fromisoformat(value)
+            start_date = normalize_to_iso_week_start(date.fromisoformat(value))
         except ValueError as exc:
             raise ValueError(
-                "Semana inválida. Usa YYYY-Www o la fecha de inicio canónica YYYY-MM-DD."
+                "Semana inválida. Usa YYYY-Www o una fecha YYYY-MM-DD dentro de la semana objetivo."
             ) from exc
 
     iso_year, iso_week, _ = start_date.isocalendar()

@@ -79,11 +79,11 @@ load_env()
 #
 # "medios" usa Google News RSS gratuito — sin API key.
 # "twitter" usa Playwright state (x_state.json) — sin env var.
-# "facebook" requiere SERPER_API_KEY (busqueda URL) + APIFY_TOKEN (comentarios).
+# "facebook" requiere APIFY_TOKEN (descubrimiento de posts y comentarios).
 # "youtube" requiere YOUTUBE_API_KEY.
 #
 SECRETS_BY_SOURCE: dict[str, list[str]] = {
-    "facebook": ["SERPER_API_KEY", "APIFY_TOKEN"],
+    "facebook": ["APIFY_TOKEN"],
     "twitter":  [],
     "youtube":  ["YOUTUBE_API_KEY"],
     "medios":   [],

@@ -8,6 +8,8 @@ import re
 import unicodedata
 from pathlib import Path
 
+from src.preprocessing.normalizar_semanas_canonicas import build_week_folder_name
+
 
 MONTHS_ES = {
     1: "enero",
@@ -109,11 +111,7 @@ def parse_source_week_start(week_name: str) -> dt.date:
 def build_target_week_name(source_week_name: str, shift_days: int) -> str:
     source_start = parse_source_week_start(source_week_name)
     target_start = source_start + dt.timedelta(days=shift_days)
-    target_end = target_start + dt.timedelta(days=6)
-    start_token = f"{target_start.day:02d}{MONTHS_ES[target_start.month]}"
-    end_token = f"{target_end.day:02d}{MONTHS_ES[target_end.month]}"
-    yy = f"{target_end.year % 100:02d}"
-    return f"{target_start.isoformat()}_semana_{start_token}_{end_token}_{yy}"
+    return build_week_folder_name(target_start)
 
 
 def discover_source_weeks(main_root: Path) -> list[str]:
@@ -173,16 +171,16 @@ def transform_facebook_rows(source_rows: list[dict[str, str]]) -> list[dict[str,
                     "tipo": "POST",
                     "url": row.get("post_url", ""),
                     "post_url_padre": "",
-                    "fecha": "",
-                    "texto": "",
-                    "num_comentarios": "",
+                    "fecha": normalize_utc_timestamp(row.get("created_time", "")),
+                    "texto": row.get("text", "") or row.get("post_text", ""),
+                    "num_comentarios": row.get("comment_count_post", ""),
                 }
             )
-        elif record_type == "comment":
+        elif record_type in {"comment", "reply"}:
             transformed.append(
                 {
                     "tipo": "COMENTARIO",
-                    "url": row.get("comment_url", ""),
+                    "url": row.get("comment_url", "") or row.get("post_url", ""),
                     "post_url_padre": row.get("post_url", ""),
                     "fecha": normalize_utc_timestamp(row.get("created_time", "")),
                     "texto": row.get("text", ""),

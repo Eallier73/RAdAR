@@ -14,6 +14,7 @@ from datetime import datetime, timedelta
 import time
 import sys
 from pathlib import Path
+from src.preprocessing.normalizar_semanas_canonicas import build_week_folder_name
 
 # =========================
 # CONFIGURACIÓN DEL RANGO
@@ -49,15 +50,10 @@ def convertir_fecha_a_espanol(fecha):
 
 def calcular_nombre_semana(fecha_inicio, fecha_fin):
     """Calcula el nombre canónico de la carpeta semanal."""
-    meses = {
-        1: 'enero', 2: 'febrero', 3: 'marzo', 4: 'abril',
-        5: 'mayo', 6: 'junio', 7: 'julio', 8: 'agosto',
-        9: 'septiembre', 10: 'octubre', 11: 'noviembre', 12: 'diciembre'
-    }
-    inicio = f"{fecha_inicio.day:02d}{meses[fecha_inicio.month]}"
-    fin = f"{fecha_fin.day:02d}{meses[fecha_fin.month]}"
-    yy = fecha_fin.strftime('%y')
-    return f"{fecha_inicio.strftime('%Y-%m-%d')}_semana_{inicio}_{fin}_{yy}"
+    _ = fecha_fin
+    if isinstance(fecha_inicio, datetime):
+        fecha_inicio = fecha_inicio.date()
+    return build_week_folder_name(fecha_inicio)
 
 def valid_date(value):
     try:

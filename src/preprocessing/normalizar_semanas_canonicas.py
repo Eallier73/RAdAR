@@ -103,7 +103,12 @@ def iter_week_dirs(root: Path) -> Iterable[Path]:
             yield entry
 
 
+def normalize_to_iso_week_start(anchor: dt.date) -> dt.date:
+    return anchor - dt.timedelta(days=anchor.weekday())
+
+
 def build_week_folder_name(start: dt.date) -> str:
+    start = normalize_to_iso_week_start(start)
     end = start + dt.timedelta(days=6)
     start_part = f"{start.day:02d}{MONTHS_ES[start.month]}"
     end_part = f"{end.day:02d}{MONTHS_ES[end.month]}"
@@ -184,7 +189,7 @@ def create_missing_week_dirs(
     created: list[Path] = []
 
     cursor = dt.date(year, month, 1)
-    while cursor.weekday() != 1:
+    while cursor.weekday() != 0:
         cursor += dt.timedelta(days=1)
 
     while cursor <= through_date:

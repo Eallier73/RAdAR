@@ -1,13 +1,14 @@
 """
 Checker standalone de configuracion — RAdAR.
 
-Verifica que secrets, state y paths esten listos antes de correr el pipeline.
-No requiere --week ni contexto de corrida.
+Verifica que secrets, state, paths y directorios de runtime esten listos
+antes de correr el pipeline. No requiere --week ni contexto de corrida.
 
 USO:
-    conda run -n RadaR_3_11 python -m src.shared.check_config
-    conda run -n RadaR_3_11 python -m src.shared.check_config --sources facebook twitter
-    conda run -n RadaR_3_11 python -m src.shared.check_config --sources youtube medios
+    conda run -n radar-ops-py311 python -m src.shared.check_config
+    conda run -n radar-ops-py311 python -m src.shared.check_config --sources facebook twitter
+    conda run -n radar-ops-py311 python -m src.shared.check_config --sources youtube medios
+    conda run -n radar-ops-py311 python -m src.shared.check_config --ensure-dirs
 
 CODIGOS DE SALIDA:
     0: Todo listo.
@@ -19,7 +20,15 @@ import argparse
 import sys
 from pathlib import Path
 
-from .runtime_paths import DOT_ENV_PATH, TWITTER_STATE_PATH
+from .runtime_paths import (
+    CACHE_DIR,
+    DOT_ENV_PATH,
+    LOGS_PREPROCESSING_DIR,
+    RAW_WEEKLY_ROOT,
+    STATE_DIR,
+    TEXT_WEEKLY_ROOT,
+    TWITTER_STATE_PATH,
+)
 from .secrets import SECRETS_BY_SOURCE, check_secrets_for_source, load_env
 
 SOURCE_NAMES = ("facebook", "twitter", "youtube", "medios")
@@ -27,6 +36,16 @@ SOURCE_NAMES = ("facebook", "twitter", "youtube", "medios")
 _OK   = "\u2713"  # ✓
 _FAIL = "\u2717"  # ✗
 _WARN = "\u26a0"  # ⚠
+
+# Directorios de runtime que deben existir para operacion limpia.
+# Se verifican (y opcionalmente crean) independientemente de los secrets.
+RUNTIME_DIRS: list[Path] = [
+    STATE_DIR,
+    CACHE_DIR,
+    LOGS_PREPROCESSING_DIR,
+    RAW_WEEKLY_ROOT,
+    TEXT_WEEKLY_ROOT,
+]
 
 
 def _check_dot_env() -> dict:
@@ -99,17 +118,48 @@ def _check_source(source: str) -> dict:
     }
 
 
-def run_check(sources: list[str]) -> dict:
+def _check_runtime_dirs(ensure: bool = False) -> list[dict]:
+    """
+    Verifica existencia de directorios de runtime.
+
+    Si ensure=True, crea los que no existen (mkdir -p equivalente).
+    Nunca falla: errores de creacion se reportan como advertencias.
+    """
+    results = []
+    for d in RUNTIME_DIRS:
+        existed = d.exists()
+        created = False
+        create_error = None
+        if ensure and not existed:
+            try:
+                d.mkdir(parents=True, exist_ok=True)
+                created = True
+            except OSError as exc:
+                create_error = str(exc)
+        results.append({
+            "path": str(d),
+            "existed": existed,
+            "created": created,
+            "error": create_error,
+        })
+    return results
+
+
+def run_check(sources: list[str], ensure_dirs: bool = False) -> dict:
     """Ejecuta el chequeo completo y devuelve el resultado estructurado."""
     env_check = _check_dot_env()
     results = {}
     for source in sources:
         results[source] = _check_source(source)
 
+    runtime_dirs = _check_runtime_dirs(ensure=ensure_dirs)
+
     all_ready = all(r["ready"] for r in results.values())
     return {
         "dot_env": env_check,
         "sources": results,
+        "runtime_dirs": runtime_dirs,
+        "ensure_dirs": ensure_dirs,
         "all_ready": all_ready,
     }
 
@@ -155,6 +205,26 @@ def _print_report(check: dict) -> None:
 
         print()
 
+    # Directorios de runtime
+    dirs = check.get("runtime_dirs", [])
+    if dirs:
+        print("  Directorios de runtime:")
+        for d in dirs:
+            if d["error"]:
+                icon = _FAIL
+                suffix = f" [ERROR al crear: {d['error']}]"
+            elif d["created"]:
+                icon = _OK
+                suffix = " [creado]"
+            elif d["existed"]:
+                icon = _OK
+                suffix = " [ok]"
+            else:
+                icon = _WARN
+                suffix = " [no existe — usa --ensure-dirs para crearlo]"
+            print(f"       {icon}  {d['path']}{suffix}")
+        print()
+
     if check["all_ready"]:
         print(f"{_OK}  Todo listo para correr el pipeline.\n")
     else:
@@ -167,7 +237,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description=(
             "Verifica que secrets, state y paths esten listos para correr el pipeline RAdAR. "
-            "Sin efectos secundarios: solo lee, nunca escribe."
+            "Sin efectos secundarios por defecto: solo lee, nunca escribe. "
+            "Con --ensure-dirs: crea los directorios de runtime que falten."
         )
     )
     parser.add_argument(
@@ -178,9 +249,19 @@ def main() -> int:
         metavar="SOURCE",
         help=f"Fuentes a verificar. Default: todas ({' '.join(SOURCE_NAMES)})",
     )
+    parser.add_argument(
+        "--ensure-dirs",
+        action="store_true",
+        default=False,
+        help=(
+            "Crea los directorios de runtime que no existan "
+            "(artifacts/state, artifacts/cache, artifacts/logs/preprocessing, "
+            "data/raw/radar_weekly_flat, data/text/radar_weekly_flat)."
+        ),
+    )
     args = parser.parse_args()
 
-    check = run_check(args.sources)
+    check = run_check(args.sources, ensure_dirs=args.ensure_dirs)
     _print_report(check)
     return 0 if check["all_ready"] else 1
 

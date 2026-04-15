@@ -26,7 +26,12 @@ STATE_DIR: Path = REPO_ROOT / "artifacts" / "state"
 TWITTER_STATE_PATH: Path = STATE_DIR / "x_state.json"
 
 # ── Cache ───────────────────────────────────────────────────────────────────
-MEDIOS_RSS_CACHE_DIR: Path = REPO_ROOT / "artifacts" / "cache" / "extraction" / "medios_rss"
+CACHE_DIR: Path = REPO_ROOT / "artifacts" / "cache"
+MEDIOS_RSS_CACHE_DIR: Path = CACHE_DIR / "extraction" / "medios_rss"
+
+# ── Logs ────────────────────────────────────────────────────────────────────
+LOGS_DIR: Path = REPO_ROOT / "artifacts" / "logs"
+LOGS_PREPROCESSING_DIR: Path = LOGS_DIR / "preprocessing"
 
 # ── Datos canonicos ─────────────────────────────────────────────────────────
 RAW_WEEKLY_ROOT: Path = REPO_ROOT / "data" / "raw" / "radar_weekly_flat"

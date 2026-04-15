@@ -32,6 +32,8 @@ def _build_commands(context: RadarRunContext) -> dict[str, list[str]]:
             end,
             "--output-dir",
             str(FACEBOOK_EXTRACTION_ARTIFACTS_ROOT),
+            "--publish-canonical",
+            "--overwrite",
             "--no-prompt",
         ],
         "twitter": [
@@ -70,11 +72,12 @@ def _validate_outputs(context: RadarRunContext, source: str) -> dict[str, Any]:
     week_dir = RAW_WEEKLY_ROOT / context.week.folder_name
     if source == "facebook":
         artifact_dir = FACEBOOK_EXTRACTION_ARTIFACTS_ROOT / context.week.folder_name
-        csv_files = sorted(artifact_dir.glob("*.csv"))
+        main_csv = artifact_dir / f"facebook_institutional_raw_{context.week.folder_name}.csv"
         return {
-            "ok": artifact_dir.exists() and bool(csv_files),
+            "ok": artifact_dir.exists() and main_csv.exists(),
             "artifact_dir": str(artifact_dir),
-            "csv_files": [str(path) for path in csv_files],
+            "main_csv": str(main_csv),
+            "rows": _safe_csv_rows(main_csv) if main_csv.exists() else None,
         }
 
     expected = week_dir / f"{context.week.folder_name}_{source}.csv"
@@ -146,7 +149,7 @@ def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
 
         metrics["sources_ok"] += 1
         if source == "facebook":
-            artifacts.extend(validation["csv_files"])
+            artifacts.append(validation["main_csv"])
         else:
             artifacts.append(validation["path"])
             if source == "medios":
@@ -174,7 +177,7 @@ def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
         warnings=warnings,
         errors=errors,
         notes=[
-            "Facebook deja artefactos intermedios en artifacts/runs/extraction/facebook y se promueve en preprocessing."
+            "Facebook publica artefactos canónicos semanales en artifacts/runs/extraction/facebook y se promueve en preprocessing."
         ],
         commands=command_payloads,
     )

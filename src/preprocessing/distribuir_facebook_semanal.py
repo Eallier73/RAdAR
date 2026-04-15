@@ -4,14 +4,21 @@ from __future__ import annotations
 import argparse
 import csv
 import datetime as dt
-import os
 import re
 import shutil
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 
+REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from src.preprocessing.normalizar_semanas_canonicas import build_week_folder_name
+
 
 DATE_RANGE_RE = re.compile(r"_(\d{4}-\d{2}-\d{2})_(\d{4}-\d{2}-\d{2})(?P<ext>\.[^./]+)$")
+CANONICAL_MAIN_RE = re.compile(r"^facebook_institutional_raw_(?P<week>\d{4}-\d{2}-\d{2}_semana_.+)\.csv$")
 
 MONTHS_ES = {
     1: "enero",
@@ -28,7 +35,6 @@ MONTHS_ES = {
     12: "diciembre",
 }
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
 RAW_WEEKLY_ROOT = REPO_ROOT / "data" / "raw" / "radar_weekly_flat"
 PREPROCESSING_LOGS_DIR = REPO_ROOT / "artifacts" / "logs" / "preprocessing"
 
@@ -132,10 +138,8 @@ def parse_week_range(folder_name: str) -> tuple[dt.date, dt.date] | None:
 
 
 def folder_name_for_range(start: dt.date, end: dt.date) -> str:
-    dd1 = f"{start.day:02d}{MONTHS_ES[start.month]}"
-    dd2 = f"{end.day:02d}{MONTHS_ES[end.month]}"
-    yy2 = f"{end.year % 100:02d}"
-    return f"{start.strftime('%Y-%m-%d')}_semana_{dd1}_{dd2}_{yy2}"
+    _ = end
+    return build_week_folder_name(start)
 
 
 def build_enddate_index(dest_root: Path) -> dict[dt.date, Path]:
@@ -155,23 +159,48 @@ def resolve_week_folder(dest_root: Path, *, end_index: dict[dt.date, Path], end:
     existing = end_index.get(end)
     if existing:
         return existing
-    # If the folder doesn't exist yet, create a new one. Most weeks in the dataset
-    # appear to use a 7-day window where end-start == 6 days (e.g. Tue->Mon).
+    # Legacy compatibility: infer the canonical folder from the 7-day window
+    # encoded in filenames that still ship explicit start/end dates.
     start = end - dt.timedelta(days=6)
     return dest_root / folder_name_for_range(start, end)
 
+# Contrato vigente:
+#   - facebook_institutional_raw_<semana>.csv  → salida canónica del extractor directo a Apify
+# Compatibilidad legacy:
+#   - posts_comentarios_*.csv                  → salida del extractor viejo
+#   - urls_*.txt                              → auditoría histórica de URLs
+_CSV_PREFIJOS_PROMOVER = ("facebook_institutional_raw_", "posts_comentarios_")
+_TXT_PREFIJOS_PROMOVER = ("urls_",)
 
-def with_dup_suffix(path: Path) -> Path:
-    if not path.exists():
-        return path
-    suffixes = "".join(path.suffixes)
-    stem = path.name[: -len(suffixes)] if suffixes else path.name
-    i = 1
-    while True:
-        candidate = path.with_name(f"{stem}_dup{i}{suffixes}")
-        if not candidate.exists():
-            return candidate
-        i += 1
+
+def _debe_promover(src: Path) -> bool:
+    """True si este archivo debe promoverse a la estructura canónica."""
+    name = src.name
+    if src.suffix.lower() == ".csv":
+        return any(name.startswith(p) for p in _CSV_PREFIJOS_PROMOVER)
+    if src.suffix.lower() == ".txt":
+        return any(name.startswith(p) for p in _TXT_PREFIJOS_PROMOVER)
+    return False
+
+
+def _is_nested_run_artifact(src_root: Path, src: Path) -> bool:
+    try:
+        relative = src.relative_to(src_root)
+    except ValueError:
+        return False
+    return "runs" in relative.parts
+
+
+def _resolve_canonical_week(src: Path) -> tuple[Path, dt.date, dt.date] | None:
+    match = CANONICAL_MAIN_RE.match(src.name)
+    if not match:
+        return None
+    week_name = match.group("week")
+    parsed = parse_week_range(week_name)
+    if not parsed:
+        return None
+    start, end = parsed
+    return Path(week_name), start, end
 
 
 def build_ops(src_root: Path, dest_root: Path, *, max_span_days: int) -> tuple[list[MoveOp], list[str]]:
@@ -182,17 +211,26 @@ def build_ops(src_root: Path, dest_root: Path, *, max_span_days: int) -> tuple[l
     for src in sorted(src_root.rglob("*")):
         if not src.is_file():
             continue
-        rng = extract_range(src)
-        if not rng:
+        if _is_nested_run_artifact(src_root, src):
             continue
-        start, end = rng
-        span = (end - start).days
-        if span < 0 or span > max_span_days:
+        if not _debe_promover(src):
             continue
+        canonical_week = _resolve_canonical_week(src)
+        if canonical_week:
+            week_name, start, end = canonical_week
+            dest_dir = dest_root / week_name
+        else:
+            rng = extract_range(src)
+            if not rng:
+                continue
+            start, end = rng
+            span = (end - start).days
+            if span < 0 or span > max_span_days:
+                continue
+            dest_dir = resolve_week_folder(dest_root, end_index=end_index, end=end)
 
-        dest_dir = resolve_week_folder(dest_root, end_index=end_index, end=end)
         canonical_name = f"{dest_dir.name}_facebook{src.suffix.lower()}"
-        dest = with_dup_suffix(dest_dir / canonical_name)
+        dest = dest_dir / canonical_name
         ops.append(MoveOp(src=src, dest_dir=dest_dir, dest=dest, start=start, end=end))
 
     return ops, warnings
@@ -224,12 +262,15 @@ def apply_ops(ops: list[MoveOp]) -> None:
 
 def main() -> int:
     p = argparse.ArgumentParser(
-        description="Mueve archivos de Facebook con rango de fechas a la carpeta semanal correspondiente en data/raw/radar_weekly_flat."
+        description=(
+            "Promueve artefactos semanales de Facebook a la estructura canónica "
+            "en data/raw/radar_weekly_flat."
+        )
     )
     p.add_argument(
         "--src",
         required=True,
-        help="Directorio origen con los CSV mensuales externos de Facebook.",
+        help="Directorio origen con artefactos semanales de extracción de Facebook.",
     )
     p.add_argument(
         "--dest",

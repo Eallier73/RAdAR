@@ -24,6 +24,7 @@ from datetime import datetime
 from pathlib import Path
 from urllib.parse import quote
 from playwright.async_api import async_playwright
+from src.preprocessing.normalizar_semanas_canonicas import build_week_folder_name
 
 # =========================
 # CONFIGURACIÓN
@@ -57,6 +58,12 @@ MAX_REPLIES_PER_TWEET = 200
 MAX_REPLY_SCROLLS = 8
 NAV_TIMEOUT_MS = 90000
 NAV_MAX_RETRIES = 3
+
+
+def calcular_nombre_semana(fecha_inicio):
+    if isinstance(fecha_inicio, datetime):
+        fecha_inicio = fecha_inicio.date()
+    return build_week_folder_name(fecha_inicio)
 
 class TwitterExtractorIAD:
     def __init__(self, fecha_inicio_str, fecha_fin_str, custom_queries=None):
@@ -117,15 +124,7 @@ class TwitterExtractorIAD:
 
     def calcular_nombre_semana(self):
         """Calcula el nombre de la carpeta de semana"""
-        meses = {
-            1: 'enero', 2: 'febrero', 3: 'marzo', 4: 'abril',
-            5: 'mayo', 6: 'junio', 7: 'julio', 8: 'agosto',
-            9: 'septiembre', 10: 'octubre', 11: 'noviembre', 12: 'diciembre'
-        }
-        inicio = f"{self.fecha_inicio.day:02d}{meses[self.fecha_inicio.month]}"
-        fin = f"{self.fecha_fin.day:02d}{meses[self.fecha_fin.month]}"
-        yy = self.fecha_fin.strftime('%y')
-        return f"{self.fecha_inicio.strftime('%Y-%m-%d')}_semana_{inicio}_{fin}_{yy}"
+        return calcular_nombre_semana(self.fecha_inicio)
 
     def clean_text(self, text: str) -> str:
         """Limpiar texto eliminando espacios extras"""
