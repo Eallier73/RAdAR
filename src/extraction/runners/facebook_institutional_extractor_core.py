@@ -1763,7 +1763,7 @@ def build_main_dataframe(page_results: Sequence[PageExecutionResult], config: Re
                     "url": post.post_url,
                     "post_url_padre": "",
                     "fecha": normalize_utc_timestamp(post.created_time),
-                    "texto": post.post_text,
+                    "texto": post.post_text if post.post_text.strip() else "[Contenido sin texto o solo multimedia]",
                     "num_comentarios": post.comment_count_post if post.comment_count_post is not None else "",
                 }
             )

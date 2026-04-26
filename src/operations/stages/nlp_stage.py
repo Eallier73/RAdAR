@@ -7,7 +7,7 @@ from typing import Any
 
 import pandas as pd
 
-from ..config import DEFAULT_MODEL_DATASET, PROCESSED_MODELING_ROOT, TEXT_WEEKLY_ROOT
+from ..config import DEFAULT_MODEL_DATASET, PROCESSED_MODELING_ROOT, STAGE_PYTHON, TEXT_WEEKLY_ROOT
 from ..contracts import StageContract, StageResult
 from ..run_context import RadarRunContext, now_text
 
@@ -60,8 +60,9 @@ def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
         }
     }
 
+    _py = STAGE_PYTHON["nlp"]
     sentimiento_command = [
-        sys.executable,
+        _py,
         "-m",
         "src.nlp.aceptacion_digital_redes_ponderacion_medios",
         "--sources",
@@ -75,8 +76,8 @@ def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
     ]
     command_specs = [
         ("sentimiento_semanal", sentimiento_command),
-        ("encuestas_sentimiento", [sys.executable, "-m", "src.nlp.unificar_encuestas_sentimiento"]),
-        ("dataset_ml_0", [sys.executable, "-m", "src.nlp.unir_ml_ready_con_sentimiento"]),
+        ("encuestas_sentimiento", [_py, "-m", "src.nlp.unificar_encuestas_sentimiento"]),
+        ("dataset_ml_0", [_py, "-m", "src.nlp.unir_ml_ready_con_sentimiento"]),
     ]
 
     if context.dry_run:

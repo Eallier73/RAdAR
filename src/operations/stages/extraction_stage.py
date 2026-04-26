@@ -6,7 +6,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-from ..config import FACEBOOK_EXTRACTION_ARTIFACTS_ROOT, RAW_WEEKLY_ROOT
+from ..config import FACEBOOK_EXTRACTION_ARTIFACTS_ROOT, RAW_WEEKLY_ROOT, STAGE_PYTHON
 from ..contracts import StageContract, StageResult
 from ..run_context import RadarRunContext, now_text
 
@@ -21,9 +21,10 @@ def _safe_csv_rows(path: Path) -> int | None:
 def _build_commands(context: RadarRunContext) -> dict[str, list[str]]:
     start = context.selected_start_date.isoformat()
     end = context.selected_end_date.isoformat()
+    _py = STAGE_PYTHON["extraction"]
     return {
         "facebook": [
-            sys.executable,
+            _py,
             "-m",
             "src.extraction.runners.facebook_extractor_apify_tampico",
             "--since",
@@ -37,14 +38,14 @@ def _build_commands(context: RadarRunContext) -> dict[str, list[str]]:
             "--no-prompt",
         ],
         "twitter": [
-            sys.executable,
+            _py,
             "-m",
             "src.extraction.runners.twitter_extractor_tampico",
             start,
             end,
         ],
         "youtube": [
-            sys.executable,
+            _py,
             "-m",
             "src.extraction.runners.youtube_extractor_tampico",
             "--since",
@@ -55,7 +56,7 @@ def _build_commands(context: RadarRunContext) -> dict[str, list[str]]:
             str(RAW_WEEKLY_ROOT),
         ],
         "medios": [
-            sys.executable,
+            _py,
             "-m",
             "src.extraction.runners.medios_extractor",
             "--since",

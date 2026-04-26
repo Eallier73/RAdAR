@@ -6,7 +6,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-from ..config import FACEBOOK_EXTRACTION_ARTIFACTS_ROOT, PREPROCESSING_REPORT_PATH, RAW_WEEKLY_ROOT, TEXT_WEEKLY_ROOT
+from ..config import FACEBOOK_EXTRACTION_ARTIFACTS_ROOT, PREPROCESSING_REPORT_PATH, RAW_WEEKLY_ROOT, STAGE_PYTHON, TEXT_WEEKLY_ROOT
 from ..contracts import StageContract, StageResult
 from ..run_context import RadarRunContext, now_text
 
@@ -64,8 +64,9 @@ def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
         "sources": context.sources_effective,
     }
 
+    _py = STAGE_PYTHON["preprocessing"]
     normalizar_cmd = [
-        sys.executable,
+        _py,
         "-m",
         "src.preprocessing",
         "normalizar-semanas",
@@ -76,7 +77,7 @@ def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
         "--apply",
     ]
     promover_cmd = [
-        sys.executable,
+        _py,
         "-m",
         "src.preprocessing",
         "promover-texto",
@@ -88,7 +89,7 @@ def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
         artifact_dir = FACEBOOK_EXTRACTION_ARTIFACTS_ROOT / context.week.folder_name
         if "facebook" in context.sources_effective:
             distribuir_cmd = [
-                sys.executable,
+                _py,
                 "-m",
                 "src.preprocessing",
                 "distribuir-facebook",
@@ -123,7 +124,7 @@ def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
     if "facebook" in context.sources_effective:
         if artifact_dir.exists():
             distribuir_cmd = [
-                sys.executable,
+                _py,
                 "-m",
                 "src.preprocessing",
                 "distribuir-facebook",

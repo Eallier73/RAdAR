@@ -2,18 +2,18 @@ from __future__ import annotations
 
 import queue
 import subprocess
-import sys
 import threading
 import tkinter as tk
 from pathlib import Path
 from tkinter import messagebox, ttk
 
-from .config import ALLOWED_MODES, DEFAULT_MODEL_RUNNER, DEFAULT_SOURCES, SOURCE_NAMES, STAGE_NAMES
+from .config import ALLOWED_MODES, DEFAULT_MODEL_RUNNER, DEFAULT_SOURCES, OPS_PYTHON, SOURCE_NAMES, STAGE_NAMES
 
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 
 STAGE_LABELS = {
+    "preflight": "Preflight",
     "extraction": "Extractors",
     "preprocessing": "Preprocessing",
     "nlp": "NLP",
@@ -24,7 +24,7 @@ STAGE_LABELS = {
 LABEL_TO_STAGE = {label: stage for stage, label in STAGE_LABELS.items()}
 STAGE_DISPLAY_VALUES = tuple(STAGE_LABELS[stage] for stage in STAGE_NAMES)
 LAYER_PRESETS = {
-    "Pipeline completo": ("extraction", "report"),
+    "Pipeline completo": ("preflight", "report"),
     "Extractors": ("extraction", "extraction"),
     "Preprocessing": ("preprocessing", "preprocessing"),
     "NLP": ("nlp", "nlp"),
@@ -50,7 +50,7 @@ class RadarPipelineGui(tk.Tk):
         self.date_to_var = tk.StringVar()
         self.resume_var = tk.StringVar()
         self.mode_var = tk.StringVar(value=ALLOWED_MODES[0])
-        self.from_stage_var = tk.StringVar(value=STAGE_LABELS["extraction"])
+        self.from_stage_var = tk.StringVar(value=STAGE_LABELS["preflight"])
         self.to_stage_var = tk.StringVar(value=STAGE_LABELS["report"])
         self.model_runner_var = tk.StringVar(value=DEFAULT_MODEL_RUNNER)
         self.model_run_id_var = tk.StringVar()
@@ -382,7 +382,7 @@ class RadarPipelineGui(tk.Tk):
         self._set_command_preview(self._build_command())
 
     def _build_command(self) -> list[str]:
-        command = [sys.executable, "-m", "src.operations.run_radar_pipeline"]
+        command = [OPS_PYTHON, "-m", "src.operations.run_radar_pipeline"]
         week_value = self.week_var.get().strip()
         if week_value:
             command.extend(["--week", week_value])

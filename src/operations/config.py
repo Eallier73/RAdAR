@@ -1,7 +1,12 @@
 from __future__ import annotations
 
+import os
+import sys
 from pathlib import Path
 
+# Carga .env antes de resolver rutas de entornos Python
+from src.shared.secrets import load_env as _load_env  # noqa: E402
+_load_env()
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 
@@ -59,4 +64,30 @@ DEFAULT_EXPORT_FILES = {
     "encuestas_sentimiento_mensual": PROCESSED_MODELING_ROOT / "encuestas_y_sentimiento_mensual_unificado.xlsx",
     "datos_ml_0": PROCESSED_MODELING_ROOT / "datos_ml_0.xlsx",
     "datos_ml_master_indice_aceptacion_digital": DEFAULT_MODEL_DATASET,
+}
+
+# ── Python ejecutable por etapa ───────────────────────────────────────────────
+#
+# Cada etapa puede correr en un entorno distinto. Se resuelve así (en orden):
+#   1. Variable de entorno RADAR_OPS_PYTHON / RADAR_MODELING_PYTHON
+#   2. sys.executable (entorno activo al lanzar el orquestador)
+#
+# Configuración recomendada en .env o en el shell antes de correr el pipeline:
+#   RADAR_OPS_PYTHON=/home/emilio/anaconda3/envs/radar-ops-py311/bin/python
+#   RADAR_MODELING_PYTHON=/home/emilio/anaconda3/envs/radar-exp-py311/bin/python
+#
+_OPS_PYTHON: str = os.environ.get("RADAR_OPS_PYTHON") or sys.executable
+_MODELING_PYTHON: str = os.environ.get("RADAR_MODELING_PYTHON") or sys.executable
+
+OPS_PYTHON: str = _OPS_PYTHON
+MODELING_PYTHON: str = _MODELING_PYTHON
+
+STAGE_PYTHON: dict[str, str] = {
+    "preflight":     _OPS_PYTHON,
+    "extraction":    _OPS_PYTHON,
+    "preprocessing": _OPS_PYTHON,
+    "nlp":           _OPS_PYTHON,
+    "modeling":      _MODELING_PYTHON,
+    "export":        _OPS_PYTHON,
+    "report":        _OPS_PYTHON,
 }

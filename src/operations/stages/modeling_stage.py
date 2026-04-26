@@ -5,7 +5,7 @@ from pathlib import Path
 import sys
 from typing import Any
 
-from ..config import DEFAULT_MODEL_DATASET, DEFAULT_MODEL_RUNNER, EXPERIMENTS_RUNS_DIR, EXPERIMENTS_WORKBOOK
+from ..config import DEFAULT_MODEL_DATASET, DEFAULT_MODEL_RUNNER, EXPERIMENTS_RUNS_DIR, EXPERIMENTS_WORKBOOK, STAGE_PYTHON
 from ..contracts import StageContract, StageResult
 from ..run_context import RadarRunContext, now_text
 
@@ -61,7 +61,7 @@ def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
     }
 
     command = [
-        sys.executable,
+        STAGE_PYTHON["modeling"],
         "-m",
         model_runner,
         "--run-id",
