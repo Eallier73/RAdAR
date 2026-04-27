@@ -36,6 +36,12 @@ def parse_args() -> argparse.Namespace:
         default=ALLOWED_MODES[0],
         help=f"Modo operativo permitido. Default: {ALLOWED_MODES[0]}",
     )
+    parser.add_argument(
+        "--stages",
+        nargs="+",
+        choices=STAGE_NAMES,
+        help="Lista explícita de etapas a ejecutar, permitiendo selección salteada.",
+    )
     parser.add_argument("--from-stage", choices=STAGE_NAMES, help="Primera etapa a ejecutar.")
     parser.add_argument("--to-stage", choices=STAGE_NAMES, help="Última etapa a ejecutar.")
     parser.add_argument("--resume-run-id", help="Rehidrata y continúa una corrida previa.")
@@ -89,6 +95,7 @@ def main() -> int:
         date_from=args.date_from,
         date_to=args.date_to,
         mode=args.mode,
+        stages=list(args.stages) if args.stages else None,
         from_stage=args.from_stage,
         to_stage=args.to_stage,
         resume_run_id=args.resume_run_id,

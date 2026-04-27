@@ -62,9 +62,11 @@ class RadarPipelineGui(tk.Tk):
             value="Selecciona una capa o rango. En controlled, modeling usa E10 (dualidad E1_v5_clean + E9_v2_clean)."
         )
         self.source_vars = {source: tk.BooleanVar(value=source in DEFAULT_SOURCES) for source in SOURCE_NAMES}
+        self.stage_selection_vars = {stage: tk.BooleanVar(value=stage in ("preflight", "extraction", "preprocessing", "nlp", "modeling", "export", "report")) for stage in STAGE_NAMES}
 
         self.source_checkbuttons: list[ttk.Checkbutton] = []
         self.stage_widgets: list[ttk.Widget] = []
+        self.stage_checkbuttons: list[ttk.Checkbutton] = []
         self.date_widgets: list[ttk.Widget] = []
         self.model_widgets: list[ttk.Widget] = []
 
@@ -166,6 +168,18 @@ class RadarPipelineGui(tk.Tk):
         )
         self.stage_widgets.extend([from_combo, to_combo])
 
+        stages_row = ttk.Frame(stages_frame)
+        stages_row.grid(row=1, column=0, columnspan=4, sticky="ew", pady=(8, 0))
+        ttk.Label(stages_row, text="Etapas específicas").pack(side=tk.LEFT, padx=(0, 12))
+        for stage_name in STAGE_NAMES:
+            check = ttk.Checkbutton(
+                stages_row,
+                text=STAGE_LABELS[stage_name],
+                variable=self.stage_selection_vars[stage_name],
+            )
+            check.pack(side=tk.LEFT, padx=(0, 12))
+            self.stage_checkbuttons.append(check)
+
         sources_frame = ttk.LabelFrame(root, text="Fuentes y filtros de capa", padding=10)
         sources_frame.pack(fill=tk.X, pady=(0, 10))
         header = ttk.Frame(sources_frame)
@@ -257,6 +271,7 @@ class RadarPipelineGui(tk.Tk):
             self.dry_run_var,
         ]
         tracked_vars.extend(self.source_vars.values())
+        tracked_vars.extend(self.stage_selection_vars.values())
         for variable in tracked_vars:
             variable.trace_add("write", self._on_form_changed)
 
@@ -325,19 +340,20 @@ class RadarPipelineGui(tk.Tk):
         self._refresh_ui()
 
     def _effective_stage_bounds(self) -> tuple[str, str]:
+        selected = self._selected_stage_names()
+        return selected[0], selected[-1]
+
+    def _selected_stage_names(self) -> list[str]:
         preset = LAYER_PRESETS.get(self.layer_var.get())
         if preset is not None:
-            return preset
-        from_stage = LABEL_TO_STAGE.get(self.from_stage_var.get(), "extraction")
-        to_stage = LABEL_TO_STAGE.get(self.to_stage_var.get(), "report")
-        return from_stage, to_stage
+            from_stage, to_stage = preset
+            from_idx = STAGE_NAMES.index(from_stage)
+            to_idx = STAGE_NAMES.index(to_stage)
+            return list(STAGE_NAMES[from_idx : to_idx + 1])
+        return [stage for stage in STAGE_NAMES if self.stage_selection_vars[stage].get()]
 
     def _stage_range_includes(self, stage_name: str) -> bool:
-        from_stage, to_stage = self._effective_stage_bounds()
-        from_idx = STAGE_NAMES.index(from_stage)
-        to_idx = STAGE_NAMES.index(to_stage)
-        target_idx = STAGE_NAMES.index(stage_name)
-        return from_idx <= target_idx <= to_idx
+        return stage_name in self._selected_stage_names()
 
     def _refresh_ui(self) -> None:
         preset = LAYER_PRESETS.get(self.layer_var.get())
@@ -349,10 +365,16 @@ class RadarPipelineGui(tk.Tk):
                 self.from_stage_var.set(from_label)
             if self.to_stage_var.get() != to_label:
                 self.to_stage_var.set(to_label)
+            selected = set(self._selected_stage_names())
+            for stage_name, variable in self.stage_selection_vars.items():
+                if variable.get() != (stage_name in selected):
+                    variable.set(stage_name in selected)
 
         stage_state = "readonly" if custom_mode else "disabled"
         for widget in self.stage_widgets[-2:]:
             widget.configure(state=stage_state)
+        for widget in self.stage_checkbuttons:
+            widget.configure(state="normal" if custom_mode else "disabled")
 
         selection_relevant = any(self._stage_range_includes(stage) for stage in ("extraction", "preprocessing", "nlp"))
         model_relevant = self._stage_range_includes("modeling")
@@ -382,7 +404,7 @@ class RadarPipelineGui(tk.Tk):
         self._set_command_preview(self._build_command())
 
     def _build_command(self) -> list[str]:
-        command = [OPS_PYTHON, "-m", "src.operations.run_radar_pipeline"]
+        command = [OPS_PYTHON, "-u", "-m", "src.operations.run_radar_pipeline"]
         week_value = self.week_var.get().strip()
         if week_value:
             command.extend(["--week", week_value])
@@ -400,8 +422,14 @@ class RadarPipelineGui(tk.Tk):
 
         command.extend(["--mode", self.mode_var.get().strip()])
 
-        from_stage, to_stage = self._effective_stage_bounds()
-        command.extend(["--from-stage", from_stage, "--to-stage", to_stage])
+        if LAYER_PRESETS.get(self.layer_var.get()) is None:
+            selected_stages = self._selected_stage_names()
+            if selected_stages:
+                command.append("--stages")
+                command.extend(selected_stages)
+        else:
+            from_stage, to_stage = self._effective_stage_bounds()
+            command.extend(["--from-stage", from_stage, "--to-stage", to_stage])
 
         if any(self._stage_range_includes(stage) for stage in ("extraction", "preprocessing", "nlp")):
             selected_sources = [source for source, var in self.source_vars.items() if var.get()]
@@ -454,13 +482,22 @@ class RadarPipelineGui(tk.Tk):
             )
             return False
 
-        from_stage, to_stage = self._effective_stage_bounds()
-        if STAGE_NAMES.index(from_stage) > STAGE_NAMES.index(to_stage):
-            messagebox.showerror(
-                "Radar Pipeline Control",
-                "From Stage no puede quedar después de To Stage.",
-            )
-            return False
+        if LAYER_PRESETS.get(self.layer_var.get()) is None:
+            selected_stages = self._selected_stage_names()
+            if not selected_stages:
+                messagebox.showerror(
+                    "Radar Pipeline Control",
+                    "Selecciona al menos una etapa cuando usas Rango personalizado.",
+                )
+                return False
+        else:
+            from_stage, to_stage = self._effective_stage_bounds()
+            if STAGE_NAMES.index(from_stage) > STAGE_NAMES.index(to_stage):
+                messagebox.showerror(
+                    "Radar Pipeline Control",
+                    "From Stage no puede quedar después de To Stage.",
+                )
+                return False
 
         if selection_relevant:
             selected_sources = [source for source, var in self.source_vars.items() if var.get()]
@@ -497,6 +534,8 @@ class RadarPipelineGui(tk.Tk):
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
                 text=True,
+                bufsize=1,
+                env={**__import__("os").environ, "PYTHONUNBUFFERED": "1"},
             )
             assert self.process.stdout is not None
             for line in self.process.stdout:

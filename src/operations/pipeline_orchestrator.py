@@ -51,6 +51,7 @@ class PipelineRequest:
     date_from: str | None
     date_to: str | None
     mode: str
+    stages: list[str] | None
     from_stage: str | None
     to_stage: str | None
     resume_run_id: str | None
@@ -95,24 +96,35 @@ class RadarPipelineOrchestrator:
                     )
                 context.metadata["selection_start_date"] = selected_start.isoformat()
                 context.metadata["selection_end_date"] = selected_end.isoformat()
-            if request.from_stage:
+            if request.stages:
+                stages_planned = self._normalize_stage_selection(request.stages)
+                context.from_stage = stages_planned[0]
+                context.to_stage = stages_planned[-1]
+                self._reset_selected_stages(context, stages_planned)
+            elif request.from_stage:
                 context.from_stage = request.from_stage
                 self._reset_stages_from(context, request.from_stage)
             else:
                 inferred = self._infer_resume_stage(context)
                 context.from_stage = inferred
-            if request.to_stage:
+            if request.to_stage and not request.stages:
                 context.to_stage = request.to_stage
-            stages_planned = self._build_stage_plan(context.from_stage, context.to_stage)
+            if not request.stages:
+                stages_planned = self._build_stage_plan(context.from_stage, context.to_stage)
         else:
             week, selected_start, selected_end = resolve_operational_window(
                 request.week,
                 request.date_from,
                 request.date_to,
             )
-            from_stage = request.from_stage or STAGE_NAMES[0]
-            to_stage = request.to_stage or STAGE_NAMES[-1]
-            stages_planned = self._build_stage_plan(from_stage, to_stage)
+            if request.stages:
+                stages_planned = self._normalize_stage_selection(request.stages)
+                from_stage = stages_planned[0]
+                to_stage = stages_planned[-1]
+            else:
+                from_stage = request.from_stage or STAGE_NAMES[0]
+                to_stage = request.to_stage or STAGE_NAMES[-1]
+                stages_planned = self._build_stage_plan(from_stage, to_stage)
             run_id = self.state_store.next_run_id(week.slug)
             artifacts_root = self.state_store.build_run_root(week.slug, run_id)
             context = RadarRunContext(
@@ -202,6 +214,10 @@ class RadarPipelineOrchestrator:
                     "En modo controlled el dataset de modelado debe ser el canónico. "
                     "Usa --mode experimental para datasets alternativos."
                 )
+        if request.stages and (request.from_stage or request.to_stage):
+            raise ValueError("Usa --stages o bien --from-stage/--to-stage, pero no ambos a la vez.")
+        if request.stages:
+            self._normalize_stage_selection(request.stages)
         if request.from_stage:
             validate_stage_name(request.from_stage)
         if request.to_stage:
@@ -216,6 +232,13 @@ class RadarPipelineOrchestrator:
         from_idx = STAGE_NAMES.index(validate_stage_name(from_stage))
         to_idx = STAGE_NAMES.index(validate_stage_name(to_stage))
         return list(STAGE_NAMES[from_idx : to_idx + 1])
+
+    def _normalize_stage_selection(self, stages: list[str]) -> list[str]:
+        selected = {validate_stage_name(stage) for stage in stages}
+        normalized = [stage for stage in STAGE_NAMES if stage in selected]
+        if not normalized:
+            raise ValueError("Debes seleccionar al menos una etapa.")
+        return normalized
 
     def _initialize_stage_states(self, context: RadarRunContext, stages_planned: list[str]) -> None:
         for stage_name in STAGE_NAMES:
@@ -235,8 +258,8 @@ class RadarPipelineOrchestrator:
                     "warnings": [],
                     "errors": [],
                     "artifacts": [],
-                    "outputs": {"reason": "Fuera del rango solicitado por CLI."},
-                    "notes": ["Etapa omitida por selección de from_stage/to_stage."],
+                    "outputs": {"reason": "Fuera de la selección de etapas solicitada por CLI."},
+                    "notes": ["Etapa omitida por selección explícita de etapas o por rango from_stage/to_stage."],
                 }
 
     def _infer_resume_stage(self, context: RadarRunContext) -> str:
@@ -258,6 +281,28 @@ class RadarPipelineOrchestrator:
                     "errors": [],
                     "artifacts": [],
                     "outputs": {},
+                }
+
+    def _reset_selected_stages(self, context: RadarRunContext, stages_planned: list[str]) -> None:
+        for stage_name in STAGE_NAMES:
+            if stage_name in stages_planned:
+                context.stage_states[stage_name] = {
+                    "stage_name": stage_name,
+                    "status": "planned",
+                    "warnings": [],
+                    "errors": [],
+                    "artifacts": [],
+                    "outputs": {},
+                }
+            else:
+                existing = context.stage_states.get(stage_name, {})
+                context.stage_states[stage_name] = {
+                    "stage_name": stage_name,
+                    "status": existing.get("status", "skipped"),
+                    "warnings": existing.get("warnings", []),
+                    "errors": existing.get("errors", []),
+                    "artifacts": existing.get("artifacts", []),
+                    "outputs": existing.get("outputs", {"reason": "Fuera de la selección de etapas solicitada por CLI."}),
                 }
 
     def _build_failure_result(self, stage_name: str, exc: Exception) -> StageResult:
