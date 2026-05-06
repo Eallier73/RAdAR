@@ -52,6 +52,8 @@ Estructura:
   Prompt de estandarizacion integral y estricta del repo: naming canonico, fronteras de capas, gobierno arquitectonico.
 - `33_endurecimiento_preprocesamiento/`
   Prompt de endurecimiento estructural de promover_raw_a_texto.py: logging, auditoria, validaciones, no regresion canonica.
+- `34_endurecimiento_nlp_modelado/`
+  Prompt de endurecimiento operativo de la etapa NLP previa a modelado: auditoria, trazabilidad, scripts canonicos y cierre explicito sobre el dataset maestro final.
 
 Convencion de nombres:
 
@@ -99,3 +101,4 @@ Mapa actual:
 - `31_reestructuracion_arquitectonica_repo/01_reestructuracion_arquitectonica_seria_repo_radar.md`
 - `32_estandarizacion_integral_repo/01_estandarizacion_integral_estricta_repo_radar.md`
 - `33_endurecimiento_preprocesamiento/01_endurecimiento_estructural_promover_raw_a_texto.md`
+- `34_endurecimiento_nlp_modelado/01_estructuracion_operable_pipeline_nlp_modelado.md`

@@ -22,8 +22,8 @@ Uso:
 
 Ejemplo:
     python -m src.nlp.resultados_clasificacion_temas_pmi_confianza_normalizado \
-        --input data/reference/dictionaries_nlp/resultados_clasificacion_temas/consolidado.xlsx \
-        --output data/reference/dictionaries_nlp/resultados_clasificacion_temas/consolidado_norm.xlsx
+        --input data/reference/dictionaries_nlp/resultados_clasificacion_temas/pmi_confianza_corpus_unido_consolidado.xlsx \
+        --output data/reference/dictionaries_nlp/resultados_clasificacion_temas/pmi_confianza_corpus_unido_consolidado_normalizado.xlsx
 
 Parámetros opcionales:
     --base    Base del logaritmo (default: 2). Mayor base = menos compresión.
@@ -47,8 +47,22 @@ LOG_BASE_DEFAULT = 2
 
 # Rutas por defecto
 ROOT_DIR = Path(__file__).resolve().parents[2]
-INPUT_DEFAULT = str(ROOT_DIR / "data" / "reference" / "dictionaries_nlp" / "resultados_clasificacion_temas" / "consolidado.xlsx")
-OUTPUT_DEFAULT = str(ROOT_DIR / "data" / "reference" / "dictionaries_nlp" / "resultados_clasificacion_temas" / "consolidado_norm.xlsx")
+INPUT_DEFAULT = str(
+    ROOT_DIR
+    / "data"
+    / "reference"
+    / "dictionaries_nlp"
+    / "resultados_clasificacion_temas"
+    / "pmi_confianza_corpus_unido_consolidado.xlsx"
+)
+OUTPUT_DEFAULT = str(
+    ROOT_DIR
+    / "data"
+    / "reference"
+    / "dictionaries_nlp"
+    / "resultados_clasificacion_temas"
+    / "pmi_confianza_corpus_unido_consolidado_normalizado.xlsx"
+)
 
 # ============================================================
 # ARGUMENTOS

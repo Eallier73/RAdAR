@@ -142,4 +142,5 @@ Cuando llega a modelado, invoca runners canónicos de `src/modeling/runners/` y 
 - la GUI es mínima: sirve para disparar/reanudar corridas y ver stdout, no para monitoreo multiusuario
 - la GUI ahora organiza presets por capa (`Extractors`, `Preprocessing`, `NLP`, `Modeling`, `Export`, `Reporting`), pero sigue siendo un launcher local, no una consola multiusuario
 - la etapa de reporte queda como `stubbed` en `controlled` y como `skipped` explícito en `experimental`
-- la capa NLP activa todavía no recompone por sí sola `datos_ml_master_indice_aceptacion_digital.xlsx`; si existe, el orquestador lo reutiliza y lo deja explícito
+- la capa NLP activa ya ejecuta sentimiento, clasificacion PMI, normalizacion, refresco de `ml_ready_monica_villarreal_encuestas_pmi_1.xlsx`, `datos_ml_0.xlsx` y reconstruccion del dataset maestro final
+- si la corrida rebasa el horizonte historico del scaffold semanal de encuestas, el refresco de `ml_ready` extiende semanas por carry-forward

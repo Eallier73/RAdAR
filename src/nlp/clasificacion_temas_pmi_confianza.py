@@ -12,7 +12,12 @@ Genera:
     ningún corpus domine por volumen de texto
 
 Uso:
-    python clasificar_temas_pmi.py --dict_v5 <ruta> --dict_v10 <ruta> --output <carpeta> --nombre <prefijo>
+    python -m src.nlp.clasificacion_temas_pmi_confianza \
+        --dict_v5 <ruta> \
+        --dict_v10 <ruta> \
+        --output <carpeta> \
+        --nombre <prefijo> \
+        --through-date YYYY-MM-DD
 """
 
 import re
@@ -21,10 +26,16 @@ import sys
 import argparse
 import unicodedata
 from collections import defaultdict, Counter
+from datetime import date
 from pathlib import Path
 from openpyxl import Workbook, load_workbook
 from openpyxl.utils import get_column_letter
 from openpyxl.styles import Font, PatternFill, Alignment
+
+try:
+    from .week_resolution import list_preferred_week_files
+except ImportError:  # pragma: no cover - fallback para ejecucion directa
+    from week_resolution import list_preferred_week_files
 
 # ============================================================
 # ARGUMENTOS
@@ -33,19 +44,21 @@ ROOT_DIR = Path(__file__).resolve().parents[2]
 
 parser = argparse.ArgumentParser(description='Clasificación temática PMI')
 parser.add_argument('--dict_v5', type=str,
-    default=str(ROOT_DIR / 'data' / 'reference' / 'dictionaries_nlp' / 'produccion_diccionarios' / 'diccionario_pmi_v5.xlsx'),
+    default=str(ROOT_DIR / 'data' / 'reference' / 'dictionaries_nlp' / 'diccionarios_finales' / 'diccionario_pmi_confianza_v5.xlsx'),
     help='Ruta al diccionario PMI ventana 5')
 parser.add_argument('--dict_v10', type=str,
-    default=str(ROOT_DIR / 'data' / 'reference' / 'dictionaries_nlp' / 'produccion_diccionarios' / 'diccionario_pmi_v10.xlsx'),
+    default=str(ROOT_DIR / 'data' / 'reference' / 'dictionaries_nlp' / 'diccionarios_finales' / 'diccionario_pmi_confianza_v10.xlsx'),
     help='Ruta al diccionario PMI ventana 10')
 parser.add_argument('--output', type=str,
-    default=str(ROOT_DIR / 'data' / 'reference' / 'dictionaries_nlp' / 'resultados_clasificacion_temas' / 'resultados_pmi_1'),
+    default=str(ROOT_DIR / 'data' / 'reference' / 'dictionaries_nlp' / 'resultados_clasificacion_temas'),
     help='Carpeta de salida')
 parser.add_argument('--nombre', type=str, default='',
     help='Prefijo para los archivos de salida (ej: pmi_run1)')
 parser.add_argument('--datos', type=str,
     default=str(ROOT_DIR / 'data' / 'text' / 'radar_weekly_flat'),
     help='Carpeta base de los corpus')
+parser.add_argument('--through-date', type=str, default=None,
+    help='Procesa solo semanas con fecha_inicio_semana <= YYYY-MM-DD. Útil para avance semanal controlado.')
 
 args = parser.parse_args()
 
@@ -57,6 +70,12 @@ DICT_PATHS = {
 BASE_DATOS = args.datos
 OUTPUT_DIR = args.output
 PREFIJO = args.nombre + '_' if args.nombre else ''
+THROUGH_DATE = None
+if args.through_date:
+    try:
+        THROUGH_DATE = date.fromisoformat(args.through_date)
+    except ValueError as exc:
+        raise SystemExit(f"Fecha invalida para --through-date: {args.through_date!r}. Usa YYYY-MM-DD.") from exc
 
 # Sin Facebook — excluido por sesgo institucional
 CORPUS_DIRS = {
@@ -77,6 +96,7 @@ print(f"Salida:          {OUTPUT_DIR}")
 print(f"Prefijo:         {PREFIJO if PREFIJO else '(ninguno)'}")
 print(f"Normalizacion:   por {NORM_FACTOR} tokens")
 print(f"Corpus:          {', '.join(CORPUS_DIRS.keys())} (Facebook excluido)")
+print(f"Through date:    {THROUGH_DATE.isoformat() if THROUGH_DATE else '(sin limite)'}")
 
 # ============================================================
 # FUNCIONES
@@ -105,28 +125,23 @@ def cargar_diccionario(path):
     return diccionario
 
 
-def construir_regex(diccionario):
-    patrones = {}
-    for palabra in diccionario:
-        patrones[palabra] = re.compile(r'\b' + re.escape(palabra) + r'\b')
-    return patrones
+def tokenizar_palabras(texto):
+    return re.findall(r'\b[a-z]+\b', normalizar(texto))
 
 
-def contar_tokens(texto):
+def contar_tokens(tokens):
     """Cuenta tokens (palabras de 3+ caracteres) en texto normalizado."""
-    return len(re.findall(r'\b[a-záéíóúñü]{3,}\b', normalizar(texto)))
+    return sum(len(token) >= 3 for token in tokens)
 
 
-def clasificar_texto(texto, diccionario, patrones):
+def clasificar_texto(tokens, diccionario):
     """Scoring: delta * hits * confianza."""
-    texto_norm = normalizar(texto)
+    token_counts = Counter(tokens)
     scores = defaultdict(lambda: {'pos': 0.0, 'neg': 0.0})
     hits = defaultdict(lambda: Counter())
 
-    for palabra, patron in patrones.items():
-        matches = patron.findall(texto_norm)
-        n = len(matches)
-        if n == 0:
+    for palabra, n in token_counts.items():
+        if n == 0 or palabra not in diccionario:
             continue
         for cat, delta, conf in diccionario[palabra]:
             score = delta * n * conf
@@ -139,20 +154,8 @@ def clasificar_texto(texto, diccionario, patrones):
     return scores, hits
 
 
-def extraer_semana(nombre_archivo):
-    """Extrae identificador de semana: '26_10_twitter.txt' -> '26_10'."""
-    base = os.path.splitext(nombre_archivo)[0]
-    for sufijo in ['_facebook', '_twitter', '_medios', '_youtube']:
-        if base.lower().endswith(sufijo):
-            base = base[:-len(sufijo)]
-            break
-    return base
-
-
-def listar_archivos_txt(carpeta):
-    archivos = [f for f in os.listdir(carpeta) if f.endswith('.txt')]
-    archivos.sort()
-    return archivos
+def listar_archivos_txt(carpeta, corpus_name):
+    return list_preferred_week_files(Path(carpeta), corpus_name, through_date=THROUGH_DATE)
 
 
 # ============================================================
@@ -172,7 +175,6 @@ num_fmt = '0.0000'
 # ============================================================
 print("\nCargando diccionarios...")
 diccionarios = {}
-patrones_dict = {}
 categorias_por_dict = {}
 
 for vname, path in DICT_PATHS.items():
@@ -181,7 +183,6 @@ for vname, path in DICT_PATHS.items():
         sys.exit(1)
     d = cargar_diccionario(path)
     diccionarios[vname] = d
-    patrones_dict[vname] = construir_regex(d)
     cats = set()
     for entries in d.values():
         for cat, _, _ in entries:
@@ -209,7 +210,7 @@ for corpus_name, corpus_dir in CORPUS_DIRS.items():
         print(f"  AVISO: No existe {corpus_dir}, saltando.")
         continue
 
-    archivos = listar_archivos_txt(corpus_dir)
+    archivos = listar_archivos_txt(corpus_dir, corpus_name)
     print(f"  Archivos: {len(archivos)}")
 
     if not archivos:
@@ -221,7 +222,6 @@ for corpus_name, corpus_dir in CORPUS_DIRS.items():
 
     for vname in ['V5', 'V10']:
         diccionario = diccionarios[vname]
-        patrones = patrones_dict[vname]
         categorias = categorias_por_dict[vname]
 
         print(f"\n  --- Diccionario {vname} ---")
@@ -256,19 +256,20 @@ for corpus_name, corpus_dir in CORPUS_DIRS.items():
             cat_cols[cat] = (col, col + 1, col + 2)
             col += 3
 
-        for file_idx, archivo in enumerate(archivos):
-            filepath = os.path.join(corpus_dir, archivo)
+        for file_idx, resolved in enumerate(archivos):
+            filepath = resolved.path
             with open(filepath, encoding='utf-8', errors='ignore') as f:
                 texto = f.read()
 
-            scores, hits = clasificar_texto(texto, diccionario, patrones)
-            n_tokens = contar_tokens(texto)
+            tokens = tokenizar_palabras(texto)
+            scores, hits = clasificar_texto(tokens, diccionario)
+            n_tokens = contar_tokens(tokens)
 
             for cat in hits:
                 hits_global[cat].update(hits[cat])
 
             # Acumular scores normalizados para consolidado
-            semana = extraer_semana(archivo)
+            semana = resolved.week_start_label
             if n_tokens > 0:
                 for cat in categorias:
                     norm_pos = (scores[cat]['pos'] / n_tokens) * NORM_FACTOR
@@ -279,7 +280,7 @@ for corpus_name, corpus_dir in CORPUS_DIRS.items():
 
             # Escribir fila bruta
             row = file_idx + 2
-            ws.cell(row, 1, os.path.splitext(archivo)[0]).font = cf
+            ws.cell(row, 1, semana).font = cf
 
             for cat in categorias:
                 col_pos, col_neg, col_net = cat_cols[cat]
