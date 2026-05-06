@@ -240,10 +240,10 @@ class RadarRunContext:
     ) -> dict[str, Any]:
         command_text = shlex.join(command)
         started_at = now_text()
-        self._append_log(self.stage_log_path(stage_name), f"$ {command_text}")
+        self.emit(f"Ejecutando {label}: {command_text}", stage_name=stage_name)
 
         if self.dry_run:
-            self._append_log(self.stage_log_path(stage_name), "[dry-run] comando no ejecutado")
+            self.emit("[dry-run] comando no ejecutado", stage_name=stage_name)
             return {
                 "label": label,
                 "command": command,
@@ -257,19 +257,27 @@ class RadarRunContext:
             }
 
         started_dt = datetime.now()
-        completed = subprocess.run(
+        process = subprocess.Popen(
             command,
             cwd=str(cwd or ROOT_DIR),
             env=env,
-            capture_output=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
             text=True,
-            check=False,
+            bufsize=1,
         )
+        assert process.stdout is not None
+
+        stdout_chunks: list[str] = []
+        for line in process.stdout:
+            print(line, end="", flush=True)
+            stdout_chunks.append(line)
+            self._append_log(self.stage_log_path(stage_name), line.rstrip("\n"))
+
+        process.stdout.close()
+        returncode = process.wait()
         finished_dt = datetime.now()
-        if completed.stdout:
-            self._append_log(self.stage_log_path(stage_name), completed.stdout.rstrip())
-        if completed.stderr:
-            self._append_log(self.stage_log_path(stage_name), completed.stderr.rstrip())
+        stdout_text = "".join(stdout_chunks)
 
         payload = {
             "label": label,
@@ -278,16 +286,16 @@ class RadarRunContext:
             "started_at": started_at,
             "finished_at": finished_dt.replace(microsecond=0).isoformat(sep=" "),
             "duration_sec": round((finished_dt - started_dt).total_seconds(), 3),
-            "returncode": completed.returncode,
+            "returncode": returncode,
             "executed": True,
             "cwd": str(cwd or ROOT_DIR),
         }
-        if completed.returncode != 0 and check:
+        if returncode != 0 and check:
             raise subprocess.CalledProcessError(
-                completed.returncode,
+                returncode,
                 command,
-                output=completed.stdout,
-                stderr=completed.stderr,
+                output=stdout_text,
+                stderr=None,
             )
         return payload
 

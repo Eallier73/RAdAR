@@ -528,20 +528,25 @@ class RadarPipelineGui(tk.Tk):
         self.output_queue.put(f"$ {' '.join(command)}\n")
 
         def worker() -> None:
-            self.process = subprocess.Popen(
-                command,
-                cwd=str(ROOT_DIR),
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                text=True,
-                bufsize=1,
-                env={**__import__("os").environ, "PYTHONUNBUFFERED": "1"},
-            )
-            assert self.process.stdout is not None
-            for line in self.process.stdout:
-                self.output_queue.put(line)
-            self.process.wait()
-            self.output_queue.put(f"\n[exit_code={self.process.returncode}]\n")
+            try:
+                self.process = subprocess.Popen(
+                    command,
+                    cwd=str(ROOT_DIR),
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.STDOUT,
+                    text=True,
+                    bufsize=1,
+                    env={**__import__("os").environ, "PYTHONUNBUFFERED": "1"},
+                )
+                assert self.process.stdout is not None
+                for line in self.process.stdout:
+                    self.output_queue.put(line)
+                self.process.wait()
+                self.output_queue.put(f"\n[exit_code={self.process.returncode}]\n")
+            except Exception as exc:
+                self.output_queue.put(f"\n[gui_worker_error={exc}]\n")
+            finally:
+                self.process = None
 
         threading.Thread(target=worker, daemon=True).start()
 

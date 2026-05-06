@@ -1,12 +1,50 @@
-"""Stage implementations for the Radar operational orchestrator."""
+"""Stage implementations for the Radar operational orchestrator.
 
-from .export_stage import run_stage as run_export_stage
-from .extraction_stage import run_stage as run_extraction_stage
-from .modeling_stage import run_stage as run_modeling_stage
-from .nlp_stage import run_stage as run_nlp_stage
-from .preflight_stage import run_stage as run_preflight_stage
-from .preprocessing_stage import run_stage as run_preprocessing_stage
-from .report_stage import run_stage as run_report_stage
+Lazy wrappers avoid importing heavy stage dependencies before the selected
+stage hands execution off to its own configured Python environment.
+"""
+
+
+def run_preflight_stage(*args, **kwargs):
+    from .preflight_stage import run_stage
+
+    return run_stage(*args, **kwargs)
+
+
+def run_extraction_stage(*args, **kwargs):
+    from .extraction_stage import run_stage
+
+    return run_stage(*args, **kwargs)
+
+
+def run_preprocessing_stage(*args, **kwargs):
+    from .preprocessing_stage import run_stage
+
+    return run_stage(*args, **kwargs)
+
+
+def run_nlp_stage(*args, **kwargs):
+    from .nlp_stage import run_stage
+
+    return run_stage(*args, **kwargs)
+
+
+def run_modeling_stage(*args, **kwargs):
+    from .modeling_stage import run_stage
+
+    return run_stage(*args, **kwargs)
+
+
+def run_export_stage(*args, **kwargs):
+    from .export_stage import run_stage
+
+    return run_stage(*args, **kwargs)
+
+
+def run_report_stage(*args, **kwargs):
+    from .report_stage import run_stage
+
+    return run_stage(*args, **kwargs)
 
 __all__ = [
     "run_preflight_stage",
