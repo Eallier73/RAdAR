@@ -17,6 +17,10 @@ from .config import (
 from .pipeline_orchestrator import PipelineRequest, RadarPipelineOrchestrator
 
 
+POST_W10_OPERATION_PROFILE = "post_w10_controlled"
+POST_W10_OPERATION_STAGE_ORDER = ("extraction", "preprocessing", "nlp", "modeling")
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
@@ -84,11 +88,116 @@ def parse_args() -> argparse.Namespace:
         default=str(DEFAULT_MODEL_DATASET),
         help=f"Dataset maestro consumido por modeling. Default: {DEFAULT_MODEL_DATASET}",
     )
+    parser.add_argument(
+        "--operation-profile",
+        choices=(POST_W10_OPERATION_PROFILE,),
+        help=(
+            "Perfil operativo integrado. "
+            "Actualmente soporta la operación mínima controlada post-W10 sin tocar src/modeling."
+        ),
+    )
+    parser.add_argument("--operation-from-week", help="Semana inicial para operación integrada post-W10. Formato YYYY-Www.")
+    parser.add_argument("--operation-to-week", help="Semana final para operación integrada post-W10. Formato YYYY-Www.")
+    parser.add_argument("--operation-id", help="Identificador explícito para la corrida operativa integrada.")
+    parser.add_argument("--operation-comment", default="", help="Comentario operativo para el registro de emisiones.")
+    parser.add_argument("--operation-ops-python", help="Override opcional para el Python de operación/NLP.")
+    parser.add_argument("--operation-modeling-python", help="Override opcional para el Python de modelado.")
     return parser.parse_args()
+
+
+def _validate_integrated_operation_profile(args: argparse.Namespace) -> None:
+    if args.mode != ALLOWED_MODES[0]:
+        raise ValueError("La operación integrada post-W10 solo soporta --mode controlled.")
+    forbidden_pairs = {
+        "--week": args.week,
+        "--date-from": args.date_from,
+        "--date-to": args.date_to,
+        "--resume-run-id": args.resume_run_id,
+    }
+    invalid = [flag for flag, value in forbidden_pairs.items() if value]
+    if invalid:
+        raise ValueError(
+            "La operación integrada post-W10 no usa selección semanal del orquestador estándar. "
+            f"No combines {', '.join(invalid)} con --operation-profile."
+        )
+    if args.resume_run_id:
+        raise ValueError("La operación integrada post-W10 no soporta --resume-run-id.")
+
+
+def _resolve_operation_stage_bounds(args: argparse.Namespace) -> tuple[str, str]:
+    if args.stages:
+        selected = [stage for stage in STAGE_NAMES if stage in set(args.stages)]
+        unsupported = [stage for stage in selected if stage not in POST_W10_OPERATION_STAGE_ORDER]
+        if unsupported:
+            raise ValueError(
+                "La operación integrada post-W10 solo soporta etapas entre extraction y modeling. "
+                f"Etapas no soportadas: {unsupported}"
+            )
+        if not selected:
+            raise ValueError("Debes seleccionar al menos una etapa para la operación integrada post-W10.")
+        expected_slice = list(
+            POST_W10_OPERATION_STAGE_ORDER[
+                POST_W10_OPERATION_STAGE_ORDER.index(selected[0]) : POST_W10_OPERATION_STAGE_ORDER.index(selected[-1]) + 1
+            ]
+        )
+        if selected != expected_slice:
+            raise ValueError(
+                "La operación integrada post-W10 solo soporta selección contigua de etapas. "
+                f"Seleccionado={selected}, esperado={expected_slice}"
+            )
+        return selected[0], selected[-1]
+
+    from_stage = args.from_stage or POST_W10_OPERATION_STAGE_ORDER[0]
+    to_stage = args.to_stage or POST_W10_OPERATION_STAGE_ORDER[-1]
+    unsupported = [stage for stage in (from_stage, to_stage) if stage not in POST_W10_OPERATION_STAGE_ORDER]
+    if unsupported:
+        raise ValueError(
+            "La operación integrada post-W10 solo soporta etapas entre extraction y modeling. "
+            f"Etapas no soportadas: {unsupported}"
+        )
+    if POST_W10_OPERATION_STAGE_ORDER.index(from_stage) > POST_W10_OPERATION_STAGE_ORDER.index(to_stage):
+        raise ValueError("--from-stage no puede ir después de --to-stage en la operación integrada post-W10.")
+    return from_stage, to_stage
+
+
+def _run_integrated_operation_profile(args: argparse.Namespace) -> int:
+    _validate_integrated_operation_profile(args)
+    if args.operation_profile != POST_W10_OPERATION_PROFILE:
+        raise ValueError(f"Perfil operativo no soportado: {args.operation_profile}")
+
+    from .run_operacion_minima_post_w10 import main as run_post_w10
+
+    operation_from_stage, operation_to_stage = _resolve_operation_stage_bounds(args)
+    delegated_args: list[str] = []
+    if args.operation_from_week:
+        delegated_args.extend(["--from-week", args.operation_from_week])
+    if args.operation_to_week:
+        delegated_args.extend(["--to-week", args.operation_to_week])
+    if args.operation_id:
+        delegated_args.extend(["--operation-id", args.operation_id])
+    if args.operation_comment:
+        delegated_args.extend(["--comment", args.operation_comment])
+    if args.operation_ops_python:
+        delegated_args.extend(["--ops-python", args.operation_ops_python])
+    if args.operation_modeling_python:
+        delegated_args.extend(["--modeling-python", args.operation_modeling_python])
+    delegated_args.extend(["--pipeline-from-stage", operation_from_stage, "--pipeline-to-stage", operation_to_stage])
+    if args.sources:
+        delegated_args.extend(["--sources", *list(args.sources)])
+    delegated_args.append("--fail-fast" if args.fail_fast else "--no-fail-fast")
+    if args.dry_run:
+        delegated_args.append("--dry-run")
+    return run_post_w10(delegated_args)
 
 
 def main() -> int:
     args = parse_args()
+    if args.operation_profile:
+        try:
+            return _run_integrated_operation_profile(args)
+        except Exception as exc:
+            print(f"fatal_error={exc}", file=sys.stderr)
+            return 2
     orchestrator = RadarPipelineOrchestrator()
     request = PipelineRequest(
         week=args.week,

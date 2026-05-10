@@ -8,6 +8,7 @@ Su función es coordinar el pipeline canónico de punta a punta sin reescribir l
 ## Qué sí hace
 
 - expone un entrypoint operativo único: `python -m src.operations.run_radar_pipeline`
+- integra la operación mínima controlada post-W10 vía `--operation-profile post_w10_controlled`
 - distingue `mode=controlled` y `mode=experimental`
 - orquesta etapas explícitas: extracción, preprocessing, NLP, modelado, export y reporte
 - persiste estado auditable por corrida
@@ -15,6 +16,7 @@ Su función es coordinar el pipeline canónico de punta a punta sin reescribir l
 - deja manifiesto maestro, resumen, logs por etapa y JSON de estado por etapa
 - publica salidas estables bajo `artifacts/operations/.../published/`
 - expone una GUI mínima de control con `python -m src.operations.gui_radar_pipeline`
+- expone en la GUI el preset `Operación mínima post-W10`
 - permite acotar ventanas operativas con `--date-from` y `--date-to` dentro de una semana canónica
 
 ## Qué no hace
@@ -80,6 +82,12 @@ Dry-run:
 python -m src.operations.run_radar_pipeline --week 2026-W14 --mode controlled --dry-run
 ```
 
+Operación mínima post-W10 integrada:
+
+```bash
+python -m src.operations.run_radar_pipeline --operation-profile post_w10_controlled --from-stage extraction --to-stage modeling --dry-run --operation-modeling-python /home/emilio/anaconda3/envs/radar-exp-py311/bin/python
+```
+
 Corrida experimental:
 
 ```bash
@@ -140,7 +148,10 @@ Cuando llega a modelado, invoca runners canónicos de `src/modeling/runners/` y 
 
 - el scheduler externo todavía no forma parte de esta capa
 - la GUI es mínima: sirve para disparar/reanudar corridas y ver stdout, no para monitoreo multiusuario
-- la GUI ahora organiza presets por capa (`Extractors`, `Preprocessing`, `NLP`, `Modeling`, `Export`, `Reporting`), pero sigue siendo un launcher local, no una consola multiusuario
+- la GUI ahora organiza presets por capa (`Extractors`, `Preprocessing`, `NLP`, `Modeling`, `Export`, `Reporting`) y un preset integrado `Operación mínima post-W10`, pero sigue siendo un launcher local, no una consola multiusuario
 - la etapa de reporte queda como `stubbed` en `controlled` y como `skipped` explícito en `experimental`
 - la capa NLP activa ya ejecuta sentimiento, clasificacion PMI, normalizacion, refresco de `ml_ready_monica_villarreal_encuestas_pmi_1.xlsx`, `datos_ml_0.xlsx` y reconstruccion del dataset maestro final
 - si la corrida rebasa el horizonte historico del scaffold semanal de encuestas, el refresco de `ml_ready` extiende semanas por carry-forward
+- la operación post-W10 está integrada al entrypoint y a la GUI; su ruta `predict-only` ya quedó validada materialmente para `E1_v5_clean` y `E9_v2_clean`
+- `E9_v2_clean` opera mediante un paquete meta-modelo congelado que consume paquetes base congelados de `E2_v3_clean`, `E3_v2_clean`, `E5_v4_clean` y `E7_v3_clean`
+- la operación post-W10 integrada respeta `From Stage / To Stage` entre `extraction` y `modeling`; fuera de ese rango sigue aplicando el pipeline semanal estándar

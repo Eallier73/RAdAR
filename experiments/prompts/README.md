@@ -54,6 +54,10 @@ Estructura:
   Prompt de endurecimiento estructural de promover_raw_a_texto.py: logging, auditoria, validaciones, no regresion canonica.
 - `34_endurecimiento_nlp_modelado/`
   Prompt de endurecimiento operativo de la etapa NLP previa a modelado: auditoria, trazabilidad, scripts canonicos y cierre explicito sobre el dataset maestro final.
+- `35_operacion_minima_post_w10/`
+  Prompt de puesta en operacion minima controlada post-W10: congelamiento integral, inferencia canónica y registro formal de emisiones.
+  Tambien incluye la validacion material de punta a punta sobre semanas reales ya promovidas a texto.
+  Y la correccion estricta de la separacion entrenamiento/inferencia para que `post_w10_controlled` opere en modo predict-only.
 
 Convencion de nombres:
 
@@ -102,3 +106,6 @@ Mapa actual:
 - `32_estandarizacion_integral_repo/01_estandarizacion_integral_estricta_repo_radar.md`
 - `33_endurecimiento_preprocesamiento/01_endurecimiento_estructural_promover_raw_a_texto.md`
 - `34_endurecimiento_nlp_modelado/01_estructuracion_operable_pipeline_nlp_modelado.md`
+- `35_operacion_minima_post_w10/01_operacion_minima_controlada_post_w10.md`
+- `35_operacion_minima_post_w10/02_validacion_material_operacion_minima_post_w10.md`
+- `35_operacion_minima_post_w10/03_correccion_estricta_separacion_entrenamiento_inferencia_post_w10.md`

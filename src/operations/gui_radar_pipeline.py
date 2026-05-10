@@ -7,10 +7,14 @@ import tkinter as tk
 from pathlib import Path
 from tkinter import messagebox, ttk
 
-from .config import ALLOWED_MODES, DEFAULT_MODEL_RUNNER, DEFAULT_SOURCES, OPS_PYTHON, SOURCE_NAMES, STAGE_NAMES
+from .config import ALLOWED_MODES, DEFAULT_MODEL_RUNNER, DEFAULT_SOURCES, MODELING_PYTHON, OPS_PYTHON, SOURCE_NAMES, STAGE_NAMES
 
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
+POST_W10_LAYER_PRESET = "Operación mínima post-W10"
+POST_W10_LAYER_KIND = "__post_w10__"
+POST_W10_OPERATION_PROFILE = "post_w10_controlled"
+POST_W10_DEFAULT_FROM_WEEK = "2026-W11"
 
 STAGE_LABELS = {
     "preflight": "Preflight",
@@ -23,6 +27,12 @@ STAGE_LABELS = {
 }
 LABEL_TO_STAGE = {label: stage for stage, label in STAGE_LABELS.items()}
 STAGE_DISPLAY_VALUES = tuple(STAGE_LABELS[stage] for stage in STAGE_NAMES)
+POST_W10_STAGE_LABELS = (
+    STAGE_LABELS["extraction"],
+    STAGE_LABELS["preprocessing"],
+    STAGE_LABELS["nlp"],
+    STAGE_LABELS["modeling"],
+)
 LAYER_PRESETS = {
     "Pipeline completo": ("preflight", "report"),
     "Extractors": ("extraction", "extraction"),
@@ -31,6 +41,7 @@ LAYER_PRESETS = {
     "Modeling": ("modeling", "modeling"),
     "Export": ("export", "export"),
     "Reporting": ("report", "report"),
+    POST_W10_LAYER_PRESET: POST_W10_LAYER_KIND,
     "Rango personalizado": None,
 }
 
@@ -50,6 +61,11 @@ class RadarPipelineGui(tk.Tk):
         self.date_to_var = tk.StringVar()
         self.resume_var = tk.StringVar()
         self.mode_var = tk.StringVar(value=ALLOWED_MODES[0])
+        self.post_w10_from_week_var = tk.StringVar(value=POST_W10_DEFAULT_FROM_WEEK)
+        self.post_w10_to_week_var = tk.StringVar()
+        self.post_w10_operation_id_var = tk.StringVar()
+        self.post_w10_comment_var = tk.StringVar()
+        self.post_w10_modeling_python_var = tk.StringVar(value=MODELING_PYTHON)
         self.from_stage_var = tk.StringVar(value=STAGE_LABELS["preflight"])
         self.to_stage_var = tk.StringVar(value=STAGE_LABELS["report"])
         self.model_runner_var = tk.StringVar(value=DEFAULT_MODEL_RUNNER)
@@ -59,7 +75,7 @@ class RadarPipelineGui(tk.Tk):
         self.allow_partial_var = tk.BooleanVar(value=False)
         self.dry_run_var = tk.BooleanVar(value=False)
         self.status_var = tk.StringVar(
-            value="Selecciona una capa o rango. En controlled, modeling usa E10 (dualidad E1_v5_clean + E9_v2_clean)."
+            value="Selecciona una capa u operación. La operación mínima post-W10 usa E1_v5_clean y E9_v2_clean sin tocar src/modeling."
         )
         self.source_vars = {source: tk.BooleanVar(value=source in DEFAULT_SOURCES) for source in SOURCE_NAMES}
         self.stage_selection_vars = {stage: tk.BooleanVar(value=stage in ("preflight", "extraction", "preprocessing", "nlp", "modeling", "export", "report")) for stage in STAGE_NAMES}
@@ -69,6 +85,9 @@ class RadarPipelineGui(tk.Tk):
         self.stage_checkbuttons: list[ttk.Checkbutton] = []
         self.date_widgets: list[ttk.Widget] = []
         self.model_widgets: list[ttk.Widget] = []
+        self.post_w10_widgets: list[ttk.Widget] = []
+        self.resume_widget: ttk.Widget | None = None
+        self.mode_widget: ttk.Widget | None = None
 
         self._build_widgets()
         self._bind_traces()
@@ -108,6 +127,7 @@ class RadarPipelineGui(tk.Tk):
             hint="controlled o experimental",
             readonly=True,
         )
+        self.mode_widget = mode_combo
 
         week_entry = self._add_entry(
             scope_frame,
@@ -125,6 +145,7 @@ class RadarPipelineGui(tk.Tk):
             column=2,
             hint="radar_2026W14_001",
         )
+        self.resume_widget = resume_entry
         date_from_entry = self._add_entry(
             scope_frame,
             "Date From",
@@ -229,6 +250,61 @@ class RadarPipelineGui(tk.Tk):
         )
         self.model_widgets.extend([model_runner_entry, model_run_id_entry, model_args_entry])
 
+        post_w10_frame = ttk.LabelFrame(root, text="Operación mínima post-W10", padding=10)
+        post_w10_frame.pack(fill=tk.X, pady=(0, 10))
+        post_w10_frame.columnconfigure(1, weight=1)
+        post_w10_frame.columnconfigure(3, weight=1)
+        post_w10_from_entry = self._add_entry(
+            post_w10_frame,
+            "From Week",
+            self.post_w10_from_week_var,
+            row=0,
+            column=0,
+            hint="Default: 2026-W11",
+        )
+        post_w10_to_entry = self._add_entry(
+            post_w10_frame,
+            "To Week",
+            self.post_w10_to_week_var,
+            row=0,
+            column=2,
+            hint="Vacío = última semana común",
+        )
+        post_w10_operation_id_entry = self._add_entry(
+            post_w10_frame,
+            "Operation ID",
+            self.post_w10_operation_id_var,
+            row=1,
+            column=0,
+            hint="opcional",
+        )
+        post_w10_modeling_python_entry = self._add_entry(
+            post_w10_frame,
+            "Modeling Python",
+            self.post_w10_modeling_python_var,
+            row=1,
+            column=2,
+            hint="Override opcional del entorno de modelado",
+        )
+        post_w10_comment_entry = self._add_entry(
+            post_w10_frame,
+            "Comment",
+            self.post_w10_comment_var,
+            row=2,
+            column=0,
+            hint="Comentario para el registro de emisiones",
+            columnspan=3,
+        )
+        self.post_w10_widgets.extend(
+            [
+                post_w10_from_entry,
+                post_w10_to_entry,
+                post_w10_operation_id_entry,
+                post_w10_modeling_python_entry,
+                post_w10_comment_entry,
+            ]
+        )
+
         execution_frame = ttk.Frame(root)
         execution_frame.pack(fill=tk.X, pady=(0, 10))
         ttk.Checkbutton(execution_frame, text="Fail Fast", variable=self.fail_fast_var).pack(side=tk.LEFT, padx=(0, 12))
@@ -261,6 +337,11 @@ class RadarPipelineGui(tk.Tk):
             self.date_to_var,
             self.resume_var,
             self.mode_var,
+            self.post_w10_from_week_var,
+            self.post_w10_to_week_var,
+            self.post_w10_operation_id_var,
+            self.post_w10_comment_var,
+            self.post_w10_modeling_python_var,
             self.from_stage_var,
             self.to_stage_var,
             self.model_runner_var,
@@ -343,13 +424,18 @@ class RadarPipelineGui(tk.Tk):
         selected = self._selected_stage_names()
         return selected[0], selected[-1]
 
+    def _is_post_w10_operation(self) -> bool:
+        return LAYER_PRESETS.get(self.layer_var.get()) == POST_W10_LAYER_KIND
+
     def _selected_stage_names(self) -> list[str]:
         preset = LAYER_PRESETS.get(self.layer_var.get())
-        if preset is not None:
+        if isinstance(preset, tuple):
             from_stage, to_stage = preset
             from_idx = STAGE_NAMES.index(from_stage)
             to_idx = STAGE_NAMES.index(to_stage)
             return list(STAGE_NAMES[from_idx : to_idx + 1])
+        if preset == POST_W10_LAYER_KIND:
+            return []
         return [stage for stage in STAGE_NAMES if self.stage_selection_vars[stage].get()]
 
     def _stage_range_includes(self, stage_name: str) -> bool:
@@ -357,8 +443,9 @@ class RadarPipelineGui(tk.Tk):
 
     def _refresh_ui(self) -> None:
         preset = LAYER_PRESETS.get(self.layer_var.get())
+        post_w10_mode = preset == POST_W10_LAYER_KIND
         custom_mode = preset is None
-        if preset is not None:
+        if isinstance(preset, tuple):
             from_label = STAGE_LABELS[preset[0]]
             to_label = STAGE_LABELS[preset[1]]
             if self.from_stage_var.get() != from_label:
@@ -369,24 +456,44 @@ class RadarPipelineGui(tk.Tk):
             for stage_name, variable in self.stage_selection_vars.items():
                 if variable.get() != (stage_name in selected):
                     variable.set(stage_name in selected)
+        elif post_w10_mode:
+            if self.mode_var.get() != ALLOWED_MODES[0]:
+                self.mode_var.set(ALLOWED_MODES[0])
 
-        stage_state = "readonly" if custom_mode else "disabled"
+        stage_state = "readonly" if (custom_mode or post_w10_mode) else "disabled"
         for widget in self.stage_widgets[-2:]:
             widget.configure(state=stage_state)
         for widget in self.stage_checkbuttons:
             widget.configure(state="normal" if custom_mode else "disabled")
+        if self.resume_widget is not None:
+            self.resume_widget.configure(state="disabled" if post_w10_mode else "normal")
+        if self.mode_widget is not None:
+            self.mode_widget.configure(state="disabled" if post_w10_mode else "readonly")
+        if post_w10_mode:
+            if self.from_stage_var.get() not in POST_W10_STAGE_LABELS:
+                self.from_stage_var.set(STAGE_LABELS["extraction"])
+            if self.to_stage_var.get() not in POST_W10_STAGE_LABELS:
+                self.to_stage_var.set(STAGE_LABELS["modeling"])
 
-        selection_relevant = any(self._stage_range_includes(stage) for stage in ("extraction", "preprocessing", "nlp"))
-        model_relevant = self._stage_range_includes("modeling")
+        selection_relevant = (not post_w10_mode) and any(
+            self._stage_range_includes(stage) for stage in ("extraction", "preprocessing", "nlp")
+        )
+        model_relevant = (not post_w10_mode) and self._stage_range_includes("modeling")
 
         for widget in self.date_widgets:
             widget.configure(state="normal" if selection_relevant else "disabled")
         for widget in self.source_checkbuttons:
-            widget.configure(state="normal" if selection_relevant else "disabled")
+            widget.configure(state="normal" if (selection_relevant or post_w10_mode) else "disabled")
         for widget in self.model_widgets:
             widget.configure(state="normal" if model_relevant else "disabled")
+        for widget in self.post_w10_widgets:
+            widget.configure(state="normal" if post_w10_mode else "disabled")
 
-        if selection_relevant:
+        if post_w10_mode:
+            self.status_var.set(
+                "Operación post-W10 integrada. Usa From/To Stage para elegir el tramo entre extraction y modeling; si llega a modeling, ejecuta refresh congelado de E1/E9 y registro de emisiones."
+            )
+        elif selection_relevant:
             self.status_var.set(
                 "Fuentes y fechas activas. Usa Week para una semana completa o Date From/Date To para una ventana más precisa dentro de esa semana."
             )
@@ -405,6 +512,35 @@ class RadarPipelineGui(tk.Tk):
 
     def _build_command(self) -> list[str]:
         command = [OPS_PYTHON, "-u", "-m", "src.operations.run_radar_pipeline"]
+        if self._is_post_w10_operation():
+            command.extend(["--operation-profile", POST_W10_OPERATION_PROFILE, "--mode", ALLOWED_MODES[0]])
+            from_stage = LABEL_TO_STAGE[self.from_stage_var.get()]
+            to_stage = LABEL_TO_STAGE[self.to_stage_var.get()]
+            from_week = self.post_w10_from_week_var.get().strip()
+            to_week = self.post_w10_to_week_var.get().strip()
+            operation_id = self.post_w10_operation_id_var.get().strip()
+            operation_comment = self.post_w10_comment_var.get().strip()
+            modeling_python = self.post_w10_modeling_python_var.get().strip()
+            command.extend(["--from-stage", from_stage, "--to-stage", to_stage])
+            if from_week:
+                command.extend(["--operation-from-week", from_week])
+            if to_week:
+                command.extend(["--operation-to-week", to_week])
+            if operation_id:
+                command.extend(["--operation-id", operation_id])
+            if operation_comment:
+                command.extend(["--operation-comment", operation_comment])
+            if modeling_python:
+                command.extend(["--operation-modeling-python", modeling_python])
+            selected_sources = [source for source, var in self.source_vars.items() if var.get()]
+            if selected_sources:
+                command.append("--sources")
+                command.extend(selected_sources)
+            command.append("--fail-fast" if self.fail_fast_var.get() else "--no-fail-fast")
+            if self.dry_run_var.get():
+                command.append("--dry-run")
+            return command
+
         week_value = self.week_var.get().strip()
         if week_value:
             command.extend(["--week", week_value])
@@ -462,6 +598,31 @@ class RadarPipelineGui(tk.Tk):
         self.command_preview.configure(state=tk.DISABLED)
 
     def _validate_form(self) -> bool:
+        if self._is_post_w10_operation():
+            selected_sources = [source for source, var in self.source_vars.items() if var.get()]
+            if not selected_sources:
+                messagebox.showerror(
+                    "Radar Pipeline Control",
+                    "Selecciona al menos una fuente para la operación mínima post-W10.",
+                )
+                return False
+            from_stage = LABEL_TO_STAGE[self.from_stage_var.get()]
+            to_stage = LABEL_TO_STAGE[self.to_stage_var.get()]
+            allowed = ("extraction", "preprocessing", "nlp", "modeling")
+            if from_stage not in allowed or to_stage not in allowed:
+                messagebox.showerror(
+                    "Radar Pipeline Control",
+                    "La operación mínima post-W10 solo soporta etapas entre Extractors y Modeling.",
+                )
+                return False
+            if allowed.index(from_stage) > allowed.index(to_stage):
+                messagebox.showerror(
+                    "Radar Pipeline Control",
+                    "From Stage no puede quedar después de To Stage en la operación mínima post-W10.",
+                )
+                return False
+            return True
+
         resume_value = self.resume_var.get().strip()
         week_value = self.week_var.get().strip()
         date_from = self.date_from_var.get().strip()
