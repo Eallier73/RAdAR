@@ -1,0 +1,18 @@
+[
+  {
+    "best_alpha_max": 10000.0,
+    "best_alpha_mean": 1200.359024635407,
+    "best_alpha_median": 587.8016072274911,
+    "best_alpha_min": 88.86238162743408,
+    "feature_candidates": 59,
+    "feature_mode": "all",
+    "horizonte_sem": 1,
+    "rows_eval": 28,
+    "rows_modeling": 68,
+    "selected_feature_count_avg": 59.0,
+    "selected_feature_count_max": 59,
+    "selected_feature_count_min": 59,
+    "target_mode": "nivel",
+    "transform_mode": "standard"
+  }
+]

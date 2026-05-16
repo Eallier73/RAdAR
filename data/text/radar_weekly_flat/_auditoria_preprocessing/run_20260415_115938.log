@@ -1,0 +1,818 @@
+2026-04-15T05:59:38 [INFO] ======================================================================
+2026-04-15T05:59:38 [INFO] Inicio de corrida — promover_raw_a_texto.py v2.0.0-structural
+2026-04-15T05:59:38 [INFO] run_timestamp: 2026-04-15T11:59:38.306380+00:00
+2026-04-15T05:59:38 [INFO] SOURCE_BASE:   /home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/data/raw/radar_weekly_flat
+2026-04-15T05:59:38 [INFO] TARGET_BASE:   /home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/data/text/radar_weekly_flat
+2026-04-15T05:59:38 [INFO] AUDIT_DIR:     /home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/data/text/radar_weekly_flat/_auditoria_preprocessing
+2026-04-15T05:59:38 [INFO] Semanas detectadas: 80
+2026-04-15T05:59:38 [INFO] 
+[2024-10-01] 2024-10-01_semana_01octubre_24_07octubre_24
+2026-04-15T05:59:38 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2024-10-01_semana_01octubre_24_07octubre_24_facebook.csv']
+2026-04-15T05:59:38 [INFO]   facebook -> 2024-10-01_facebook.txt | extraidos:44 unicos:38
+2026-04-15T05:59:38 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2024-10-01_semana_01octubre_24_07octubre_24_twitter.csv']
+2026-04-15T05:59:38 [INFO]   twitter -> 2024-10-01_twitter.txt | extraidos:254 unicos:236
+2026-04-15T05:59:38 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2024-10-01_semana_01octubre_24_07octubre_24_youtube.csv']
+2026-04-15T05:59:38 [INFO]   youtube -> 2024-10-01_youtube.txt | extraidos:3936 unicos:1754
+2026-04-15T05:59:38 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2024-10-01_semana_01octubre_24_07octubre_24_medios.txt']
+2026-04-15T05:59:38 [INFO]   medios -> 2024-10-01_medios.txt | copiado
+2026-04-15T05:59:38 [INFO] 
+[2024-10-08] 2024-10-08_semana_08octubre_24_14octubre_24
+2026-04-15T05:59:38 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2024-10-08_semana_08octubre_24_14octubre_24_facebook.csv']
+2026-04-15T05:59:38 [INFO]   facebook -> 2024-10-08_facebook.txt | extraidos:40 unicos:35
+2026-04-15T05:59:38 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2024-10-08_semana_08octubre_24_14octubre_24_twitter.csv']
+2026-04-15T05:59:38 [INFO]   twitter -> 2024-10-08_twitter.txt | extraidos:56 unicos:49
+2026-04-15T05:59:38 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2024-10-08_semana_08octubre_24_14octubre_24_youtube.csv']
+2026-04-15T05:59:38 [INFO]   youtube -> 2024-10-08_youtube.txt | extraidos:1646 unicos:809
+2026-04-15T05:59:38 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2024-10-08_semana_08octubre_24_14octubre_24_medios.txt']
+2026-04-15T05:59:38 [INFO]   medios -> 2024-10-08_medios.txt | copiado
+2026-04-15T05:59:38 [INFO] 
+[2024-10-15] 2024-10-15_semana_15octubre_24_21octubre_24
+2026-04-15T05:59:38 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2024-10-15_semana_15octubre_24_21octubre_24_facebook.csv']
+2026-04-15T05:59:38 [INFO]   facebook -> 2024-10-15_facebook.txt | extraidos:40 unicos:38
+2026-04-15T05:59:38 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2024-10-15_semana_15octubre_24_21octubre_24_twitter.csv']
+2026-04-15T05:59:38 [INFO]   twitter -> 2024-10-15_twitter.txt | extraidos:59 unicos:54
+2026-04-15T05:59:38 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2024-10-15_semana_15octubre_24_21octubre_24_youtube.csv']
+2026-04-15T05:59:39 [INFO]   youtube -> 2024-10-15_youtube.txt | extraidos:9490 unicos:4591
+2026-04-15T05:59:39 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2024-10-15_semana_15octubre_24_21octubre_24_medios.txt']
+2026-04-15T05:59:39 [INFO]   medios -> 2024-10-15_medios.txt | copiado
+2026-04-15T05:59:39 [INFO] 
+[2024-10-22] 2024-10-22_semana_22octubre_24_28octubre_24
+2026-04-15T05:59:39 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2024-10-22_semana_22octubre_24_28octubre_24_facebook.csv']
+2026-04-15T05:59:39 [INFO]   facebook -> 2024-10-22_facebook.txt | extraidos:40 unicos:35
+2026-04-15T05:59:39 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2024-10-22_semana_22octubre_24_28octubre_24_twitter.csv']
+2026-04-15T05:59:39 [INFO]   twitter -> 2024-10-22_twitter.txt | extraidos:120 unicos:115
+2026-04-15T05:59:39 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2024-10-22_semana_22octubre_24_28octubre_24_youtube.csv']
+2026-04-15T05:59:39 [INFO]   youtube -> 2024-10-22_youtube.txt | extraidos:1498 unicos:739
+2026-04-15T05:59:39 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2024-10-22_semana_22octubre_24_28octubre_24_medios.txt']
+2026-04-15T05:59:39 [INFO]   medios -> 2024-10-22_medios.txt | copiado
+2026-04-15T05:59:39 [INFO] 
+[2024-10-29] 2024-10-29_semana_29octubre_24_4noviembre_24
+2026-04-15T05:59:39 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2024-10-29_semana_29octubre_24_4noviembre_24_facebook.csv']
+2026-04-15T05:59:39 [INFO]   facebook -> 2024-10-29_facebook.txt | extraidos:40 unicos:35
+2026-04-15T05:59:39 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2024-10-29_semana_29octubre_24_4noviembre_24_twitter.csv']
+2026-04-15T05:59:39 [INFO]   twitter -> 2024-10-29_twitter.txt | extraidos:175 unicos:175
+2026-04-15T05:59:39 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2024-10-29_semana_29octubre_24_4noviembre_24_youtube.csv']
+2026-04-15T05:59:39 [INFO]   youtube -> 2024-10-29_youtube.txt | extraidos:248 unicos:79
+2026-04-15T05:59:39 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2024-10-29_semana_29octubre_24_4noviembre_24_medios.txt']
+2026-04-15T05:59:39 [INFO]   medios -> 2024-10-29_medios.txt | copiado
+2026-04-15T05:59:39 [INFO] 
+[2024-11-05] 2024-11-05_semana_5noviembre_24_11noviembre_24
+2026-04-15T05:59:39 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2024-11-05_semana_5noviembre_24_11noviembre_24_facebook.csv']
+2026-04-15T05:59:39 [INFO]   facebook -> 2024-11-05_facebook.txt | extraidos:35 unicos:33
+2026-04-15T05:59:39 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2024-11-05_semana_5noviembre_24_11noviembre_24_twitter.csv']
+2026-04-15T05:59:39 [INFO]   twitter -> 2024-11-05_twitter.txt | extraidos:45 unicos:42
+2026-04-15T05:59:39 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2024-11-05_semana_5noviembre_24_11noviembre_24_youtube.csv']
+2026-04-15T05:59:39 [INFO]   youtube -> 2024-11-05_youtube.txt | extraidos:1396 unicos:349
+2026-04-15T05:59:39 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2024-11-05_semana_5noviembre_24_11noviembre_24_medios.txt']
+2026-04-15T05:59:39 [INFO]   medios -> 2024-11-05_medios.txt | copiado
+2026-04-15T05:59:39 [INFO] 
+[2024-11-12] 2024-11-12_semana_12noviembre_24_18noviembre_24
+2026-04-15T05:59:39 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2024-11-12_semana_12noviembre_24_18noviembre_24_facebook.csv']
+2026-04-15T05:59:39 [INFO]   facebook -> 2024-11-12_facebook.txt | extraidos:36 unicos:31
+2026-04-15T05:59:39 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2024-11-12_semana_12noviembre_24_18noviembre_24_twitter.csv']
+2026-04-15T05:59:39 [INFO]   twitter -> 2024-11-12_twitter.txt | extraidos:192 unicos:189
+2026-04-15T05:59:39 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2024-11-12_semana_12noviembre_24_18noviembre_24_youtube.csv']
+2026-04-15T05:59:39 [INFO]   youtube -> 2024-11-12_youtube.txt | extraidos:275 unicos:99
+2026-04-15T05:59:39 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2024-11-12_semana_12noviembre_24_18noviembre_24_medios.txt']
+2026-04-15T05:59:39 [INFO]   medios -> 2024-11-12_medios.txt | copiado
+2026-04-15T05:59:39 [INFO] 
+[2024-11-19] 2024-11-19_semana_19noviembre_24_25noviembre_24
+2026-04-15T05:59:39 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2024-11-19_semana_19noviembre_24_25noviembre_24_facebook.csv']
+2026-04-15T05:59:39 [INFO]   facebook -> 2024-11-19_facebook.txt | extraidos:32 unicos:30
+2026-04-15T05:59:39 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2024-11-19_semana_19noviembre_24_25noviembre_24_twitter.csv']
+2026-04-15T05:59:39 [INFO]   twitter -> 2024-11-19_twitter.txt | extraidos:225 unicos:220
+2026-04-15T05:59:39 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2024-11-19_semana_19noviembre_24_25noviembre_24_youtube.csv']
+2026-04-15T05:59:39 [INFO]   youtube -> 2024-11-19_youtube.txt | extraidos:137 unicos:39
+2026-04-15T05:59:39 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2024-11-19_semana_19noviembre_24_25noviembre_24_medios.txt']
+2026-04-15T05:59:39 [INFO]   medios -> 2024-11-19_medios.txt | copiado
+2026-04-15T05:59:39 [INFO] 
+[2024-11-26] 2024-11-26_semana_26noviembre_24_2diciembre_24
+2026-04-15T05:59:39 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2024-11-26_semana_26noviembre_24_2diciembre_24_facebook.csv']
+2026-04-15T05:59:39 [INFO]   facebook -> 2024-11-26_facebook.txt | extraidos:35 unicos:32
+2026-04-15T05:59:39 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2024-11-26_semana_26noviembre_24_2diciembre_24_twitter.csv']
+2026-04-15T05:59:39 [INFO]   twitter -> 2024-11-26_twitter.txt | extraidos:208 unicos:205
+2026-04-15T05:59:39 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2024-11-26_semana_26noviembre_24_2diciembre_24_youtube.csv']
+2026-04-15T05:59:39 [INFO]   youtube -> 2024-11-26_youtube.txt | extraidos:145 unicos:29
+2026-04-15T05:59:39 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2024-11-26_semana_26noviembre_24_2diciembre_24_medios.txt']
+2026-04-15T05:59:39 [INFO]   medios -> 2024-11-26_medios.txt | copiado
+2026-04-15T05:59:39 [INFO] 
+[2024-12-03] 2024-12-03_semana_3diciembre_24_9diciembre_24
+2026-04-15T05:59:39 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2024-12-03_semana_3diciembre_24_9diciembre_24_facebook.csv']
+2026-04-15T05:59:39 [INFO]   facebook -> 2024-12-03_facebook.txt | extraidos:44 unicos:33
+2026-04-15T05:59:39 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2024-12-03_semana_3diciembre_24_9diciembre_24_twitter.csv']
+2026-04-15T05:59:39 [INFO]   twitter -> 2024-12-03_twitter.txt | extraidos:425 unicos:420
+2026-04-15T05:59:39 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2024-12-03_semana_3diciembre_24_9diciembre_24_youtube.csv']
+2026-04-15T05:59:39 [INFO]   youtube -> 2024-12-03_youtube.txt | extraidos:90 unicos:21
+2026-04-15T05:59:39 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2024-12-03_semana_3diciembre_24_9diciembre_24_medios.txt']
+2026-04-15T05:59:39 [INFO]   medios -> 2024-12-03_medios.txt | copiado
+2026-04-15T05:59:39 [INFO] 
+[2024-12-10] 2024-12-10_semana_10diciembre_24_16diciembre_24
+2026-04-15T05:59:39 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2024-12-10_semana_10diciembre_24_16diciembre_24_facebook.csv']
+2026-04-15T05:59:39 [INFO]   facebook -> 2024-12-10_facebook.txt | extraidos:39 unicos:30
+2026-04-15T05:59:39 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2024-12-10_semana_10diciembre_24_16diciembre_24_twitter.csv']
+2026-04-15T05:59:39 [INFO]   twitter -> 2024-12-10_twitter.txt | extraidos:339 unicos:332
+2026-04-15T05:59:39 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2024-12-10_semana_10diciembre_24_16diciembre_24_youtube.csv']
+2026-04-15T05:59:39 [INFO]   youtube -> 2024-12-10_youtube.txt | extraidos:51 unicos:14
+2026-04-15T05:59:39 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2024-12-10_semana_10diciembre_24_16diciembre_24_medios.txt']
+2026-04-15T05:59:39 [INFO]   medios -> 2024-12-10_medios.txt | copiado
+2026-04-15T05:59:39 [INFO] 
+[2024-12-17] 2024-12-17_semana_17diciembre_24_23diciembre_24
+2026-04-15T05:59:39 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2024-12-17_semana_17diciembre_24_23diciembre_24_facebook.csv']
+2026-04-15T05:59:39 [INFO]   facebook -> 2024-12-17_facebook.txt | extraidos:48 unicos:36
+2026-04-15T05:59:39 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2024-12-17_semana_17diciembre_24_23diciembre_24_twitter.csv']
+2026-04-15T05:59:39 [INFO]   twitter -> 2024-12-17_twitter.txt | extraidos:277 unicos:275
+2026-04-15T05:59:39 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2024-12-17_semana_17diciembre_24_23diciembre_24_youtube.csv']
+2026-04-15T05:59:39 [INFO]   youtube -> 2024-12-17_youtube.txt | extraidos:52 unicos:14
+2026-04-15T05:59:39 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2024-12-17_semana_17diciembre_24_23diciembre_24_medios.txt']
+2026-04-15T05:59:39 [INFO]   medios -> 2024-12-17_medios.txt | copiado
+2026-04-15T05:59:39 [INFO] 
+[2024-12-24] 2024-12-24_semana_24diciembre_24_30diciembre_24
+2026-04-15T05:59:39 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2024-12-24_semana_24diciembre_24_30diciembre_24_facebook.csv']
+2026-04-15T05:59:39 [INFO]   facebook -> 2024-12-24_facebook.txt | extraidos:41 unicos:31
+2026-04-15T05:59:39 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2024-12-24_semana_24diciembre_24_30diciembre_24_twitter.csv']
+2026-04-15T05:59:39 [INFO]   twitter -> 2024-12-24_twitter.txt | extraidos:87 unicos:85
+2026-04-15T05:59:39 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2024-12-24_semana_24diciembre_24_30diciembre_24_youtube.csv']
+2026-04-15T05:59:39 [INFO]   youtube -> 2024-12-24_youtube.txt | extraidos:87 unicos:23
+2026-04-15T05:59:39 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2024-12-24_semana_24diciembre_24_30diciembre_24_medios.txt']
+2026-04-15T05:59:39 [INFO]   medios -> 2024-12-24_medios.txt | copiado
+2026-04-15T05:59:39 [INFO] 
+[2024-12-31] 2024-12-31_semana_31diciembre_24_6enero_25
+2026-04-15T05:59:39 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2024-12-31_semana_31diciembre_24_6enero_25_facebook.csv']
+2026-04-15T05:59:39 [INFO]   facebook -> 2024-12-31_facebook.txt | extraidos:42 unicos:31
+2026-04-15T05:59:39 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2024-12-31_semana_31diciembre_24_6enero_25_twitter.csv']
+2026-04-15T05:59:39 [INFO]   twitter -> 2024-12-31_twitter.txt | extraidos:61 unicos:59
+2026-04-15T05:59:39 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2024-12-31_semana_31diciembre_24_6enero_25_youtube.csv']
+2026-04-15T05:59:39 [INFO]   youtube -> 2024-12-31_youtube.txt | extraidos:650 unicos:307
+2026-04-15T05:59:39 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2024-12-31_semana_31diciembre_24_6enero_25_medios.txt']
+2026-04-15T05:59:39 [INFO]   medios -> 2024-12-31_medios.txt | copiado
+2026-04-15T05:59:39 [INFO] 
+[2025-01-07] 2025-01-07_semana_7enero_25_13enero_25
+2026-04-15T05:59:39 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-01-07_semana_7enero_25_13enero_25_facebook.csv']
+2026-04-15T05:59:39 [INFO]   facebook -> 2025-01-07_facebook.txt | extraidos:35 unicos:28
+2026-04-15T05:59:39 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-01-07_semana_7enero_25_13enero_25_twitter.csv']
+2026-04-15T05:59:39 [INFO]   twitter -> 2025-01-07_twitter.txt | extraidos:32 unicos:32
+2026-04-15T05:59:39 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-01-07_semana_7enero_25_13enero_25_youtube.csv']
+2026-04-15T05:59:39 [INFO]   youtube -> 2025-01-07_youtube.txt | extraidos:726 unicos:353
+2026-04-15T05:59:39 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-01-07_semana_7enero_25_13enero_25_medios.txt']
+2026-04-15T05:59:39 [INFO]   medios -> 2025-01-07_medios.txt | copiado
+2026-04-15T05:59:39 [INFO] 
+[2025-01-14] 2025-01-14_semana_14enero_25_20enero_25
+2026-04-15T05:59:39 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-01-14_semana_14enero_25_20enero_25_facebook.csv']
+2026-04-15T05:59:39 [INFO]   facebook -> 2025-01-14_facebook.txt | extraidos:40 unicos:32
+2026-04-15T05:59:39 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-01-14_semana_14enero_25_20enero_25_twitter.csv']
+2026-04-15T05:59:39 [INFO]   twitter -> 2025-01-14_twitter.txt | extraidos:318 unicos:313
+2026-04-15T05:59:39 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-01-14_semana_14enero_25_20enero_25_youtube.csv']
+2026-04-15T05:59:39 [INFO]   youtube -> 2025-01-14_youtube.txt | extraidos:277 unicos:130
+2026-04-15T05:59:39 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-01-14_semana_14enero_25_20enero_25_medios.txt']
+2026-04-15T05:59:39 [INFO]   medios -> 2025-01-14_medios.txt | copiado
+2026-04-15T05:59:39 [INFO] 
+[2025-01-21] 2025-01-21_semana_21enero_25_27enero_25
+2026-04-15T05:59:39 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-01-21_semana_21enero_25_27enero_25_facebook.csv']
+2026-04-15T05:59:40 [INFO]   facebook -> 2025-01-21_facebook.txt | extraidos:50 unicos:36
+2026-04-15T05:59:40 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-01-21_semana_21enero_25_27enero_25_twitter.csv']
+2026-04-15T05:59:40 [INFO]   twitter -> 2025-01-21_twitter.txt | extraidos:195 unicos:192
+2026-04-15T05:59:40 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-01-21_semana_21enero_25_27enero_25_youtube.csv']
+2026-04-15T05:59:40 [INFO]   youtube -> 2025-01-21_youtube.txt | extraidos:714 unicos:334
+2026-04-15T05:59:40 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-01-21_semana_21enero_25_27enero_25_medios.txt']
+2026-04-15T05:59:40 [INFO]   medios -> 2025-01-21_medios.txt | copiado
+2026-04-15T05:59:40 [INFO] 
+[2025-01-28] 2025-01-28_semana_28enero_25_3febrero_25
+2026-04-15T05:59:40 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-01-28_semana_28enero_25_3febrero_25_facebook.csv']
+2026-04-15T05:59:40 [INFO]   facebook -> 2025-01-28_facebook.txt | extraidos:37 unicos:27
+2026-04-15T05:59:40 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-01-28_semana_28enero_25_3febrero_25_twitter.csv']
+2026-04-15T05:59:40 [INFO]   twitter -> 2025-01-28_twitter.txt | extraidos:255 unicos:253
+2026-04-15T05:59:40 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-01-28_semana_28enero_25_3febrero_25_youtube.csv']
+2026-04-15T05:59:40 [INFO]   youtube -> 2025-01-28_youtube.txt | extraidos:448 unicos:212
+2026-04-15T05:59:40 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-01-28_semana_28enero_25_3febrero_25_medios.txt']
+2026-04-15T05:59:40 [INFO]   medios -> 2025-01-28_medios.txt | copiado
+2026-04-15T05:59:40 [INFO] 
+[2025-02-04] 2025-02-04_semana_4febrero_25_10febrero_25
+2026-04-15T05:59:40 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-02-04_semana_4febrero_25_10febrero_25_facebook.csv']
+2026-04-15T05:59:40 [INFO]   facebook -> 2025-02-04_facebook.txt | extraidos:51 unicos:38
+2026-04-15T05:59:40 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-02-04_semana_4febrero_25_10febrero_25_twitter.csv']
+2026-04-15T05:59:40 [INFO]   twitter -> 2025-02-04_twitter.txt | extraidos:166 unicos:160
+2026-04-15T05:59:40 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-02-04_semana_4febrero_25_10febrero_25_youtube.csv']
+2026-04-15T05:59:40 [INFO]   youtube -> 2025-02-04_youtube.txt | extraidos:139 unicos:61
+2026-04-15T05:59:40 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-02-04_semana_4febrero_25_10febrero_25_medios.txt']
+2026-04-15T05:59:40 [INFO]   medios -> 2025-02-04_medios.txt | copiado
+2026-04-15T05:59:40 [INFO] 
+[2025-02-11] 2025-02-11_semana_11febrero_25_17febrero_25
+2026-04-15T05:59:40 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-02-11_semana_11febrero_25_17febrero_25_facebook.csv']
+2026-04-15T05:59:40 [INFO]   facebook -> 2025-02-11_facebook.txt | extraidos:46 unicos:34
+2026-04-15T05:59:40 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-02-11_semana_11febrero_25_17febrero_25_twitter.csv']
+2026-04-15T05:59:40 [INFO]   twitter -> 2025-02-11_twitter.txt | extraidos:212 unicos:207
+2026-04-15T05:59:40 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-02-11_semana_11febrero_25_17febrero_25_youtube.csv']
+2026-04-15T05:59:40 [INFO]   youtube -> 2025-02-11_youtube.txt | extraidos:2005 unicos:992
+2026-04-15T05:59:40 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-02-11_semana_11febrero_25_17febrero_25_medios.txt']
+2026-04-15T05:59:40 [INFO]   medios -> 2025-02-11_medios.txt | copiado
+2026-04-15T05:59:40 [INFO] 
+[2025-02-18] 2025-02-18_semana_18febrero_25_24febrero_25
+2026-04-15T05:59:40 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-02-18_semana_18febrero_25_24febrero_25_facebook.csv']
+2026-04-15T05:59:40 [INFO]   facebook -> 2025-02-18_facebook.txt | extraidos:47 unicos:35
+2026-04-15T05:59:40 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-02-18_semana_18febrero_25_24febrero_25_twitter.csv']
+2026-04-15T05:59:40 [INFO]   twitter -> 2025-02-18_twitter.txt | extraidos:238 unicos:235
+2026-04-15T05:59:40 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-02-18_semana_18febrero_25_24febrero_25_youtube.csv']
+2026-04-15T05:59:40 [INFO]   youtube -> 2025-02-18_youtube.txt | extraidos:828 unicos:414
+2026-04-15T05:59:40 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-02-18_semana_18febrero_25_24febrero_25_medios.txt']
+2026-04-15T05:59:40 [INFO]   medios -> 2025-02-18_medios.txt | copiado
+2026-04-15T05:59:40 [INFO] 
+[2025-02-25] 2025-02-25_semana_25febrero_25_3marzo_25
+2026-04-15T05:59:40 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-02-25_semana_25febrero_25_3marzo_25_facebook.csv']
+2026-04-15T05:59:40 [INFO]   facebook -> 2025-02-25_facebook.txt | extraidos:30 unicos:23
+2026-04-15T05:59:40 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-02-25_semana_25febrero_25_3marzo_25_twitter.csv']
+2026-04-15T05:59:40 [INFO]   twitter -> 2025-02-25_twitter.txt | extraidos:28 unicos:27
+2026-04-15T05:59:40 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-02-25_semana_25febrero_25_3marzo_25_youtube.csv']
+2026-04-15T05:59:40 [INFO]   youtube -> 2025-02-25_youtube.txt | extraidos:618 unicos:301
+2026-04-15T05:59:40 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-02-25_semana_25febrero_25_3marzo_25_medios.txt']
+2026-04-15T05:59:40 [INFO]   medios -> 2025-02-25_medios.txt | copiado
+2026-04-15T05:59:40 [INFO] 
+[2025-03-04] 2025-03-04_semana_4marzo_25_10marzo_25
+2026-04-15T05:59:40 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-03-04_semana_4marzo_25_10marzo_25_facebook.csv']
+2026-04-15T05:59:40 [INFO]   facebook -> 2025-03-04_facebook.txt | extraidos:70 unicos:65
+2026-04-15T05:59:40 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-03-04_semana_4marzo_25_10marzo_25_twitter.csv']
+2026-04-15T05:59:40 [INFO]   twitter -> 2025-03-04_twitter.txt | extraidos:342 unicos:334
+2026-04-15T05:59:40 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-03-04_semana_4marzo_25_10marzo_25_youtube.csv']
+2026-04-15T05:59:40 [INFO]   youtube -> 2025-03-04_youtube.txt | extraidos:269 unicos:133
+2026-04-15T05:59:40 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-03-04_semana_4marzo_25_10marzo_25_medios.txt']
+2026-04-15T05:59:40 [INFO]   medios -> 2025-03-04_medios.txt | copiado
+2026-04-15T05:59:40 [INFO] 
+[2025-03-11] 2025-03-11_semana_11marzo_25_17marzo_25
+2026-04-15T05:59:40 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-03-11_semana_11marzo_25_17marzo_25_facebook.csv']
+2026-04-15T05:59:40 [INFO]   facebook -> 2025-03-11_facebook.txt | extraidos:52 unicos:52
+2026-04-15T05:59:40 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-03-11_semana_11marzo_25_17marzo_25_twitter.csv']
+2026-04-15T05:59:40 [INFO]   twitter -> 2025-03-11_twitter.txt | extraidos:139 unicos:139
+2026-04-15T05:59:40 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-03-11_semana_11marzo_25_17marzo_25_youtube.csv']
+2026-04-15T05:59:40 [INFO]   youtube -> 2025-03-11_youtube.txt | extraidos:347 unicos:163
+2026-04-15T05:59:40 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-03-11_semana_11marzo_25_17marzo_25_medios.txt']
+2026-04-15T05:59:40 [INFO]   medios -> 2025-03-11_medios.txt | copiado
+2026-04-15T05:59:40 [INFO] 
+[2025-03-18] 2025-03-18_semana_18marzo_25_24marzo_25
+2026-04-15T05:59:40 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-03-18_semana_18marzo_25_24marzo_25_facebook.csv']
+2026-04-15T05:59:40 [INFO]   facebook -> 2025-03-18_facebook.txt | extraidos:34 unicos:33
+2026-04-15T05:59:40 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-03-18_semana_18marzo_25_24marzo_25_twitter.csv']
+2026-04-15T05:59:40 [INFO]   twitter -> 2025-03-18_twitter.txt | extraidos:24 unicos:23
+2026-04-15T05:59:40 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-03-18_semana_18marzo_25_24marzo_25_youtube.csv']
+2026-04-15T05:59:40 [INFO]   youtube -> 2025-03-18_youtube.txt | extraidos:1188 unicos:588
+2026-04-15T05:59:40 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-03-18_semana_18marzo_25_24marzo_25_medios.txt']
+2026-04-15T05:59:40 [INFO]   medios -> 2025-03-18_medios.txt | copiado
+2026-04-15T05:59:40 [INFO] 
+[2025-03-25] 2025-03-25_semana_25marzo_25_31marzo_25
+2026-04-15T05:59:40 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-03-25_semana_25marzo_25_31marzo_25_facebook.csv']
+2026-04-15T05:59:40 [INFO]   facebook -> 2025-03-25_facebook.txt | extraidos:3 unicos:3
+2026-04-15T05:59:40 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-03-25_semana_25marzo_25_31marzo_25_twitter.csv']
+2026-04-15T05:59:40 [INFO]   twitter -> 2025-03-25_twitter.txt | extraidos:278 unicos:275
+2026-04-15T05:59:40 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-03-25_semana_25marzo_25_31marzo_25_youtube.csv']
+2026-04-15T05:59:40 [INFO]   youtube -> 2025-03-25_youtube.txt | extraidos:281 unicos:149
+2026-04-15T05:59:40 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-03-25_semana_25marzo_25_31marzo_25_medios.txt']
+2026-04-15T05:59:40 [INFO]   medios -> 2025-03-25_medios.txt | copiado
+2026-04-15T05:59:40 [INFO] 
+[2025-04-01] 2025-04-01_semana_1abril_25_7abril_25
+2026-04-15T05:59:40 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-04-01_semana_1abril_25_7abril_25_facebook.csv']
+2026-04-15T05:59:40 [INFO]   facebook -> 2025-04-01_facebook.txt | extraidos:47 unicos:37
+2026-04-15T05:59:40 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-04-01_semana_1abril_25_7abril_25_twitter.csv']
+2026-04-15T05:59:40 [INFO]   twitter -> 2025-04-01_twitter.txt | extraidos:161 unicos:160
+2026-04-15T05:59:40 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-04-01_semana_1abril_25_7abril_25_youtube.csv']
+2026-04-15T05:59:40 [INFO]   youtube -> 2025-04-01_youtube.txt | extraidos:297 unicos:154
+2026-04-15T05:59:40 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-04-01_semana_1abril_25_7abril_25_medios.txt']
+2026-04-15T05:59:40 [INFO]   medios -> 2025-04-01_medios.txt | copiado
+2026-04-15T05:59:40 [INFO] 
+[2025-04-08] 2025-04-08_semana_8abril_25_14abril_25
+2026-04-15T05:59:40 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-04-08_semana_8abril_25_14abril_25_facebook.csv']
+2026-04-15T05:59:40 [INFO]   facebook -> 2025-04-08_facebook.txt | extraidos:46 unicos:32
+2026-04-15T05:59:40 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-04-08_semana_8abril_25_14abril_25_twitter.csv']
+2026-04-15T05:59:40 [INFO]   twitter -> 2025-04-08_twitter.txt | extraidos:389 unicos:386
+2026-04-15T05:59:40 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-04-08_semana_8abril_25_14abril_25_youtube.csv']
+2026-04-15T05:59:41 [INFO]   youtube -> 2025-04-08_youtube.txt | extraidos:3297 unicos:2600
+2026-04-15T05:59:41 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-04-08_semana_8abril_25_14abril_25_medios.txt']
+2026-04-15T05:59:41 [INFO]   medios -> 2025-04-08_medios.txt | copiado
+2026-04-15T05:59:41 [INFO] 
+[2025-04-15] 2025-04-15_semana_15abril_25_21abril_25
+2026-04-15T05:59:41 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-04-15_semana_15abril_25_21abril_25_facebook.csv']
+2026-04-15T05:59:41 [INFO]   facebook -> 2025-04-15_facebook.txt | extraidos:38 unicos:26
+2026-04-15T05:59:41 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-04-15_semana_15abril_25_21abril_25_twitter.csv']
+2026-04-15T05:59:41 [INFO]   twitter -> 2025-04-15_twitter.txt | extraidos:316 unicos:313
+2026-04-15T05:59:41 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-04-15_semana_15abril_25_21abril_25_youtube.csv']
+2026-04-15T05:59:41 [INFO]   youtube -> 2025-04-15_youtube.txt | extraidos:838 unicos:616
+2026-04-15T05:59:41 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-04-15_semana_15abril_25_21abril_25_medios.txt']
+2026-04-15T05:59:41 [INFO]   medios -> 2025-04-15_medios.txt | copiado
+2026-04-15T05:59:41 [INFO] 
+[2025-04-22] 2025-04-22_semana_22abril_25_28abril_25
+2026-04-15T05:59:41 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-04-22_semana_22abril_25_28abril_25_facebook.csv']
+2026-04-15T05:59:41 [INFO]   facebook -> 2025-04-22_facebook.txt | extraidos:37 unicos:27
+2026-04-15T05:59:41 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-04-22_semana_22abril_25_28abril_25_twitter.csv']
+2026-04-15T05:59:41 [INFO]   twitter -> 2025-04-22_twitter.txt | extraidos:350 unicos:345
+2026-04-15T05:59:41 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-04-22_semana_22abril_25_28abril_25_youtube.csv']
+2026-04-15T05:59:41 [INFO]   youtube -> 2025-04-22_youtube.txt | extraidos:171 unicos:130
+2026-04-15T05:59:41 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-04-22_semana_22abril_25_28abril_25_medios.txt']
+2026-04-15T05:59:41 [INFO]   medios -> 2025-04-22_medios.txt | copiado
+2026-04-15T05:59:41 [INFO] 
+[2025-04-29] 2025-04-29_semana_29abril_25_5mayo_25
+2026-04-15T05:59:41 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-04-29_semana_29abril_25_5mayo_25_facebook.csv']
+2026-04-15T05:59:41 [INFO]   facebook -> 2025-04-29_facebook.txt | extraidos:38 unicos:34
+2026-04-15T05:59:41 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-04-29_semana_29abril_25_5mayo_25_twitter.csv']
+2026-04-15T05:59:41 [INFO]   twitter -> 2025-04-29_twitter.txt | extraidos:363 unicos:354
+2026-04-15T05:59:41 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-04-29_semana_29abril_25_5mayo_25_youtube.csv']
+2026-04-15T05:59:41 [INFO]   youtube -> 2025-04-29_youtube.txt | extraidos:1159 unicos:972
+2026-04-15T05:59:41 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-04-29_semana_29abril_25_5mayo_25_medios.txt']
+2026-04-15T05:59:41 [INFO]   medios -> 2025-04-29_medios.txt | copiado
+2026-04-15T05:59:41 [INFO] 
+[2025-05-06] 2025-05-06_semana_6mayo_25_12mayo_25
+2026-04-15T05:59:41 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-05-06_semana_6mayo_25_12mayo_25_facebook.csv']
+2026-04-15T05:59:41 [INFO]   facebook -> 2025-05-06_facebook.txt | extraidos:39 unicos:31
+2026-04-15T05:59:41 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-05-06_semana_6mayo_25_12mayo_25_twitter.csv']
+2026-04-15T05:59:41 [INFO]   twitter -> 2025-05-06_twitter.txt | extraidos:121 unicos:109
+2026-04-15T05:59:41 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-05-06_semana_6mayo_25_12mayo_25_youtube.csv']
+2026-04-15T05:59:41 [INFO]   youtube -> 2025-05-06_youtube.txt | extraidos:546 unicos:489
+2026-04-15T05:59:41 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-05-06_semana_6mayo_25_12mayo_25_medios.txt']
+2026-04-15T05:59:41 [INFO]   medios -> 2025-05-06_medios.txt | copiado
+2026-04-15T05:59:41 [INFO] 
+[2025-05-13] 2025-05-13_semana_13mayo_25_19mayo_25
+2026-04-15T05:59:41 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-05-13_semana_13mayo_25_19mayo_25_facebook.csv']
+2026-04-15T05:59:41 [INFO]   facebook -> 2025-05-13_facebook.txt | extraidos:41 unicos:25
+2026-04-15T05:59:41 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-05-13_semana_13mayo_25_19mayo_25_twitter.csv']
+2026-04-15T05:59:41 [INFO]   twitter -> 2025-05-13_twitter.txt | extraidos:361 unicos:360
+2026-04-15T05:59:41 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-05-13_semana_13mayo_25_19mayo_25_youtube.csv']
+2026-04-15T05:59:41 [INFO]   youtube -> 2025-05-13_youtube.txt | extraidos:721 unicos:476
+2026-04-15T05:59:41 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-05-13_semana_13mayo_25_19mayo_25_medios.txt']
+2026-04-15T05:59:41 [INFO]   medios -> 2025-05-13_medios.txt | copiado
+2026-04-15T05:59:41 [INFO] 
+[2025-05-20] 2025-05-20_semana_20mayo_25_26mayo_25
+2026-04-15T05:59:41 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-05-20_semana_20mayo_25_26mayo_25_facebook.csv']
+2026-04-15T05:59:41 [INFO]   facebook -> 2025-05-20_facebook.txt | extraidos:37 unicos:32
+2026-04-15T05:59:41 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-05-20_semana_20mayo_25_26mayo_25_twitter.csv']
+2026-04-15T05:59:41 [INFO]   twitter -> 2025-05-20_twitter.txt | extraidos:458 unicos:454
+2026-04-15T05:59:41 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-05-20_semana_20mayo_25_26mayo_25_youtube.csv']
+2026-04-15T05:59:41 [INFO]   youtube -> 2025-05-20_youtube.txt | extraidos:537 unicos:471
+2026-04-15T05:59:41 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-05-20_semana_20mayo_25_26mayo_25_medios.txt']
+2026-04-15T05:59:41 [INFO]   medios -> 2025-05-20_medios.txt | copiado
+2026-04-15T05:59:41 [INFO] 
+[2025-05-27] 2025-05-27_semana_27mayo_25_2junio_25
+2026-04-15T05:59:41 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-05-27_semana_27mayo_25_2junio_25_facebook.csv']
+2026-04-15T05:59:41 [INFO]   facebook -> 2025-05-27_facebook.txt | extraidos:31 unicos:23
+2026-04-15T05:59:41 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-05-27_semana_27mayo_25_2junio_25_twitter.csv']
+2026-04-15T05:59:41 [INFO]   twitter -> 2025-05-27_twitter.txt | extraidos:217 unicos:214
+2026-04-15T05:59:41 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-05-27_semana_27mayo_25_2junio_25_youtube.csv']
+2026-04-15T05:59:41 [INFO]   youtube -> 2025-05-27_youtube.txt | extraidos:854 unicos:448
+2026-04-15T05:59:41 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-05-27_semana_27mayo_25_2junio_25_medios.txt']
+2026-04-15T05:59:41 [INFO]   medios -> 2025-05-27_medios.txt | copiado
+2026-04-15T05:59:41 [INFO] 
+[2025-06-03] 2025-06-03_semana_3junio_25_9junio_25
+2026-04-15T05:59:41 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-06-03_semana_3junio_25_9junio_25_facebook.csv']
+2026-04-15T05:59:41 [INFO]   facebook -> 2025-06-03_facebook.txt | extraidos:41 unicos:34
+2026-04-15T05:59:41 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-06-03_semana_3junio_25_9junio_25_twitter.csv']
+2026-04-15T05:59:41 [INFO]   twitter -> 2025-06-03_twitter.txt | extraidos:14 unicos:13
+2026-04-15T05:59:41 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-06-03_semana_3junio_25_9junio_25_youtube.csv']
+2026-04-15T05:59:41 [INFO]   youtube -> 2025-06-03_youtube.txt | extraidos:404 unicos:239
+2026-04-15T05:59:41 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-06-03_semana_3junio_25_9junio_25_medios.txt']
+2026-04-15T05:59:41 [INFO]   medios -> 2025-06-03_medios.txt | copiado
+2026-04-15T05:59:41 [INFO] 
+[2025-06-10] 2025-06-10_semana_10junio_25_16junio_25
+2026-04-15T05:59:41 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-06-10_semana_10junio_25_16junio_25_facebook.csv']
+2026-04-15T05:59:41 [INFO]   facebook -> 2025-06-10_facebook.txt | extraidos:39 unicos:29
+2026-04-15T05:59:41 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-06-10_semana_10junio_25_16junio_25_twitter.csv']
+2026-04-15T05:59:41 [INFO]   twitter -> 2025-06-10_twitter.txt | extraidos:179 unicos:176
+2026-04-15T05:59:41 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-06-10_semana_10junio_25_16junio_25_youtube.csv']
+2026-04-15T05:59:41 [INFO]   youtube -> 2025-06-10_youtube.txt | extraidos:408 unicos:218
+2026-04-15T05:59:41 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-06-10_semana_10junio_25_16junio_25_medios.txt']
+2026-04-15T05:59:41 [INFO]   medios -> 2025-06-10_medios.txt | copiado
+2026-04-15T05:59:41 [INFO] 
+[2025-06-17] 2025-06-17_semana_17junio_25_23junio_25
+2026-04-15T05:59:41 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-06-17_semana_17junio_25_23junio_25_facebook.csv']
+2026-04-15T05:59:41 [INFO]   facebook -> 2025-06-17_facebook.txt | extraidos:44 unicos:32
+2026-04-15T05:59:41 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-06-17_semana_17junio_25_23junio_25_twitter.csv']
+2026-04-15T05:59:41 [INFO]   twitter -> 2025-06-17_twitter.txt | extraidos:182 unicos:181
+2026-04-15T05:59:41 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-06-17_semana_17junio_25_23junio_25_youtube.csv']
+2026-04-15T05:59:41 [INFO]   youtube -> 2025-06-17_youtube.txt | extraidos:590 unicos:324
+2026-04-15T05:59:41 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-06-17_semana_17junio_25_23junio_25_medios.txt']
+2026-04-15T05:59:41 [INFO]   medios -> 2025-06-17_medios.txt | copiado
+2026-04-15T05:59:41 [INFO] 
+[2025-06-24] 2025-06-24_semana_24junio_25_30junio_25
+2026-04-15T05:59:41 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-06-24_semana_24junio_25_30junio_25_facebook.csv']
+2026-04-15T05:59:41 [INFO]   facebook -> 2025-06-24_facebook.txt | extraidos:34 unicos:24
+2026-04-15T05:59:41 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-06-24_semana_24junio_25_30junio_25_twitter.csv']
+2026-04-15T05:59:41 [INFO]   twitter -> 2025-06-24_twitter.txt | extraidos:54 unicos:54
+2026-04-15T05:59:41 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-06-24_semana_24junio_25_30junio_25_youtube.csv']
+2026-04-15T05:59:41 [INFO]   youtube -> 2025-06-24_youtube.txt | extraidos:588 unicos:385
+2026-04-15T05:59:41 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-06-24_semana_24junio_25_30junio_25_medios.txt']
+2026-04-15T05:59:41 [INFO]   medios -> 2025-06-24_medios.txt | copiado
+2026-04-15T05:59:41 [INFO] 
+[2025-07-01] 2025-07-01_semana_1julio_25_7julio_25
+2026-04-15T05:59:41 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-07-01_semana_1julio_25_7julio_25_facebook.csv']
+2026-04-15T05:59:41 [INFO]   facebook -> 2025-07-01_facebook.txt | extraidos:37 unicos:32
+2026-04-15T05:59:41 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-07-01_semana_1julio_25_7julio_25_twitter.csv']
+2026-04-15T05:59:41 [INFO]   twitter -> 2025-07-01_twitter.txt | extraidos:235 unicos:230
+2026-04-15T05:59:41 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-07-01_semana_1julio_25_7julio_25_youtube.csv']
+2026-04-15T05:59:42 [INFO]   youtube -> 2025-07-01_youtube.txt | extraidos:9392 unicos:4775
+2026-04-15T05:59:42 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-07-01_semana_1julio_25_7julio_25_medios.txt']
+2026-04-15T05:59:42 [INFO]   medios -> 2025-07-01_medios.txt | copiado
+2026-04-15T05:59:42 [INFO] 
+[2025-07-08] 2025-07-08_semana_8julio_25_14julio_25
+2026-04-15T05:59:42 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-07-08_semana_8julio_25_14julio_25_facebook.csv']
+2026-04-15T05:59:42 [INFO]   facebook -> 2025-07-08_facebook.txt | extraidos:37 unicos:29
+2026-04-15T05:59:42 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-07-08_semana_8julio_25_14julio_25_twitter.csv']
+2026-04-15T05:59:42 [INFO]   twitter -> 2025-07-08_twitter.txt | extraidos:39 unicos:38
+2026-04-15T05:59:42 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-07-08_semana_8julio_25_14julio_25_youtube.csv']
+2026-04-15T05:59:42 [INFO]   youtube -> 2025-07-08_youtube.txt | extraidos:8417 unicos:6772
+2026-04-15T05:59:42 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-07-08_semana_8julio_25_14julio_25_medios.txt']
+2026-04-15T05:59:42 [INFO]   medios -> 2025-07-08_medios.txt | copiado
+2026-04-15T05:59:42 [INFO] 
+[2025-07-15] 2025-07-15_semana_15julio_25_21julio_25
+2026-04-15T05:59:42 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-07-15_semana_15julio_25_21julio_25_facebook.csv']
+2026-04-15T05:59:42 [INFO]   facebook -> 2025-07-15_facebook.txt | extraidos:28 unicos:24
+2026-04-15T05:59:42 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-07-15_semana_15julio_25_21julio_25_twitter.csv']
+2026-04-15T05:59:42 [INFO]   twitter -> 2025-07-15_twitter.txt | extraidos:141 unicos:141
+2026-04-15T05:59:42 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-07-15_semana_15julio_25_21julio_25_youtube.csv']
+2026-04-15T05:59:42 [INFO]   youtube -> 2025-07-15_youtube.txt | extraidos:1268 unicos:800
+2026-04-15T05:59:42 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-07-15_semana_15julio_25_21julio_25_medios.txt']
+2026-04-15T05:59:42 [INFO]   medios -> 2025-07-15_medios.txt | copiado
+2026-04-15T05:59:42 [INFO] 
+[2025-07-22] 2025-07-22_semana_22julio_25_28julio_25
+2026-04-15T05:59:42 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-07-22_semana_22julio_25_28julio_25_facebook.csv']
+2026-04-15T05:59:42 [INFO]   facebook -> 2025-07-22_facebook.txt | extraidos:36 unicos:30
+2026-04-15T05:59:42 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-07-22_semana_22julio_25_28julio_25_twitter.csv']
+2026-04-15T05:59:42 [INFO]   twitter -> 2025-07-22_twitter.txt | extraidos:183 unicos:181
+2026-04-15T05:59:42 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-07-22_semana_22julio_25_28julio_25_youtube.csv']
+2026-04-15T05:59:42 [INFO]   youtube -> 2025-07-22_youtube.txt | extraidos:4255 unicos:3430
+2026-04-15T05:59:43 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-07-22_semana_22julio_25_28julio_25_medios.txt']
+2026-04-15T05:59:43 [INFO]   medios -> 2025-07-22_medios.txt | copiado
+2026-04-15T05:59:43 [INFO] 
+[2025-07-29] 2025-07-29_semana_29julio_25_4agosto_25
+2026-04-15T05:59:43 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-07-29_semana_29julio_25_4agosto_25_facebook.csv']
+2026-04-15T05:59:43 [INFO]   facebook -> 2025-07-29_facebook.txt | extraidos:43 unicos:27
+2026-04-15T05:59:43 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-07-29_semana_29julio_25_4agosto_25_twitter.csv']
+2026-04-15T05:59:43 [INFO]   twitter -> 2025-07-29_twitter.txt | extraidos:401 unicos:398
+2026-04-15T05:59:43 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-07-29_semana_29julio_25_4agosto_25_youtube.csv']
+2026-04-15T05:59:43 [INFO]   youtube -> 2025-07-29_youtube.txt | extraidos:1520 unicos:939
+2026-04-15T05:59:43 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-07-29_semana_29julio_25_4agosto_25_medios.txt']
+2026-04-15T05:59:43 [INFO]   medios -> 2025-07-29_medios.txt | copiado
+2026-04-15T05:59:43 [INFO] 
+[2025-08-05] 2025-08-05_semana_5agosto_25_11agosto_25
+2026-04-15T05:59:43 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-08-05_semana_5agosto_25_11agosto_25_facebook.csv']
+2026-04-15T05:59:43 [INFO]   facebook -> 2025-08-05_facebook.txt | extraidos:31 unicos:24
+2026-04-15T05:59:43 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-08-05_semana_5agosto_25_11agosto_25_twitter.csv']
+2026-04-15T05:59:43 [INFO]   twitter -> 2025-08-05_twitter.txt | extraidos:13 unicos:12
+2026-04-15T05:59:43 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-08-05_semana_5agosto_25_11agosto_25_youtube.csv']
+2026-04-15T05:59:43 [INFO]   youtube -> 2025-08-05_youtube.txt | extraidos:1147 unicos:680
+2026-04-15T05:59:43 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-08-05_semana_5agosto_25_11agosto_25_medios.txt']
+2026-04-15T05:59:43 [INFO]   medios -> 2025-08-05_medios.txt | copiado
+2026-04-15T05:59:43 [INFO] 
+[2025-08-12] 2025-08-12_semana_12agosto_25_18agosto_25
+2026-04-15T05:59:43 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-08-12_semana_12agosto_25_18agosto_25_facebook.csv']
+2026-04-15T05:59:43 [INFO]   facebook -> 2025-08-12_facebook.txt | extraidos:46 unicos:28
+2026-04-15T05:59:43 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-08-12_semana_12agosto_25_18agosto_25_twitter.csv']
+2026-04-15T05:59:43 [INFO]   twitter -> 2025-08-12_twitter.txt | extraidos:4 unicos:4
+2026-04-15T05:59:43 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-08-12_semana_12agosto_25_18agosto_25_youtube.csv']
+2026-04-15T05:59:43 [INFO]   youtube -> 2025-08-12_youtube.txt | extraidos:2798 unicos:1499
+2026-04-15T05:59:43 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-08-12_semana_12agosto_25_18agosto_25_medios.txt']
+2026-04-15T05:59:43 [INFO]   medios -> 2025-08-12_medios.txt | copiado
+2026-04-15T05:59:43 [INFO] 
+[2025-08-19] 2025-08-19_semana_19agosto_25_25agosto_25
+2026-04-15T05:59:43 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-08-19_semana_19agosto_25_25agosto_25_facebook.csv']
+2026-04-15T05:59:43 [INFO]   facebook -> 2025-08-19_facebook.txt | extraidos:46 unicos:31
+2026-04-15T05:59:43 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-08-19_semana_19agosto_25_25agosto_25_twitter.csv']
+2026-04-15T05:59:43 [INFO]   twitter -> 2025-08-19_twitter.txt | extraidos:51 unicos:51
+2026-04-15T05:59:43 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-08-19_semana_19agosto_25_25agosto_25_youtube.csv']
+2026-04-15T05:59:43 [INFO]   youtube -> 2025-08-19_youtube.txt | extraidos:416 unicos:255
+2026-04-15T05:59:43 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-08-19_semana_19agosto_25_25agosto_25_medios.txt']
+2026-04-15T05:59:43 [INFO]   medios -> 2025-08-19_medios.txt | copiado
+2026-04-15T05:59:43 [INFO] 
+[2025-08-26] 2025-08-26_semana_26agosto_25_1septiembre_25
+2026-04-15T05:59:43 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-08-26_semana_26agosto_25_1septiembre_25_facebook.csv']
+2026-04-15T05:59:43 [INFO]   facebook -> 2025-08-26_facebook.txt | extraidos:30 unicos:22
+2026-04-15T05:59:43 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-08-26_semana_26agosto_25_1septiembre_25_twitter.csv']
+2026-04-15T05:59:43 [INFO]   twitter -> 2025-08-26_twitter.txt | extraidos:62 unicos:62
+2026-04-15T05:59:43 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-08-26_semana_26agosto_25_1septiembre_25_youtube.csv']
+2026-04-15T05:59:43 [INFO]   youtube -> 2025-08-26_youtube.txt | extraidos:796 unicos:416
+2026-04-15T05:59:43 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-08-26_semana_26agosto_25_1septiembre_25_medios.txt']
+2026-04-15T05:59:43 [INFO]   medios -> 2025-08-26_medios.txt | copiado
+2026-04-15T05:59:43 [INFO] 
+[2025-09-02] 2025-09-02_semana_2septiembre_25_8septiembre_25
+2026-04-15T05:59:43 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-09-02_semana_2septiembre_25_8septiembre_25_facebook.csv']
+2026-04-15T05:59:43 [INFO]   facebook -> 2025-09-02_facebook.txt | extraidos:104 unicos:100
+2026-04-15T05:59:43 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-09-02_semana_2septiembre_25_8septiembre_25_twitter.csv']
+2026-04-15T05:59:43 [INFO]   twitter -> 2025-09-02_twitter.txt | extraidos:236 unicos:236
+2026-04-15T05:59:43 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-09-02_semana_2septiembre_25_8septiembre_25_youtube.csv']
+2026-04-15T05:59:43 [INFO]   youtube -> 2025-09-02_youtube.txt | extraidos:4827 unicos:2784
+2026-04-15T05:59:43 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-09-02_semana_2septiembre_25_8septiembre_25_medios.txt']
+2026-04-15T05:59:43 [INFO]   medios -> 2025-09-02_medios.txt | copiado
+2026-04-15T05:59:43 [INFO] 
+[2025-09-09] 2025-09-09_semana_9septiembre_25_15septiembre_25
+2026-04-15T05:59:43 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-09-09_semana_9septiembre_25_15septiembre_25_facebook.csv']
+2026-04-15T05:59:43 [INFO]   facebook -> 2025-09-09_facebook.txt | extraidos:36 unicos:28
+2026-04-15T05:59:43 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-09-09_semana_9septiembre_25_15septiembre_25_twitter.csv']
+2026-04-15T05:59:43 [INFO]   twitter -> 2025-09-09_twitter.txt | extraidos:58 unicos:58
+2026-04-15T05:59:43 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-09-09_semana_9septiembre_25_15septiembre_25_youtube.csv']
+2026-04-15T05:59:43 [INFO]   youtube -> 2025-09-09_youtube.txt | extraidos:3299 unicos:1916
+2026-04-15T05:59:43 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-09-09_semana_9septiembre_25_15septiembre_25_medios.txt']
+2026-04-15T05:59:43 [INFO]   medios -> 2025-09-09_medios.txt | copiado
+2026-04-15T05:59:43 [INFO] 
+[2025-09-16] 2025-09-16_semana_16septiembre_25_22septiembre_25
+2026-04-15T05:59:43 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-09-16_semana_16septiembre_25_22septiembre_25_facebook.csv']
+2026-04-15T05:59:43 [INFO]   facebook -> 2025-09-16_facebook.txt | extraidos:42 unicos:31
+2026-04-15T05:59:43 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-09-16_semana_16septiembre_25_22septiembre_25_twitter.csv']
+2026-04-15T05:59:43 [INFO]   twitter -> 2025-09-16_twitter.txt | extraidos:235 unicos:234
+2026-04-15T05:59:43 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-09-16_semana_16septiembre_25_22septiembre_25_youtube.csv']
+2026-04-15T05:59:44 [INFO]   youtube -> 2025-09-16_youtube.txt | extraidos:12041 unicos:5683
+2026-04-15T05:59:44 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-09-16_semana_16septiembre_25_22septiembre_25_medios.txt']
+2026-04-15T05:59:44 [INFO]   medios -> 2025-09-16_medios.txt | copiado
+2026-04-15T05:59:44 [INFO] 
+[2025-09-23] 2025-09-23_semana_23septiembre_25_29septiembre_25
+2026-04-15T05:59:44 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-09-23_semana_23septiembre_25_29septiembre_25_facebook.csv']
+2026-04-15T05:59:44 [INFO]   facebook -> 2025-09-23_facebook.txt | extraidos:34 unicos:25
+2026-04-15T05:59:44 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-09-23_semana_23septiembre_25_29septiembre_25_twitter.csv']
+2026-04-15T05:59:44 [INFO]   twitter -> 2025-09-23_twitter.txt | extraidos:132 unicos:130
+2026-04-15T05:59:44 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-09-23_semana_23septiembre_25_29septiembre_25_youtube.csv']
+2026-04-15T05:59:44 [INFO]   youtube -> 2025-09-23_youtube.txt | extraidos:997 unicos:511
+2026-04-15T05:59:44 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-09-23_semana_23septiembre_25_29septiembre_25_medios.txt']
+2026-04-15T05:59:44 [INFO]   medios -> 2025-09-23_medios.txt | copiado
+2026-04-15T05:59:44 [INFO] 
+[2025-09-30] 2025-09-30_semana_30septiembre_25_6octubre_25
+2026-04-15T05:59:44 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-09-30_semana_30septiembre_25_6octubre_25_facebook.csv']
+2026-04-15T05:59:44 [INFO]   facebook -> 2025-09-30_facebook.txt | extraidos:9 unicos:8
+2026-04-15T05:59:44 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-09-30_semana_30septiembre_25_6octubre_25_twitter.csv']
+2026-04-15T05:59:44 [INFO]   twitter -> 2025-09-30_twitter.txt | extraidos:238 unicos:233
+2026-04-15T05:59:44 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-09-30_semana_30septiembre_25_6octubre_25_youtube.csv']
+2026-04-15T05:59:44 [INFO]   youtube -> 2025-09-30_youtube.txt | extraidos:555 unicos:311
+2026-04-15T05:59:44 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-09-30_semana_30septiembre_25_6octubre_25_medios.txt']
+2026-04-15T05:59:44 [INFO]   medios -> 2025-09-30_medios.txt | copiado
+2026-04-15T05:59:44 [INFO] 
+[2025-10-07] 2025-10-07_semana_7octubre_25_13octubre_25
+2026-04-15T05:59:44 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-10-07_semana_7octubre_25_13octubre_25_facebook.csv']
+2026-04-15T05:59:44 [INFO]   facebook -> 2025-10-07_facebook.txt | extraidos:18 unicos:16
+2026-04-15T05:59:44 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-10-07_semana_7octubre_25_13octubre_25_twitter.csv']
+2026-04-15T05:59:44 [INFO]   twitter -> 2025-10-07_twitter.txt | extraidos:36 unicos:36
+2026-04-15T05:59:44 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-10-07_semana_7octubre_25_13octubre_25_youtube.csv']
+2026-04-15T05:59:44 [INFO]   youtube -> 2025-10-07_youtube.txt | extraidos:3248 unicos:1744
+2026-04-15T05:59:44 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-10-07_semana_7octubre_25_13octubre_25_medios.txt']
+2026-04-15T05:59:44 [INFO]   medios -> 2025-10-07_medios.txt | copiado
+2026-04-15T05:59:44 [INFO] 
+[2025-10-14] 2025-10-14_semana_14octubre_25_20octubre_25
+2026-04-15T05:59:44 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-10-14_semana_14octubre_25_20octubre_25_facebook.csv']
+2026-04-15T05:59:44 [INFO]   facebook -> 2025-10-14_facebook.txt | extraidos:32 unicos:20
+2026-04-15T05:59:44 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-10-14_semana_14octubre_25_20octubre_25_twitter.csv']
+2026-04-15T05:59:44 [INFO]   twitter -> 2025-10-14_twitter.txt | extraidos:58 unicos:58
+2026-04-15T05:59:44 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-10-14_semana_14octubre_25_20octubre_25_youtube.csv']
+2026-04-15T05:59:45 [INFO]   youtube -> 2025-10-14_youtube.txt | extraidos:4570 unicos:2633
+2026-04-15T05:59:45 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-10-14_semana_14octubre_25_20octubre_25_medios.txt']
+2026-04-15T05:59:45 [INFO]   medios -> 2025-10-14_medios.txt | copiado
+2026-04-15T05:59:45 [INFO] 
+[2025-10-21] 2025-10-21_semana_21octubre_25_27octubre_25
+2026-04-15T05:59:45 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-10-21_semana_21octubre_25_27octubre_25_facebook.csv']
+2026-04-15T05:59:45 [INFO]   facebook -> 2025-10-21_facebook.txt | extraidos:38 unicos:28
+2026-04-15T05:59:45 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-10-21_semana_21octubre_25_27octubre_25_twitter.csv']
+2026-04-15T05:59:45 [INFO]   twitter -> 2025-10-21_twitter.txt | extraidos:123 unicos:123
+2026-04-15T05:59:45 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-10-21_semana_21octubre_25_27octubre_25_youtube.csv']
+2026-04-15T05:59:45 [INFO]   youtube -> 2025-10-21_youtube.txt | extraidos:5141 unicos:2677
+2026-04-15T05:59:45 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-10-21_semana_21octubre_25_27octubre_25_medios.txt']
+2026-04-15T05:59:45 [INFO]   medios -> 2025-10-21_medios.txt | copiado
+2026-04-15T05:59:45 [INFO] 
+[2025-10-28] 2025-10-28_semana_28octubre_25_3noviembre_25
+2026-04-15T05:59:45 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-10-28_semana_28octubre_25_3noviembre_25_facebook.csv']
+2026-04-15T05:59:45 [INFO]   facebook -> 2025-10-28_facebook.txt | extraidos:44 unicos:29
+2026-04-15T05:59:45 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-10-28_semana_28octubre_25_3noviembre_25_twitter.csv']
+2026-04-15T05:59:45 [INFO]   twitter -> 2025-10-28_twitter.txt | extraidos:454 unicos:454
+2026-04-15T05:59:45 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-10-28_semana_28octubre_25_3noviembre_25_youtube.csv']
+2026-04-15T05:59:45 [INFO]   youtube -> 2025-10-28_youtube.txt | extraidos:7532 unicos:3354
+2026-04-15T05:59:45 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-10-28_semana_28octubre_25_3noviembre_25_medios.txt']
+2026-04-15T05:59:45 [INFO]   medios -> 2025-10-28_medios.txt | copiado
+2026-04-15T05:59:45 [INFO] 
+[2025-11-04] 2025-11-04_semana_4noviembre_25_10noviembre_25
+2026-04-15T05:59:45 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-11-04_semana_4noviembre_25_10noviembre_25_facebook.csv']
+2026-04-15T05:59:45 [INFO]   facebook -> 2025-11-04_facebook.txt | extraidos:38 unicos:27
+2026-04-15T05:59:45 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-11-04_semana_4noviembre_25_10noviembre_25_twitter.csv']
+2026-04-15T05:59:45 [INFO]   twitter -> 2025-11-04_twitter.txt | extraidos:87 unicos:86
+2026-04-15T05:59:45 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-11-04_semana_4noviembre_25_10noviembre_25_youtube.csv']
+2026-04-15T05:59:45 [INFO]   youtube -> 2025-11-04_youtube.txt | extraidos:4554 unicos:1881
+2026-04-15T05:59:45 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-11-04_semana_4noviembre_25_10noviembre_25_medios.txt']
+2026-04-15T05:59:45 [INFO]   medios -> 2025-11-04_medios.txt | copiado
+2026-04-15T05:59:45 [INFO] 
+[2025-11-11] 2025-11-11_semana_11noviembre_25_17noviembre_25
+2026-04-15T05:59:45 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-11-11_semana_11noviembre_25_17noviembre_25_facebook.csv']
+2026-04-15T05:59:45 [INFO]   facebook -> 2025-11-11_facebook.txt | extraidos:431 unicos:413
+2026-04-15T05:59:45 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-11-11_semana_11noviembre_25_17noviembre_25_twitter.csv']
+2026-04-15T05:59:46 [INFO]   twitter -> 2025-11-11_twitter.txt | extraidos:101 unicos:101
+2026-04-15T05:59:46 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-11-11_semana_11noviembre_25_17noviembre_25_youtube.csv']
+2026-04-15T05:59:46 [INFO]   youtube -> 2025-11-11_youtube.txt | extraidos:11262 unicos:11262
+2026-04-15T05:59:46 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-11-11_semana_11noviembre_25_17noviembre_25_medios.txt']
+2026-04-15T05:59:46 [INFO]   medios -> 2025-11-11_medios.txt | copiado
+2026-04-15T05:59:46 [INFO] 
+[2025-11-18] 2025-11-18_semana_18noviembre_25_24noviembre_25
+2026-04-15T05:59:46 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-11-18_semana_18noviembre_25_24noviembre_25_facebook.csv']
+2026-04-15T05:59:46 [INFO]   facebook -> 2025-11-18_facebook.txt | extraidos:350 unicos:316
+2026-04-15T05:59:46 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-11-18_semana_18noviembre_25_24noviembre_25_twitter.csv']
+2026-04-15T05:59:46 [INFO]   twitter -> 2025-11-18_twitter.txt | extraidos:108 unicos:105
+2026-04-15T05:59:46 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-11-18_semana_18noviembre_25_24noviembre_25_youtube.csv']
+2026-04-15T05:59:46 [INFO]   youtube -> 2025-11-18_youtube.txt | extraidos:3742 unicos:3059
+2026-04-15T05:59:46 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-11-18_semana_18noviembre_25_24noviembre_25_medios.txt']
+2026-04-15T05:59:46 [INFO]   medios -> 2025-11-18_medios.txt | copiado
+2026-04-15T05:59:46 [INFO] 
+[2025-11-25] 2025-11-25_semana_25noviembre_01diciembre_25
+2026-04-15T05:59:46 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-11-25_semana_25noviembre_01diciembre_25_facebook.csv']
+2026-04-15T05:59:46 [INFO]   facebook -> 2025-11-25_facebook.txt | extraidos:247 unicos:166
+2026-04-15T05:59:46 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-11-25_semana_25noviembre_01diciembre_25_twitter.csv']
+2026-04-15T05:59:46 [INFO]   twitter -> 2025-11-25_twitter.txt | extraidos:81 unicos:78
+2026-04-15T05:59:46 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-11-25_semana_25noviembre_01diciembre_25_youtube.csv']
+2026-04-15T05:59:47 [INFO]   youtube -> 2025-11-25_youtube.txt | extraidos:3150 unicos:1566
+2026-04-15T05:59:47 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-11-25_semana_25noviembre_01diciembre_25_medios.txt']
+2026-04-15T05:59:47 [INFO]   medios -> 2025-11-25_medios.txt | copiado
+2026-04-15T05:59:47 [INFO] 
+[2025-12-02] 2025-12-02_semana_02diciembre_08diciembre_25
+2026-04-15T05:59:47 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-12-02_semana_02diciembre_08diciembre_25_facebook.csv']
+2026-04-15T05:59:47 [INFO]   facebook -> 2025-12-02_facebook.txt | extraidos:374 unicos:327
+2026-04-15T05:59:47 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-12-02_semana_02diciembre_08diciembre_25_twitter.csv']
+2026-04-15T05:59:47 [INFO]   twitter -> 2025-12-02_twitter.txt | extraidos:70 unicos:70
+2026-04-15T05:59:47 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-12-02_semana_02diciembre_08diciembre_25_youtube.csv']
+2026-04-15T05:59:47 [INFO]   youtube -> 2025-12-02_youtube.txt | extraidos:2228 unicos:1106
+2026-04-15T05:59:47 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-12-02_semana_02diciembre_08diciembre_25_medios.txt']
+2026-04-15T05:59:47 [INFO]   medios -> 2025-12-02_medios.txt | copiado
+2026-04-15T05:59:47 [INFO] 
+[2025-12-09] 2025-12-09_semana_09diciembre_15diciembre_25
+2026-04-15T05:59:47 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-12-09_semana_09diciembre_15diciembre_25_facebook.csv']
+2026-04-15T05:59:47 [INFO]   facebook -> 2025-12-09_facebook.txt | extraidos:412 unicos:371
+2026-04-15T05:59:47 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-12-09_semana_09diciembre_15diciembre_25_twitter.csv']
+2026-04-15T05:59:47 [INFO]   twitter -> 2025-12-09_twitter.txt | extraidos:60 unicos:54
+2026-04-15T05:59:47 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-12-09_semana_09diciembre_15diciembre_25_youtube.csv']
+2026-04-15T05:59:47 [INFO]   youtube -> 2025-12-09_youtube.txt | extraidos:7654 unicos:2951
+2026-04-15T05:59:47 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-12-09_semana_09diciembre_15diciembre_25_medios.txt']
+2026-04-15T05:59:47 [INFO]   medios -> 2025-12-09_medios.txt | copiado
+2026-04-15T05:59:47 [INFO] 
+[2025-12-16] 2025-12-16_semana_16diciembre_22diciembre_25
+2026-04-15T05:59:47 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-12-16_semana_16diciembre_22diciembre_25_facebook.csv']
+2026-04-15T05:59:47 [INFO]   facebook -> 2025-12-16_facebook.txt | extraidos:452 unicos:390
+2026-04-15T05:59:47 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-12-16_semana_16diciembre_22diciembre_25_twitter.csv']
+2026-04-15T05:59:47 [INFO]   twitter -> 2025-12-16_twitter.txt | extraidos:50 unicos:49
+2026-04-15T05:59:47 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-12-16_semana_16diciembre_22diciembre_25_youtube.csv']
+2026-04-15T05:59:48 [INFO]   youtube -> 2025-12-16_youtube.txt | extraidos:8044 unicos:3922
+2026-04-15T05:59:48 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-12-16_semana_16diciembre_22diciembre_25_medios.txt']
+2026-04-15T05:59:48 [INFO]   medios -> 2025-12-16_medios.txt | copiado
+2026-04-15T05:59:48 [INFO] 
+[2025-12-23] 2025-12-23_semana_23diciembre_29diciembre_25
+2026-04-15T05:59:48 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-12-23_semana_23diciembre_29diciembre_25_facebook.csv']
+2026-04-15T05:59:48 [INFO]   facebook -> 2025-12-23_facebook.txt | extraidos:498 unicos:414
+2026-04-15T05:59:48 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-12-23_semana_23diciembre_29diciembre_25_twitter.csv']
+2026-04-15T05:59:48 [INFO]   twitter -> 2025-12-23_twitter.txt | extraidos:106 unicos:106
+2026-04-15T05:59:48 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-12-23_semana_23diciembre_29diciembre_25_youtube.csv']
+2026-04-15T05:59:48 [INFO]   youtube -> 2025-12-23_youtube.txt | extraidos:2860 unicos:1381
+2026-04-15T05:59:48 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-12-23_semana_23diciembre_29diciembre_25_medios.txt']
+2026-04-15T05:59:48 [INFO]   medios -> 2025-12-23_medios.txt | copiado
+2026-04-15T05:59:48 [INFO] 
+[2025-12-30] 2025-12-30_semana_30diciembre_05enero_26
+2026-04-15T05:59:48 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2025-12-30_semana_30diciembre_05enero_26_facebook.csv']
+2026-04-15T05:59:48 [INFO]   facebook -> 2025-12-30_facebook.txt | extraidos:427 unicos:353
+2026-04-15T05:59:48 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2025-12-30_semana_30diciembre_05enero_26_twitter.csv']
+2026-04-15T05:59:48 [INFO]   twitter -> 2025-12-30_twitter.txt | extraidos:88 unicos:87
+2026-04-15T05:59:48 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2025-12-30_semana_30diciembre_05enero_26_youtube.csv']
+2026-04-15T05:59:48 [INFO]   youtube -> 2025-12-30_youtube.txt | extraidos:8784 unicos:4043
+2026-04-15T05:59:48 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2025-12-30_semana_30diciembre_05enero_26_medios.txt']
+2026-04-15T05:59:48 [INFO]   medios -> 2025-12-30_medios.txt | copiado
+2026-04-15T05:59:48 [INFO] 
+[2026-01-06] 2026-01-06_semana_06enero_12enero_26
+2026-04-15T05:59:48 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2026-01-06_semana_06enero_12enero_26_facebook.csv']
+2026-04-15T05:59:49 [INFO]   facebook -> 2026-01-06_facebook.txt | extraidos:345 unicos:296
+2026-04-15T05:59:49 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2026-01-06_semana_06enero_12enero_26_twitter.csv']
+2026-04-15T05:59:49 [INFO]   twitter -> 2026-01-06_twitter.txt | extraidos:3 unicos:3
+2026-04-15T05:59:49 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2026-01-06_semana_06enero_12enero_26_youtube.csv']
+2026-04-15T05:59:49 [INFO]   youtube -> 2026-01-06_youtube.txt | extraidos:2472 unicos:1188
+2026-04-15T05:59:49 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2026-01-06_semana_06enero_12enero_26_medios.txt']
+2026-04-15T05:59:49 [INFO]   medios -> 2026-01-06_medios.txt | copiado
+2026-04-15T05:59:49 [INFO] 
+[2026-01-13] 2026-01-13_semana_13enero_19enero_26
+2026-04-15T05:59:49 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2026-01-13_semana_13enero_19enero_26_facebook.csv']
+2026-04-15T05:59:49 [INFO]   facebook -> 2026-01-13_facebook.txt | extraidos:521 unicos:417
+2026-04-15T05:59:49 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2026-01-13_semana_13enero_19enero_26_twitter.csv']
+2026-04-15T05:59:49 [INFO]   twitter -> 2026-01-13_twitter.txt | extraidos:77 unicos:71
+2026-04-15T05:59:49 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2026-01-13_semana_13enero_19enero_26_youtube.csv']
+2026-04-15T05:59:49 [INFO]   youtube -> 2026-01-13_youtube.txt | extraidos:12214 unicos:6052
+2026-04-15T05:59:49 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2026-01-13_semana_13enero_19enero_26_medios.txt']
+2026-04-15T05:59:49 [INFO]   medios -> 2026-01-13_medios.txt | copiado
+2026-04-15T05:59:49 [INFO] 
+[2026-01-20] 2026-01-20_semana_20enero_26enero_26
+2026-04-15T05:59:49 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2026-01-20_semana_20enero_26enero_26_facebook.csv']
+2026-04-15T05:59:49 [INFO]   facebook -> 2026-01-20_facebook.txt | extraidos:540 unicos:416
+2026-04-15T05:59:49 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2026-01-20_semana_20enero_26enero_26_twitter.csv']
+2026-04-15T05:59:49 [INFO]   twitter -> 2026-01-20_twitter.txt | extraidos:54 unicos:52
+2026-04-15T05:59:49 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2026-01-20_semana_20enero_26enero_26_youtube.csv']
+2026-04-15T05:59:50 [INFO]   youtube -> 2026-01-20_youtube.txt | extraidos:6890 unicos:2723
+2026-04-15T05:59:50 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2026-01-20_semana_20enero_26enero_26_medios.txt']
+2026-04-15T05:59:50 [INFO]   medios -> 2026-01-20_medios.txt | copiado
+2026-04-15T05:59:50 [INFO] 
+[2026-01-27] 2026-01-27_semana_27enero_02febrero_26
+2026-04-15T05:59:50 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2026-01-27_semana_27enero_02febrero_26_facebook.csv']
+2026-04-15T05:59:50 [INFO]   facebook -> 2026-01-27_facebook.txt | extraidos:423 unicos:352
+2026-04-15T05:59:50 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2026-01-27_semana_27enero_02febrero_26_twitter.csv']
+2026-04-15T05:59:50 [INFO]   twitter -> 2026-01-27_twitter.txt | extraidos:50 unicos:50
+2026-04-15T05:59:50 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2026-01-27_semana_27enero_02febrero_26_youtube.csv']
+2026-04-15T05:59:50 [INFO]   youtube -> 2026-01-27_youtube.txt | extraidos:2194 unicos:624
+2026-04-15T05:59:50 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2026-01-27_semana_27enero_02febrero_26_medios.txt']
+2026-04-15T05:59:50 [INFO]   medios -> 2026-01-27_medios.txt | copiado
+2026-04-15T05:59:50 [INFO] 
+[2026-02-03] 2026-02-03_semana_03febrero_09febrero_26
+2026-04-15T05:59:50 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2026-02-03_semana_03febrero_09febrero_26_facebook.csv']
+2026-04-15T05:59:50 [INFO]   facebook -> 2026-02-03_facebook.txt | extraidos:337 unicos:292
+2026-04-15T05:59:50 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2026-02-03_semana_03febrero_09febrero_26_twitter.csv']
+2026-04-15T05:59:50 [INFO]   twitter -> 2026-02-03_twitter.txt | extraidos:55 unicos:53
+2026-04-15T05:59:50 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2026-02-03_semana_03febrero_09febrero_26_youtube.csv']
+2026-04-15T05:59:50 [INFO]   youtube -> 2026-02-03_youtube.txt | extraidos:3134 unicos:1557
+2026-04-15T05:59:50 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2026-02-03_semana_03febrero_09febrero_26_medios.txt']
+2026-04-15T05:59:50 [INFO]   medios -> 2026-02-03_medios.txt | copiado
+2026-04-15T05:59:50 [INFO] 
+[2026-02-10] 2026-02-10_semana_10febrero_16febrero_26
+2026-04-15T05:59:50 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2026-02-10_semana_10febrero_16febrero_26_facebook.csv']
+2026-04-15T05:59:50 [INFO]   facebook -> 2026-02-10_facebook.txt | extraidos:247 unicos:204
+2026-04-15T05:59:50 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2026-02-10_semana_10febrero_16febrero_26_twitter.csv']
+2026-04-15T05:59:50 [INFO]   twitter -> 2026-02-10_twitter.txt | extraidos:88 unicos:88
+2026-04-15T05:59:50 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2026-02-10_semana_10febrero_16febrero_26_youtube.csv']
+2026-04-15T05:59:50 [INFO]   youtube -> 2026-02-10_youtube.txt | extraidos:3168 unicos:1548
+2026-04-15T05:59:50 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2026-02-10_semana_10febrero_16febrero_26_medios.txt']
+2026-04-15T05:59:50 [INFO]   medios -> 2026-02-10_medios.txt | copiado
+2026-04-15T05:59:50 [INFO] 
+[2026-02-17] 2026-02-17_semana_17febrero_23febrero_26
+2026-04-15T05:59:50 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2026-02-17_semana_17febrero_23febrero_26_facebook.csv']
+2026-04-15T05:59:50 [INFO]   facebook -> 2026-02-17_facebook.txt | extraidos:258 unicos:200
+2026-04-15T05:59:50 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2026-02-17_semana_17febrero_23febrero_26_twitter.csv']
+2026-04-15T05:59:50 [INFO]   twitter -> 2026-02-17_twitter.txt | extraidos:46 unicos:43
+2026-04-15T05:59:50 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2026-02-17_semana_17febrero_23febrero_26_youtube.csv']
+2026-04-15T05:59:50 [INFO]   youtube -> 2026-02-17_youtube.txt | extraidos:738 unicos:358
+2026-04-15T05:59:50 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2026-02-17_semana_17febrero_23febrero_26_medios.txt']
+2026-04-15T05:59:50 [INFO]   medios -> 2026-02-17_medios.txt | copiado
+2026-04-15T05:59:50 [INFO] 
+[2026-02-24] 2026-02-24_semana_24febrero_02marzo_26
+2026-04-15T05:59:50 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2026-02-24_semana_24febrero_02marzo_26_facebook.csv']
+2026-04-15T05:59:50 [INFO]   facebook -> 2026-02-24_facebook.txt | extraidos:290 unicos:236
+2026-04-15T05:59:50 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2026-02-24_semana_24febrero_02marzo_26_twitter.csv']
+2026-04-15T05:59:50 [INFO]   twitter -> 2026-02-24_twitter.txt | extraidos:51 unicos:49
+2026-04-15T05:59:50 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2026-02-24_semana_24febrero_02marzo_26_youtube.csv']
+2026-04-15T05:59:51 [INFO]   youtube -> 2026-02-24_youtube.txt | extraidos:2848 unicos:1115
+2026-04-15T05:59:51 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2026-02-24_semana_24febrero_02marzo_26_medios.txt']
+2026-04-15T05:59:51 [INFO]   medios -> 2026-02-24_medios.txt | copiado
+2026-04-15T05:59:51 [INFO] 
+[2026-03-03] 2026-03-03_semana_03marzo_09marzo_26
+2026-04-15T05:59:51 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2026-03-03_semana_03marzo_09marzo_26_facebook.csv']
+2026-04-15T05:59:51 [INFO]   facebook -> 2026-03-03_facebook.txt | extraidos:55 unicos:51
+2026-04-15T05:59:51 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2026-03-03_semana_03marzo_09marzo_26_twitter.csv']
+2026-04-15T05:59:51 [INFO]   twitter -> 2026-03-03_twitter.txt | extraidos:50 unicos:47
+2026-04-15T05:59:51 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2026-03-03_semana_03marzo_09marzo_26_youtube.csv']
+2026-04-15T05:59:51 [INFO]   youtube -> 2026-03-03_youtube.txt | extraidos:2828 unicos:1396
+2026-04-15T05:59:51 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2026-03-03_semana_03marzo_09marzo_26_medios.txt']
+2026-04-15T05:59:51 [INFO]   medios -> 2026-03-03_medios.txt | copiado
+2026-04-15T05:59:51 [INFO] 
+[2026-03-10] 2026-03-10_semana_10marzo_16marzo_26
+2026-04-15T05:59:51 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2026-03-10_semana_10marzo_16marzo_26_facebook.csv']
+2026-04-15T05:59:51 [INFO]   facebook -> 2026-03-10_facebook.txt | extraidos:47 unicos:46
+2026-04-15T05:59:51 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2026-03-10_semana_10marzo_16marzo_26_twitter.csv']
+2026-04-15T05:59:51 [INFO]   twitter -> 2026-03-10_twitter.txt | extraidos:42 unicos:41
+2026-04-15T05:59:51 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2026-03-10_semana_10marzo_16marzo_26_youtube.csv']
+2026-04-15T05:59:51 [INFO]   youtube -> 2026-03-10_youtube.txt | extraidos:2612 unicos:1225
+2026-04-15T05:59:51 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2026-03-10_semana_10marzo_16marzo_26_medios.txt']
+2026-04-15T05:59:51 [INFO]   medios -> 2026-03-10_medios.txt | copiado
+2026-04-15T05:59:51 [INFO] 
+[2026-03-17] 2026-03-17_semana_17marzo_23marzo_26
+2026-04-15T05:59:51 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2026-03-17_semana_17marzo_23marzo_26_facebook.csv']
+2026-04-15T05:59:51 [INFO]   facebook -> 2026-03-17_facebook.txt | extraidos:56 unicos:53
+2026-04-15T05:59:51 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2026-03-17_semana_17marzo_23marzo_26_twitter.csv']
+2026-04-15T05:59:51 [INFO]   twitter -> 2026-03-17_twitter.txt | extraidos:22 unicos:18
+2026-04-15T05:59:51 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2026-03-17_semana_17marzo_23marzo_26_youtube.csv']
+2026-04-15T05:59:51 [INFO]   youtube -> 2026-03-17_youtube.txt | extraidos:5802 unicos:3087
+2026-04-15T05:59:51 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2026-03-17_semana_17marzo_23marzo_26_medios.txt']
+2026-04-15T05:59:51 [INFO]   medios -> 2026-03-17_medios.txt | copiado
+2026-04-15T05:59:51 [INFO] 
+[2026-03-24] 2026-03-24_semana_24marzo_30marzo_26
+2026-04-15T05:59:51 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2026-03-24_semana_24marzo_30marzo_26_facebook.csv']
+2026-04-15T05:59:51 [INFO]   facebook -> 2026-03-24_facebook.txt | extraidos:42 unicos:41
+2026-04-15T05:59:51 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2026-03-24_semana_24marzo_30marzo_26_twitter.csv']
+2026-04-15T05:59:51 [INFO]   twitter -> 2026-03-24_twitter.txt | extraidos:77 unicos:77
+2026-04-15T05:59:51 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2026-03-24_semana_24marzo_30marzo_26_youtube.csv']
+2026-04-15T05:59:51 [INFO]   youtube -> 2026-03-24_youtube.txt | extraidos:1671 unicos:876
+2026-04-15T05:59:51 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2026-03-24_semana_24marzo_30marzo_26_medios.txt']
+2026-04-15T05:59:51 [INFO]   medios -> 2026-03-24_medios.txt | copiado
+2026-04-15T05:59:51 [INFO] 
+[2026-03-31] 2026-03-31_semana_31marzo_06abril_26
+2026-04-15T05:59:51 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2026-03-31_semana_31marzo_06abril_26_facebook.csv']
+2026-04-15T05:59:51 [INFO]   facebook -> 2026-03-31_facebook.txt | extraidos:74 unicos:72
+2026-04-15T05:59:51 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2026-03-31_semana_31marzo_06abril_26_twitter.csv']
+2026-04-15T05:59:51 [INFO]   twitter -> 2026-03-31_twitter.txt | extraidos:95 unicos:89
+2026-04-15T05:59:51 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2026-03-31_semana_31marzo_06abril_26_youtube.csv']
+2026-04-15T05:59:51 [INFO]   youtube -> 2026-03-31_youtube.txt | extraidos:1267 unicos:517
+2026-04-15T05:59:51 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2026-03-31_semana_31marzo_06abril_26_medios.txt']
+2026-04-15T05:59:51 [INFO]   medios -> 2026-03-31_medios.txt | copiado
+2026-04-15T05:59:51 [INFO] 
+[2026-04-06] 2026-04-06_semana_06abril_12abril_26
+2026-04-15T05:59:51 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2026-04-06_semana_06abril_12abril_26_facebook.csv']
+2026-04-15T05:59:51 [INFO]   facebook -> 2026-04-06_facebook.txt | extraidos:0 unicos:0
+2026-04-15T05:59:51 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2026-04-06_semana_06abril_12abril_26_twitter.csv']
+2026-04-15T05:59:51 [INFO]   twitter -> 2026-04-06_twitter.txt | extraidos:179 unicos:174
+2026-04-15T05:59:51 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2026-04-06_semana_06abril_12abril_26_youtube.csv']
+2026-04-15T05:59:51 [INFO]   youtube -> 2026-04-06_youtube.txt | extraidos:288 unicos:144
+2026-04-15T05:59:51 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2026-04-06_semana_06abril_12abril_26_medios.txt']
+2026-04-15T05:59:51 [INFO]   medios -> 2026-04-06_medios.txt | copiado
+2026-04-15T05:59:51 [INFO] 
+Resumen
+2026-04-15T05:59:51 [INFO]   facebook: 80
+2026-04-15T05:59:51 [INFO]   twitter: 80
+2026-04-15T05:59:51 [INFO]   youtube: 80
+2026-04-15T05:59:51 [INFO]   medios: 80
+2026-04-15T05:59:51 [INFO]   faltantes: 0
+2026-04-15T05:59:51 [INFO] Manifest escrito: /home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/data/text/radar_weekly_flat/_auditoria_preprocessing/manifest_20260415T115938.306380+0000.json
+2026-04-15T05:59:51 [INFO] Tabla de auditoría escrita: /home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/data/text/radar_weekly_flat/_auditoria_preprocessing/auditoria_20260415T115938.306380+0000.csv
+2026-04-15T05:59:51 [INFO] ======================================================================
+2026-04-15T05:59:51 [INFO] Corrida completada — outputs: 320 | faltantes: 0 | errores: 0

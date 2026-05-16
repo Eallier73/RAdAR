@@ -1,0 +1,19 @@
+{
+  "run_timestamp": "2026-04-13T13:29:28.149676+00:00",
+  "script_name": "promover_raw_a_texto.py",
+  "script_version": "2.0.0-structural",
+  "source_base": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/data/raw/radar_weekly_flat",
+  "target_base": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/data/text/radar_weekly_flat",
+  "log_path": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/data/text/radar_weekly_flat/_auditoria_preprocessing/run_20260413_132928.log",
+  "total_weeks_detected": 80,
+  "total_weeks_processed": 80,
+  "total_outputs_generated": 317,
+  "total_missing_by_media": {
+    "facebook": 1,
+    "twitter": 1,
+    "youtube": 0,
+    "medios": 1
+  },
+  "total_errors": 0,
+  "compatibility_statement": "Lógica textual histórica preservada sin alteración. Intervención exclusivamente estructural (v2.0.0-structural). Salida canónica no rediseñada."
+}

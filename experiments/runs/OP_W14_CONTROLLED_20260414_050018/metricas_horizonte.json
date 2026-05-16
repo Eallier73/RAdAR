@@ -1,0 +1,34 @@
+{
+  "created_at": "2026-04-14 05:00:18",
+  "experiment_id": "E1",
+  "family": "lineal_regularizado",
+  "horizon_results": [
+    {
+      "comentarios": "Ridge limpio con tuning temporal interno | metric=mae | inner_splits=3",
+      "dataset_periodo": "2024-10-14 a 2026-03-02",
+      "deteccion_caidas": 0.7692307692307693,
+      "direccion_accuracy": 0.8214285714285714,
+      "estado": "corrido",
+      "horizonte_sem": 1,
+      "l_num": 0.17686098060226269,
+      "l_risk": 0.23076923076923073,
+      "l_tol": 0.8571428571428571,
+      "l_trend": 0.1785714285714286,
+      "loss_h": 0.07498523812807274,
+      "mae": 0.10881974353336672,
+      "notas_config": "{\"feature_candidates\": 59, \"feature_mode\": \"all\", \"horizon\": 1, \"initial_train_size\": 40, \"lags\": [1, 2, 3, 4], \"model\": \"ridge_tscv\", \"model_params\": {\"alpha_grid\": [9.999999999999999e-05, 0.0001603718743751331, 0.00025719138090593444, 0.0004124626382901352, 0.0006614740641230145, 0.001060818355139448, 0.0017012542798525892, 0.002728333376486769, 0.004375479375074184, 0.007017038286703822, 0.011253355826007646, 0.0180472176682717, 0.028942661247167517, 0.046415888336127774, 0.07443803013251689, 0.11937766417144358, 0.19144819761699575, 0.30702906297578497, 0.4923882631706737, 0.7896522868499725, 1.266380173467402, 2.030917620904735, 3.2570206556597827, 5.2233450742668435, 8.376776400682923, 13.433993325988988, 21.54434690031882, 34.55107294592218, 55.41020330009491, 88.86238162743408, 142.51026703029964, 228.54638641349882, 366.52412370796264, 587.8016072274911, 942.6684551178854, 1511.77507061566, 2424.4620170823255, 3888.155180308085, 6235.507341273912, 10000.0], \"alpha_selection_metric\": \"mae\", \"inner_splits\": 3, \"transform_mode\": \"standard\", \"winsor_lower_quantile\": 0.05, \"winsor_upper_quantile\": 0.95}, \"rows_eval\": 28, \"rows_modeling\": 68, \"selected_feature_count_avg\": 59.0, \"target_mode\": \"nivel\", \"transform_mode\": \"standard\"}",
+      "rmse": 0.1340214097591685,
+      "seleccion_variables": "all",
+      "target": "nivel",
+      "transformacion": "standard_scaler",
+      "validacion": "walk-forward_expanding",
+      "variables_tematicas": "sentimiento_medios, v5_agua_neto, v5_alumbrado_neto, v5_americo_neto, v5_basura_neto, v5_corrupcion_neto, v5_delitos_neto, v5_morena_neto, v5_obras_neto, v5_prevencion_neto, v5_vialidad_neto",
+      "variables_temporales": "y_t + lags [1, 2, 3, 4]"
+    }
+  ],
+  "model": "ridge_tscv",
+  "run_id": "OP_W14_CONTROLLED",
+  "script_path": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/src/modeling/runners/run_e1_ridge_clean.py",
+  "snapshot_path": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/experiments/runs/OP_W14_CONTROLLED_20260414_050018/scripts/run_e1_ridge_clean.py",
+  "task_type": "regresion"
+}
