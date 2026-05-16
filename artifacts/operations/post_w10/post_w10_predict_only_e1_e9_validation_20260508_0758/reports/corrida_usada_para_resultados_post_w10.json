@@ -1,0 +1,66 @@
+{
+  "operation_id": "post_w10_predict_only_e1_e9_validation_20260508_0758",
+  "registered_at": "2026-05-16T06:01:51-06:00",
+  "scope": {
+    "from_week": "2026-W11",
+    "to_week": "2026-W18",
+    "pipeline_from_stage": "modeling",
+    "pipeline_to_stage": "modeling",
+    "operation_mode": "predict_only_frozen_inference"
+  },
+  "python_envs": {
+    "ops_python": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+    "modeling_python": "/home/emilio/anaconda3/envs/radar-exp-py311/bin/python"
+  },
+  "command_executed": [
+    "/home/emilio/anaconda3/envs/radar-exp-py311/bin/python",
+    "-m",
+    "src.operations.build_emission_registry_post_w10",
+    "--operation-id",
+    "post_w10_predict_only_e1_e9_validation_20260508_0758",
+    "--operation-root",
+    "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/artifacts/operations/post_w10/post_w10_predict_only_e1_e9_validation_20260508_0758",
+    "--from-week",
+    "2026-W11",
+    "--to-week",
+    "2026-W18",
+    "--dataset-path",
+    "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/data/processed/modeling/datos_ml_master_indice_aceptacion_digital.xlsx",
+    "--comment",
+    "",
+    "--e1-run-dir",
+    "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/experiments/runs/E1_v5_clean_20260321_105449",
+    "--e9-run-dir",
+    "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/experiments/runs/E9_v2_clean_20260401_070431"
+  ],
+  "dataset_path": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/data/processed/modeling/datos_ml_master_indice_aceptacion_digital.xlsx",
+  "e9_curated_table_path": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/experiments/audit/tabla_maestra_experimentos_radar_e9_curada.xlsx",
+  "canonical_runs": {
+    "E1_v5_clean": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/experiments/runs/E1_v5_clean_20260321_105449",
+    "E2_v3_clean": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/experiments/runs/E2_v3_clean_20260323_061213",
+    "E3_v2_clean": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/experiments/runs/E3_v2_clean_20260325_045918",
+    "E5_v4_clean": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/experiments/runs/E5_v4_clean_20260330_091736",
+    "E7_v3_clean": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/experiments/runs/E7_v3_clean_20260330_113801",
+    "E9_v2_clean": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/experiments/runs/E9_v2_clean_20260401_070431"
+  },
+  "predict_only_packages": {
+    "E1_v5_clean": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/artifacts/operations/frozen_inference_profiles/E1_v5_clean/manifest.json",
+    "E2_v3_clean": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/artifacts/operations/frozen_inference_profiles/E2_v3_clean/manifest.json",
+    "E3_v2_clean": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/artifacts/operations/frozen_inference_profiles/E3_v2_clean/manifest.json",
+    "E5_v4_clean": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/artifacts/operations/frozen_inference_profiles/E5_v4_clean/manifest.json",
+    "E7_v3_clean": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/artifacts/operations/frozen_inference_profiles/E7_v3_clean/manifest.json",
+    "E9_v2_clean": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/artifacts/operations/frozen_inference_profiles/E9_v2_clean/manifest.json"
+  },
+  "historical_cutoff": {
+    "week": "2026-W10",
+    "week_start": "2026-03-02"
+  },
+  "methodology_note": "La corrida cargo paquetes predict-only reconstruidos desde corridas canonicas y corte historico W10; no cargo un model.pkl original publicado por la experimentacion historica.",
+  "outputs": {
+    "operation_manifest": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/artifacts/operations/post_w10/post_w10_predict_only_e1_e9_validation_20260508_0758/manifest.json",
+    "operation_summary": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/artifacts/operations/post_w10/post_w10_predict_only_e1_e9_validation_20260508_0758/summary.json",
+    "emission_registry_summary": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/artifacts/operations/post_w10/post_w10_predict_only_e1_e9_validation_20260508_0758/emission_registry_summary.json",
+    "registro_emisiones_csv": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/artifacts/operations/post_w10/post_w10_predict_only_e1_e9_validation_20260508_0758/emisiones/registro_emisiones.csv",
+    "registro_emisiones_json": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/artifacts/operations/post_w10/post_w10_predict_only_e1_e9_validation_20260508_0758/emisiones/registro_emisiones.json"
+  }
+}

@@ -86,3 +86,10 @@
 | --- | --- | --- | --- |
 | `E9_v2_clean` | No se declaró listo ni se forzó una ruta parcial que rehaga fitting. | No existe todavía paquete congelado suficiente del ensamblado/meta-modelo y de sus dependencias para operar sin `fit()`. | La operación post-W10 queda validada materialmente solo para `E1` y no para el referente de riesgo. |
 | `src/modeling/` | No se modificó para serializar modelos o exponer una API de inferencia. | Restricción explícita del usuario y congelamiento metodológico. | La congelación de otros perfiles requiere seguir construyendo paquetes desde la capa operativa o abrir una tarea específica de publicación de artefactos. |
+
+## 2026-05-16T06:01:51-06:00
+
+| Archivo | Tipo | Descripcion | Motivo | Impacto esperado | Compatibilidad hacia atras | Accion posterior |
+| --- | --- | --- | --- | --- | --- | --- |
+| `artifacts/operations/post_w10/post_w10_predict_only_e1_e9_validation_20260508_0758/reports/corrida_usada_para_resultados_post_w10.md` y `corrida_usada_para_resultados_post_w10.json` | `registro_auditoria` | Se registró de forma explícita el comando, dataset, corridas canónicas base, paquetes `predict-only`, corte histórico y salidas exactas usadas en la corrida cuyos resultados post-W10 se comentaron después. | Evitar que la identificación de artefactos quede solo en conversación y fijar la trazabilidad de la corrida efectivamente usada. | Cualquier revisión posterior puede reconstruir qué se usó exactamente sin depender de memoria ni de interpretación oral. | `si` | Si se compara otra corrida distinta, registrar su paquete de insumos en su propio `operation_id`. |
+| `src/operations/CHANGELOG_OPERACION_POST_W10.md` | `ajuste_documental` | Se añadió una entrada específica para dejar asentado que la corrida usada para resultados post-W10 ya quedó identificada formalmente dentro de sus artefactos. | Cerrar el hueco de auditabilidad detectado cuando se pidió precisar “qué fue lo que se usó exactamente para la corrida”. | La bitácora global ahora referencia el registro exacto de artefactos de esa corrida. | `si` | Mantener el mismo criterio de registro para futuras corridas operativas. |
