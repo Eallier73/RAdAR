@@ -24,12 +24,22 @@ ENV/
 .python-version
 
 # Generated lock files
-Experimentos/*.lock
+experiments/*.lock
+experiments/audit/*.lock
+artifacts/**/*.lock
+artifacts/logs/**/*.csv
+artifacts/logs/**/*.txt
+!artifacts/logs/**/.gitkeep
+artifacts/runs/extraction/**
+!artifacts/runs/extraction/.gitkeep
+artifacts/state/*.json
+!artifacts/state/*.example.json
 
 # Temporary files
 *.tmp
 *.bak
 
 # Local secrets / session state for extractors
+.env
 Scripts/state/radar_extractors_secrets.sh
 Scripts/state/radar_extractors_venv/
