@@ -1,0 +1,18 @@
+[
+  {
+    "feature_columns": [
+      "E1_v5_clean",
+      "E5_v4_clean",
+      "E3_v2_clean",
+      "E2_v3_clean"
+    ],
+    "feature_count": 4,
+    "horizonte_sem": 1,
+    "meta_model": "ridge",
+    "rows_descartadas_inicio": 12,
+    "rows_disponibles": 26,
+    "rows_eval": 14,
+    "sheet_name": "E9_base_h1",
+    "use_only_complete_rows": true
+  }
+]

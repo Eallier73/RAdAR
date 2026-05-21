@@ -1,0 +1,98 @@
+{
+  "artifacts": [],
+  "commands": [],
+  "duration_sec": 0.0,
+  "errors": [],
+  "finished_at": "2026-05-21 08:01:55",
+  "inputs": {
+    "allow_partial": true,
+    "fail_fast": true,
+    "sources_requested": [
+      "facebook",
+      "twitter",
+      "youtube",
+      "medios"
+    ]
+  },
+  "metrics": {
+    "sources_blocked": 0,
+    "sources_ready": 4,
+    "sources_total": 4
+  },
+  "notes": [
+    "Preflight solo verifica — no hace login ni modifica credenciales.",
+    "Para configurar credenciales: ver docs/operations/secrets_and_runtime.md.",
+    "Para inicializar state de Twitter/X: ver docs/operations/secrets_and_runtime.md#twitter-state."
+  ],
+  "outputs": {
+    "runtime_paths": {
+      "operations_artifacts_root": {
+        "exists": true,
+        "path": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/operations"
+      },
+      "raw_weekly_root": {
+        "exists": true,
+        "path": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat"
+      },
+      "twitter_state_dir": {
+        "exists": true,
+        "path": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/state"
+      }
+    },
+    "sources": {
+      "facebook": {
+        "issues": [],
+        "ready": true,
+        "secrets": {
+          "APIFY_TOKEN": true
+        },
+        "source": "facebook",
+        "state": null
+      },
+      "medios": {
+        "issues": [],
+        "ready": true,
+        "secrets": {},
+        "source": "medios",
+        "state": null
+      },
+      "twitter": {
+        "issues": [],
+        "ready": true,
+        "secrets": {},
+        "source": "twitter",
+        "state": {
+          "exists": true,
+          "path": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/state/x_state.json",
+          "readable": true,
+          "size_bytes": 14355
+        }
+      },
+      "youtube": {
+        "issues": [],
+        "ready": true,
+        "secrets": {
+          "YOUTUBE_API_KEY": true
+        },
+        "source": "youtube",
+        "state": null
+      }
+    },
+    "sources_effective_after_preflight": [
+      "facebook",
+      "twitter",
+      "youtube",
+      "medios"
+    ],
+    "sources_requested": [
+      "facebook",
+      "twitter",
+      "youtube",
+      "medios"
+    ]
+  },
+  "stage_name": "preflight",
+  "started_at": "2026-05-21 08:01:55",
+  "status": "success",
+  "warnings": []
+}

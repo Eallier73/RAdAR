@@ -1,0 +1,14 @@
+{
+  "auto_refresh_enabled": true,
+  "created_at": "2026-03-25 05:21:02",
+  "csv_path": "/home/emilio/Documentos/RAdAR/Experimentos/tabla_maestra_experimentos_radar.csv",
+  "estado_run": "corrido",
+  "inventory_directories_total": 15,
+  "json_path": "/home/emilio/Documentos/RAdAR/Experimentos/inventario_experimentos_radar.json",
+  "markdown_path": "/home/emilio/Documentos/RAdAR/Experimentos/resumen_auditoria_experimentos.md",
+  "master_runs_total": 13,
+  "run_id": "E4_v1_clean",
+  "status": "ok",
+  "trigger": "finalize",
+  "xlsx_path": "/home/emilio/Documentos/RAdAR/Experimentos/tabla_maestra_experimentos_radar.xlsx"
+}

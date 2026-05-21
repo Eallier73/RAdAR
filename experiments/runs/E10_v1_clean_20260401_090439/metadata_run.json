@@ -1,0 +1,12 @@
+{
+  "created_at": "2026-04-01 09:04:39",
+  "experiment_id": "E10",
+  "family": "gating_contextual",
+  "model": "meta_selector_hard_logistic_regression",
+  "parametros_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E10_v1_clean_20260401_090439/parametros_run.json",
+  "run_dir": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E10_v1_clean_20260401_090439",
+  "run_id": "E10_v1_clean",
+  "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e10_meta_selector.py",
+  "snapshot_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E10_v1_clean_20260401_090439/scripts/run_e10_meta_selector.py",
+  "task_type": "regresion"
+}

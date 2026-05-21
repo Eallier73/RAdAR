@@ -1,0 +1,12 @@
+{
+  "created_at": "2026-04-14 05:00:18",
+  "experiment_id": "E1",
+  "family": "lineal_regularizado",
+  "model": "ridge_tscv",
+  "parametros_path": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/experiments/runs/OP_W14_CONTROLLED_20260414_050018/parametros_run.json",
+  "run_dir": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/experiments/runs/OP_W14_CONTROLLED_20260414_050018",
+  "run_id": "OP_W14_CONTROLLED",
+  "script_path": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/src/modeling/runners/run_e1_ridge_clean.py",
+  "snapshot_path": "/home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/experiments/runs/OP_W14_CONTROLLED_20260414_050018/scripts/run_e1_ridge_clean.py",
+  "task_type": "regresion"
+}

@@ -1,0 +1,730 @@
+{
+  "allow_partial": true,
+  "artifacts_root": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/operations/2026/2026-W21/radar_2026W21_002",
+  "dry_run": true,
+  "fail_fast": false,
+  "finished_at": "2026-05-21 06:42:01",
+  "from_stage": "preflight",
+  "log_level": "INFO",
+  "metadata": {
+    "model_args": [],
+    "model_dataset_path": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/processed/modeling/datos_ml_master_indice_aceptacion_digital.xlsx",
+    "model_run_id": "radar_2026W21_002_model",
+    "model_runner": "src.modeling.runners.run_e10_meta_selector",
+    "selection_end_date": "2026-05-24",
+    "selection_start_date": "2026-05-18"
+  },
+  "mode": "controlled",
+  "notes": [],
+  "published_outputs": {},
+  "repo_context": {
+    "branch": "feature/arquitectura-limpia",
+    "commit": "5fbc3eb8e3685184591b824015cb3c8ce77456e0",
+    "dirty": true,
+    "repo_root": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+    "status_short": [
+      "M ../.gitignore",
+      "?? ../artifacts/",
+      "?? ../experiments/",
+      "?? .env",
+      "?? artifacts/"
+    ]
+  },
+  "run_id": "radar_2026W21_002",
+  "selection_window": {
+    "selected_end": "2026-05-24",
+    "selected_start": "2026-05-18",
+    "week_end": "2026-05-24",
+    "week_requested": "2026-W21",
+    "week_slug": "2026-W21",
+    "week_start": "2026-05-18"
+  },
+  "sources_effective": [
+    "facebook",
+    "twitter",
+    "youtube",
+    "medios"
+  ],
+  "sources_requested": [
+    "facebook",
+    "twitter",
+    "youtube",
+    "medios"
+  ],
+  "stage_states": {
+    "export": {
+      "artifacts": [],
+      "errors": [],
+      "notes": [
+        "Etapa omitida por selección explícita de etapas o por rango from_stage/to_stage."
+      ],
+      "outputs": {
+        "reason": "Fuera de la selección de etapas solicitada por CLI."
+      },
+      "stage_name": "export",
+      "status": "skipped",
+      "warnings": []
+    },
+    "extraction": {
+      "artifacts": [],
+      "commands": [
+        {
+          "command": [
+            "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+            "-m",
+            "src.extraction.runners.facebook_extractor_apify_tampico",
+            "--since",
+            "2026-05-18",
+            "--before",
+            "2026-05-24",
+            "--output-dir",
+            "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/runs/extraction/facebook",
+            "--publish-canonical",
+            "--overwrite",
+            "--no-prompt"
+          ],
+          "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.extraction.runners.facebook_extractor_apify_tampico --since 2026-05-18 --before 2026-05-24 --output-dir /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/runs/extraction/facebook --publish-canonical --overwrite --no-prompt",
+          "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+          "duration_sec": 0.0,
+          "executed": false,
+          "finished_at": "2026-05-21 06:42:01",
+          "label": "extract_facebook",
+          "returncode": 0,
+          "started_at": "2026-05-21 06:42:01"
+        },
+        {
+          "command": [
+            "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+            "-m",
+            "src.extraction.runners.twitter_extractor_tampico",
+            "2026-05-18",
+            "2026-05-24"
+          ],
+          "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.extraction.runners.twitter_extractor_tampico 2026-05-18 2026-05-24",
+          "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+          "duration_sec": 0.0,
+          "executed": false,
+          "finished_at": "2026-05-21 06:42:01",
+          "label": "extract_twitter",
+          "returncode": 0,
+          "started_at": "2026-05-21 06:42:01"
+        },
+        {
+          "command": [
+            "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+            "-m",
+            "src.extraction.runners.youtube_extractor_tampico",
+            "--since",
+            "2026-05-18",
+            "--before",
+            "2026-05-24",
+            "--output-dir",
+            "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat"
+          ],
+          "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.extraction.runners.youtube_extractor_tampico --since 2026-05-18 --before 2026-05-24 --output-dir /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat",
+          "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+          "duration_sec": 0.0,
+          "executed": false,
+          "finished_at": "2026-05-21 06:42:01",
+          "label": "extract_youtube",
+          "returncode": 0,
+          "started_at": "2026-05-21 06:42:01"
+        },
+        {
+          "command": [
+            "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+            "-m",
+            "src.extraction.runners.medios_extractor",
+            "--since",
+            "2026-05-18",
+            "--before",
+            "2026-05-24",
+            "--output-dir",
+            "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat"
+          ],
+          "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.extraction.runners.medios_extractor --since 2026-05-18 --before 2026-05-24 --output-dir /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat",
+          "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+          "duration_sec": 0.0,
+          "executed": false,
+          "finished_at": "2026-05-21 06:42:01",
+          "label": "extract_medios",
+          "returncode": 0,
+          "started_at": "2026-05-21 06:42:01"
+        }
+      ],
+      "duration_sec": 0.0,
+      "errors": [],
+      "finished_at": "2026-05-21 06:42:01",
+      "inputs": {
+        "selection_window": {
+          "selected_end": "2026-05-24",
+          "selected_start": "2026-05-18",
+          "week_end": "2026-05-24",
+          "week_requested": "2026-W21",
+          "week_slug": "2026-W21",
+          "week_start": "2026-05-18"
+        },
+        "sources": [
+          "facebook",
+          "twitter",
+          "youtube",
+          "medios"
+        ],
+        "week": {
+          "end_date": "2026-05-24",
+          "folder_name": "2026-05-18_semana_18mayo_24mayo_26",
+          "requested_value": "2026-W21",
+          "slug": "2026-W21",
+          "start_date": "2026-05-18"
+        }
+      },
+      "metrics": {
+        "sources_ok": 0,
+        "sources_total": 4
+      },
+      "notes": [
+        "Dry-run: se validó la planificación de comandos sin ejecutar extractores."
+      ],
+      "outputs": {
+        "planned_commands": [
+          {
+            "command": [
+              "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+              "-m",
+              "src.extraction.runners.facebook_extractor_apify_tampico",
+              "--since",
+              "2026-05-18",
+              "--before",
+              "2026-05-24",
+              "--output-dir",
+              "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/runs/extraction/facebook",
+              "--publish-canonical",
+              "--overwrite",
+              "--no-prompt"
+            ],
+            "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.extraction.runners.facebook_extractor_apify_tampico --since 2026-05-18 --before 2026-05-24 --output-dir /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/runs/extraction/facebook --publish-canonical --overwrite --no-prompt",
+            "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+            "duration_sec": 0.0,
+            "executed": false,
+            "finished_at": "2026-05-21 06:42:01",
+            "label": "extract_facebook",
+            "returncode": 0,
+            "started_at": "2026-05-21 06:42:01"
+          },
+          {
+            "command": [
+              "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+              "-m",
+              "src.extraction.runners.twitter_extractor_tampico",
+              "2026-05-18",
+              "2026-05-24"
+            ],
+            "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.extraction.runners.twitter_extractor_tampico 2026-05-18 2026-05-24",
+            "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+            "duration_sec": 0.0,
+            "executed": false,
+            "finished_at": "2026-05-21 06:42:01",
+            "label": "extract_twitter",
+            "returncode": 0,
+            "started_at": "2026-05-21 06:42:01"
+          },
+          {
+            "command": [
+              "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+              "-m",
+              "src.extraction.runners.youtube_extractor_tampico",
+              "--since",
+              "2026-05-18",
+              "--before",
+              "2026-05-24",
+              "--output-dir",
+              "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat"
+            ],
+            "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.extraction.runners.youtube_extractor_tampico --since 2026-05-18 --before 2026-05-24 --output-dir /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat",
+            "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+            "duration_sec": 0.0,
+            "executed": false,
+            "finished_at": "2026-05-21 06:42:01",
+            "label": "extract_youtube",
+            "returncode": 0,
+            "started_at": "2026-05-21 06:42:01"
+          },
+          {
+            "command": [
+              "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+              "-m",
+              "src.extraction.runners.medios_extractor",
+              "--since",
+              "2026-05-18",
+              "--before",
+              "2026-05-24",
+              "--output-dir",
+              "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat"
+            ],
+            "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.extraction.runners.medios_extractor --since 2026-05-18 --before 2026-05-24 --output-dir /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat",
+            "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+            "duration_sec": 0.0,
+            "executed": false,
+            "finished_at": "2026-05-21 06:42:01",
+            "label": "extract_medios",
+            "returncode": 0,
+            "started_at": "2026-05-21 06:42:01"
+          }
+        ]
+      },
+      "stage_name": "extraction",
+      "started_at": "2026-05-21 06:42:01",
+      "status": "skipped",
+      "warnings": []
+    },
+    "modeling": {
+      "artifacts": [],
+      "errors": [],
+      "notes": [
+        "Etapa omitida por selección explícita de etapas o por rango from_stage/to_stage."
+      ],
+      "outputs": {
+        "reason": "Fuera de la selección de etapas solicitada por CLI."
+      },
+      "stage_name": "modeling",
+      "status": "skipped",
+      "warnings": []
+    },
+    "nlp": {
+      "artifacts": [],
+      "commands": [
+        {
+          "command": [
+            "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+            "-m",
+            "src.nlp.aceptacion_digital_redes_ponderacion_medios",
+            "--sources",
+            "facebook",
+            "twitter",
+            "youtube",
+            "medios",
+            "--week",
+            "2026-W21",
+            "--date-from",
+            "2026-05-18",
+            "--date-to",
+            "2026-05-24"
+          ],
+          "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.nlp.aceptacion_digital_redes_ponderacion_medios --sources facebook twitter youtube medios --week 2026-W21 --date-from 2026-05-18 --date-to 2026-05-24",
+          "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+          "duration_sec": 0.0,
+          "executed": false,
+          "finished_at": "2026-05-21 06:42:01",
+          "label": "sentimiento_semanal",
+          "returncode": 0,
+          "started_at": "2026-05-21 06:42:01"
+        },
+        {
+          "command": [
+            "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+            "-m",
+            "src.nlp.unificar_encuestas_sentimiento"
+          ],
+          "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.nlp.unificar_encuestas_sentimiento",
+          "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+          "duration_sec": 0.0,
+          "executed": false,
+          "finished_at": "2026-05-21 06:42:01",
+          "label": "encuestas_sentimiento",
+          "returncode": 0,
+          "started_at": "2026-05-21 06:42:01"
+        },
+        {
+          "command": [
+            "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+            "-m",
+            "src.nlp.unir_ml_ready_con_sentimiento"
+          ],
+          "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.nlp.unir_ml_ready_con_sentimiento",
+          "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+          "duration_sec": 0.0,
+          "executed": false,
+          "finished_at": "2026-05-21 06:42:01",
+          "label": "dataset_ml_0",
+          "returncode": 0,
+          "started_at": "2026-05-21 06:42:01"
+        }
+      ],
+      "duration_sec": 0.0,
+      "errors": [],
+      "finished_at": "2026-05-21 06:42:01",
+      "inputs": {
+        "selection_window": {
+          "selected_end": "2026-05-24",
+          "selected_start": "2026-05-18",
+          "week_end": "2026-05-24",
+          "week_requested": "2026-W21",
+          "week_slug": "2026-W21",
+          "week_start": "2026-05-18"
+        },
+        "sources": [
+          "facebook",
+          "twitter",
+          "youtube",
+          "medios"
+        ],
+        "text_inputs": {
+          "facebook": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/text/radar_weekly_flat/facebook_semana_texto/2026-05-18_facebook.txt",
+          "medios": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/text/radar_weekly_flat/medios_semana_texto/2026-05-18_medios.txt",
+          "twitter": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/text/radar_weekly_flat/twitter_semana_texto/2026-05-18_twitter.txt",
+          "youtube": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/text/radar_weekly_flat/youtube_semana_texto/2026-05-18_youtube.txt"
+        }
+      },
+      "metrics": {},
+      "notes": [
+        "Dry-run: no se ejecutaron scripts NLP."
+      ],
+      "outputs": {
+        "planned_commands": [
+          {
+            "command": [
+              "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+              "-m",
+              "src.nlp.aceptacion_digital_redes_ponderacion_medios",
+              "--sources",
+              "facebook",
+              "twitter",
+              "youtube",
+              "medios",
+              "--week",
+              "2026-W21",
+              "--date-from",
+              "2026-05-18",
+              "--date-to",
+              "2026-05-24"
+            ],
+            "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.nlp.aceptacion_digital_redes_ponderacion_medios --sources facebook twitter youtube medios --week 2026-W21 --date-from 2026-05-18 --date-to 2026-05-24",
+            "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+            "duration_sec": 0.0,
+            "executed": false,
+            "finished_at": "2026-05-21 06:42:01",
+            "label": "sentimiento_semanal",
+            "returncode": 0,
+            "started_at": "2026-05-21 06:42:01"
+          },
+          {
+            "command": [
+              "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+              "-m",
+              "src.nlp.unificar_encuestas_sentimiento"
+            ],
+            "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.nlp.unificar_encuestas_sentimiento",
+            "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+            "duration_sec": 0.0,
+            "executed": false,
+            "finished_at": "2026-05-21 06:42:01",
+            "label": "encuestas_sentimiento",
+            "returncode": 0,
+            "started_at": "2026-05-21 06:42:01"
+          },
+          {
+            "command": [
+              "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+              "-m",
+              "src.nlp.unir_ml_ready_con_sentimiento"
+            ],
+            "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.nlp.unir_ml_ready_con_sentimiento",
+            "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+            "duration_sec": 0.0,
+            "executed": false,
+            "finished_at": "2026-05-21 06:42:01",
+            "label": "dataset_ml_0",
+            "returncode": 0,
+            "started_at": "2026-05-21 06:42:01"
+          }
+        ]
+      },
+      "stage_name": "nlp",
+      "started_at": "2026-05-21 06:42:01",
+      "status": "skipped",
+      "warnings": []
+    },
+    "preflight": {
+      "artifacts": [],
+      "commands": [],
+      "duration_sec": 0.0,
+      "errors": [],
+      "finished_at": "2026-05-21 06:42:01",
+      "inputs": {
+        "allow_partial": true,
+        "fail_fast": false,
+        "sources_requested": [
+          "facebook",
+          "twitter",
+          "youtube",
+          "medios"
+        ]
+      },
+      "metrics": {
+        "sources_blocked": 0,
+        "sources_ready": 4,
+        "sources_total": 4
+      },
+      "notes": [
+        "Preflight solo verifica — no hace login ni modifica credenciales.",
+        "Para configurar credenciales: ver docs/operations/secrets_and_runtime.md.",
+        "Para inicializar state de Twitter/X: ver docs/operations/secrets_and_runtime.md#twitter-state."
+      ],
+      "outputs": {
+        "runtime_paths": {
+          "operations_artifacts_root": {
+            "exists": true,
+            "path": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/operations"
+          },
+          "raw_weekly_root": {
+            "exists": true,
+            "path": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat"
+          },
+          "twitter_state_dir": {
+            "exists": true,
+            "path": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/state"
+          }
+        },
+        "sources": {
+          "facebook": {
+            "issues": [],
+            "ready": true,
+            "secrets": {
+              "APIFY_TOKEN": true
+            },
+            "source": "facebook",
+            "state": null
+          },
+          "medios": {
+            "issues": [],
+            "ready": true,
+            "secrets": {},
+            "source": "medios",
+            "state": null
+          },
+          "twitter": {
+            "issues": [],
+            "ready": true,
+            "secrets": {},
+            "source": "twitter",
+            "state": {
+              "exists": true,
+              "path": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/state/x_state.json",
+              "readable": true,
+              "size_bytes": 14355
+            }
+          },
+          "youtube": {
+            "issues": [],
+            "ready": true,
+            "secrets": {
+              "YOUTUBE_API_KEY": true
+            },
+            "source": "youtube",
+            "state": null
+          }
+        },
+        "sources_effective_after_preflight": [
+          "facebook",
+          "twitter",
+          "youtube",
+          "medios"
+        ],
+        "sources_requested": [
+          "facebook",
+          "twitter",
+          "youtube",
+          "medios"
+        ]
+      },
+      "stage_name": "preflight",
+      "started_at": "2026-05-21 06:42:01",
+      "status": "success",
+      "warnings": []
+    },
+    "preprocessing": {
+      "artifacts": [],
+      "commands": [
+        {
+          "command": [
+            "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+            "-m",
+            "src.preprocessing",
+            "normalizar-semanas",
+            "--raw-root",
+            "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat",
+            "--report",
+            "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/logs/preprocessing/reporte_semanas_incompletas.txt",
+            "--apply"
+          ],
+          "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.preprocessing normalizar-semanas --raw-root /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat --report /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/logs/preprocessing/reporte_semanas_incompletas.txt --apply",
+          "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+          "duration_sec": 0.0,
+          "executed": false,
+          "finished_at": "2026-05-21 06:42:01",
+          "label": "normalizar_semanas",
+          "returncode": 0,
+          "started_at": "2026-05-21 06:42:01"
+        },
+        {
+          "command": [
+            "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+            "-m",
+            "src.preprocessing",
+            "distribuir-facebook",
+            "--src",
+            "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/runs/extraction/facebook/2026-05-18_semana_18mayo_24mayo_26",
+            "--dest",
+            "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat",
+            "--apply"
+          ],
+          "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.preprocessing distribuir-facebook --src /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/runs/extraction/facebook/2026-05-18_semana_18mayo_24mayo_26 --dest /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat --apply",
+          "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+          "duration_sec": 0.0,
+          "executed": false,
+          "finished_at": "2026-05-21 06:42:01",
+          "label": "distribuir_facebook",
+          "returncode": 0,
+          "started_at": "2026-05-21 06:42:01"
+        },
+        {
+          "command": [
+            "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+            "-m",
+            "src.preprocessing",
+            "promover-texto",
+            "--apply"
+          ],
+          "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.preprocessing promover-texto --apply",
+          "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+          "duration_sec": 0.0,
+          "executed": false,
+          "finished_at": "2026-05-21 06:42:01",
+          "label": "promover_texto",
+          "returncode": 0,
+          "started_at": "2026-05-21 06:42:01"
+        }
+      ],
+      "duration_sec": 0.0,
+      "errors": [],
+      "finished_at": "2026-05-21 06:42:01",
+      "inputs": {
+        "selection_window": {
+          "selected_end": "2026-05-24",
+          "selected_start": "2026-05-18",
+          "week_end": "2026-05-24",
+          "week_requested": "2026-W21",
+          "week_slug": "2026-W21",
+          "week_start": "2026-05-18"
+        },
+        "sources": [
+          "facebook",
+          "twitter",
+          "youtube",
+          "medios"
+        ],
+        "week_folder": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat/2026-05-18_semana_18mayo_24mayo_26"
+      },
+      "metrics": {},
+      "notes": [
+        "Dry-run: no se materializaron cambios en data/raw ni data/text."
+      ],
+      "outputs": {
+        "planned_commands": [
+          {
+            "command": [
+              "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+              "-m",
+              "src.preprocessing",
+              "normalizar-semanas",
+              "--raw-root",
+              "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat",
+              "--report",
+              "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/logs/preprocessing/reporte_semanas_incompletas.txt",
+              "--apply"
+            ],
+            "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.preprocessing normalizar-semanas --raw-root /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat --report /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/logs/preprocessing/reporte_semanas_incompletas.txt --apply",
+            "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+            "duration_sec": 0.0,
+            "executed": false,
+            "finished_at": "2026-05-21 06:42:01",
+            "label": "normalizar_semanas",
+            "returncode": 0,
+            "started_at": "2026-05-21 06:42:01"
+          },
+          {
+            "command": [
+              "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+              "-m",
+              "src.preprocessing",
+              "distribuir-facebook",
+              "--src",
+              "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/runs/extraction/facebook/2026-05-18_semana_18mayo_24mayo_26",
+              "--dest",
+              "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat",
+              "--apply"
+            ],
+            "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.preprocessing distribuir-facebook --src /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/runs/extraction/facebook/2026-05-18_semana_18mayo_24mayo_26 --dest /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat --apply",
+            "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+            "duration_sec": 0.0,
+            "executed": false,
+            "finished_at": "2026-05-21 06:42:01",
+            "label": "distribuir_facebook",
+            "returncode": 0,
+            "started_at": "2026-05-21 06:42:01"
+          },
+          {
+            "command": [
+              "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+              "-m",
+              "src.preprocessing",
+              "promover-texto",
+              "--apply"
+            ],
+            "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.preprocessing promover-texto --apply",
+            "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+            "duration_sec": 0.0,
+            "executed": false,
+            "finished_at": "2026-05-21 06:42:01",
+            "label": "promover_texto",
+            "returncode": 0,
+            "started_at": "2026-05-21 06:42:01"
+          }
+        ]
+      },
+      "stage_name": "preprocessing",
+      "started_at": "2026-05-21 06:42:01",
+      "status": "skipped",
+      "warnings": []
+    },
+    "report": {
+      "artifacts": [],
+      "errors": [],
+      "notes": [
+        "Etapa omitida por selección explícita de etapas o por rango from_stage/to_stage."
+      ],
+      "outputs": {
+        "reason": "Fuera de la selección de etapas solicitada por CLI."
+      },
+      "stage_name": "report",
+      "status": "skipped",
+      "warnings": []
+    }
+  },
+  "stages_planned": [
+    "preflight",
+    "extraction",
+    "preprocessing",
+    "nlp"
+  ],
+  "started_at": "2026-05-21 06:42:01",
+  "status": "success",
+  "to_stage": "nlp",
+  "week": {
+    "end_date": "2026-05-24",
+    "folder_name": "2026-05-18_semana_18mayo_24mayo_26",
+    "requested_value": "2026-W21",
+    "slug": "2026-W21",
+    "start_date": "2026-05-18"
+  }
+}

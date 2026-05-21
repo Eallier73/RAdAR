@@ -1,0 +1,12 @@
+{
+  "created_at": "2026-03-30 08:57:47",
+  "experiment_id": "C1",
+  "family": "clasificacion_random_forest",
+  "model": "random_forest_classifier",
+  "parametros_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/C1_v1_clean_20260330_085747/parametros_run.json",
+  "run_dir": "/home/emilio/Documentos/RAdAR/Experimentos/runs/C1_v1_clean_20260330_085747",
+  "run_id": "C1_v1_clean",
+  "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_c1_random_forest_classifier.py",
+  "snapshot_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/C1_v1_clean_20260330_085747/scripts/run_c1_random_forest_classifier.py",
+  "task_type": "clasificacion"
+}

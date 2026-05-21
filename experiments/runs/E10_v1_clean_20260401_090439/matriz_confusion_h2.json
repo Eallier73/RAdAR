@@ -1,0 +1,81 @@
+{
+  "accuracy": 0.2,
+  "balanced_accuracy": 0.16666666666666666,
+  "class_distribution_pred": {
+    "E1_v5_clean": 2,
+    "E2_v3_clean": 1,
+    "E3_v2_clean": 6,
+    "E5_v4_clean": 1,
+    "E7_v3_clean": 3,
+    "E9_v2_clean": 2
+  },
+  "class_distribution_real": {
+    "E1_v5_clean": 2,
+    "E2_v3_clean": 2,
+    "E3_v2_clean": 3,
+    "E5_v4_clean": 2,
+    "E7_v3_clean": 3,
+    "E9_v2_clean": 3
+  },
+  "confusion_labels": [
+    "E1_v5_clean",
+    "E2_v3_clean",
+    "E3_v2_clean",
+    "E5_v4_clean",
+    "E7_v3_clean",
+    "E9_v2_clean"
+  ],
+  "confusion_matrix": [
+    [
+      0,
+      0,
+      1,
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      1,
+      0,
+      0,
+      1
+    ],
+    [
+      1,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      2,
+      1
+    ],
+    [
+      0,
+      1,
+      1,
+      1,
+      0,
+      0
+    ]
+  ],
+  "horizonte_sem": 2,
+  "n_classes_pred": 6,
+  "n_classes_real": 6
+}

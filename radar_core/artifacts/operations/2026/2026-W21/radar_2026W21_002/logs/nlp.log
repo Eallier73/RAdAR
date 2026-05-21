@@ -1,0 +1,8 @@
+[2026-05-21 06:42:01] [nlp] Iniciando etapa nlp
+[2026-05-21 06:42:01] [nlp] Ejecutando sentimiento_semanal: /home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.nlp.aceptacion_digital_redes_ponderacion_medios --sources facebook twitter youtube medios --week 2026-W21 --date-from 2026-05-18 --date-to 2026-05-24
+[2026-05-21 06:42:01] [nlp] [dry-run] comando no ejecutado
+[2026-05-21 06:42:01] [nlp] Ejecutando encuestas_sentimiento: /home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.nlp.unificar_encuestas_sentimiento
+[2026-05-21 06:42:01] [nlp] [dry-run] comando no ejecutado
+[2026-05-21 06:42:01] [nlp] Ejecutando dataset_ml_0: /home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.nlp.unir_ml_ready_con_sentimiento
+[2026-05-21 06:42:01] [nlp] [dry-run] comando no ejecutado
+[2026-05-21 06:42:01] [nlp] Etapa nlp -> skipped

@@ -103,28 +103,4 @@ STAGE_CONTRACTS: dict[str, StageContract] = {
         required_artifacts=("logs/nlp.log", "stages/nlp.json"),
         partial_allowed=True,
     ),
-    "modeling": StageContract(
-        name="modeling",
-        description="Ejecuta un runner canónico de modelado en modo controlado y registra artefactos del run.",
-        required_inputs=("canonical_modeling_dataset", "controlled_model_runner"),
-        expected_outputs=("experiment_run_dir", "prediction_files", "modeling_summary_json"),
-        required_artifacts=("logs/modeling.log", "stages/modeling.json"),
-        partial_allowed=False,
-    ),
-    "export": StageContract(
-        name="export",
-        description="Publica tablas finales y artefactos clave en una ruta estable para consumo externo.",
-        required_inputs=("processed_modeling_outputs", "modeling_outputs_if_available"),
-        expected_outputs=("published/powerbi", "powerbi_export_manifest.json"),
-        required_artifacts=("logs/export.log", "stages/export.json"),
-        partial_allowed=True,
-    ),
-    "report": StageContract(
-        name="report",
-        description="Empaqueta insumos para reporte y deja stub controlado si no existe generador final.",
-        required_inputs=("published/powerbi",),
-        expected_outputs=("published/report_inputs", "report_inputs_manifest.json"),
-        required_artifacts=("logs/report.log", "stages/report.json"),
-        partial_allowed=True,
-    ),
 }

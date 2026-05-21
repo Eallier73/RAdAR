@@ -1,0 +1,103 @@
+{
+  "artifacts": [],
+  "commands": [],
+  "duration_sec": 0.0,
+  "errors": [],
+  "finished_at": "2026-05-21 06:26:53",
+  "inputs": {
+    "allow_partial": true,
+    "fail_fast": false,
+    "sources_requested": [
+      "facebook",
+      "twitter",
+      "youtube",
+      "medios"
+    ]
+  },
+  "metrics": {
+    "sources_blocked": 3,
+    "sources_ready": 1,
+    "sources_total": 4
+  },
+  "notes": [
+    "Preflight solo verifica — no hace login ni modifica credenciales.",
+    "Para configurar credenciales: ver docs/operations/secrets_and_runtime.md.",
+    "Para inicializar state de Twitter/X: ver docs/operations/secrets_and_runtime.md#twitter-state."
+  ],
+  "outputs": {
+    "runtime_paths": {
+      "operations_artifacts_root": {
+        "exists": true,
+        "path": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/operations"
+      },
+      "raw_weekly_root": {
+        "exists": true,
+        "path": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat"
+      },
+      "twitter_state_dir": {
+        "exists": true,
+        "path": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/state"
+      }
+    },
+    "sources": {
+      "facebook": {
+        "issues": [
+          "Variable de entorno faltante: APIFY_TOKEN. Agrega 'APIFY_TOKEN=tu_valor' en .env."
+        ],
+        "ready": false,
+        "secrets": {
+          "APIFY_TOKEN": false
+        },
+        "source": "facebook",
+        "state": null
+      },
+      "medios": {
+        "issues": [],
+        "ready": true,
+        "secrets": {},
+        "source": "medios",
+        "state": null
+      },
+      "twitter": {
+        "issues": [
+          "Falta x_state.json en /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/state/x_state.json. Genera el state con el script de login de Playwright (ver docs/operations/secrets_and_runtime.md)."
+        ],
+        "ready": false,
+        "secrets": {},
+        "source": "twitter",
+        "state": {
+          "exists": false,
+          "path": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/state/x_state.json",
+          "readable": false,
+          "size_bytes": null
+        }
+      },
+      "youtube": {
+        "issues": [
+          "Variable de entorno faltante: YOUTUBE_API_KEY. Agrega 'YOUTUBE_API_KEY=tu_valor' en .env."
+        ],
+        "ready": false,
+        "secrets": {
+          "YOUTUBE_API_KEY": false
+        },
+        "source": "youtube",
+        "state": null
+      }
+    },
+    "sources_effective_after_preflight": [
+      "medios"
+    ],
+    "sources_requested": [
+      "facebook",
+      "twitter",
+      "youtube",
+      "medios"
+    ]
+  },
+  "stage_name": "preflight",
+  "started_at": "2026-05-21 06:26:53",
+  "status": "partial_success",
+  "warnings": [
+    "Fuentes bloqueadas por precondicion faltante: ['facebook', 'twitter', 'youtube']. Pipeline continuara con: ['medios']."
+  ]
+}

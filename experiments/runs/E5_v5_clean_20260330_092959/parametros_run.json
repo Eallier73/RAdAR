@@ -1,0 +1,67 @@
+{
+  "dataset_path": "/home/emilio/Documentos/RAdAR/Datos_Modelo_ML/datos_ML_master_indice_aceptación_digital.xlsx",
+  "feature_columns": [
+    "sentimiento_medios",
+    "v5_agua_neto",
+    "v5_alumbrado_neto",
+    "v5_americo_neto",
+    "v5_basura_neto",
+    "v5_corrupcion_neto",
+    "v5_delitos_neto",
+    "v5_morena_neto",
+    "v5_obras_neto",
+    "v5_prevencion_neto",
+    "v5_vialidad_neto"
+  ],
+  "feature_mode": "all",
+  "horizons": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "initial_train_size": 40,
+  "lags": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "model": "catboost_regressor",
+  "model_params": {
+    "depth": 5,
+    "inner_splits": 3,
+    "iterations": 300,
+    "l2_leaf_reg": 5.0,
+    "learning_rate": 0.05,
+    "loss_function": "RMSE",
+    "param_grid": {
+      "depth": [
+        5
+      ],
+      "iterations": [
+        250,
+        300
+      ],
+      "l2_leaf_reg": [
+        5.0,
+        7.0
+      ],
+      "learning_rate": [
+        0.04,
+        0.05
+      ]
+    },
+    "random_seed": 42,
+    "subsample": 0.8,
+    "tuning_metric": "mae",
+    "tuning_strategy": "tscv_param_grid_temporal",
+    "uses_categorical_features": false,
+    "uses_scaling": false
+  },
+  "sheet_name": "Sheet1",
+  "target_mode": "nivel",
+  "transform_mode": ""
+}

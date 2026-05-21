@@ -1,0 +1,11 @@
+{
+  "created_at": "2026-03-23 06:12:13",
+  "experiment_id": "E2",
+  "family": "robusto",
+  "model": "huber_tscv",
+  "parametros_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E2_v3_clean_20260323_061213/parametros_run.json",
+  "run_dir": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E2_v3_clean_20260323_061213",
+  "run_id": "E2_v3_clean",
+  "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e2_huber_clean.py",
+  "snapshot_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E2_v3_clean_20260323_061213/scripts/run_e2_huber_clean.py"
+}

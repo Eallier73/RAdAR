@@ -7,7 +7,7 @@ import tkinter as tk
 from pathlib import Path
 from tkinter import messagebox, ttk
 
-from .config import ALLOWED_MODES, DEFAULT_MODEL_RUNNER, DEFAULT_SOURCES, OPS_PYTHON, SOURCE_NAMES, STAGE_NAMES
+from .config import ALLOWED_MODES, DEFAULT_SOURCES, OPS_PYTHON, SOURCE_NAMES, STAGE_NAMES
 
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
@@ -17,20 +17,14 @@ STAGE_LABELS = {
     "extraction": "Extractors",
     "preprocessing": "Preprocessing",
     "nlp": "NLP",
-    "modeling": "Modeling",
-    "export": "Export",
-    "report": "Reporting",
 }
 LABEL_TO_STAGE = {label: stage for stage, label in STAGE_LABELS.items()}
 STAGE_DISPLAY_VALUES = tuple(STAGE_LABELS[stage] for stage in STAGE_NAMES)
 LAYER_PRESETS = {
-    "Pipeline completo": ("preflight", "report"),
+    "Pipeline completo": ("preflight", "nlp"),
     "Extractors": ("extraction", "extraction"),
     "Preprocessing": ("preprocessing", "preprocessing"),
     "NLP": ("nlp", "nlp"),
-    "Modeling": ("modeling", "modeling"),
-    "Export": ("export", "export"),
-    "Reporting": ("report", "report"),
     "Rango personalizado": None,
 }
 
@@ -51,24 +45,20 @@ class RadarPipelineGui(tk.Tk):
         self.resume_var = tk.StringVar()
         self.mode_var = tk.StringVar(value=ALLOWED_MODES[0])
         self.from_stage_var = tk.StringVar(value=STAGE_LABELS["preflight"])
-        self.to_stage_var = tk.StringVar(value=STAGE_LABELS["report"])
-        self.model_runner_var = tk.StringVar(value=DEFAULT_MODEL_RUNNER)
-        self.model_run_id_var = tk.StringVar()
-        self.model_args_var = tk.StringVar()
+        self.to_stage_var = tk.StringVar(value=STAGE_LABELS["nlp"])
         self.fail_fast_var = tk.BooleanVar(value=True)
         self.allow_partial_var = tk.BooleanVar(value=False)
         self.dry_run_var = tk.BooleanVar(value=False)
         self.status_var = tk.StringVar(
-            value="Selecciona una capa o rango. En controlled, modeling usa E10 (dualidad E1_v5_clean + E9_v2_clean)."
+            value="Selecciona una capa o rango de etapas."
         )
         self.source_vars = {source: tk.BooleanVar(value=source in DEFAULT_SOURCES) for source in SOURCE_NAMES}
-        self.stage_selection_vars = {stage: tk.BooleanVar(value=stage in ("preflight", "extraction", "preprocessing", "nlp", "modeling", "export", "report")) for stage in STAGE_NAMES}
+        self.stage_selection_vars = {stage: tk.BooleanVar(value=True) for stage in STAGE_NAMES}
 
         self.source_checkbuttons: list[ttk.Checkbutton] = []
         self.stage_widgets: list[ttk.Widget] = []
         self.stage_checkbuttons: list[ttk.Checkbutton] = []
         self.date_widgets: list[ttk.Widget] = []
-        self.model_widgets: list[ttk.Widget] = []
 
         self._build_widgets()
         self._bind_traces()
@@ -198,37 +188,6 @@ class RadarPipelineGui(tk.Tk):
             check.pack(side=tk.LEFT, padx=(0, 18))
             self.source_checkbuttons.append(check)
 
-        model_frame = ttk.LabelFrame(root, text="Modelado", padding=10)
-        model_frame.pack(fill=tk.X, pady=(0, 10))
-        model_frame.columnconfigure(1, weight=1)
-        model_frame.columnconfigure(3, weight=1)
-        model_runner_entry = self._add_entry(
-            model_frame,
-            "Model Runner",
-            self.model_runner_var,
-            row=0,
-            column=0,
-            hint="controlled: E10 (integra E1_v5_clean + E9_v2_clean)",
-        )
-        model_run_id_entry = self._add_entry(
-            model_frame,
-            "Model Run ID",
-            self.model_run_id_var,
-            row=0,
-            column=2,
-            hint="opcional",
-        )
-        model_args_entry = self._add_entry(
-            model_frame,
-            "Model Args",
-            self.model_args_var,
-            row=1,
-            column=0,
-            hint="--horizons=1 --lags=1,2,3,4",
-            columnspan=3,
-        )
-        self.model_widgets.extend([model_runner_entry, model_run_id_entry, model_args_entry])
-
         execution_frame = ttk.Frame(root)
         execution_frame.pack(fill=tk.X, pady=(0, 10))
         ttk.Checkbutton(execution_frame, text="Fail Fast", variable=self.fail_fast_var).pack(side=tk.LEFT, padx=(0, 12))
@@ -263,9 +222,6 @@ class RadarPipelineGui(tk.Tk):
             self.mode_var,
             self.from_stage_var,
             self.to_stage_var,
-            self.model_runner_var,
-            self.model_run_id_var,
-            self.model_args_var,
             self.fail_fast_var,
             self.allow_partial_var,
             self.dry_run_var,
@@ -377,26 +333,15 @@ class RadarPipelineGui(tk.Tk):
             widget.configure(state="normal" if custom_mode else "disabled")
 
         selection_relevant = any(self._stage_range_includes(stage) for stage in ("extraction", "preprocessing", "nlp"))
-        model_relevant = self._stage_range_includes("modeling")
 
         for widget in self.date_widgets:
             widget.configure(state="normal" if selection_relevant else "disabled")
         for widget in self.source_checkbuttons:
             widget.configure(state="normal" if selection_relevant else "disabled")
-        for widget in self.model_widgets:
-            widget.configure(state="normal" if model_relevant else "disabled")
 
         if selection_relevant:
             self.status_var.set(
                 "Fuentes y fechas activas. Usa Week para una semana completa o Date From/Date To para una ventana más precisa dentro de esa semana."
-            )
-        elif model_relevant:
-            self.status_var.set(
-                "Capa de modelado activa. En controlled se usa E10 canónico (dualidad E1_v5_clean + E9_v2_clean), no E9 stacking principal."
-            )
-        elif self._stage_range_includes("report"):
-            self.status_var.set(
-                "Reporting visible como capa explícita. Hoy sigue consumiendo published/report_inputs y puede quedar como stubbed."
             )
         else:
             self.status_var.set("Operación por capa lista.")
@@ -442,16 +387,6 @@ class RadarPipelineGui(tk.Tk):
             command.append("--allow-partial")
         if self.dry_run_var.get():
             command.append("--dry-run")
-
-        if self._stage_range_includes("modeling"):
-            runner = self.model_runner_var.get().strip()
-            if runner:
-                command.extend(["--model-runner", runner])
-            run_id = self.model_run_id_var.get().strip()
-            if run_id:
-                command.extend(["--model-run-id", run_id])
-            for token in self.model_args_var.get().strip().split():
-                command.extend(["--model-arg", token])
 
         return command
 
@@ -508,12 +443,6 @@ class RadarPipelineGui(tk.Tk):
                 )
                 return False
 
-        if self._stage_range_includes("modeling") and not self.model_runner_var.get().strip():
-            messagebox.showerror(
-                "Radar Pipeline Control",
-                "Model Runner no puede quedar vacío cuando la ejecución incluye modeling.",
-            )
-            return False
         return True
 
     def run_pipeline(self) -> None:

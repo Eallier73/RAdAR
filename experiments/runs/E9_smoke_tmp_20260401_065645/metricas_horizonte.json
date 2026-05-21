@@ -1,0 +1,34 @@
+{
+  "created_at": "2026-04-01 06:56:44",
+  "experiment_id": "E9",
+  "family": "stacking_controlado",
+  "horizon_results": [
+    {
+      "comentarios": "smoke_test_e9",
+      "dataset_periodo": "2025-11-24 a 2026-02-23",
+      "deteccion_caidas": 0.8571428571428571,
+      "direccion_accuracy": 0.7857142857142857,
+      "estado": "corrido",
+      "horizonte_sem": 1,
+      "l_num": 0.23522675197008522,
+      "l_risk": 0.1428571428571429,
+      "l_tol": 0.9285714285714286,
+      "l_trend": 0.2142857142857143,
+      "loss_h": 0.07934166609971609,
+      "mae": 0.1419496069642681,
+      "notas_config": "{\"alpha_grid_size\": 8, \"alpha_selection_metric\": \"mae\", \"feature_columns\": [\"E1_v5_clean\", \"E5_v4_clean\", \"E3_v2_clean\", \"E2_v3_clean\"], \"initial_train_size\": 12, \"inner_splits\": 2, \"meta_model\": \"ridge\", \"rows_disponibles\": 26, \"rows_eval\": 14, \"sheet_name\": \"E9_base_h1\", \"table_path\": \"/home/emilio/Documentos/RAdAR/Experimentos/tabla_maestra_experimentos_radar_e9_curada.xlsx\", \"use_only_complete_rows\": true}",
+      "rmse": 0.1771121423681828,
+      "seleccion_variables": "tabla_curada_e9_fila_completa",
+      "target": "nivel",
+      "transformacion": "standard_scaler_meta",
+      "validacion": "walk-forward_expanding_sobre_base_curada",
+      "variables_tematicas": "E1_v5_clean, E5_v4_clean, E3_v2_clean, E2_v3_clean",
+      "variables_temporales": "predicciones_oof_modelos_base_por_horizonte"
+    }
+  ],
+  "model": "stacking_ridge_curado_por_horizonte",
+  "run_id": "E9_smoke_tmp",
+  "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e9_stacking.py",
+  "snapshot_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E9_smoke_tmp_20260401_065645/scripts/run_e9_stacking.py",
+  "task_type": "regresion"
+}

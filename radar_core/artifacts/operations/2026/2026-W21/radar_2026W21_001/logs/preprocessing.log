@@ -1,0 +1,6 @@
+[2026-05-21 06:26:53] [preprocessing] Iniciando etapa preprocessing
+[2026-05-21 06:26:53] [preprocessing] Ejecutando normalizar_semanas: /home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.preprocessing normalizar-semanas --raw-root /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat --report /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/logs/preprocessing/reporte_semanas_incompletas.txt --apply
+[2026-05-21 06:26:53] [preprocessing] [dry-run] comando no ejecutado
+[2026-05-21 06:26:53] [preprocessing] Ejecutando promover_texto: /home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.preprocessing promover-texto --apply
+[2026-05-21 06:26:53] [preprocessing] [dry-run] comando no ejecutado
+[2026-05-21 06:26:53] [preprocessing] Etapa preprocessing -> skipped

@@ -1,0 +1,10 @@
+[2026-05-21 08:01:55] [extraction] Iniciando etapa extraction
+[2026-05-21 08:01:55] [extraction] Ejecutando extract_facebook: /home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.extraction.runners.facebook_extractor_apify_tampico --since 2026-05-18 --before 2026-05-24 --output-dir /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/runs/extraction/facebook --publish-canonical --overwrite --no-prompt
+[2026-05-21 08:01:55] [extraction] [dry-run] comando no ejecutado
+[2026-05-21 08:01:55] [extraction] Ejecutando extract_twitter: /home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.extraction.runners.twitter_extractor_tampico 2026-05-18 2026-05-24
+[2026-05-21 08:01:55] [extraction] [dry-run] comando no ejecutado
+[2026-05-21 08:01:55] [extraction] Ejecutando extract_youtube: /home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.extraction.runners.youtube_extractor_tampico --since 2026-05-18 --before 2026-05-24 --output-dir /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat
+[2026-05-21 08:01:55] [extraction] [dry-run] comando no ejecutado
+[2026-05-21 08:01:55] [extraction] Ejecutando extract_medios: /home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.extraction.runners.medios_extractor --since 2026-05-18 --before 2026-05-24 --output-dir /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat
+[2026-05-21 08:01:55] [extraction] [dry-run] comando no ejecutado
+[2026-05-21 08:01:55] [extraction] Etapa extraction -> skipped

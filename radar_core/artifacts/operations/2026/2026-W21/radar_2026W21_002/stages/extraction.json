@@ -1,0 +1,212 @@
+{
+  "artifacts": [],
+  "commands": [
+    {
+      "command": [
+        "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+        "-m",
+        "src.extraction.runners.facebook_extractor_apify_tampico",
+        "--since",
+        "2026-05-18",
+        "--before",
+        "2026-05-24",
+        "--output-dir",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/runs/extraction/facebook",
+        "--publish-canonical",
+        "--overwrite",
+        "--no-prompt"
+      ],
+      "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.extraction.runners.facebook_extractor_apify_tampico --since 2026-05-18 --before 2026-05-24 --output-dir /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/runs/extraction/facebook --publish-canonical --overwrite --no-prompt",
+      "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+      "duration_sec": 0.0,
+      "executed": false,
+      "finished_at": "2026-05-21 06:42:01",
+      "label": "extract_facebook",
+      "returncode": 0,
+      "started_at": "2026-05-21 06:42:01"
+    },
+    {
+      "command": [
+        "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+        "-m",
+        "src.extraction.runners.twitter_extractor_tampico",
+        "2026-05-18",
+        "2026-05-24"
+      ],
+      "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.extraction.runners.twitter_extractor_tampico 2026-05-18 2026-05-24",
+      "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+      "duration_sec": 0.0,
+      "executed": false,
+      "finished_at": "2026-05-21 06:42:01",
+      "label": "extract_twitter",
+      "returncode": 0,
+      "started_at": "2026-05-21 06:42:01"
+    },
+    {
+      "command": [
+        "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+        "-m",
+        "src.extraction.runners.youtube_extractor_tampico",
+        "--since",
+        "2026-05-18",
+        "--before",
+        "2026-05-24",
+        "--output-dir",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat"
+      ],
+      "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.extraction.runners.youtube_extractor_tampico --since 2026-05-18 --before 2026-05-24 --output-dir /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat",
+      "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+      "duration_sec": 0.0,
+      "executed": false,
+      "finished_at": "2026-05-21 06:42:01",
+      "label": "extract_youtube",
+      "returncode": 0,
+      "started_at": "2026-05-21 06:42:01"
+    },
+    {
+      "command": [
+        "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+        "-m",
+        "src.extraction.runners.medios_extractor",
+        "--since",
+        "2026-05-18",
+        "--before",
+        "2026-05-24",
+        "--output-dir",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat"
+      ],
+      "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.extraction.runners.medios_extractor --since 2026-05-18 --before 2026-05-24 --output-dir /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat",
+      "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+      "duration_sec": 0.0,
+      "executed": false,
+      "finished_at": "2026-05-21 06:42:01",
+      "label": "extract_medios",
+      "returncode": 0,
+      "started_at": "2026-05-21 06:42:01"
+    }
+  ],
+  "duration_sec": 0.0,
+  "errors": [],
+  "finished_at": "2026-05-21 06:42:01",
+  "inputs": {
+    "selection_window": {
+      "selected_end": "2026-05-24",
+      "selected_start": "2026-05-18",
+      "week_end": "2026-05-24",
+      "week_requested": "2026-W21",
+      "week_slug": "2026-W21",
+      "week_start": "2026-05-18"
+    },
+    "sources": [
+      "facebook",
+      "twitter",
+      "youtube",
+      "medios"
+    ],
+    "week": {
+      "end_date": "2026-05-24",
+      "folder_name": "2026-05-18_semana_18mayo_24mayo_26",
+      "requested_value": "2026-W21",
+      "slug": "2026-W21",
+      "start_date": "2026-05-18"
+    }
+  },
+  "metrics": {
+    "sources_ok": 0,
+    "sources_total": 4
+  },
+  "notes": [
+    "Dry-run: se validó la planificación de comandos sin ejecutar extractores."
+  ],
+  "outputs": {
+    "planned_commands": [
+      {
+        "command": [
+          "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+          "-m",
+          "src.extraction.runners.facebook_extractor_apify_tampico",
+          "--since",
+          "2026-05-18",
+          "--before",
+          "2026-05-24",
+          "--output-dir",
+          "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/runs/extraction/facebook",
+          "--publish-canonical",
+          "--overwrite",
+          "--no-prompt"
+        ],
+        "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.extraction.runners.facebook_extractor_apify_tampico --since 2026-05-18 --before 2026-05-24 --output-dir /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/runs/extraction/facebook --publish-canonical --overwrite --no-prompt",
+        "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+        "duration_sec": 0.0,
+        "executed": false,
+        "finished_at": "2026-05-21 06:42:01",
+        "label": "extract_facebook",
+        "returncode": 0,
+        "started_at": "2026-05-21 06:42:01"
+      },
+      {
+        "command": [
+          "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+          "-m",
+          "src.extraction.runners.twitter_extractor_tampico",
+          "2026-05-18",
+          "2026-05-24"
+        ],
+        "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.extraction.runners.twitter_extractor_tampico 2026-05-18 2026-05-24",
+        "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+        "duration_sec": 0.0,
+        "executed": false,
+        "finished_at": "2026-05-21 06:42:01",
+        "label": "extract_twitter",
+        "returncode": 0,
+        "started_at": "2026-05-21 06:42:01"
+      },
+      {
+        "command": [
+          "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+          "-m",
+          "src.extraction.runners.youtube_extractor_tampico",
+          "--since",
+          "2026-05-18",
+          "--before",
+          "2026-05-24",
+          "--output-dir",
+          "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat"
+        ],
+        "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.extraction.runners.youtube_extractor_tampico --since 2026-05-18 --before 2026-05-24 --output-dir /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat",
+        "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+        "duration_sec": 0.0,
+        "executed": false,
+        "finished_at": "2026-05-21 06:42:01",
+        "label": "extract_youtube",
+        "returncode": 0,
+        "started_at": "2026-05-21 06:42:01"
+      },
+      {
+        "command": [
+          "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python",
+          "-m",
+          "src.extraction.runners.medios_extractor",
+          "--since",
+          "2026-05-18",
+          "--before",
+          "2026-05-24",
+          "--output-dir",
+          "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat"
+        ],
+        "command_text": "/home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.extraction.runners.medios_extractor --since 2026-05-18 --before 2026-05-24 --output-dir /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat",
+        "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+        "duration_sec": 0.0,
+        "executed": false,
+        "finished_at": "2026-05-21 06:42:01",
+        "label": "extract_medios",
+        "returncode": 0,
+        "started_at": "2026-05-21 06:42:01"
+      }
+    ]
+  },
+  "stage_name": "extraction",
+  "started_at": "2026-05-21 06:42:01",
+  "status": "skipped",
+  "warnings": []
+}

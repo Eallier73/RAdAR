@@ -8,8 +8,6 @@ from .config import (
     ALLOWED_MODES,
     DEFAULT_ALLOW_PARTIAL,
     DEFAULT_FAIL_FAST,
-    DEFAULT_MODEL_DATASET,
-    DEFAULT_MODEL_RUNNER,
     DEFAULT_SOURCES,
     STAGE_NAMES,
     SUCCESS_LIKE_STAGE_STATUSES,
@@ -24,13 +22,10 @@ from .run_context import (
 )
 from .state_store import OperationStateStore
 from .stages import (
-    run_export_stage,
     run_extraction_stage,
-    run_modeling_stage,
     run_nlp_stage,
     run_preflight_stage,
     run_preprocessing_stage,
-    run_report_stage,
 )
 
 
@@ -39,9 +34,6 @@ STAGE_RUNNERS = {
     "extraction": run_extraction_stage,
     "preprocessing": run_preprocessing_stage,
     "nlp": run_nlp_stage,
-    "modeling": run_modeling_stage,
-    "export": run_export_stage,
-    "report": run_report_stage,
 }
 
 
@@ -60,10 +52,6 @@ class PipelineRequest:
     allow_partial: bool = DEFAULT_ALLOW_PARTIAL
     dry_run: bool = False
     log_level: str = "INFO"
-    model_runner: str = DEFAULT_MODEL_RUNNER
-    model_run_id: str | None = None
-    model_args: list[str] | None = None
-    model_dataset_path: str | None = None
 
 
 class RadarPipelineOrchestrator:
@@ -147,10 +135,6 @@ class RadarPipelineOrchestrator:
             context.metadata["selection_end_date"] = selected_end.isoformat()
             self._initialize_stage_states(context, stages_planned)
 
-        context.metadata["model_runner"] = request.model_runner
-        context.metadata["model_run_id"] = request.model_run_id or context.metadata.get("model_run_id") or f"{context.run_id}_model"
-        context.metadata["model_args"] = request.model_args or []
-        context.metadata["model_dataset_path"] = request.model_dataset_path or str(DEFAULT_MODEL_DATASET)
         context.ensure_directories()
         self.state_store.persist_run(context, stages_planned)
         context.emit(
@@ -203,17 +187,6 @@ class RadarPipelineOrchestrator:
                 raise ValueError("Debes indicar --week o un rango --date-from/--date-to cuando no usas --resume-run-id.")
         if (request.date_from and not request.date_to) or (request.date_to and not request.date_from):
             raise ValueError("Debes proporcionar --date-from y --date-to juntos.")
-        if request.mode == "controlled":
-            if request.model_runner != DEFAULT_MODEL_RUNNER:
-                raise ValueError(
-                    "En modo controlled el model_runner debe ser el canónico por defecto. "
-                    "Usa --mode experimental para runners alternativos."
-                )
-            if request.model_dataset_path and str(request.model_dataset_path) != str(DEFAULT_MODEL_DATASET):
-                raise ValueError(
-                    "En modo controlled el dataset de modelado debe ser el canónico. "
-                    "Usa --mode experimental para datasets alternativos."
-                )
         if request.stages and (request.from_stage or request.to_stage):
             raise ValueError("Usa --stages o bien --from-stage/--to-stage, pero no ambos a la vez.")
         if request.stages:

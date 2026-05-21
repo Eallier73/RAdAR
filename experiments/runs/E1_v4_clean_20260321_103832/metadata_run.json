@@ -1,0 +1,11 @@
+{
+  "created_at": "2026-03-21 10:38:32",
+  "experiment_id": "E1",
+  "family": "lineal_regularizado",
+  "model": "ridge_tscv",
+  "parametros_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_v4_clean_20260321_103832/parametros_run.json",
+  "run_dir": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_v4_clean_20260321_103832",
+  "run_id": "E1_v4_clean",
+  "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e1_ridge_clean.py",
+  "snapshot_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E1_v4_clean_20260321_103832/scripts/run_e1_ridge_clean.py"
+}

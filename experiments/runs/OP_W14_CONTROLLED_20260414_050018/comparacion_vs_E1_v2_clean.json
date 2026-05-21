@@ -1,0 +1,25 @@
+{
+  "clean_run_id": "OP_W14_CONTROLLED",
+  "comparacion_por_horizonte": [
+    {
+      "delta_direction_accuracy": 0.0,
+      "delta_loss_h": 0.0,
+      "delta_mae": 2.7755575615628914e-17,
+      "delta_risk_detection": 0.0,
+      "delta_rmse": 0.0,
+      "direction_accuracy_clean": 0.8214285714285714,
+      "direction_accuracy_original": 0.8214285714285714,
+      "horizonte_sem": 1,
+      "loss_h_clean": 0.07498523812807274,
+      "loss_h_original": 0.07498523812807274,
+      "mae_clean": 0.10881974353336672,
+      "mae_original": 0.1088197435333667,
+      "risk_detection_clean": 0.7692307692307693,
+      "risk_detection_original": 0.7692307692307693,
+      "rmse_clean": 0.1340214097591685,
+      "rmse_original": 0.1340214097591685
+    }
+  ],
+  "l_total_radar_clean": 0.07498523812807274,
+  "reference_run_id": "E1_v2_clean"
+}

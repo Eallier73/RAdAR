@@ -1,0 +1,4 @@
+[2026-05-21 06:26:53] [extraction] Iniciando etapa extraction
+[2026-05-21 06:26:53] [extraction] Ejecutando extract_medios: /home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.extraction.runners.medios_extractor --since 2026-05-18 --before 2026-05-24 --output-dir /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat
+[2026-05-21 06:26:53] [extraction] [dry-run] comando no ejecutado
+[2026-05-21 06:26:53] [extraction] Etapa extraction -> skipped

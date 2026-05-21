@@ -1,0 +1,11 @@
+{
+  "created_at": "2026-03-25 05:20:51",
+  "experiment_id": "E4",
+  "family": "arboles_boosting",
+  "model": "xgboost_regressor",
+  "parametros_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E4_v1_clean_20260325_052051/parametros_run.json",
+  "run_dir": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E4_v1_clean_20260325_052051",
+  "run_id": "E4_v1_clean",
+  "script_path": "/home/emilio/Documentos/RAdAR/Scripts/Modeling/run_e4_xgboost.py",
+  "snapshot_path": "/home/emilio/Documentos/RAdAR/Experimentos/runs/E4_v1_clean_20260325_052051/scripts/run_e4_xgboost.py"
+}

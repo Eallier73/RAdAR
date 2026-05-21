@@ -1,0 +1,22 @@
+[2026-05-21 06:26:53] [pipeline] Run preparado: radar_2026W21_001 | semana=2026-W21 | etapas=['preflight', 'extraction', 'preprocessing', 'nlp']
+[2026-05-21 06:26:53] [preflight] Iniciando etapa preflight
+[2026-05-21 06:26:53] [preflight] Etapa preflight -> partial_success
+[2026-05-21 06:26:53] [extraction] Iniciando etapa extraction
+[2026-05-21 06:26:53] [extraction] Ejecutando extract_medios: /home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.extraction.runners.medios_extractor --since 2026-05-18 --before 2026-05-24 --output-dir /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat
+[2026-05-21 06:26:53] [extraction] [dry-run] comando no ejecutado
+[2026-05-21 06:26:53] [extraction] Etapa extraction -> skipped
+[2026-05-21 06:26:53] [preprocessing] Iniciando etapa preprocessing
+[2026-05-21 06:26:53] [preprocessing] Ejecutando normalizar_semanas: /home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.preprocessing normalizar-semanas --raw-root /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/data/raw/radar_weekly_flat --report /home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/logs/preprocessing/reporte_semanas_incompletas.txt --apply
+[2026-05-21 06:26:53] [preprocessing] [dry-run] comando no ejecutado
+[2026-05-21 06:26:53] [preprocessing] Ejecutando promover_texto: /home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.preprocessing promover-texto --apply
+[2026-05-21 06:26:53] [preprocessing] [dry-run] comando no ejecutado
+[2026-05-21 06:26:53] [preprocessing] Etapa preprocessing -> skipped
+[2026-05-21 06:26:53] [nlp] Iniciando etapa nlp
+[2026-05-21 06:26:54] [nlp] Ejecutando sentimiento_semanal: /home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.nlp.aceptacion_digital_redes_ponderacion_medios --sources medios --week 2026-W21 --date-from 2026-05-18 --date-to 2026-05-24
+[2026-05-21 06:26:54] [nlp] [dry-run] comando no ejecutado
+[2026-05-21 06:26:54] [nlp] Ejecutando encuestas_sentimiento: /home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.nlp.unificar_encuestas_sentimiento
+[2026-05-21 06:26:54] [nlp] [dry-run] comando no ejecutado
+[2026-05-21 06:26:54] [nlp] Ejecutando dataset_ml_0: /home/emilio/anaconda3/envs/radar-ops-py311/bin/python -m src.nlp.unir_ml_ready_con_sentimiento
+[2026-05-21 06:26:54] [nlp] [dry-run] comando no ejecutado
+[2026-05-21 06:26:54] [nlp] Etapa nlp -> skipped
+[2026-05-21 06:26:54] [pipeline] Run finalizado con estado partial_success

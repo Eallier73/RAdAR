@@ -1,0 +1,76 @@
+{
+  "artifacts_root": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core/artifacts/operations/2026/2026-W21/radar_2026W21_003",
+  "finished_at": "2026-05-21 08:01:55",
+  "from_stage": "preflight",
+  "mode": "controlled",
+  "notes": [],
+  "published_outputs": {},
+  "repo_context": {
+    "branch": "feature/arquitectura-limpia",
+    "commit": "35b24df20f7ca4de7248e1562a3dff9900d9023c",
+    "dirty": true,
+    "repo_root": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_limpia/radar_core",
+    "status_short": [
+      "M src/operations/config.py",
+      " M src/operations/contracts.py",
+      " M src/operations/gui_radar_pipeline.py",
+      " M src/operations/pipeline_orchestrator.py",
+      " D src/operations/run_benchmarks_operativos.py",
+      " M src/operations/run_context.py",
+      " M src/operations/run_radar_pipeline.py",
+      " D src/operations/run_sistema_dual_operativo.py",
+      " M src/operations/stages/__init__.py",
+      " D src/operations/stages/export_stage.py",
+      " D src/operations/stages/modeling_stage.py",
+      " D src/operations/stages/report_stage.py",
+      "?? ../artifacts/",
+      "?? ../experiments/",
+      "?? artifacts/"
+    ]
+  },
+  "run_id": "radar_2026W21_003",
+  "selection_window": {
+    "selected_end": "2026-05-24",
+    "selected_start": "2026-05-18",
+    "week_end": "2026-05-24",
+    "week_requested": "2026-W21",
+    "week_slug": "2026-W21",
+    "week_start": "2026-05-18"
+  },
+  "sources_effective": [
+    "facebook",
+    "twitter",
+    "youtube",
+    "medios"
+  ],
+  "sources_requested": [
+    "facebook",
+    "twitter",
+    "youtube",
+    "medios"
+  ],
+  "stages_completed": [
+    "preflight"
+  ],
+  "stages_failed": [],
+  "stages_planned": [
+    "preflight",
+    "extraction",
+    "preprocessing",
+    "nlp"
+  ],
+  "stages_state_snapshot": {
+    "extraction": "skipped",
+    "nlp": "skipped",
+    "preflight": "success",
+    "preprocessing": "skipped"
+  },
+  "started_at": "2026-05-21 08:01:55",
+  "status": "success",
+  "to_stage": "nlp",
+  "week": "2026-W21",
+  "week_end": "2026-05-24",
+  "week_folder_name": "2026-05-18_semana_18mayo_24mayo_26",
+  "week_requested": "2026-W21",
+  "week_start": "2026-05-18"
+}

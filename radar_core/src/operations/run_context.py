@@ -12,10 +12,6 @@ from typing import Any
 from .config import (
     DEFAULT_LOG_LEVEL,
     PIPELINE_LOG_FILENAME,
-    PUBLISHED_DIRNAME,
-    PUBLISHED_EXPERIMENTAL_DIRNAME,
-    PUBLISHED_POWERBI_DIRNAME,
-    PUBLISHED_REPORT_INPUTS_DIRNAME,
     ROOT_DIR,
     STAGE_NAMES,
 )
@@ -160,10 +156,6 @@ class RadarRunContext:
     def __post_init__(self) -> None:
         self.logs_dir = self.artifacts_root / "logs"
         self.stages_dir = self.artifacts_root / "stages"
-        self.published_dir = self.artifacts_root / PUBLISHED_DIRNAME
-        self.published_powerbi_dir = self.published_dir / PUBLISHED_POWERBI_DIRNAME
-        self.published_experimental_dir = self.published_dir / PUBLISHED_EXPERIMENTAL_DIRNAME
-        self.published_report_inputs_dir = self.published_dir / PUBLISHED_REPORT_INPUTS_DIRNAME
         self.manifest_path = self.artifacts_root / "manifest.json"
         self.summary_path = self.artifacts_root / "run_summary.json"
         self.legacy_manifest_path = self.artifacts_root / "manifest_run.json"
@@ -175,9 +167,6 @@ class RadarRunContext:
         self.artifacts_root.mkdir(parents=True, exist_ok=True)
         self.logs_dir.mkdir(parents=True, exist_ok=True)
         self.stages_dir.mkdir(parents=True, exist_ok=True)
-        self.published_powerbi_dir.mkdir(parents=True, exist_ok=True)
-        self.published_experimental_dir.mkdir(parents=True, exist_ok=True)
-        self.published_report_inputs_dir.mkdir(parents=True, exist_ok=True)
 
     def stage_log_path(self, stage_name: str) -> Path:
         return self.logs_dir / f"{stage_name}.log"
@@ -360,10 +349,8 @@ class RadarRunContext:
             )
         elif self.dry_run:
             next_action = "Ejecutar sin --dry-run para materializar los artefactos."
-        elif any(state.get("status") == "stubbed" for state in self.stage_states.values()):
-            next_action = "Consumir published/powerbi y completar el generador final de reporte sobre published/report_inputs."
         else:
-            next_action = "Consumir las salidas publicadas o automatizar esta CLI desde un scheduler externo."
+            next_action = "Consumir las salidas generadas o automatizar esta CLI desde un scheduler externo."
 
         return {
             "run_id": self.run_id,

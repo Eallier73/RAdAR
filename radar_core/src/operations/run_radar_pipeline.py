@@ -8,8 +8,6 @@ from .config import (
     DEFAULT_ALLOW_PARTIAL,
     DEFAULT_FAIL_FAST,
     DEFAULT_LOG_LEVEL,
-    DEFAULT_MODEL_DATASET,
-    DEFAULT_MODEL_RUNNER,
     DEFAULT_SOURCES,
     SOURCE_NAMES,
     STAGE_NAMES,
@@ -21,7 +19,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
             "Entry point operativo único del pipeline Radar. "
-            "Coordina extracción, preprocessing, NLP, modelado, exportación y empaquetado de reporte."
+            "Coordina preflight, extracción, preprocessing y NLP."
         )
     )
     parser.add_argument(
@@ -67,23 +65,6 @@ def parse_args() -> argparse.Namespace:
         choices=("DEBUG", "INFO", "WARNING", "ERROR"),
         help=f"Nivel de verbosidad operativo. Default: {DEFAULT_LOG_LEVEL}",
     )
-    parser.add_argument(
-        "--model-runner",
-        default=DEFAULT_MODEL_RUNNER,
-        help=f"Runner canónico de modelado a invocar. Default: {DEFAULT_MODEL_RUNNER}",
-    )
-    parser.add_argument("--model-run-id", help="Run_ID explícito para el runner de modelado.")
-    parser.add_argument(
-        "--model-arg",
-        action="append",
-        default=[],
-        help="Argumento extra que se pasa tal cual al runner de modelado. Repite el flag para varios.",
-    )
-    parser.add_argument(
-        "--model-dataset-path",
-        default=str(DEFAULT_MODEL_DATASET),
-        help=f"Dataset maestro consumido por modeling. Default: {DEFAULT_MODEL_DATASET}",
-    )
     return parser.parse_args()
 
 
@@ -104,10 +85,6 @@ def main() -> int:
         allow_partial=args.allow_partial,
         dry_run=args.dry_run,
         log_level=args.log_level,
-        model_runner=args.model_runner,
-        model_run_id=args.model_run_id,
-        model_args=list(args.model_arg),
-        model_dataset_path=args.model_dataset_path,
     )
     try:
         context = orchestrator.run(request)

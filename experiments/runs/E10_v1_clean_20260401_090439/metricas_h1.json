@@ -1,0 +1,142 @@
+{
+  "benchmark_e1_metrics": {
+    "deteccion_caidas": 0.875,
+    "direccion_accuracy": 0.8125,
+    "l_num": 0.19092348681950486,
+    "l_risk": 0.125,
+    "l_tol": 0.6875,
+    "l_trend": 0.1875,
+    "loss_h": 0.06410946611604801,
+    "mae": 0.1152144204997693,
+    "rmse": 0.15489178141831675,
+    "rows_eval": 16
+  },
+  "benchmark_e9_metrics": {
+    "deteccion_caidas": 1.0,
+    "direccion_accuracy": 0.8571428571428571,
+    "l_num": 0.20530592808011755,
+    "l_risk": 0.0,
+    "l_tol": 0.6428571428571429,
+    "l_trend": 0.1428571428571429,
+    "loss_h": 0.051557122448412346,
+    "mae": 0.12389362840036676,
+    "rmse": 0.16687812023759005,
+    "rows_eval": 14
+  },
+  "benchmark_fixed_metrics": {
+    "deteccion_caidas": 0.75,
+    "direccion_accuracy": 0.6875,
+    "l_num": 0.2008704005088793,
+    "l_risk": 0.25,
+    "l_tol": 0.75,
+    "l_trend": 0.3125,
+    "loss_h": 0.08577889205343232,
+    "mae": 0.12121697113182395,
+    "rmse": 0.15517926937223608,
+    "rows_eval": 16
+  },
+  "horizonte_sem": 1,
+  "initial_train_size": 12,
+  "rows_eval": 16,
+  "rows_total_horizonte": 28,
+  "selector_metrics": {
+    "accuracy": 0.1875,
+    "balanced_accuracy": 0.15833333333333333,
+    "class_distribution_pred": {
+      "E1_v5_clean": 5,
+      "E2_v3_clean": 1,
+      "E5_v4_clean": 2,
+      "E7_v3_clean": 7,
+      "E9_v2_clean": 1
+    },
+    "class_distribution_real": {
+      "E1_v5_clean": 5,
+      "E2_v3_clean": 2,
+      "E3_v2_clean": 2,
+      "E5_v4_clean": 1,
+      "E7_v3_clean": 2,
+      "E9_v2_clean": 4
+    },
+    "confusion_labels": [
+      "E1_v5_clean",
+      "E2_v3_clean",
+      "E3_v2_clean",
+      "E5_v4_clean",
+      "E7_v3_clean",
+      "E9_v2_clean"
+    ],
+    "confusion_matrix": [
+      [
+        1,
+        0,
+        0,
+        1,
+        3,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ]
+    ],
+    "n_classes_pred": 5,
+    "n_classes_real": 6
+  },
+  "system_metrics": {
+    "deteccion_caidas": 0.625,
+    "direccion_accuracy": 0.5625,
+    "l_num": 0.20531355480901317,
+    "l_risk": 0.375,
+    "l_tol": 0.5625,
+    "l_trend": 0.4375,
+    "loss_h": 0.09937042325494638,
+    "mae": 0.12389823081552613,
+    "rmse": 0.15915871519701028,
+    "rows_eval": 16
+  },
+  "target_column": "mejor_modelo_loss_radar_local",
+  "target_distribution_train_initial": {
+    "E1_v5_clean": 1,
+    "E2_v3_clean": 4,
+    "E3_v2_clean": 1,
+    "E5_v4_clean": 3,
+    "E7_v3_clean": 3
+  },
+  "target_operativo_same_share_horizon": 1.0
+}
