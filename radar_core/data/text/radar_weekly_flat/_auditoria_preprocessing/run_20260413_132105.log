@@ -1,0 +1,58 @@
+2026-04-13T07:21:05 [INFO] ======================================================================
+2026-04-13T07:21:05 [INFO] Inicio de corrida — run_nuevas.py v2.0.0-structural
+2026-04-13T07:21:05 [INFO] run_timestamp: 2026-04-13T13:21:05.914883+00:00
+2026-04-13T07:21:05 [INFO] SOURCE_BASE:   /tmp/radar_nuevas_src
+2026-04-13T07:21:05 [INFO] TARGET_BASE:   /home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/data/text/radar_weekly_flat
+2026-04-13T07:21:05 [INFO] AUDIT_DIR:     /home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/data/text/radar_weekly_flat/_auditoria_preprocessing
+2026-04-13T07:21:05 [INFO] Semanas detectadas: 4
+2026-04-13T07:21:05 [INFO] 
+[2026-03-10] 2026-03-10_semana_10marzo_16marzo_26
+2026-04-13T07:21:05 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2026-03-10_semana_10marzo_16marzo_26_facebook.csv']
+2026-04-13T07:21:05 [INFO]   facebook -> 2026-03-10_facebook.txt | extraidos:47 unicos:46
+2026-04-13T07:21:05 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2026-03-10_semana_10marzo_16marzo_26_twitter.csv']
+2026-04-13T07:21:05 [INFO]   twitter -> 2026-03-10_twitter.txt | extraidos:42 unicos:41
+2026-04-13T07:21:05 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2026-03-10_semana_10marzo_16marzo_26_youtube.csv']
+2026-04-13T07:21:06 [INFO]   youtube -> 2026-03-10_youtube.txt | extraidos:2612 unicos:1225
+2026-04-13T07:21:06 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2026-03-10_semana_10marzo_16marzo_26_medios.txt']
+2026-04-13T07:21:06 [INFO]   medios -> 2026-03-10_medios.txt | copiado
+2026-04-13T07:21:06 [INFO] 
+[2026-03-17] 2026-03-17_semana_17marzo_23marzo_26
+2026-04-13T07:21:06 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2026-03-17_semana_17marzo_23marzo_26_facebook.csv']
+2026-04-13T07:21:06 [INFO]   facebook -> 2026-03-17_facebook.txt | extraidos:56 unicos:53
+2026-04-13T07:21:06 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2026-03-17_semana_17marzo_23marzo_26_twitter.csv']
+2026-04-13T07:21:06 [INFO]   twitter -> 2026-03-17_twitter.txt | extraidos:22 unicos:18
+2026-04-13T07:21:06 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2026-03-17_semana_17marzo_23marzo_26_youtube.csv']
+2026-04-13T07:21:06 [INFO]   youtube -> 2026-03-17_youtube.txt | extraidos:1 unicos:1
+2026-04-13T07:21:06 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2026-03-17_semana_17marzo_23marzo_26_medios.txt']
+2026-04-13T07:21:06 [INFO]   medios -> 2026-03-17_medios.txt | copiado
+2026-04-13T07:21:06 [INFO] 
+[2026-03-24] 2026-03-24_semana_24marzo_30marzo_26
+2026-04-13T07:21:06 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2026-03-24_semana_24marzo_30marzo_26_facebook.csv']
+2026-04-13T07:21:06 [INFO]   facebook -> 2026-03-24_facebook.txt | extraidos:42 unicos:41
+2026-04-13T07:21:06 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2026-03-24_semana_24marzo_30marzo_26_twitter.csv']
+2026-04-13T07:21:06 [INFO]   twitter -> 2026-03-24_twitter.txt | extraidos:77 unicos:77
+2026-04-13T07:21:06 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2026-03-24_semana_24marzo_30marzo_26_youtube.csv']
+2026-04-13T07:21:06 [INFO]   youtube -> 2026-03-24_youtube.txt | extraidos:1671 unicos:876
+2026-04-13T07:21:06 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2026-03-24_semana_24marzo_30marzo_26_medios.txt']
+2026-04-13T07:21:06 [INFO]   medios -> 2026-03-24_medios.txt | copiado
+2026-04-13T07:21:06 [INFO] 
+[2026-03-31] 2026-03-31_semana_31marzo_06abril_26
+2026-04-13T07:21:06 [DEBUG]   facebook: 1 archivo(s) encontrado(s): ['2026-03-31_semana_31marzo_06abril_26_facebook.csv']
+2026-04-13T07:21:06 [INFO]   facebook -> 2026-03-31_facebook.txt | extraidos:74 unicos:72
+2026-04-13T07:21:06 [DEBUG]   twitter: 1 archivo(s) encontrado(s): ['2026-03-31_semana_31marzo_06abril_26_twitter.csv']
+2026-04-13T07:21:06 [INFO]   twitter -> 2026-03-31_twitter.txt | extraidos:95 unicos:89
+2026-04-13T07:21:06 [DEBUG]   youtube: 1 archivo(s) encontrado(s): ['2026-03-31_semana_31marzo_06abril_26_youtube.csv']
+2026-04-13T07:21:06 [INFO]   youtube -> 2026-03-31_youtube.txt | extraidos:1267 unicos:517
+2026-04-13T07:21:06 [DEBUG]   medios: 1 archivo(s) encontrado(s): ['2026-03-31_semana_31marzo_06abril_26_medios.txt']
+2026-04-13T07:21:06 [INFO]   medios -> 2026-03-31_medios.txt | copiado
+2026-04-13T07:21:06 [INFO] 
+Resumen
+2026-04-13T07:21:06 [INFO]   facebook: 4
+2026-04-13T07:21:06 [INFO]   twitter: 4
+2026-04-13T07:21:06 [INFO]   youtube: 4
+2026-04-13T07:21:06 [INFO]   medios: 4
+2026-04-13T07:21:06 [INFO]   faltantes: 0
+2026-04-13T07:21:06 [INFO] Manifest escrito: /home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/data/text/radar_weekly_flat/_auditoria_preprocessing/manifest_20260413T132105.914883+0000.json
+2026-04-13T07:21:06 [INFO] Tabla de auditoría escrita: /home/emilio/Documentos/RAdAR_worktrees/restructuracion_arquitectonica/data/text/radar_weekly_flat/_auditoria_preprocessing/auditoria_20260413T132105.914883+0000.csv
+2026-04-13T07:21:06 [INFO] ======================================================================
+2026-04-13T07:21:06 [INFO] Corrida completada — outputs: 16 | faltantes: 0 | errores: 0

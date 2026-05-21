@@ -1,0 +1,27 @@
+name: radar-exp-py311
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - statsmodels
+  - xgboost
+  - lightgbm
+  - catboost
+  - prophet
+  - cmdstanpy
+  - openpyxl
+  - matplotlib
+  - seaborn
+  - plotly
+  - jupyterlab
+  - ipykernel
+  - pyarrow
+  - joblib
+  - shap
+  - optuna
+  - tqdm

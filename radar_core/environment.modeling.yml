@@ -1,0 +1,85 @@
+# =============================================================================
+# environment.modeling.yml — Entorno de modelado y experimentación RAdAR
+# =============================================================================
+#
+# Para: modelado, experimentación, NLP, tracking experimental, evaluación Radar.
+#
+# Relación con environment.experimentos.yml:
+#   Este archivo es la forma canónica, explícitamente nombrada, del mismo stack.
+#   environment.experimentos.yml permanece intacto como alias histórico/transitorio.
+#   Son funcionalmente equivalentes.
+#
+# Política de transición:
+#   - Flujos nuevos: usar radar-modeling-py311 (este entorno).
+#   - Flujos existentes: pueden seguir usando radar-exp-py311 sin cambios.
+#   - Kernel de Jupyter registrado como "Python (radar-modeling-py311)".
+#
+# Crear entorno:
+#   conda env create -f environment.modeling.yml
+#   conda activate radar-modeling-py311
+#
+# Actualizar entorno existente:
+#   conda env update -n radar-modeling-py311 -f environment.modeling.yml --prune
+#
+# =============================================================================
+
+name: radar-modeling-py311
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.11
+  - pip
+
+  # ── Datos y serialización ─────────────────────────────────────────────────
+  - numpy
+  - pandas
+  - scipy
+  - openpyxl
+  - pyarrow
+
+  # ── Modelado y ML ─────────────────────────────────────────────────────────
+  - scikit-learn
+  - statsmodels
+  - xgboost
+  - lightgbm
+  - catboost
+
+  # ── Series de tiempo ──────────────────────────────────────────────────────
+  - prophet
+  - cmdstanpy
+
+  # ── Utilidades de ML ─────────────────────────────────────────────────────
+  - joblib
+  - shap
+  - optuna
+  - tqdm
+
+  # ── Visualización ─────────────────────────────────────────────────────────
+  - matplotlib
+  - seaborn
+  - plotly
+
+  # ── Entorno interactivo ───────────────────────────────────────────────────
+  - jupyterlab
+  - ipykernel
+
+# =============================================================================
+# NOTA DE ALCANCE
+# =============================================================================
+#
+# Este entorno NO incluye dependencias de extracción:
+#   - playwright, trafilatura, cloudscraper         → solo en ops
+#   - apify-client, google-api-python-client        → solo en ops
+#   - googlenewsdecoder, requests                   → solo en ops
+#
+# Incluye openpyxl porque src/nlp/ (clasificación de temas, sentimiento semanal)
+# corre habitualmente en el mismo entorno de análisis que modelado.
+#
+# environment.nlp.yml: NO creado.
+# NLP no tiene dependencias especializadas (no spacy, no transformers) que
+# justifiquen un entorno propio. Decisión explícitamente documentada.
+#
+# environment.experimentos.yml: intacto, conservado como compatibilidad transitoria.
+# =============================================================================
