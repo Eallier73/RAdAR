@@ -22,6 +22,7 @@ STAGE_NAMES = (
     "extraction",
     "preprocessing",
     "nlp",
+    "modeling",
 )
 
 SOURCE_NAMES = ("facebook", "twitter", "youtube", "medios")
@@ -63,4 +64,5 @@ STAGE_PYTHON: dict[str, str] = {
     "extraction":    _OPS_PYTHON,
     "preprocessing": _OPS_PYTHON,
     "nlp":           _OPS_PYTHON,
+    "modeling":      _OPS_PYTHON,
 }

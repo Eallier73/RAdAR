@@ -103,4 +103,25 @@ STAGE_CONTRACTS: dict[str, StageContract] = {
         required_artifacts=("logs/nlp.log", "stages/nlp.json"),
         partial_allowed=True,
     ),
+    "modeling": StageContract(
+        name="modeling",
+        description=(
+            "Ejecuta los runners canónicos de modelado (E1, E2, E3, E5, E7) con walk-forward completo, "
+            "construye la tabla curada temporal para E9, ejecuta el stacking E9_v2_clean con meta-model huber, "
+            "y empaqueta la salida dual operativa con política direccional 9-1-9-1."
+        ),
+        required_inputs=(
+            "canonical_modeling_dataset",
+            "experiment_tracker_workbook",
+            "experiment_runs_dir",
+        ),
+        expected_outputs=(
+            "base_model_predictions_e1_e2_e3_e5_e7",
+            "e9_curated_table_temporary",
+            "e9_stacking_predictions",
+            "dual_operational_package",
+        ),
+        required_artifacts=("logs/modeling.log", "stages/modeling.json"),
+        partial_allowed=False,
+    ),
 }

@@ -29,9 +29,16 @@ def run_nlp_stage(*args, **kwargs):
     return run_stage(*args, **kwargs)
 
 
+def run_modeling_stage(*args, **kwargs):
+    from .modeling_stage import run_stage
+
+    return run_stage(*args, **kwargs)
+
+
 __all__ = [
     "run_preflight_stage",
     "run_extraction_stage",
     "run_preprocessing_stage",
     "run_nlp_stage",
+    "run_modeling_stage",
 ]

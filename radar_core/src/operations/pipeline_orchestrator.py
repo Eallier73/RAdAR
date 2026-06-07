@@ -23,6 +23,7 @@ from .run_context import (
 from .state_store import OperationStateStore
 from .stages import (
     run_extraction_stage,
+    run_modeling_stage,
     run_nlp_stage,
     run_preflight_stage,
     run_preprocessing_stage,
@@ -34,6 +35,7 @@ STAGE_RUNNERS = {
     "extraction": run_extraction_stage,
     "preprocessing": run_preprocessing_stage,
     "nlp": run_nlp_stage,
+    "modeling": run_modeling_stage,
 }
 
 
