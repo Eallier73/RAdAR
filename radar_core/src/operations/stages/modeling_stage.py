@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -307,6 +308,128 @@ def _build_dual_package(
     fall_df.to_csv(output_dir / "alertas_caida_oficiales.csv", index=False)
     consolidated.to_csv(output_dir / "salida_dual_operativa_consolidada.csv", index=False)
 
+    politica_funcional = [
+        {"capa": "salida_numerica_principal", "politica_operativa": "Siempre E1_v5_clean", "detalle": "Forecast numerico oficial del sistema"},
+        {"capa": "deteccion_de_caidas", "politica_operativa": "Siempre E9_v2_clean", "detalle": "Alerta oficial de caida por horizonte"},
+        {"capa": "direction_accuracy_H1", "politica_operativa": "E9_v2_clean", "detalle": "Politica fija direccional por horizonte"},
+        {"capa": "direction_accuracy_H2", "politica_operativa": "E1_v5_clean", "detalle": "Politica fija direccional por horizonte"},
+        {"capa": "direction_accuracy_H3", "politica_operativa": "E9_v2_clean", "detalle": "Politica fija direccional por horizonte"},
+        {"capa": "direction_accuracy_H4", "politica_operativa": "E1_v5_clean", "detalle": "Politica fija direccional por horizonte"},
+    ]
+    pd.DataFrame(politica_funcional).to_csv(output_dir / "politica_funcional_dual.csv", index=False)
+
+    tabla_funcional: list[dict[str, Any]] = []
+    for h in (1, 2, 3, 4):
+        e1_h = numeric_df[numeric_df["horizonte_sem"] == h]
+        fall_h = fall_df[fall_df["horizonte_sem"] == h]
+        dir_h_policy_run = DIRECTION_POLICY_BY_HORIZON[h]
+        dir_h = direction_df[direction_df["horizonte_sem"] == h]
+
+        e1_mae = (e1_h["prediccion_numerica_oficial"] - e1_h["y_true"]).abs().mean()
+        e1_rmse = ((e1_h["prediccion_numerica_oficial"] - e1_h["y_true"]) ** 2).mean() ** 0.5
+        e1_dir_acc = e1_h["direction_correcta"].mean()
+        e1_fall_det = (e1_h["delta_real"].le(fall_threshold) == e1_h["delta_predicho"].le(fall_threshold)).mean()
+
+        e9_preds = fall_h["delta_predicho"] + fall_h["y_current"]
+        e9_mae = (e9_preds - fall_h["y_true"]).abs().mean() if len(fall_h) > 0 else float("nan")
+        e9_rmse = (((e9_preds - fall_h["y_true"]) ** 2).mean() ** 0.5) if len(fall_h) > 0 else float("nan")
+        e9_dir_acc = dir_h["direction_correcta"].mean() if len(dir_h) > 0 else float("nan")
+        e9_fall_det = fall_h["deteccion_caida_correcta"].mean() if len(fall_h) > 0 else float("nan")
+
+        for medida, e1_val, e9_val in [
+            ("MAE", e1_mae, e9_mae),
+            ("RMSE", e1_rmse, e9_rmse),
+            ("Direction accuracy", e1_dir_acc, e9_dir_acc),
+            ("Deteccion de caidas", e1_fall_det, e9_fall_det),
+        ]:
+            ganador = "E1_v5_clean" if e1_val <= e9_val else "E9_v2_clean"
+            if medida in ("Direction accuracy", "Deteccion de caidas"):
+                ganador = "E1_v5_clean" if e1_val >= e9_val else "E9_v2_clean"
+            tabla_funcional.append({
+                "horizonte_sem": h,
+                "medida": medida,
+                "E1_v5_clean": round(float(e1_val), 6),
+                "E9_v2_clean": round(float(e9_val), 6),
+                "ganador": ganador,
+            })
+    pd.DataFrame(tabla_funcional).to_csv(output_dir / "tabla_funcional_canonica.csv", index=False)
+
+    manifest = {
+        "fase_operativa": "produccion_controlada_dual",
+        "estado_operativo": "vigente",
+        "modelo_unico_final": False,
+        "descripcion": (
+            "Sistema operativo compuesto del Radar con salida numerica oficial desde E1_v5_clean, "
+            "alerta de caida oficial desde E9_v2_clean y politica direccional fija por horizonte 9-1-9-1."
+        ),
+        "politica_direccional_por_horizonte": {str(k): v for k, v in DIRECTION_POLICY_BY_HORIZON.items()},
+        "tabla_funcional_dual_vigente": tabla_funcional,
+        "politica_funcional_dual_vigente": politica_funcional,
+        "fuentes": {
+            "prediccion_numerica_oficial": {
+                "run_id": "E1_v5_clean",
+                "run_dir": str(e1_run_dir),
+            },
+            "alertas_caida_oficiales": {
+                "run_id": "E9_v2_clean",
+                "run_dir": str(e9_run_dir),
+            },
+            "direction_accuracy_oficial_por_horizonte": {
+                f"H{h}": {"run_id": run_id, "run_dir": str(run_dirs_by_id[run_id])}
+                for h, run_id in DIRECTION_POLICY_BY_HORIZON.items()
+            },
+        },
+        "artefactos_generados": {
+            "prediccion_numerica_oficial.csv": int(len(numeric_df)),
+            "lectura_direccional_oficial.csv": int(len(direction_df)),
+            "alertas_caida_oficiales.csv": int(len(fall_df)),
+            "salida_dual_operativa_consolidada.csv": int(len(consolidated)),
+            "tabla_funcional_canonica.csv": len(tabla_funcional),
+            "politica_funcional_dual.csv": len(politica_funcional),
+        },
+        "output_dir": str(output_dir),
+        "advertencia": "La politica 9-1-9-1 es fija y funcional. No implica mezcla dinamica online ni seleccion ex post por fila.",
+    }
+    (output_dir / "manifiesto_operativo_dual.json").write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8",
+    )
+
+    lines = [
+        "# Resumen Operativo Dual Radar",
+        "",
+        f"- `fase_operativa`: `{manifest['fase_operativa']}`",
+        f"- `estado_operativo`: `{manifest['estado_operativo']}`",
+        "- `modelo_unico_final`: `False`",
+        f"- `output_dir`: `{output_dir}`",
+        "",
+        "## Politica Funcional Congelada",
+        "",
+        "- Salida numerica principal: `E1_v5_clean`",
+        "- Deteccion de caidas: `E9_v2_clean`",
+        "- Direction H1: `E9_v2_clean`",
+        "- Direction H2: `E1_v5_clean`",
+        "- Direction H3: `E9_v2_clean`",
+        "- Direction H4: `E1_v5_clean`",
+        "",
+        "## Artefactos Canonicos",
+        "",
+        f"- `prediccion_numerica_oficial.csv`: `{len(numeric_df)}` fila(s)",
+        f"- `lectura_direccional_oficial.csv`: `{len(direction_df)}` fila(s)",
+        f"- `alertas_caida_oficiales.csv`: `{len(fall_df)}` fila(s)",
+        f"- `salida_dual_operativa_consolidada.csv`: `{len(consolidated)}` fila(s)",
+        "- `tabla_funcional_canonica.csv`",
+        "- `politica_funcional_dual.csv`",
+        "- `manifiesto_operativo_dual.json`",
+        "",
+        "## Reglas de Lectura",
+        "",
+        "- `prediccion_numerica_oficial.csv` es la salida principal del sistema.",
+        "- `lectura_direccional_oficial.csv` reporta la politica fija 9-1-9-1 por horizonte.",
+        "- `alertas_caida_oficiales.csv` reporta la capa oficial de caidas desde `E9_v2_clean`.",
+        "- `salida_dual_operativa_consolidada.csv` integra las tres capas sin fingir un modelo unico.",
+    ]
+    (output_dir / "resumen_operativo_dual.md").write_text("\n".join(lines), encoding="utf-8")
+
     return {
         "filas_numerico": len(numeric_df),
         "filas_direction": len(direction_df),
@@ -510,13 +633,17 @@ def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
         metrics["filas_direction"] = dual_result["filas_direction"]
         metrics["filas_caidas"] = dual_result["filas_caidas"]
         metrics["filas_consolidado"] = dual_result["filas_consolidado"]
-        for csv_name in (
+        for artifact_name in (
             "prediccion_numerica_oficial.csv",
             "lectura_direccional_oficial.csv",
             "alertas_caida_oficiales.csv",
             "salida_dual_operativa_consolidada.csv",
+            "politica_funcional_dual.csv",
+            "tabla_funcional_canonica.csv",
+            "manifiesto_operativo_dual.json",
+            "resumen_operativo_dual.md",
         ):
-            artifacts.append(str(dual_output_dir / csv_name))
+            artifacts.append(str(dual_output_dir / artifact_name))
     except Exception as exc:
         errors.append(f"Empaquetado dual falló: {exc}")
         outputs["dual_package"] = {"ok": False, "error": str(exc)}
