@@ -1,0 +1,23 @@
+RESULTADOS OUT-OF-SAMPLE (8 SEMANAS) — E1 vs E9
+Semanas OOS: 2026-03-09 a 2026-04-27
+
+  h1 | TRAIN: 27 sem (15 E9) | OOS: 7 sem | caidas train=13 oos=3
+                 MAE_tr  MAE_oos    d_MAE |   Det_tr  Det_oos    d_Det | Al_tr Al_oos
+    E1 (Ridge)   0.1011   0.0687  -0.0324 |    81.5%    57.1%   -24.3% |    14      0
+    E9 (Stack)   0.1191   0.0822  -0.0369 |    86.7%    71.4%   -15.2% |    10      1
+
+  h2 | TRAIN: 27 sem (15 E9) | OOS: 6 sem | caidas train=12 oos=4
+                 MAE_tr  MAE_oos    d_MAE |   Det_tr  Det_oos    d_Det | Al_tr Al_oos
+    E1 (Ridge)   0.1008   0.0732  -0.0276 |    70.4%    33.3%   -37.0% |    14      0
+    E9 (Stack)   0.1188   0.0631  -0.0557 |    66.7%    66.7%    +0.0% |     9      2
+
+  h3 | TRAIN: 27 sem (15 E9) | OOS: 5 sem | caidas train=14 oos=3
+                 MAE_tr  MAE_oos    d_MAE |   Det_tr  Det_oos    d_Det | Al_tr Al_oos
+    E1 (Ridge)   0.1020   0.0588  -0.0431 |    77.8%    40.0%   -37.8% |    14      0
+    E9 (Stack)   0.1316   0.0500  -0.0816 |    60.0%    60.0%    +0.0% |    10      1
+
+  h4 | TRAIN: 27 sem (15 E9) | OOS: 4 sem | caidas train=11 oos=1
+                 MAE_tr  MAE_oos    d_MAE |   Det_tr  Det_oos    d_Det | Al_tr Al_oos
+    E1 (Ridge)   0.0987   0.0496  -0.0491 |    74.1%    75.0%    +0.9% |    14      0
+    E9 (Stack)   0.1207   0.0358  -0.0849 |    80.0%   100.0%   +20.0% |     9      1
+

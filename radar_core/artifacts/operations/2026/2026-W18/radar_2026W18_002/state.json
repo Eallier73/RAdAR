@@ -1,0 +1,432 @@
+{
+  "allow_partial": false,
+  "artifacts_root": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/operations/2026/2026-W18/radar_2026W18_002",
+  "dry_run": false,
+  "fail_fast": true,
+  "finished_at": "2026-06-09 10:29:42",
+  "from_stage": "modeling",
+  "log_level": "INFO",
+  "metadata": {
+    "selection_end_date": "2026-05-03",
+    "selection_start_date": "2026-04-27"
+  },
+  "mode": "controlled",
+  "notes": [],
+  "published_outputs": {},
+  "repo_context": {
+    "branch": "arquitectura_modelado",
+    "commit": "373b335782e308cfde932ae9bfd61b548b01695c",
+    "dirty": true,
+    "repo_root": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core",
+    "status_short": [
+      "D ../artifacts/operations/post_w10/post_w10_predict_only_e1_e9_validation_20260508_0758/reports/corrida_usada_para_resultados_post_w10.json",
+      " D ../artifacts/operations/post_w10/post_w10_predict_only_e1_e9_validation_20260508_0758/reports/corrida_usada_para_resultados_post_w10.md",
+      "?? ../artifacts/Implementacion_modelado.txt",
+      "?? artifacts/operations/2026/2026-W18/",
+      "?? artifacts/tmp/",
+      "?? experiments/"
+    ]
+  },
+  "run_id": "radar_2026W18_002",
+  "selection_window": {
+    "selected_end": "2026-05-03",
+    "selected_start": "2026-04-27",
+    "week_end": "2026-05-03",
+    "week_requested": "2026-W18",
+    "week_slug": "2026-W18",
+    "week_start": "2026-04-27"
+  },
+  "sources_effective": [
+    "facebook",
+    "twitter",
+    "youtube",
+    "medios"
+  ],
+  "sources_requested": [
+    "facebook",
+    "twitter",
+    "youtube",
+    "medios"
+  ],
+  "stage_states": {
+    "extraction": {
+      "artifacts": [],
+      "errors": [],
+      "notes": [
+        "Etapa omitida por selección explícita de etapas o por rango from_stage/to_stage."
+      ],
+      "outputs": {
+        "reason": "Fuera de la selección de etapas solicitada por CLI."
+      },
+      "stage_name": "extraction",
+      "status": "skipped",
+      "warnings": []
+    },
+    "modeling": {
+      "artifacts": [
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E1_v5_clean_20260609_101340/predicciones_h1.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E1_v5_clean_20260609_101340/predicciones_h2.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E1_v5_clean_20260609_101340/predicciones_h3.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E1_v5_clean_20260609_101340/predicciones_h4.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E2_v3_clean_20260609_101609/predicciones_h1.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E2_v3_clean_20260609_101609/predicciones_h2.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E2_v3_clean_20260609_101609/predicciones_h3.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E2_v3_clean_20260609_101609/predicciones_h4.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E3_v2_clean_20260609_102329/predicciones_h1.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E3_v2_clean_20260609_102329/predicciones_h2.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E3_v2_clean_20260609_102329/predicciones_h3.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E3_v2_clean_20260609_102329/predicciones_h4.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E5_v4_clean_20260609_102422/predicciones_h1.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E5_v4_clean_20260609_102422/predicciones_h2.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E5_v4_clean_20260609_102422/predicciones_h3.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E5_v4_clean_20260609_102422/predicciones_h4.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E7_v3_clean_20260609_102912/predicciones_h1.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E7_v3_clean_20260609_102912/predicciones_h2.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E7_v3_clean_20260609_102912/predicciones_h3.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E7_v3_clean_20260609_102912/predicciones_h4.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/tmp/tabla_e9_curada_radar_2026W18_002.xlsx",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E9_v2_clean_20260609_102940/predicciones_h1.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E9_v2_clean_20260609_102940/predicciones_h2.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E9_v2_clean_20260609_102940/predicciones_h3.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E9_v2_clean_20260609_102940/predicciones_h4.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/operations/2026/2026-W18/radar_2026W18_002/published/powerbi/prediccion_numerica_oficial.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/operations/2026/2026-W18/radar_2026W18_002/published/powerbi/lectura_direccional_oficial.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/operations/2026/2026-W18/radar_2026W18_002/published/powerbi/alertas_caida_oficiales.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/operations/2026/2026-W18/radar_2026W18_002/published/powerbi/salida_dual_operativa_consolidada.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/operations/2026/2026-W18/radar_2026W18_002/published/powerbi/politica_funcional_dual.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/operations/2026/2026-W18/radar_2026W18_002/published/powerbi/tabla_funcional_canonica.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/operations/2026/2026-W18/radar_2026W18_002/published/powerbi/manifiesto_operativo_dual.json",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/operations/2026/2026-W18/radar_2026W18_002/published/powerbi/resumen_operativo_dual.md"
+      ],
+      "commands": [
+        {
+          "command": [
+            "/home/emilio/anaconda3/envs/radar-exp-py311/bin/python",
+            "-m",
+            "src.modeling.runners.run_e1_ridge_clean",
+            "--run-id",
+            "E1_v5_clean",
+            "--reference-run-id",
+            "E1_v5_clean",
+            "--target-mode",
+            "nivel",
+            "--feature-mode",
+            "corr",
+            "--lags",
+            "1,2,3,4,5,6",
+            "--transform-mode",
+            "standard",
+            "--initial-train-size",
+            "40",
+            "--horizons",
+            "1,2,3,4"
+          ],
+          "command_text": "/home/emilio/anaconda3/envs/radar-exp-py311/bin/python -m src.modeling.runners.run_e1_ridge_clean --run-id E1_v5_clean --reference-run-id E1_v5_clean --target-mode nivel --feature-mode corr --lags 1,2,3,4,5,6 --transform-mode standard --initial-train-size 40 --horizons 1,2,3,4",
+          "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core",
+          "duration_sec": 149.428,
+          "executed": true,
+          "finished_at": "2026-06-09 10:16:08",
+          "label": "base_E1_v5_clean",
+          "returncode": 0,
+          "started_at": "2026-06-09 10:13:39"
+        },
+        {
+          "command": [
+            "/home/emilio/anaconda3/envs/radar-exp-py311/bin/python",
+            "-m",
+            "src.modeling.runners.run_e2_huber_clean",
+            "--run-id",
+            "E2_v3_clean",
+            "--target-mode",
+            "nivel",
+            "--feature-mode",
+            "corr",
+            "--lags",
+            "1,2,3,4",
+            "--transform-mode",
+            "standard",
+            "--initial-train-size",
+            "40",
+            "--horizons",
+            "1,2,3,4",
+            "--hypothesis-note",
+            "prueba_sin_memoria_larga"
+          ],
+          "command_text": "/home/emilio/anaconda3/envs/radar-exp-py311/bin/python -m src.modeling.runners.run_e2_huber_clean --run-id E2_v3_clean --target-mode nivel --feature-mode corr --lags 1,2,3,4 --transform-mode standard --initial-train-size 40 --horizons 1,2,3,4 --hypothesis-note prueba_sin_memoria_larga",
+          "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core",
+          "duration_sec": 439.547,
+          "executed": true,
+          "finished_at": "2026-06-09 10:23:28",
+          "label": "base_E2_v3_clean",
+          "returncode": 0,
+          "started_at": "2026-06-09 10:16:08"
+        },
+        {
+          "command": [
+            "/home/emilio/anaconda3/envs/radar-exp-py311/bin/python",
+            "-m",
+            "src.modeling.runners.run_e3_random_forest",
+            "--run-id",
+            "E3_v2_clean",
+            "--target-mode",
+            "nivel",
+            "--feature-mode",
+            "all",
+            "--lags",
+            "1,2,3,4,5,6",
+            "--initial-train-size",
+            "40",
+            "--horizons",
+            "1,2,3,4"
+          ],
+          "command_text": "/home/emilio/anaconda3/envs/radar-exp-py311/bin/python -m src.modeling.runners.run_e3_random_forest --run-id E3_v2_clean --target-mode nivel --feature-mode all --lags 1,2,3,4,5,6 --initial-train-size 40 --horizons 1,2,3,4",
+          "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core",
+          "duration_sec": 53.579,
+          "executed": true,
+          "finished_at": "2026-06-09 10:24:21",
+          "label": "base_E3_v2_clean",
+          "returncode": 0,
+          "started_at": "2026-06-09 10:23:28"
+        },
+        {
+          "command": [
+            "/home/emilio/anaconda3/envs/radar-exp-py311/bin/python",
+            "-m",
+            "src.modeling.runners.run_e5_catboost",
+            "--run-id",
+            "E5_v4_clean",
+            "--target-mode",
+            "nivel",
+            "--feature-mode",
+            "all",
+            "--lags",
+            "1,2,3,4,5,6",
+            "--initial-train-size",
+            "40",
+            "--horizons",
+            "1,2,3,4",
+            "--use-inner-tuning",
+            "--tuning-metric",
+            "mae",
+            "--inner-splits",
+            "3",
+            "--iterations-grid",
+            "250,300",
+            "--depth-grid",
+            "4,5",
+            "--l2-leaf-reg-grid",
+            "3.0,5.0"
+          ],
+          "command_text": "/home/emilio/anaconda3/envs/radar-exp-py311/bin/python -m src.modeling.runners.run_e5_catboost --run-id E5_v4_clean --target-mode nivel --feature-mode all --lags 1,2,3,4,5,6 --initial-train-size 40 --horizons 1,2,3,4 --use-inner-tuning --tuning-metric mae --inner-splits 3 --iterations-grid 250,300 --depth-grid 4,5 --l2-leaf-reg-grid 3.0,5.0",
+          "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core",
+          "duration_sec": 289.576,
+          "executed": true,
+          "finished_at": "2026-06-09 10:29:11",
+          "label": "base_E5_v4_clean",
+          "returncode": 0,
+          "started_at": "2026-06-09 10:24:21"
+        },
+        {
+          "command": [
+            "/home/emilio/anaconda3/envs/radar-exp-py311/bin/python",
+            "-m",
+            "src.modeling.runners.run_e7_prophet",
+            "--run-id",
+            "E7_v3_clean",
+            "--target-mode",
+            "nivel",
+            "--feature-mode",
+            "corr",
+            "--lags",
+            "1,2,3,4,5,6",
+            "--initial-train-size",
+            "40",
+            "--horizons",
+            "1,2,3,4",
+            "--changepoint-prior-scale",
+            "0.2"
+          ],
+          "command_text": "/home/emilio/anaconda3/envs/radar-exp-py311/bin/python -m src.modeling.runners.run_e7_prophet --run-id E7_v3_clean --target-mode nivel --feature-mode corr --lags 1,2,3,4,5,6 --initial-train-size 40 --horizons 1,2,3,4 --changepoint-prior-scale 0.2",
+          "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core",
+          "duration_sec": 27.931,
+          "executed": true,
+          "finished_at": "2026-06-09 10:29:39",
+          "label": "base_E7_v3_clean",
+          "returncode": 0,
+          "started_at": "2026-06-09 10:29:11"
+        },
+        {
+          "command": [
+            "/home/emilio/anaconda3/envs/radar-exp-py311/bin/python",
+            "-m",
+            "src.modeling.runners.run_e9_stacking",
+            "--run-id",
+            "E9_v2_clean",
+            "--meta-model",
+            "huber",
+            "--initial-train-size",
+            "12",
+            "--horizons",
+            "1,2,3,4",
+            "--alpha-grid-size",
+            "40",
+            "--inner-splits",
+            "3",
+            "--alpha-selection-metric",
+            "mae",
+            "--use-only-complete-rows",
+            "--reference-run-id",
+            "E1_v5_clean",
+            "--extra-reference-run-ids",
+            "E5_v4_clean,E3_v2_clean,E2_v3_clean,E7_v3_clean",
+            "--hypothesis-note",
+            "benchmark_operativo_riesgo_controlado",
+            "--table-path",
+            "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/tmp/tabla_e9_curada_radar_2026W18_002.xlsx"
+          ],
+          "command_text": "/home/emilio/anaconda3/envs/radar-exp-py311/bin/python -m src.modeling.runners.run_e9_stacking --run-id E9_v2_clean --meta-model huber --initial-train-size 12 --horizons 1,2,3,4 --alpha-grid-size 40 --inner-splits 3 --alpha-selection-metric mae --use-only-complete-rows --reference-run-id E1_v5_clean --extra-reference-run-ids E5_v4_clean,E3_v2_clean,E2_v3_clean,E7_v3_clean --hypothesis-note benchmark_operativo_riesgo_controlado --table-path /home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/tmp/tabla_e9_curada_radar_2026W18_002.xlsx",
+          "cwd": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core",
+          "duration_sec": 3.256,
+          "executed": true,
+          "finished_at": "2026-06-09 10:29:42",
+          "label": "stacking_E9_v2_clean",
+          "returncode": 0,
+          "started_at": "2026-06-09 10:29:39"
+        }
+      ],
+      "duration_sec": 963.0,
+      "errors": [],
+      "finished_at": "2026-06-09 10:29:42",
+      "inputs": {
+        "base_specs": [
+          "E1_v5_clean",
+          "E2_v3_clean",
+          "E3_v2_clean",
+          "E5_v4_clean",
+          "E7_v3_clean"
+        ],
+        "dataset_path": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/data/processed/modeling/datos_ml_master_indice_aceptacion_digital.xlsx",
+        "direction_policy": {
+          "1": "E9_v2_clean",
+          "2": "E1_v5_clean",
+          "3": "E9_v2_clean",
+          "4": "E1_v5_clean"
+        },
+        "e9_spec": "E9_v2_clean",
+        "runs_dir": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs"
+      },
+      "metrics": {
+        "filas_caidas": 82,
+        "filas_consolidado": 130,
+        "filas_direction": 106,
+        "filas_numerico": 130
+      },
+      "notes": [
+        "Runners base E1/E2/E3/E5/E7 ejecutados con args congelados oficiales.",
+        "Tabla curada E9 construida con merge por fecha y metadata fila_completa/n_modelos/cobertura.",
+        "Stacking E9_v2_clean ejecutado con meta-model huber.",
+        "Paquete dual operativo generado con política direccional 9-1-9-1."
+      ],
+      "outputs": {
+        "base_E1_v5_clean": {
+          "ok": true,
+          "returncode": 0,
+          "run_dir": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E1_v5_clean_20260609_101340"
+        },
+        "base_E2_v3_clean": {
+          "ok": true,
+          "returncode": 0,
+          "run_dir": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E2_v3_clean_20260609_101609"
+        },
+        "base_E3_v2_clean": {
+          "ok": true,
+          "returncode": 0,
+          "run_dir": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E3_v2_clean_20260609_102329"
+        },
+        "base_E5_v4_clean": {
+          "ok": true,
+          "returncode": 0,
+          "run_dir": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E5_v4_clean_20260609_102422"
+        },
+        "base_E7_v3_clean": {
+          "ok": true,
+          "returncode": 0,
+          "run_dir": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E7_v3_clean_20260609_102912"
+        },
+        "dual_package": {
+          "filas_caidas": 82,
+          "filas_consolidado": 130,
+          "filas_direction": 106,
+          "filas_numerico": 130,
+          "ok": true,
+          "output_dir": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/operations/2026/2026-W18/radar_2026W18_002/published/powerbi"
+        },
+        "e9_curated_table": {
+          "ok": true,
+          "path": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/tmp/tabla_e9_curada_radar_2026W18_002.xlsx"
+        },
+        "stacking_e9": {
+          "ok": true,
+          "returncode": 0,
+          "run_dir": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E9_v2_clean_20260609_102940"
+        }
+      },
+      "stage_name": "modeling",
+      "started_at": "2026-06-09 10:13:39",
+      "status": "success",
+      "warnings": []
+    },
+    "nlp": {
+      "artifacts": [],
+      "errors": [],
+      "notes": [
+        "Etapa omitida por selección explícita de etapas o por rango from_stage/to_stage."
+      ],
+      "outputs": {
+        "reason": "Fuera de la selección de etapas solicitada por CLI."
+      },
+      "stage_name": "nlp",
+      "status": "skipped",
+      "warnings": []
+    },
+    "preflight": {
+      "artifacts": [],
+      "errors": [],
+      "notes": [
+        "Etapa omitida por selección explícita de etapas o por rango from_stage/to_stage."
+      ],
+      "outputs": {
+        "reason": "Fuera de la selección de etapas solicitada por CLI."
+      },
+      "stage_name": "preflight",
+      "status": "skipped",
+      "warnings": []
+    },
+    "preprocessing": {
+      "artifacts": [],
+      "errors": [],
+      "notes": [
+        "Etapa omitida por selección explícita de etapas o por rango from_stage/to_stage."
+      ],
+      "outputs": {
+        "reason": "Fuera de la selección de etapas solicitada por CLI."
+      },
+      "stage_name": "preprocessing",
+      "status": "skipped",
+      "warnings": []
+    }
+  },
+  "stages_planned": [
+    "modeling"
+  ],
+  "started_at": "2026-06-09 10:13:39",
+  "status": "success",
+  "to_stage": "modeling",
+  "week": {
+    "end_date": "2026-05-03",
+    "folder_name": "2026-04-27_semana_27abril_03mayo_26",
+    "requested_value": "2026-W18",
+    "slug": "2026-W18",
+    "start_date": "2026-04-27"
+  }
+}

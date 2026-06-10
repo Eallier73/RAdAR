@@ -1,0 +1,66 @@
+[
+  {
+    "feature_columns": [
+      "E1_v5_clean",
+      "E5_v4_clean",
+      "E3_v2_clean",
+      "E2_v3_clean"
+    ],
+    "feature_count": 4,
+    "horizonte_sem": 1,
+    "meta_model": "huber",
+    "rows_descartadas_inicio": 12,
+    "rows_disponibles": 34,
+    "rows_eval": 22,
+    "sheet_name": "E9_base_h1",
+    "use_only_complete_rows": true
+  },
+  {
+    "feature_columns": [
+      "E1_v5_clean",
+      "E5_v4_clean",
+      "E2_v3_clean",
+      "E7_v3_clean"
+    ],
+    "feature_count": 4,
+    "horizonte_sem": 2,
+    "meta_model": "huber",
+    "rows_descartadas_inicio": 12,
+    "rows_disponibles": 33,
+    "rows_eval": 21,
+    "sheet_name": "E9_base_h2",
+    "use_only_complete_rows": true
+  },
+  {
+    "feature_columns": [
+      "E1_v5_clean",
+      "E5_v4_clean",
+      "E3_v2_clean",
+      "E7_v3_clean"
+    ],
+    "feature_count": 4,
+    "horizonte_sem": 3,
+    "meta_model": "huber",
+    "rows_descartadas_inicio": 12,
+    "rows_disponibles": 32,
+    "rows_eval": 20,
+    "sheet_name": "E9_base_h3",
+    "use_only_complete_rows": true
+  },
+  {
+    "feature_columns": [
+      "E1_v5_clean",
+      "E5_v4_clean",
+      "E3_v2_clean",
+      "E2_v3_clean"
+    ],
+    "feature_count": 4,
+    "horizonte_sem": 4,
+    "meta_model": "huber",
+    "rows_descartadas_inicio": 12,
+    "rows_disponibles": 31,
+    "rows_eval": 19,
+    "sheet_name": "E9_base_h4",
+    "use_only_complete_rows": true
+  }
+]

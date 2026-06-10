@@ -1,0 +1,167 @@
+{
+  "comparacion_por_horizonte": [
+    {
+      "base_models": [
+        {
+          "deteccion_caidas": 0.6363636363636364,
+          "direccion_accuracy": 0.7272727272727273,
+          "loss_h": 0.08794047569441792,
+          "mae": 0.10572032144366288,
+          "rmse": 0.13965107534876042,
+          "run_id": "E1_v5_clean"
+        },
+        {
+          "deteccion_caidas": 0.7272727272727273,
+          "direccion_accuracy": 0.8181818181818182,
+          "loss_h": 0.07464257774296411,
+          "mae": 0.1076655598164023,
+          "rmse": 0.13610815872944673,
+          "run_id": "E5_v4_clean"
+        },
+        {
+          "deteccion_caidas": 0.5454545454545454,
+          "direccion_accuracy": 0.7272727272727273,
+          "loss_h": 0.10047324682532831,
+          "mae": 0.11505197665527689,
+          "rmse": 0.13924101870920846,
+          "run_id": "E3_v2_clean"
+        },
+        {
+          "deteccion_caidas": 0.6363636363636364,
+          "direccion_accuracy": 0.7727272727272727,
+          "loss_h": 0.08897790860157277,
+          "mae": 0.13127549332161947,
+          "rmse": 0.15452341130662836,
+          "run_id": "E2_v3_clean"
+        }
+      ],
+      "best_base_loss_h": 0.07464257774296411,
+      "best_base_run_id": "E5_v4_clean",
+      "horizonte_sem": 1,
+      "rows_eval": 22
+    },
+    {
+      "base_models": [
+        {
+          "deteccion_caidas": 0.5833333333333334,
+          "direccion_accuracy": 0.6666666666666666,
+          "loss_h": 0.07967636562170333,
+          "mae": 0.10306536893440243,
+          "rmse": 0.14019768039588332,
+          "run_id": "E1_v5_clean"
+        },
+        {
+          "deteccion_caidas": 0.5833333333333334,
+          "direccion_accuracy": 0.6190476190476191,
+          "loss_h": 0.08029997782005069,
+          "mae": 0.10326105575272766,
+          "rmse": 0.13473978464852346,
+          "run_id": "E5_v4_clean"
+        },
+        {
+          "deteccion_caidas": 0.5,
+          "direccion_accuracy": 0.5714285714285714,
+          "loss_h": 0.09395770813491273,
+          "mae": 0.13279763232160535,
+          "rmse": 0.16894426897407108,
+          "run_id": "E2_v3_clean"
+        },
+        {
+          "deteccion_caidas": 0.8333333333333334,
+          "direccion_accuracy": 0.7619047619047619,
+          "loss_h": 0.059264105527535055,
+          "mae": 0.12752146494025635,
+          "rmse": 0.168177114637061,
+          "run_id": "E7_v3_clean"
+        }
+      ],
+      "best_base_loss_h": 0.059264105527535055,
+      "best_base_run_id": "E7_v3_clean",
+      "horizonte_sem": 2,
+      "rows_eval": 21
+    },
+    {
+      "base_models": [
+        {
+          "deteccion_caidas": 0.6363636363636364,
+          "direccion_accuracy": 0.7,
+          "loss_h": 0.09080544121077454,
+          "mae": 0.10651167285362009,
+          "rmse": 0.14298987043940636,
+          "run_id": "E1_v5_clean"
+        },
+        {
+          "deteccion_caidas": 0.7272727272727273,
+          "direccion_accuracy": 0.75,
+          "loss_h": 0.07723095274688842,
+          "mae": 0.10647542714312645,
+          "rmse": 0.13831621980033146,
+          "run_id": "E5_v4_clean"
+        },
+        {
+          "deteccion_caidas": 0.6363636363636364,
+          "direccion_accuracy": 0.7,
+          "loss_h": 0.09181771500297188,
+          "mae": 0.11232943788000764,
+          "rmse": 0.1437228952144421,
+          "run_id": "E3_v2_clean"
+        },
+        {
+          "deteccion_caidas": 0.6363636363636364,
+          "direccion_accuracy": 0.7,
+          "loss_h": 0.09997335023858267,
+          "mae": 0.15058086965725206,
+          "rmse": 0.19678667355899299,
+          "run_id": "E7_v3_clean"
+        }
+      ],
+      "best_base_loss_h": 0.07723095274688842,
+      "best_base_run_id": "E5_v4_clean",
+      "horizonte_sem": 3,
+      "rows_eval": 20
+    },
+    {
+      "base_models": [
+        {
+          "deteccion_caidas": 0.7777777777777778,
+          "direccion_accuracy": 0.7894736842105263,
+          "loss_h": 0.035061535946388105,
+          "mae": 0.09851097165989602,
+          "rmse": 0.14066893574412945,
+          "run_id": "E1_v5_clean"
+        },
+        {
+          "deteccion_caidas": 0.8888888888888888,
+          "direccion_accuracy": 0.8947368421052632,
+          "loss_h": 0.02567264057673178,
+          "mae": 0.10200628533957282,
+          "rmse": 0.14941249426151776,
+          "run_id": "E5_v4_clean"
+        },
+        {
+          "deteccion_caidas": 0.8888888888888888,
+          "direccion_accuracy": 0.8947368421052632,
+          "loss_h": 0.026352569448388236,
+          "mae": 0.10074712801630391,
+          "rmse": 0.14325522219243214,
+          "run_id": "E3_v2_clean"
+        },
+        {
+          "deteccion_caidas": 0.7777777777777778,
+          "direccion_accuracy": 0.7894736842105263,
+          "loss_h": 0.03913201059568904,
+          "mae": 0.13622427178359542,
+          "rmse": 0.17262845246236486,
+          "run_id": "E2_v3_clean"
+        }
+      ],
+      "best_base_loss_h": 0.02567264057673178,
+      "best_base_run_id": "E5_v4_clean",
+      "horizonte_sem": 4,
+      "rows_eval": 19
+    }
+  ],
+  "meta_model": "huber",
+  "run_id": "E9_v2_clean",
+  "table_path": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/tmp/tabla_e9_curada_radar_2026W18_002.xlsx"
+}

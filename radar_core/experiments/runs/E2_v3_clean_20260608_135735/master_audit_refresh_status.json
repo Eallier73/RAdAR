@@ -1,0 +1,10 @@
+{
+  "auto_refresh_enabled": true,
+  "created_at": "2026-06-08 14:03:36",
+  "error": "No module named 'build_experiments_master_table'",
+  "error_type": "ModuleNotFoundError",
+  "estado_run": "corrido",
+  "run_id": "E2_v3_clean",
+  "status": "error",
+  "trigger": "finalize"
+}

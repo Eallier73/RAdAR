@@ -1,0 +1,64 @@
+{
+  "artifacts_root": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/operations/2026/2026-W18/radar_2026W18_001",
+  "finished_at": "2026-06-09 10:09:00",
+  "from_stage": "modeling",
+  "mode": "controlled",
+  "notes": [],
+  "published_outputs": {},
+  "repo_context": {
+    "branch": "arquitectura_modelado",
+    "commit": "373b335782e308cfde932ae9bfd61b548b01695c",
+    "dirty": true,
+    "repo_root": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core",
+    "status_short": [
+      "D ../artifacts/operations/post_w10/post_w10_predict_only_e1_e9_validation_20260508_0758/reports/corrida_usada_para_resultados_post_w10.json",
+      " D ../artifacts/operations/post_w10/post_w10_predict_only_e1_e9_validation_20260508_0758/reports/corrida_usada_para_resultados_post_w10.md",
+      "?? ../artifacts/Implementacion_modelado.txt",
+      "?? artifacts/tmp/",
+      "?? experiments/"
+    ]
+  },
+  "run_id": "radar_2026W18_001",
+  "selection_window": {
+    "selected_end": "2026-05-03",
+    "selected_start": "2026-04-27",
+    "week_end": "2026-05-03",
+    "week_requested": "2026-W18",
+    "week_slug": "2026-W18",
+    "week_start": "2026-04-27"
+  },
+  "sources_effective": [
+    "facebook",
+    "twitter",
+    "youtube",
+    "medios"
+  ],
+  "sources_requested": [
+    "facebook",
+    "twitter",
+    "youtube",
+    "medios"
+  ],
+  "stages_completed": [],
+  "stages_failed": [
+    "modeling"
+  ],
+  "stages_planned": [
+    "modeling"
+  ],
+  "stages_state_snapshot": {
+    "extraction": "skipped",
+    "modeling": "failed",
+    "nlp": "skipped",
+    "preflight": "skipped",
+    "preprocessing": "skipped"
+  },
+  "started_at": "2026-06-09 10:08:59",
+  "status": "failed",
+  "to_stage": "modeling",
+  "week": "2026-W18",
+  "week_end": "2026-05-03",
+  "week_folder_name": "2026-04-27_semana_27abril_03mayo_26",
+  "week_requested": "2026-W18",
+  "week_start": "2026-04-27"
+}

@@ -1,0 +1,24 @@
+MEJORES RESULTADOS POR HORIZONTE: OOS vs ENTRENAMIENTO
+Semanas OOS: 2026-03-09 a 2026-04-27
+Criterio: mejor MAE (min) y mejor deteccion (max) independiente del modelo
+
+  h1 | caidas reales: train=13 oos=3
+              Train      OOS    Delta
+       MAE   0.1011   0.0687  -0.0324
+       Det    86.7%    71.4%   -15.2%
+
+  h2 | caidas reales: train=12 oos=4
+              Train      OOS    Delta
+       MAE   0.1008   0.0631  -0.0376
+       Det    70.4%    66.7%    -3.7%
+
+  h3 | caidas reales: train=14 oos=3
+              Train      OOS    Delta
+       MAE   0.1020   0.0500  -0.0520
+       Det    77.8%    60.0%   -17.8%
+
+  h4 | caidas reales: train=11 oos=1
+              Train      OOS    Delta
+       MAE   0.0987   0.0358  -0.0629
+       Det    80.0%   100.0%   +20.0%
+

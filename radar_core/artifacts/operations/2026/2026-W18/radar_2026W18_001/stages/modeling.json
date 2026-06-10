@@ -1,0 +1,41 @@
+{
+  "artifacts": [],
+  "commands": [],
+  "duration_sec": 0.0,
+  "errors": [
+    "Runner base E1_v5_clean falló: Command '['/usr/bin/python3', '-m', 'src.modeling.runners.run_e1_ridge_clean', '--run-id', 'E1_v5_clean', '--reference-run-id', 'E1_v5_clean', '--target-mode', 'nivel', '--feature-mode', 'corr', '--lags', '1,2,3,4,5,6', '--transform-mode', 'standard', '--initial-train-size', '40', '--horizons', '1,2,3,4']' returned non-zero exit status 1."
+  ],
+  "finished_at": "2026-06-09 10:09:00",
+  "inputs": {
+    "base_specs": [
+      "E1_v5_clean",
+      "E2_v3_clean",
+      "E3_v2_clean",
+      "E5_v4_clean",
+      "E7_v3_clean"
+    ],
+    "dataset_path": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/data/processed/modeling/datos_ml_master_indice_aceptacion_digital.xlsx",
+    "direction_policy": {
+      "1": "E9_v2_clean",
+      "2": "E1_v5_clean",
+      "3": "E9_v2_clean",
+      "4": "E1_v5_clean"
+    },
+    "e9_spec": "E9_v2_clean",
+    "runs_dir": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs"
+  },
+  "metrics": {},
+  "notes": [
+    "Abortado tras fallo de E1_v5_clean. E9 y el paquete dual no se ejecutaron."
+  ],
+  "outputs": {
+    "base_E1_v5_clean": {
+      "error": "Command '['/usr/bin/python3', '-m', 'src.modeling.runners.run_e1_ridge_clean', '--run-id', 'E1_v5_clean', '--reference-run-id', 'E1_v5_clean', '--target-mode', 'nivel', '--feature-mode', 'corr', '--lags', '1,2,3,4,5,6', '--transform-mode', 'standard', '--initial-train-size', '40', '--horizons', '1,2,3,4']' returned non-zero exit status 1.",
+      "ok": false
+    }
+  },
+  "stage_name": "modeling",
+  "started_at": "2026-06-09 10:09:00",
+  "status": "failed",
+  "warnings": []
+}

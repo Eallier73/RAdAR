@@ -1,0 +1,18 @@
+[2026-06-09 10:13:39] [pipeline] Run preparado: radar_2026W18_002 | semana=2026-W18 | etapas=['modeling']
+[2026-06-09 10:13:39] [modeling] Iniciando etapa modeling
+[2026-06-09 10:13:39] [modeling] Ejecutando runner base E1_v5_clean
+[2026-06-09 10:13:39] [modeling] Ejecutando base_E1_v5_clean: /home/emilio/anaconda3/envs/radar-exp-py311/bin/python -m src.modeling.runners.run_e1_ridge_clean --run-id E1_v5_clean --reference-run-id E1_v5_clean --target-mode nivel --feature-mode corr --lags 1,2,3,4,5,6 --transform-mode standard --initial-train-size 40 --horizons 1,2,3,4
+[2026-06-09 10:16:08] [modeling] Ejecutando runner base E2_v3_clean
+[2026-06-09 10:16:08] [modeling] Ejecutando base_E2_v3_clean: /home/emilio/anaconda3/envs/radar-exp-py311/bin/python -m src.modeling.runners.run_e2_huber_clean --run-id E2_v3_clean --target-mode nivel --feature-mode corr --lags 1,2,3,4 --transform-mode standard --initial-train-size 40 --horizons 1,2,3,4 --hypothesis-note prueba_sin_memoria_larga
+[2026-06-09 10:23:28] [modeling] Ejecutando runner base E3_v2_clean
+[2026-06-09 10:23:28] [modeling] Ejecutando base_E3_v2_clean: /home/emilio/anaconda3/envs/radar-exp-py311/bin/python -m src.modeling.runners.run_e3_random_forest --run-id E3_v2_clean --target-mode nivel --feature-mode all --lags 1,2,3,4,5,6 --initial-train-size 40 --horizons 1,2,3,4
+[2026-06-09 10:24:21] [modeling] Ejecutando runner base E5_v4_clean
+[2026-06-09 10:24:21] [modeling] Ejecutando base_E5_v4_clean: /home/emilio/anaconda3/envs/radar-exp-py311/bin/python -m src.modeling.runners.run_e5_catboost --run-id E5_v4_clean --target-mode nivel --feature-mode all --lags 1,2,3,4,5,6 --initial-train-size 40 --horizons 1,2,3,4 --use-inner-tuning --tuning-metric mae --inner-splits 3 --iterations-grid 250,300 --depth-grid 4,5 --l2-leaf-reg-grid 3.0,5.0
+[2026-06-09 10:29:11] [modeling] Ejecutando runner base E7_v3_clean
+[2026-06-09 10:29:11] [modeling] Ejecutando base_E7_v3_clean: /home/emilio/anaconda3/envs/radar-exp-py311/bin/python -m src.modeling.runners.run_e7_prophet --run-id E7_v3_clean --target-mode nivel --feature-mode corr --lags 1,2,3,4,5,6 --initial-train-size 40 --horizons 1,2,3,4 --changepoint-prior-scale 0.2
+[2026-06-09 10:29:39] [modeling] Construyendo tabla curada temporal para E9
+[2026-06-09 10:29:39] [modeling] Ejecutando E9_v2_clean stacking huber
+[2026-06-09 10:29:39] [modeling] Ejecutando stacking_E9_v2_clean: /home/emilio/anaconda3/envs/radar-exp-py311/bin/python -m src.modeling.runners.run_e9_stacking --run-id E9_v2_clean --meta-model huber --initial-train-size 12 --horizons 1,2,3,4 --alpha-grid-size 40 --inner-splits 3 --alpha-selection-metric mae --use-only-complete-rows --reference-run-id E1_v5_clean --extra-reference-run-ids E5_v4_clean,E3_v2_clean,E2_v3_clean,E7_v3_clean --hypothesis-note benchmark_operativo_riesgo_controlado --table-path /home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/tmp/tabla_e9_curada_radar_2026W18_002.xlsx
+[2026-06-09 10:29:42] [modeling] Empaquetando salida dual operativa 9-1-9-1
+[2026-06-09 10:29:42] [modeling] Etapa modeling -> success
+[2026-06-09 10:29:42] [pipeline] Run finalizado con estado success

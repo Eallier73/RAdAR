@@ -1,0 +1,549 @@
+[2026-06-09 10:13:39] [modeling] Iniciando etapa modeling
+[2026-06-09 10:13:39] [modeling] Ejecutando runner base E1_v5_clean
+[2026-06-09 10:13:39] [modeling] Ejecutando base_E1_v5_clean: /home/emilio/anaconda3/envs/radar-exp-py311/bin/python -m src.modeling.runners.run_e1_ridge_clean --run-id E1_v5_clean --reference-run-id E1_v5_clean --target-mode nivel --feature-mode corr --lags 1,2,3,4,5,6 --transform-mode standard --initial-train-size 40 --horizons 1,2,3,4
+[2026-06-09 10:13:40] [INFO] [data_master] Dataset maestro cargado y validado | cols_after_dropna=18 | cols_loaded=18 | cols_removed_all_nan=0 | dataset_path=/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/data/processed/modeling/datos_ml_master_indice_aceptacion_digital.xlsx | rows_final=81 | rows_loaded=81 | sheet_name=Sheet1
+[2026-06-09 10:13:40] [INFO] [experiment_logger] Parametros del run guardados | artifact=parametros_run.json | run_id=E1_v5_clean
+[2026-06-09 10:13:40] [INFO] [feature_engineering] Model frame construido | feature_count=11 | horizon=1 | lag_count=6 | rows_after_dropna=74 | rows_before_dropna=81 | rows_removed=7 | target_mode=nivel
+[2026-06-09 10:13:41] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=366.524124 | best_score=0.107120 | rows_train=40 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:13:42] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=587.801607 | best_score=0.100485 | rows_train=41 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:13:43] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=2424.462017 | best_score=0.102721 | rows_train=42 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:13:44] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.102587 | rows_train=43 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:13:46] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=1511.775071 | best_score=0.102797 | rows_train=44 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:13:47] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.101191 | rows_train=45 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:13:48] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=942.668455 | best_score=0.102399 | rows_train=46 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:13:49] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=587.801607 | best_score=0.101431 | rows_train=47 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:13:50] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.096806 | rows_train=48 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:13:51] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.096388 | rows_train=49 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:13:52] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=587.801607 | best_score=0.096384 | rows_train=50 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:13:53] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.097807 | rows_train=51 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:13:54] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.092474 | rows_train=52 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:13:56] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.096038 | rows_train=53 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:13:57] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.097752 | rows_train=54 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:13:58] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.095974 | rows_train=55 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:13:59] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.097178 | rows_train=56 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:00] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.106799 | rows_train=57 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:01] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.102251 | rows_train=58 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:02] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.103830 | rows_train=59 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:03] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.104853 | rows_train=60 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:04] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.105010 | rows_train=61 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:06] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.104053 | rows_train=62 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:07] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.103379 | rows_train=63 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:08] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.101006 | rows_train=64 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:09] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.102537 | rows_train=65 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:10] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.101451 | rows_train=66 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:11] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.096427 | rows_train=67 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:12] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.099366 | rows_train=68 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:13] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.099074 | rows_train=69 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:15] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.094422 | rows_train=70 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:16] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.093417 | rows_train=71 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:17] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.095554 | rows_train=72 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:18] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.092760 | rows_train=73 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:18] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=features_seleccionadas_h1.csv | artifact_type=seleccion_features | cols=4 | rows=34 | run_id=E1_v5_clean
+[2026-06-09 10:14:18] [INFO] [feature_engineering] Model frame construido | feature_count=11 | horizon=2 | lag_count=6 | rows_after_dropna=73 | rows_before_dropna=81 | rows_removed=8 | target_mode=nivel
+[2026-06-09 10:14:19] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=1511.775071 | best_score=0.099239 | rows_train=40 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:20] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.100684 | rows_train=41 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:21] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.099374 | rows_train=42 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:23] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.098351 | rows_train=43 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:24] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.099336 | rows_train=44 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:25] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=2424.462017 | best_score=0.098978 | rows_train=45 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:26] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=587.801607 | best_score=0.097519 | rows_train=46 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:27] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.096883 | rows_train=47 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:28] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.094060 | rows_train=48 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:29] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=6235.507341 | best_score=0.092846 | rows_train=49 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:30] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.095295 | rows_train=50 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:32] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.093843 | rows_train=51 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:33] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.093154 | rows_train=52 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:34] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.095735 | rows_train=53 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:35] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.095959 | rows_train=54 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:36] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.096613 | rows_train=55 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:37] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.104936 | rows_train=56 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:38] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.101984 | rows_train=57 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:40] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=228.546386 | best_score=0.102811 | rows_train=58 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:41] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.103958 | rows_train=59 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:42] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.105323 | rows_train=60 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:43] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.104062 | rows_train=61 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:44] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.103256 | rows_train=62 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:45] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.093937 | rows_train=63 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:46] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.102026 | rows_train=64 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:47] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.101468 | rows_train=65 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:48] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.094971 | rows_train=66 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:50] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.093556 | rows_train=67 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:51] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.098617 | rows_train=68 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:52] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.092622 | rows_train=69 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:53] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.091927 | rows_train=70 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:54] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.093289 | rows_train=71 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:55] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.090758 | rows_train=72 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:55] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=features_seleccionadas_h2.csv | artifact_type=seleccion_features | cols=4 | rows=33 | run_id=E1_v5_clean
+[2026-06-09 10:14:55] [INFO] [feature_engineering] Model frame construido | feature_count=11 | horizon=3 | lag_count=6 | rows_after_dropna=72 | rows_before_dropna=81 | rows_removed=9 | target_mode=nivel
+[2026-06-09 10:14:56] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=942.668455 | best_score=0.100494 | rows_train=40 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:57] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.099184 | rows_train=41 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:14:59] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.097869 | rows_train=42 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:00] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.100190 | rows_train=43 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:01] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.098719 | rows_train=44 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:02] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.097345 | rows_train=45 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:03] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.096626 | rows_train=46 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:04] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.095332 | rows_train=47 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:05] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.092546 | rows_train=48 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:06] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.095163 | rows_train=49 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:08] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.093967 | rows_train=50 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:09] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=587.801607 | best_score=0.097861 | rows_train=51 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:10] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=587.801607 | best_score=0.095356 | rows_train=52 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:11] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=942.668455 | best_score=0.095960 | rows_train=53 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:12] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=942.668455 | best_score=0.096594 | rows_train=54 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:13] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.107647 | rows_train=55 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:15] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=942.668455 | best_score=0.101968 | rows_train=56 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:16] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=366.524124 | best_score=0.103256 | rows_train=57 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:17] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.104274 | rows_train=58 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:18] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.097075 | rows_train=59 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:19] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.104176 | rows_train=60 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:20] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.103507 | rows_train=61 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:21] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.093814 | rows_train=62 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:23] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.096423 | rows_train=63 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:24] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.101666 | rows_train=64 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:25] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.094835 | rows_train=65 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:26] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.093555 | rows_train=66 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:27] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.095809 | rows_train=67 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:28] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.092433 | rows_train=68 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:29] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.091781 | rows_train=69 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:31] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.093029 | rows_train=70 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:32] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.090361 | rows_train=71 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:32] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=features_seleccionadas_h3.csv | artifact_type=seleccion_features | cols=4 | rows=32 | run_id=E1_v5_clean
+[2026-06-09 10:15:32] [INFO] [feature_engineering] Model frame construido | feature_count=11 | horizon=4 | lag_count=6 | rows_after_dropna=71 | rows_before_dropna=81 | rows_removed=10 | target_mode=nivel
+[2026-06-09 10:15:33] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.098331 | rows_train=40 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:34] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.095057 | rows_train=41 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:35] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.098157 | rows_train=42 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:36] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.096989 | rows_train=43 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:37] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.094742 | rows_train=44 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:39] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.094862 | rows_train=45 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:40] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.094536 | rows_train=46 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:41] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.096784 | rows_train=47 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:42] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.093954 | rows_train=48 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:43] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.093646 | rows_train=49 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:44] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.098294 | rows_train=50 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:45] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.096728 | rows_train=51 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:47] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.097052 | rows_train=52 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:48] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.097226 | rows_train=53 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:49] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.109747 | rows_train=54 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:50] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.095440 | rows_train=55 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:51] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.104636 | rows_train=56 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:52] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.105774 | rows_train=57 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:53] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.096804 | rows_train=58 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:55] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.096280 | rows_train=59 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:56] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.104808 | rows_train=60 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:57] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.093159 | rows_train=61 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:58] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.096181 | rows_train=62 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:15:59] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.096673 | rows_train=63 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:16:00] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=6235.507341 | best_score=0.094170 | rows_train=64 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:16:02] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.093357 | rows_train=65 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:16:03] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.095034 | rows_train=66 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:16:04] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=10000.000000 | best_score=0.090603 | rows_train=67 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:16:05] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=2424.462017 | best_score=0.090947 | rows_train=68 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:16:06] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=1511.775071 | best_score=0.091249 | rows_train=69 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:16:07] [INFO] [evaluation] Tuning temporal de alpha completado | alpha_grid_size=40 | best_alpha=1511.775071 | best_score=0.087045 | rows_train=70 | split_count=3 | tuning_metric=mae
+[2026-06-09 10:16:07] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=features_seleccionadas_h4.csv | artifact_type=seleccion_features | cols=4 | rows=31 | run_id=E1_v5_clean
+[2026-06-09 10:16:07] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=predicciones_h1.csv | artifact_type=predicciones | cols=19 | rows=34 | run_id=E1_v5_clean
+[2026-06-09 10:16:07] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=predicciones_h2.csv | artifact_type=predicciones | cols=19 | rows=33 | run_id=E1_v5_clean
+[2026-06-09 10:16:07] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=predicciones_h3.csv | artifact_type=predicciones | cols=19 | rows=32 | run_id=E1_v5_clean
+[2026-06-09 10:16:07] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=predicciones_h4.csv | artifact_type=predicciones | cols=19 | rows=31 | run_id=E1_v5_clean
+[2026-06-09 10:16:07] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=resumen_modeling_horizontes.json | artifact_type=resumen | run_id=E1_v5_clean
+[2026-06-09 10:16:07] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=alpha_tuning_horizontes.json | artifact_type=tuning | run_id=E1_v5_clean
+[2026-06-09 10:16:08] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=comparacion_vs_E1_v5_clean.json | artifact_type=comparacion | run_id=E1_v5_clean
+[2026-06-09 10:16:08] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=metricas_horizonte.json | artifact_type=metricas | run_id=E1_v5_clean
+[2026-06-09 10:16:08] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=metadata_run.json | artifact_type=metadata | run_id=E1_v5_clean
+[2026-06-09 10:16:08] [WARNING] [master_audit] Fallo al regenerar auditoria maestra | error=No module named 'build_experiments_master_table' | error_type=ModuleNotFoundError | run_id=E1_v5_clean
+[2026-06-09 10:16:08] [INFO] [master_audit] Estado de auditoria maestra persistido | artifact=master_audit_refresh_status.json | run_id=E1_v5_clean | status=error
+Run registrado: E1_v5_clean
+Horizontes procesados: 1, 2, 3, 4
+L_total_Radar: 0.282719
+[2026-06-09 10:16:08] [modeling] Ejecutando runner base E2_v3_clean
+[2026-06-09 10:16:08] [modeling] Ejecutando base_E2_v3_clean: /home/emilio/anaconda3/envs/radar-exp-py311/bin/python -m src.modeling.runners.run_e2_huber_clean --run-id E2_v3_clean --target-mode nivel --feature-mode corr --lags 1,2,3,4 --transform-mode standard --initial-train-size 40 --horizons 1,2,3,4 --hypothesis-note prueba_sin_memoria_larga
+[2026-06-09 10:16:09] [INFO] [data_master] Dataset maestro cargado y validado | cols_after_dropna=18 | cols_loaded=18 | cols_removed_all_nan=0 | dataset_path=/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/data/processed/modeling/datos_ml_master_indice_aceptacion_digital.xlsx | rows_final=81 | rows_loaded=81 | sheet_name=Sheet1
+[2026-06-09 10:16:09] [INFO] [experiment_logger] Parametros del run guardados | artifact=parametros_run.json | run_id=E2_v3_clean
+[2026-06-09 10:16:09] [INFO] [feature_engineering] Model frame construido | feature_count=11 | horizon=1 | lag_count=4 | rows_after_dropna=76 | rows_before_dropna=81 | rows_removed=5 | target_mode=nivel
+[2026-06-09 10:18:03] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=features_seleccionadas_h1.csv | artifact_type=seleccion_features | cols=4 | rows=36 | run_id=E2_v3_clean
+[2026-06-09 10:18:03] [INFO] [feature_engineering] Model frame construido | feature_count=11 | horizon=2 | lag_count=4 | rows_after_dropna=75 | rows_before_dropna=81 | rows_removed=6 | target_mode=nivel
+[2026-06-09 10:19:59] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=features_seleccionadas_h2.csv | artifact_type=seleccion_features | cols=4 | rows=35 | run_id=E2_v3_clean
+[2026-06-09 10:19:59] [INFO] [feature_engineering] Model frame construido | feature_count=11 | horizon=3 | lag_count=4 | rows_after_dropna=74 | rows_before_dropna=81 | rows_removed=7 | target_mode=nivel
+[2026-06-09 10:21:48] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=features_seleccionadas_h3.csv | artifact_type=seleccion_features | cols=4 | rows=34 | run_id=E2_v3_clean
+[2026-06-09 10:21:48] [INFO] [feature_engineering] Model frame construido | feature_count=11 | horizon=4 | lag_count=4 | rows_after_dropna=73 | rows_before_dropna=81 | rows_removed=8 | target_mode=nivel
+[2026-06-09 10:23:27] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=features_seleccionadas_h4.csv | artifact_type=seleccion_features | cols=4 | rows=33 | run_id=E2_v3_clean
+[2026-06-09 10:23:27] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=predicciones_h1.csv | artifact_type=predicciones | cols=25 | rows=36 | run_id=E2_v3_clean
+[2026-06-09 10:23:27] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=predicciones_h2.csv | artifact_type=predicciones | cols=25 | rows=35 | run_id=E2_v3_clean
+[2026-06-09 10:23:27] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=predicciones_h3.csv | artifact_type=predicciones | cols=25 | rows=34 | run_id=E2_v3_clean
+[2026-06-09 10:23:27] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=predicciones_h4.csv | artifact_type=predicciones | cols=25 | rows=33 | run_id=E2_v3_clean
+[2026-06-09 10:23:27] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=resumen_modeling_horizontes.json | artifact_type=resumen | run_id=E2_v3_clean
+[2026-06-09 10:23:27] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=huber_tuning_horizontes.json | artifact_type=tuning | run_id=E2_v3_clean
+[2026-06-09 10:23:27] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=comparacion_vs_E1_v5_clean.json | artifact_type=comparacion | run_id=E2_v3_clean
+[2026-06-09 10:23:27] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=metricas_horizonte.json | artifact_type=metricas | run_id=E2_v3_clean
+[2026-06-09 10:23:27] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=metadata_run.json | artifact_type=metadata | run_id=E2_v3_clean
+[2026-06-09 10:23:28] [WARNING] [master_audit] Fallo al regenerar auditoria maestra | error=No module named 'build_experiments_master_table' | error_type=ModuleNotFoundError | run_id=E2_v3_clean
+[2026-06-09 10:23:28] [INFO] [master_audit] Estado de auditoria maestra persistido | artifact=master_audit_refresh_status.json | run_id=E2_v3_clean | status=error
+Run registrado: E2_v3_clean
+Horizontes procesados: 1, 2, 3, 4
+L_total_Radar: 0.327928
+[2026-06-09 10:23:28] [modeling] Ejecutando runner base E3_v2_clean
+[2026-06-09 10:23:28] [modeling] Ejecutando base_E3_v2_clean: /home/emilio/anaconda3/envs/radar-exp-py311/bin/python -m src.modeling.runners.run_e3_random_forest --run-id E3_v2_clean --target-mode nivel --feature-mode all --lags 1,2,3,4,5,6 --initial-train-size 40 --horizons 1,2,3,4
+[2026-06-09 10:23:29] [INFO] [data_master] Dataset maestro cargado y validado | cols_after_dropna=18 | cols_loaded=18 | cols_removed_all_nan=0 | dataset_path=/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/data/processed/modeling/datos_ml_master_indice_aceptacion_digital.xlsx | rows_final=81 | rows_loaded=81 | sheet_name=Sheet1
+[2026-06-09 10:23:29] [INFO] [experiment_logger] Parametros del run guardados | artifact=parametros_run.json | run_id=E3_v2_clean
+[2026-06-09 10:23:29] [INFO] [feature_engineering] Model frame construido | feature_count=11 | horizon=1 | lag_count=6 | rows_after_dropna=74 | rows_before_dropna=81 | rows_removed=7 | target_mode=nivel
+[2026-06-09 10:23:41] [INFO] [evaluation] Walk-forward completado | feature_mode=all | initial_train_size=40 | predictions=34 | rows_total=74 | target_mode=nivel
+[2026-06-09 10:23:41] [INFO] [feature_engineering] Model frame construido | feature_count=11 | horizon=2 | lag_count=6 | rows_after_dropna=73 | rows_before_dropna=81 | rows_removed=8 | target_mode=nivel
+[2026-06-09 10:23:55] [INFO] [evaluation] Walk-forward completado | feature_mode=all | initial_train_size=40 | predictions=33 | rows_total=73 | target_mode=nivel
+[2026-06-09 10:23:55] [INFO] [feature_engineering] Model frame construido | feature_count=11 | horizon=3 | lag_count=6 | rows_after_dropna=72 | rows_before_dropna=81 | rows_removed=9 | target_mode=nivel
+[2026-06-09 10:24:09] [INFO] [evaluation] Walk-forward completado | feature_mode=all | initial_train_size=40 | predictions=32 | rows_total=72 | target_mode=nivel
+[2026-06-09 10:24:09] [INFO] [feature_engineering] Model frame construido | feature_count=11 | horizon=4 | lag_count=6 | rows_after_dropna=71 | rows_before_dropna=81 | rows_removed=10 | target_mode=nivel
+[2026-06-09 10:24:20] [INFO] [evaluation] Walk-forward completado | feature_mode=all | initial_train_size=40 | predictions=31 | rows_total=71 | target_mode=nivel
+[2026-06-09 10:24:20] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=predicciones_h1.csv | artifact_type=predicciones | cols=15 | rows=34 | run_id=E3_v2_clean
+[2026-06-09 10:24:20] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=predicciones_h2.csv | artifact_type=predicciones | cols=15 | rows=33 | run_id=E3_v2_clean
+[2026-06-09 10:24:21] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=predicciones_h3.csv | artifact_type=predicciones | cols=15 | rows=32 | run_id=E3_v2_clean
+[2026-06-09 10:24:21] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=predicciones_h4.csv | artifact_type=predicciones | cols=15 | rows=31 | run_id=E3_v2_clean
+[2026-06-09 10:24:21] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=resumen_modeling_horizontes.json | artifact_type=resumen | run_id=E3_v2_clean
+[2026-06-09 10:24:21] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=comparacion_vs_E1_v5_clean.json | artifact_type=comparacion | run_id=E3_v2_clean
+[2026-06-09 10:24:21] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=metricas_horizonte.json | artifact_type=metricas | run_id=E3_v2_clean
+[2026-06-09 10:24:21] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=metadata_run.json | artifact_type=metadata | run_id=E3_v2_clean
+[2026-06-09 10:24:21] [WARNING] [master_audit] Fallo al regenerar auditoria maestra | error=No module named 'build_experiments_master_table' | error_type=ModuleNotFoundError | run_id=E3_v2_clean
+[2026-06-09 10:24:21] [INFO] [master_audit] Estado de auditoria maestra persistido | artifact=master_audit_refresh_status.json | run_id=E3_v2_clean | status=error
+Run registrado: E3_v2_clean
+Horizontes procesados: 1, 2, 3, 4
+L_total_Radar: 0.298182
+[2026-06-09 10:24:21] [modeling] Ejecutando runner base E5_v4_clean
+[2026-06-09 10:24:21] [modeling] Ejecutando base_E5_v4_clean: /home/emilio/anaconda3/envs/radar-exp-py311/bin/python -m src.modeling.runners.run_e5_catboost --run-id E5_v4_clean --target-mode nivel --feature-mode all --lags 1,2,3,4,5,6 --initial-train-size 40 --horizons 1,2,3,4 --use-inner-tuning --tuning-metric mae --inner-splits 3 --iterations-grid 250,300 --depth-grid 4,5 --l2-leaf-reg-grid 3.0,5.0
+[2026-06-09 10:24:22] [INFO] [data_master] Dataset maestro cargado y validado | cols_after_dropna=18 | cols_loaded=18 | cols_removed_all_nan=0 | dataset_path=/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/data/processed/modeling/datos_ml_master_indice_aceptacion_digital.xlsx | rows_final=81 | rows_loaded=81 | sheet_name=Sheet1
+[2026-06-09 10:24:22] [INFO] [experiment_logger] Parametros del run guardados | artifact=parametros_run.json | run_id=E5_v4_clean
+[2026-06-09 10:24:22] [INFO] [feature_engineering] Model frame construido | feature_count=11 | horizon=1 | lag_count=6 | rows_after_dropna=74 | rows_before_dropna=81 | rows_removed=7 | target_mode=nivel
+[2026-06-09 10:25:39] [INFO] [feature_engineering] Model frame construido | feature_count=11 | horizon=2 | lag_count=6 | rows_after_dropna=73 | rows_before_dropna=81 | rows_removed=8 | target_mode=nivel
+[2026-06-09 10:26:52] [INFO] [feature_engineering] Model frame construido | feature_count=11 | horizon=3 | lag_count=6 | rows_after_dropna=72 | rows_before_dropna=81 | rows_removed=9 | target_mode=nivel
+[2026-06-09 10:28:02] [INFO] [feature_engineering] Model frame construido | feature_count=11 | horizon=4 | lag_count=6 | rows_after_dropna=71 | rows_before_dropna=81 | rows_removed=10 | target_mode=nivel
+[2026-06-09 10:29:10] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=predicciones_h1.csv | artifact_type=predicciones | cols=24 | rows=34 | run_id=E5_v4_clean
+[2026-06-09 10:29:10] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=predicciones_h2.csv | artifact_type=predicciones | cols=24 | rows=33 | run_id=E5_v4_clean
+[2026-06-09 10:29:10] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=predicciones_h3.csv | artifact_type=predicciones | cols=24 | rows=32 | run_id=E5_v4_clean
+[2026-06-09 10:29:10] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=predicciones_h4.csv | artifact_type=predicciones | cols=24 | rows=31 | run_id=E5_v4_clean
+[2026-06-09 10:29:10] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=resumen_modeling_horizontes.json | artifact_type=resumen | run_id=E5_v4_clean
+[2026-06-09 10:29:10] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=catboost_tuning_horizontes.json | artifact_type=tuning | run_id=E5_v4_clean
+[2026-06-09 10:29:10] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=comparacion_vs_E1_v5_clean.json | artifact_type=comparacion | run_id=E5_v4_clean
+[2026-06-09 10:29:10] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=metricas_horizonte.json | artifact_type=metricas | run_id=E5_v4_clean
+[2026-06-09 10:29:10] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=metadata_run.json | artifact_type=metadata | run_id=E5_v4_clean
+[2026-06-09 10:29:11] [WARNING] [master_audit] Fallo al regenerar auditoria maestra | error=No module named 'build_experiments_master_table' | error_type=ModuleNotFoundError | run_id=E5_v4_clean
+[2026-06-09 10:29:11] [INFO] [master_audit] Estado de auditoria maestra persistido | artifact=master_audit_refresh_status.json | run_id=E5_v4_clean | status=error
+Run registrado: E5_v4_clean
+Horizontes procesados: 1, 2, 3, 4
+L_total_Radar: 0.259981
+[2026-06-09 10:29:11] [modeling] Ejecutando runner base E7_v3_clean
+[2026-06-09 10:29:11] [modeling] Ejecutando base_E7_v3_clean: /home/emilio/anaconda3/envs/radar-exp-py311/bin/python -m src.modeling.runners.run_e7_prophet --run-id E7_v3_clean --target-mode nivel --feature-mode corr --lags 1,2,3,4,5,6 --initial-train-size 40 --horizons 1,2,3,4 --changepoint-prior-scale 0.2
+10:29:12 - cmdstanpy - INFO - Chain [1] start processing
+10:29:13 - cmdstanpy - INFO - Chain [1] done processing
+10:29:13 - cmdstanpy - INFO - Chain [1] start processing
+10:29:13 - cmdstanpy - INFO - Chain [1] done processing
+10:29:13 - cmdstanpy - INFO - Chain [1] start processing
+10:29:13 - cmdstanpy - INFO - Chain [1] done processing
+10:29:13 - cmdstanpy - INFO - Chain [1] start processing
+10:29:13 - cmdstanpy - INFO - Chain [1] done processing
+10:29:13 - cmdstanpy - INFO - Chain [1] start processing
+10:29:13 - cmdstanpy - INFO - Chain [1] done processing
+10:29:13 - cmdstanpy - INFO - Chain [1] start processing
+10:29:14 - cmdstanpy - INFO - Chain [1] done processing
+10:29:14 - cmdstanpy - INFO - Chain [1] start processing
+10:29:14 - cmdstanpy - INFO - Chain [1] done processing
+10:29:14 - cmdstanpy - INFO - Chain [1] start processing
+10:29:14 - cmdstanpy - INFO - Chain [1] done processing
+10:29:14 - cmdstanpy - INFO - Chain [1] start processing
+10:29:14 - cmdstanpy - INFO - Chain [1] done processing
+10:29:14 - cmdstanpy - INFO - Chain [1] start processing
+10:29:14 - cmdstanpy - INFO - Chain [1] done processing
+10:29:14 - cmdstanpy - INFO - Chain [1] start processing
+10:29:14 - cmdstanpy - INFO - Chain [1] done processing
+10:29:14 - cmdstanpy - INFO - Chain [1] start processing
+10:29:14 - cmdstanpy - INFO - Chain [1] done processing
+10:29:15 - cmdstanpy - INFO - Chain [1] start processing
+10:29:15 - cmdstanpy - INFO - Chain [1] done processing
+10:29:15 - cmdstanpy - INFO - Chain [1] start processing
+10:29:15 - cmdstanpy - INFO - Chain [1] done processing
+10:29:15 - cmdstanpy - INFO - Chain [1] start processing
+10:29:15 - cmdstanpy - INFO - Chain [1] done processing
+10:29:15 - cmdstanpy - INFO - Chain [1] start processing
+10:29:15 - cmdstanpy - INFO - Chain [1] done processing
+10:29:15 - cmdstanpy - INFO - Chain [1] start processing
+10:29:15 - cmdstanpy - INFO - Chain [1] done processing
+10:29:15 - cmdstanpy - INFO - Chain [1] start processing
+10:29:16 - cmdstanpy - INFO - Chain [1] done processing
+10:29:16 - cmdstanpy - INFO - Chain [1] start processing
+10:29:16 - cmdstanpy - INFO - Chain [1] done processing
+10:29:16 - cmdstanpy - INFO - Chain [1] start processing
+10:29:16 - cmdstanpy - INFO - Chain [1] done processing
+10:29:16 - cmdstanpy - INFO - Chain [1] start processing
+10:29:16 - cmdstanpy - INFO - Chain [1] done processing
+10:29:16 - cmdstanpy - INFO - Chain [1] start processing
+10:29:16 - cmdstanpy - INFO - Chain [1] done processing
+10:29:17 - cmdstanpy - INFO - Chain [1] start processing
+10:29:17 - cmdstanpy - INFO - Chain [1] done processing
+10:29:17 - cmdstanpy - INFO - Chain [1] start processing
+10:29:17 - cmdstanpy - INFO - Chain [1] done processing
+10:29:17 - cmdstanpy - INFO - Chain [1] start processing
+10:29:17 - cmdstanpy - INFO - Chain [1] done processing
+10:29:17 - cmdstanpy - INFO - Chain [1] start processing
+10:29:17 - cmdstanpy - INFO - Chain [1] done processing
+10:29:17 - cmdstanpy - INFO - Chain [1] start processing
+10:29:17 - cmdstanpy - INFO - Chain [1] done processing
+10:29:17 - cmdstanpy - INFO - Chain [1] start processing
+10:29:17 - cmdstanpy - INFO - Chain [1] done processing
+10:29:18 - cmdstanpy - INFO - Chain [1] start processing
+10:29:18 - cmdstanpy - INFO - Chain [1] done processing
+10:29:18 - cmdstanpy - INFO - Chain [1] start processing
+10:29:18 - cmdstanpy - INFO - Chain [1] done processing
+10:29:18 - cmdstanpy - INFO - Chain [1] start processing
+10:29:18 - cmdstanpy - INFO - Chain [1] done processing
+10:29:18 - cmdstanpy - INFO - Chain [1] start processing
+10:29:19 - cmdstanpy - INFO - Chain [1] done processing
+10:29:19 - cmdstanpy - INFO - Chain [1] start processing
+10:29:19 - cmdstanpy - INFO - Chain [1] done processing
+10:29:19 - cmdstanpy - INFO - Chain [1] start processing
+10:29:19 - cmdstanpy - INFO - Chain [1] done processing
+10:29:19 - cmdstanpy - INFO - Chain [1] start processing
+10:29:19 - cmdstanpy - INFO - Chain [1] done processing
+10:29:19 - cmdstanpy - INFO - Chain [1] start processing
+10:29:19 - cmdstanpy - INFO - Chain [1] done processing
+10:29:19 - cmdstanpy - INFO - Chain [1] start processing
+10:29:19 - cmdstanpy - INFO - Chain [1] done processing
+10:29:20 - cmdstanpy - INFO - Chain [1] start processing
+10:29:20 - cmdstanpy - INFO - Chain [1] done processing
+10:29:20 - cmdstanpy - INFO - Chain [1] start processing
+10:29:20 - cmdstanpy - INFO - Chain [1] done processing
+10:29:20 - cmdstanpy - INFO - Chain [1] start processing
+10:29:20 - cmdstanpy - INFO - Chain [1] done processing
+10:29:20 - cmdstanpy - INFO - Chain [1] start processing
+10:29:20 - cmdstanpy - INFO - Chain [1] done processing
+10:29:20 - cmdstanpy - INFO - Chain [1] start processing
+10:29:20 - cmdstanpy - INFO - Chain [1] done processing
+10:29:20 - cmdstanpy - INFO - Chain [1] start processing
+10:29:20 - cmdstanpy - INFO - Chain [1] done processing
+10:29:20 - cmdstanpy - INFO - Chain [1] start processing
+10:29:21 - cmdstanpy - INFO - Chain [1] done processing
+10:29:21 - cmdstanpy - INFO - Chain [1] start processing
+10:29:21 - cmdstanpy - INFO - Chain [1] done processing
+10:29:21 - cmdstanpy - INFO - Chain [1] start processing
+10:29:21 - cmdstanpy - INFO - Chain [1] done processing
+10:29:21 - cmdstanpy - INFO - Chain [1] start processing
+10:29:21 - cmdstanpy - INFO - Chain [1] done processing
+10:29:21 - cmdstanpy - INFO - Chain [1] start processing
+10:29:22 - cmdstanpy - INFO - Chain [1] done processing
+10:29:22 - cmdstanpy - INFO - Chain [1] start processing
+10:29:22 - cmdstanpy - INFO - Chain [1] done processing
+10:29:22 - cmdstanpy - INFO - Chain [1] start processing
+10:29:22 - cmdstanpy - INFO - Chain [1] done processing
+10:29:22 - cmdstanpy - INFO - Chain [1] start processing
+10:29:22 - cmdstanpy - INFO - Chain [1] done processing
+10:29:22 - cmdstanpy - INFO - Chain [1] start processing
+10:29:22 - cmdstanpy - INFO - Chain [1] done processing
+10:29:23 - cmdstanpy - INFO - Chain [1] start processing
+10:29:23 - cmdstanpy - INFO - Chain [1] done processing
+10:29:23 - cmdstanpy - INFO - Chain [1] start processing
+10:29:23 - cmdstanpy - INFO - Chain [1] done processing
+10:29:23 - cmdstanpy - INFO - Chain [1] start processing
+10:29:23 - cmdstanpy - INFO - Chain [1] done processing
+10:29:23 - cmdstanpy - INFO - Chain [1] start processing
+10:29:23 - cmdstanpy - INFO - Chain [1] done processing
+10:29:23 - cmdstanpy - INFO - Chain [1] start processing
+10:29:23 - cmdstanpy - INFO - Chain [1] done processing
+10:29:23 - cmdstanpy - INFO - Chain [1] start processing
+10:29:24 - cmdstanpy - INFO - Chain [1] done processing
+10:29:24 - cmdstanpy - INFO - Chain [1] start processing
+10:29:24 - cmdstanpy - INFO - Chain [1] done processing
+10:29:24 - cmdstanpy - INFO - Chain [1] start processing
+10:29:24 - cmdstanpy - INFO - Chain [1] done processing
+10:29:24 - cmdstanpy - INFO - Chain [1] start processing
+10:29:24 - cmdstanpy - INFO - Chain [1] done processing
+10:29:24 - cmdstanpy - INFO - Chain [1] start processing
+10:29:24 - cmdstanpy - INFO - Chain [1] done processing
+10:29:24 - cmdstanpy - INFO - Chain [1] start processing
+10:29:25 - cmdstanpy - INFO - Chain [1] done processing
+10:29:25 - cmdstanpy - INFO - Chain [1] start processing
+10:29:25 - cmdstanpy - INFO - Chain [1] done processing
+10:29:25 - cmdstanpy - INFO - Chain [1] start processing
+10:29:25 - cmdstanpy - INFO - Chain [1] done processing
+10:29:25 - cmdstanpy - INFO - Chain [1] start processing
+10:29:25 - cmdstanpy - INFO - Chain [1] done processing
+10:29:25 - cmdstanpy - INFO - Chain [1] start processing
+10:29:25 - cmdstanpy - INFO - Chain [1] done processing
+10:29:26 - cmdstanpy - INFO - Chain [1] start processing
+10:29:26 - cmdstanpy - INFO - Chain [1] done processing
+10:29:26 - cmdstanpy - INFO - Chain [1] start processing
+10:29:26 - cmdstanpy - INFO - Chain [1] done processing
+10:29:26 - cmdstanpy - INFO - Chain [1] start processing
+10:29:26 - cmdstanpy - INFO - Chain [1] done processing
+10:29:26 - cmdstanpy - INFO - Chain [1] start processing
+10:29:26 - cmdstanpy - INFO - Chain [1] done processing
+10:29:26 - cmdstanpy - INFO - Chain [1] start processing
+10:29:26 - cmdstanpy - INFO - Chain [1] done processing
+10:29:26 - cmdstanpy - INFO - Chain [1] start processing
+10:29:27 - cmdstanpy - INFO - Chain [1] done processing
+10:29:27 - cmdstanpy - INFO - Chain [1] start processing
+10:29:27 - cmdstanpy - INFO - Chain [1] done processing
+10:29:27 - cmdstanpy - INFO - Chain [1] start processing
+10:29:27 - cmdstanpy - INFO - Chain [1] done processing
+10:29:27 - cmdstanpy - INFO - Chain [1] start processing
+10:29:27 - cmdstanpy - INFO - Chain [1] done processing
+10:29:27 - cmdstanpy - INFO - Chain [1] start processing
+10:29:27 - cmdstanpy - INFO - Chain [1] done processing
+10:29:27 - cmdstanpy - INFO - Chain [1] start processing
+10:29:28 - cmdstanpy - INFO - Chain [1] done processing
+10:29:28 - cmdstanpy - INFO - Chain [1] start processing
+10:29:28 - cmdstanpy - INFO - Chain [1] done processing
+10:29:28 - cmdstanpy - INFO - Chain [1] start processing
+10:29:28 - cmdstanpy - INFO - Chain [1] done processing
+10:29:28 - cmdstanpy - INFO - Chain [1] start processing
+10:29:28 - cmdstanpy - INFO - Chain [1] done processing
+10:29:28 - cmdstanpy - INFO - Chain [1] start processing
+10:29:29 - cmdstanpy - INFO - Chain [1] done processing
+10:29:29 - cmdstanpy - INFO - Chain [1] start processing
+10:29:29 - cmdstanpy - INFO - Chain [1] done processing
+10:29:29 - cmdstanpy - INFO - Chain [1] start processing
+10:29:29 - cmdstanpy - INFO - Chain [1] done processing
+10:29:29 - cmdstanpy - INFO - Chain [1] start processing
+10:29:29 - cmdstanpy - INFO - Chain [1] done processing
+10:29:29 - cmdstanpy - INFO - Chain [1] start processing
+10:29:30 - cmdstanpy - INFO - Chain [1] done processing
+10:29:30 - cmdstanpy - INFO - Chain [1] start processing
+10:29:30 - cmdstanpy - INFO - Chain [1] done processing
+10:29:30 - cmdstanpy - INFO - Chain [1] start processing
+10:29:30 - cmdstanpy - INFO - Chain [1] done processing
+10:29:30 - cmdstanpy - INFO - Chain [1] start processing
+10:29:30 - cmdstanpy - INFO - Chain [1] done processing
+10:29:30 - cmdstanpy - INFO - Chain [1] start processing
+10:29:30 - cmdstanpy - INFO - Chain [1] done processing
+10:29:30 - cmdstanpy - INFO - Chain [1] start processing
+10:29:31 - cmdstanpy - INFO - Chain [1] done processing
+10:29:31 - cmdstanpy - INFO - Chain [1] start processing
+10:29:31 - cmdstanpy - INFO - Chain [1] done processing
+10:29:31 - cmdstanpy - INFO - Chain [1] start processing
+10:29:31 - cmdstanpy - INFO - Chain [1] done processing
+10:29:31 - cmdstanpy - INFO - Chain [1] start processing
+10:29:31 - cmdstanpy - INFO - Chain [1] done processing
+10:29:32 - cmdstanpy - INFO - Chain [1] start processing
+10:29:32 - cmdstanpy - INFO - Chain [1] done processing
+10:29:32 - cmdstanpy - INFO - Chain [1] start processing
+10:29:32 - cmdstanpy - INFO - Chain [1] done processing
+10:29:32 - cmdstanpy - INFO - Chain [1] start processing
+10:29:32 - cmdstanpy - INFO - Chain [1] done processing
+10:29:32 - cmdstanpy - INFO - Chain [1] start processing
+10:29:32 - cmdstanpy - INFO - Chain [1] done processing
+10:29:32 - cmdstanpy - INFO - Chain [1] start processing
+10:29:33 - cmdstanpy - INFO - Chain [1] done processing
+10:29:33 - cmdstanpy - INFO - Chain [1] start processing
+10:29:33 - cmdstanpy - INFO - Chain [1] done processing
+10:29:33 - cmdstanpy - INFO - Chain [1] start processing
+10:29:33 - cmdstanpy - INFO - Chain [1] done processing
+10:29:33 - cmdstanpy - INFO - Chain [1] start processing
+10:29:33 - cmdstanpy - INFO - Chain [1] done processing
+10:29:33 - cmdstanpy - INFO - Chain [1] start processing
+10:29:33 - cmdstanpy - INFO - Chain [1] done processing
+10:29:33 - cmdstanpy - INFO - Chain [1] start processing
+10:29:33 - cmdstanpy - INFO - Chain [1] done processing
+10:29:33 - cmdstanpy - INFO - Chain [1] start processing
+10:29:33 - cmdstanpy - INFO - Chain [1] done processing
+10:29:34 - cmdstanpy - INFO - Chain [1] start processing
+10:29:34 - cmdstanpy - INFO - Chain [1] done processing
+10:29:34 - cmdstanpy - INFO - Chain [1] start processing
+10:29:34 - cmdstanpy - INFO - Chain [1] done processing
+10:29:34 - cmdstanpy - INFO - Chain [1] start processing
+10:29:34 - cmdstanpy - INFO - Chain [1] done processing
+10:29:34 - cmdstanpy - INFO - Chain [1] start processing
+10:29:34 - cmdstanpy - INFO - Chain [1] done processing
+10:29:34 - cmdstanpy - INFO - Chain [1] start processing
+10:29:34 - cmdstanpy - INFO - Chain [1] done processing
+10:29:34 - cmdstanpy - INFO - Chain [1] start processing
+10:29:34 - cmdstanpy - INFO - Chain [1] done processing
+10:29:34 - cmdstanpy - INFO - Chain [1] start processing
+10:29:34 - cmdstanpy - INFO - Chain [1] done processing
+10:29:35 - cmdstanpy - INFO - Chain [1] start processing
+10:29:35 - cmdstanpy - INFO - Chain [1] done processing
+10:29:35 - cmdstanpy - INFO - Chain [1] start processing
+10:29:35 - cmdstanpy - INFO - Chain [1] done processing
+10:29:35 - cmdstanpy - INFO - Chain [1] start processing
+10:29:35 - cmdstanpy - INFO - Chain [1] done processing
+10:29:35 - cmdstanpy - INFO - Chain [1] start processing
+10:29:35 - cmdstanpy - INFO - Chain [1] done processing
+10:29:35 - cmdstanpy - INFO - Chain [1] start processing
+10:29:35 - cmdstanpy - INFO - Chain [1] done processing
+10:29:35 - cmdstanpy - INFO - Chain [1] start processing
+10:29:36 - cmdstanpy - INFO - Chain [1] done processing
+10:29:36 - cmdstanpy - INFO - Chain [1] start processing
+10:29:36 - cmdstanpy - INFO - Chain [1] done processing
+10:29:36 - cmdstanpy - INFO - Chain [1] start processing
+10:29:36 - cmdstanpy - INFO - Chain [1] done processing
+10:29:36 - cmdstanpy - INFO - Chain [1] start processing
+10:29:36 - cmdstanpy - INFO - Chain [1] done processing
+10:29:36 - cmdstanpy - INFO - Chain [1] start processing
+10:29:36 - cmdstanpy - INFO - Chain [1] done processing
+10:29:36 - cmdstanpy - INFO - Chain [1] start processing
+10:29:36 - cmdstanpy - INFO - Chain [1] done processing
+10:29:36 - cmdstanpy - INFO - Chain [1] start processing
+10:29:37 - cmdstanpy - INFO - Chain [1] done processing
+10:29:37 - cmdstanpy - INFO - Chain [1] start processing
+10:29:37 - cmdstanpy - INFO - Chain [1] done processing
+10:29:37 - cmdstanpy - INFO - Chain [1] start processing
+10:29:37 - cmdstanpy - INFO - Chain [1] done processing
+10:29:37 - cmdstanpy - INFO - Chain [1] start processing
+10:29:37 - cmdstanpy - INFO - Chain [1] done processing
+10:29:37 - cmdstanpy - INFO - Chain [1] start processing
+10:29:37 - cmdstanpy - INFO - Chain [1] done processing
+10:29:37 - cmdstanpy - INFO - Chain [1] start processing
+10:29:38 - cmdstanpy - INFO - Chain [1] done processing
+10:29:38 - cmdstanpy - INFO - Chain [1] start processing
+10:29:38 - cmdstanpy - INFO - Chain [1] done processing
+[2026-06-09 10:29:12] [INFO] [data_master] Dataset maestro cargado y validado | cols_after_dropna=18 | cols_loaded=18 | cols_removed_all_nan=0 | dataset_path=/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/data/processed/modeling/datos_ml_master_indice_aceptacion_digital.xlsx | rows_final=81 | rows_loaded=81 | sheet_name=Sheet1
+[2026-06-09 10:29:12] [INFO] [experiment_logger] Parametros del run guardados | artifact=parametros_run.json | run_id=E7_v3_clean
+[2026-06-09 10:29:12] [INFO] [feature_engineering] Model frame construido | feature_count=11 | horizon=1 | lag_count=6 | rows_after_dropna=74 | rows_before_dropna=81 | rows_removed=7 | target_mode=nivel
+[2026-06-09 10:29:19] [INFO] [evaluation] Walk-forward completado | feature_mode=corr | initial_train_size=40 | predictions=34 | rows_total=74 | target_mode=nivel
+[2026-06-09 10:29:19] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=features_seleccionadas_h1.csv | artifact_type=seleccion_features | cols=4 | rows=34 | run_id=E7_v3_clean
+[2026-06-09 10:29:19] [INFO] [feature_engineering] Model frame construido | feature_count=11 | horizon=2 | lag_count=6 | rows_after_dropna=73 | rows_before_dropna=81 | rows_removed=8 | target_mode=nivel
+[2026-06-09 10:29:25] [INFO] [evaluation] Walk-forward completado | feature_mode=corr | initial_train_size=40 | predictions=33 | rows_total=73 | target_mode=nivel
+[2026-06-09 10:29:25] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=features_seleccionadas_h2.csv | artifact_type=seleccion_features | cols=4 | rows=33 | run_id=E7_v3_clean
+[2026-06-09 10:29:25] [INFO] [feature_engineering] Model frame construido | feature_count=11 | horizon=3 | lag_count=6 | rows_after_dropna=72 | rows_before_dropna=81 | rows_removed=9 | target_mode=nivel
+[2026-06-09 10:29:33] [INFO] [evaluation] Walk-forward completado | feature_mode=corr | initial_train_size=40 | predictions=32 | rows_total=72 | target_mode=nivel
+[2026-06-09 10:29:33] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=features_seleccionadas_h3.csv | artifact_type=seleccion_features | cols=4 | rows=32 | run_id=E7_v3_clean
+[2026-06-09 10:29:33] [INFO] [feature_engineering] Model frame construido | feature_count=11 | horizon=4 | lag_count=6 | rows_after_dropna=71 | rows_before_dropna=81 | rows_removed=10 | target_mode=nivel
+[2026-06-09 10:29:38] [INFO] [evaluation] Walk-forward completado | feature_mode=corr | initial_train_size=40 | predictions=31 | rows_total=71 | target_mode=nivel
+[2026-06-09 10:29:38] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=features_seleccionadas_h4.csv | artifact_type=seleccion_features | cols=4 | rows=31 | run_id=E7_v3_clean
+[2026-06-09 10:29:38] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=predicciones_h1.csv | artifact_type=predicciones | cols=15 | rows=34 | run_id=E7_v3_clean
+[2026-06-09 10:29:38] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=predicciones_h2.csv | artifact_type=predicciones | cols=15 | rows=33 | run_id=E7_v3_clean
+[2026-06-09 10:29:38] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=predicciones_h3.csv | artifact_type=predicciones | cols=15 | rows=32 | run_id=E7_v3_clean
+[2026-06-09 10:29:38] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=predicciones_h4.csv | artifact_type=predicciones | cols=15 | rows=31 | run_id=E7_v3_clean
+[2026-06-09 10:29:38] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=resumen_modeling_horizontes.json | artifact_type=resumen | run_id=E7_v3_clean
+[2026-06-09 10:29:38] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=comparacion_vs_E1_v5_clean.json | artifact_type=comparacion | run_id=E7_v3_clean
+[2026-06-09 10:29:38] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=metricas_horizonte.json | artifact_type=metricas | run_id=E7_v3_clean
+[2026-06-09 10:29:38] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=metadata_run.json | artifact_type=metadata | run_id=E7_v3_clean
+[2026-06-09 10:29:39] [WARNING] [master_audit] Fallo al regenerar auditoria maestra | error=No module named 'build_experiments_master_table' | error_type=ModuleNotFoundError | run_id=E7_v3_clean
+[2026-06-09 10:29:39] [INFO] [master_audit] Estado de auditoria maestra persistido | artifact=master_audit_refresh_status.json | run_id=E7_v3_clean | status=error
+Run registrado: E7_v3_clean
+Horizontes procesados: 1, 2, 3, 4
+L_total_Radar: 0.353703
+[2026-06-09 10:29:39] [modeling] Construyendo tabla curada temporal para E9
+[2026-06-09 10:29:39] [modeling] Ejecutando E9_v2_clean stacking huber
+[2026-06-09 10:29:39] [modeling] Ejecutando stacking_E9_v2_clean: /home/emilio/anaconda3/envs/radar-exp-py311/bin/python -m src.modeling.runners.run_e9_stacking --run-id E9_v2_clean --meta-model huber --initial-train-size 12 --horizons 1,2,3,4 --alpha-grid-size 40 --inner-splits 3 --alpha-selection-metric mae --use-only-complete-rows --reference-run-id E1_v5_clean --extra-reference-run-ids E5_v4_clean,E3_v2_clean,E2_v3_clean,E7_v3_clean --hypothesis-note benchmark_operativo_riesgo_controlado --table-path /home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/tmp/tabla_e9_curada_radar_2026W18_002.xlsx
+[2026-06-09 10:29:40] [INFO] [data_master] Dataset maestro cargado y validado | cols_after_dropna=18 | cols_loaded=18 | cols_removed_all_nan=0 | dataset_path=/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/data/processed/modeling/datos_ml_master_indice_aceptacion_digital.xlsx | rows_final=81 | rows_loaded=81 | sheet_name=Sheet1
+[2026-06-09 10:29:40] [INFO] [experiment_logger] Parametros del run guardados | artifact=parametros_run.json | run_id=E9_v2_clean
+[2026-06-09 10:29:40] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=predicciones_h1.csv | artifact_type=predicciones | cols=14 | rows=22 | run_id=E9_v2_clean
+[2026-06-09 10:29:40] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=stacking_features_h1.csv | artifact_type=stacking_features | cols=4 | rows=4 | run_id=E9_v2_clean
+[2026-06-09 10:29:40] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=predicciones_h2.csv | artifact_type=predicciones | cols=14 | rows=21 | run_id=E9_v2_clean
+[2026-06-09 10:29:40] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=stacking_features_h2.csv | artifact_type=stacking_features | cols=4 | rows=4 | run_id=E9_v2_clean
+[2026-06-09 10:29:40] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=predicciones_h3.csv | artifact_type=predicciones | cols=14 | rows=20 | run_id=E9_v2_clean
+[2026-06-09 10:29:40] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=stacking_features_h3.csv | artifact_type=stacking_features | cols=4 | rows=4 | run_id=E9_v2_clean
+[2026-06-09 10:29:41] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=predicciones_h4.csv | artifact_type=predicciones | cols=14 | rows=19 | run_id=E9_v2_clean
+[2026-06-09 10:29:41] [INFO] [experiment_logger] Artefacto tabular guardado | artifact=stacking_features_h4.csv | artifact_type=stacking_features | cols=4 | rows=4 | run_id=E9_v2_clean
+[2026-06-09 10:29:41] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=resumen_modeling_horizontes.json | artifact_type=resumen | run_id=E9_v2_clean
+[2026-06-09 10:29:41] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=alpha_tuning_horizontes.json | artifact_type=tuning | run_id=E9_v2_clean
+[2026-06-09 10:29:41] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=comparacion_bases_horizontes.json | artifact_type=comparacion | run_id=E9_v2_clean
+[2026-06-09 10:29:41] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=comparacion_vs_E1_v5_clean.json | artifact_type=comparacion | run_id=E9_v2_clean
+[2026-06-09 10:29:41] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=comparacion_vs_E5_v4_clean.json | artifact_type=comparacion | run_id=E9_v2_clean
+[2026-06-09 10:29:41] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=comparacion_vs_E3_v2_clean.json | artifact_type=comparacion | run_id=E9_v2_clean
+[2026-06-09 10:29:41] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=comparacion_vs_E2_v3_clean.json | artifact_type=comparacion | run_id=E9_v2_clean
+[2026-06-09 10:29:42] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=comparacion_vs_E7_v3_clean.json | artifact_type=comparacion | run_id=E9_v2_clean
+[2026-06-09 10:29:42] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=metricas_horizonte.json | artifact_type=metricas | run_id=E9_v2_clean
+[2026-06-09 10:29:42] [INFO] [experiment_logger] Artefacto JSON guardado | artifact=metadata_run.json | artifact_type=metadata | run_id=E9_v2_clean
+[2026-06-09 10:29:42] [WARNING] [master_audit] Fallo al regenerar auditoria maestra | error=No module named 'build_experiments_master_table' | error_type=ModuleNotFoundError | run_id=E9_v2_clean
+[2026-06-09 10:29:42] [INFO] [master_audit] Estado de auditoria maestra persistido | artifact=master_audit_refresh_status.json | run_id=E9_v2_clean | status=error
+Run registrado: E9_v2_clean
+Horizontes procesados: 1, 2, 3, 4
+L_total_Radar: 0.260599
+[2026-06-09 10:29:42] [modeling] Empaquetando salida dual operativa 9-1-9-1
+[2026-06-09 10:29:42] [modeling] Etapa modeling -> success

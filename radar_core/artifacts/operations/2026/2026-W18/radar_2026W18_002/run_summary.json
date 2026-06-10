@@ -1,0 +1,154 @@
+{
+  "corrida_reanudable": false,
+  "dry_run": false,
+  "duracion_total_sec": 963.0,
+  "errors": [],
+  "estado_por_etapa": {
+    "extraction": {
+      "artifacts": [],
+      "duration_sec": null,
+      "errors": [],
+      "outputs": {
+        "reason": "Fuera de la selección de etapas solicitada por CLI."
+      },
+      "status": "skipped",
+      "warnings": []
+    },
+    "modeling": {
+      "artifacts": [
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E1_v5_clean_20260609_101340/predicciones_h1.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E1_v5_clean_20260609_101340/predicciones_h2.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E1_v5_clean_20260609_101340/predicciones_h3.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E1_v5_clean_20260609_101340/predicciones_h4.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E2_v3_clean_20260609_101609/predicciones_h1.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E2_v3_clean_20260609_101609/predicciones_h2.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E2_v3_clean_20260609_101609/predicciones_h3.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E2_v3_clean_20260609_101609/predicciones_h4.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E3_v2_clean_20260609_102329/predicciones_h1.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E3_v2_clean_20260609_102329/predicciones_h2.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E3_v2_clean_20260609_102329/predicciones_h3.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E3_v2_clean_20260609_102329/predicciones_h4.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E5_v4_clean_20260609_102422/predicciones_h1.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E5_v4_clean_20260609_102422/predicciones_h2.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E5_v4_clean_20260609_102422/predicciones_h3.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E5_v4_clean_20260609_102422/predicciones_h4.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E7_v3_clean_20260609_102912/predicciones_h1.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E7_v3_clean_20260609_102912/predicciones_h2.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E7_v3_clean_20260609_102912/predicciones_h3.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E7_v3_clean_20260609_102912/predicciones_h4.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/tmp/tabla_e9_curada_radar_2026W18_002.xlsx",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E9_v2_clean_20260609_102940/predicciones_h1.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E9_v2_clean_20260609_102940/predicciones_h2.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E9_v2_clean_20260609_102940/predicciones_h3.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E9_v2_clean_20260609_102940/predicciones_h4.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/operations/2026/2026-W18/radar_2026W18_002/published/powerbi/prediccion_numerica_oficial.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/operations/2026/2026-W18/radar_2026W18_002/published/powerbi/lectura_direccional_oficial.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/operations/2026/2026-W18/radar_2026W18_002/published/powerbi/alertas_caida_oficiales.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/operations/2026/2026-W18/radar_2026W18_002/published/powerbi/salida_dual_operativa_consolidada.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/operations/2026/2026-W18/radar_2026W18_002/published/powerbi/politica_funcional_dual.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/operations/2026/2026-W18/radar_2026W18_002/published/powerbi/tabla_funcional_canonica.csv",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/operations/2026/2026-W18/radar_2026W18_002/published/powerbi/manifiesto_operativo_dual.json",
+        "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/operations/2026/2026-W18/radar_2026W18_002/published/powerbi/resumen_operativo_dual.md"
+      ],
+      "duration_sec": 963.0,
+      "errors": [],
+      "outputs": {
+        "base_E1_v5_clean": {
+          "ok": true,
+          "returncode": 0,
+          "run_dir": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E1_v5_clean_20260609_101340"
+        },
+        "base_E2_v3_clean": {
+          "ok": true,
+          "returncode": 0,
+          "run_dir": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E2_v3_clean_20260609_101609"
+        },
+        "base_E3_v2_clean": {
+          "ok": true,
+          "returncode": 0,
+          "run_dir": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E3_v2_clean_20260609_102329"
+        },
+        "base_E5_v4_clean": {
+          "ok": true,
+          "returncode": 0,
+          "run_dir": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E5_v4_clean_20260609_102422"
+        },
+        "base_E7_v3_clean": {
+          "ok": true,
+          "returncode": 0,
+          "run_dir": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E7_v3_clean_20260609_102912"
+        },
+        "dual_package": {
+          "filas_caidas": 82,
+          "filas_consolidado": 130,
+          "filas_direction": 106,
+          "filas_numerico": 130,
+          "ok": true,
+          "output_dir": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/operations/2026/2026-W18/radar_2026W18_002/published/powerbi"
+        },
+        "e9_curated_table": {
+          "ok": true,
+          "path": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/artifacts/tmp/tabla_e9_curada_radar_2026W18_002.xlsx"
+        },
+        "stacking_e9": {
+          "ok": true,
+          "returncode": 0,
+          "run_dir": "/home/emilio/Documentos/RAdAR_worktrees/arquitectura_modelado/radar_core/experiments/runs/E9_v2_clean_20260609_102940"
+        }
+      },
+      "status": "success",
+      "warnings": []
+    },
+    "nlp": {
+      "artifacts": [],
+      "duration_sec": null,
+      "errors": [],
+      "outputs": {
+        "reason": "Fuera de la selección de etapas solicitada por CLI."
+      },
+      "status": "skipped",
+      "warnings": []
+    },
+    "preflight": {
+      "artifacts": [],
+      "duration_sec": null,
+      "errors": [],
+      "outputs": {
+        "reason": "Fuera de la selección de etapas solicitada por CLI."
+      },
+      "status": "skipped",
+      "warnings": []
+    },
+    "preprocessing": {
+      "artifacts": [],
+      "duration_sec": null,
+      "errors": [],
+      "outputs": {
+        "reason": "Fuera de la selección de etapas solicitada por CLI."
+      },
+      "status": "skipped",
+      "warnings": []
+    }
+  },
+  "finished_at": "2026-06-09 10:29:42",
+  "notes": [],
+  "outputs_clave": {},
+  "reanudar_desde": null,
+  "run_id": "radar_2026W18_002",
+  "selection_window": {
+    "selected_end": "2026-05-03",
+    "selected_start": "2026-04-27",
+    "week_end": "2026-05-03",
+    "week_requested": "2026-W18",
+    "week_slug": "2026-W18",
+    "week_start": "2026-04-27"
+  },
+  "siguiente_accion_recomendada": "Consumir las salidas generadas o automatizar esta CLI desde un scheduler externo.",
+  "stages_requested_this_invocation": [
+    "modeling"
+  ],
+  "started_at": "2026-06-09 10:13:39",
+  "status_global": "success",
+  "warnings": [],
+  "week": "2026-W18"
+}
