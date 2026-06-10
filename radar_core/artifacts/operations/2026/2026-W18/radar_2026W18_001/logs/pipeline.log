@@ -1,6 +1,0 @@
-[2026-06-09 10:08:59] [pipeline] Run preparado: radar_2026W18_001 | semana=2026-W18 | etapas=['modeling']
-[2026-06-09 10:08:59] [modeling] Iniciando etapa modeling
-[2026-06-09 10:09:00] [modeling] Ejecutando runner base E1_v5_clean
-[2026-06-09 10:09:00] [modeling] Ejecutando base_E1_v5_clean: /usr/bin/python3 -m src.modeling.runners.run_e1_ridge_clean --run-id E1_v5_clean --reference-run-id E1_v5_clean --target-mode nivel --feature-mode corr --lags 1,2,3,4,5,6 --transform-mode standard --initial-train-size 40 --horizons 1,2,3,4
-[2026-06-09 10:09:00] [modeling] Etapa modeling -> failed
-[2026-06-09 10:09:00] [pipeline] Run finalizado con estado failed
