@@ -2,8 +2,9 @@
 Selector numérico adaptativo por horizonte.
 
 Consolida predicciones de E1 y E9 en una sola predicción ponderada por
-desempeño reciente (MAE rolling). Deriva dirección, caída y nivel de
-confianza directamente del valor numérico consolidado.
+desempeño reciente (MAE rolling), con corrección de sesgo por modelo.
+Deriva dirección, riesgo de caída y confianza directamente del valor
+numérico consolidado.
 
 No modifica runners, función de pérdida ni empaquetado dual existente.
 Consume predicciones ya generadas y produce una tabla de decisión
@@ -41,8 +42,12 @@ def load_model_predictions(
     return df
 
 
-def _rolling_mae(errors: pd.Series, window: int) -> pd.Series:
-    return errors.abs().rolling(window=window, min_periods=1).mean()
+def _rolling_mae(errors: pd.Series, window: int, min_periods: int) -> pd.Series:
+    return errors.abs().rolling(window=window, min_periods=min_periods).mean()
+
+
+def _rolling_bias(errors: pd.Series, window: int, min_periods: int) -> pd.Series:
+    return errors.rolling(window=window, min_periods=min_periods).mean()
 
 
 def build_consolidated_table(
@@ -66,17 +71,32 @@ def build_consolidated_table(
     base = base.merge(e9_merged, on="fecha", how="left")
     base = base.sort_values("fecha").reset_index(drop=True)
 
-    # shift(horizon) para usar solo errores cuyo valor real ya maduró
-    base["E1_mae_rolling"] = _rolling_mae(base["E1_error"], cfg.rolling_window).shift(horizon)
+    # --- MAE rolling por modelo, shift(horizon) para evitar leakage ---
+    base["E1_mae_rolling"] = _rolling_mae(
+        base["E1_error"], cfg.rolling_window, cfg.min_observations_for_weight
+    ).shift(horizon)
 
-    e9_mask = base["E9_error"].notna()
-    base["E9_mae_rolling"] = np.nan
-    if e9_mask.any():
-        e9_rolling = _rolling_mae(
-            base.loc[e9_mask, "E9_error"], cfg.rolling_window
-        ).shift(horizon)
-        base.loc[e9_mask, "E9_mae_rolling"] = e9_rolling.values
+    base["E9_mae_rolling"] = (
+        base["E9_error"]
+        .abs()
+        .rolling(window=cfg.rolling_window, min_periods=cfg.min_observations_for_weight)
+        .mean()
+        .shift(horizon)
+    )
 
+    # --- Sesgo rolling por modelo, shift(horizon) ---
+    base["E1_bias_rolling"] = _rolling_bias(
+        base["E1_error"], cfg.rolling_window, cfg.min_observations_for_weight
+    ).shift(horizon)
+
+    base["E9_bias_rolling"] = (
+        base["E9_error"]
+        .rolling(window=cfg.rolling_window, min_periods=cfg.min_observations_for_weight)
+        .mean()
+        .shift(horizon)
+    )
+
+    # --- Pesos por inverso de MAE ---
     base["E1_inv_mae"] = 1.0 / base["E1_mae_rolling"].clip(lower=1e-8)
     base["E9_inv_mae"] = np.where(
         base["E9_mae_rolling"].notna(),
@@ -88,7 +108,7 @@ def build_consolidated_table(
     base["peso_E1"] = base["E1_inv_mae"] / total_inv
     base["peso_E9"] = base["E9_inv_mae"] / total_inv
 
-    # Sin historial suficiente (NaN por shift), defaultear a solo E1
+    # Sin historial suficiente (NaN por shift o min_periods), defaultear a solo E1
     no_hist = base["E1_mae_rolling"].isna()
     base.loc[no_hist, "peso_E1"] = 1.0
     base.loc[no_hist, "peso_E9"] = 0.0
@@ -98,9 +118,13 @@ def build_consolidated_table(
     base.loc[no_e9, "peso_E1"] = 1.0
     base.loc[no_e9, "peso_E9"] = 0.0
 
+    # --- Predicciones ajustadas por sesgo por modelo ---
+    base["E1_pred_adj"] = base["E1_pred"] - base["E1_bias_rolling"].fillna(0.0)
+    base["E9_pred_adj"] = base["E9_pred"] - base["E9_bias_rolling"].fillna(0.0)
+
     base["y_pred_consolidado"] = (
-        base["peso_E1"] * base["E1_pred"]
-        + base["peso_E9"] * base["E9_pred"].fillna(0.0)
+        base["peso_E1"] * base["E1_pred_adj"]
+        + base["peso_E9"] * base["E9_pred_adj"].fillna(0.0)
     )
 
     base["error_consolidado"] = base["y_pred_consolidado"] - base["y_true"]
@@ -109,25 +133,17 @@ def build_consolidated_table(
         + base["peso_E9"] * base["E9_mae_rolling"].fillna(0.0)
     )
 
+    # --- Dirección y riesgo ---
     base["delta_predicho"] = base["y_pred_consolidado"] - base["y_current"]
     base["delta_real"] = base["y_true"] - base["y_current"]
 
-    base["sesgo_rolling"] = (
-        base["error_consolidado"]
-        .rolling(window=cfg.rolling_window, min_periods=1)
-        .mean()
-        .shift(horizon)
-        .fillna(0.0)
-    )
-    base["delta_corregido"] = base["delta_predicho"] - base["sesgo_rolling"]
-
-    base["ratio_delta_mae"] = base["delta_corregido"].abs() / base["mae_esperado"].clip(lower=1e-8)
+    base["ratio_delta_mae"] = base["delta_predicho"].abs() / base["mae_esperado"].clip(lower=1e-8)
 
     base["direccion_predicha"] = np.where(
-        base["delta_corregido"] < 0,
+        base["delta_predicho"] < 0,
         "baja",
         np.where(
-            base["delta_corregido"] < cfg.confidence_k * base["mae_esperado"],
+            base["delta_predicho"] < cfg.confidence_k * base["mae_esperado"],
             "incierto",
             "sube",
         ),
@@ -137,12 +153,25 @@ def build_consolidated_table(
         base["delta_real"] > 0, "sube", "baja"
     )
 
+    # --- Riesgo de caída (separado de dirección) ---
+    base["riesgo_caida"] = np.where(
+        base["delta_predicho"] < 0,
+        "alto",
+        np.where(
+            base["delta_predicho"] < cfg.confidence_k * base["mae_esperado"],
+            "medio",
+            "bajo",
+        ),
+    )
+
+    base["alerta_caida"] = base["riesgo_caida"].isin(["alto", "medio"])
     base["caida_predicha"] = base["direccion_predicha"] == "baja"
     base["caida_real"] = base["delta_real"] <= 0
 
+    # --- Confianza (sin ambigüedad con "baja" dirección) ---
     base["confianza"] = np.where(
         base["direccion_predicha"] == "incierto",
-        "baja",
+        "sin_senal_firme",
         np.where(base["ratio_delta_mae"] > 2.0, "alta", "media"),
     )
 
@@ -184,9 +213,15 @@ def compute_period_metrics(
     caidas_reales = table["caida_real"].sum()
     if caidas_reales > 0:
         caidas_predichas_en_reales = table.loc[table["caida_real"], "caida_predicha"].sum()
-        deteccion = caidas_predichas_en_reales / caidas_reales
+        deteccion_baja_explicita = caidas_predichas_en_reales / caidas_reales
     else:
-        deteccion = 1.0
+        deteccion_baja_explicita = 1.0
+
+    if caidas_reales > 0:
+        alertas_en_caidas_reales = table.loc[table["caida_real"], "alerta_caida"].sum()
+        deteccion_riesgo_caida = alertas_en_caidas_reales / caidas_reales
+    else:
+        deteccion_riesgo_caida = 1.0
 
     return {
         "label": label,
@@ -197,7 +232,8 @@ def compute_period_metrics(
         "direccion_accuracy": float(dir_acc),
         "n_inciertos": int(n_inciertos),
         "caidas_reales": int(caidas_reales),
-        "deteccion_caidas": float(deteccion),
+        "deteccion_baja_explicita": float(deteccion_baja_explicita),
+        "deteccion_riesgo_caida": float(deteccion_riesgo_caida),
     }
 
 
@@ -233,10 +269,12 @@ def run_selector_analysis(
             "oos": oos_metrics,
             "table_oos": oos[[
                 "fecha", "y_current", "y_true",
-                "E1_pred", "E9_pred", "peso_E1", "peso_E9",
+                "E1_pred", "E9_pred", "E1_pred_adj", "E9_pred_adj",
+                "peso_E1", "peso_E9",
                 "y_pred_consolidado", "error_consolidado",
                 "delta_predicho", "delta_real", "mae_esperado",
                 "direccion_predicha", "direccion_real", "direccion_correcta",
+                "riesgo_caida", "alerta_caida",
                 "caida_predicha", "caida_real",
                 "confianza", "modelo_dominante", "horizonte",
             ]].copy(),
@@ -250,19 +288,19 @@ def format_results(results: dict[str, Any]) -> str:
     lines.append("SELECTOR NUMERICO ADAPTATIVO — RESULTADOS")
     lines.append(f"Cutoff: {results['cutoff_date']}")
     cfg = results["config"]
-    lines.append(f"Config: rolling_window={cfg['rolling_window']}  k={cfg['confidence_k']}")
+    lines.append(f"Config: rolling_window={cfg['rolling_window']}  k={cfg['confidence_k']}  min_obs={cfg['min_observations_for_weight']}")
     lines.append("")
 
     for h, data in results["horizons"].items():
         tr = data["train"]
         oo = data["oos"]
 
-        lines.append(f"{'='*85}")
+        lines.append(f"{'='*95}")
         lines.append(f"  HORIZONTE h{h}")
-        lines.append(f"{'='*85}")
+        lines.append(f"{'='*95}")
         lines.append(
             f"  {'':>18} {'MAE_cons':>9} {'MAE_E1':>9} {'MAE_E9':>9}"
-            f" | {'Dir_acc':>8} {'Inciert':>8} {'Det_cai':>8}"
+            f" | {'Dir_acc':>8} {'Inciert':>8} {'Det_baja':>8} {'Det_riesgo':>10}"
         )
         lines.append(
             f"  {'TRAIN (n='+str(tr['n'])+')':>18}"
@@ -271,7 +309,8 @@ def format_results(results: dict[str, Any]) -> str:
             f" {tr['mae_e9_puro']:>9.4f}"
             f" | {tr['direccion_accuracy']:>8.1%}"
             f" {tr['n_inciertos']:>8}"
-            f" {tr['deteccion_caidas']:>8.1%}"
+            f" {tr['deteccion_baja_explicita']:>8.1%}"
+            f" {tr['deteccion_riesgo_caida']:>10.1%}"
         )
         lines.append(
             f"  {'OOS (n='+str(oo['n'])+')':>18}"
@@ -280,7 +319,8 @@ def format_results(results: dict[str, Any]) -> str:
             f" {oo['mae_e9_puro']:>9.4f}"
             f" | {oo['direccion_accuracy']:>8.1%}"
             f" {oo['n_inciertos']:>8}"
-            f" {oo['deteccion_caidas']:>8.1%}"
+            f" {oo['deteccion_baja_explicita']:>8.1%}"
+            f" {oo['deteccion_riesgo_caida']:>10.1%}"
         )
 
         table = data["table_oos"]
@@ -289,9 +329,9 @@ def format_results(results: dict[str, Any]) -> str:
             f"  {'fecha':>12} {'y_curr':>7} {'y_true':>7}"
             f" | {'y_cons':>7} {'err':>7} {'mae_esp':>7}"
             f" | {'dir_pred':>8} {'dir_real':>8} {'ok':>5}"
-            f" | {'conf':>5} {'dom':>3}"
+            f" | {'riesgo':>6} {'conf':>14} {'dom':>3}"
         )
-        lines.append(f"  {'-'*82}")
+        lines.append(f"  {'-'*95}")
         for _, r in table.iterrows():
             fecha = r["fecha"].strftime("%Y-%m-%d")
             ok = "OK" if r["direccion_correcta"] else "FALLO"
@@ -299,7 +339,7 @@ def format_results(results: dict[str, Any]) -> str:
                 f"  {fecha:>12} {r['y_current']:>7.4f} {r['y_true']:>7.4f}"
                 f" | {r['y_pred_consolidado']:>7.4f} {r['error_consolidado']:>+7.4f} {r['mae_esperado']:>7.4f}"
                 f" | {r['direccion_predicha']:>8} {r['direccion_real']:>8} {ok:>5}"
-                f" | {r['confianza']:>5} {r['modelo_dominante']:>3}"
+                f" | {r['riesgo_caida']:>6} {r['confianza']:>14} {r['modelo_dominante']:>3}"
             )
         lines.append("")
 
