@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -9,6 +10,11 @@ import pandas as pd
 from ..config import DEFAULT_MODEL_DATASET, ROOT_DIR, STAGE_PYTHON
 from ..contracts import StageContract, StageResult
 from ..run_context import RadarRunContext, now_text
+from ...modeling.selector.numeric_selector import (
+    SelectorConfig,
+    run_selector_analysis,
+    format_results as format_selector_results,
+)
 
 
 EXPERIMENTS_RUNS_DIR = ROOT_DIR / "experiments" / "runs"
@@ -175,6 +181,64 @@ def _build_e9_curated_table(
 
             sheet_name = f"E9_base_h{horizon}"
             merged_df.to_excel(writer, sheet_name=sheet_name, index=False)
+
+
+SELECTOR_OOS_WEEKS = 8
+SELECTOR_CONFIG = SelectorConfig(rolling_window=4, confidence_k=1.0)
+
+
+def _run_numeric_selector(
+    e1_run_dir: Path,
+    e9_run_dir: Path,
+    output_dir: Path,
+) -> dict[str, Any]:
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    ds = pd.read_excel(DEFAULT_MODEL_DATASET, sheet_name="Sheet1")
+    ds["fecha_inicio_semana"] = pd.to_datetime(ds["fecha_inicio_semana"])
+    n_weeks = len(ds)
+    cutoff_idx = max(0, n_weeks - SELECTOR_OOS_WEEKS - 1)
+    cutoff_date = ds["fecha_inicio_semana"].iloc[cutoff_idx]
+
+    results = run_selector_analysis(
+        e1_run_dir=e1_run_dir,
+        e9_run_dir=e9_run_dir,
+        cutoff_date=cutoff_date,
+        config=SELECTOR_CONFIG,
+    )
+
+    report_text = format_selector_results(results)
+    (output_dir / "selector_numerico_adaptativo.txt").write_text(
+        report_text + "\n", encoding="utf-8",
+    )
+
+    for h, data in results["horizons"].items():
+        data["table_oos"].to_csv(
+            output_dir / f"selector_oos_h{h}.csv", index=False,
+        )
+
+    manifest = {
+        "cutoff_date": results["cutoff_date"],
+        "cutoff_method": "dynamic",
+        "oos_weeks": SELECTOR_OOS_WEEKS,
+        "n_weeks_dataset": n_weeks,
+        "config": results["config"],
+        "metrics_by_horizon": {
+            str(h): {"train": data["train"], "oos": data["oos"]}
+            for h, data in results["horizons"].items()
+        },
+    }
+    (output_dir / "selector_manifest.json").write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2, default=str),
+        encoding="utf-8",
+    )
+
+    return {
+        "cutoff_date": results["cutoff_date"],
+        "n_weeks_dataset": n_weeks,
+        "oos_weeks": SELECTOR_OOS_WEEKS,
+        "output_dir": str(output_dir),
+    }
 
 
 def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
@@ -353,6 +417,27 @@ def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
             commands=commands,
         )
 
+    # ── Sub-paso 4: selector numérico adaptativo ─────────────────────────────
+    e1_run_dir = base_run_dirs["E1_v5_clean"]
+    selector_output_dir = context.artifacts_root / "published" / "selector"
+
+    context.emit("Ejecutando selector numérico adaptativo", stage_name="modeling")
+    try:
+        selector_result = _run_numeric_selector(e1_run_dir, e9_run_dir, selector_output_dir)
+        outputs["numeric_selector"] = {"ok": True, **selector_result}
+        for artifact_name in (
+            "selector_numerico_adaptativo.txt",
+            "selector_manifest.json",
+        ):
+            artifacts.append(str(selector_output_dir / artifact_name))
+        for h in (1, 2, 3, 4):
+            csv_path = selector_output_dir / f"selector_oos_h{h}.csv"
+            if csv_path.exists():
+                artifacts.append(str(csv_path))
+    except Exception as exc:
+        warnings.append(f"Selector numérico falló (no bloquea pipeline): {exc}")
+        outputs["numeric_selector"] = {"ok": False, "error": str(exc)}
+
     finished_at = now_text()
     return StageResult(
         stage_name="modeling",
@@ -370,6 +455,7 @@ def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
             "Runners base E1/E2/E3/E5/E7 ejecutados con args congelados oficiales.",
             "Tabla curada E9 construida con merge por fecha y metadata fila_completa/n_modelos/cobertura.",
             "Stacking E9_v2_clean ejecutado con meta-model huber.",
+            "Selector numérico adaptativo ejecutado con cutoff dinámico.",
         ],
         commands=commands,
     )
