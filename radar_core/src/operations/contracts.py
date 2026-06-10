@@ -107,8 +107,7 @@ STAGE_CONTRACTS: dict[str, StageContract] = {
         name="modeling",
         description=(
             "Ejecuta los runners canónicos de modelado (E1, E2, E3, E5, E7) con walk-forward completo, "
-            "construye la tabla curada temporal para E9, ejecuta el stacking E9_v2_clean con meta-model huber, "
-            "y empaqueta la salida dual operativa con política direccional 9-1-9-1."
+            "construye la tabla curada temporal para E9 y ejecuta el stacking E9_v2_clean con meta-model huber."
         ),
         required_inputs=(
             "canonical_modeling_dataset",
@@ -119,7 +118,6 @@ STAGE_CONTRACTS: dict[str, StageContract] = {
             "base_model_predictions_e1_e2_e3_e5_e7",
             "e9_curated_table_temporary",
             "e9_stacking_predictions",
-            "dual_operational_package",
         ),
         required_artifacts=("logs/modeling.log", "stages/modeling.json"),
         partial_allowed=False,

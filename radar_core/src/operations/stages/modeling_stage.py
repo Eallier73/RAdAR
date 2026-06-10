@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import json
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -113,14 +112,6 @@ FROZEN_E9_SPEC: dict[str, Any] = {
     ],
 }
 
-DIRECTION_POLICY_BY_HORIZON: dict[int, str] = {
-    1: "E9_v2_clean",
-    2: "E1_v5_clean",
-    3: "E9_v2_clean",
-    4: "E1_v5_clean",
-}
-
-
 def _find_latest_run_dir(run_id: str) -> Path:
     candidates = sorted(
         EXPERIMENTS_RUNS_DIR.glob(f"{run_id}_*"),
@@ -186,259 +177,6 @@ def _build_e9_curated_table(
             merged_df.to_excel(writer, sheet_name=sheet_name, index=False)
 
 
-def _build_dual_package(
-    e1_run_dir: Path,
-    e9_run_dir: Path,
-    output_dir: Path,
-) -> dict[str, Any]:
-    output_dir.mkdir(parents=True, exist_ok=True)
-    fall_threshold = 0.0
-
-    def direction_label(delta: float) -> str:
-        if delta > 0:
-            return "sube"
-        if delta < 0:
-            return "baja"
-        return "se_mantiene"
-
-    def load_prediction_frame(run_dir: Path, run_id: str, horizon: int) -> pd.DataFrame:
-        path = run_dir / f"predicciones_h{horizon}.csv"
-        df = pd.read_csv(path)
-        date_col = "fecha" if "fecha" in df.columns else "fecha_inicio_semana"
-        normalized = pd.DataFrame({
-            "fecha_inicio_semana": df.get("fecha_inicio_semana", df[date_col]),
-            "fecha_referencia": df[date_col],
-            "horizonte_sem": horizon,
-            "y_current": df["y_current"],
-            "y_true": df["y_true"],
-            "y_pred": df["y_pred"],
-            "error": df.get("error"),
-            "run_id_origen": run_id,
-            "run_dir_origen": str(run_dir),
-        })
-        normalized["delta_real"] = normalized["y_true"] - normalized["y_current"]
-        normalized["delta_predicho"] = normalized["y_pred"] - normalized["y_current"]
-        normalized["direction_real"] = normalized["delta_real"].map(direction_label)
-        normalized["direction_predicha"] = normalized["delta_predicho"].map(direction_label)
-        normalized["direction_correcta"] = (
-            normalized["direction_real"] == normalized["direction_predicha"]
-        )
-        normalized["caida_real"] = normalized["delta_real"] <= fall_threshold
-        normalized["alerta_caida_predicha"] = normalized["delta_predicho"] <= fall_threshold
-        normalized["deteccion_caida_correcta"] = (
-            normalized["caida_real"] == normalized["alerta_caida_predicha"]
-        )
-        return normalized
-
-    numeric_frames = [load_prediction_frame(e1_run_dir, "E1_v5_clean", h) for h in (1, 2, 3, 4)]
-    numeric_df = pd.concat(numeric_frames, ignore_index=True)
-    numeric_df["modelo_oficial_numerico"] = "E1_v5_clean"
-    numeric_df["prediccion_numerica_oficial"] = numeric_df["y_pred"]
-    numeric_df = numeric_df[[
-        "fecha_inicio_semana", "fecha_referencia", "horizonte_sem",
-        "y_current", "y_true", "prediccion_numerica_oficial",
-        "delta_real", "delta_predicho",
-        "direction_real", "direction_predicha", "direction_correcta",
-        "modelo_oficial_numerico", "run_id_origen", "run_dir_origen",
-    ]].sort_values(["horizonte_sem", "fecha_inicio_semana"])
-
-    run_dirs_by_id = {"E1_v5_clean": e1_run_dir, "E9_v2_clean": e9_run_dir}
-    direction_pieces: list[pd.DataFrame] = []
-    for horizon, run_id in DIRECTION_POLICY_BY_HORIZON.items():
-        frame = load_prediction_frame(run_dirs_by_id[run_id], run_id, horizon).copy()
-        frame["run_id_direction_oficial"] = run_id
-        frame["politica_direccional"] = "9-1-9-1"
-        direction_pieces.append(frame[[
-            "fecha_inicio_semana", "fecha_referencia", "horizonte_sem",
-            "y_current", "y_true", "delta_real", "delta_predicho",
-            "direction_real", "direction_predicha", "direction_correcta",
-            "run_id_direction_oficial", "politica_direccional", "run_dir_origen",
-        ]])
-    direction_df = pd.concat(direction_pieces, ignore_index=True).sort_values(
-        ["horizonte_sem", "fecha_inicio_semana"]
-    )
-
-    fall_frames = [load_prediction_frame(e9_run_dir, "E9_v2_clean", h) for h in (1, 2, 3, 4)]
-    fall_df = pd.concat(fall_frames, ignore_index=True)
-    fall_df["run_id_alerta_caida_oficial"] = "E9_v2_clean"
-    fall_df = fall_df[[
-        "fecha_inicio_semana", "fecha_referencia", "horizonte_sem",
-        "y_current", "y_true", "delta_real", "delta_predicho",
-        "caida_real", "alerta_caida_predicha", "deteccion_caida_correcta",
-        "run_id_alerta_caida_oficial", "run_dir_origen",
-    ]].sort_values(["horizonte_sem", "fecha_inicio_semana"])
-
-    consolidated = numeric_df.merge(
-        direction_df[[
-            "fecha_inicio_semana", "horizonte_sem",
-            "direction_real", "direction_predicha", "direction_correcta",
-            "run_id_direction_oficial", "politica_direccional",
-        ]],
-        on=["fecha_inicio_semana", "horizonte_sem"],
-        how="outer",
-        suffixes=("", "_direction"),
-    )
-    consolidated = consolidated.merge(
-        fall_df[[
-            "fecha_inicio_semana", "horizonte_sem",
-            "caida_real", "alerta_caida_predicha", "deteccion_caida_correcta",
-            "run_id_alerta_caida_oficial",
-        ]],
-        on=["fecha_inicio_semana", "horizonte_sem"],
-        how="outer",
-        suffixes=("", "_fall"),
-    )
-    if "direction_real_direction" in consolidated.columns:
-        consolidated["direction_real"] = consolidated["direction_real"].fillna(
-            consolidated["direction_real_direction"]
-        )
-        consolidated = consolidated.drop(columns=["direction_real_direction"])
-    if "caida_real_fall" in consolidated.columns:
-        consolidated["caida_real"] = consolidated["caida_real"].fillna(
-            consolidated["caida_real_fall"]
-        )
-        consolidated = consolidated.drop(columns=["caida_real_fall"])
-    consolidated["disponible_prediccion_numerica"] = consolidated["prediccion_numerica_oficial"].notna()
-    consolidated["disponible_direction_accuracy"] = consolidated["run_id_direction_oficial"].notna()
-    consolidated["disponible_alerta_caida"] = consolidated["run_id_alerta_caida_oficial"].notna()
-    consolidated = consolidated.sort_values(["horizonte_sem", "fecha_inicio_semana"])
-
-    numeric_df.to_csv(output_dir / "prediccion_numerica_oficial.csv", index=False)
-    direction_df.to_csv(output_dir / "lectura_direccional_oficial.csv", index=False)
-    fall_df.to_csv(output_dir / "alertas_caida_oficiales.csv", index=False)
-    consolidated.to_csv(output_dir / "salida_dual_operativa_consolidada.csv", index=False)
-
-    politica_funcional = [
-        {"capa": "salida_numerica_principal", "politica_operativa": "Siempre E1_v5_clean", "detalle": "Forecast numerico oficial del sistema"},
-        {"capa": "deteccion_de_caidas", "politica_operativa": "Siempre E9_v2_clean", "detalle": "Alerta oficial de caida por horizonte"},
-        {"capa": "direction_accuracy_H1", "politica_operativa": "E9_v2_clean", "detalle": "Politica fija direccional por horizonte"},
-        {"capa": "direction_accuracy_H2", "politica_operativa": "E1_v5_clean", "detalle": "Politica fija direccional por horizonte"},
-        {"capa": "direction_accuracy_H3", "politica_operativa": "E9_v2_clean", "detalle": "Politica fija direccional por horizonte"},
-        {"capa": "direction_accuracy_H4", "politica_operativa": "E1_v5_clean", "detalle": "Politica fija direccional por horizonte"},
-    ]
-    pd.DataFrame(politica_funcional).to_csv(output_dir / "politica_funcional_dual.csv", index=False)
-
-    tabla_funcional: list[dict[str, Any]] = []
-    for h in (1, 2, 3, 4):
-        e1_h = numeric_df[numeric_df["horizonte_sem"] == h]
-        fall_h = fall_df[fall_df["horizonte_sem"] == h]
-        dir_h_policy_run = DIRECTION_POLICY_BY_HORIZON[h]
-        dir_h = direction_df[direction_df["horizonte_sem"] == h]
-
-        e1_mae = (e1_h["prediccion_numerica_oficial"] - e1_h["y_true"]).abs().mean()
-        e1_rmse = ((e1_h["prediccion_numerica_oficial"] - e1_h["y_true"]) ** 2).mean() ** 0.5
-        e1_dir_acc = e1_h["direction_correcta"].mean()
-        e1_fall_det = (e1_h["delta_real"].le(fall_threshold) == e1_h["delta_predicho"].le(fall_threshold)).mean()
-
-        e9_preds = fall_h["delta_predicho"] + fall_h["y_current"]
-        e9_mae = (e9_preds - fall_h["y_true"]).abs().mean() if len(fall_h) > 0 else float("nan")
-        e9_rmse = (((e9_preds - fall_h["y_true"]) ** 2).mean() ** 0.5) if len(fall_h) > 0 else float("nan")
-        e9_dir_acc = dir_h["direction_correcta"].mean() if len(dir_h) > 0 else float("nan")
-        e9_fall_det = fall_h["deteccion_caida_correcta"].mean() if len(fall_h) > 0 else float("nan")
-
-        for medida, e1_val, e9_val in [
-            ("MAE", e1_mae, e9_mae),
-            ("RMSE", e1_rmse, e9_rmse),
-            ("Direction accuracy", e1_dir_acc, e9_dir_acc),
-            ("Deteccion de caidas", e1_fall_det, e9_fall_det),
-        ]:
-            ganador = "E1_v5_clean" if e1_val <= e9_val else "E9_v2_clean"
-            if medida in ("Direction accuracy", "Deteccion de caidas"):
-                ganador = "E1_v5_clean" if e1_val >= e9_val else "E9_v2_clean"
-            tabla_funcional.append({
-                "horizonte_sem": h,
-                "medida": medida,
-                "E1_v5_clean": round(float(e1_val), 6),
-                "E9_v2_clean": round(float(e9_val), 6),
-                "ganador": ganador,
-            })
-    pd.DataFrame(tabla_funcional).to_csv(output_dir / "tabla_funcional_canonica.csv", index=False)
-
-    manifest = {
-        "fase_operativa": "produccion_controlada_dual",
-        "estado_operativo": "vigente",
-        "modelo_unico_final": False,
-        "descripcion": (
-            "Sistema operativo compuesto del Radar con salida numerica oficial desde E1_v5_clean, "
-            "alerta de caida oficial desde E9_v2_clean y politica direccional fija por horizonte 9-1-9-1."
-        ),
-        "politica_direccional_por_horizonte": {str(k): v for k, v in DIRECTION_POLICY_BY_HORIZON.items()},
-        "tabla_funcional_dual_vigente": tabla_funcional,
-        "politica_funcional_dual_vigente": politica_funcional,
-        "fuentes": {
-            "prediccion_numerica_oficial": {
-                "run_id": "E1_v5_clean",
-                "run_dir": str(e1_run_dir),
-            },
-            "alertas_caida_oficiales": {
-                "run_id": "E9_v2_clean",
-                "run_dir": str(e9_run_dir),
-            },
-            "direction_accuracy_oficial_por_horizonte": {
-                f"H{h}": {"run_id": run_id, "run_dir": str(run_dirs_by_id[run_id])}
-                for h, run_id in DIRECTION_POLICY_BY_HORIZON.items()
-            },
-        },
-        "artefactos_generados": {
-            "prediccion_numerica_oficial.csv": int(len(numeric_df)),
-            "lectura_direccional_oficial.csv": int(len(direction_df)),
-            "alertas_caida_oficiales.csv": int(len(fall_df)),
-            "salida_dual_operativa_consolidada.csv": int(len(consolidated)),
-            "tabla_funcional_canonica.csv": len(tabla_funcional),
-            "politica_funcional_dual.csv": len(politica_funcional),
-        },
-        "output_dir": str(output_dir),
-        "advertencia": "La politica 9-1-9-1 es fija y funcional. No implica mezcla dinamica online ni seleccion ex post por fila.",
-    }
-    (output_dir / "manifiesto_operativo_dual.json").write_text(
-        json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8",
-    )
-
-    lines = [
-        "# Resumen Operativo Dual Radar",
-        "",
-        f"- `fase_operativa`: `{manifest['fase_operativa']}`",
-        f"- `estado_operativo`: `{manifest['estado_operativo']}`",
-        "- `modelo_unico_final`: `False`",
-        f"- `output_dir`: `{output_dir}`",
-        "",
-        "## Politica Funcional Congelada",
-        "",
-        "- Salida numerica principal: `E1_v5_clean`",
-        "- Deteccion de caidas: `E9_v2_clean`",
-        "- Direction H1: `E9_v2_clean`",
-        "- Direction H2: `E1_v5_clean`",
-        "- Direction H3: `E9_v2_clean`",
-        "- Direction H4: `E1_v5_clean`",
-        "",
-        "## Artefactos Canonicos",
-        "",
-        f"- `prediccion_numerica_oficial.csv`: `{len(numeric_df)}` fila(s)",
-        f"- `lectura_direccional_oficial.csv`: `{len(direction_df)}` fila(s)",
-        f"- `alertas_caida_oficiales.csv`: `{len(fall_df)}` fila(s)",
-        f"- `salida_dual_operativa_consolidada.csv`: `{len(consolidated)}` fila(s)",
-        "- `tabla_funcional_canonica.csv`",
-        "- `politica_funcional_dual.csv`",
-        "- `manifiesto_operativo_dual.json`",
-        "",
-        "## Reglas de Lectura",
-        "",
-        "- `prediccion_numerica_oficial.csv` es la salida principal del sistema.",
-        "- `lectura_direccional_oficial.csv` reporta la politica fija 9-1-9-1 por horizonte.",
-        "- `alertas_caida_oficiales.csv` reporta la capa oficial de caidas desde `E9_v2_clean`.",
-        "- `salida_dual_operativa_consolidada.csv` integra las tres capas sin fingir un modelo unico.",
-    ]
-    (output_dir / "resumen_operativo_dual.md").write_text("\n".join(lines), encoding="utf-8")
-
-    return {
-        "filas_numerico": len(numeric_df),
-        "filas_direction": len(direction_df),
-        "filas_caidas": len(fall_df),
-        "filas_consolidado": len(consolidated),
-        "output_dir": str(output_dir),
-    }
-
-
 def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
     started_at = now_text()
     started_dt = datetime.fromisoformat(started_at)
@@ -456,7 +194,6 @@ def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
         "runs_dir": str(EXPERIMENTS_RUNS_DIR),
         "base_specs": [spec["run_id"] for spec in FROZEN_BASE_SPECS],
         "e9_spec": FROZEN_E9_SPEC["run_id"],
-        "direction_policy": DIRECTION_POLICY_BY_HORIZON,
     }
 
     if not DEFAULT_MODEL_DATASET.exists():
@@ -488,11 +225,6 @@ def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
         ))
         e9_command = [_py, "-m", FROZEN_E9_SPEC["module"], *FROZEN_E9_SPEC["args"]]
         commands.append(context.run_command("modeling", f"stacking_{FROZEN_E9_SPEC['run_id']}", e9_command, check=False))
-        commands.append(context.run_command(
-            "modeling", "empaquetado_dual",
-            [_py, "-c", "# empaquetado dual 9-1-9-1"],
-            check=False,
-        ))
         finished_at = now_text()
         return StageResult(
             stage_name="modeling",
@@ -547,7 +279,7 @@ def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
                 metrics=metrics,
                 warnings=warnings,
                 errors=errors,
-                notes=[f"Abortado tras fallo de {run_id}. E9 y el paquete dual no se ejecutaron."],
+                notes=[f"Abortado tras fallo de {run_id}. E9 no se ejecutó."],
                 commands=commands,
             )
 
@@ -577,7 +309,7 @@ def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
             metrics=metrics,
             warnings=warnings,
             errors=errors,
-            notes=["Abortado tras fallo al construir tabla E9. Stacking y paquete dual no se ejecutaron."],
+            notes=["Abortado tras fallo al construir tabla E9. Stacking no se ejecutó."],
             commands=commands,
         )
 
@@ -617,50 +349,7 @@ def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
             metrics=metrics,
             warnings=warnings,
             errors=errors,
-            notes=["Abortado tras fallo de E9. Paquete dual no se ejecutó."],
-            commands=commands,
-        )
-
-    # ── Sub-paso 4: empaquetado dual con política 9-1-9-1 ──────────────────
-    e1_run_dir = base_run_dirs["E1_v5_clean"]
-    dual_output_dir = context.artifacts_root / "published" / "powerbi"
-
-    context.emit("Empaquetando salida dual operativa 9-1-9-1", stage_name="modeling")
-    try:
-        dual_result = _build_dual_package(e1_run_dir, e9_run_dir, dual_output_dir)
-        outputs["dual_package"] = {"ok": True, **dual_result}
-        metrics["filas_numerico"] = dual_result["filas_numerico"]
-        metrics["filas_direction"] = dual_result["filas_direction"]
-        metrics["filas_caidas"] = dual_result["filas_caidas"]
-        metrics["filas_consolidado"] = dual_result["filas_consolidado"]
-        for artifact_name in (
-            "prediccion_numerica_oficial.csv",
-            "lectura_direccional_oficial.csv",
-            "alertas_caida_oficiales.csv",
-            "salida_dual_operativa_consolidada.csv",
-            "politica_funcional_dual.csv",
-            "tabla_funcional_canonica.csv",
-            "manifiesto_operativo_dual.json",
-            "resumen_operativo_dual.md",
-        ):
-            artifacts.append(str(dual_output_dir / artifact_name))
-    except Exception as exc:
-        errors.append(f"Empaquetado dual falló: {exc}")
-        outputs["dual_package"] = {"ok": False, "error": str(exc)}
-        finished_at = now_text()
-        return StageResult(
-            stage_name="modeling",
-            status="failed",
-            started_at=started_at,
-            finished_at=finished_at,
-            duration_sec=round((datetime.fromisoformat(finished_at) - started_dt).total_seconds(), 3),
-            inputs=inputs,
-            outputs=outputs,
-            artifacts=artifacts,
-            metrics=metrics,
-            warnings=warnings,
-            errors=errors,
-            notes=["Abortado tras fallo del empaquetado dual."],
+            notes=["Abortado tras fallo de E9."],
             commands=commands,
         )
 
@@ -681,7 +370,6 @@ def run_stage(context: RadarRunContext, contract: StageContract) -> StageResult:
             "Runners base E1/E2/E3/E5/E7 ejecutados con args congelados oficiales.",
             "Tabla curada E9 construida con merge por fecha y metadata fila_completa/n_modelos/cobertura.",
             "Stacking E9_v2_clean ejecutado con meta-model huber.",
-            "Paquete dual operativo generado con política direccional 9-1-9-1.",
         ],
         commands=commands,
     )
