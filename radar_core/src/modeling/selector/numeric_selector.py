@@ -66,14 +66,15 @@ def build_consolidated_table(
     base = base.merge(e9_merged, on="fecha", how="left")
     base = base.sort_values("fecha").reset_index(drop=True)
 
-    base["E1_mae_rolling"] = _rolling_mae(base["E1_error"], cfg.rolling_window)
+    # shift(horizon) para usar solo errores cuyo valor real ya maduró
+    base["E1_mae_rolling"] = _rolling_mae(base["E1_error"], cfg.rolling_window).shift(horizon)
 
     e9_mask = base["E9_error"].notna()
     base["E9_mae_rolling"] = np.nan
     if e9_mask.any():
         e9_rolling = _rolling_mae(
             base.loc[e9_mask, "E9_error"], cfg.rolling_window
-        )
+        ).shift(horizon)
         base.loc[e9_mask, "E9_mae_rolling"] = e9_rolling.values
 
     base["E1_inv_mae"] = 1.0 / base["E1_mae_rolling"].clip(lower=1e-8)
@@ -87,6 +88,11 @@ def build_consolidated_table(
     base["peso_E1"] = base["E1_inv_mae"] / total_inv
     base["peso_E9"] = base["E9_inv_mae"] / total_inv
 
+    # Sin historial suficiente (NaN por shift), defaultear a solo E1
+    no_hist = base["E1_mae_rolling"].isna()
+    base.loc[no_hist, "peso_E1"] = 1.0
+    base.loc[no_hist, "peso_E9"] = 0.0
+
     # Cuando E9 no tiene datos, peso_E1=1.0
     no_e9 = base["E9_pred"].isna()
     base.loc[no_e9, "peso_E1"] = 1.0
@@ -99,7 +105,7 @@ def build_consolidated_table(
 
     base["error_consolidado"] = base["y_pred_consolidado"] - base["y_true"]
     base["mae_esperado"] = (
-        base["peso_E1"] * base["E1_mae_rolling"]
+        base["peso_E1"] * base["E1_mae_rolling"].fillna(0.0)
         + base["peso_E9"] * base["E9_mae_rolling"].fillna(0.0)
     )
 
@@ -110,7 +116,7 @@ def build_consolidated_table(
         base["error_consolidado"]
         .rolling(window=cfg.rolling_window, min_periods=1)
         .mean()
-        .shift(1)
+        .shift(horizon)
         .fillna(0.0)
     )
     base["delta_corregido"] = base["delta_predicho"] - base["sesgo_rolling"]
