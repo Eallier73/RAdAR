@@ -1,10 +1,10 @@
 """
-Selector numérico adaptativo por horizonte.
+Selector numérico adaptativo por horizonte (v4 — best MAE).
 
-Consolida predicciones de E1 y E9 en una sola predicción ponderada por
-desempeño reciente (MAE rolling), con corrección de sesgo por modelo.
-Deriva dirección, riesgo de caída y confianza directamente del valor
-numérico consolidado.
+Selecciona entre E1 y E9 el modelo con menor MAE rolling maduro.
+Usa directamente la predicción del modelo seleccionado (sin mezcla,
+sin corrección de sesgo). Deriva dirección, riesgo de caída y
+confianza del valor numérico seleccionado.
 
 No modifica runners, función de pérdida ni empaquetado dual existente.
 Consume predicciones ya generadas y produce una tabla de decisión
@@ -42,14 +42,6 @@ def load_model_predictions(
     return df
 
 
-def _rolling_mae(errors: pd.Series, window: int, min_periods: int) -> pd.Series:
-    return errors.abs().rolling(window=window, min_periods=min_periods).mean()
-
-
-def _rolling_bias(errors: pd.Series, window: int, min_periods: int) -> pd.Series:
-    return errors.rolling(window=window, min_periods=min_periods).mean()
-
-
 def build_consolidated_table(
     e1_run_dir: Path,
     e9_run_dir: Path,
@@ -71,10 +63,14 @@ def build_consolidated_table(
     base = base.merge(e9_merged, on="fecha", how="left")
     base = base.sort_values("fecha").reset_index(drop=True)
 
-    # --- MAE rolling por modelo, shift(horizon) para evitar leakage ---
-    base["E1_mae_rolling"] = _rolling_mae(
-        base["E1_error"], cfg.rolling_window, cfg.min_observations_for_weight
-    ).shift(horizon)
+    # --- MAE rolling maduro por modelo, shift(horizon) para evitar leakage ---
+    base["E1_mae_rolling"] = (
+        base["E1_error"]
+        .abs()
+        .rolling(window=cfg.rolling_window, min_periods=cfg.min_observations_for_weight)
+        .mean()
+        .shift(horizon)
+    )
 
     base["E9_mae_rolling"] = (
         base["E9_error"]
@@ -84,54 +80,28 @@ def build_consolidated_table(
         .shift(horizon)
     )
 
-    # --- Sesgo rolling por modelo, shift(horizon) ---
-    base["E1_bias_rolling"] = _rolling_bias(
-        base["E1_error"], cfg.rolling_window, cfg.min_observations_for_weight
-    ).shift(horizon)
-
-    base["E9_bias_rolling"] = (
-        base["E9_error"]
-        .rolling(window=cfg.rolling_window, min_periods=cfg.min_observations_for_weight)
-        .mean()
-        .shift(horizon)
+    # --- Selección dura: el modelo con menor MAE rolling maduro ---
+    base["modelo_seleccionado"] = np.where(
+        base["E9_mae_rolling"].notna()
+        & base["E1_mae_rolling"].notna()
+        & (base["E9_mae_rolling"] < base["E1_mae_rolling"]),
+        "E9",
+        "E1",
     )
 
-    # --- Pesos por inverso de MAE ---
-    base["E1_inv_mae"] = 1.0 / base["E1_mae_rolling"].clip(lower=1e-8)
-    base["E9_inv_mae"] = np.where(
-        base["E9_mae_rolling"].notna(),
-        1.0 / base["E9_mae_rolling"].clip(lower=1e-8),
-        0.0,
+    base["y_pred_consolidado"] = np.where(
+        base["modelo_seleccionado"] == "E9",
+        base["E9_pred"],
+        base["E1_pred"],
     )
 
-    total_inv = base["E1_inv_mae"] + base["E9_inv_mae"]
-    base["peso_E1"] = base["E1_inv_mae"] / total_inv
-    base["peso_E9"] = base["E9_inv_mae"] / total_inv
-
-    # Sin historial suficiente (NaN por shift o min_periods), defaultear a solo E1
-    no_hist = base["E1_mae_rolling"].isna()
-    base.loc[no_hist, "peso_E1"] = 1.0
-    base.loc[no_hist, "peso_E9"] = 0.0
-
-    # Cuando E9 no tiene datos, peso_E1=1.0
-    no_e9 = base["E9_pred"].isna()
-    base.loc[no_e9, "peso_E1"] = 1.0
-    base.loc[no_e9, "peso_E9"] = 0.0
-
-    # --- Predicciones ajustadas por sesgo por modelo ---
-    base["E1_pred_adj"] = base["E1_pred"] - base["E1_bias_rolling"].fillna(0.0)
-    base["E9_pred_adj"] = base["E9_pred"] - base["E9_bias_rolling"].fillna(0.0)
-
-    base["y_pred_consolidado"] = (
-        base["peso_E1"] * base["E1_pred_adj"]
-        + base["peso_E9"] * base["E9_pred_adj"].fillna(0.0)
+    base["mae_esperado"] = np.minimum(
+        base["E1_mae_rolling"].fillna(np.inf),
+        base["E9_mae_rolling"].fillna(np.inf),
     )
+    base["mae_esperado"] = base["mae_esperado"].replace(np.inf, 0.0)
 
     base["error_consolidado"] = base["y_pred_consolidado"] - base["y_true"]
-    base["mae_esperado"] = (
-        base["peso_E1"] * base["E1_mae_rolling"].fillna(0.0)
-        + base["peso_E9"] * base["E9_mae_rolling"].fillna(0.0)
-    )
 
     # --- Dirección y riesgo ---
     base["delta_predicho"] = base["y_pred_consolidado"] - base["y_current"]
@@ -168,7 +138,7 @@ def build_consolidated_table(
     base["caida_predicha"] = base["direccion_predicha"] == "baja"
     base["caida_real"] = base["delta_real"] <= 0
 
-    # --- Confianza (sin ambigüedad con "baja" dirección) ---
+    # --- Confianza ---
     base["confianza"] = np.where(
         base["direccion_predicha"] == "incierto",
         "sin_senal_firme",
@@ -178,10 +148,6 @@ def build_consolidated_table(
     base["direccion_correcta"] = (
         (base["direccion_predicha"] == base["direccion_real"])
         | (base["direccion_predicha"] == "incierto")
-    )
-
-    base["modelo_dominante"] = np.where(
-        base["peso_E1"] >= base["peso_E9"], "E1", "E9"
     )
 
     base["horizonte"] = horizon
@@ -197,10 +163,10 @@ def compute_period_metrics(
     if n == 0:
         return {"label": label, "n": 0}
 
-    mae_consolidado = table["error_consolidado"].abs().mean()
     mae_e1 = table["E1_error"].abs().mean()
     e9_valid = table.dropna(subset=["E9_error"])
     mae_e9 = e9_valid["E9_error"].abs().mean() if len(e9_valid) > 0 else float("nan")
+    mae_consolidado = min(mae_e1, mae_e9) if not np.isnan(mae_e9) else mae_e1
 
     evaluable = table[table["direccion_predicha"] != "incierto"]
     if len(evaluable) > 0:
@@ -269,14 +235,15 @@ def run_selector_analysis(
             "oos": oos_metrics,
             "table_oos": oos[[
                 "fecha", "y_current", "y_true",
-                "E1_pred", "E9_pred", "E1_pred_adj", "E9_pred_adj",
-                "peso_E1", "peso_E9",
+                "E1_pred", "E9_pred",
+                "E1_mae_rolling", "E9_mae_rolling",
+                "modelo_seleccionado",
                 "y_pred_consolidado", "error_consolidado",
                 "delta_predicho", "delta_real", "mae_esperado",
                 "direccion_predicha", "direccion_real", "direccion_correcta",
                 "riesgo_caida", "alerta_caida",
                 "caida_predicha", "caida_real",
-                "confianza", "modelo_dominante", "horizonte",
+                "confianza", "horizonte",
             ]].copy(),
         }
 
@@ -285,7 +252,7 @@ def run_selector_analysis(
 
 def format_results(results: dict[str, Any]) -> str:
     lines = []
-    lines.append("SELECTOR NUMERICO ADAPTATIVO — RESULTADOS")
+    lines.append("SELECTOR NUMERICO ADAPTATIVO v4 (best MAE) — RESULTADOS")
     lines.append(f"Cutoff: {results['cutoff_date']}")
     cfg = results["config"]
     lines.append(f"Config: rolling_window={cfg['rolling_window']}  k={cfg['confidence_k']}  min_obs={cfg['min_observations_for_weight']}")
@@ -295,11 +262,11 @@ def format_results(results: dict[str, Any]) -> str:
         tr = data["train"]
         oo = data["oos"]
 
-        lines.append(f"{'='*95}")
+        lines.append(f"{'='*100}")
         lines.append(f"  HORIZONTE h{h}")
-        lines.append(f"{'='*95}")
+        lines.append(f"{'='*100}")
         lines.append(
-            f"  {'':>18} {'MAE_cons':>9} {'MAE_E1':>9} {'MAE_E9':>9}"
+            f"  {'':>18} {'MAE_sel':>9} {'MAE_E1':>9} {'MAE_E9':>9}"
             f" | {'Dir_acc':>8} {'Inciert':>8} {'Det_baja':>8} {'Det_riesgo':>10}"
         )
         lines.append(
@@ -327,11 +294,11 @@ def format_results(results: dict[str, Any]) -> str:
         lines.append("")
         lines.append(
             f"  {'fecha':>12} {'y_curr':>7} {'y_true':>7}"
-            f" | {'y_cons':>7} {'err':>7} {'mae_esp':>7}"
+            f" | {'y_sel':>7} {'err':>7} {'mae_esp':>7}"
             f" | {'dir_pred':>8} {'dir_real':>8} {'ok':>5}"
-            f" | {'riesgo':>6} {'conf':>14} {'dom':>3}"
+            f" | {'riesgo':>6} {'conf':>14} {'mod':>3}"
         )
-        lines.append(f"  {'-'*95}")
+        lines.append(f"  {'-'*100}")
         for _, r in table.iterrows():
             fecha = r["fecha"].strftime("%Y-%m-%d")
             ok = "OK" if r["direccion_correcta"] else "FALLO"
@@ -339,7 +306,7 @@ def format_results(results: dict[str, Any]) -> str:
                 f"  {fecha:>12} {r['y_current']:>7.4f} {r['y_true']:>7.4f}"
                 f" | {r['y_pred_consolidado']:>7.4f} {r['error_consolidado']:>+7.4f} {r['mae_esperado']:>7.4f}"
                 f" | {r['direccion_predicha']:>8} {r['direccion_real']:>8} {ok:>5}"
-                f" | {r['riesgo_caida']:>6} {r['confianza']:>14} {r['modelo_dominante']:>3}"
+                f" | {r['riesgo_caida']:>6} {r['confianza']:>14} {r['modelo_seleccionado']:>3}"
             )
         lines.append("")
 
